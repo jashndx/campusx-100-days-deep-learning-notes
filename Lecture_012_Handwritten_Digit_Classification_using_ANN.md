@@ -162,6 +162,5 @@ Using `np.argmax(probabilities, axis=1)`, which selects the index of the highest
 - [CampusX Video Link](https://www.youtube.com/watch?v=3xPT2Pk0Jds)
 - [Lecture Video](https://www.youtube.com/watch?v=3xPT2Pk0Jds)
 - [Colab Notebook](https://colab.research.google.com/drive/1SqETl3Zi1EEesdJfEv6_QimB-M-YjKGx?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

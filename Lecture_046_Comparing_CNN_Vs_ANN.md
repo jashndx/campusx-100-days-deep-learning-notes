@@ -119,6 +119,5 @@ A discrete 1D convolution is mathematically identical to multiplying an input ve
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=niE5DRKvD_E)
 - [Lecture Video](https://www.youtube.com/watch?v=niE5DRKvD_E)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

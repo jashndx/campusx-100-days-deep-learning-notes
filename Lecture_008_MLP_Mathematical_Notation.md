@@ -158,6 +158,5 @@ For each layer $l$ from $1$ to $L$: $\text{Params}^{[l]} = (n^{[l-1]} \times n^{
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=H0_3SJh4Rqs)
 - [Lecture Video](https://www.youtube.com/watch?v=H0_3SJh4Rqs)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

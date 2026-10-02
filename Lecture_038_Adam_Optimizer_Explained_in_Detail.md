@@ -184,6 +184,5 @@ In image classification tasks (e.g., training ResNet on ImageNet), empirical res
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=N5AynalXD9g)
 - [Lecture Video](https://www.youtube.com/watch?v=N5AynalXD9g)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

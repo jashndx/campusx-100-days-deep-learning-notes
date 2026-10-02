@@ -150,6 +150,5 @@ Exactly 64 biases—one scalar bias per filter/feature map, broadcasted across t
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=cgJx3GvQ5y8)
 - [Lecture Video](https://www.youtube.com/watch?v=cgJx3GvQ5y8)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

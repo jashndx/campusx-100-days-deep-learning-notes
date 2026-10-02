@@ -139,6 +139,5 @@ Two reasons: (1) Different languages have different word counts (e.g., a 5-word 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=TkOBxzhIySg)
 - [Lecture Video](https://www.youtube.com/watch?v=TkOBxzhIySg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

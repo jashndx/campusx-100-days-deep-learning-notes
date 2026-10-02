@@ -164,6 +164,5 @@ Take a tiny subset of data (e.g., 20 to 50 samples) and train the network withou
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=Ue_6n1yT_R8)
 - [Lecture Video](https://www.youtube.com/watch?v=Ue_6n1yT_R8)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

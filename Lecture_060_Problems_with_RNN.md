@@ -131,6 +131,5 @@ Le et al. (2015) showed that initializing $\mathbf{W}_{hh} = \mathbf{I}$ (the id
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=AWHSZzp96kM)
 - [Lecture Video](https://www.youtube.com/watch?v=AWHSZzp96kM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

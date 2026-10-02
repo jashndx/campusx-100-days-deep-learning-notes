@@ -138,6 +138,5 @@ Sepp Hochreiter and Jürgen Schmidhuber in their landmark 1997 paper 'Long Short
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=z7IPBg6MyrU)
 - [Lecture Video](https://www.youtube.com/watch?v=z7IPBg6MyrU)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

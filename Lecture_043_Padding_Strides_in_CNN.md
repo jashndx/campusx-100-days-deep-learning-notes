@@ -131,6 +131,5 @@ Both perform spatial downsampling. However, Pooling is fixed and unlearnable (e.
 - [CampusX Video Link](https://www.youtube.com/watch?v=btWE6SsdDZA)
 - [Lecture Video](https://www.youtube.com/watch?v=btWE6SsdDZA)
 - [Colab Notebook](https://colab.research.google.com/drive/1HBMLctcBnhvV6Rj62Zc8eAXERQw54l2H?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

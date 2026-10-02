@@ -145,6 +145,5 @@ For the input layer, dropping features directly discards raw sensory information
 - [CampusX Video Link](https://www.youtube.com/watch?v=gyTlcHVeBjM)
 - [Lecture Video](https://www.youtube.com/watch?v=gyTlcHVeBjM)
 - [Seminal Dropout Paper (Srivastava et al. 2014)](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Dropout_A_Simple_Way_to_Prevent_Overfitting_Srivastava2014.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

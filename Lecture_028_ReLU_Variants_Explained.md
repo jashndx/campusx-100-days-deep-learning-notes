@@ -138,6 +138,5 @@ PReLU introduces only a single scalar parameter $\alpha$ per layer (or per convo
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=2OwWs7Hzr9g)
 - [Lecture Video](https://www.youtube.com/watch?v=2OwWs7Hzr9g)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

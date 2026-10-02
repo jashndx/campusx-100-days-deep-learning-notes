@@ -148,6 +148,5 @@ Different loss functions operate on vastly different numerical scales. An MSE lo
 - [CampusX Video Link](https://www.youtube.com/watch?v=OvQQP1QVru8)
 - [Lecture Video](https://www.youtube.com/watch?v=OvQQP1QVru8)
 - [Colab Notebook](https://colab.research.google.com/drive/1uCHf6hoLR1a-46RznVjqnhVZNechF0fz?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

@@ -139,6 +139,5 @@ Instead of guessing an arbitrary epoch count (e.g., 500 epochs) and running hour
 - [CampusX Video Link](https://www.youtube.com/watch?v=Ygvskt5HadI)
 - [Lecture Video](https://www.youtube.com/watch?v=Ygvskt5HadI)
 - [Colab Notebook](https://colab.research.google.com/drive/1JG6PCAa5A0-CLOcKhugqU4uyZXWNjtKP?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

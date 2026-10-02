@@ -143,6 +143,5 @@ In an ANN, a bias is added to a single neuron, so $\\frac{\\partial \\mathcal{L}
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=RvCCFttGFMY)
 - [Lecture Video](https://www.youtube.com/watch?v=RvCCFttGFMY)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

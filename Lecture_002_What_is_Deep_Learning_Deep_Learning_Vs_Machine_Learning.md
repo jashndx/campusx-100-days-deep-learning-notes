@@ -122,6 +122,5 @@ Feature Representation Learning is the automatic transformation of raw inputs in
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=fHF22Wxuyw4)
 - [Lecture Video](https://www.youtube.com/watch?v=fHF22Wxuyw4)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

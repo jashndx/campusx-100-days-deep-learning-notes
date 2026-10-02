@@ -131,6 +131,5 @@ According to the Linear Scaling Rule (Goyal et al., 2017), when increasing batch
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=7z6yXpYk7sw)
 - [Lecture Video](https://www.youtube.com/watch?v=7z6yXpYk7sw)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

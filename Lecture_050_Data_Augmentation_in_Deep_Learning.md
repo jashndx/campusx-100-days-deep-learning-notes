@@ -131,6 +131,5 @@ TTA is an inference strategy where multiple augmented versions of a single test 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=sM2C-SsREgM)
 - [Lecture Video](https://www.youtube.com/watch?v=sM2C-SsREgM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

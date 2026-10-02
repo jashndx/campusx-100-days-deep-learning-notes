@@ -127,7 +127,5 @@ The standard Heaviside step function is non-differentiable at $z=0$ and has a de
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=X7iIKPoZ0Sw)
 - [Lecture Video](https://www.youtube.com/watch?v=X7iIKPoZ0Sw)
-- [CampusX Day 3 Repo](https://github.com/campusx-official/100-days-of-deep-learning/tree/main/day3)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

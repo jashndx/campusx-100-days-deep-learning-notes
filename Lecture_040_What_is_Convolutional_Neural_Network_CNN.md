@@ -122,6 +122,5 @@ Yes! Any data with grid topology: 1D CNNs for sequential time-series and audio w
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=hDVFXf74P-U)
 - [Lecture Video](https://www.youtube.com/watch?v=hDVFXf74P-U)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

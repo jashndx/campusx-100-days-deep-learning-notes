@@ -145,6 +145,5 @@ In RNNs, sequence lengths vary and recurrent dependencies evolve over time, requ
 - [CampusX Video Link](https://www.youtube.com/watch?v=2AscwXePInA)
 - [Lecture Video](https://www.youtube.com/watch?v=2AscwXePInA)
 - [Colab Notebook](https://colab.research.google.com/drive/1473vOd0lCPbRW-co_Rm-_TBXgeajkJZ_?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

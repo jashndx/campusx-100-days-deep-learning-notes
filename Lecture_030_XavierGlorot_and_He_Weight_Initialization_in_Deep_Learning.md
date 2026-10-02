@@ -148,6 +148,5 @@ PyTorch's `nn.Linear` uses Kaiming Uniform with $a=\sqrt{5}$ (an empirical compr
 - [CampusX Video Link](https://www.youtube.com/watch?v=nwVOSgcrbQI)
 - [Lecture Video](https://www.youtube.com/watch?v=nwVOSgcrbQI)
 - [Colab Notebook](https://colab.research.google.com/drive/1Z3pWYFWgUKP7htokOj201APi574a3-vY?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

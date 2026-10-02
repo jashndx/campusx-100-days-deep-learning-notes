@@ -170,6 +170,5 @@ Plotting the matrix of attention weights $\alpha_{ti}$ as a 2D heatmap produces 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=rj5V6q6-XUM)
 - [Lecture Video](https://www.youtube.com/watch?v=rj5V6q6-XUM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

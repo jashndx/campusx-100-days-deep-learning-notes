@@ -147,6 +147,5 @@ Loshchilov & Hutter (2019, AdamW paper) showed that in adaptive gradient algorit
 - [CampusX Video Link](https://www.youtube.com/watch?v=4xRonrhtkzc)
 - [Lecture Video](https://www.youtube.com/watch?v=4xRonrhtkzc)
 - [Colab Notebook](https://colab.research.google.com/drive/1PObj5KrXLDDmHjoJ1x0bVmxAFbif5s7q?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

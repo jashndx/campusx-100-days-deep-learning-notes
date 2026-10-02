@@ -142,6 +142,5 @@ When computational resources or GPU memory are constrained, when working with sm
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=QQfZAoNGQmE)
 - [Lecture Video](https://www.youtube.com/watch?v=QQfZAoNGQmE)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

@@ -132,6 +132,5 @@ It means that 85% of the total variance in the dependent target variable is expl
 - [CampusX Video Link](https://www.youtube.com/watch?v=RCmiPBiA4qg)
 - [Lecture Video](https://www.youtube.com/watch?v=RCmiPBiA4qg)
 - [Kaggle GRE Admission Notebook](https://www.kaggle.com/campusx/gre-admission-prediction)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

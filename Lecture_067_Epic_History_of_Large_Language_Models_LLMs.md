@@ -138,6 +138,5 @@ Word2Vec generates *static* embeddings: the word 'apple' has the exact same nume
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=8fX3rOjTloc)
 - [Lecture Video](https://www.youtube.com/watch?v=8fX3rOjTloc)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

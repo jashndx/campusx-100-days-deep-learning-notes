@@ -130,6 +130,5 @@ Because edges (sharp gradients in spatial light intensity) are the fundamental m
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=aslTGS9ef98)
 - [Lecture Video](https://www.youtube.com/watch?v=aslTGS9ef98)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

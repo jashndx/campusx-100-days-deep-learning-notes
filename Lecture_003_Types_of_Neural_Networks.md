@@ -107,6 +107,5 @@ In CNNs, the same kernel filter is convolved across the entire spatial extent of
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=fne_UE7hDn0)
 - [Lecture Video](https://www.youtube.com/watch?v=fne_UE7hDn0)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

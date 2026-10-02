@@ -156,6 +156,5 @@ Accuracy plateaus around 80-84%, and training suffers from severe vanishing grad
 - [CampusX Video Link](https://www.youtube.com/watch?v=JgnbwKnHMZQ)
 - [Lecture Video](https://www.youtube.com/watch?v=JgnbwKnHMZQ)
 - [Colab Notebook](https://colab.research.google.com/drive/1uY7NEHi59w4FkB8TViwLjUDKxgCA8W5G?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

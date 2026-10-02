@@ -96,7 +96,6 @@ def render_lecture_note(meta_dict, lecture_data):
     md.append(f"- [CampusX Video Link](https://www.youtube.com/watch?v={vid})")
     for name, ref in lecture_data.get('resources_and_references', []):
         md.append(f"- [{name}]({ref})")
-    md.append("- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)")
     md.append("\n---\n")
     
     return "\n".join(md)

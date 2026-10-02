@@ -129,6 +129,5 @@ If an aggressive learning rate takes an excessively large step, weights can upda
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=7LcUkgzx3AY)
 - [Lecture Video](https://www.youtube.com/watch?v=7LcUkgzx3AY)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

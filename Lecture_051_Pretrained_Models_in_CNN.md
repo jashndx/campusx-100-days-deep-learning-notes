@@ -142,6 +142,5 @@ $1 \times 1$ convolutions perform channel-wise pooling/projection. They reduce t
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=0MVXteg7TB4)
 - [Lecture Video](https://www.youtube.com/watch?v=0MVXteg7TB4)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

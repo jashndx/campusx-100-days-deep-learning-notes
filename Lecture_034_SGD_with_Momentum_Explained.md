@@ -141,6 +141,5 @@ Yes. If momentum is too high ($\beta \to 1$) and friction is too low, the parame
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=vVS4csXRlcQ)
 - [Lecture Video](https://www.youtube.com/watch?v=vVS4csXRlcQ)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

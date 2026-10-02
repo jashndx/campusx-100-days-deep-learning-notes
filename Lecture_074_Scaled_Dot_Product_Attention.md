@@ -151,6 +151,5 @@ For small dimensions $d_k$, additive attention and unscaled dot-product attentio
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=r7mAt0iVqwo)
 - [Lecture Video](https://www.youtube.com/watch?v=r7mAt0iVqwo)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

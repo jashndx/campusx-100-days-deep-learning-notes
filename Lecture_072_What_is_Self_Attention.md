@@ -132,6 +132,5 @@ It represents the updated, contextualized embedding of word $i$. It retains the 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=XnGGmvpDLA0)
 - [Lecture Video](https://www.youtube.com/watch?v=XnGGmvpDLA0)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

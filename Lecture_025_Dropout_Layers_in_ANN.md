@@ -128,6 +128,5 @@ Yes! Gal & Ghahramani (2016) showed that leaving dropout active during inference
 - [CampusX Video Link](https://www.youtube.com/watch?v=tgIx04ML7-Y)
 - [Lecture Video](https://www.youtube.com/watch?v=tgIx04ML7-Y)
 - [Colab Notebook](https://colab.research.google.com/drive/1KyMLdV1yB0qVdS-1huxKMN9xVKhrfxGL?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

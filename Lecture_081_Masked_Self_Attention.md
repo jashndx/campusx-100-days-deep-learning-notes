@@ -136,6 +136,5 @@ Without masking, an autoregressive model would have to be trained sequentially o
 - [CampusX Video Link](https://www.youtube.com/watch?v=m6onaKFzF94)
 - [Lecture Video](https://www.youtube.com/watch?v=m6onaKFzF94)
 - [Official Course Notes](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

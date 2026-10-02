@@ -142,6 +142,5 @@ By default, Keras concatenates the 64-dimensional forward hidden state $\overrig
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=k2NSm3MNdYg)
 - [Lecture Video](https://www.youtube.com/watch?v=k2NSm3MNdYg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

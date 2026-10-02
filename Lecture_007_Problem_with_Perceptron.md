@@ -149,6 +149,5 @@ Minsky and Papert's formal proof halted funding and institutional interest in ne
 - [CampusX Video Link](https://www.youtube.com/watch?v=Jp44b27VnOg)
 - [Lecture Video](https://www.youtube.com/watch?v=Jp44b27VnOg)
 - [Colab Demonstration](https://colab.research.google.com/drive/1x6detmf4WAUAT2pfdCts-dVrqnz4_gNB?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

@@ -162,6 +162,5 @@ Multiplying $(M \\times n_{l-1})$ by $(n_{l-1} \\times n_l)$ requires $M \\times
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=7MuiScUkboE)
 - [Lecture Video](https://www.youtube.com/watch?v=7MuiScUkboE)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

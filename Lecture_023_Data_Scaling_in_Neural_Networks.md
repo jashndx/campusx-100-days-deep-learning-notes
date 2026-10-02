@@ -130,6 +130,5 @@ No. Decision trees and Random Forests evaluate orthogonal split criteria on one 
 - [CampusX Video Link](https://www.youtube.com/watch?v=mzRO0cVppQ0)
 - [Lecture Video](https://www.youtube.com/watch?v=mzRO0cVppQ0)
 - [Colab Notebook](https://colab.research.google.com/drive/1lexRUY37fJd6op-WiJicPRB65PwA8YaO?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

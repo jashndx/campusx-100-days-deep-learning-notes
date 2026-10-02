@@ -143,6 +143,5 @@ It contains a dictionary (`history.history`) recording loss and evaluation metri
 - [CampusX Video Link](https://www.youtube.com/watch?v=9wmImImmgcI)
 - [Lecture Video](https://www.youtube.com/watch?v=9wmImImmgcI)
 - [Kaggle Churn Notebook](https://www.kaggle.com/campusx/notebook8ad570467f)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

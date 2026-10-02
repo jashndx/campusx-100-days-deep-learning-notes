@@ -133,6 +133,5 @@ The **Dot** score: $\text{score}(\mathbf{s}, \mathbf{h}) = \mathbf{s}^T \mathbf{
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=0hZT4_fHfNQ)
 - [Lecture Video](https://www.youtube.com/watch?v=0hZT4_fHfNQ)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

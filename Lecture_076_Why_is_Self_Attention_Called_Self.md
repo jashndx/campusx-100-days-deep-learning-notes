@@ -119,6 +119,5 @@ Yes! In Vision Transformers (ViT), image patches are treated as tokens that atte
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=o4ZVA0TuDRg)
 - [Lecture Video](https://www.youtube.com/watch?v=o4ZVA0TuDRg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

@@ -154,6 +154,5 @@ Reversing the input sentence (feeding $x_T, x_{T-1}, \dots, x_1$) placed the fir
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=KiL74WsgxoA)
 - [Lecture Video](https://www.youtube.com/watch?v=KiL74WsgxoA)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

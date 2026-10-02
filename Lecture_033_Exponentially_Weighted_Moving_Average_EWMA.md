@@ -147,6 +147,5 @@ The curve becomes excessively smooth, but extremely sluggish to adapt to recent 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=jAqVuYJ8TP8)
 - [Lecture Video](https://www.youtube.com/watch?v=jAqVuYJ8TP8)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

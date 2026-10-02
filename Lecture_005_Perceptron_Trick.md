@@ -143,7 +143,5 @@ Without $\eta$ (or if $\eta=1$), adding an entire data vector $\mathbf{x}_i$ can
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=Lu2bruOHN6g)
 - [Lecture Video](https://www.youtube.com/watch?v=Lu2bruOHN6g)
-- [CampusX Day 4 Repo](https://github.com/campusx-official/100-days-of-deep-learning/tree/main/day4)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

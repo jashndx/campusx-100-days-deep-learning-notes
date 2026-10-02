@@ -133,6 +133,5 @@ Two words might have orthogonal or distant raw embeddings. The linear projection
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=5ZgGuujZSbs)
 - [Lecture Video](https://www.youtube.com/watch?v=5ZgGuujZSbs)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

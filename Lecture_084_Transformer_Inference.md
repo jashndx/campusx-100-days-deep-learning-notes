@@ -173,6 +173,5 @@ At step $t$, the decoder re-evaluates self-attention for all preceding tokens $1
 - [CampusX Video Link](https://www.youtube.com/watch?v=FtsMOzlwxws)
 - [Lecture Video](https://www.youtube.com/watch?v=FtsMOzlwxws)
 - [Official Course Notes](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

@@ -157,6 +157,5 @@ The impact of learning rate is multiplicative: the difference between $10^{-4}$ 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=oYnyNLj8RMA)
 - [Lecture Video](https://www.youtube.com/watch?v=oYnyNLj8RMA)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

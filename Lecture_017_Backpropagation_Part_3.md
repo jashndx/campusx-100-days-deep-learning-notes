@@ -168,6 +168,5 @@ Reverse-mode requires caching all intermediate activations and computational gra
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=6xO-x8y0YSY)
 - [Lecture Video](https://www.youtube.com/watch?v=6xO-x8y0YSY)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

@@ -139,6 +139,5 @@ Researchers initialized weights using standard Gaussian distributions $\mathcal{
 - [CampusX Video Link](https://www.youtube.com/watch?v=2MSY0HwH5Ss)
 - [Lecture Video](https://www.youtube.com/watch?v=2MSY0HwH5Ss)
 - [Colab Notebook](https://colab.research.google.com/drive/1M4q5yRA0iQXh9h8Y3J7zFGIQzO_Pv9n0?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

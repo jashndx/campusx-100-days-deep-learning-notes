@@ -128,6 +128,5 @@ During the forward pass, the index of the maximum element (the 'argmax switch') 
 - [CampusX Video Link](https://www.youtube.com/watch?v=DwmGefkowCU)
 - [Lecture Video](https://www.youtube.com/watch?v=DwmGefkowCU)
 - [Colab Notebook](https://colab.research.google.com/drive/1F4F6Q9O-hPvCDeOWcqMUa5BuBOvuOBWc?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

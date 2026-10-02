@@ -169,6 +169,5 @@ The large matrix multiplications $\\mathbf{A}^T \\boldsymbol{\\Delta}$ and $\\bo
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=ma6hWrU-LaI)
 - [Lecture Video](https://www.youtube.com/watch?v=ma6hWrU-LaI)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

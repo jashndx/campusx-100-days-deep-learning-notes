@@ -180,6 +180,5 @@ Using the formula: $\text{Params} = (\text{units} \times \text{input\_dim}) + (\
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=BjWqCcbusMM)
 - [Lecture Video](https://www.youtube.com/watch?v=BjWqCcbusMM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

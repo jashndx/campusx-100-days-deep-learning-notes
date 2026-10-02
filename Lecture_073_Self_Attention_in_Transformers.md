@@ -169,6 +169,5 @@ Padding tokens are masked out before Softmax. A large negative number ($-10^9$ o
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=-tCKPl_8Xb8)
 - [Lecture Video](https://www.youtube.com/watch?v=-tCKPl_8Xb8)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

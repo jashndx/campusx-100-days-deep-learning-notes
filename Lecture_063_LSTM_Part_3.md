@@ -162,6 +162,5 @@ Perplexity is the standard evaluation metric for language models, defined as the
 - [CampusX Video Link](https://www.youtube.com/watch?v=fiqo6uPCJVI)
 - [Lecture Video](https://www.youtube.com/watch?v=fiqo6uPCJVI)
 - [Colab Notebook](https://colab.research.google.com/drive/1e55Lnl0I0gFgzrbOwEAGsqmnKKwAWpRO?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

@@ -137,6 +137,5 @@ Binary Cross-Entropy with Sigmoid activation on each output neuron. Multi-label 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=gb5nm_3jBIo)
 - [Lecture Video](https://www.youtube.com/watch?v=gb5nm_3jBIo)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

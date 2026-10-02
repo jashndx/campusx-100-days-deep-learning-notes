@@ -135,6 +135,5 @@ A simple tensor reshape: `dFlatten.reshape(conv_output_shape)`. It has zero floa
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=OoSDzOodY3Y)
 - [Lecture Video](https://www.youtube.com/watch?v=OoSDzOodY3Y)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

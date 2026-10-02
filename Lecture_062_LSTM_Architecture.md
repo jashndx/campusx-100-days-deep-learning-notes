@@ -175,6 +175,5 @@ Using the formula: $\text{Params} = 4 \times [h(d + h + 1)] = 4 \times [64 \time
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=Akv3poqqwI4)
 - [Lecture Video](https://www.youtube.com/watch?v=Akv3poqqwI4)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

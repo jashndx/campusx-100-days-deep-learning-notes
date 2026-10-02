@@ -161,6 +161,5 @@ Using formula $\text{Params} \approx 4 \times d_{model}^2$: $4 \times (768)^2 = 
 - [CampusX Video Link](https://www.youtube.com/watch?v=bX2QwpjsmuA)
 - [Lecture Video](https://www.youtube.com/watch?v=bX2QwpjsmuA)
 - [Colab Notebook](https://colab.research.google.com/drive/1hXIQ77A4TYS4y3UthWF-Ci7V7vVUoxmQ)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

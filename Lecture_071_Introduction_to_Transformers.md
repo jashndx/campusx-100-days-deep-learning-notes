@@ -124,6 +124,5 @@ Memory and compute scale quadratically with sequence length $n$. Doubling the co
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=BjRVS2wTtcA)
 - [Lecture Video](https://www.youtube.com/watch?v=BjRVS2wTtcA)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

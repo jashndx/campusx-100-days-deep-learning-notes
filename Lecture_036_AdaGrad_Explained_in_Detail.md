@@ -149,6 +149,5 @@ RMSProp replaced the monotonic sum of squares $\sum \mathbf{g}^2$ with an **Expo
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=nqL9xYmhEpg)
 - [Lecture Video](https://www.youtube.com/watch?v=nqL9xYmhEpg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

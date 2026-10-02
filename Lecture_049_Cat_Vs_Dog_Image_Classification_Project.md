@@ -152,6 +152,5 @@ Classic severe overfitting. High-capacity convolutional layers memorized specifi
 - [CampusX Video Link](https://www.youtube.com/watch?v=0K4J_PTgysc)
 - [Lecture Video](https://www.youtube.com/watch?v=0K4J_PTgysc)
 - [Colab Notebook](https://colab.research.google.com/drive/1S6CYa2sOwluV8xz2RF0QDrpXjdNs3RKE?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

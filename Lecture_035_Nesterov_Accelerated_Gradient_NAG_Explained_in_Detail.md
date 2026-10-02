@@ -153,6 +153,5 @@ Because computing $\\nabla \\mathcal{L}(\\mathbf{w} - \\beta \\mathbf{v})$ requi
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=rKG9E6rce1c)
 - [Lecture Video](https://www.youtube.com/watch?v=rKG9E6rce1c)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

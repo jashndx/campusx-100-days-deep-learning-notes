@@ -146,6 +146,5 @@ The Decoder is actively asking questions ('What should I translate next?' = Quer
 - [CampusX Video Link](https://www.youtube.com/watch?v=smOnJtCevoU)
 - [Lecture Video](https://www.youtube.com/watch?v=smOnJtCevoU)
 - [Official Course Notes](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

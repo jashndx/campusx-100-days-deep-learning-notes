@@ -251,7 +251,6 @@ It proves that a standard feedforward neural network with a single hidden layer 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=2dH_qjc9mFg)
 - [Course Announcement Overview](https://www.youtube.com/watch?v=2dH_qjc9mFg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -384,7 +383,6 @@ Feature Representation Learning is the automatic transformation of raw inputs in
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=fHF22Wxuyw4)
 - [Lecture Video](https://www.youtube.com/watch?v=fHF22Wxuyw4)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -502,7 +500,6 @@ In CNNs, the same kernel filter is convolved across the entire spatial extent of
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=fne_UE7hDn0)
 - [Lecture Video](https://www.youtube.com/watch?v=fne_UE7hDn0)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -640,8 +637,6 @@ The standard Heaviside step function is non-differentiable at $z=0$ and has a de
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=X7iIKPoZ0Sw)
 - [Lecture Video](https://www.youtube.com/watch?v=X7iIKPoZ0Sw)
-- [CampusX Day 3 Repo](https://github.com/campusx-official/100-days-of-deep-learning/tree/main/day3)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -795,8 +790,6 @@ Without $\eta$ (or if $\eta=1$), adding an entire data vector $\mathbf{x}_i$ can
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=Lu2bruOHN6g)
 - [Lecture Video](https://www.youtube.com/watch?v=Lu2bruOHN6g)
-- [CampusX Day 4 Repo](https://github.com/campusx-official/100-days-of-deep-learning/tree/main/day4)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -964,8 +957,6 @@ Both belong to the Generalized Linear Model (GLM) family with canonical link fun
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=2_gCL5RAkHc)
 - [Lecture Video](https://www.youtube.com/watch?v=2_gCL5RAkHc)
-- [CampusX Day 5 Repo](https://github.com/campusx-official/100-days-of-deep-learning/tree/main/day5%20-%20Perceptron%20Loss%20Function)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -1125,7 +1116,6 @@ Minsky and Papert's formal proof halted funding and institutional interest in ne
 - [CampusX Video Link](https://www.youtube.com/watch?v=Jp44b27VnOg)
 - [Lecture Video](https://www.youtube.com/watch?v=Jp44b27VnOg)
 - [Colab Demonstration](https://colab.research.google.com/drive/1x6detmf4WAUAT2pfdCts-dVrqnz4_gNB?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -1294,7 +1284,6 @@ For each layer $l$ from $1$ to $L$: $\text{Params}^{[l]} = (n^{[l-1]} \times n^{
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=H0_3SJh4Rqs)
 - [Lecture Video](https://www.youtube.com/watch?v=H0_3SJh4Rqs)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -1427,7 +1416,6 @@ Yes. Hornik (1991) and subsequent proofs demonstrated that the theorem holds for
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=qw7wFGgNCSU)
 - [Lecture Video](https://www.youtube.com/watch?v=qw7wFGgNCSU)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -1600,7 +1588,6 @@ Multiplying $(M \\times n_{l-1})$ by $(n_{l-1} \\times n_l)$ requires $M \\times
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=7MuiScUkboE)
 - [Lecture Video](https://www.youtube.com/watch?v=7MuiScUkboE)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -1754,7 +1741,6 @@ It contains a dictionary (`history.history`) recording loss and evaluation metri
 - [CampusX Video Link](https://www.youtube.com/watch?v=9wmImImmgcI)
 - [Lecture Video](https://www.youtube.com/watch?v=9wmImImmgcI)
 - [Kaggle Churn Notebook](https://www.kaggle.com/campusx/notebook8ad570467f)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -1927,7 +1913,6 @@ Using `np.argmax(probabilities, axis=1)`, which selects the index of the highest
 - [CampusX Video Link](https://www.youtube.com/watch?v=3xPT2Pk0Jds)
 - [Lecture Video](https://www.youtube.com/watch?v=3xPT2Pk0Jds)
 - [Colab Notebook](https://colab.research.google.com/drive/1SqETl3Zi1EEesdJfEv6_QimB-M-YjKGx?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -2070,7 +2055,6 @@ It means that 85% of the total variance in the dependent target variable is expl
 - [CampusX Video Link](https://www.youtube.com/watch?v=RCmiPBiA4qg)
 - [Lecture Video](https://www.youtube.com/watch?v=RCmiPBiA4qg)
 - [Kaggle GRE Admission Notebook](https://www.kaggle.com/campusx/gre-admission-prediction)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -2218,7 +2202,6 @@ Binary Cross-Entropy with Sigmoid activation on each output neuron. Multi-label 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=gb5nm_3jBIo)
 - [Lecture Video](https://www.youtube.com/watch?v=gb5nm_3jBIo)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -2363,7 +2346,6 @@ Running backwards computes the gradient of a single scalar loss with respect to 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=6M1wWQmcUjQ)
 - [Lecture Video](https://www.youtube.com/watch?v=6M1wWQmcUjQ)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -2543,7 +2525,6 @@ The large matrix multiplications $\\mathbf{A}^T \\boldsymbol{\\Delta}$ and $\\bo
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=ma6hWrU-LaI)
 - [Lecture Video](https://www.youtube.com/watch?v=ma6hWrU-LaI)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -2722,7 +2703,6 @@ Reverse-mode requires caching all intermediate activations and computational gra
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=6xO-x8y0YSY)
 - [Lecture Video](https://www.youtube.com/watch?v=6xO-x8y0YSY)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -2881,7 +2861,6 @@ The maximum derivative of Tanh occurs at $z=0$ and equals $1.0$ ($g'(z) = 1 - \\
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=uCrevbBh0zM)
 - [Lecture Video](https://www.youtube.com/watch?v=uCrevbBh0zM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -3032,7 +3011,6 @@ Gradient Checkpointing is a memory-saving compromise between recomputation and f
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=rW0eeTXas4k)
 - [Lecture Video](https://www.youtube.com/watch?v=rW0eeTXas4k)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -3174,7 +3152,6 @@ According to the Linear Scaling Rule (Goyal et al., 2017), when increasing batch
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=7z6yXpYk7sw)
 - [Lecture Video](https://www.youtube.com/watch?v=7z6yXpYk7sw)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -3349,7 +3326,6 @@ Take a tiny subset of data (e.g., 20 to 50 samples) and train the network withou
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=Ue_6n1yT_R8)
 - [Lecture Video](https://www.youtube.com/watch?v=Ue_6n1yT_R8)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -3499,7 +3475,6 @@ Instead of guessing an arbitrary epoch count (e.g., 500 epochs) and running hour
 - [CampusX Video Link](https://www.youtube.com/watch?v=Ygvskt5HadI)
 - [Lecture Video](https://www.youtube.com/watch?v=Ygvskt5HadI)
 - [Colab Notebook](https://colab.research.google.com/drive/1JG6PCAa5A0-CLOcKhugqU4uyZXWNjtKP?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -3640,7 +3615,6 @@ No. Decision trees and Random Forests evaluate orthogonal split criteria on one 
 - [CampusX Video Link](https://www.youtube.com/watch?v=mzRO0cVppQ0)
 - [Lecture Video](https://www.youtube.com/watch?v=mzRO0cVppQ0)
 - [Colab Notebook](https://colab.research.google.com/drive/1lexRUY37fJd6op-WiJicPRB65PwA8YaO?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -3796,7 +3770,6 @@ For the input layer, dropping features directly discards raw sensory information
 - [CampusX Video Link](https://www.youtube.com/watch?v=gyTlcHVeBjM)
 - [Lecture Video](https://www.youtube.com/watch?v=gyTlcHVeBjM)
 - [Seminal Dropout Paper (Srivastava et al. 2014)](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Dropout_A_Simple_Way_to_Prevent_Overfitting_Srivastava2014.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -3935,7 +3908,6 @@ Yes! Gal & Ghahramani (2016) showed that leaving dropout active during inference
 - [CampusX Video Link](https://www.youtube.com/watch?v=tgIx04ML7-Y)
 - [Lecture Video](https://www.youtube.com/watch?v=tgIx04ML7-Y)
 - [Colab Notebook](https://colab.research.google.com/drive/1KyMLdV1yB0qVdS-1huxKMN9xVKhrfxGL?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -4093,7 +4065,6 @@ Loshchilov & Hutter (2019, AdamW paper) showed that in adaptive gradient algorit
 - [CampusX Video Link](https://www.youtube.com/watch?v=4xRonrhtkzc)
 - [Lecture Video](https://www.youtube.com/watch?v=4xRonrhtkzc)
 - [Colab Notebook](https://colab.research.google.com/drive/1PObj5KrXLDDmHjoJ1x0bVmxAFbif5s7q?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -4235,7 +4206,6 @@ If an aggressive learning rate takes an excessively large step, weights can upda
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=7LcUkgzx3AY)
 - [Lecture Video](https://www.youtube.com/watch?v=7LcUkgzx3AY)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -4384,7 +4354,6 @@ PReLU introduces only a single scalar parameter $\alpha$ per layer (or per convo
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=2OwWs7Hzr9g)
 - [Lecture Video](https://www.youtube.com/watch?v=2OwWs7Hzr9g)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -4534,7 +4503,6 @@ Researchers initialized weights using standard Gaussian distributions $\mathcal{
 - [CampusX Video Link](https://www.youtube.com/watch?v=2MSY0HwH5Ss)
 - [Lecture Video](https://www.youtube.com/watch?v=2MSY0HwH5Ss)
 - [Colab Notebook](https://colab.research.google.com/drive/1M4q5yRA0iQXh9h8Y3J7zFGIQzO_Pv9n0?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -4693,7 +4661,6 @@ PyTorch's `nn.Linear` uses Kaiming Uniform with $a=\sqrt{5}$ (an empirical compr
 - [CampusX Video Link](https://www.youtube.com/watch?v=nwVOSgcrbQI)
 - [Lecture Video](https://www.youtube.com/watch?v=nwVOSgcrbQI)
 - [Colab Notebook](https://colab.research.google.com/drive/1Z3pWYFWgUKP7htokOj201APi574a3-vY?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -4849,7 +4816,6 @@ In RNNs, sequence lengths vary and recurrent dependencies evolve over time, requ
 - [CampusX Video Link](https://www.youtube.com/watch?v=2AscwXePInA)
 - [Lecture Video](https://www.youtube.com/watch?v=2AscwXePInA)
 - [Colab Notebook](https://colab.research.google.com/drive/1473vOd0lCPbRW-co_Rm-_TBXgeajkJZ_?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -4995,7 +4961,6 @@ With a constant learning rate, stochastic gradient updates continue bouncing aro
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=iCTTnQJn50E)
 - [Lecture Video](https://www.youtube.com/watch?v=iCTTnQJn50E)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -5153,7 +5118,6 @@ The curve becomes excessively smooth, but extremely sluggish to adapt to recent 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=jAqVuYJ8TP8)
 - [Lecture Video](https://www.youtube.com/watch?v=jAqVuYJ8TP8)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -5305,7 +5269,6 @@ Yes. If momentum is too high ($\beta \to 1$) and friction is too low, the parame
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=vVS4csXRlcQ)
 - [Lecture Video](https://www.youtube.com/watch?v=vVS4csXRlcQ)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -5469,7 +5432,6 @@ Because computing $\\nabla \\mathcal{L}(\\mathbf{w} - \\beta \\mathbf{v})$ requi
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=rKG9E6rce1c)
 - [Lecture Video](https://www.youtube.com/watch?v=rKG9E6rce1c)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -5629,7 +5591,6 @@ RMSProp replaced the monotonic sum of squares $\sum \mathbf{g}^2$ with an **Expo
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=nqL9xYmhEpg)
 - [Lecture Video](https://www.youtube.com/watch?v=nqL9xYmhEpg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -5778,7 +5739,6 @@ If a weight receives zero gradient for several iterations ($g_j = 0$), $v_{t, j}
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=p0wSmKslWi0)
 - [Lecture Video](https://www.youtube.com/watch?v=p0wSmKslWi0)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -5973,7 +5933,6 @@ In image classification tasks (e.g., training ResNet on ImageNet), empirical res
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=N5AynalXD9g)
 - [Lecture Video](https://www.youtube.com/watch?v=N5AynalXD9g)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -6141,7 +6100,6 @@ The impact of learning rate is multiplicative: the difference between $10^{-4}$ 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=oYnyNLj8RMA)
 - [Lecture Video](https://www.youtube.com/watch?v=oYnyNLj8RMA)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -6276,7 +6234,6 @@ Yes! Any data with grid topology: 1D CNNs for sequential time-series and audio w
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=hDVFXf74P-U)
 - [Lecture Video](https://www.youtube.com/watch?v=hDVFXf74P-U)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -6417,7 +6374,6 @@ Because edges (sharp gradients in spatial light intensity) are the fundamental m
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=aslTGS9ef98)
 - [Lecture Video](https://www.youtube.com/watch?v=aslTGS9ef98)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -6578,7 +6534,6 @@ Exactly 64 biases—one scalar bias per filter/feature map, broadcasted across t
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=cgJx3GvQ5y8)
 - [Lecture Video](https://www.youtube.com/watch?v=cgJx3GvQ5y8)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -6720,7 +6675,6 @@ Both perform spatial downsampling. However, Pooling is fixed and unlearnable (e.
 - [CampusX Video Link](https://www.youtube.com/watch?v=btWE6SsdDZA)
 - [Lecture Video](https://www.youtube.com/watch?v=btWE6SsdDZA)
 - [Colab Notebook](https://colab.research.google.com/drive/1HBMLctcBnhvV6Rj62Zc8eAXERQw54l2H?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -6859,7 +6813,6 @@ During the forward pass, the index of the maximum element (the 'argmax switch') 
 - [CampusX Video Link](https://www.youtube.com/watch?v=DwmGefkowCU)
 - [Lecture Video](https://www.youtube.com/watch?v=DwmGefkowCU)
 - [Colab Notebook](https://colab.research.google.com/drive/1F4F6Q9O-hPvCDeOWcqMUa5BuBOvuOBWc?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -7047,7 +7000,6 @@ The transition from the final convolutional feature maps to the fully connected 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=ewsvsJQOuTI)
 - [Lecture Video](https://www.youtube.com/watch?v=ewsvsJQOuTI)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -7177,7 +7129,6 @@ A discrete 1D convolution is mathematically identical to multiplying an input ve
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=niE5DRKvD_E)
 - [Lecture Video](https://www.youtube.com/watch?v=niE5DRKvD_E)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -7331,7 +7282,6 @@ In an ANN, a bias is added to a single neuron, so $\\frac{\\partial \\mathcal{L}
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=RvCCFttGFMY)
 - [Lecture Video](https://www.youtube.com/watch?v=RvCCFttGFMY)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -7477,7 +7427,6 @@ A simple tensor reshape: `dFlatten.reshape(conv_output_shape)`. It has zero floa
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=OoSDzOodY3Y)
 - [Lecture Video](https://www.youtube.com/watch?v=OoSDzOodY3Y)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -7640,7 +7589,6 @@ Classic severe overfitting. High-capacity convolutional layers memorized specifi
 - [CampusX Video Link](https://www.youtube.com/watch?v=0K4J_PTgysc)
 - [Lecture Video](https://www.youtube.com/watch?v=0K4J_PTgysc)
 - [Colab Notebook](https://colab.research.google.com/drive/1S6CYa2sOwluV8xz2RF0QDrpXjdNs3RKE?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -7782,7 +7730,6 @@ TTA is an inference strategy where multiple augmented versions of a single test 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=sM2C-SsREgM)
 - [Lecture Video](https://www.youtube.com/watch?v=sM2C-SsREgM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -7935,7 +7882,6 @@ $1 \times 1$ convolutions perform channel-wise pooling/projection. They reduce t
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=0MVXteg7TB4)
 - [Lecture Video](https://www.youtube.com/watch?v=0MVXteg7TB4)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -8080,7 +8026,6 @@ Unconstrained gradient ascent in pixel space exploits high-frequency artifacts (
 - [CampusX Video Link](https://www.youtube.com/watch?v=WJysB1RK2vM)
 - [Lecture Video](https://www.youtube.com/watch?v=WJysB1RK2vM)
 - [Colab Notebook](https://colab.research.google.com/drive/1HmL5auiKu3vbKDOTjbnofEmsqMWYViG9?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -8264,7 +8209,6 @@ It instructs Keras to discard the original fully connected classification head (
 - [CampusX Video Link](https://www.youtube.com/watch?v=WWcgHjuKVqA)
 - [Lecture Video](https://www.youtube.com/watch?v=WWcgHjuKVqA)
 - [Colab Notebook](https://colab.research.google.com/drive/1VxoR4vMmZJAOCsDUnfezPuFQqHdKabcL?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -8423,7 +8367,6 @@ Different loss functions operate on vastly different numerical scales. An MSE lo
 - [CampusX Video Link](https://www.youtube.com/watch?v=OvQQP1QVru8)
 - [Lecture Video](https://www.youtube.com/watch?v=OvQQP1QVru8)
 - [Colab Notebook](https://colab.research.google.com/drive/1uCHf6hoLR1a-46RznVjqnhVZNechF0fz?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -8559,7 +8502,6 @@ CNNs share filter weights across 2D spatial dimensions $(x, y)$ to recognize vis
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=4KpRP-YUw6c)
 - [Lecture Video](https://www.youtube.com/watch?v=4KpRP-YUw6c)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -8750,7 +8692,6 @@ Using the formula: $\text{Params} = (\text{units} \times \text{input\_dim}) + (\
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=BjWqCcbusMM)
 - [Lecture Video](https://www.youtube.com/watch?v=BjWqCcbusMM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -8917,7 +8858,6 @@ Accuracy plateaus around 80-84%, and training suffers from severe vanishing grad
 - [CampusX Video Link](https://www.youtube.com/watch?v=JgnbwKnHMZQ)
 - [Lecture Video](https://www.youtube.com/watch?v=JgnbwKnHMZQ)
 - [Colab Notebook](https://colab.research.google.com/drive/1uY7NEHi59w4FkB8TViwLjUDKxgCA8W5G?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -9067,7 +9007,6 @@ Two reasons: (1) Different languages have different word counts (e.g., a 5-word 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=TkOBxzhIySg)
 - [Lecture Video](https://www.youtube.com/watch?v=TkOBxzhIySg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -9239,7 +9178,6 @@ An engineering compromise where forward propagation runs across the entire seque
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=OvCz1acvt-k)
 - [Lecture Video](https://www.youtube.com/watch?v=OvCz1acvt-k)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -9381,7 +9319,6 @@ Le et al. (2015) showed that initializing $\mathbf{W}_{hh} = \mathbf{I}$ (the id
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=AWHSZzp96kM)
 - [Lecture Video](https://www.youtube.com/watch?v=AWHSZzp96kM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -9530,7 +9467,6 @@ Sepp Hochreiter and Jürgen Schmidhuber in their landmark 1997 paper 'Long Short
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=z7IPBg6MyrU)
 - [Lecture Video](https://www.youtube.com/watch?v=z7IPBg6MyrU)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -9716,7 +9652,6 @@ Using the formula: $\text{Params} = 4 \times [h(d + h + 1)] = 4 \times [64 \time
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=Akv3poqqwI4)
 - [Lecture Video](https://www.youtube.com/watch?v=Akv3poqqwI4)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -9889,7 +9824,6 @@ Perplexity is the standard evaluation metric for language models, defined as the
 - [CampusX Video Link](https://www.youtube.com/watch?v=fiqo6uPCJVI)
 - [Lecture Video](https://www.youtube.com/watch?v=fiqo6uPCJVI)
 - [Colab Notebook](https://colab.research.google.com/drive/1e55Lnl0I0gFgzrbOwEAGsqmnKKwAWpRO?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -10042,7 +9976,6 @@ When computational resources or GPU memory are constrained, when working with sm
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=QQfZAoNGQmE)
 - [Lecture Video](https://www.youtube.com/watch?v=QQfZAoNGQmE)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -10197,7 +10130,6 @@ Wu et al. (2016) introduced **Residual Connections between recurrent layers**: t
 - [CampusX Video Link](https://www.youtube.com/watch?v=mlDkTrlLaio)
 - [Lecture Video](https://www.youtube.com/watch?v=mlDkTrlLaio)
 - [Colab Notebook](https://colab.research.google.com/drive/1c4eN4cPxajCpFG6yr1mAUi3sV1JaGLDY?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -10350,7 +10282,6 @@ By default, Keras concatenates the 64-dimensional forward hidden state $\overrig
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=k2NSm3MNdYg)
 - [Lecture Video](https://www.youtube.com/watch?v=k2NSm3MNdYg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -10499,7 +10430,6 @@ Word2Vec generates *static* embeddings: the word 'apple' has the exact same nume
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=8fX3rOjTloc)
 - [Lecture Video](https://www.youtube.com/watch?v=8fX3rOjTloc)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -10666,7 +10596,6 @@ Reversing the input sentence (feeding $x_T, x_{T-1}, \dots, x_1$) placed the fir
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=KiL74WsgxoA)
 - [Lecture Video](https://www.youtube.com/watch?v=KiL74WsgxoA)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -10847,7 +10776,6 @@ Plotting the matrix of attention weights $\alpha_{ti}$ as a 2D heatmap produces 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=rj5V6q6-XUM)
 - [Lecture Video](https://www.youtube.com/watch?v=rj5V6q6-XUM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -10991,7 +10919,6 @@ The **Dot** score: $\text{score}(\mathbf{s}, \mathbf{h}) = \mathbf{s}^T \mathbf{
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=0hZT4_fHfNQ)
 - [Lecture Video](https://www.youtube.com/watch?v=0hZT4_fHfNQ)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -11126,7 +11053,6 @@ Memory and compute scale quadratically with sequence length $n$. Doubling the co
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=BjRVS2wTtcA)
 - [Lecture Video](https://www.youtube.com/watch?v=BjRVS2wTtcA)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -11269,7 +11195,6 @@ It represents the updated, contextualized embedding of word $i$. It retains the 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=XnGGmvpDLA0)
 - [Lecture Video](https://www.youtube.com/watch?v=XnGGmvpDLA0)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -11449,7 +11374,6 @@ Padding tokens are masked out before Softmax. A large negative number ($-10^9$ o
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=-tCKPl_8Xb8)
 - [Lecture Video](https://www.youtube.com/watch?v=-tCKPl_8Xb8)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -11611,7 +11535,6 @@ For small dimensions $d_k$, additive attention and unscaled dot-product attentio
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=r7mAt0iVqwo)
 - [Lecture Video](https://www.youtube.com/watch?v=r7mAt0iVqwo)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -11755,7 +11678,6 @@ Two words might have orthogonal or distant raw embeddings. The linear projection
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=5ZgGuujZSbs)
 - [Lecture Video](https://www.youtube.com/watch?v=5ZgGuujZSbs)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -11885,7 +11807,6 @@ Yes! In Vision Transformers (ViT), image patches are treated as tokens that atte
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=o4ZVA0TuDRg)
 - [Lecture Video](https://www.youtube.com/watch?v=o4ZVA0TuDRg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -12057,7 +11978,6 @@ Using formula $\text{Params} \approx 4 \times d_{model}^2$: $4 \times (768)^2 = 
 - [CampusX Video Link](https://www.youtube.com/watch?v=bX2QwpjsmuA)
 - [Lecture Video](https://www.youtube.com/watch?v=bX2QwpjsmuA)
 - [Colab Notebook](https://colab.research.google.com/drive/1hXIQ77A4TYS4y3UthWF-Ci7V7vVUoxmQ)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -12207,7 +12127,6 @@ Similar to the binary representation of integers where the least significant bit
 - [CampusX Video Link](https://www.youtube.com/watch?v=GeoQBNNqIbM)
 - [Lecture Video](https://www.youtube.com/watch?v=GeoQBNNqIbM)
 - [Official Course Notes (Lectures 78-84)](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -12356,7 +12275,6 @@ Two vectors of shape $(512,)$: the learnable scale parameter $\boldsymbol{\gamma
 - [CampusX Video Link](https://www.youtube.com/watch?v=qti0QPdaelg)
 - [Lecture Video](https://www.youtube.com/watch?v=qti0QPdaelg)
 - [Official Course Notes](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -12560,7 +12478,6 @@ Because the exact same two-layer MLP is applied to every token position independ
 - [CampusX Video Link](https://www.youtube.com/watch?v=Vs87qcdm8l0)
 - [Lecture Video](https://www.youtube.com/watch?v=Vs87qcdm8l0)
 - [Official Course Notes](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -12707,7 +12624,6 @@ Without masking, an autoregressive model would have to be trained sequentially o
 - [CampusX Video Link](https://www.youtube.com/watch?v=m6onaKFzF94)
 - [Lecture Video](https://www.youtube.com/watch?v=m6onaKFzF94)
 - [Official Course Notes](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -12864,7 +12780,6 @@ The Decoder is actively asking questions ('What should I translate next?' = Quer
 - [CampusX Video Link](https://www.youtube.com/watch?v=smOnJtCevoU)
 - [Lecture Video](https://www.youtube.com/watch?v=smOnJtCevoU)
 - [Official Course Notes](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -13057,7 +12972,6 @@ Weight tying forces the target input embedding matrix $\mathbf{E} \in \mathbb{R}
 - [CampusX Video Link](https://www.youtube.com/watch?v=DI2_hrAulYo)
 - [Lecture Video](https://www.youtube.com/watch?v=DI2_hrAulYo)
 - [Official Course Notes](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 
@@ -13241,7 +13155,6 @@ At step $t$, the decoder re-evaluates self-attention for all preceding tokens $1
 - [CampusX Video Link](https://www.youtube.com/watch?v=FtsMOzlwxws)
 - [Lecture Video](https://www.youtube.com/watch?v=FtsMOzlwxws)
 - [Official Course Notes](c:/Users/Admin/Desktop/ska/deep_learning_100_exam_notes/slides/Transformers_Complete_Course_Notes_Lectures_78_to_84.pdf)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
 

@@ -134,6 +134,5 @@ Unconstrained gradient ascent in pixel space exploits high-frequency artifacts (
 - [CampusX Video Link](https://www.youtube.com/watch?v=WJysB1RK2vM)
 - [Lecture Video](https://www.youtube.com/watch?v=WJysB1RK2vM)
 - [Colab Notebook](https://colab.research.google.com/drive/1HmL5auiKu3vbKDOTjbnofEmsqMWYViG9?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

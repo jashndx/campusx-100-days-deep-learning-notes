@@ -157,7 +157,5 @@ Both belong to the Generalized Linear Model (GLM) family with canonical link fun
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=2_gCL5RAkHc)
 - [Lecture Video](https://www.youtube.com/watch?v=2_gCL5RAkHc)
-- [CampusX Day 5 Repo](https://github.com/campusx-official/100-days-of-deep-learning/tree/main/day5%20-%20Perceptron%20Loss%20Function)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

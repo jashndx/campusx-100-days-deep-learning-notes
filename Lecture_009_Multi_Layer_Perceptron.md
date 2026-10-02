@@ -122,6 +122,5 @@ Yes. Hornik (1991) and subsequent proofs demonstrated that the theorem holds for
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=qw7wFGgNCSU)
 - [Lecture Video](https://www.youtube.com/watch?v=qw7wFGgNCSU)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

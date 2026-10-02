@@ -144,6 +144,5 @@ Wu et al. (2016) introduced **Residual Connections between recurrent layers**: t
 - [CampusX Video Link](https://www.youtube.com/watch?v=mlDkTrlLaio)
 - [Lecture Video](https://www.youtube.com/watch?v=mlDkTrlLaio)
 - [Colab Notebook](https://colab.research.google.com/drive/1c4eN4cPxajCpFG6yr1mAUi3sV1JaGLDY?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

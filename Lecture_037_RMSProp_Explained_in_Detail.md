@@ -138,6 +138,5 @@ If a weight receives zero gradient for several iterations ($g_j = 0$), $v_{t, j}
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=p0wSmKslWi0)
 - [Lecture Video](https://www.youtube.com/watch?v=p0wSmKslWi0)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

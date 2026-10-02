@@ -123,6 +123,5 @@ CNNs share filter weights across 2D spatial dimensions $(x, y)$ to recognize vis
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=4KpRP-YUw6c)
 - [Lecture Video](https://www.youtube.com/watch?v=4KpRP-YUw6c)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

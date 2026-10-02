@@ -148,6 +148,5 @@ The maximum derivative of Tanh occurs at $z=0$ and equals $1.0$ ($g'(z) = 1 - \\
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=uCrevbBh0zM)
 - [Lecture Video](https://www.youtube.com/watch?v=uCrevbBh0zM)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

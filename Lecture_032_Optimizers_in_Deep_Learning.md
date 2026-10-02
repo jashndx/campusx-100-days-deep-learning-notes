@@ -135,6 +135,5 @@ With a constant learning rate, stochastic gradient updates continue bouncing aro
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=iCTTnQJn50E)
 - [Lecture Video](https://www.youtube.com/watch?v=iCTTnQJn50E)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

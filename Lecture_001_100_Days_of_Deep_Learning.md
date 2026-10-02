@@ -88,6 +88,5 @@ It proves that a standard feedforward neural network with a single hidden layer 
 ## 8. References, Notebooks & Supplementary Materials
 - [CampusX Video Link](https://www.youtube.com/watch?v=2dH_qjc9mFg)
 - [Course Announcement Overview](https://www.youtube.com/watch?v=2dH_qjc9mFg)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---

@@ -173,6 +173,5 @@ It instructs Keras to discard the original fully connected classification head (
 - [CampusX Video Link](https://www.youtube.com/watch?v=WWcgHjuKVqA)
 - [Lecture Video](https://www.youtube.com/watch?v=WWcgHjuKVqA)
 - [Colab Notebook](https://colab.research.google.com/drive/1VxoR4vMmZJAOCsDUnfezPuFQqHdKabcL?usp=sharing)
-- [Official 100 Days of Deep Learning Repo](https://github.com/campusx-official/100-days-of-deep-learning)
 
 ---
