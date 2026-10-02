@@ -1,0 +1,3385 @@
+{
+  "id": "uCrevbBh0zM",
+  "index": 18,
+  "title": "Vanishing Gradient Problem in ANN | Exploding Gradient Problem | Code Example",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and welcome  to my YouTube channel. So, in this  video, we will continue our deep  learning playlist. We have already  learned a lot. We have covered  backpropagation and some other topics  as well. Such as what memorization is  or other ways you can apply gradient  descent. In this video, we will study a  very special and important topic about  which many questions are asked in  interviews. The name of the topic is  the vanishing gradient problem. In  simple words, I can tell you that you  will encounter many villains in deep  learning. The vanishing gradient  problem is one of them. Okay? It is a  villain. It is a problem that can occur  in a neural network. And if that  problem occurs, then your neural  network will not be able to train. So  that is why what the vanishing gradient  problem is, why it happens, and how to  solve it, you must know this if you  want to build a career in deep learning . So in this video, I will explain to  you from end to end what the vanishing  gradient problem is, why it happens,  and I will teach you five ways to solve  it. Okay? So I hope you have understood  the topic of this video. Let's start  the video. So guys, first of all, let's  see what is written about the vanishing  gradient problem on Wikipedia. So I  took this cutout from Wikipedia. It is  written here that in machine learning,  the vanishing gradient problem is  encountered when training artificial  neural networks with gradient-based  learning methods. This simply means  using gradient descent and  backpropagation. In such methods,  during each iteration of training, each  of the neural network's weights  receives an update proportional to the  partial derivative of the error  function with respect to the current  weight. The problem is that in some  cases, the gradient will be vanishingly  small, effectively preventing the  weight from changing its value, and in  its worst case, this may completely  stop the neural network from further  training. Now, if some things here seem  complex to you, I will tell you two or  three simple points that will make it  feel easy for you. See, the first point  is that this whole problem emerges from  a very simple mathematical law. And  that law is, what if I ask you to  multiply a lot of point ones together?  What would be the product? You know  that if all the numbers you are  multiplying are less than one, then the  resultant product will be smaller than  all those numbers. Okay? The more small  numbers you keep adding, the smaller  the number you get as a product. Okay?  So, this entire vanishing gradient  problem is based on this principle. The  second thing you need to remember is  that it is only found in deep neural  networks. Deep neural networks mean  many, many layers. Lots of hidden  layers. Eight or ten hidden layers.  Okay? So, you will only find the  vanishing gradient problem in such  neural networks. Okay? And the third  point you need to remember is that this  is generally seen when you use  activation functions like sigmoid or  tanh. Okay? Now, let me explain to you  very easily what the vanishing gradient  problem is. So, if you remember, a few  videos back we studied the  backpropagation algorithm. According to  the backpropagation algorithm, what  used to happen is, let's assume this is  our neural network. This is our neural  network. Now, we used to insert a point  into this. By doing forward propagation , we would calculate y-hat. Using this  y-hat and y, we would calculate the  loss. And then, what would we do? We  would update all these weights. Using  this rule. w-new is equal to w-old  minus learning rate. Okay? Now, if you  notice here, what is this? It is the  derivative of the loss with respect to  that particular weight. So, in a way,  what are we doing? We are starting with  an initial weight value and reducing it  every time by a factor of the  derivative of the weight. Look here,  exactly the same is written. In such  methods, during each iteration of the  training, each neural network's weight  receives an update proportional to the  partial derivative of the error  function with respect to the current  weight. See, this is exactly what we  are doing. Okay? Now, what is the  problem sometimes? Let's take an  example. For instance, suppose you need  to update this weight and this is a  classification problem. Sigmoid is used  everywhere as your activation function.  So, I told you that the logic of  backpropagation is very simple. If you  need to calculate this this is the  weight. If you need to calculate this,  then you will see how the loss can be  reduced. So, the loss depends on y-hat.  y-hat depends on your O11, on its  output, and then O11 depends on your  W11, on this weight. So, in a way, what  were we having to do? We had to  calculate a few more derivatives to  derive this derivative. Like this. I  showed you how to do this. Right? Now  if you notice, in some places, what do  you have to do? Calculate the  derivative of the sigmoid. Which is  always between zero and zero point five . Okay? Sigmoid in general is also  between zero and one. So, sometimes it  will happen that all these numbers will  be between zero and one. All these  numbers will be between zero and one.  And as soon as all these numbers are  between zero and one and you multiply  them, you would see this happening. And  this derivative that you get will be a  very small number, something like this.  Now, what is your rule? Your rule is  this. Suppose your initial weight was  one. So, how will your new weight be  calculated? Your new weight will be  calculated as initial weight minus,  let's say the learning rate is 0.01,  multiplied by 0.01. So it would be like  0.999. This is your new weight. Now, if  you think, if your weight changes by  such a small value, it basically means  it didn't change at all. It did not  change. And if the weights didn't  change at all, the loss will remain as  it was. The loss won't decrease either.  Okay? So, that is what is written here.  In the worst case, this may completely  stop the neural network from further  training. Or here you can see,  effectively preventing the weight from  changing its value. So you can see that  here the weight value is vanishingly  small. That is why this word came up.  Okay? And I gave you the example of  just a two-layer network. Imagine a  network where let's say, there are, 10  hidden layers. Imagine what will happen  here. What will happen here? That  number, the weights in the initial  layers will become extremely small, and  because of that, what will happen? Your  backpropagation algorithm will not be  able to converge and the model will not  be able to train. I hope you get the  idea. This problem was so big that  during the 80s and 90s, it was one of  the main reasons why neural networks or  deep learning in general failed. Okay?  I mean, there was just no way to solve  them because at that time, most of the  activation functions we had were  sigmoid or tanh, and the problem with  both of them is that they both bring a  very large input space into a very  small output space. Think about it,  what does Sigmoid do? What is the job  of the Sigmoid function? The job of the  Sigmoid function is to squash any input , no matter how large or small, into a  range between zero and one. So, that  leads to the vanishing gradient problem . Alright? So, I hope you are  understanding the whole point. Let me  summarize it once. The vanishing  gradient problem is a very big problem  in deep learning. Which comes from the  fact that if you multiply many very  small numbers together, the result will  be an even smaller number. Alright? And  why does this happen? Because in  backpropagation, what do you need to do ? Update the weights. And what does the  weight update depend on? On your  partial derivatives. Alright? But since  it is a deep neural network. Your  partial derivative will be a  multiplication of many components. If  all these components are very, very  small. Or even if they are smaller than  one, the derivative you get will be  very, very small. And when you subtract  that from the initial value, you will  get a very small change. A very small  change. Or you could say that there  won't be any change at all. And when  there is no change in the weights, your  model won't train. Your loss will  always be the same as it was the first  time. Alright? Now the question arises,  how to identify that the vanishing  gradient problem is happening? How to  recognize? Alright? There are two ways.  What is the first way? Focus on the  loss. You will get the loss after every  epoch. If there are no changes in the  loss. If there are no changes, then it  is a sign that you have a vanishing  gradient problem. Alright? What is the  second way? That you take your weights  and plot a graph. Alright? What kind of  graph? I mean, let's say you pick any  one weight. Suppose you picked W11.  Plot an epoch versus value graph.  Alright? If it is consistent. It  basically means that it is not changing . Alright? I will show you how to do  all this when we study TensorBoard and  callbacks later. This is a future topic . There, I will demonstrate how to do  it. But even before that, you can  directly do this loss system. When you  train in Keras, Keras tells you the  loss all the time after every epoch. So  what you can do is go and check if the  loss is reducing or not. If it is not,  it is a sign that there is some problem . So guys, now let me show you a  demonstration of how the vanishing  gradient problem can occur. All right?  I have already written the code. I will  run it for you line by line. So in this  line, we have imported all of our  libraries. Here, I called the make  moons function to create a  classification dataset, which has two  input columns and one output column,  and it looks like this. All right? It  doesn't really depend much on this  dataset. I just needed a dataset. The  main thing starts from here. Here you  will notice that I have a very deep  neural network. Where we have got  around, let's say, 10 hidden layers.  All right? I created this model. The  rest of the things are the same as what  we usually do. Now, what did I do? At  this point, I stored the weights of the  first layer from my weights into old  weights. All right? I told you what you  can do? You can call model dot get  weights to see all your weights and  biases, which are currently randomly  initialized. Now what I need to do is  get the weights of the very first layer  from that. So as soon as I wrote zero,  these are the first layer weights. You  can see. All right? So I have two  inputs and they are going to the first  hidden layer, which has 10 nodes. So 2* 10 will be 20. So here you can see  there are 20 weights. All right? So I  did just that. I stored the 20 weights  that are in the first layer into old  weights. After that, I basically  performed a train-test split on X train  and X test, and then what did I do? I  trained my model for one epoch. Just  one epoch. All right? Look at this. I  have done this. Now watch carefully.  Our main thing starts from here, that  as soon as we finish training, after  training there will be some changes in  our weights. So I again took model dot  get weights after training and stored  its zero into new weights like this.  All right? At this point, I checked  what the learning rate of my model was.  This is the default value 0.01. Now  what did I do? I calculated the value  of the gradients for each of the  weights in my first layer. All right?  It's very simple. What is our formula?  Our formula is this. Uh, this is the  formula, wait just one second. Weight  new = Weight old minus learning rate  times dl/dw. Now, if I want the value  of this, what do I need to do? I  basically need to do: W old-W new  divided by learning rate. By doing this , I will get the value of the gradient.  So, I calculated the gradient value for  every one of my weights. Look at this:  old weight minus new weight divided by  learning rate. All right? Also, I  calculated a percentage change between  my old weights and new weights to see  how much they changed. All right? And I  calculated both of these quantities.  Look at this, the gradient for the 20  weights in my first layer after one  epoch, and you can see how low this  gradient is. How low it is. All right?  Now I calculated the percentage change  and you can see this is the percent  change. Every weight changed by this  percentage. It's not even 1%. This is  percent. It is basically nothing. All  right? There is just one weight here. I  guess that's not even it. There is just  one weight that changed by 3%. Look,  the rest didn't change at all. In fact,  if you come down and see the old  weights, these are my old weights and  these are my new weights. You can see  there is nothing. There is no change.  All right? There is no change. Like, if  you go deep into the decimal values,  you will see the changes. But you can  understand that a vanishing gradient  problem is happening here. All right?  In fact, what do I do? I will show you  how you can detect it. So, what did I  do? I ran this code again. Ran it again . This time, what will we do? We will  run it for a few more epochs. These are  my old weights. This is my train-test  split. What will we do this time? Let's  run it for 100 epochs. Watch, the model  will train. And you would see that  after a point, your loss is not  reducing anymore. It is stuck at 69.  Look, no matter how much further you go , it stays near 69. All right? Now I  calculated the new weights again and I  am going here. These are my old weights  right at the beginning before training.  And this is after training. And you  would see that even after running 100  epochs, there is a very small change.  It is a very small change. In some  places, you will still see changes a  few decimal points further. But you get  the idea that because of this problem,  our loss is not reducing, and our  neural network is not training properly . Okay? So, this very problem is called  the vanishing gradient problem. Okay?  Now, what do we have to do? We need to  learn how to solve this problem. So  guys, I will tell you five ways, and  out of those, I will demonstrate two  ways to you right now. But the  remaining three ways, we will study in  the future. Okay? But you should know  about them. So, if you want to  eliminate the vanishing gradient  problem in your neural network, the  simplest way is to reduce the  complexity of your model. So, if you  have 10 hidden layers, or you could say  it's a very deep neural network, then  obviously it will have a vanishing  gradient problem. So, one way to reduce  this is to use a shallow neural network  like this. Okay? Because of this, the  derivatives of the weights in the  initial layers will be a larger number  in comparison to this one. Because here , more derivatives will have to be  multiplied, and as a result, what will  happen? This number will keep getting  smaller. Whereas in a shallow neural  network, these numbers won't be as  large, and the number of derivatives  will be very few, so the chance of a  vanishing gradient problem is lower.  Okay? Now, this method will work, but  it is not that applicable. Because the  reason for that is, why do you increase  the complexity of a neural network? To  find out complex patterns, to find out  complex patterns. So if you remove that , then you won't be able to figure out  complex patterns at all. So what is the  use of training the model then? So in a  way, it might work sometimes, but most  of the time you won't use it. You just  need to have the intuition of why it  works. If you feel that your data does  not have that many complexities or  non-linearities, then reduce it. Okay?  What will happen with that? At least  there won't be a vanishing gradient  problem. Okay? Let me show you one  demonstration of whether reducing model  complexity actually helps. So guys, we  will use the same code again. But this  time, what we are changing is that  instead of using so many hidden layers,  I will use just three hidden layers.  Okay? And everything else is the same.  These are my initial weights. I  performed the train-test split here.  And again, we will train it for 100  epochs. Okay? We trained this for 100  epochs. And it's done training. I have  stored my new weights here. You can see  the first change right here, as your  epochs increase, this time you aren't  stuck at 69, you can see you are going  down bit by bit. Eventually, you  reached 39. Okay? And now, if I show  you the old weights versus the new  weights. These are my old weights  before the model training, and these  are my new weights. You can see quite a  few changes are already visible. Here  it is 0.29. Here it is 64. Here it is  0.50. Here it is 0.98. So you can see  that this is working. Okay? As soon as  we reduced the model complexity, we  kind of resolved the vanishing gradient  problem. So guys, we will use the same  code again. The only thing we are  changing this time is that instead of  using so many hidden layers, I will  just use three hidden layers. Okay? And  everything else is the same. These are  my initial weights. I performed the  train-test split here. And again, we  will train it for 100 epochs. Okay? We  trained this for 100 epochs. And it's  done training. I have stored my new  weights here. You can see the first  change right here, as your epochs  increase, this time you aren't stuck at  69. You can see you are going down bit  by bit. Eventually, you reached 39.  Okay? And now, if I show you the old  weights versus the new weights. These  are my old weights before the model  training, and these are my new weights.  You can see quite a few changes are  already visible. Here it is 29. Here it  is 64. Here it is 50. Here it is 98. So  you can see that this is working. Okay?  As soon as we reduced the model  complexity, we kind of resolved the  vanishing gradient problem. The second  technique to resolve the vanishing  gradient problem is to use a different  activation function. Okay? Now, among  different activation functions, you can  use ReLU. ReLU is a very famous  activation function. We haven't  discussed all the activation functions  yet. We will do that after a couple of  videos. So, what happens with ReLU?  This is what the ReLU function is. The  formula for ReLU is max (0, z), and its  graph looks like this. Uh. If it is  negative, it will be zero, and if it is  positive, the value of z is your output . Okay? So, its specialty is basically  that it takes your input space, which  could be in any range, and brings it  into this range. So it is not exactly  squashing it. Like what sigmoid does?  It brings it between zero and one. At  least this one is...It does not squash  in the positive direction. It brings  the negative to zero. That is the point . Now, the good thing is that its  derivative is either zero or one. If it  is negative, it will be zero. If it is  positive, it will be one. Okay? Because  of that, when you multiply a lot of  ones, you can see it remains one. So,  the number does not become small here,  and the vanishing gradient problem does  not occur. Okay? So ReLU is one example  that you can use to avoid it to some  extent. But it also has a problem  called \"dying ReLU.\" What does dying  ReLU mean? That if the activation  becomes zero, then the derivative  becomes zero, and because the  derivative is zero, the weights do not  get updated. Okay? So, this is one  problem. To solve this, something else  came along, Leaky ReLU. We will study  all this in the next video or maybe the  one after that. But you get the idea of  why ReLU is able to work? Because it is  not squashing it. Like how your sigmoid  squashes it. Okay? This is the biggest  reason you would use ReLU. Okay? Now I  will show you how to implement ReLU in  the code once. So guys, you can see we  are using the same dataset again. But  this time we are using a different  model. The model is not different. The  architecture is still the same. We have  just used ReLU in all the activation  functions. Except for the last layer.  You have to use sigmoid there. Okay?  Let's now compile the model. Storing  the old weights. Performing the  train-test split. And we are fitting  the model. Initially, our model trained  over just one epoch. We extracted the  new weights. Here is my learning rate.  I calculated the gradient and percent  change. Look, here is my gradient. You  can see the gradient has positive  values. In some places, it is negative.  And look at my percentage change.  Already in some places, there is a 5% change. In some places, there is a 12% change. In some places, there is a 26% change. There is a 1%change. So you can  see that work is being done using the  values. If you take the old weights and  the new weights here, you would find  that in some places you would see a  significant change. Okay? So let's do  one thing. Let's run this entire code  again for a few more epochs. Okay? Here , let's train this model for 100 epochs . Let's see what happens. Logically,  the loss should keep reducing. Look, it  is happening. In fact, it is happening  much more this time. You can see your  loss has gone down to 10 to the power  of -4. Which is like a lot less. Okay?  These are my new weights. The learning  rate will remain the same. There is no  point in extracting that. I will show  you directly the difference between the  new weights and the old weights. See,  here are your old weights and here are  your new weights. And you would see  many changes have occurred. Look, quite  a lot of changes have come through. And  this signifies that the vanishing  gradient problem is not occurring here.  Okay? By using ReLU, we solved that  problem. The third technique is proper  weight initialization. So right now, we  were initializing weights randomly.  Moving forward, in a video or two, we  will see. There are certain weight  initialization techniques like Glorot  or Xavier. We will look at all of these . And when you properly initialize your  weights, what happens then? You are  able to solve your vanishing gradient  problem. Okay? Since we have to study  this topic in the future, we cannot  discuss it further right now. The  fourth thing that one can use is batch  normalization. So, batch normalization  is a layer. It is a type of layer. Now,  exactly what is happening inside it, we  will discuss. About batch normalization . There will be a proper video in this  series. It is a new technique. But with  its arrival, we are able to tackle the  vanishing gradient problem. Okay? And  the last one is using a residual  network. Residual network. So it is a  special building block. This is a type  of block that you can use in your  artificial neural network. And what is  its specialty? We will discuss that  later again. In the future, when we  study CNNs, there will be a topic  called ResNet. ResNet is built using a  residual block. Okay? So, there we will  understand what it is and how you can  avoid the vanishing gradient problem by  using it. Okay? So, these are the five  techniques. Let me summarize them once.  First is that you reduce the complexity  of your model if possible. Second is to  use activation functions that are not  squashing. When there is no squashing  of your input space to output space.  Okay? Such as ReLU. Third is proper  weight initialization. Fourth is batch  normalization and the fifth one is  using residual networks. Okay? So I  guess you have understood everything  about the vanishing gradient problem.  Before leaving, I would like to give  you a brief introduction about the  exploding gradient problem. It is just  like the vanishing gradient problem.  But it is seen more in RNNs, in  recurrent neural networks. Okay? Its  principle is exactly the opposite, that  if you have some numbers that are  greater than one. When you multiply  them, you will get a number that is  larger than all of them. Okay? So  imagine when you are calculating your  derivatives, the derivatives are all  greater than one. When these are  greater than one, what will happen is  that your derivative will be a very big  number. It would be a very big number.  So what will happen is, when you go to  update the weights, When you go to  update the weights, if this is a very  big number, let's say, if this is 1000  and this is let's say one, so if your  weight was one in the beginning, it  will become 1-1000, it will directly  become 999. Okay, then in the next step , it might increase further, suppose it  becomes 10000. So basically, the weight  will become arbitrarily large and then  it will become so big that eventually  your model will start behaving randomly  and your loss will not reduce. Okay? So  this is called the exploding gradient  problem. It is exactly the opposite.  When your derivative values are greater  than one, and you multiply many  derivatives together, your derivative  becomes a huge number, the weight  update becomes quite random, and your  model stops training. We will cover  this problem during the RNN section.  There, I will show you in a detailed  video what the exploding gradient  problem is and how we can avoid it  using techniques like gradient clipping . But since it was a related topic, I  gave a brief introduction. Okay? So I  hope this entire thing is clear to you.  So that was the video, guys. I hope you  understood. I will share all those  notebooks with you. If you run the code  yourself once, you will get a better  intuition of what is happening. Okay?  If you liked the video, please like it,  and if you haven't subscribed to the  channel, please do subscribe. Okay? I  will keep posting more videos in the  deep learning series. Okay? That's it  from my side. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and welcome",
+      "start": 0.339,
+      "duration": 3.467
+    },
+    {
+      "text": " to my YouTube channel. So, in this",
+      "start": 2.871,
+      "duration": 3.372
+    },
+    {
+      "text": " video, we will continue our deep",
+      "start": 5.303,
+      "duration": 2.93
+    },
+    {
+      "text": " learning playlist. We have already",
+      "start": 7.293,
+      "duration": 2.826
+    },
+    {
+      "text": " learned a lot. We have covered",
+      "start": 9.158,
+      "duration": 2.735
+    },
+    {
+      "text": " backpropagation and some other topics",
+      "start": 10.965,
+      "duration": 3.649
+    },
+    {
+      "text": " as well. Such as what memorization is",
+      "start": 13.686,
+      "duration": 3.967
+    },
+    {
+      "text": " or other ways you can apply gradient",
+      "start": 16.731,
+      "duration": 3.822
+    },
+    {
+      "text": " descent. In this video, we will study a",
+      "start": 19.631,
+      "duration": 4.099
+    },
+    {
+      "text": " very special and important topic about",
+      "start": 22.786,
+      "duration": 3.141
+    },
+    {
+      "text": " which many questions are asked in",
+      "start": 24.983,
+      "duration": 2.859
+    },
+    {
+      "text": " interviews. The name of the topic is",
+      "start": 26.899,
+      "duration": 3.32
+    },
+    {
+      "text": " the vanishing gradient problem. In",
+      "start": 29.264,
+      "duration": 3.009
+    },
+    {
+      "text": " simple words, I can tell you that you",
+      "start": 31.321,
+      "duration": 2.752
+    },
+    {
+      "text": " will encounter many villains in deep",
+      "start": 33.12,
+      "duration": 2.705
+    },
+    {
+      "text": " learning. The vanishing gradient",
+      "start": 34.872,
+      "duration": 2.84
+    },
+    {
+      "text": " problem is one of them. Okay? It is a",
+      "start": 36.759,
+      "duration": 3.077
+    },
+    {
+      "text": " villain. It is a problem that can occur",
+      "start": 38.889,
+      "duration": 3.838
+    },
+    {
+      "text": " in a neural network. And if that",
+      "start": 41.8,
+      "duration": 3.189
+    },
+    {
+      "text": " problem occurs, then your neural",
+      "start": 44.037,
+      "duration": 2.539
+    },
+    {
+      "text": " network will not be able to train. So",
+      "start": 45.624,
+      "duration": 3.597
+    },
+    {
+      "text": " that is why what the vanishing gradient",
+      "start": 48.282,
+      "duration": 3.379
+    },
+    {
+      "text": " problem is, why it happens, and how to",
+      "start": 50.722,
+      "duration": 3.319
+    },
+    {
+      "text": " solve it, you must know this if you",
+      "start": 53.102,
+      "duration": 3.136
+    },
+    {
+      "text": " want to build a career in deep learning",
+      "start": 55.299,
+      "duration": 3.379
+    },
+    {
+      "text": ". So in this video, I will explain to",
+      "start": 57.678,
+      "duration": 3.9
+    },
+    {
+      "text": " you from end to end what the vanishing",
+      "start": 60.637,
+      "duration": 3.236
+    },
+    {
+      "text": " gradient problem is, why it happens,",
+      "start": 62.931,
+      "duration": 3.119
+    },
+    {
+      "text": " and I will teach you five ways to solve",
+      "start": 65.108,
+      "duration": 3.295
+    },
+    {
+      "text": " it. Okay? So I hope you have understood",
+      "start": 67.462,
+      "duration": 3.741
+    },
+    {
+      "text": " the topic of this video. Let's start",
+      "start": 70.26,
+      "duration": 3.059
+    },
+    {
+      "text": " the video. So guys, first of all, let's",
+      "start": 72.37,
+      "duration": 3.663
+    },
+    {
+      "text": " see what is written about the vanishing",
+      "start": 75.093,
+      "duration": 3.332
+    },
+    {
+      "text": " gradient problem on Wikipedia. So I",
+      "start": 77.485,
+      "duration": 3.516
+    },
+    {
+      "text": " took this cutout from Wikipedia. It is",
+      "start": 80.061,
+      "duration": 3.758
+    },
+    {
+      "text": " written here that in machine learning,",
+      "start": 82.879,
+      "duration": 3.285
+    },
+    {
+      "text": " the vanishing gradient problem is",
+      "start": 85.224,
+      "duration": 2.984
+    },
+    {
+      "text": " encountered when training artificial",
+      "start": 87.268,
+      "duration": 3.165
+    },
+    {
+      "text": " neural networks with gradient-based",
+      "start": 89.493,
+      "duration": 3.104
+    },
+    {
+      "text": " learning methods. This simply means",
+      "start": 91.657,
+      "duration": 3.928
+    },
+    {
+      "text": " using gradient descent and",
+      "start": 94.645,
+      "duration": 2.569
+    },
+    {
+      "text": " backpropagation. In such methods,",
+      "start": 96.274,
+      "duration": 4.192
+    },
+    {
+      "text": " during each iteration of training, each",
+      "start": 99.525,
+      "duration": 3.31
+    },
+    {
+      "text": " of the neural network's weights",
+      "start": 101.894,
+      "duration": 2.835
+    },
+    {
+      "text": " receives an update proportional to the",
+      "start": 103.789,
+      "duration": 3.25
+    },
+    {
+      "text": " partial derivative of the error",
+      "start": 106.098,
+      "duration": 2.836
+    },
+    {
+      "text": " function with respect to the current",
+      "start": 107.993,
+      "duration": 3.132
+    },
+    {
+      "text": " weight. The problem is that in some",
+      "start": 110.184,
+      "duration": 3.382
+    },
+    {
+      "text": " cases, the gradient will be vanishingly",
+      "start": 112.626,
+      "duration": 3.322
+    },
+    {
+      "text": " small, effectively preventing the",
+      "start": 115.008,
+      "duration": 2.965
+    },
+    {
+      "text": " weight from changing its value, and in",
+      "start": 117.033,
+      "duration": 3.263
+    },
+    {
+      "text": " its worst case, this may completely",
+      "start": 119.355,
+      "duration": 3.085
+    },
+    {
+      "text": " stop the neural network from further",
+      "start": 121.499,
+      "duration": 3.144
+    },
+    {
+      "text": " training. Now, if some things here seem",
+      "start": 123.703,
+      "duration": 3.944
+    },
+    {
+      "text": " complex to you, I will tell you two or",
+      "start": 126.706,
+      "duration": 3.213
+    },
+    {
+      "text": " three simple points that will make it",
+      "start": 128.977,
+      "duration": 3.155
+    },
+    {
+      "text": " feel easy for you. See, the first point",
+      "start": 131.19,
+      "duration": 4.137
+    },
+    {
+      "text": " is that this whole problem emerges from",
+      "start": 134.418,
+      "duration": 4.527
+    },
+    {
+      "text": " a very simple mathematical law. And",
+      "start": 138.035,
+      "duration": 4.473
+    },
+    {
+      "text": " that law is, what if I ask you to",
+      "start": 141.625,
+      "duration": 4.845
+    },
+    {
+      "text": " multiply a lot of point ones together?",
+      "start": 145.586,
+      "duration": 5.133
+    },
+    {
+      "text": " What would be the product? You know",
+      "start": 149.919,
+      "duration": 4.206
+    },
+    {
+      "text": " that if all the numbers you are",
+      "start": 153.211,
+      "duration": 3.659
+    },
+    {
+      "text": " multiplying are less than one, then the",
+      "start": 155.956,
+      "duration": 4.346
+    },
+    {
+      "text": " resultant product will be smaller than",
+      "start": 159.388,
+      "duration": 4.26
+    },
+    {
+      "text": " all those numbers. Okay? The more small",
+      "start": 162.734,
+      "duration": 4.731
+    },
+    {
+      "text": " numbers you keep adding, the smaller",
+      "start": 166.537,
+      "duration": 3.589
+    },
+    {
+      "text": " the number you get as a product. Okay?",
+      "start": 169.198,
+      "duration": 4.061
+    },
+    {
+      "text": " So, this entire vanishing gradient",
+      "start": 172.579,
+      "duration": 3.739
+    },
+    {
+      "text": " problem is based on this principle. The",
+      "start": 175.399,
+      "duration": 4.225
+    },
+    {
+      "text": " second thing you need to remember is",
+      "start": 178.693,
+      "duration": 3.466
+    },
+    {
+      "text": " that it is only found in deep neural",
+      "start": 181.227,
+      "duration": 3.466
+    },
+    {
+      "text": " networks. Deep neural networks mean",
+      "start": 183.762,
+      "duration": 3.619
+    },
+    {
+      "text": " many, many layers. Lots of hidden",
+      "start": 186.442,
+      "duration": 3.251
+    },
+    {
+      "text": " layers. Eight or ten hidden layers.",
+      "start": 188.751,
+      "duration": 3.108
+    },
+    {
+      "text": " Okay? So, you will only find the",
+      "start": 191.159,
+      "duration": 3.346
+    },
+    {
+      "text": " vanishing gradient problem in such",
+      "start": 193.568,
+      "duration": 3.127
+    },
+    {
+      "text": " neural networks. Okay? And the third",
+      "start": 195.757,
+      "duration": 3.96
+    },
+    {
+      "text": " point you need to remember is that this",
+      "start": 198.795,
+      "duration": 4.054
+    },
+    {
+      "text": " is generally seen when you use",
+      "start": 201.927,
+      "duration": 6.192
+    },
+    {
+      "text": " activation functions like sigmoid or",
+      "start": 207.199,
+      "duration": 3.88
+    },
+    {
+      "text": " tanh. Okay? Now, let me explain to you",
+      "start": 210.159,
+      "duration": 4.8
+    },
+    {
+      "text": " very easily what the vanishing gradient",
+      "start": 214.011,
+      "duration": 3.04
+    },
+    {
+      "text": " problem is. So, if you remember, a few",
+      "start": 216.103,
+      "duration": 4.526
+    },
+    {
+      "text": " videos back we studied the",
+      "start": 219.704,
+      "duration": 2.95
+    },
+    {
+      "text": " backpropagation algorithm. According to",
+      "start": 221.729,
+      "duration": 3.977
+    },
+    {
+      "text": " the backpropagation algorithm, what",
+      "start": 224.755,
+      "duration": 2.711
+    },
+    {
+      "text": " used to happen is, let's assume this is",
+      "start": 226.515,
+      "duration": 2.907
+    },
+    {
+      "text": " our neural network. This is our neural",
+      "start": 228.471,
+      "duration": 3.702
+    },
+    {
+      "text": " network. Now, we used to insert a point",
+      "start": 231.256,
+      "duration": 5.495
+    },
+    {
+      "text": " into this. By doing forward propagation",
+      "start": 235.868,
+      "duration": 4.077
+    },
+    {
+      "text": ", we would calculate y-hat. Using this",
+      "start": 238.945,
+      "duration": 3.358
+    },
+    {
+      "text": " y-hat and y, we would calculate the",
+      "start": 241.372,
+      "duration": 3.396
+    },
+    {
+      "text": " loss. And then, what would we do? We",
+      "start": 243.836,
+      "duration": 2.951
+    },
+    {
+      "text": " would update all these weights. Using",
+      "start": 245.841,
+      "duration": 3.185
+    },
+    {
+      "text": " this rule. w-new is equal to w-old",
+      "start": 248.084,
+      "duration": 3.928
+    },
+    {
+      "text": " minus learning rate. Okay? Now, if you",
+      "start": 251.104,
+      "duration": 8.123
+    },
+    {
+      "text": " notice here, what is this? It is the",
+      "start": 258.278,
+      "duration": 6.041
+    },
+    {
+      "text": " derivative of the loss with respect to",
+      "start": 263.425,
+      "duration": 5.054
+    },
+    {
+      "text": " that particular weight. So, in a way,",
+      "start": 267.585,
+      "duration": 5.995
+    },
+    {
+      "text": " what are we doing? We are starting with",
+      "start": 272.626,
+      "duration": 3.83
+    },
+    {
+      "text": " an initial weight value and reducing it",
+      "start": 275.522,
+      "duration": 3.568
+    },
+    {
+      "text": " every time by a factor of the",
+      "start": 278.156,
+      "duration": 2.91
+    },
+    {
+      "text": " derivative of the weight. Look here,",
+      "start": 280.132,
+      "duration": 4.078
+    },
+    {
+      "text": " exactly the same is written. In such",
+      "start": 283.255,
+      "duration": 3.576
+    },
+    {
+      "text": " methods, during each iteration of the",
+      "start": 285.882,
+      "duration": 2.865
+    },
+    {
+      "text": " training, each neural network's weight",
+      "start": 287.797,
+      "duration": 2.915
+    },
+    {
+      "text": " receives an update proportional to the",
+      "start": 289.763,
+      "duration": 2.915
+    },
+    {
+      "text": " partial derivative of the error",
+      "start": 291.728,
+      "duration": 2.563
+    },
+    {
+      "text": " function with respect to the current",
+      "start": 293.341,
+      "duration": 2.814
+    },
+    {
+      "text": " weight. See, this is exactly what we",
+      "start": 295.206,
+      "duration": 3.536
+    },
+    {
+      "text": " are doing. Okay? Now, what is the",
+      "start": 297.787,
+      "duration": 4.151
+    },
+    {
+      "text": " problem sometimes? Let's take an",
+      "start": 301.011,
+      "duration": 4.056
+    },
+    {
+      "text": " example. For instance, suppose you need",
+      "start": 304.153,
+      "duration": 3.4
+    },
+    {
+      "text": " to update this weight and this is a",
+      "start": 306.599,
+      "duration": 2.602
+    },
+    {
+      "text": " classification problem. Sigmoid is used",
+      "start": 308.247,
+      "duration": 3.591
+    },
+    {
+      "text": " everywhere as your activation function.",
+      "start": 310.908,
+      "duration": 3.752
+    },
+    {
+      "text": " So, I told you that the logic of",
+      "start": 314.1,
+      "duration": 2.659
+    },
+    {
+      "text": " backpropagation is very simple. If you",
+      "start": 315.811,
+      "duration": 3.09
+    },
+    {
+      "text": " need to calculate this this is the",
+      "start": 317.955,
+      "duration": 4.689
+    },
+    {
+      "text": " weight. If you need to calculate this,",
+      "start": 321.701,
+      "duration": 3.872
+    },
+    {
+      "text": " then you will see how the loss can be",
+      "start": 324.651,
+      "duration": 3.903
+    },
+    {
+      "text": " reduced. So, the loss depends on y-hat.",
+      "start": 327.632,
+      "duration": 4.147
+    },
+    {
+      "text": " y-hat depends on your O11, on its",
+      "start": 332.139,
+      "duration": 4.322
+    },
+    {
+      "text": " output, and then O11 depends on your",
+      "start": 335.561,
+      "duration": 4.624
+    },
+    {
+      "text": " W11, on this weight. So, in a way, what",
+      "start": 339.286,
+      "duration": 4.86
+    },
+    {
+      "text": " were we having to do? We had to",
+      "start": 343.193,
+      "duration": 3.184
+    },
+    {
+      "text": " calculate a few more derivatives to",
+      "start": 345.45,
+      "duration": 3.556
+    },
+    {
+      "text": " derive this derivative. Like this. I",
+      "start": 348.08,
+      "duration": 8.384
+    },
+    {
+      "text": " showed you how to do this. Right? Now",
+      "start": 355.53,
+      "duration": 7.339
+    },
+    {
+      "text": " if you notice, in some places, what do",
+      "start": 361.932,
+      "duration": 3.411
+    },
+    {
+      "text": " you have to do? Calculate the",
+      "start": 364.407,
+      "duration": 3.603
+    },
+    {
+      "text": " derivative of the sigmoid. Which is",
+      "start": 367.117,
+      "duration": 6.042
+    },
+    {
+      "text": " always between zero and zero point five",
+      "start": 372.242,
+      "duration": 4.215
+    },
+    {
+      "text": ". Okay? Sigmoid in general is also",
+      "start": 375.457,
+      "duration": 3.629
+    },
+    {
+      "text": " between zero and one. So, sometimes it",
+      "start": 378.15,
+      "duration": 4.045
+    },
+    {
+      "text": " will happen that all these numbers will",
+      "start": 381.273,
+      "duration": 4.063
+    },
+    {
+      "text": " be between zero and one. All these",
+      "start": 384.414,
+      "duration": 3.874
+    },
+    {
+      "text": " numbers will be between zero and one.",
+      "start": 387.364,
+      "duration": 3.835
+    },
+    {
+      "text": " And as soon as all these numbers are",
+      "start": 391.279,
+      "duration": 2.623
+    },
+    {
+      "text": " between zero and one and you multiply",
+      "start": 392.947,
+      "duration": 2.668
+    },
+    {
+      "text": " them, you would see this happening. And",
+      "start": 394.66,
+      "duration": 4.829
+    },
+    {
+      "text": " this derivative that you get will be a",
+      "start": 398.566,
+      "duration": 3.91
+    },
+    {
+      "text": " very small number, something like this.",
+      "start": 401.552,
+      "duration": 3.987
+    },
+    {
+      "text": " Now, what is your rule? Your rule is",
+      "start": 405.779,
+      "duration": 3.306
+    },
+    {
+      "text": " this. Suppose your initial weight was",
+      "start": 408.141,
+      "duration": 3.079
+    },
+    {
+      "text": " one. So, how will your new weight be",
+      "start": 410.268,
+      "duration": 3.119
+    },
+    {
+      "text": " calculated? Your new weight will be",
+      "start": 412.428,
+      "duration": 2.816
+    },
+    {
+      "text": " calculated as initial weight minus,",
+      "start": 414.297,
+      "duration": 2.834
+    },
+    {
+      "text": " let's say the learning rate is 0.01,",
+      "start": 416.184,
+      "duration": 2.887
+    },
+    {
+      "text": " multiplied by 0.01. So it would be like",
+      "start": 418.123,
+      "duration": 6.706
+    },
+    {
+      "text": " 0.999. This is your new weight. Now, if",
+      "start": 423.908,
+      "duration": 8.333
+    },
+    {
+      "text": " you think, if your weight changes by",
+      "start": 431.31,
+      "duration": 3.48
+    },
+    {
+      "text": " such a small value, it basically means",
+      "start": 433.859,
+      "duration": 3.617
+    },
+    {
+      "text": " it didn't change at all. It did not",
+      "start": 436.545,
+      "duration": 5.478
+    },
+    {
+      "text": " change. And if the weights didn't",
+      "start": 441.087,
+      "duration": 4.003
+    },
+    {
+      "text": " change at all, the loss will remain as",
+      "start": 444.154,
+      "duration": 3.449
+    },
+    {
+      "text": " it was. The loss won't decrease either.",
+      "start": 446.667,
+      "duration": 3.052
+    },
+    {
+      "text": " Okay? So, that is what is written here.",
+      "start": 448.839,
+      "duration": 2.66
+    },
+    {
+      "text": " In the worst case, this may completely",
+      "start": 451.079,
+      "duration": 3.575
+    },
+    {
+      "text": " stop the neural network from further",
+      "start": 453.721,
+      "duration": 3.44
+    },
+    {
+      "text": " training. Or here you can see,",
+      "start": 456.229,
+      "duration": 3.735
+    },
+    {
+      "text": " effectively preventing the weight from",
+      "start": 459.025,
+      "duration": 3.328
+    },
+    {
+      "text": " changing its value. So you can see that",
+      "start": 461.414,
+      "duration": 4.529
+    },
+    {
+      "text": " here the weight value is vanishingly",
+      "start": 465.021,
+      "duration": 3.812
+    },
+    {
+      "text": " small. That is why this word came up.",
+      "start": 467.911,
+      "duration": 3.988
+    },
+    {
+      "text": " Okay? And I gave you the example of",
+      "start": 472.899,
+      "duration": 4.116
+    },
+    {
+      "text": " just a two-layer network. Imagine a",
+      "start": 476.106,
+      "duration": 4.351
+    },
+    {
+      "text": " network where let's say, there are, 10",
+      "start": 479.555,
+      "duration": 8.006
+    },
+    {
+      "text": " hidden layers. Imagine what will happen",
+      "start": 486.702,
+      "duration": 6.325
+    },
+    {
+      "text": " here. What will happen here? That",
+      "start": 492.145,
+      "duration": 4.816
+    },
+    {
+      "text": " number, the weights in the initial",
+      "start": 496.061,
+      "duration": 4.412
+    },
+    {
+      "text": " layers will become extremely small, and",
+      "start": 499.573,
+      "duration": 4.914
+    },
+    {
+      "text": " because of that, what will happen? Your",
+      "start": 503.587,
+      "duration": 4.966
+    },
+    {
+      "text": " backpropagation algorithm will not be",
+      "start": 507.637,
+      "duration": 4.093
+    },
+    {
+      "text": " able to converge and the model will not",
+      "start": 510.813,
+      "duration": 4.261
+    },
+    {
+      "text": " be able to train. I hope you get the",
+      "start": 514.157,
+      "duration": 4.732
+    },
+    {
+      "text": " idea. This problem was so big that",
+      "start": 517.964,
+      "duration": 5.401
+    },
+    {
+      "text": " during the 80s and 90s, it was one of",
+      "start": 522.454,
+      "duration": 4.312
+    },
+    {
+      "text": " the main reasons why neural networks or",
+      "start": 525.855,
+      "duration": 4.491
+    },
+    {
+      "text": " deep learning in general failed. Okay?",
+      "start": 529.435,
+      "duration": 6.024
+    },
+    {
+      "text": " I mean, there was just no way to solve",
+      "start": 534.679,
+      "duration": 3.721
+    },
+    {
+      "text": " them because at that time, most of the",
+      "start": 537.472,
+      "duration": 3.722
+    },
+    {
+      "text": " activation functions we had were",
+      "start": 540.265,
+      "duration": 3.292
+    },
+    {
+      "text": " sigmoid or tanh, and the problem with",
+      "start": 542.629,
+      "duration": 3.65
+    },
+    {
+      "text": " both of them is that they both bring a",
+      "start": 545.35,
+      "duration": 3.722
+    },
+    {
+      "text": " very large input space into a very",
+      "start": 548.144,
+      "duration": 5.415
+    },
+    {
+      "text": " small output space. Think about it,",
+      "start": 552.639,
+      "duration": 3.477
+    },
+    {
+      "text": " what does Sigmoid do? What is the job",
+      "start": 555.163,
+      "duration": 2.896
+    },
+    {
+      "text": " of the Sigmoid function? The job of the",
+      "start": 557.103,
+      "duration": 4.688
+    },
+    {
+      "text": " Sigmoid function is to squash any input",
+      "start": 560.884,
+      "duration": 4.601
+    },
+    {
+      "text": ", no matter how large or small, into a",
+      "start": 564.485,
+      "duration": 4.508
+    },
+    {
+      "text": " range between zero and one. So, that",
+      "start": 568.086,
+      "duration": 5.07
+    },
+    {
+      "text": " leads to the vanishing gradient problem",
+      "start": 572.253,
+      "duration": 4.788
+    },
+    {
+      "text": ". Alright? So, I hope you are",
+      "start": 576.041,
+      "duration": 3.312
+    },
+    {
+      "text": " understanding the whole point. Let me",
+      "start": 578.397,
+      "duration": 3.024
+    },
+    {
+      "text": " summarize it once. The vanishing",
+      "start": 580.491,
+      "duration": 3.573
+    },
+    {
+      "text": " gradient problem is a very big problem",
+      "start": 583.123,
+      "duration": 3.236
+    },
+    {
+      "text": " in deep learning. Which comes from the",
+      "start": 585.418,
+      "duration": 4.603
+    },
+    {
+      "text": " fact that if you multiply many very",
+      "start": 589.109,
+      "duration": 4.085
+    },
+    {
+      "text": " small numbers together, the result will",
+      "start": 592.282,
+      "duration": 4.437
+    },
+    {
+      "text": " be an even smaller number. Alright? And",
+      "start": 595.807,
+      "duration": 4.479
+    },
+    {
+      "text": " why does this happen? Because in",
+      "start": 599.345,
+      "duration": 2.924
+    },
+    {
+      "text": " backpropagation, what do you need to do",
+      "start": 601.316,
+      "duration": 2.835
+    },
+    {
+      "text": "? Update the weights. And what does the",
+      "start": 603.151,
+      "duration": 3.791
+    },
+    {
+      "text": " weight update depend on? On your",
+      "start": 605.997,
+      "duration": 3.182
+    },
+    {
+      "text": " partial derivatives. Alright? But since",
+      "start": 608.256,
+      "duration": 4.117
+    },
+    {
+      "text": " it is a deep neural network. Your",
+      "start": 611.464,
+      "duration": 4.186
+    },
+    {
+      "text": " partial derivative will be a",
+      "start": 614.723,
+      "duration": 3.043
+    },
+    {
+      "text": " multiplication of many components. If",
+      "start": 616.839,
+      "duration": 4.321
+    },
+    {
+      "text": " all these components are very, very",
+      "start": 620.221,
+      "duration": 3.115
+    },
+    {
+      "text": " small. Or even if they are smaller than",
+      "start": 622.397,
+      "duration": 4.866
+    },
+    {
+      "text": " one, the derivative you get will be",
+      "start": 626.33,
+      "duration": 3.344
+    },
+    {
+      "text": " very, very small. And when you subtract",
+      "start": 628.741,
+      "duration": 5.188
+    },
+    {
+      "text": " that from the initial value, you will",
+      "start": 632.991,
+      "duration": 3.308
+    },
+    {
+      "text": " get a very small change. A very small",
+      "start": 635.361,
+      "duration": 4.07
+    },
+    {
+      "text": " change. Or you could say that there",
+      "start": 638.487,
+      "duration": 3.125
+    },
+    {
+      "text": " won't be any change at all. And when",
+      "start": 640.665,
+      "duration": 3.18
+    },
+    {
+      "text": " there is no change in the weights, your",
+      "start": 642.91,
+      "duration": 3.561
+    },
+    {
+      "text": " model won't train. Your loss will",
+      "start": 645.537,
+      "duration": 3.174
+    },
+    {
+      "text": " always be the same as it was the first",
+      "start": 647.761,
+      "duration": 2.881
+    },
+    {
+      "text": " time. Alright? Now the question arises,",
+      "start": 649.691,
+      "duration": 3.919
+    },
+    {
+      "text": " how to identify that the vanishing",
+      "start": 652.684,
+      "duration": 3.524
+    },
+    {
+      "text": " gradient problem is happening? How to",
+      "start": 655.282,
+      "duration": 4.401
+    },
+    {
+      "text": " recognize? Alright? There are two ways.",
+      "start": 658.857,
+      "duration": 6.043
+    },
+    {
+      "text": " What is the first way? Focus on the",
+      "start": 664.0,
+      "duration": 4.053
+    },
+    {
+      "text": " loss. You will get the loss after every",
+      "start": 667.15,
+      "duration": 4.989
+    },
+    {
+      "text": " epoch. If there are no changes in the",
+      "start": 671.202,
+      "duration": 4.064
+    },
+    {
+      "text": " loss. If there are no changes, then it",
+      "start": 674.345,
+      "duration": 4.159
+    },
+    {
+      "text": " is a sign that you have a vanishing",
+      "start": 677.582,
+      "duration": 3.719
+    },
+    {
+      "text": " gradient problem. Alright? What is the",
+      "start": 680.379,
+      "duration": 3.752
+    },
+    {
+      "text": " second way? That you take your weights",
+      "start": 683.186,
+      "duration": 3.553
+    },
+    {
+      "text": " and plot a graph. Alright? What kind of",
+      "start": 687.9,
+      "duration": 4.63
+    },
+    {
+      "text": " graph? I mean, let's say you pick any",
+      "start": 691.591,
+      "duration": 2.807
+    },
+    {
+      "text": " one weight. Suppose you picked W11.",
+      "start": 693.443,
+      "duration": 3.476
+    },
+    {
+      "text": " Plot an epoch versus value graph.",
+      "start": 696.399,
+      "duration": 5.881
+    },
+    {
+      "text": " Alright? If it is consistent. It",
+      "start": 701.599,
+      "duration": 4.279
+    },
+    {
+      "text": " basically means that it is not changing",
+      "start": 704.948,
+      "duration": 3.721
+    },
+    {
+      "text": ". Alright? I will show you how to do",
+      "start": 707.669,
+      "duration": 4.082
+    },
+    {
+      "text": " all this when we study TensorBoard and",
+      "start": 710.84,
+      "duration": 4.377
+    },
+    {
+      "text": " callbacks later. This is a future topic",
+      "start": 714.306,
+      "duration": 3.877
+    },
+    {
+      "text": ". There, I will demonstrate how to do",
+      "start": 717.183,
+      "duration": 3.178
+    },
+    {
+      "text": " it. But even before that, you can",
+      "start": 719.415,
+      "duration": 2.799
+    },
+    {
+      "text": " directly do this loss system. When you",
+      "start": 721.263,
+      "duration": 3.472
+    },
+    {
+      "text": " train in Keras, Keras tells you the",
+      "start": 723.822,
+      "duration": 4.041
+    },
+    {
+      "text": " loss all the time after every epoch. So",
+      "start": 726.95,
+      "duration": 5.142
+    },
+    {
+      "text": " what you can do is go and check if the",
+      "start": 731.159,
+      "duration": 3.533
+    },
+    {
+      "text": " loss is reducing or not. If it is not,",
+      "start": 733.759,
+      "duration": 4.285
+    },
+    {
+      "text": " it is a sign that there is some problem",
+      "start": 737.113,
+      "duration": 3.657
+    },
+    {
+      "text": ". So guys, now let me show you a",
+      "start": 739.77,
+      "duration": 3.562
+    },
+    {
+      "text": " demonstration of how the vanishing",
+      "start": 742.392,
+      "duration": 3.033
+    },
+    {
+      "text": " gradient problem can occur. All right?",
+      "start": 744.484,
+      "duration": 3.956
+    },
+    {
+      "text": " I have already written the code. I will",
+      "start": 747.62,
+      "duration": 3.163
+    },
+    {
+      "text": " run it for you line by line. So in this",
+      "start": 749.847,
+      "duration": 4.145
+    },
+    {
+      "text": " line, we have imported all of our",
+      "start": 753.079,
+      "duration": 3.88
+    },
+    {
+      "text": " libraries. Here, I called the make",
+      "start": 756.046,
+      "duration": 3.922
+    },
+    {
+      "text": " moons function to create a",
+      "start": 759.028,
+      "duration": 2.571
+    },
+    {
+      "text": " classification dataset, which has two",
+      "start": 760.659,
+      "duration": 3.236
+    },
+    {
+      "text": " input columns and one output column,",
+      "start": 762.955,
+      "duration": 3.175
+    },
+    {
+      "text": " and it looks like this. All right? It",
+      "start": 765.19,
+      "duration": 3.348
+    },
+    {
+      "text": " doesn't really depend much on this",
+      "start": 767.582,
+      "duration": 2.478
+    },
+    {
+      "text": " dataset. I just needed a dataset. The",
+      "start": 769.104,
+      "duration": 3.292
+    },
+    {
+      "text": " main thing starts from here. Here you",
+      "start": 771.449,
+      "duration": 3.454
+    },
+    {
+      "text": " will notice that I have a very deep",
+      "start": 773.971,
+      "duration": 3.38
+    },
+    {
+      "text": " neural network. Where we have got",
+      "start": 776.419,
+      "duration": 4.871
+    },
+    {
+      "text": " around, let's say, 10 hidden layers.",
+      "start": 780.405,
+      "duration": 5.134
+    },
+    {
+      "text": " All right? I created this model. The",
+      "start": 785.48,
+      "duration": 4.31
+    },
+    {
+      "text": " rest of the things are the same as what",
+      "start": 788.848,
+      "duration": 3.233
+    },
+    {
+      "text": " we usually do. Now, what did I do? At",
+      "start": 791.138,
+      "duration": 3.516
+    },
+    {
+      "text": " this point, I stored the weights of the",
+      "start": 793.741,
+      "duration": 4.404
+    },
+    {
+      "text": " first layer from my weights into old",
+      "start": 797.232,
+      "duration": 4.142
+    },
+    {
+      "text": " weights. All right? I told you what you",
+      "start": 800.461,
+      "duration": 4.326
+    },
+    {
+      "text": " can do? You can call model dot get",
+      "start": 803.828,
+      "duration": 4.576
+    },
+    {
+      "text": " weights to see all your weights and",
+      "start": 807.481,
+      "duration": 3.7
+    },
+    {
+      "text": " biases, which are currently randomly",
+      "start": 810.259,
+      "duration": 3.777
+    },
+    {
+      "text": " initialized. Now what I need to do is",
+      "start": 813.113,
+      "duration": 3.991
+    },
+    {
+      "text": " get the weights of the very first layer",
+      "start": 816.159,
+      "duration": 3.121
+    },
+    {
+      "text": " from that. So as soon as I wrote zero,",
+      "start": 818.335,
+      "duration": 3.874
+    },
+    {
+      "text": " these are the first layer weights. You",
+      "start": 821.266,
+      "duration": 4.583
+    },
+    {
+      "text": " can see. All right? So I have two",
+      "start": 824.912,
+      "duration": 3.045
+    },
+    {
+      "text": " inputs and they are going to the first",
+      "start": 827.023,
+      "duration": 3.51
+    },
+    {
+      "text": " hidden layer, which has 10 nodes. So 2*",
+      "start": 829.599,
+      "duration": 3.752
+    },
+    {
+      "text": "10 will be 20. So here you can see",
+      "start": 832.351,
+      "duration": 3.399
+    },
+    {
+      "text": " there are 20 weights. All right? So I",
+      "start": 834.797,
+      "duration": 2.832
+    },
+    {
+      "text": " did just that. I stored the 20 weights",
+      "start": 836.681,
+      "duration": 3.578
+    },
+    {
+      "text": " that are in the first layer into old",
+      "start": 839.33,
+      "duration": 3.567
+    },
+    {
+      "text": " weights. After that, I basically",
+      "start": 841.968,
+      "duration": 3.198
+    },
+    {
+      "text": " performed a train-test split on X train",
+      "start": 844.202,
+      "duration": 2.403
+    },
+    {
+      "text": " and X test, and then what did I do? I",
+      "start": 845.641,
+      "duration": 3.203
+    },
+    {
+      "text": " trained my model for one epoch. Just",
+      "start": 847.908,
+      "duration": 3.868
+    },
+    {
+      "text": " one epoch. All right? Look at this. I",
+      "start": 850.885,
+      "duration": 5.482
+    },
+    {
+      "text": " have done this. Now watch carefully.",
+      "start": 855.435,
+      "duration": 3.304
+    },
+    {
+      "text": " Our main thing starts from here, that",
+      "start": 858.759,
+      "duration": 3.443
+    },
+    {
+      "text": " as soon as we finish training, after",
+      "start": 861.268,
+      "duration": 3.377
+    },
+    {
+      "text": " training there will be some changes in",
+      "start": 863.711,
+      "duration": 3.51
+    },
+    {
+      "text": " our weights. So I again took model dot",
+      "start": 866.287,
+      "duration": 5.122
+    },
+    {
+      "text": " get weights after training and stored",
+      "start": 870.466,
+      "duration": 3.116
+    },
+    {
+      "text": " its zero into new weights like this.",
+      "start": 872.639,
+      "duration": 3.06
+    },
+    {
+      "text": " All right? At this point, I checked",
+      "start": 876.4,
+      "duration": 3.574
+    },
+    {
+      "text": " what the learning rate of my model was.",
+      "start": 879.022,
+      "duration": 2.877
+    },
+    {
+      "text": " This is the default value 0.01. Now",
+      "start": 881.499,
+      "duration": 4.02
+    },
+    {
+      "text": " what did I do? I calculated the value",
+      "start": 884.565,
+      "duration": 3.301
+    },
+    {
+      "text": " of the gradients for each of the",
+      "start": 886.917,
+      "duration": 2.639
+    },
+    {
+      "text": " weights in my first layer. All right?",
+      "start": 888.607,
+      "duration": 3.292
+    },
+    {
+      "text": " It's very simple. What is our formula?",
+      "start": 891.02,
+      "duration": 3.64
+    },
+    {
+      "text": " Our formula is this. Uh, this is the",
+      "start": 894.359,
+      "duration": 4.688
+    },
+    {
+      "text": " formula, wait just one second. Weight",
+      "start": 898.161,
+      "duration": 6.24
+    },
+    {
+      "text": " new = Weight old minus learning rate",
+      "start": 903.529,
+      "duration": 5.577
+    },
+    {
+      "text": " times dl/dw. Now, if I want the value",
+      "start": 908.233,
+      "duration": 4.055
+    },
+    {
+      "text": " of this, what do I need to do? I",
+      "start": 911.342,
+      "duration": 3.391
+    },
+    {
+      "text": " basically need to do: W old-W new",
+      "start": 913.827,
+      "duration": 4.116
+    },
+    {
+      "text": " divided by learning rate. By doing this",
+      "start": 917.038,
+      "duration": 4.612
+    },
+    {
+      "text": ", I will get the value of the gradient.",
+      "start": 920.65,
+      "duration": 2.53
+    },
+    {
+      "text": " So, I calculated the gradient value for",
+      "start": 922.42,
+      "duration": 2.779
+    },
+    {
+      "text": " every one of my weights. Look at this:",
+      "start": 924.245,
+      "duration": 2.948
+    },
+    {
+      "text": " old weight minus new weight divided by",
+      "start": 926.24,
+      "duration": 2.792
+    },
+    {
+      "text": " learning rate. All right? Also, I",
+      "start": 928.079,
+      "duration": 2.896
+    },
+    {
+      "text": " calculated a percentage change between",
+      "start": 930.029,
+      "duration": 3.046
+    },
+    {
+      "text": " my old weights and new weights to see",
+      "start": 932.129,
+      "duration": 2.991
+    },
+    {
+      "text": " how much they changed. All right? And I",
+      "start": 934.174,
+      "duration": 3.381
+    },
+    {
+      "text": " calculated both of these quantities.",
+      "start": 936.61,
+      "duration": 2.989
+    },
+    {
+      "text": " Look at this, the gradient for the 20",
+      "start": 940.179,
+      "duration": 3.389
+    },
+    {
+      "text": " weights in my first layer after one",
+      "start": 942.633,
+      "duration": 3.261
+    },
+    {
+      "text": " epoch, and you can see how low this",
+      "start": 944.958,
+      "duration": 3.261
+    },
+    {
+      "text": " gradient is. How low it is. All right?",
+      "start": 947.283,
+      "duration": 4.606
+    },
+    {
+      "text": " Now I calculated the percentage change",
+      "start": 950.989,
+      "duration": 3.354
+    },
+    {
+      "text": " and you can see this is the percent",
+      "start": 953.405,
+      "duration": 3.168
+    },
+    {
+      "text": " change. Every weight changed by this",
+      "start": 955.635,
+      "duration": 3.108
+    },
+    {
+      "text": " percentage. It's not even 1%. This is",
+      "start": 957.786,
+      "duration": 3.46
+    },
+    {
+      "text": " percent. It is basically nothing. All",
+      "start": 960.289,
+      "duration": 4.038
+    },
+    {
+      "text": " right? There is just one weight here. I",
+      "start": 963.363,
+      "duration": 3.27
+    },
+    {
+      "text": " guess that's not even it. There is just",
+      "start": 965.688,
+      "duration": 3.537
+    },
+    {
+      "text": " one weight that changed by 3%. Look,",
+      "start": 968.293,
+      "duration": 3.756
+    },
+    {
+      "text": " the rest didn't change at all. In fact,",
+      "start": 971.119,
+      "duration": 4.504
+    },
+    {
+      "text": " if you come down and see the old",
+      "start": 974.671,
+      "duration": 2.536
+    },
+    {
+      "text": " weights, these are my old weights and",
+      "start": 976.255,
+      "duration": 2.776
+    },
+    {
+      "text": " these are my new weights. You can see",
+      "start": 978.079,
+      "duration": 4.169
+    },
+    {
+      "text": " there is nothing. There is no change.",
+      "start": 981.325,
+      "duration": 4.294
+    },
+    {
+      "text": " All right? There is no change. Like, if",
+      "start": 985.42,
+      "duration": 3.08
+    },
+    {
+      "text": " you go deep into the decimal values,",
+      "start": 987.55,
+      "duration": 2.805
+    },
+    {
+      "text": " you will see the changes. But you can",
+      "start": 989.405,
+      "duration": 3.087
+    },
+    {
+      "text": " understand that a vanishing gradient",
+      "start": 991.546,
+      "duration": 2.938
+    },
+    {
+      "text": " problem is happening here. All right?",
+      "start": 993.538,
+      "duration": 2.921
+    },
+    {
+      "text": " In fact, what do I do? I will show you",
+      "start": 995.559,
+      "duration": 3.284
+    },
+    {
+      "text": " how you can detect it. So, what did I",
+      "start": 997.902,
+      "duration": 3.305
+    },
+    {
+      "text": " do? I ran this code again. Ran it again",
+      "start": 1000.265,
+      "duration": 3.958
+    },
+    {
+      "text": ". This time, what will we do? We will",
+      "start": 1003.223,
+      "duration": 3.279
+    },
+    {
+      "text": " run it for a few more epochs. These are",
+      "start": 1005.563,
+      "duration": 4.859
+    },
+    {
+      "text": " my old weights. This is my train-test",
+      "start": 1009.507,
+      "duration": 3.582
+    },
+    {
+      "text": " split. What will we do this time? Let's",
+      "start": 1012.142,
+      "duration": 3.387
+    },
+    {
+      "text": " run it for 100 epochs. Watch, the model",
+      "start": 1014.639,
+      "duration": 4.971
+    },
+    {
+      "text": " will train. And you would see that",
+      "start": 1018.676,
+      "duration": 5.343
+    },
+    {
+      "text": " after a point, your loss is not",
+      "start": 1023.089,
+      "duration": 3.17
+    },
+    {
+      "text": " reducing anymore. It is stuck at 69.",
+      "start": 1025.329,
+      "duration": 4.311
+    },
+    {
+      "text": " Look, no matter how much further you go",
+      "start": 1029.1,
+      "duration": 3.824
+    },
+    {
+      "text": ", it stays near 69. All right? Now I",
+      "start": 1031.924,
+      "duration": 3.835
+    },
+    {
+      "text": " calculated the new weights again and I",
+      "start": 1034.831,
+      "duration": 3.731
+    },
+    {
+      "text": " am going here. These are my old weights",
+      "start": 1037.633,
+      "duration": 4.216
+    },
+    {
+      "text": " right at the beginning before training.",
+      "start": 1040.928,
+      "duration": 4.071
+    },
+    {
+      "text": " And this is after training. And you",
+      "start": 1044.159,
+      "duration": 3.49
+    },
+    {
+      "text": " would see that even after running 100",
+      "start": 1046.728,
+      "duration": 3.906
+    },
+    {
+      "text": " epochs, there is a very small change.",
+      "start": 1049.712,
+      "duration": 3.907
+    },
+    {
+      "text": " It is a very small change. In some",
+      "start": 1052.799,
+      "duration": 2.918
+    },
+    {
+      "text": " places, you will still see changes a",
+      "start": 1054.763,
+      "duration": 2.64
+    },
+    {
+      "text": " few decimal points further. But you get",
+      "start": 1056.449,
+      "duration": 3.296
+    },
+    {
+      "text": " the idea that because of this problem,",
+      "start": 1058.818,
+      "duration": 3.785
+    },
+    {
+      "text": " our loss is not reducing, and our",
+      "start": 1061.676,
+      "duration": 3.418
+    },
+    {
+      "text": " neural network is not training properly",
+      "start": 1064.167,
+      "duration": 3.858
+    },
+    {
+      "text": ". Okay? So, this very problem is called",
+      "start": 1067.025,
+      "duration": 3.831
+    },
+    {
+      "text": " the vanishing gradient problem. Okay?",
+      "start": 1069.921,
+      "duration": 3.459
+    },
+    {
+      "text": " Now, what do we have to do? We need to",
+      "start": 1072.48,
+      "duration": 3.02
+    },
+    {
+      "text": " learn how to solve this problem. So",
+      "start": 1074.592,
+      "duration": 4.976
+    },
+    {
+      "text": " guys, I will tell you five ways, and",
+      "start": 1078.653,
+      "duration": 4.055
+    },
+    {
+      "text": " out of those, I will demonstrate two",
+      "start": 1081.792,
+      "duration": 4.055
+    },
+    {
+      "text": " ways to you right now. But the",
+      "start": 1084.932,
+      "duration": 3.522
+    },
+    {
+      "text": " remaining three ways, we will study in",
+      "start": 1087.493,
+      "duration": 2.494
+    },
+    {
+      "text": " the future. Okay? But you should know",
+      "start": 1089.026,
+      "duration": 2.953
+    },
+    {
+      "text": " about them. So, if you want to",
+      "start": 1091.021,
+      "duration": 2.932
+    },
+    {
+      "text": " eliminate the vanishing gradient",
+      "start": 1093.023,
+      "duration": 3.228
+    },
+    {
+      "text": " problem in your neural network, the",
+      "start": 1095.321,
+      "duration": 3.437
+    },
+    {
+      "text": " simplest way is to reduce the",
+      "start": 1097.828,
+      "duration": 3.02
+    },
+    {
+      "text": " complexity of your model. So, if you",
+      "start": 1099.917,
+      "duration": 3.865
+    },
+    {
+      "text": " have 10 hidden layers, or you could say",
+      "start": 1102.856,
+      "duration": 3.899
+    },
+    {
+      "text": " it's a very deep neural network, then",
+      "start": 1105.83,
+      "duration": 3.75
+    },
+    {
+      "text": " obviously it will have a vanishing",
+      "start": 1108.654,
+      "duration": 3.528
+    },
+    {
+      "text": " gradient problem. So, one way to reduce",
+      "start": 1111.256,
+      "duration": 5.208
+    },
+    {
+      "text": " this is to use a shallow neural network",
+      "start": 1115.542,
+      "duration": 4.056
+    },
+    {
+      "text": " like this. Okay? Because of this, the",
+      "start": 1118.676,
+      "duration": 8.789
+    },
+    {
+      "text": " derivatives of the weights in the",
+      "start": 1126.551,
+      "duration": 3.816
+    },
+    {
+      "text": " initial layers will be a larger number",
+      "start": 1129.452,
+      "duration": 4.243
+    },
+    {
+      "text": " in comparison to this one. Because here",
+      "start": 1132.78,
+      "duration": 5.801
+    },
+    {
+      "text": ", more derivatives will have to be",
+      "start": 1137.581,
+      "duration": 4.408
+    },
+    {
+      "text": " multiplied, and as a result, what will",
+      "start": 1141.089,
+      "duration": 4.809
+    },
+    {
+      "text": " happen? This number will keep getting",
+      "start": 1144.998,
+      "duration": 3.671
+    },
+    {
+      "text": " smaller. Whereas in a shallow neural",
+      "start": 1147.728,
+      "duration": 4.227
+    },
+    {
+      "text": " network, these numbers won't be as",
+      "start": 1151.037,
+      "duration": 3.791
+    },
+    {
+      "text": " large, and the number of derivatives",
+      "start": 1153.91,
+      "duration": 3.955
+    },
+    {
+      "text": " will be very few, so the chance of a",
+      "start": 1156.947,
+      "duration": 3.955
+    },
+    {
+      "text": " vanishing gradient problem is lower.",
+      "start": 1159.984,
+      "duration": 3.956
+    },
+    {
+      "text": " Okay? Now, this method will work, but",
+      "start": 1163.199,
+      "duration": 4.452
+    },
+    {
+      "text": " it is not that applicable. Because the",
+      "start": 1166.737,
+      "duration": 5.409
+    },
+    {
+      "text": " reason for that is, why do you increase",
+      "start": 1171.203,
+      "duration": 3.223
+    },
+    {
+      "text": " the complexity of a neural network? To",
+      "start": 1173.483,
+      "duration": 4.473
+    },
+    {
+      "text": " find out complex patterns, to find out",
+      "start": 1177.034,
+      "duration": 3.99
+    },
+    {
+      "text": " complex patterns. So if you remove that",
+      "start": 1180.102,
+      "duration": 4.567
+    },
+    {
+      "text": ", then you won't be able to figure out",
+      "start": 1183.669,
+      "duration": 3.84
+    },
+    {
+      "text": " complex patterns at all. So what is the",
+      "start": 1186.584,
+      "duration": 3.712
+    },
+    {
+      "text": " use of training the model then? So in a",
+      "start": 1189.343,
+      "duration": 3.24
+    },
+    {
+      "text": " way, it might work sometimes, but most",
+      "start": 1191.649,
+      "duration": 3.52
+    },
+    {
+      "text": " of the time you won't use it. You just",
+      "start": 1194.235,
+      "duration": 3.531
+    },
+    {
+      "text": " need to have the intuition of why it",
+      "start": 1196.815,
+      "duration": 2.744
+    },
+    {
+      "text": " works. If you feel that your data does",
+      "start": 1198.608,
+      "duration": 3.612
+    },
+    {
+      "text": " not have that many complexities or",
+      "start": 1201.286,
+      "duration": 3.239
+    },
+    {
+      "text": " non-linearities, then reduce it. Okay?",
+      "start": 1203.591,
+      "duration": 3.789
+    },
+    {
+      "text": " What will happen with that? At least",
+      "start": 1206.48,
+      "duration": 2.217
+    },
+    {
+      "text": " there won't be a vanishing gradient",
+      "start": 1207.739,
+      "duration": 2.479
+    },
+    {
+      "text": " problem. Okay? Let me show you one",
+      "start": 1209.26,
+      "duration": 3.928
+    },
+    {
+      "text": " demonstration of whether reducing model",
+      "start": 1212.26,
+      "duration": 3.812
+    },
+    {
+      "text": " complexity actually helps. So guys, we",
+      "start": 1215.144,
+      "duration": 3.675
+    },
+    {
+      "text": " will use the same code again. But this",
+      "start": 1217.871,
+      "duration": 3.681
+    },
+    {
+      "text": " time, what we are changing is that",
+      "start": 1220.644,
+      "duration": 4.116
+    },
+    {
+      "text": " instead of using so many hidden layers,",
+      "start": 1223.852,
+      "duration": 4.575
+    },
+    {
+      "text": " I will use just three hidden layers.",
+      "start": 1227.519,
+      "duration": 4.3
+    },
+    {
+      "text": " Okay? And everything else is the same.",
+      "start": 1231.159,
+      "duration": 3.24
+    },
+    {
+      "text": " These are my initial weights. I",
+      "start": 1233.659,
+      "duration": 4.74
+    },
+    {
+      "text": " performed the train-test split here.",
+      "start": 1237.459,
+      "duration": 3.161
+    },
+    {
+      "text": " And again, we will train it for 100",
+      "start": 1239.879,
+      "duration": 5.363
+    },
+    {
+      "text": " epochs. Okay? We trained this for 100",
+      "start": 1244.367,
+      "duration": 4.652
+    },
+    {
+      "text": " epochs. And it's done training. I have",
+      "start": 1248.097,
+      "duration": 8.118
+    },
+    {
+      "text": " stored my new weights here. You can see",
+      "start": 1255.3,
+      "duration": 4.864
+    },
+    {
+      "text": " the first change right here, as your",
+      "start": 1259.229,
+      "duration": 3.373
+    },
+    {
+      "text": " epochs increase, this time you aren't",
+      "start": 1261.668,
+      "duration": 3.439
+    },
+    {
+      "text": " stuck at 69, you can see you are going",
+      "start": 1264.173,
+      "duration": 3.505
+    },
+    {
+      "text": " down bit by bit. Eventually, you",
+      "start": 1266.744,
+      "duration": 4.348
+    },
+    {
+      "text": " reached 39. Okay? And now, if I show",
+      "start": 1270.181,
+      "duration": 4.706
+    },
+    {
+      "text": " you the old weights versus the new",
+      "start": 1273.966,
+      "duration": 3.698
+    },
+    {
+      "text": " weights. These are my old weights",
+      "start": 1276.744,
+      "duration": 3.46
+    },
+    {
+      "text": " before the model training, and these",
+      "start": 1279.265,
+      "duration": 3.169
+    },
+    {
+      "text": " are my new weights. You can see quite a",
+      "start": 1281.494,
+      "duration": 3.61
+    },
+    {
+      "text": " few changes are already visible. Here",
+      "start": 1284.164,
+      "duration": 3.535
+    },
+    {
+      "text": " it is 0.29. Here it is 64. Here it is",
+      "start": 1286.784,
+      "duration": 4.47
+    },
+    {
+      "text": " 0.50. Here it is 0.98. So you can see",
+      "start": 1290.341,
+      "duration": 4.423
+    },
+    {
+      "text": " that this is working. Okay? As soon as",
+      "start": 1293.852,
+      "duration": 4.395
+    },
+    {
+      "text": " we reduced the model complexity, we",
+      "start": 1297.341,
+      "duration": 4.287
+    },
+    {
+      "text": " kind of resolved the vanishing gradient",
+      "start": 1300.722,
+      "duration": 4.661
+    },
+    {
+      "text": " problem. So guys, we will use the same",
+      "start": 1304.477,
+      "duration": 7.547
+    },
+    {
+      "text": " code again. The only thing we are",
+      "start": 1311.078,
+      "duration": 4.147
+    },
+    {
+      "text": " changing this time is that instead of",
+      "start": 1314.303,
+      "duration": 3.901
+    },
+    {
+      "text": " using so many hidden layers, I will",
+      "start": 1317.283,
+      "duration": 3.744
+    },
+    {
+      "text": " just use three hidden layers. Okay? And",
+      "start": 1320.105,
+      "duration": 5.181
+    },
+    {
+      "text": " everything else is the same. These are",
+      "start": 1324.329,
+      "duration": 3.073
+    },
+    {
+      "text": " my initial weights. I performed the",
+      "start": 1326.467,
+      "duration": 5.027
+    },
+    {
+      "text": " train-test split here. And again, we",
+      "start": 1330.54,
+      "duration": 4.184
+    },
+    {
+      "text": " will train it for 100 epochs. Okay? We",
+      "start": 1333.846,
+      "duration": 5.738
+    },
+    {
+      "text": " trained this for 100 epochs. And it's",
+      "start": 1338.677,
+      "duration": 8.096
+    },
+    {
+      "text": " done training. I have stored my new",
+      "start": 1345.838,
+      "duration": 3.516
+    },
+    {
+      "text": " weights here. You can see the first",
+      "start": 1348.406,
+      "duration": 4.539
+    },
+    {
+      "text": " change right here, as your epochs",
+      "start": 1352.01,
+      "duration": 3.146
+    },
+    {
+      "text": " increase, this time you aren't stuck at",
+      "start": 1354.221,
+      "duration": 3.537
+    },
+    {
+      "text": " 69. You can see you are going down bit",
+      "start": 1356.823,
+      "duration": 4.236
+    },
+    {
+      "text": " by bit. Eventually, you reached 39.",
+      "start": 1360.119,
+      "duration": 4.2
+    },
+    {
+      "text": " Okay? And now, if I show you the old",
+      "start": 1363.799,
+      "duration": 4.2
+    },
+    {
+      "text": " weights versus the new weights. These",
+      "start": 1367.079,
+      "duration": 4.141
+    },
+    {
+      "text": " are my old weights before the model",
+      "start": 1370.28,
+      "duration": 3.109
+    },
+    {
+      "text": " training, and these are my new weights.",
+      "start": 1372.449,
+      "duration": 3.35
+    },
+    {
+      "text": " You can see quite a few changes are",
+      "start": 1375.119,
+      "duration": 3.046
+    },
+    {
+      "text": " already visible. Here it is 29. Here it",
+      "start": 1377.223,
+      "duration": 4.536
+    },
+    {
+      "text": " is 64. Here it is 50. Here it is 98. So",
+      "start": 1380.847,
+      "duration": 5.046
+    },
+    {
+      "text": " you can see that this is working. Okay?",
+      "start": 1384.979,
+      "duration": 4.42
+    },
+    {
+      "text": " As soon as we reduced the model",
+      "start": 1389.459,
+      "duration": 3.284
+    },
+    {
+      "text": " complexity, we kind of resolved the",
+      "start": 1391.816,
+      "duration": 3.579
+    },
+    {
+      "text": " vanishing gradient problem. The second",
+      "start": 1394.469,
+      "duration": 5.589
+    },
+    {
+      "text": " technique to resolve the vanishing",
+      "start": 1399.131,
+      "duration": 3.513
+    },
+    {
+      "text": " gradient problem is to use a different",
+      "start": 1401.718,
+      "duration": 3.809
+    },
+    {
+      "text": " activation function. Okay? Now, among",
+      "start": 1404.6,
+      "duration": 4.199
+    },
+    {
+      "text": " different activation functions, you can",
+      "start": 1407.865,
+      "duration": 3.574
+    },
+    {
+      "text": " use ReLU. ReLU is a very famous",
+      "start": 1410.505,
+      "duration": 2.926
+    },
+    {
+      "text": " activation function. We haven't",
+      "start": 1412.483,
+      "duration": 2.686
+    },
+    {
+      "text": " discussed all the activation functions",
+      "start": 1414.223,
+      "duration": 3.055
+    },
+    {
+      "text": " yet. We will do that after a couple of",
+      "start": 1416.332,
+      "duration": 3.359
+    },
+    {
+      "text": " videos. So, what happens with ReLU?",
+      "start": 1418.75,
+      "duration": 2.61
+    },
+    {
+      "text": " This is what the ReLU function is. The",
+      "start": 1420.58,
+      "duration": 2.637
+    },
+    {
+      "text": " formula for ReLU is max (0, z), and its",
+      "start": 1422.323,
+      "duration": 5.136
+    },
+    {
+      "text": " graph looks like this. Uh. If it is",
+      "start": 1426.565,
+      "duration": 7.415
+    },
+    {
+      "text": " negative, it will be zero, and if it is",
+      "start": 1433.045,
+      "duration": 3.542
+    },
+    {
+      "text": " positive, the value of z is your output",
+      "start": 1435.652,
+      "duration": 3.541
+    },
+    {
+      "text": ". Okay? So, its specialty is basically",
+      "start": 1438.193,
+      "duration": 5.307
+    },
+    {
+      "text": " that it takes your input space, which",
+      "start": 1442.577,
+      "duration": 3.839
+    },
+    {
+      "text": " could be in any range, and brings it",
+      "start": 1445.492,
+      "duration": 3.762
+    },
+    {
+      "text": " into this range. So it is not exactly",
+      "start": 1448.331,
+      "duration": 3.891
+    },
+    {
+      "text": " squashing it. Like what sigmoid does?",
+      "start": 1451.283,
+      "duration": 3.216
+    },
+    {
+      "text": " It brings it between zero and one. At",
+      "start": 1453.759,
+      "duration": 3.089
+    },
+    {
+      "text": " least this one is...It does not squash",
+      "start": 1455.893,
+      "duration": 2.698
+    },
+    {
+      "text": " in the positive direction. It brings",
+      "start": 1457.636,
+      "duration": 2.867
+    },
+    {
+      "text": " the negative to zero. That is the point",
+      "start": 1459.555,
+      "duration": 3.052
+    },
+    {
+      "text": ". Now, the good thing is that its",
+      "start": 1461.607,
+      "duration": 4.1
+    },
+    {
+      "text": " derivative is either zero or one. If it",
+      "start": 1464.795,
+      "duration": 4.387
+    },
+    {
+      "text": " is negative, it will be zero. If it is",
+      "start": 1468.219,
+      "duration": 2.524
+    },
+    {
+      "text": " positive, it will be one. Okay? Because",
+      "start": 1469.776,
+      "duration": 3.126
+    },
+    {
+      "text": " of that, when you multiply a lot of",
+      "start": 1471.983,
+      "duration": 3.818
+    },
+    {
+      "text": " ones, you can see it remains one. So,",
+      "start": 1474.881,
+      "duration": 4.071
+    },
+    {
+      "text": " the number does not become small here,",
+      "start": 1478.017,
+      "duration": 3.451
+    },
+    {
+      "text": " and the vanishing gradient problem does",
+      "start": 1480.533,
+      "duration": 3.516
+    },
+    {
+      "text": " not occur. Okay? So ReLU is one example",
+      "start": 1483.113,
+      "duration": 3.714
+    },
+    {
+      "text": " that you can use to avoid it to some",
+      "start": 1485.884,
+      "duration": 3.042
+    },
+    {
+      "text": " extent. But it also has a problem",
+      "start": 1487.982,
+      "duration": 3.47
+    },
+    {
+      "text": " called \"dying ReLU.\" What does dying",
+      "start": 1490.519,
+      "duration": 3.705
+    },
+    {
+      "text": " ReLU mean? That if the activation",
+      "start": 1493.276,
+      "duration": 3.779
+    },
+    {
+      "text": " becomes zero, then the derivative",
+      "start": 1496.119,
+      "duration": 3.094
+    },
+    {
+      "text": " becomes zero, and because the",
+      "start": 1498.277,
+      "duration": 2.841
+    },
+    {
+      "text": " derivative is zero, the weights do not",
+      "start": 1500.181,
+      "duration": 3.412
+    },
+    {
+      "text": " get updated. Okay? So, this is one",
+      "start": 1502.657,
+      "duration": 4.162
+    },
+    {
+      "text": " problem. To solve this, something else",
+      "start": 1505.869,
+      "duration": 3.36
+    },
+    {
+      "text": " came along, Leaky ReLU. We will study",
+      "start": 1508.29,
+      "duration": 3.277
+    },
+    {
+      "text": " all this in the next video or maybe the",
+      "start": 1510.616,
+      "duration": 2.945
+    },
+    {
+      "text": " one after that. But you get the idea of",
+      "start": 1512.611,
+      "duration": 3.15
+    },
+    {
+      "text": " why ReLU is able to work? Because it is",
+      "start": 1514.813,
+      "duration": 3.047
+    },
+    {
+      "text": " not squashing it. Like how your sigmoid",
+      "start": 1516.907,
+      "duration": 3.419
+    },
+    {
+      "text": " squashes it. Okay? This is the biggest",
+      "start": 1519.399,
+      "duration": 3.423
+    },
+    {
+      "text": " reason you would use ReLU. Okay? Now I",
+      "start": 1521.874,
+      "duration": 3.427
+    },
+    {
+      "text": " will show you how to implement ReLU in",
+      "start": 1524.365,
+      "duration": 3.447
+    },
+    {
+      "text": " the code once. So guys, you can see we",
+      "start": 1526.877,
+      "duration": 3.356
+    },
+    {
+      "text": " are using the same dataset again. But",
+      "start": 1529.285,
+      "duration": 3.08
+    },
+    {
+      "text": " this time we are using a different",
+      "start": 1531.42,
+      "duration": 2.873
+    },
+    {
+      "text": " model. The model is not different. The",
+      "start": 1533.348,
+      "duration": 2.598
+    },
+    {
+      "text": " architecture is still the same. We have",
+      "start": 1534.989,
+      "duration": 2.902
+    },
+    {
+      "text": " just used ReLU in all the activation",
+      "start": 1536.941,
+      "duration": 2.806
+    },
+    {
+      "text": " functions. Except for the last layer.",
+      "start": 1538.797,
+      "duration": 3.563
+    },
+    {
+      "text": " You have to use sigmoid there. Okay?",
+      "start": 1541.6,
+      "duration": 3.499
+    },
+    {
+      "text": " Let's now compile the model. Storing",
+      "start": 1544.28,
+      "duration": 4.114
+    },
+    {
+      "text": " the old weights. Performing the",
+      "start": 1547.459,
+      "duration": 2.968
+    },
+    {
+      "text": " train-test split. And we are fitting",
+      "start": 1549.473,
+      "duration": 3.233
+    },
+    {
+      "text": " the model. Initially, our model trained",
+      "start": 1551.771,
+      "duration": 5.573
+    },
+    {
+      "text": " over just one epoch. We extracted the",
+      "start": 1556.443,
+      "duration": 4.371
+    },
+    {
+      "text": " new weights. Here is my learning rate.",
+      "start": 1559.877,
+      "duration": 3.242
+    },
+    {
+      "text": " I calculated the gradient and percent",
+      "start": 1562.319,
+      "duration": 2.578
+    },
+    {
+      "text": " change. Look, here is my gradient. You",
+      "start": 1563.94,
+      "duration": 3.524
+    },
+    {
+      "text": " can see the gradient has positive",
+      "start": 1566.506,
+      "duration": 2.378
+    },
+    {
+      "text": " values. In some places, it is negative.",
+      "start": 1567.926,
+      "duration": 3.193
+    },
+    {
+      "text": " And look at my percentage change.",
+      "start": 1570.339,
+      "duration": 2.64
+    },
+    {
+      "text": " Already in some places, there is a 5%",
+      "start": 1572.229,
+      "duration": 2.883
+    },
+    {
+      "text": "change. In some places, there is a 12%",
+      "start": 1574.112,
+      "duration": 2.883
+    },
+    {
+      "text": "change. In some places, there is a 26%",
+      "start": 1575.995,
+      "duration": 3.34
+    },
+    {
+      "text": "change. There is a 1%change. So you can",
+      "start": 1578.335,
+      "duration": 4.111
+    },
+    {
+      "text": " see that work is being done using the",
+      "start": 1581.517,
+      "duration": 3.616
+    },
+    {
+      "text": " values. If you take the old weights and",
+      "start": 1584.204,
+      "duration": 4.285
+    },
+    {
+      "text": " the new weights here, you would find",
+      "start": 1587.548,
+      "duration": 3.125
+    },
+    {
+      "text": " that in some places you would see a",
+      "start": 1589.732,
+      "duration": 3.066
+    },
+    {
+      "text": " significant change. Okay? So let's do",
+      "start": 1591.857,
+      "duration": 4.742
+    },
+    {
+      "text": " one thing. Let's run this entire code",
+      "start": 1595.666,
+      "duration": 4.615
+    },
+    {
+      "text": " again for a few more epochs. Okay? Here",
+      "start": 1599.386,
+      "duration": 5.833
+    },
+    {
+      "text": ", let's train this model for 100 epochs",
+      "start": 1604.219,
+      "duration": 4.51
+    },
+    {
+      "text": ". Let's see what happens. Logically,",
+      "start": 1607.729,
+      "duration": 4.633
+    },
+    {
+      "text": " the loss should keep reducing. Look, it",
+      "start": 1611.411,
+      "duration": 2.853
+    },
+    {
+      "text": " is happening. In fact, it is happening",
+      "start": 1613.301,
+      "duration": 2.464
+    },
+    {
+      "text": " much more this time. You can see your",
+      "start": 1614.803,
+      "duration": 2.755
+    },
+    {
+      "text": " loss has gone down to 10 to the power",
+      "start": 1616.61,
+      "duration": 2.941
+    },
+    {
+      "text": " of -4. Which is like a lot less. Okay?",
+      "start": 1618.604,
+      "duration": 4.195
+    },
+    {
+      "text": " These are my new weights. The learning",
+      "start": 1622.039,
+      "duration": 3.982
+    },
+    {
+      "text": " rate will remain the same. There is no",
+      "start": 1625.066,
+      "duration": 2.857
+    },
+    {
+      "text": " point in extracting that. I will show",
+      "start": 1626.965,
+      "duration": 2.716
+    },
+    {
+      "text": " you directly the difference between the",
+      "start": 1628.725,
+      "duration": 2.708
+    },
+    {
+      "text": " new weights and the old weights. See,",
+      "start": 1630.477,
+      "duration": 2.881
+    },
+    {
+      "text": " here are your old weights and here are",
+      "start": 1632.408,
+      "duration": 2.894
+    },
+    {
+      "text": " your new weights. And you would see",
+      "start": 1634.352,
+      "duration": 2.998
+    },
+    {
+      "text": " many changes have occurred. Look, quite",
+      "start": 1636.403,
+      "duration": 3.026
+    },
+    {
+      "text": " a lot of changes have come through. And",
+      "start": 1638.468,
+      "duration": 2.797
+    },
+    {
+      "text": " this signifies that the vanishing",
+      "start": 1640.321,
+      "duration": 2.834
+    },
+    {
+      "text": " gradient problem is not occurring here.",
+      "start": 1642.211,
+      "duration": 3.168
+    },
+    {
+      "text": " Okay? By using ReLU, we solved that",
+      "start": 1644.619,
+      "duration": 5.472
+    },
+    {
+      "text": " problem. The third technique is proper",
+      "start": 1649.196,
+      "duration": 8.315
+    },
+    {
+      "text": " weight initialization. So right now, we",
+      "start": 1656.642,
+      "duration": 6.029
+    },
+    {
+      "text": " were initializing weights randomly.",
+      "start": 1661.732,
+      "duration": 3.128
+    },
+    {
+      "text": " Moving forward, in a video or two, we",
+      "start": 1664.08,
+      "duration": 2.825
+    },
+    {
+      "text": " will see. There are certain weight",
+      "start": 1665.954,
+      "duration": 3.649
+    },
+    {
+      "text": " initialization techniques like Glorot",
+      "start": 1668.689,
+      "duration": 4.183
+    },
+    {
+      "text": " or Xavier. We will look at all of these",
+      "start": 1671.958,
+      "duration": 3.729
+    },
+    {
+      "text": ". And when you properly initialize your",
+      "start": 1674.687,
+      "duration": 3.506
+    },
+    {
+      "text": " weights, what happens then? You are",
+      "start": 1677.254,
+      "duration": 3.356
+    },
+    {
+      "text": " able to solve your vanishing gradient",
+      "start": 1679.678,
+      "duration": 3.495
+    },
+    {
+      "text": " problem. Okay? Since we have to study",
+      "start": 1682.24,
+      "duration": 3.659
+    },
+    {
+      "text": " this topic in the future, we cannot",
+      "start": 1684.945,
+      "duration": 2.623
+    },
+    {
+      "text": " discuss it further right now. The",
+      "start": 1686.614,
+      "duration": 3.791
+    },
+    {
+      "text": " fourth thing that one can use is batch",
+      "start": 1689.474,
+      "duration": 3.613
+    },
+    {
+      "text": " normalization. So, batch normalization",
+      "start": 1692.156,
+      "duration": 4.601
+    },
+    {
+      "text": " is a layer. It is a type of layer. Now,",
+      "start": 1695.822,
+      "duration": 3.879
+    },
+    {
+      "text": " exactly what is happening inside it, we",
+      "start": 1698.751,
+      "duration": 2.963
+    },
+    {
+      "text": " will discuss. About batch normalization",
+      "start": 1700.764,
+      "duration": 2.989
+    },
+    {
+      "text": ". There will be a proper video in this",
+      "start": 1702.753,
+      "duration": 2.488
+    },
+    {
+      "text": " series. It is a new technique. But with",
+      "start": 1704.279,
+      "duration": 3.32
+    },
+    {
+      "text": " its arrival, we are able to tackle the",
+      "start": 1706.647,
+      "duration": 2.803
+    },
+    {
+      "text": " vanishing gradient problem. Okay? And",
+      "start": 1708.498,
+      "duration": 3.949
+    },
+    {
+      "text": " the last one is using a residual",
+      "start": 1711.543,
+      "duration": 4.072
+    },
+    {
+      "text": " network. Residual network. So it is a",
+      "start": 1714.711,
+      "duration": 6.402
+    },
+    {
+      "text": " special building block. This is a type",
+      "start": 1720.182,
+      "duration": 4.849
+    },
+    {
+      "text": " of block that you can use in your",
+      "start": 1724.107,
+      "duration": 3.481
+    },
+    {
+      "text": " artificial neural network. And what is",
+      "start": 1726.663,
+      "duration": 4.834
+    },
+    {
+      "text": " its specialty? We will discuss that",
+      "start": 1730.568,
+      "duration": 3.178
+    },
+    {
+      "text": " later again. In the future, when we",
+      "start": 1732.799,
+      "duration": 3.328
+    },
+    {
+      "text": " study CNNs, there will be a topic",
+      "start": 1735.194,
+      "duration": 3.231
+    },
+    {
+      "text": " called ResNet. ResNet is built using a",
+      "start": 1737.492,
+      "duration": 4.405
+    },
+    {
+      "text": " residual block. Okay? So, there we will",
+      "start": 1740.971,
+      "duration": 3.916
+    },
+    {
+      "text": " understand what it is and how you can",
+      "start": 1743.952,
+      "duration": 3.41
+    },
+    {
+      "text": " avoid the vanishing gradient problem by",
+      "start": 1746.428,
+      "duration": 3.54
+    },
+    {
+      "text": " using it. Okay? So, these are the five",
+      "start": 1749.033,
+      "duration": 3.094
+    },
+    {
+      "text": " techniques. Let me summarize them once.",
+      "start": 1751.164,
+      "duration": 3.058
+    },
+    {
+      "text": " First is that you reduce the complexity",
+      "start": 1754.0,
+      "duration": 2.89
+    },
+    {
+      "text": " of your model if possible. Second is to",
+      "start": 1755.938,
+      "duration": 3.968
+    },
+    {
+      "text": " use activation functions that are not",
+      "start": 1758.971,
+      "duration": 3.427
+    },
+    {
+      "text": " squashing. When there is no squashing",
+      "start": 1761.464,
+      "duration": 3.036
+    },
+    {
+      "text": " of your input space to output space.",
+      "start": 1763.547,
+      "duration": 2.692
+    },
+    {
+      "text": " Okay? Such as ReLU. Third is proper",
+      "start": 1765.34,
+      "duration": 4.572
+    },
+    {
+      "text": " weight initialization. Fourth is batch",
+      "start": 1768.964,
+      "duration": 3.315
+    },
+    {
+      "text": " normalization and the fifth one is",
+      "start": 1771.343,
+      "duration": 3.176
+    },
+    {
+      "text": " using residual networks. Okay? So I",
+      "start": 1773.583,
+      "duration": 3.764
+    },
+    {
+      "text": " guess you have understood everything",
+      "start": 1776.399,
+      "duration": 2.878
+    },
+    {
+      "text": " about the vanishing gradient problem.",
+      "start": 1778.329,
+      "duration": 2.931
+    },
+    {
+      "text": " Before leaving, I would like to give",
+      "start": 1780.499,
+      "duration": 4.214
+    },
+    {
+      "text": " you a brief introduction about the",
+      "start": 1783.802,
+      "duration": 4.036
+    },
+    {
+      "text": " exploding gradient problem. It is just",
+      "start": 1786.928,
+      "duration": 5.663
+    },
+    {
+      "text": " like the vanishing gradient problem.",
+      "start": 1791.693,
+      "duration": 4.646
+    },
+    {
+      "text": " But it is seen more in RNNs, in",
+      "start": 1795.559,
+      "duration": 3.351
+    },
+    {
+      "text": " recurrent neural networks. Okay? Its",
+      "start": 1797.986,
+      "duration": 4.185
+    },
+    {
+      "text": " principle is exactly the opposite, that",
+      "start": 1801.222,
+      "duration": 2.988
+    },
+    {
+      "text": " if you have some numbers that are",
+      "start": 1803.261,
+      "duration": 2.681
+    },
+    {
+      "text": " greater than one. When you multiply",
+      "start": 1804.993,
+      "duration": 3.914
+    },
+    {
+      "text": " them, you will get a number that is",
+      "start": 1807.968,
+      "duration": 3.118
+    },
+    {
+      "text": " larger than all of them. Okay? So",
+      "start": 1810.146,
+      "duration": 3.503
+    },
+    {
+      "text": " imagine when you are calculating your",
+      "start": 1812.734,
+      "duration": 4.147
+    },
+    {
+      "text": " derivatives, the derivatives are all",
+      "start": 1815.966,
+      "duration": 4.062
+    },
+    {
+      "text": " greater than one. When these are",
+      "start": 1819.113,
+      "duration": 4.683
+    },
+    {
+      "text": " greater than one, what will happen is",
+      "start": 1822.877,
+      "duration": 4.004
+    },
+    {
+      "text": " that your derivative will be a very big",
+      "start": 1825.963,
+      "duration": 4.166
+    },
+    {
+      "text": " number. It would be a very big number.",
+      "start": 1829.21,
+      "duration": 4.149
+    },
+    {
+      "text": " So what will happen is, when you go to",
+      "start": 1833.0,
+      "duration": 3.2
+    },
+    {
+      "text": " update the weights, When you go to",
+      "start": 1835.258,
+      "duration": 4.921
+    },
+    {
+      "text": " update the weights, if this is a very",
+      "start": 1839.252,
+      "duration": 3.697
+    },
+    {
+      "text": " big number, let's say, if this is 1000",
+      "start": 1842.022,
+      "duration": 3.77
+    },
+    {
+      "text": " and this is let's say one, so if your",
+      "start": 1844.865,
+      "duration": 3.697
+    },
+    {
+      "text": " weight was one in the beginning, it",
+      "start": 1847.635,
+      "duration": 3.552
+    },
+    {
+      "text": " will become 1-1000, it will directly",
+      "start": 1850.259,
+      "duration": 3.625
+    },
+    {
+      "text": " become 999. Okay, then in the next step",
+      "start": 1852.957,
+      "duration": 4.208
+    },
+    {
+      "text": ", it might increase further, suppose it",
+      "start": 1856.165,
+      "duration": 3.985
+    },
+    {
+      "text": " becomes 10000. So basically, the weight",
+      "start": 1859.227,
+      "duration": 3.862
+    },
+    {
+      "text": " will become arbitrarily large and then",
+      "start": 1862.155,
+      "duration": 3.519
+    },
+    {
+      "text": " it will become so big that eventually",
+      "start": 1864.74,
+      "duration": 3.453
+    },
+    {
+      "text": " your model will start behaving randomly",
+      "start": 1867.259,
+      "duration": 3.585
+    },
+    {
+      "text": " and your loss will not reduce. Okay? So",
+      "start": 1869.91,
+      "duration": 3.91
+    },
+    {
+      "text": " this is called the exploding gradient",
+      "start": 1872.87,
+      "duration": 2.873
+    },
+    {
+      "text": " problem. It is exactly the opposite.",
+      "start": 1874.794,
+      "duration": 2.686
+    },
+    {
+      "text": " When your derivative values are greater",
+      "start": 1876.58,
+      "duration": 3.54
+    },
+    {
+      "text": " than one, and you multiply many",
+      "start": 1879.185,
+      "duration": 3.02
+    },
+    {
+      "text": " derivatives together, your derivative",
+      "start": 1881.27,
+      "duration": 3.411
+    },
+    {
+      "text": " becomes a huge number, the weight",
+      "start": 1883.746,
+      "duration": 3.15
+    },
+    {
+      "text": " update becomes quite random, and your",
+      "start": 1885.961,
+      "duration": 3.41
+    },
+    {
+      "text": " model stops training. We will cover",
+      "start": 1888.436,
+      "duration": 2.988
+    },
+    {
+      "text": " this problem during the RNN section.",
+      "start": 1890.464,
+      "duration": 2.44
+    },
+    {
+      "text": " There, I will show you in a detailed",
+      "start": 1893.14,
+      "duration": 3.337
+    },
+    {
+      "text": " video what the exploding gradient",
+      "start": 1895.542,
+      "duration": 3.143
+    },
+    {
+      "text": " problem is and how we can avoid it",
+      "start": 1897.75,
+      "duration": 3.207
+    },
+    {
+      "text": " using techniques like gradient clipping",
+      "start": 1900.022,
+      "duration": 3.533
+    },
+    {
+      "text": ". But since it was a related topic, I",
+      "start": 1902.555,
+      "duration": 4.272
+    },
+    {
+      "text": " gave a brief introduction. Okay? So I",
+      "start": 1905.883,
+      "duration": 3.544
+    },
+    {
+      "text": " hope this entire thing is clear to you.",
+      "start": 1908.478,
+      "duration": 3.021
+    },
+    {
+      "text": " So that was the video, guys. I hope you",
+      "start": 1910.879,
+      "duration": 3.722
+    },
+    {
+      "text": " understood. I will share all those",
+      "start": 1913.679,
+      "duration": 3.131
+    },
+    {
+      "text": " notebooks with you. If you run the code",
+      "start": 1915.86,
+      "duration": 3.591
+    },
+    {
+      "text": " yourself once, you will get a better",
+      "start": 1918.497,
+      "duration": 2.652
+    },
+    {
+      "text": " intuition of what is happening. Okay?",
+      "start": 1920.195,
+      "duration": 3.624
+    },
+    {
+      "text": " If you liked the video, please like it,",
+      "start": 1923.259,
+      "duration": 2.456
+    },
+    {
+      "text": " and if you haven't subscribed to the",
+      "start": 1924.753,
+      "duration": 2.345
+    },
+    {
+      "text": " channel, please do subscribe. Okay? I",
+      "start": 1926.135,
+      "duration": 3.778
+    },
+    {
+      "text": " will keep posting more videos in the",
+      "start": 1928.967,
+      "duration": 2.944
+    },
+    {
+      "text": " deep learning series. Okay? That's it",
+      "start": 1930.965,
+      "duration": 3.255
+    },
+    {
+      "text": " from my side. Bye.",
+      "start": 1933.276,
+      "duration": 2.502
+    }
+  ]
+}

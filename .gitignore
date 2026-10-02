@@ -1,0 +1,11 @@
+﻿# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*.class
+*.ipynb_checkpoints
+
+# OS / Editor temporary files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,2475 @@
+{
+  "id": "0K4J_PTgysc",
+  "index": 49,
+  "title": "Cat Vs Dog Image Classification Project | Deep Learning Project | CNN Project",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and you are  welcome to CampusX. So in this video,  we will continue our Deep Learning  playlist. So far, we have covered many  things in the Deep Learning playlist.  First, we covered ANN. Then we started  CNN and we went deep into CNN, covering  topics like backpropagation as well. So  I thought now is a good time to build a  small project. Where we can use  everything we have learned so far. So  we are going to make a small project in  this video. We are going to build a Dog  versus Cat classifier. Okay? We are  going to build a CNN model that, if you  give it a photo of a dog or a cat, can  classify and tell you if there is a dog  or a cat in that photo. Okay? So for  this entire video, I will write all the  code from scratch for you. We will  create our own CNN architecture. In  fact, we will also have a discussion on  how to improve the model if its  performance is not good. And in the end , I will also show you how to make  predictions on new unseen data. Okay?  So it will be quite interesting because  whatever theory you have been studying  so far, you will see it practically. So  I would recommend that you code along  with me. That would give you more  knowledge. Okay? So let's start the  video. So guys, this is the dataset we  are going to use. I found this Dogs vs.  Cats dataset on Kaggle. It is a very  simple dataset. There are two folders  here. Test and train, and all the  images are inside them. Okay? In fact,  I had already downloaded this dataset.  So if you download it, you will see two  folders like this: test and train. And  inside both folders, you will see two  more folders. Cats and Dogs. Okay? If  you go into Cats, you would see all the  cat photos are organized. And if you go  into Dogs, you will see the same thing  there too. You will see all the dog  photos in one place. Okay? So we are  going to use this dataset. I have put  its link in the video description. Now  what we need to do is build an image  classification model where if we input  a new image, it will classify whether  the entity in that given input image is  a dog or a cat. Okay? Now we are going  to use Keras for this entire CNN  classification, and we won't be using  our own installation; instead, we will  use Google Colab. Because it’s  possible that many of you don't have  machines with a GPU, I think working in  Colab is the best option. Right? So,  what you need to do is search for  Google Colab. Here, I will create a new  notebook. So, this is the new notebook.  Let’s name it Cats vs Dogs  Classification. Right? The first thing  we need to do is get this dataset from  here to over there. So, what will you  need to do for that? First, you will  need to go to your Kaggle profile. Uh.  Go to your account there and scroll  down to click on \"Create New API Token. \" This will download a file for you.  You have to upload that file named  kaggle.json to Google Colab. See, it's  uploaded. I'll just rename it. Having  that 'one' in it might cause issues.  Let's keep it as kaggle.json. Now, what  do you need to do? Come back. To your  dataset and. You need a command from  there, which you will find right here.  Copy API command. Right? And what you  will do is. Paste that API command here  with an exclamation mark. Right? After  that, what do you need to do? Run two  more commands. In fact, you need to run  two commands before this. Here are  those two commands. Right? So first, I  will run this, and as soon as I run it,  you will see the data get pulled from  Kaggle into Google Colab. You can see  the data is downloading. The data is  basically being pulled from the Kaggle  server and coming to the Google Colab  server. You could have done this  indirectly as well. You could first  download it from Kaggle to your machine . Then upload it from your machine to  Google Colab. And you know, because the  dataset is so large. It would take a  lot of time. This is an easier way to  do this. Right? You just need to run  these two commands. And you can see the  command has run. If I refresh it once,  you can see that our data has arrived.  The only problem is that the data we  received is in a zip format. So, we  need to unzip this. Again, for that,  you just need to write this code. Now,  what will this code do? It will unzip  this file and display all its contents  right here. And you can see, now if we  refresh. Here is our test and here is  our train. Alright? We have received  both of these folders. Now what do we  need to do? We need to build a CNN  model and feed this data into it.  Alright? And after that, we will  calculate the accuracy and that's it.  Our model will be built. So first of  all, we will do one thing, we will  import all the important libraries.  Such as, import tensorflow as tf, from  tensorflow import keras, from keras  import Sequential, and from keras  import (in fact) from keras.layers,  let's import the Dense layer, Conv2D  layer, MaxPooling2D, Flatten. We will  need all these layers, so we are  running this and we have imported it.  Alright? Now see, what do we have to do ? We have to take all these images  inside the train folder and feed them  to our model. For this, you can write  custom code using the OS module to go  inside these folders. Then pick up the  names of all the files one by one and  their labels, and then you can send the  entire data to the CNN model. But the  problem is that because there are so  many images, it becomes difficult to  process them all at once because the  RAM runs out. So here, Keras uses a  concept called generators. I have made  a video on this topic on my channel  where I have explained very well what  generators are. So, what generators do  is divide your entire data into batches . So, let's say if you have 10,000  images, you don't work on all 10,000  images at once, but divide that data  into small batches, and at one time  only a small batch loads into RAM, and  once its work is done, it is removed.  Then the next batch loads. So  generators are very useful for  processing large amounts of data. So,  what will we do? We will work with a  generator that Keras provides us. And  the name of this generator is  image_dataset_from_directory. Okay? So,  I will also show you how to create two  generators. One for training data and  one for validation data. And guys, this  is the documentation of this generator  function. So, what do we need to do? We  just need to call this function and  provide some inputs. Such as specifying  the directory. Directory means  specifying the path. Specify what the  labels will be. Specify the label mode  and the batch size. Specify what the  image size will be. You only need to  specify these things. Right? So we  would write keras dot utils dot image  data, in fact, let's copy this. Copy.  Okay? Now here we will provide our  inputs one by one. So, first will be  directory. In directory, you will  provide the train path, so I am copying  it. Copy path. This. After that, in  labels, you will provide inferred. In  label underscore mode, you will provide  integer. This will assign zero to cats.  One will be assigned to dogs. For batch  size, we can give 32. And for image  size, we can give 256, 256. So all our  images will be reshaped to 256 by 256  by 3. Right? Because our CNN model  expects all images to be the same size.  But unfortunately, if you look at your  data, you can see these images are of  different sizes. So this could be a  problem. That's why we are giving them  the same size. This will give us a  dataset object. Let's call it train  dataset. And then we will do the same  thing for validation data. So let's  call it validation. And here, what will  we just do? Copy the test path. And  paste it here. Right? We will keep  everything else exactly the same and  you can run it. It's not utils. It is  utils. Sorry about that. Now let's run  it. And you can see our train dataset  has 20,000 files belonging to two  classes and the test one has 5,000  files belonging to two classes. Okay?  Now we just need to do one small thing;  the images we stored are currently in  numpy array format. Okay? But the  problem is that each value of the numpy  array is from 0 to 255. We need to make  it from 0 to 1. So basically, we need  to normalize it. Right? So to normalize , we will have to write a small piece  of code. And here is that small piece  of code. Basically, we created a  function called process that receives  an image and a label. And on the image,  we are simply performing this operation  of dividing it by 255. Okay? And we are  returning the image and label back. And  we used the map function. So what will  the map function do? Every time, it  will take an image and its label from  train_ds and send it to this function.  And this function will transform it and  return it, and we will store it back in  train_ds and validation_ds. So  basically, the reason we needed this  whole operation is that we want all our  pixel values to be between zero and one . Okay? Otherwise, your results won't  be good. Let's run this. And you can  see our data set is now ready. Okay?  Now, what do we have to do? We have to  build our CNN model. And we will pass  this data into that CNN model. Okay? So , I will write create CNN model. So, we  will build an architecture where there  would be three convolution layers. In  the first layer, there would be 32  filters. In the second layer, there  would be 64 filters. In the third layer , there would be 128 filters. Okay? So,  let's do that. model equals Sequential  class object, model dot add. Conv2D. 32  filters. Kernel size, as in filter size , we are taking as. 3 by 3. We are  taking padding as valid. For now,  activation remains relu. And the input  shape will be 256. 256. 3, okay? This  is our first convolution layer. Right  after the convolution layer, we will  add a pooling layer. So we would write  model dot add. MaxPooling. 2D. We will  give the pool size value as 2 by 2. We  will give the strides value as 2 and  the padding here will also be valid,  okay? Now, what will we do? We will  just repeat this whole thing. Copy,  paste, paste. Okay? In the second one,  there would be 64 filters. There is no  need to provide this input shape. It  will infer it automatically. And here  there will be 128 filters. Again, no  need to provide this. It will infer  automatically. Everything else is the  same. Now, after this, we will add  model dot add Flatten layer. And after  that, we are adding three fully  connected layers. model dot add Dense  layer with 128 neurons and activation  equals relu, model dot add Dense 64  neurons activation equals relu, and  lastly model dot add. This is a dense  output, so the activation will be  sigmoid. And we have run this. This is  our model. Okay? Let's take a look at  the model summary once. And you can  pause the video here to see if the  shape is flowing correctly. And at the  end, we have this 30/30/128 tensor  which we flattened. And in total, there  are around 14.8 million parameters in  this entire CNN. Okay? Now, what do we  need to do? Compile the model and  execute it. So we would write  model.compile, let's take optimizer as  Adam for starters. Loss Binary  cross-entropy because it's a binary  classification problem. And in metrics,  we will take accuracy. Okay? And now we  will run the model. So we would write  model.fit, here you will pass your  training data stored in train_ds.  Number of epochs, let's keep it equal  to 10. And you provide a validation set . So you would write validation_data  equals the validation_ds you created  earlier. Okay? And that's it guys. This  is the code. Let's do one more thing.  Let's store whatever results we get in  history. So that we can plot graphs  later and check. Let's run this code.  You can see that because the batch size  is 32, we have 625 batches. So 625*32  is exactly 20,000, which is our total  number of images. Okay? Let's let this  model train and see how the result  looks. Okay guys, I guess you might be  noticing, perhaps even on your own  machine if you are coding along, that  this training is happening very slowly.  The reason for that is I forgot to tell  you one thing at the beginning: what  you need to do. As soon as you open  Google Colab, you have to go to Runtime , click on Change runtime, and here you  need to use the GPU hardware  accelerator. If you don't use this, you  will be training on a normal CPU, and  it will be very, very slow. So you need  to change this. But the problem with  changing it is that you will have to  re-execute all of the code. Okay? So I  will just Make sure that the GPU is  here. It is a GPU. Let's run this  entire code again once. Okay? Sorry  about this. And guys, now you can see  that the training is happening very  fast. All right? So this is what you  had to do. Sorry, I forgot to mention  it. And the training is done. Our 10  epochs of training are complete. So  what did I do, guys? Just to see how  the training result is. I have plotted  some graphs. I will show them to you.  So I plotted the training accuracy and  validation accuracy graphs. And you can  see this is the graph. It is clearly  visible that as the epoch increases,  the training accuracy is improving. But  if you look at the validation accuracy,  it is mostly fluctuating between 75 and  80. And you can see there is this gap,  and this gap generally indicates that  overfitting is happening. Just to  conclude, here we have also plotted the  validation loss and training loss. And  you can see that as the epoch increases , the training loss is reducing. But  the validation loss is gradually  increasing further. So again, this gap  is increasing, which is a clear  indication that overfitting is  happening here. Meaning our model is  giving very good results on the  training data. It is not giving such  good results on the test data. So we  will have to find a workaround. So  these are some ways to reduce  overfitting. The first one is that you  show your model more data. Right? Which  is not possible for us. Because we have  used all our data. Second, there is a  technique called data augmentation.  Where you use your existing data to  create more data. So we will not study  this right now. This is our next  video's topic. We will discuss this in  the next video. Apart from this, there  are your older techniques. You can  apply L1 L2 regularization. You can  apply a dropout layer. Batch  normalization also provides  regularization at some level. You can  reduce the complexity of your model. So  these are some of the steps. I will  show you two things in this video. I  will show you how to apply dropout and  batch normalization. Your job is to  make sure that overfitting is reduced  using some other methods. So to apply  batch normalization, what will we do?  First of all, we will go to the layers  here and add a batch normalization  layer, and we will also add dropout.  And now we just have to go and make  changes to our model. So what we will  do is, we will add batch normalization  to our convolution layer like this.  Copy Here and here as well, batch  normalization improves the training a  bit. You can try out a slightly higher  learning rate if you want. And here I  will add dropouts, point one is enough  I guess, same for this and I'll rerun  this code. Batch normalization is not  defined, it’s because we didn't run  it after adding it here. We ran it, ran  this model cell again, ran the model  summary, re-ran compile, and let's  train the model again. Let's see if  there is some improvement or not. And  we are done with the training, and you  can see that there is some improvement.  We have reached 80%accuracy. So I  plotted it again. This is the old graph , and when I plotted it again, this is  the graph. And you can see that we have  been able to reduce this gap a little  bit. Okay? I did the same for the loss  graph. This is the old graph and this  came after plotting it again. You can  see the gap that was there in training  and validation, we have been able to  reduce it a little. Okay? So, in these  techniques, I showed you by applying  dropout and batch norm. Now it is your  job to somehow improve the performance  further. To increase the validation  accuracy further. Okay? And if you are  able to increase it, then write in the  comments what you did to improve your  validation accuracy. So that other  people can also understand. Okay? Now  let's do one last thing. I will show  you by making a prediction on new  unseen data. On a completely new image.  So guys, to make a prediction, I  downloaded two images from Google. One  of a cat and one of a dog. Okay? I will  show you the prediction on both of  these. So I have already written the  code. So first of all, I imported  OpenCV and there I called CV2. Called  the imread function and imported the  dog photo. And put it into this  variable. Okay? Inside test_image,  there is now a numpy array, which is  basically this image. Okay? Using  Matplotlib, as soon as I plotted it,  here is that image. Okay? It looks a  bit weird in coloring because it is BGR , not RGB. Your RGB is swapped while  you are importing using OpenCV. It  doesn't make any difference. It's okay.  Uh, after that, I showed you here what  the shape of the test image is. So this  is the shape. It's quite large, that  dog image. So, first of all, you will  have to resize it. To 256 by 256, so  that's exactly what I did. Here, by  calling the cv 2.resize function, I  resized it to 256 by 256. Alright? And  after that, in the end, I just did one  thing, as we pass data to our model in  batches, right? So, we only have one  image. So in our batch, there will be  one image. So we converted it into a 4D  tensor. 1, 256, 256, 3. So this means  that in this batch, there is only one  image with these dimensions. Okay? And  I stored this in test_input, and then  as soon as I did model.predict and  passed test_input, the output was one.  One means dog. Why? Because cat is  first, so zero must have been assigned  to cat. One is assigned to dog. Right?  Let's quickly try doing all this on  cat.jpg as well. Imported the image.  This is our cat image. Here are its  dimensions. It is a bit smaller.  Reshaped it. Converted it to a batch.  Now remember, our output should be zero . And you can see it is coming out to  be zero. So you can see that although  our accuracy is still only 80-81%, it  is still performing decently on new  data. So that's it guys, this is your  project. So that was the video, guys. I  know it was a very small mini-project.  But seeing everything you've learned so  far in practice is a fun thing in  itself. I hope you enjoyed it and also  understood the concepts. If you liked  the video, please like it, and if you  haven't subscribed to my channel yet,  please do subscribe. Okay? See you in  the next video.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and you are",
+      "start": 0.139,
+      "duration": 3.384
+    },
+    {
+      "text": " welcome to CampusX. So in this video,",
+      "start": 2.586,
+      "duration": 3.369
+    },
+    {
+      "text": " we will continue our Deep Learning",
+      "start": 5.012,
+      "duration": 2.952
+    },
+    {
+      "text": " playlist. So far, we have covered many",
+      "start": 7.022,
+      "duration": 3.251
+    },
+    {
+      "text": " things in the Deep Learning playlist.",
+      "start": 9.322,
+      "duration": 2.817
+    },
+    {
+      "text": " First, we covered ANN. Then we started",
+      "start": 11.439,
+      "duration": 3.457
+    },
+    {
+      "text": " CNN and we went deep into CNN, covering",
+      "start": 13.964,
+      "duration": 3.646
+    },
+    {
+      "text": " topics like backpropagation as well. So",
+      "start": 16.677,
+      "duration": 4.164
+    },
+    {
+      "text": " I thought now is a good time to build a",
+      "start": 19.892,
+      "duration": 2.998
+    },
+    {
+      "text": " small project. Where we can use",
+      "start": 21.941,
+      "duration": 3.189
+    },
+    {
+      "text": " everything we have learned so far. So",
+      "start": 24.18,
+      "duration": 3.142
+    },
+    {
+      "text": " we are going to make a small project in",
+      "start": 26.364,
+      "duration": 2.618
+    },
+    {
+      "text": " this video. We are going to build a Dog",
+      "start": 28.023,
+      "duration": 3.902
+    },
+    {
+      "text": " versus Cat classifier. Okay? We are",
+      "start": 30.988,
+      "duration": 4.392
+    },
+    {
+      "text": " going to build a CNN model that, if you",
+      "start": 34.433,
+      "duration": 3.084
+    },
+    {
+      "text": " give it a photo of a dog or a cat, can",
+      "start": 36.57,
+      "duration": 3.03
+    },
+    {
+      "text": " classify and tell you if there is a dog",
+      "start": 38.653,
+      "duration": 3.084
+    },
+    {
+      "text": " or a cat in that photo. Okay? So for",
+      "start": 40.79,
+      "duration": 4.103
+    },
+    {
+      "text": " this entire video, I will write all the",
+      "start": 43.963,
+      "duration": 3.757
+    },
+    {
+      "text": " code from scratch for you. We will",
+      "start": 46.791,
+      "duration": 3.566
+    },
+    {
+      "text": " create our own CNN architecture. In",
+      "start": 49.428,
+      "duration": 3.592
+    },
+    {
+      "text": " fact, we will also have a discussion on",
+      "start": 52.08,
+      "duration": 3.348
+    },
+    {
+      "text": " how to improve the model if its",
+      "start": 54.488,
+      "duration": 2.866
+    },
+    {
+      "text": " performance is not good. And in the end",
+      "start": 56.415,
+      "duration": 3.634
+    },
+    {
+      "text": ", I will also show you how to make",
+      "start": 59.049,
+      "duration": 2.87
+    },
+    {
+      "text": " predictions on new unseen data. Okay?",
+      "start": 60.974,
+      "duration": 3.475
+    },
+    {
+      "text": " So it will be quite interesting because",
+      "start": 63.549,
+      "duration": 2.695
+    },
+    {
+      "text": " whatever theory you have been studying",
+      "start": 65.288,
+      "duration": 2.652
+    },
+    {
+      "text": " so far, you will see it practically. So",
+      "start": 66.983,
+      "duration": 3.052
+    },
+    {
+      "text": " I would recommend that you code along",
+      "start": 69.083,
+      "duration": 2.782
+    },
+    {
+      "text": " with me. That would give you more",
+      "start": 70.913,
+      "duration": 2.856
+    },
+    {
+      "text": " knowledge. Okay? So let's start the",
+      "start": 72.813,
+      "duration": 2.988
+    },
+    {
+      "text": " video. So guys, this is the dataset we",
+      "start": 74.852,
+      "duration": 3.188
+    },
+    {
+      "text": " are going to use. I found this Dogs vs.",
+      "start": 77.095,
+      "duration": 3.484
+    },
+    {
+      "text": " Cats dataset on Kaggle. It is a very",
+      "start": 79.646,
+      "duration": 3.993
+    },
+    {
+      "text": " simple dataset. There are two folders",
+      "start": 82.719,
+      "duration": 3.493
+    },
+    {
+      "text": " here. Test and train, and all the",
+      "start": 85.256,
+      "duration": 2.918
+    },
+    {
+      "text": " images are inside them. Okay? In fact,",
+      "start": 87.223,
+      "duration": 3.283
+    },
+    {
+      "text": " I had already downloaded this dataset.",
+      "start": 89.56,
+      "duration": 3.038
+    },
+    {
+      "text": " So if you download it, you will see two",
+      "start": 92.399,
+      "duration": 3.403
+    },
+    {
+      "text": " folders like this: test and train. And",
+      "start": 94.863,
+      "duration": 3.941
+    },
+    {
+      "text": " inside both folders, you will see two",
+      "start": 97.86,
+      "duration": 3.045
+    },
+    {
+      "text": " more folders. Cats and Dogs. Okay? If",
+      "start": 99.96,
+      "duration": 5.076
+    },
+    {
+      "text": " you go into Cats, you would see all the",
+      "start": 104.125,
+      "duration": 4.464
+    },
+    {
+      "text": " cat photos are organized. And if you go",
+      "start": 107.678,
+      "duration": 5.634
+    },
+    {
+      "text": " into Dogs, you will see the same thing",
+      "start": 112.373,
+      "duration": 3.315
+    },
+    {
+      "text": " there too. You will see all the dog",
+      "start": 114.749,
+      "duration": 3.554
+    },
+    {
+      "text": " photos in one place. Okay? So we are",
+      "start": 117.372,
+      "duration": 4.067
+    },
+    {
+      "text": " going to use this dataset. I have put",
+      "start": 120.501,
+      "duration": 3.502
+    },
+    {
+      "text": " its link in the video description. Now",
+      "start": 123.063,
+      "duration": 4.145
+    },
+    {
+      "text": " what we need to do is build an image",
+      "start": 126.291,
+      "duration": 3.997
+    },
+    {
+      "text": " classification model where if we input",
+      "start": 129.371,
+      "duration": 4.163
+    },
+    {
+      "text": " a new image, it will classify whether",
+      "start": 132.617,
+      "duration": 4.08
+    },
+    {
+      "text": " the entity in that given input image is",
+      "start": 135.78,
+      "duration": 4.247
+    },
+    {
+      "text": " a dog or a cat. Okay? Now we are going",
+      "start": 139.11,
+      "duration": 6.434
+    },
+    {
+      "text": " to use Keras for this entire CNN",
+      "start": 144.639,
+      "duration": 4.049
+    },
+    {
+      "text": " classification, and we won't be using",
+      "start": 147.783,
+      "duration": 4.525
+    },
+    {
+      "text": " our own installation; instead, we will",
+      "start": 151.403,
+      "duration": 4.621
+    },
+    {
+      "text": " use Google Colab. Because it’s",
+      "start": 155.119,
+      "duration": 4.862
+    },
+    {
+      "text": " possible that many of you don't have",
+      "start": 159.057,
+      "duration": 3.732
+    },
+    {
+      "text": " machines with a GPU, I think working in",
+      "start": 161.865,
+      "duration": 3.96
+    },
+    {
+      "text": " Colab is the best option. Right? So,",
+      "start": 164.901,
+      "duration": 7.061
+    },
+    {
+      "text": " what you need to do is search for",
+      "start": 171.063,
+      "duration": 4.339
+    },
+    {
+      "text": " Google Colab. Here, I will create a new",
+      "start": 174.503,
+      "duration": 7.542
+    },
+    {
+      "text": " notebook. So, this is the new notebook.",
+      "start": 181.121,
+      "duration": 6.918
+    },
+    {
+      "text": " Let’s name it Cats vs Dogs",
+      "start": 188.659,
+      "duration": 4.996
+    },
+    {
+      "text": " Classification. Right? The first thing",
+      "start": 192.798,
+      "duration": 7.742
+    },
+    {
+      "text": " we need to do is get this dataset from",
+      "start": 199.628,
+      "duration": 4.348
+    },
+    {
+      "text": " here to over there. So, what will you",
+      "start": 203.064,
+      "duration": 4.598
+    },
+    {
+      "text": " need to do for that? First, you will",
+      "start": 206.71,
+      "duration": 3.737
+    },
+    {
+      "text": " need to go to your Kaggle profile. Uh.",
+      "start": 209.53,
+      "duration": 4.549
+    },
+    {
+      "text": " Go to your account there and scroll",
+      "start": 216.579,
+      "duration": 3.855
+    },
+    {
+      "text": " down to click on \"Create New API Token.",
+      "start": 219.515,
+      "duration": 4.182
+    },
+    {
+      "text": "\" This will download a file for you.",
+      "start": 222.697,
+      "duration": 4.042
+    },
+    {
+      "text": " You have to upload that file named",
+      "start": 225.999,
+      "duration": 4.281
+    },
+    {
+      "text": " kaggle.json to Google Colab. See, it's",
+      "start": 229.376,
+      "duration": 12.859
+    },
+    {
+      "text": " uploaded. I'll just rename it. Having",
+      "start": 241.322,
+      "duration": 4.971
+    },
+    {
+      "text": " that 'one' in it might cause issues.",
+      "start": 245.372,
+      "duration": 3.848
+    },
+    {
+      "text": " Let's keep it as kaggle.json. Now, what",
+      "start": 249.279,
+      "duration": 4.108
+    },
+    {
+      "text": " do you need to do? Come back. To your",
+      "start": 252.422,
+      "duration": 5.715
+    },
+    {
+      "text": " dataset and. You need a command from",
+      "start": 257.211,
+      "duration": 6.445
+    },
+    {
+      "text": " there, which you will find right here.",
+      "start": 262.749,
+      "duration": 4.53
+    },
+    {
+      "text": " Copy API command. Right? And what you",
+      "start": 266.4,
+      "duration": 4.959
+    },
+    {
+      "text": " will do is. Paste that API command here",
+      "start": 270.447,
+      "duration": 5.55
+    },
+    {
+      "text": " with an exclamation mark. Right? After",
+      "start": 275.074,
+      "duration": 4.427
+    },
+    {
+      "text": " that, what do you need to do? Run two",
+      "start": 278.538,
+      "duration": 2.69
+    },
+    {
+      "text": " more commands. In fact, you need to run",
+      "start": 280.28,
+      "duration": 3.035
+    },
+    {
+      "text": " two commands before this. Here are",
+      "start": 282.359,
+      "duration": 2.686
+    },
+    {
+      "text": " those two commands. Right? So first, I",
+      "start": 284.091,
+      "duration": 4.353
+    },
+    {
+      "text": " will run this, and as soon as I run it,",
+      "start": 287.515,
+      "duration": 3.781
+    },
+    {
+      "text": " you will see the data get pulled from",
+      "start": 290.367,
+      "duration": 3.638
+    },
+    {
+      "text": " Kaggle into Google Colab. You can see",
+      "start": 293.076,
+      "duration": 4.662
+    },
+    {
+      "text": " the data is downloading. The data is",
+      "start": 296.793,
+      "duration": 3.549
+    },
+    {
+      "text": " basically being pulled from the Kaggle",
+      "start": 299.394,
+      "duration": 2.947
+    },
+    {
+      "text": " server and coming to the Google Colab",
+      "start": 301.392,
+      "duration": 2.897
+    },
+    {
+      "text": " server. You could have done this",
+      "start": 303.34,
+      "duration": 3.589
+    },
+    {
+      "text": " indirectly as well. You could first",
+      "start": 305.995,
+      "duration": 3.112
+    },
+    {
+      "text": " download it from Kaggle to your machine",
+      "start": 308.145,
+      "duration": 2.477
+    },
+    {
+      "text": ". Then upload it from your machine to",
+      "start": 309.622,
+      "duration": 2.808
+    },
+    {
+      "text": " Google Colab. And you know, because the",
+      "start": 311.475,
+      "duration": 3.194
+    },
+    {
+      "text": " dataset is so large. It would take a",
+      "start": 313.723,
+      "duration": 2.867
+    },
+    {
+      "text": " lot of time. This is an easier way to",
+      "start": 315.63,
+      "duration": 2.917
+    },
+    {
+      "text": " do this. Right? You just need to run",
+      "start": 317.603,
+      "duration": 3.356
+    },
+    {
+      "text": " these two commands. And you can see the",
+      "start": 320.003,
+      "duration": 3.488
+    },
+    {
+      "text": " command has run. If I refresh it once,",
+      "start": 322.542,
+      "duration": 3.299
+    },
+    {
+      "text": " you can see that our data has arrived.",
+      "start": 324.903,
+      "duration": 3.356
+    },
+    {
+      "text": " The only problem is that the data we",
+      "start": 327.48,
+      "duration": 3.436
+    },
+    {
+      "text": " received is in a zip format. So, we",
+      "start": 329.984,
+      "duration": 3.496
+    },
+    {
+      "text": " need to unzip this. Again, for that,",
+      "start": 332.537,
+      "duration": 3.387
+    },
+    {
+      "text": " you just need to write this code. Now,",
+      "start": 334.968,
+      "duration": 3.073
+    },
+    {
+      "text": " what will this code do? It will unzip",
+      "start": 337.117,
+      "duration": 4.412
+    },
+    {
+      "text": " this file and display all its contents",
+      "start": 340.602,
+      "duration": 3.779
+    },
+    {
+      "text": " right here. And you can see, now if we",
+      "start": 343.454,
+      "duration": 5.146
+    },
+    {
+      "text": " refresh. Here is our test and here is",
+      "start": 347.675,
+      "duration": 6.628
+    },
+    {
+      "text": " our train. Alright? We have received",
+      "start": 353.404,
+      "duration": 4.242
+    },
+    {
+      "text": " both of these folders. Now what do we",
+      "start": 356.701,
+      "duration": 3.307
+    },
+    {
+      "text": " need to do? We need to build a CNN",
+      "start": 359.058,
+      "duration": 3.819
+    },
+    {
+      "text": " model and feed this data into it.",
+      "start": 361.951,
+      "duration": 3.428
+    },
+    {
+      "text": " Alright? And after that, we will",
+      "start": 364.7,
+      "duration": 2.77
+    },
+    {
+      "text": " calculate the accuracy and that's it.",
+      "start": 366.519,
+      "duration": 2.82
+    },
+    {
+      "text": " Our model will be built. So first of",
+      "start": 368.579,
+      "duration": 4.067
+    },
+    {
+      "text": " all, we will do one thing, we will",
+      "start": 371.709,
+      "duration": 3.123
+    },
+    {
+      "text": " import all the important libraries.",
+      "start": 373.894,
+      "duration": 3.186
+    },
+    {
+      "text": " Such as, import tensorflow as tf, from",
+      "start": 377.539,
+      "duration": 8.266
+    },
+    {
+      "text": " tensorflow import keras, from keras",
+      "start": 384.941,
+      "duration": 12.155
+    },
+    {
+      "text": " import Sequential, and from keras",
+      "start": 396.27,
+      "duration": 11.949
+    },
+    {
+      "text": " import (in fact) from keras.layers,",
+      "start": 410.099,
+      "duration": 6.645
+    },
+    {
+      "text": " let's import the Dense layer, Conv2D",
+      "start": 415.905,
+      "duration": 6.806
+    },
+    {
+      "text": " layer, MaxPooling2D, Flatten. We will",
+      "start": 421.873,
+      "duration": 9.729
+    },
+    {
+      "text": " need all these layers, so we are",
+      "start": 430.668,
+      "duration": 3.117
+    },
+    {
+      "text": " running this and we have imported it.",
+      "start": 432.851,
+      "duration": 3.448
+    },
+    {
+      "text": " Alright? Now see, what do we have to do",
+      "start": 436.579,
+      "duration": 3.658
+    },
+    {
+      "text": "? We have to take all these images",
+      "start": 439.237,
+      "duration": 4.629
+    },
+    {
+      "text": " inside the train folder and feed them",
+      "start": 442.971,
+      "duration": 4.894
+    },
+    {
+      "text": " to our model. For this, you can write",
+      "start": 446.97,
+      "duration": 4.664
+    },
+    {
+      "text": " custom code using the OS module to go",
+      "start": 450.72,
+      "duration": 4.21
+    },
+    {
+      "text": " inside these folders. Then pick up the",
+      "start": 454.017,
+      "duration": 4.737
+    },
+    {
+      "text": " names of all the files one by one and",
+      "start": 457.855,
+      "duration": 4.736
+    },
+    {
+      "text": " their labels, and then you can send the",
+      "start": 461.692,
+      "duration": 4.938
+    },
+    {
+      "text": " entire data to the CNN model. But the",
+      "start": 465.731,
+      "duration": 5.332
+    },
+    {
+      "text": " problem is that because there are so",
+      "start": 470.135,
+      "duration": 3.597
+    },
+    {
+      "text": " many images, it becomes difficult to",
+      "start": 472.804,
+      "duration": 3.596
+    },
+    {
+      "text": " process them all at once because the",
+      "start": 475.472,
+      "duration": 3.597
+    },
+    {
+      "text": " RAM runs out. So here, Keras uses a",
+      "start": 478.141,
+      "duration": 4.83
+    },
+    {
+      "text": " concept called generators. I have made",
+      "start": 482.074,
+      "duration": 4.411
+    },
+    {
+      "text": " a video on this topic on my channel",
+      "start": 485.527,
+      "duration": 2.483
+    },
+    {
+      "text": " where I have explained very well what",
+      "start": 487.053,
+      "duration": 2.567
+    },
+    {
+      "text": " generators are. So, what generators do",
+      "start": 488.663,
+      "duration": 3.57
+    },
+    {
+      "text": " is divide your entire data into batches",
+      "start": 491.301,
+      "duration": 3.65
+    },
+    {
+      "text": ". So, let's say if you have 10,000",
+      "start": 493.951,
+      "duration": 3.921
+    },
+    {
+      "text": " images, you don't work on all 10,000",
+      "start": 496.936,
+      "duration": 3.288
+    },
+    {
+      "text": " images at once, but divide that data",
+      "start": 499.288,
+      "duration": 3.288
+    },
+    {
+      "text": " into small batches, and at one time",
+      "start": 501.64,
+      "duration": 3.224
+    },
+    {
+      "text": " only a small batch loads into RAM, and",
+      "start": 503.928,
+      "duration": 3.415
+    },
+    {
+      "text": " once its work is done, it is removed.",
+      "start": 506.407,
+      "duration": 3.352
+    },
+    {
+      "text": " Then the next batch loads. So",
+      "start": 509.569,
+      "duration": 2.533
+    },
+    {
+      "text": " generators are very useful for",
+      "start": 511.159,
+      "duration": 2.701
+    },
+    {
+      "text": " processing large amounts of data. So,",
+      "start": 512.917,
+      "duration": 3.12
+    },
+    {
+      "text": " what will we do? We will work with a",
+      "start": 515.083,
+      "duration": 3.671
+    },
+    {
+      "text": " generator that Keras provides us. And",
+      "start": 517.835,
+      "duration": 4.11
+    },
+    {
+      "text": " the name of this generator is",
+      "start": 521.007,
+      "duration": 2.805
+    },
+    {
+      "text": " image_dataset_from_directory. Okay? So,",
+      "start": 522.875,
+      "duration": 3.879
+    },
+    {
+      "text": " I will also show you how to create two",
+      "start": 525.826,
+      "duration": 3.73
+    },
+    {
+      "text": " generators. One for training data and",
+      "start": 528.628,
+      "duration": 3.871
+    },
+    {
+      "text": " one for validation data. And guys, this",
+      "start": 531.575,
+      "duration": 3.724
+    },
+    {
+      "text": " is the documentation of this generator",
+      "start": 534.356,
+      "duration": 5.442
+    },
+    {
+      "text": " function. So, what do we need to do? We",
+      "start": 538.874,
+      "duration": 4.025
+    },
+    {
+      "text": " just need to call this function and",
+      "start": 541.939,
+      "duration": 2.4
+    },
+    {
+      "text": " provide some inputs. Such as specifying",
+      "start": 543.379,
+      "duration": 2.593
+    },
+    {
+      "text": " the directory. Directory means",
+      "start": 545.007,
+      "duration": 2.435
+    },
+    {
+      "text": " specifying the path. Specify what the",
+      "start": 546.494,
+      "duration": 3.025
+    },
+    {
+      "text": " labels will be. Specify the label mode",
+      "start": 548.563,
+      "duration": 4.116
+    },
+    {
+      "text": " and the batch size. Specify what the",
+      "start": 551.76,
+      "duration": 4.134
+    },
+    {
+      "text": " image size will be. You only need to",
+      "start": 554.946,
+      "duration": 3.145
+    },
+    {
+      "text": " specify these things. Right? So we",
+      "start": 557.141,
+      "duration": 4.183
+    },
+    {
+      "text": " would write keras dot utils dot image",
+      "start": 560.457,
+      "duration": 5.922
+    },
+    {
+      "text": " data, in fact, let's copy this. Copy.",
+      "start": 567.719,
+      "duration": 8.721
+    },
+    {
+      "text": " Okay? Now here we will provide our",
+      "start": 579.22,
+      "duration": 3.854
+    },
+    {
+      "text": " inputs one by one. So, first will be",
+      "start": 582.143,
+      "duration": 4.296
+    },
+    {
+      "text": " directory. In directory, you will",
+      "start": 588.42,
+      "duration": 4.459
+    },
+    {
+      "text": " provide the train path, so I am copying",
+      "start": 591.94,
+      "duration": 3.411
+    },
+    {
+      "text": " it. Copy path. This. After that, in",
+      "start": 594.413,
+      "duration": 8.823
+    },
+    {
+      "text": " labels, you will provide inferred. In",
+      "start": 602.343,
+      "duration": 6.151
+    },
+    {
+      "text": " label underscore mode, you will provide",
+      "start": 607.551,
+      "duration": 3.233
+    },
+    {
+      "text": " integer. This will assign zero to cats.",
+      "start": 609.841,
+      "duration": 4.898
+    },
+    {
+      "text": " One will be assigned to dogs. For batch",
+      "start": 613.979,
+      "duration": 4.22
+    },
+    {
+      "text": " size, we can give 32. And for image",
+      "start": 617.279,
+      "duration": 6.699
+    },
+    {
+      "text": " size, we can give 256, 256. So all our",
+      "start": 623.13,
+      "duration": 7.429
+    },
+    {
+      "text": " images will be reshaped to 256 by 256",
+      "start": 629.705,
+      "duration": 6.399
+    },
+    {
+      "text": " by 3. Right? Because our CNN model",
+      "start": 635.25,
+      "duration": 4.358
+    },
+    {
+      "text": " expects all images to be the same size.",
+      "start": 638.67,
+      "duration": 3.43
+    },
+    {
+      "text": " But unfortunately, if you look at your",
+      "start": 641.679,
+      "duration": 4.497
+    },
+    {
+      "text": " data, you can see these images are of",
+      "start": 645.268,
+      "duration": 4.406
+    },
+    {
+      "text": " different sizes. So this could be a",
+      "start": 648.766,
+      "duration": 3.666
+    },
+    {
+      "text": " problem. That's why we are giving them",
+      "start": 651.475,
+      "duration": 2.989
+    },
+    {
+      "text": " the same size. This will give us a",
+      "start": 653.508,
+      "duration": 4.095
+    },
+    {
+      "text": " dataset object. Let's call it train",
+      "start": 656.713,
+      "duration": 5.26
+    },
+    {
+      "text": " dataset. And then we will do the same",
+      "start": 661.096,
+      "duration": 4.988
+    },
+    {
+      "text": " thing for validation data. So let's",
+      "start": 665.176,
+      "duration": 5.32
+    },
+    {
+      "text": " call it validation. And here, what will",
+      "start": 669.573,
+      "duration": 5.425
+    },
+    {
+      "text": " we just do? Copy the test path. And",
+      "start": 674.055,
+      "duration": 6.397
+    },
+    {
+      "text": " paste it here. Right? We will keep",
+      "start": 679.556,
+      "duration": 8.673
+    },
+    {
+      "text": " everything else exactly the same and",
+      "start": 687.279,
+      "duration": 2.772
+    },
+    {
+      "text": " you can run it. It's not utils. It is",
+      "start": 689.1,
+      "duration": 10.355
+    },
+    {
+      "text": " utils. Sorry about that. Now let's run",
+      "start": 698.559,
+      "duration": 5.652
+    },
+    {
+      "text": " it. And you can see our train dataset",
+      "start": 703.303,
+      "duration": 4.792
+    },
+    {
+      "text": " has 20,000 files belonging to two",
+      "start": 707.163,
+      "duration": 3.236
+    },
+    {
+      "text": " classes and the test one has 5,000",
+      "start": 709.467,
+      "duration": 3.304
+    },
+    {
+      "text": " files belonging to two classes. Okay?",
+      "start": 711.839,
+      "duration": 4.0
+    },
+    {
+      "text": " Now we just need to do one small thing;",
+      "start": 715.699,
+      "duration": 3.685
+    },
+    {
+      "text": " the images we stored are currently in",
+      "start": 718.453,
+      "duration": 3.548
+    },
+    {
+      "text": " numpy array format. Okay? But the",
+      "start": 721.07,
+      "duration": 4.473
+    },
+    {
+      "text": " problem is that each value of the numpy",
+      "start": 724.632,
+      "duration": 4.471
+    },
+    {
+      "text": " array is from 0 to 255. We need to make",
+      "start": 728.192,
+      "duration": 3.981
+    },
+    {
+      "text": " it from 0 to 1. So basically, we need",
+      "start": 731.224,
+      "duration": 3.699
+    },
+    {
+      "text": " to normalize it. Right? So to normalize",
+      "start": 734.005,
+      "duration": 5.081
+    },
+    {
+      "text": ", we will have to write a small piece",
+      "start": 738.086,
+      "duration": 4.324
+    },
+    {
+      "text": " of code. And here is that small piece",
+      "start": 741.5,
+      "duration": 3.04
+    },
+    {
+      "text": " of code. Basically, we created a",
+      "start": 743.58,
+      "duration": 3.083
+    },
+    {
+      "text": " function called process that receives",
+      "start": 745.722,
+      "duration": 3.193
+    },
+    {
+      "text": " an image and a label. And on the image,",
+      "start": 747.975,
+      "duration": 4.666
+    },
+    {
+      "text": " we are simply performing this operation",
+      "start": 751.747,
+      "duration": 5.134
+    },
+    {
+      "text": " of dividing it by 255. Okay? And we are",
+      "start": 755.987,
+      "duration": 4.761
+    },
+    {
+      "text": " returning the image and label back. And",
+      "start": 759.802,
+      "duration": 3.235
+    },
+    {
+      "text": " we used the map function. So what will",
+      "start": 762.105,
+      "duration": 3.297
+    },
+    {
+      "text": " the map function do? Every time, it",
+      "start": 764.444,
+      "duration": 2.61
+    },
+    {
+      "text": " will take an image and its label from",
+      "start": 766.102,
+      "duration": 2.756
+    },
+    {
+      "text": " train_ds and send it to this function.",
+      "start": 767.906,
+      "duration": 2.804
+    },
+    {
+      "text": " And this function will transform it and",
+      "start": 770.039,
+      "duration": 3.332
+    },
+    {
+      "text": " return it, and we will store it back in",
+      "start": 772.431,
+      "duration": 3.333
+    },
+    {
+      "text": " train_ds and validation_ds. So",
+      "start": 774.824,
+      "duration": 3.029
+    },
+    {
+      "text": " basically, the reason we needed this",
+      "start": 776.921,
+      "duration": 3.424
+    },
+    {
+      "text": " whole operation is that we want all our",
+      "start": 779.412,
+      "duration": 3.626
+    },
+    {
+      "text": " pixel values to be between zero and one",
+      "start": 782.105,
+      "duration": 3.626
+    },
+    {
+      "text": ". Okay? Otherwise, your results won't",
+      "start": 784.731,
+      "duration": 3.508
+    },
+    {
+      "text": " be good. Let's run this. And you can",
+      "start": 787.299,
+      "duration": 6.429
+    },
+    {
+      "text": " see our data set is now ready. Okay?",
+      "start": 792.827,
+      "duration": 5.327
+    },
+    {
+      "text": " Now, what do we have to do? We have to",
+      "start": 797.254,
+      "duration": 3.016
+    },
+    {
+      "text": " build our CNN model. And we will pass",
+      "start": 799.354,
+      "duration": 4.487
+    },
+    {
+      "text": " this data into that CNN model. Okay? So",
+      "start": 802.947,
+      "duration": 5.785
+    },
+    {
+      "text": ", I will write create CNN model. So, we",
+      "start": 807.732,
+      "duration": 6.427
+    },
+    {
+      "text": " will build an architecture where there",
+      "start": 813.239,
+      "duration": 4.04
+    },
+    {
+      "text": " would be three convolution layers. In",
+      "start": 816.359,
+      "duration": 4.16
+    },
+    {
+      "text": " the first layer, there would be 32",
+      "start": 819.59,
+      "duration": 3.395
+    },
+    {
+      "text": " filters. In the second layer, there",
+      "start": 822.055,
+      "duration": 2.934
+    },
+    {
+      "text": " would be 64 filters. In the third layer",
+      "start": 824.033,
+      "duration": 3.308
+    },
+    {
+      "text": ", there would be 128 filters. Okay? So,",
+      "start": 826.341,
+      "duration": 4.418
+    },
+    {
+      "text": " let's do that. model equals Sequential",
+      "start": 829.892,
+      "duration": 8.601
+    },
+    {
+      "text": " class object, model dot add. Conv2D. 32",
+      "start": 837.648,
+      "duration": 11.914
+    },
+    {
+      "text": " filters. Kernel size, as in filter size",
+      "start": 848.744,
+      "duration": 7.63
+    },
+    {
+      "text": ", we are taking as. 3 by 3. We are",
+      "start": 855.374,
+      "duration": 9.499
+    },
+    {
+      "text": " taking padding as valid. For now,",
+      "start": 863.979,
+      "duration": 4.923
+    },
+    {
+      "text": " activation remains relu. And the input",
+      "start": 868.049,
+      "duration": 7.281
+    },
+    {
+      "text": " shape will be 256. 256. 3, okay? This",
+      "start": 874.486,
+      "duration": 12.769
+    },
+    {
+      "text": " is our first convolution layer. Right",
+      "start": 886.334,
+      "duration": 4.131
+    },
+    {
+      "text": " after the convolution layer, we will",
+      "start": 889.506,
+      "duration": 2.486
+    },
+    {
+      "text": " add a pooling layer. So we would write",
+      "start": 891.033,
+      "duration": 3.022
+    },
+    {
+      "text": " model dot add. MaxPooling. 2D. We will",
+      "start": 893.11,
+      "duration": 11.56
+    },
+    {
+      "text": " give the pool size value as 2 by 2. We",
+      "start": 903.72,
+      "duration": 9.599
+    },
+    {
+      "text": " will give the strides value as 2 and",
+      "start": 912.429,
+      "duration": 4.951
+    },
+    {
+      "text": " the padding here will also be valid,",
+      "start": 916.49,
+      "duration": 4.951
+    },
+    {
+      "text": " okay? Now, what will we do? We will",
+      "start": 920.551,
+      "duration": 4.678
+    },
+    {
+      "text": " just repeat this whole thing. Copy,",
+      "start": 924.345,
+      "duration": 6.577
+    },
+    {
+      "text": " paste, paste. Okay? In the second one,",
+      "start": 930.054,
+      "duration": 5.973
+    },
+    {
+      "text": " there would be 64 filters. There is no",
+      "start": 935.083,
+      "duration": 3.772
+    },
+    {
+      "text": " need to provide this input shape. It",
+      "start": 937.909,
+      "duration": 3.279
+    },
+    {
+      "text": " will infer it automatically. And here",
+      "start": 940.263,
+      "duration": 4.078
+    },
+    {
+      "text": " there will be 128 filters. Again, no",
+      "start": 943.431,
+      "duration": 4.093
+    },
+    {
+      "text": " need to provide this. It will infer",
+      "start": 946.585,
+      "duration": 3.119
+    },
+    {
+      "text": " automatically. Everything else is the",
+      "start": 948.759,
+      "duration": 3.652
+    },
+    {
+      "text": " same. Now, after this, we will add",
+      "start": 951.472,
+      "duration": 5.025
+    },
+    {
+      "text": " model dot add Flatten layer. And after",
+      "start": 955.62,
+      "duration": 8.019
+    },
+    {
+      "text": " that, we are adding three fully",
+      "start": 962.719,
+      "duration": 3.48
+    },
+    {
+      "text": " connected layers. model dot add Dense",
+      "start": 965.279,
+      "duration": 6.894
+    },
+    {
+      "text": " layer with 128 neurons and activation",
+      "start": 971.35,
+      "duration": 7.559
+    },
+    {
+      "text": " equals relu, model dot add Dense 64",
+      "start": 978.087,
+      "duration": 7.205
+    },
+    {
+      "text": " neurons activation equals relu, and",
+      "start": 984.469,
+      "duration": 8.288
+    },
+    {
+      "text": " lastly model dot add. This is a dense",
+      "start": 991.949,
+      "duration": 11.393
+    },
+    {
+      "text": " output, so the activation will be",
+      "start": 1002.449,
+      "duration": 4.527
+    },
+    {
+      "text": " sigmoid. And we have run this. This is",
+      "start": 1006.083,
+      "duration": 7.303
+    },
+    {
+      "text": " our model. Okay? Let's take a look at",
+      "start": 1012.473,
+      "duration": 4.12
+    },
+    {
+      "text": " the model summary once. And you can",
+      "start": 1015.636,
+      "duration": 9.183
+    },
+    {
+      "text": " pause the video here to see if the",
+      "start": 1023.894,
+      "duration": 3.536
+    },
+    {
+      "text": " shape is flowing correctly. And at the",
+      "start": 1026.504,
+      "duration": 4.915
+    },
+    {
+      "text": " end, we have this 30/30/128 tensor",
+      "start": 1030.507,
+      "duration": 3.992
+    },
+    {
+      "text": " which we flattened. And in total, there",
+      "start": 1033.587,
+      "duration": 5.526
+    },
+    {
+      "text": " are around 14.8 million parameters in",
+      "start": 1038.2,
+      "duration": 4.22
+    },
+    {
+      "text": " this entire CNN. Okay? Now, what do we",
+      "start": 1041.507,
+      "duration": 4.748
+    },
+    {
+      "text": " need to do? Compile the model and",
+      "start": 1045.292,
+      "duration": 3.856
+    },
+    {
+      "text": " execute it. So we would write",
+      "start": 1048.252,
+      "duration": 5.133
+    },
+    {
+      "text": " model.compile, let's take optimizer as",
+      "start": 1052.53,
+      "duration": 6.512
+    },
+    {
+      "text": " Adam for starters. Loss Binary",
+      "start": 1058.187,
+      "duration": 8.542
+    },
+    {
+      "text": " cross-entropy because it's a binary",
+      "start": 1065.791,
+      "duration": 3.164
+    },
+    {
+      "text": " classification problem. And in metrics,",
+      "start": 1068.017,
+      "duration": 7.928
+    },
+    {
+      "text": " we will take accuracy. Okay? And now we",
+      "start": 1075.078,
+      "duration": 11.448
+    },
+    {
+      "text": " will run the model. So we would write",
+      "start": 1085.629,
+      "duration": 4.791
+    },
+    {
+      "text": " model.fit, here you will pass your",
+      "start": 1089.513,
+      "duration": 4.163
+    },
+    {
+      "text": " training data stored in train_ds.",
+      "start": 1092.769,
+      "duration": 4.07
+    },
+    {
+      "text": " Number of epochs, let's keep it equal",
+      "start": 1096.139,
+      "duration": 5.54
+    },
+    {
+      "text": " to 10. And you provide a validation set",
+      "start": 1100.802,
+      "duration": 6.858
+    },
+    {
+      "text": ". So you would write validation_data",
+      "start": 1106.66,
+      "duration": 4.25
+    },
+    {
+      "text": " equals the validation_ds you created",
+      "start": 1109.992,
+      "duration": 3.933
+    },
+    {
+      "text": " earlier. Okay? And that's it guys. This",
+      "start": 1113.007,
+      "duration": 7.093
+    },
+    {
+      "text": " is the code. Let's do one more thing.",
+      "start": 1119.175,
+      "duration": 3.524
+    },
+    {
+      "text": " Let's store whatever results we get in",
+      "start": 1122.14,
+      "duration": 3.554
+    },
+    {
+      "text": " history. So that we can plot graphs",
+      "start": 1124.762,
+      "duration": 3.596
+    },
+    {
+      "text": " later and check. Let's run this code.",
+      "start": 1127.411,
+      "duration": 3.809
+    },
+    {
+      "text": " You can see that because the batch size",
+      "start": 1135.579,
+      "duration": 4.05
+    },
+    {
+      "text": " is 32, we have 625 batches. So 625*32",
+      "start": 1138.707,
+      "duration": 7.697
+    },
+    {
+      "text": " is exactly 20,000, which is our total",
+      "start": 1145.499,
+      "duration": 4.511
+    },
+    {
+      "text": " number of images. Okay? Let's let this",
+      "start": 1149.105,
+      "duration": 5.754
+    },
+    {
+      "text": " model train and see how the result",
+      "start": 1153.932,
+      "duration": 3.477
+    },
+    {
+      "text": " looks. Okay guys, I guess you might be",
+      "start": 1156.481,
+      "duration": 3.417
+    },
+    {
+      "text": " noticing, perhaps even on your own",
+      "start": 1158.948,
+      "duration": 2.71
+    },
+    {
+      "text": " machine if you are coding along, that",
+      "start": 1160.708,
+      "duration": 2.86
+    },
+    {
+      "text": " this training is happening very slowly.",
+      "start": 1162.619,
+      "duration": 2.961
+    },
+    {
+      "text": " The reason for that is I forgot to tell",
+      "start": 1164.68,
+      "duration": 2.56
+    },
+    {
+      "text": " you one thing at the beginning: what",
+      "start": 1166.28,
+      "duration": 2.44
+    },
+    {
+      "text": " you need to do. As soon as you open",
+      "start": 1167.76,
+      "duration": 3.008
+    },
+    {
+      "text": " Google Colab, you have to go to Runtime",
+      "start": 1169.831,
+      "duration": 3.44
+    },
+    {
+      "text": ", click on Change runtime, and here you",
+      "start": 1172.271,
+      "duration": 3.441
+    },
+    {
+      "text": " need to use the GPU hardware",
+      "start": 1174.774,
+      "duration": 2.752
+    },
+    {
+      "text": " accelerator. If you don't use this, you",
+      "start": 1176.589,
+      "duration": 4.142
+    },
+    {
+      "text": " will be training on a normal CPU, and",
+      "start": 1179.778,
+      "duration": 2.754
+    },
+    {
+      "text": " it will be very, very slow. So you need",
+      "start": 1181.579,
+      "duration": 4.141
+    },
+    {
+      "text": " to change this. But the problem with",
+      "start": 1184.8,
+      "duration": 4.428
+    },
+    {
+      "text": " changing it is that you will have to",
+      "start": 1188.309,
+      "duration": 3.897
+    },
+    {
+      "text": " re-execute all of the code. Okay? So I",
+      "start": 1191.286,
+      "duration": 5.661
+    },
+    {
+      "text": " will just Make sure that the GPU is",
+      "start": 1196.044,
+      "duration": 6.408
+    },
+    {
+      "text": " here. It is a GPU. Let's run this",
+      "start": 1201.511,
+      "duration": 3.029
+    },
+    {
+      "text": " entire code again once. Okay? Sorry",
+      "start": 1203.588,
+      "duration": 3.149
+    },
+    {
+      "text": " about this. And guys, now you can see",
+      "start": 1205.812,
+      "duration": 5.117
+    },
+    {
+      "text": " that the training is happening very",
+      "start": 1210.003,
+      "duration": 3.591
+    },
+    {
+      "text": " fast. All right? So this is what you",
+      "start": 1212.668,
+      "duration": 3.288
+    },
+    {
+      "text": " had to do. Sorry, I forgot to mention",
+      "start": 1215.005,
+      "duration": 2.645
+    },
+    {
+      "text": " it. And the training is done. Our 10",
+      "start": 1216.687,
+      "duration": 3.221
+    },
+    {
+      "text": " epochs of training are complete. So",
+      "start": 1218.956,
+      "duration": 2.951
+    },
+    {
+      "text": " what did I do, guys? Just to see how",
+      "start": 1220.972,
+      "duration": 3.2
+    },
+    {
+      "text": " the training result is. I have plotted",
+      "start": 1223.223,
+      "duration": 3.04
+    },
+    {
+      "text": " some graphs. I will show them to you.",
+      "start": 1225.31,
+      "duration": 2.89
+    },
+    {
+      "text": " So I plotted the training accuracy and",
+      "start": 1227.68,
+      "duration": 3.118
+    },
+    {
+      "text": " validation accuracy graphs. And you can",
+      "start": 1229.854,
+      "duration": 3.549
+    },
+    {
+      "text": " see this is the graph. It is clearly",
+      "start": 1232.449,
+      "duration": 3.289
+    },
+    {
+      "text": " visible that as the epoch increases,",
+      "start": 1234.804,
+      "duration": 3.377
+    },
+    {
+      "text": " the training accuracy is improving. But",
+      "start": 1237.247,
+      "duration": 4.082
+    },
+    {
+      "text": " if you look at the validation accuracy,",
+      "start": 1240.406,
+      "duration": 3.994
+    },
+    {
+      "text": " it is mostly fluctuating between 75 and",
+      "start": 1243.477,
+      "duration": 3.994
+    },
+    {
+      "text": " 80. And you can see there is this gap,",
+      "start": 1246.548,
+      "duration": 3.492
+    },
+    {
+      "text": " and this gap generally indicates that",
+      "start": 1249.091,
+      "duration": 2.872
+    },
+    {
+      "text": " overfitting is happening. Just to",
+      "start": 1251.013,
+      "duration": 3.343
+    },
+    {
+      "text": " conclude, here we have also plotted the",
+      "start": 1253.412,
+      "duration": 3.207
+    },
+    {
+      "text": " validation loss and training loss. And",
+      "start": 1255.676,
+      "duration": 3.827
+    },
+    {
+      "text": " you can see that as the epoch increases",
+      "start": 1258.551,
+      "duration": 2.872
+    },
+    {
+      "text": ", the training loss is reducing. But",
+      "start": 1260.423,
+      "duration": 2.97
+    },
+    {
+      "text": " the validation loss is gradually",
+      "start": 1262.444,
+      "duration": 2.646
+    },
+    {
+      "text": " increasing further. So again, this gap",
+      "start": 1264.141,
+      "duration": 3.06
+    },
+    {
+      "text": " is increasing, which is a clear",
+      "start": 1266.254,
+      "duration": 2.623
+    },
+    {
+      "text": " indication that overfitting is",
+      "start": 1267.929,
+      "duration": 2.572
+    },
+    {
+      "text": " happening here. Meaning our model is",
+      "start": 1269.553,
+      "duration": 3.462
+    },
+    {
+      "text": " giving very good results on the",
+      "start": 1272.088,
+      "duration": 3.258
+    },
+    {
+      "text": " training data. It is not giving such",
+      "start": 1274.419,
+      "duration": 3.393
+    },
+    {
+      "text": " good results on the test data. So we",
+      "start": 1276.857,
+      "duration": 2.779
+    },
+    {
+      "text": " will have to find a workaround. So",
+      "start": 1278.684,
+      "duration": 2.762
+    },
+    {
+      "text": " these are some ways to reduce",
+      "start": 1280.529,
+      "duration": 3.423
+    },
+    {
+      "text": " overfitting. The first one is that you",
+      "start": 1283.036,
+      "duration": 3.778
+    },
+    {
+      "text": " show your model more data. Right? Which",
+      "start": 1285.879,
+      "duration": 3.741
+    },
+    {
+      "text": " is not possible for us. Because we have",
+      "start": 1288.664,
+      "duration": 3.107
+    },
+    {
+      "text": " used all our data. Second, there is a",
+      "start": 1290.825,
+      "duration": 3.008
+    },
+    {
+      "text": " technique called data augmentation.",
+      "start": 1292.874,
+      "duration": 2.426
+    },
+    {
+      "text": " Where you use your existing data to",
+      "start": 1294.579,
+      "duration": 3.456
+    },
+    {
+      "text": " create more data. So we will not study",
+      "start": 1297.105,
+      "duration": 3.256
+    },
+    {
+      "text": " this right now. This is our next",
+      "start": 1299.402,
+      "duration": 2.745
+    },
+    {
+      "text": " video's topic. We will discuss this in",
+      "start": 1301.204,
+      "duration": 3.069
+    },
+    {
+      "text": " the next video. Apart from this, there",
+      "start": 1303.317,
+      "duration": 2.632
+    },
+    {
+      "text": " are your older techniques. You can",
+      "start": 1304.985,
+      "duration": 2.562
+    },
+    {
+      "text": " apply L1 L2 regularization. You can",
+      "start": 1306.605,
+      "duration": 3.239
+    },
+    {
+      "text": " apply a dropout layer. Batch",
+      "start": 1308.893,
+      "duration": 2.652
+    },
+    {
+      "text": " normalization also provides",
+      "start": 1310.611,
+      "duration": 2.766
+    },
+    {
+      "text": " regularization at some level. You can",
+      "start": 1312.442,
+      "duration": 3.542
+    },
+    {
+      "text": " reduce the complexity of your model. So",
+      "start": 1315.028,
+      "duration": 3.019
+    },
+    {
+      "text": " these are some of the steps. I will",
+      "start": 1317.091,
+      "duration": 2.695
+    },
+    {
+      "text": " show you two things in this video. I",
+      "start": 1318.834,
+      "duration": 2.953
+    },
+    {
+      "text": " will show you how to apply dropout and",
+      "start": 1320.835,
+      "duration": 2.819
+    },
+    {
+      "text": " batch normalization. Your job is to",
+      "start": 1322.702,
+      "duration": 3.331
+    },
+    {
+      "text": " make sure that overfitting is reduced",
+      "start": 1325.107,
+      "duration": 3.733
+    },
+    {
+      "text": " using some other methods. So to apply",
+      "start": 1327.913,
+      "duration": 4.86
+    },
+    {
+      "text": " batch normalization, what will we do?",
+      "start": 1331.834,
+      "duration": 3.266
+    },
+    {
+      "text": " First of all, we will go to the layers",
+      "start": 1335.319,
+      "duration": 4.537
+    },
+    {
+      "text": " here and add a batch normalization",
+      "start": 1338.949,
+      "duration": 4.165
+    },
+    {
+      "text": " layer, and we will also add dropout.",
+      "start": 1342.207,
+      "duration": 4.352
+    },
+    {
+      "text": " And now we just have to go and make",
+      "start": 1346.559,
+      "duration": 2.866
+    },
+    {
+      "text": " changes to our model. So what we will",
+      "start": 1348.479,
+      "duration": 4.44
+    },
+    {
+      "text": " do is, we will add batch normalization",
+      "start": 1352.003,
+      "duration": 4.192
+    },
+    {
+      "text": " to our convolution layer like this.",
+      "start": 1355.279,
+      "duration": 3.94
+    },
+    {
+      "text": " Copy Here and here as well, batch",
+      "start": 1361.799,
+      "duration": 5.676
+    },
+    {
+      "text": " normalization improves the training a",
+      "start": 1366.544,
+      "duration": 3.585
+    },
+    {
+      "text": " bit. You can try out a slightly higher",
+      "start": 1369.199,
+      "duration": 3.5
+    },
+    {
+      "text": " learning rate if you want. And here I",
+      "start": 1371.759,
+      "duration": 5.42
+    },
+    {
+      "text": " will add dropouts, point one is enough",
+      "start": 1376.317,
+      "duration": 6.243
+    },
+    {
+      "text": " I guess, same for this and I'll rerun",
+      "start": 1381.697,
+      "duration": 6.105
+    },
+    {
+      "text": " this code. Batch normalization is not",
+      "start": 1386.94,
+      "duration": 7.746
+    },
+    {
+      "text": " defined, it’s because we didn't run",
+      "start": 1393.744,
+      "duration": 3.145
+    },
+    {
+      "text": " it after adding it here. We ran it, ran",
+      "start": 1395.947,
+      "duration": 8.03
+    },
+    {
+      "text": " this model cell again, ran the model",
+      "start": 1403.062,
+      "duration": 4.078
+    },
+    {
+      "text": " summary, re-ran compile, and let's",
+      "start": 1406.226,
+      "duration": 3.907
+    },
+    {
+      "text": " train the model again. Let's see if",
+      "start": 1409.218,
+      "duration": 4.981
+    },
+    {
+      "text": " there is some improvement or not. And",
+      "start": 1413.261,
+      "duration": 3.985
+    },
+    {
+      "text": " we are done with the training, and you",
+      "start": 1416.302,
+      "duration": 3.113
+    },
+    {
+      "text": " can see that there is some improvement.",
+      "start": 1418.471,
+      "duration": 3.169
+    },
+    {
+      "text": " We have reached 80%accuracy. So I",
+      "start": 1420.839,
+      "duration": 3.832
+    },
+    {
+      "text": " plotted it again. This is the old graph",
+      "start": 1423.729,
+      "duration": 3.654
+    },
+    {
+      "text": ", and when I plotted it again, this is",
+      "start": 1426.383,
+      "duration": 3.649
+    },
+    {
+      "text": " the graph. And you can see that we have",
+      "start": 1429.101,
+      "duration": 3.854
+    },
+    {
+      "text": " been able to reduce this gap a little",
+      "start": 1432.024,
+      "duration": 3.585
+    },
+    {
+      "text": " bit. Okay? I did the same for the loss",
+      "start": 1434.679,
+      "duration": 4.498
+    },
+    {
+      "text": " graph. This is the old graph and this",
+      "start": 1438.243,
+      "duration": 3.236
+    },
+    {
+      "text": " came after plotting it again. You can",
+      "start": 1440.533,
+      "duration": 3.477
+    },
+    {
+      "text": " see the gap that was there in training",
+      "start": 1443.058,
+      "duration": 2.8
+    },
+    {
+      "text": " and validation, we have been able to",
+      "start": 1444.905,
+      "duration": 2.706
+    },
+    {
+      "text": " reduce it a little. Okay? So, in these",
+      "start": 1446.658,
+      "duration": 3.69
+    },
+    {
+      "text": " techniques, I showed you by applying",
+      "start": 1449.413,
+      "duration": 3.367
+    },
+    {
+      "text": " dropout and batch norm. Now it is your",
+      "start": 1451.846,
+      "duration": 4.315
+    },
+    {
+      "text": " job to somehow improve the performance",
+      "start": 1455.226,
+      "duration": 3.5
+    },
+    {
+      "text": " further. To increase the validation",
+      "start": 1457.792,
+      "duration": 3.277
+    },
+    {
+      "text": " accuracy further. Okay? And if you are",
+      "start": 1460.112,
+      "duration": 3.148
+    },
+    {
+      "text": " able to increase it, then write in the",
+      "start": 1462.311,
+      "duration": 2.91
+    },
+    {
+      "text": " comments what you did to improve your",
+      "start": 1464.271,
+      "duration": 2.861
+    },
+    {
+      "text": " validation accuracy. So that other",
+      "start": 1466.182,
+      "duration": 2.664
+    },
+    {
+      "text": " people can also understand. Okay? Now",
+      "start": 1467.888,
+      "duration": 2.982
+    },
+    {
+      "text": " let's do one last thing. I will show",
+      "start": 1469.927,
+      "duration": 3.292
+    },
+    {
+      "text": " you by making a prediction on new",
+      "start": 1472.285,
+      "duration": 3.162
+    },
+    {
+      "text": " unseen data. On a completely new image.",
+      "start": 1474.512,
+      "duration": 3.807
+    },
+    {
+      "text": " So guys, to make a prediction, I",
+      "start": 1477.619,
+      "duration": 2.7
+    },
+    {
+      "text": " downloaded two images from Google. One",
+      "start": 1479.372,
+      "duration": 3.331
+    },
+    {
+      "text": " of a cat and one of a dog. Okay? I will",
+      "start": 1481.764,
+      "duration": 3.65
+    },
+    {
+      "text": " show you the prediction on both of",
+      "start": 1484.473,
+      "duration": 3.011
+    },
+    {
+      "text": " these. So I have already written the",
+      "start": 1486.544,
+      "duration": 2.979
+    },
+    {
+      "text": " code. So first of all, I imported",
+      "start": 1488.576,
+      "duration": 4.038
+    },
+    {
+      "text": " OpenCV and there I called CV2. Called",
+      "start": 1491.687,
+      "duration": 5.448
+    },
+    {
+      "text": " the imread function and imported the",
+      "start": 1496.214,
+      "duration": 3.853
+    },
+    {
+      "text": " dog photo. And put it into this",
+      "start": 1499.146,
+      "duration": 3.787
+    },
+    {
+      "text": " variable. Okay? Inside test_image,",
+      "start": 1501.992,
+      "duration": 3.91
+    },
+    {
+      "text": " there is now a numpy array, which is",
+      "start": 1504.955,
+      "duration": 2.927
+    },
+    {
+      "text": " basically this image. Okay? Using",
+      "start": 1506.936,
+      "duration": 3.463
+    },
+    {
+      "text": " Matplotlib, as soon as I plotted it,",
+      "start": 1509.462,
+      "duration": 3.274
+    },
+    {
+      "text": " here is that image. Okay? It looks a",
+      "start": 1511.799,
+      "duration": 3.768
+    },
+    {
+      "text": " bit weird in coloring because it is BGR",
+      "start": 1514.648,
+      "duration": 4.171
+    },
+    {
+      "text": ", not RGB. Your RGB is swapped while",
+      "start": 1517.819,
+      "duration": 5.033
+    },
+    {
+      "text": " you are importing using OpenCV. It",
+      "start": 1521.974,
+      "duration": 5.057
+    },
+    {
+      "text": " doesn't make any difference. It's okay.",
+      "start": 1526.067,
+      "duration": 2.912
+    },
+    {
+      "text": " Uh, after that, I showed you here what",
+      "start": 1528.239,
+      "duration": 3.041
+    },
+    {
+      "text": " the shape of the test image is. So this",
+      "start": 1530.333,
+      "duration": 3.226
+    },
+    {
+      "text": " is the shape. It's quite large, that",
+      "start": 1532.604,
+      "duration": 3.135
+    },
+    {
+      "text": " dog image. So, first of all, you will",
+      "start": 1534.801,
+      "duration": 2.852
+    },
+    {
+      "text": " have to resize it. To 256 by 256, so",
+      "start": 1536.692,
+      "duration": 3.307
+    },
+    {
+      "text": " that's exactly what I did. Here, by",
+      "start": 1539.071,
+      "duration": 3.814
+    },
+    {
+      "text": " calling the cv 2.resize function, I",
+      "start": 1541.963,
+      "duration": 3.74
+    },
+    {
+      "text": " resized it to 256 by 256. Alright? And",
+      "start": 1544.781,
+      "duration": 4.425
+    },
+    {
+      "text": " after that, in the end, I just did one",
+      "start": 1548.255,
+      "duration": 2.865
+    },
+    {
+      "text": " thing, as we pass data to our model in",
+      "start": 1550.169,
+      "duration": 2.864
+    },
+    {
+      "text": " batches, right? So, we only have one",
+      "start": 1552.082,
+      "duration": 3.204
+    },
+    {
+      "text": " image. So in our batch, there will be",
+      "start": 1554.336,
+      "duration": 2.898
+    },
+    {
+      "text": " one image. So we converted it into a 4D",
+      "start": 1556.28,
+      "duration": 3.74
+    },
+    {
+      "text": " tensor. 1, 256, 256, 3. So this means",
+      "start": 1559.09,
+      "duration": 5.267
+    },
+    {
+      "text": " that in this batch, there is only one",
+      "start": 1563.402,
+      "duration": 2.646
+    },
+    {
+      "text": " image with these dimensions. Okay? And",
+      "start": 1565.093,
+      "duration": 4.491
+    },
+    {
+      "text": " I stored this in test_input, and then",
+      "start": 1568.646,
+      "duration": 3.291
+    },
+    {
+      "text": " as soon as I did model.predict and",
+      "start": 1570.999,
+      "duration": 3.106
+    },
+    {
+      "text": " passed test_input, the output was one.",
+      "start": 1573.166,
+      "duration": 3.354
+    },
+    {
+      "text": " One means dog. Why? Because cat is",
+      "start": 1576.226,
+      "duration": 4.233
+    },
+    {
+      "text": " first, so zero must have been assigned",
+      "start": 1579.504,
+      "duration": 2.72
+    },
+    {
+      "text": " to cat. One is assigned to dog. Right?",
+      "start": 1581.269,
+      "duration": 3.35
+    },
+    {
+      "text": " Let's quickly try doing all this on",
+      "start": 1584.479,
+      "duration": 3.476
+    },
+    {
+      "text": " cat.jpg as well. Imported the image.",
+      "start": 1587.026,
+      "duration": 4.853
+    },
+    {
+      "text": " This is our cat image. Here are its",
+      "start": 1595.379,
+      "duration": 5.701
+    },
+    {
+      "text": " dimensions. It is a bit smaller.",
+      "start": 1600.148,
+      "duration": 3.731
+    },
+    {
+      "text": " Reshaped it. Converted it to a batch.",
+      "start": 1603.019,
+      "duration": 6.14
+    },
+    {
+      "text": " Now remember, our output should be zero",
+      "start": 1609.1,
+      "duration": 3.535
+    },
+    {
+      "text": ". And you can see it is coming out to",
+      "start": 1611.635,
+      "duration": 3.84
+    },
+    {
+      "text": " be zero. So you can see that although",
+      "start": 1614.533,
+      "duration": 4.371
+    },
+    {
+      "text": " our accuracy is still only 80-81%, it",
+      "start": 1617.989,
+      "duration": 4.152
+    },
+    {
+      "text": " is still performing decently on new",
+      "start": 1621.226,
+      "duration": 3.981
+    },
+    {
+      "text": " data. So that's it guys, this is your",
+      "start": 1624.293,
+      "duration": 3.23
+    },
+    {
+      "text": " project. So that was the video, guys. I",
+      "start": 1626.567,
+      "duration": 3.052
+    },
+    {
+      "text": " know it was a very small mini-project.",
+      "start": 1628.679,
+      "duration": 3.28
+    },
+    {
+      "text": " But seeing everything you've learned so",
+      "start": 1631.239,
+      "duration": 3.118
+    },
+    {
+      "text": " far in practice is a fun thing in",
+      "start": 1633.411,
+      "duration": 2.793
+    },
+    {
+      "text": " itself. I hope you enjoyed it and also",
+      "start": 1635.258,
+      "duration": 3.617
+    },
+    {
+      "text": " understood the concepts. If you liked",
+      "start": 1637.937,
+      "duration": 4.026
+    },
+    {
+      "text": " the video, please like it, and if you",
+      "start": 1641.003,
+      "duration": 2.494
+    },
+    {
+      "text": " haven't subscribed to my channel yet,",
+      "start": 1642.538,
+      "duration": 2.494
+    },
+    {
+      "text": " please do subscribe. Okay? See you in",
+      "start": 1644.072,
+      "duration": 3.757
+    },
+    {
+      "text": " the next video.",
+      "start": 1646.872,
+      "duration": 1.647
+    }
+  ]
+}

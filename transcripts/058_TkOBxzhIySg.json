@@ -1,0 +1,2135 @@
+{
+  "id": "TkOBxzhIySg",
+  "index": 58,
+  "title": "Types of RNN | Many to Many | One to Many | Many to One RNNs",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitesh and you are  welcome to CampusX. In this video, we  will continue our deep learning  playlist. So, we are currently studying  RNNs, and we have understood the RNN  architecture so far and have also  implemented it in Keras. And moving  forward, my plan is to teach  backpropagation. But before that, we  will cover one topic today, and that is  the types of RNNs. Okay? So, you should  know what the different architectures  of RNNs are, and then, based on that,  we will study backpropagation further.  Okay? So, this is a short video. It's a  nice video, but do watch it because it  will be useful later. Okay? Let's start  the video. So guys, before starting the  video, let's discuss once what we have  studied in RNNs so far. Okay? So, in  the first video of RNNs, I gave you a  roadmap. A roadmap, or you can call it  an overview, of what RNNs are. What are  their applications? I told you all this  in the first video. After that, in the  second video, we started studying RNNs  at a theoretical level. Okay? Where we  discussed what the RNN architecture  looks like. How the weights are in RNNs . Then in the third video, we  practically implemented RNNs in Keras.  Okay? On a problem called sentiment  analysis. Right? Now, what is our plan  going forward? That we have to learn  how the backpropagation algorithm works  in the case of RNNs. Okay? But before  studying backpropagation, I would like  to talk about a topic which is  important, and that is what the  different types of RNN architectures  are. It is important to study this  topic. Why? Because depending on the  type of RNN, the backpropagation  algorithm varies a little bit. So I  thought I would tell you once what the  various types of RNN architectures are,  and then when we study backpropagation,  we will cover how backpropagation is  applied in different types of RNNs.  Okay? So, I will tell you one thing  beforehand: there are four types of RNN  architectures. The first one is  Many-to-One. Okay? After that comes  One-to-Many. After that comes  Many-to-Many. And the last one is  One-to-One. Now, our goal for this  video is to discuss these four  architectures or four types in detail.  And not only that, I will provide you  with examples of all of them. That will  give you clarity on which type of RNN  you should use for what kind of  application. Okay? So, let's start with  many-to-one. So, many-to-one is an RNN  architecture that you might already  understand from the name itself. It  expects a sequence as an input. Okay? A  sequence can mean anything. It could be  a sentence, characters, or it could be  time-series data. Okay? But it must be  a sequence. And in the output, it gives  you a non-sequence output or  non-sequential output. Okay? One  example could be integers or numbers,  or in more technical terms, you could  call them scalars. Okay? Like one or  zero, depending on the classes. So, let  me tell you what kind of applications  this architecture is used for. One  example could be sentiment analysis. We  just studied that as well. So, in  sentiment analysis, you receive text as  input, and after processing that text  word by word, you have to determine the  sentiment of that text, one or zero.  Okay? So you can see here that the  input is a sequence of data. In this  case, it is words. And the output is  basically a scalar, one or zero. Okay?  Another example that falls under this  type of application is rating  prediction. Right? Suppose you are  building an application where you have  movie reviews. And by reading the  review, you want to provide a star  prediction, as in a star rating, of how  the user rated that movie. Okay?  Between one and five. Again, the input  is textual, which means it is a  sequence, but the output is a number  between one and five, or one star, two  stars, three stars; it could also act  as a multi-class classification problem . Okay? So these are some examples  where you use many-to-one RNN. Okay?  Now I will show you what a many-to-one  RNN looks like. The good thing is that  you have already seen many-to-one RNN.  Everything we have studied in this  course so far has actually been on  many-to-one RNN. Okay? A many-to-one  architecture looks like this. You send  your input from here. From here, you  get the input of the previous time step . All right? And here your activation  function is applied, and from here you  get the current time step's output, and  at the last time step, you calculate  the output. So, this is the compact  representation. If I show you this  unfolded over several time steps, it  will look something like this, where  you sent the first word from here. From  here, you are receiving an input of  zero. From here, you calculated O1,  which is being fed back to the same  place. And from here, you sent the next  word. From here, O2 is being calculated . From here, you sent the third word.  From here, O3 is being calculated. And  so on. And in the last step, as soon as  you sent the last word. Now from here,  your y-hat, as in your main prediction,  is being made—whether it will be one  or zero. This is the same thing we have  studied so far, and these blocks you  see are your recurrent blocks. And this  is basically a simple RNN. These are  simple RNN blocks. All right? So, this  was an example of a many-to-one  architecture. Yes, looking at this  architecture, you must be understanding  why it is called many-to-one. Because  you can clearly see you are providing  multiple inputs. But you are getting  only one thing in the output. That is  why we call this a many-to-one  architecture. All right? The next RNN  architecture we have is one-to-many.  Again, from the name, you might be  understanding how this will operate.  This is an RNN architecture where you  get normal non-sequential data as input . All right? It could be anything that  is non-sequential, which has no  sequence. It could be numbers or it  could be an image. Even an image is  your non-sequential data. Because at  the end, it is just a matrix of numbers . All right? But the output you get  here is sequential. Like words,  sentences, time series, it could be  anything. All right? If you talk about  the architecture, its architecture is  the exact opposite of our previous type . I will show you what happens here,  that again you have RNN blocks. Like a  simple RNN block. And you provide your  input there. Since the input is a  single one, you provide the input only  once. All right? And then what happens?  From this input, at every time step,  you get an output. And you send that  output to the next time step as well.  You get an output there too. And this  continues like this. Okay? Like this.  This is the architecture. So you can  see it's called one-to-many because you  provide input once, but you get  multiple outputs. There are many  outputs. Okay? Now I know you might be  wondering, what kind of application  could this architecture be useful for?  So, I will give you an example that is  actually used in the industry. So there  is this application called image  captioning. In image captioning, you  feed an image into your neural network,  which is non-sequential data, and your  goal is for the neural network to give  you a textual representation of what is  inside that image. Okay? Let me explain  this with an example. Suppose you  provide an image where a guy is playing  cricket. Okay? So as soon as you feed  this into your neural network, your  neural network will give you this  output: a man is playing cricket. So  you can see your input is a  non-sequential image, and in the output , you are getting sequential data. So  this is one application where this  architecture is used a lot. There are  many more applications, such as another  application: music generation. Okay?  Where you pass a single thing as input,  and music notes are constantly being  generated there. Okay? So this is the  second type of RNN architecture. The  next RNN type is, in my opinion, the  most interesting one. And it is called  many-to-many RNN. Okay? Can you  understand from the name? A  many-to-many RNN is an RNN type where  you get sequential data in the input  and you provide sequential data in the  output as well. Okay? And because of  this, it is often called a  sequence-to-sequence model. And we are  going to work a lot on this in the  future. Okay? So sequence-to-sequence  models or many-to-many RNNs are such  RNN architectures where you get  sequential data as input and you  provide sequential data as output. Okay ? Now, there are two types of this. The  first type is same-length many-to-many.  And the second is variable-length  many-to-many. I am explaining the  difference between the two to you. Same  length happens when your input sequence  size is the same as your output  sequence size. All right? One example  could be part-of-speech tagging. So, if  you have studied a little bit of NLP,  it is a very, very popular task in NLP.  Where what you do is, you have an input  sentence. Let's say, \"My name is Nitish .\" And what you have to do is, in the  pre-processing stage, find the  part-of-speech of every word. Because  apparently, it will help you later on.  Like, this is a pronoun. This is a noun . This is a helping verb. And this is a  noun. All right? So you can see, what  are you doing in the input? You are  giving four words. And for every word,  you are also getting an output. So this  is an application where as many inputs  as you provide, you will get the same  number of outputs. All right? Another  example of this type of application  could be Named Entity Recognition.  Again, a very popular task where for  every word you decide whether it is an  entity or not. All right? Like, \"Let's  meet at 7 PM\"\"at the airport.\" All  right? And you have to figure out which  of these are entities that you need to  work on in the future. So for every  input, for every word, you will assign  a number, one or zero; for example, 7  PM could be an entity, airport could be  an entity. So generally, this thing  comes in very handy when building  chatbots and such. So these are both  applications of the same length type.  And if you talk about it  architecturally, how the architecture  of a same-length many-to-many RNN looks , I will quickly draw and show you. So  what happens is that you have the same  RNN or a simple RNN module. You send  your inputs there, and for every time  step, you also get an output. And you  send that output to the next time step.  Where you provide the next input as  well, and then calculate the next  output. And this goes on until the  number of inputs are exhausted. All  right? So this is the flow diagram of a  same-length many-to-many RNN. All right ? So I told you that there are two  types. So we have discussed the first  type, the same-length one. Now let me  show you what a variable-length  many-to-many RNN is and how it works.  So first, let me tell you again an  application of a variable-length one. A  very good example of variable-length is  machine translation. All right? Machine  translation means an application where  you translate a sentence from one  language into a second language. You  have probably used this in Google  Translate as well. Right? Google  Translate internally uses this type of  RNN model. Right? So why is it variable  length? Let's try to understand that.  Right? I don't have an exact example  coming to mind at this moment. But I  will still try to explain it to you.  Let's say I said, \"Hi, my name is  Nitish.\" Right? This is our input in  English, and let's say we have to  translate it into Hindi. And let's say  the translation in Hindi is: \"Mera naam  Nitish hai.\" Right? Now, this is an  example where the number of words in  your English input is the same as the  words in your Hindi output. But I guess  you can understand that you cannot  guarantee that the number of words in  the input will be the same as the  output language. It is possible that  some languages represent sentences very  efficiently in fewer words, while some  languages might not be as efficient and  take more words. So, machine  translation is a very good example of a  variable-length many-to-many RNN. Right ? If you talk from an architectural  point of view, the architecture of such  an application looks something like  this. So, what do you do in the  beginning? You first provide your  entire input. For example, if I had  four words here, what would I do? I  would input all four first, like this.  At every time step, I am providing my  input like this. Right? Now, once I  have provided the last word as input,  the translation actually starts from  there, and here I get my y1. Then y2.  Then y3, and so on, for however many  words are coming in the output. So, I  guess the question might be arising in  your mind: why did we follow this  architecture where we waited to see the  entire input before giving a single  output? I guess if you try to  understand it logically, you will  realize that translation is a task  where you don't translate on a  word-by-word level. Right? You always  read the whole sentence to perform a  translation. You read its meaning,  understand the grammar, and only then  do you decide what its translation  should be in another language. You  don't just read the first word and  translate it. Read the second word and  translated it. Read the third and  translated it. If you do this, you  might lose both the grammatical meaning  and the context. That is why this  architecture first looks at the entire  input and starts generating output only  after you send the last input. Okay? I  hope you are understanding this whole  point. Now, you will see such  architectures referred to as  encoder-decoder models later. So, this  part where you are providing the input  is called the encoder. And the rest,  from where you are extracting the  output, is called the decoder. Okay? In  the future, when we study  sequence-to-sequence models, we will  cover encoder-decoder networks there.  Okay? But I have already given you a  kind of introduction. Okay? Now let's  move on to our last type. That is  one-to-one. The last type of RNN  architecture is one-to-one. Technically  speaking, this is not a type of RNN.  Because if an RNN were one-to-one, it  wouldn't be an RNN at all. If you think  about it. One-to-one means you have an  architecture that expects  non-sequential data as input and  provides non-sequential data as output  as well. Okay? A very simple example of  such an application can be image  classification, where your input data  is an image. It is an image, meaning a  grid of values or a matrix, and your  output is one or zero, whether it is a  cat or not. Okay? So basically,  architecture-wise, it looks like you  are given an input here and you are  generating an output from here. So  basically, there is no recurrence. Okay ? There is no feedback. You are not  talking about any time steps.  Everything is happening in a single  time step. So technically, this is not  an RNN. This is your simple neural  network that you have studied so far.  Your ANN or your CNN. They actually  fall under this. Okay? So I just  mentioned it so you have an  understanding of when things fall under  RNNs and when they do not. Technically  speaking, there are only three types.  Many-to-one, one-to-many, and  many-to-many. And many-to-many has two  types that we just saw. One is same  length and one is variable length. Okay ? So, that is all I wanted to tell you.  This video is short, but it will give  you some perspective on the different  types of architectures. Going forward,  in the next video when we study  backpropagation, I will explain how  backpropagation works for these three  architectures, and then we will  definitely work on many-to-many. Okay?  So, that's it. So, I hope you  understood this entire topic. And if  you liked the video, please like it,  and if you haven't subscribed to the  channel, please subscribe. Okay? See  you in the next video where we will  cover backpropagation. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitesh and you are",
+      "start": 0.159,
+      "duration": 3.253
+    },
+    {
+      "text": " welcome to CampusX. In this video, we",
+      "start": 2.472,
+      "duration": 3.154
+    },
+    {
+      "text": " will continue our deep learning",
+      "start": 4.678,
+      "duration": 2.618
+    },
+    {
+      "text": " playlist. So, we are currently studying",
+      "start": 6.349,
+      "duration": 3.741
+    },
+    {
+      "text": " RNNs, and we have understood the RNN",
+      "start": 9.151,
+      "duration": 3.224
+    },
+    {
+      "text": " architecture so far and have also",
+      "start": 11.436,
+      "duration": 3.039
+    },
+    {
+      "text": " implemented it in Keras. And moving",
+      "start": 13.536,
+      "duration": 3.715
+    },
+    {
+      "text": " forward, my plan is to teach",
+      "start": 16.311,
+      "duration": 2.66
+    },
+    {
+      "text": " backpropagation. But before that, we",
+      "start": 18.03,
+      "duration": 3.282
+    },
+    {
+      "text": " will cover one topic today, and that is",
+      "start": 20.366,
+      "duration": 3.12
+    },
+    {
+      "text": " the types of RNNs. Okay? So, you should",
+      "start": 22.541,
+      "duration": 3.838
+    },
+    {
+      "text": " know what the different architectures",
+      "start": 25.433,
+      "duration": 3.008
+    },
+    {
+      "text": " of RNNs are, and then, based on that,",
+      "start": 27.495,
+      "duration": 3.008
+    },
+    {
+      "text": " we will study backpropagation further.",
+      "start": 29.557,
+      "duration": 3.062
+    },
+    {
+      "text": " Okay? So, this is a short video. It's a",
+      "start": 31.819,
+      "duration": 3.104
+    },
+    {
+      "text": " nice video, but do watch it because it",
+      "start": 33.973,
+      "duration": 2.921
+    },
+    {
+      "text": " will be useful later. Okay? Let's start",
+      "start": 35.945,
+      "duration": 3.318
+    },
+    {
+      "text": " the video. So guys, before starting the",
+      "start": 38.319,
+      "duration": 3.523
+    },
+    {
+      "text": " video, let's discuss once what we have",
+      "start": 40.892,
+      "duration": 2.904
+    },
+    {
+      "text": " studied in RNNs so far. Okay? So, in",
+      "start": 42.846,
+      "duration": 4.864
+    },
+    {
+      "text": " the first video of RNNs, I gave you a",
+      "start": 46.789,
+      "duration": 3.903
+    },
+    {
+      "text": " roadmap. A roadmap, or you can call it",
+      "start": 49.771,
+      "duration": 6.546
+    },
+    {
+      "text": " an overview, of what RNNs are. What are",
+      "start": 55.399,
+      "duration": 3.948
+    },
+    {
+      "text": " their applications? I told you all this",
+      "start": 58.396,
+      "duration": 3.096
+    },
+    {
+      "text": " in the first video. After that, in the",
+      "start": 60.546,
+      "duration": 3.782
+    },
+    {
+      "text": " second video, we started studying RNNs",
+      "start": 63.413,
+      "duration": 4.228
+    },
+    {
+      "text": " at a theoretical level. Okay? Where we",
+      "start": 66.726,
+      "duration": 4.454
+    },
+    {
+      "text": " discussed what the RNN architecture",
+      "start": 70.255,
+      "duration": 3.634
+    },
+    {
+      "text": " looks like. How the weights are in RNNs",
+      "start": 72.965,
+      "duration": 4.435
+    },
+    {
+      "text": ". Then in the third video, we",
+      "start": 76.4,
+      "duration": 4.675
+    },
+    {
+      "text": " practically implemented RNNs in Keras.",
+      "start": 80.189,
+      "duration": 5.331
+    },
+    {
+      "text": " Okay? On a problem called sentiment",
+      "start": 84.779,
+      "duration": 4.181
+    },
+    {
+      "text": " analysis. Right? Now, what is our plan",
+      "start": 88.035,
+      "duration": 5.858
+    },
+    {
+      "text": " going forward? That we have to learn",
+      "start": 92.964,
+      "duration": 4.112
+    },
+    {
+      "text": " how the backpropagation algorithm works",
+      "start": 96.17,
+      "duration": 4.672
+    },
+    {
+      "text": " in the case of RNNs. Okay? But before",
+      "start": 99.936,
+      "duration": 5.267
+    },
+    {
+      "text": " studying backpropagation, I would like",
+      "start": 104.291,
+      "duration": 4.355
+    },
+    {
+      "text": " to talk about a topic which is",
+      "start": 107.735,
+      "duration": 3.649
+    },
+    {
+      "text": " important, and that is what the",
+      "start": 110.472,
+      "duration": 3.738
+    },
+    {
+      "text": " different types of RNN architectures",
+      "start": 113.298,
+      "duration": 4.179
+    },
+    {
+      "text": " are. It is important to study this",
+      "start": 116.565,
+      "duration": 3.188
+    },
+    {
+      "text": " topic. Why? Because depending on the",
+      "start": 118.805,
+      "duration": 4.514
+    },
+    {
+      "text": " type of RNN, the backpropagation",
+      "start": 122.409,
+      "duration": 3.88
+    },
+    {
+      "text": " algorithm varies a little bit. So I",
+      "start": 125.379,
+      "duration": 4.382
+    },
+    {
+      "text": " thought I would tell you once what the",
+      "start": 128.832,
+      "duration": 3.683
+    },
+    {
+      "text": " various types of RNN architectures are,",
+      "start": 131.585,
+      "duration": 3.754
+    },
+    {
+      "text": " and then when we study backpropagation,",
+      "start": 134.41,
+      "duration": 3.754
+    },
+    {
+      "text": " we will cover how backpropagation is",
+      "start": 137.234,
+      "duration": 3.542
+    },
+    {
+      "text": " applied in different types of RNNs.",
+      "start": 139.847,
+      "duration": 3.472
+    },
+    {
+      "text": " Okay? So, I will tell you one thing",
+      "start": 142.7,
+      "duration": 4.511
+    },
+    {
+      "text": " beforehand: there are four types of RNN",
+      "start": 146.284,
+      "duration": 3.842
+    },
+    {
+      "text": " architectures. The first one is",
+      "start": 149.199,
+      "duration": 3.74
+    },
+    {
+      "text": " Many-to-One. Okay? After that comes",
+      "start": 153.939,
+      "duration": 8.524
+    },
+    {
+      "text": " One-to-Many. After that comes",
+      "start": 161.64,
+      "duration": 6.687
+    },
+    {
+      "text": " Many-to-Many. And the last one is",
+      "start": 167.415,
+      "duration": 6.327
+    },
+    {
+      "text": " One-to-One. Now, our goal for this",
+      "start": 172.852,
+      "duration": 5.445
+    },
+    {
+      "text": " video is to discuss these four",
+      "start": 177.36,
+      "duration": 2.878
+    },
+    {
+      "text": " architectures or four types in detail.",
+      "start": 179.3,
+      "duration": 3.38
+    },
+    {
+      "text": " And not only that, I will provide you",
+      "start": 183.0,
+      "duration": 3.782
+    },
+    {
+      "text": " with examples of all of them. That will",
+      "start": 185.857,
+      "duration": 4.471
+    },
+    {
+      "text": " give you clarity on which type of RNN",
+      "start": 189.4,
+      "duration": 3.671
+    },
+    {
+      "text": " you should use for what kind of",
+      "start": 192.143,
+      "duration": 3.237
+    },
+    {
+      "text": " application. Okay? So, let's start with",
+      "start": 194.452,
+      "duration": 4.124
+    },
+    {
+      "text": " many-to-one. So, many-to-one is an RNN",
+      "start": 197.636,
+      "duration": 3.541
+    },
+    {
+      "text": " architecture that you might already",
+      "start": 200.229,
+      "duration": 2.817
+    },
+    {
+      "text": " understand from the name itself. It",
+      "start": 202.098,
+      "duration": 3.308
+    },
+    {
+      "text": " expects a sequence as an input. Okay? A",
+      "start": 204.549,
+      "duration": 7.168
+    },
+    {
+      "text": " sequence can mean anything. It could be",
+      "start": 210.77,
+      "duration": 3.387
+    },
+    {
+      "text": " a sentence, characters, or it could be",
+      "start": 213.235,
+      "duration": 3.951
+    },
+    {
+      "text": " time-series data. Okay? But it must be",
+      "start": 216.264,
+      "duration": 3.888
+    },
+    {
+      "text": " a sequence. And in the output, it gives",
+      "start": 219.219,
+      "duration": 3.915
+    },
+    {
+      "text": " you a non-sequence output or",
+      "start": 222.211,
+      "duration": 3.16
+    },
+    {
+      "text": " non-sequential output. Okay? One",
+      "start": 224.448,
+      "duration": 4.188
+    },
+    {
+      "text": " example could be integers or numbers,",
+      "start": 227.715,
+      "duration": 3.93
+    },
+    {
+      "text": " or in more technical terms, you could",
+      "start": 230.724,
+      "duration": 3.93
+    },
+    {
+      "text": " call them scalars. Okay? Like one or",
+      "start": 233.733,
+      "duration": 4.991
+    },
+    {
+      "text": " zero, depending on the classes. So, let",
+      "start": 237.784,
+      "duration": 4.3
+    },
+    {
+      "text": " me tell you what kind of applications",
+      "start": 241.168,
+      "duration": 4.096
+    },
+    {
+      "text": " this architecture is used for. One",
+      "start": 244.348,
+      "duration": 4.474
+    },
+    {
+      "text": " example could be sentiment analysis. We",
+      "start": 247.903,
+      "duration": 4.771
+    },
+    {
+      "text": " just studied that as well. So, in",
+      "start": 251.732,
+      "duration": 4.177
+    },
+    {
+      "text": " sentiment analysis, you receive text as",
+      "start": 254.994,
+      "duration": 4.314
+    },
+    {
+      "text": " input, and after processing that text",
+      "start": 258.393,
+      "duration": 4.144
+    },
+    {
+      "text": " word by word, you have to determine the",
+      "start": 261.622,
+      "duration": 4.314
+    },
+    {
+      "text": " sentiment of that text, one or zero.",
+      "start": 265.021,
+      "duration": 4.059
+    },
+    {
+      "text": " Okay? So you can see here that the",
+      "start": 269.22,
+      "duration": 3.317
+    },
+    {
+      "text": " input is a sequence of data. In this",
+      "start": 271.582,
+      "duration": 3.564
+    },
+    {
+      "text": " case, it is words. And the output is",
+      "start": 274.222,
+      "duration": 3.482
+    },
+    {
+      "text": " basically a scalar, one or zero. Okay?",
+      "start": 276.761,
+      "duration": 3.558
+    },
+    {
+      "text": " Another example that falls under this",
+      "start": 280.64,
+      "duration": 4.371
+    },
+    {
+      "text": " type of application is rating",
+      "start": 284.102,
+      "duration": 3.643
+    },
+    {
+      "text": " prediction. Right? Suppose you are",
+      "start": 286.836,
+      "duration": 6.638
+    },
+    {
+      "text": " building an application where you have",
+      "start": 292.561,
+      "duration": 4.282
+    },
+    {
+      "text": " movie reviews. And by reading the",
+      "start": 295.929,
+      "duration": 4.13
+    },
+    {
+      "text": " review, you want to provide a star",
+      "start": 299.135,
+      "duration": 3.607
+    },
+    {
+      "text": " prediction, as in a star rating, of how",
+      "start": 301.819,
+      "duration": 3.99
+    },
+    {
+      "text": " the user rated that movie. Okay?",
+      "start": 304.885,
+      "duration": 3.814
+    },
+    {
+      "text": " Between one and five. Again, the input",
+      "start": 307.799,
+      "duration": 5.027
+    },
+    {
+      "text": " is textual, which means it is a",
+      "start": 311.898,
+      "duration": 3.223
+    },
+    {
+      "text": " sequence, but the output is a number",
+      "start": 314.193,
+      "duration": 3.582
+    },
+    {
+      "text": " between one and five, or one star, two",
+      "start": 316.847,
+      "duration": 3.725
+    },
+    {
+      "text": " stars, three stars; it could also act",
+      "start": 319.644,
+      "duration": 3.654
+    },
+    {
+      "text": " as a multi-class classification problem",
+      "start": 322.37,
+      "duration": 3.797
+    },
+    {
+      "text": ". Okay? So these are some examples",
+      "start": 325.167,
+      "duration": 4.92
+    },
+    {
+      "text": " where you use many-to-one RNN. Okay?",
+      "start": 329.164,
+      "duration": 4.135
+    },
+    {
+      "text": " Now I will show you what a many-to-one",
+      "start": 332.464,
+      "duration": 3.665
+    },
+    {
+      "text": " RNN looks like. The good thing is that",
+      "start": 335.199,
+      "duration": 3.342
+    },
+    {
+      "text": " you have already seen many-to-one RNN.",
+      "start": 337.595,
+      "duration": 3.054
+    },
+    {
+      "text": " Everything we have studied in this",
+      "start": 339.749,
+      "duration": 3.206
+    },
+    {
+      "text": " course so far has actually been on",
+      "start": 342.02,
+      "duration": 3.206
+    },
+    {
+      "text": " many-to-one RNN. Okay? A many-to-one",
+      "start": 344.291,
+      "duration": 3.742
+    },
+    {
+      "text": " architecture looks like this. You send",
+      "start": 347.115,
+      "duration": 4.186
+    },
+    {
+      "text": " your input from here. From here, you",
+      "start": 350.367,
+      "duration": 3.916
+    },
+    {
+      "text": " get the input of the previous time step",
+      "start": 353.339,
+      "duration": 3.184
+    },
+    {
+      "text": ". All right? And here your activation",
+      "start": 355.523,
+      "duration": 4.786
+    },
+    {
+      "text": " function is applied, and from here you",
+      "start": 359.366,
+      "duration": 3.171
+    },
+    {
+      "text": " get the current time step's output, and",
+      "start": 361.594,
+      "duration": 3.227
+    },
+    {
+      "text": " at the last time step, you calculate",
+      "start": 363.878,
+      "duration": 3.056
+    },
+    {
+      "text": " the output. So, this is the compact",
+      "start": 365.991,
+      "duration": 4.299
+    },
+    {
+      "text": " representation. If I show you this",
+      "start": 369.351,
+      "duration": 3.992
+    },
+    {
+      "text": " unfolded over several time steps, it",
+      "start": 372.411,
+      "duration": 3.449
+    },
+    {
+      "text": " will look something like this, where",
+      "start": 374.928,
+      "duration": 3.449
+    },
+    {
+      "text": " you sent the first word from here. From",
+      "start": 377.445,
+      "duration": 4.916
+    },
+    {
+      "text": " here, you are receiving an input of",
+      "start": 381.412,
+      "duration": 2.765
+    },
+    {
+      "text": " zero. From here, you calculated O1,",
+      "start": 383.227,
+      "duration": 4.589
+    },
+    {
+      "text": " which is being fed back to the same",
+      "start": 386.899,
+      "duration": 3.917
+    },
+    {
+      "text": " place. And from here, you sent the next",
+      "start": 389.899,
+      "duration": 4.012
+    },
+    {
+      "text": " word. From here, O2 is being calculated",
+      "start": 392.969,
+      "duration": 3.841
+    },
+    {
+      "text": ". From here, you sent the third word.",
+      "start": 395.81,
+      "duration": 3.449
+    },
+    {
+      "text": " From here, O3 is being calculated. And",
+      "start": 398.48,
+      "duration": 3.1
+    },
+    {
+      "text": " so on. And in the last step, as soon as",
+      "start": 400.7,
+      "duration": 3.282
+    },
+    {
+      "text": " you sent the last word. Now from here,",
+      "start": 403.028,
+      "duration": 3.388
+    },
+    {
+      "text": " your y-hat, as in your main prediction,",
+      "start": 405.486,
+      "duration": 3.722
+    },
+    {
+      "text": " is being made—whether it will be one",
+      "start": 408.278,
+      "duration": 3.653
+    },
+    {
+      "text": " or zero. This is the same thing we have",
+      "start": 411.001,
+      "duration": 3.772
+    },
+    {
+      "text": " studied so far, and these blocks you",
+      "start": 413.838,
+      "duration": 3.321
+    },
+    {
+      "text": " see are your recurrent blocks. And this",
+      "start": 416.224,
+      "duration": 3.84
+    },
+    {
+      "text": " is basically a simple RNN. These are",
+      "start": 419.15,
+      "duration": 4.059
+    },
+    {
+      "text": " simple RNN blocks. All right? So, this",
+      "start": 422.279,
+      "duration": 3.823
+    },
+    {
+      "text": " was an example of a many-to-one",
+      "start": 425.185,
+      "duration": 3.572
+    },
+    {
+      "text": " architecture. Yes, looking at this",
+      "start": 427.84,
+      "duration": 3.49
+    },
+    {
+      "text": " architecture, you must be understanding",
+      "start": 430.377,
+      "duration": 2.855
+    },
+    {
+      "text": " why it is called many-to-one. Because",
+      "start": 432.279,
+      "duration": 3.065
+    },
+    {
+      "text": " you can clearly see you are providing",
+      "start": 434.417,
+      "duration": 3.673
+    },
+    {
+      "text": " multiple inputs. But you are getting",
+      "start": 437.162,
+      "duration": 3.358
+    },
+    {
+      "text": " only one thing in the output. That is",
+      "start": 439.578,
+      "duration": 3.761
+    },
+    {
+      "text": " why we call this a many-to-one",
+      "start": 442.413,
+      "duration": 5.918
+    },
+    {
+      "text": " architecture. All right? The next RNN",
+      "start": 447.437,
+      "duration": 4.055
+    },
+    {
+      "text": " architecture we have is one-to-many.",
+      "start": 450.569,
+      "duration": 3.763
+    },
+    {
+      "text": " Again, from the name, you might be",
+      "start": 453.519,
+      "duration": 2.57
+    },
+    {
+      "text": " understanding how this will operate.",
+      "start": 455.135,
+      "duration": 2.664
+    },
+    {
+      "text": " This is an RNN architecture where you",
+      "start": 457.279,
+      "duration": 4.87
+    },
+    {
+      "text": " get normal non-sequential data as input",
+      "start": 461.254,
+      "duration": 5.08
+    },
+    {
+      "text": ". All right? It could be anything that",
+      "start": 465.334,
+      "duration": 5.663
+    },
+    {
+      "text": " is non-sequential, which has no",
+      "start": 470.049,
+      "duration": 2.61
+    },
+    {
+      "text": " sequence. It could be numbers or it",
+      "start": 471.711,
+      "duration": 3.006
+    },
+    {
+      "text": " could be an image. Even an image is",
+      "start": 473.769,
+      "duration": 2.935
+    },
+    {
+      "text": " your non-sequential data. Because at",
+      "start": 475.757,
+      "duration": 3.121
+    },
+    {
+      "text": " the end, it is just a matrix of numbers",
+      "start": 477.947,
+      "duration": 3.691
+    },
+    {
+      "text": ". All right? But the output you get",
+      "start": 480.638,
+      "duration": 4.353
+    },
+    {
+      "text": " here is sequential. Like words,",
+      "start": 484.103,
+      "duration": 5.418
+    },
+    {
+      "text": " sentences, time series, it could be",
+      "start": 488.594,
+      "duration": 3.555
+    },
+    {
+      "text": " anything. All right? If you talk about",
+      "start": 491.222,
+      "duration": 3.72
+    },
+    {
+      "text": " the architecture, its architecture is",
+      "start": 494.006,
+      "duration": 3.359
+    },
+    {
+      "text": " the exact opposite of our previous type",
+      "start": 496.429,
+      "duration": 3.486
+    },
+    {
+      "text": ". I will show you what happens here,",
+      "start": 498.915,
+      "duration": 4.42
+    },
+    {
+      "text": " that again you have RNN blocks. Like a",
+      "start": 502.43,
+      "duration": 4.719
+    },
+    {
+      "text": " simple RNN block. And you provide your",
+      "start": 506.23,
+      "duration": 5.06
+    },
+    {
+      "text": " input there. Since the input is a",
+      "start": 510.408,
+      "duration": 4.501
+    },
+    {
+      "text": " single one, you provide the input only",
+      "start": 513.987,
+      "duration": 3.946
+    },
+    {
+      "text": " once. All right? And then what happens?",
+      "start": 517.011,
+      "duration": 3.36
+    },
+    {
+      "text": " From this input, at every time step,",
+      "start": 519.471,
+      "duration": 4.194
+    },
+    {
+      "text": " you get an output. And you send that",
+      "start": 522.753,
+      "duration": 3.713
+    },
+    {
+      "text": " output to the next time step as well.",
+      "start": 525.52,
+      "duration": 3.019
+    },
+    {
+      "text": " You get an output there too. And this",
+      "start": 527.859,
+      "duration": 4.874
+    },
+    {
+      "text": " continues like this. Okay? Like this.",
+      "start": 531.872,
+      "duration": 8.567
+    },
+    {
+      "text": " This is the architecture. So you can",
+      "start": 539.659,
+      "duration": 4.044
+    },
+    {
+      "text": " see it's called one-to-many because you",
+      "start": 542.759,
+      "duration": 3.2
+    },
+    {
+      "text": " provide input once, but you get",
+      "start": 545.015,
+      "duration": 2.748
+    },
+    {
+      "text": " multiple outputs. There are many",
+      "start": 546.82,
+      "duration": 4.037
+    },
+    {
+      "text": " outputs. Okay? Now I know you might be",
+      "start": 549.928,
+      "duration": 3.677
+    },
+    {
+      "text": " wondering, what kind of application",
+      "start": 552.667,
+      "duration": 3.186
+    },
+    {
+      "text": " could this architecture be useful for?",
+      "start": 554.915,
+      "duration": 3.374
+    },
+    {
+      "text": " So, I will give you an example that is",
+      "start": 557.879,
+      "duration": 2.63
+    },
+    {
+      "text": " actually used in the industry. So there",
+      "start": 559.552,
+      "duration": 3.815
+    },
+    {
+      "text": " is this application called image",
+      "start": 562.486,
+      "duration": 4.792
+    },
+    {
+      "text": " captioning. In image captioning, you",
+      "start": 566.396,
+      "duration": 6.324
+    },
+    {
+      "text": " feed an image into your neural network,",
+      "start": 571.816,
+      "duration": 4.772
+    },
+    {
+      "text": " which is non-sequential data, and your",
+      "start": 575.685,
+      "duration": 4.675
+    },
+    {
+      "text": " goal is for the neural network to give",
+      "start": 579.457,
+      "duration": 4.675
+    },
+    {
+      "text": " you a textual representation of what is",
+      "start": 583.229,
+      "duration": 4.772
+    },
+    {
+      "text": " inside that image. Okay? Let me explain",
+      "start": 587.098,
+      "duration": 4.816
+    },
+    {
+      "text": " this with an example. Suppose you",
+      "start": 590.965,
+      "duration": 3.236
+    },
+    {
+      "text": " provide an image where a guy is playing",
+      "start": 593.271,
+      "duration": 3.704
+    },
+    {
+      "text": " cricket. Okay? So as soon as you feed",
+      "start": 596.045,
+      "duration": 5.591
+    },
+    {
+      "text": " this into your neural network, your",
+      "start": 600.739,
+      "duration": 4.623
+    },
+    {
+      "text": " neural network will give you this",
+      "start": 604.465,
+      "duration": 4.416
+    },
+    {
+      "text": " output: a man is playing cricket. So",
+      "start": 607.984,
+      "duration": 6.068
+    },
+    {
+      "text": " you can see your input is a",
+      "start": 613.148,
+      "duration": 3.607
+    },
+    {
+      "text": " non-sequential image, and in the output",
+      "start": 615.851,
+      "duration": 4.765
+    },
+    {
+      "text": ", you are getting sequential data. So",
+      "start": 619.616,
+      "duration": 4.631
+    },
+    {
+      "text": " this is one application where this",
+      "start": 623.311,
+      "duration": 3.176
+    },
+    {
+      "text": " architecture is used a lot. There are",
+      "start": 625.551,
+      "duration": 4.749
+    },
+    {
+      "text": " many more applications, such as another",
+      "start": 629.385,
+      "duration": 4.295
+    },
+    {
+      "text": " application: music generation. Okay?",
+      "start": 632.765,
+      "duration": 5.934
+    },
+    {
+      "text": " Where you pass a single thing as input,",
+      "start": 640.1,
+      "duration": 3.935
+    },
+    {
+      "text": " and music notes are constantly being",
+      "start": 643.11,
+      "duration": 3.71
+    },
+    {
+      "text": " generated there. Okay? So this is the",
+      "start": 645.895,
+      "duration": 5.545
+    },
+    {
+      "text": " second type of RNN architecture. The",
+      "start": 650.503,
+      "duration": 4.42
+    },
+    {
+      "text": " next RNN type is, in my opinion, the",
+      "start": 654.005,
+      "duration": 3.926
+    },
+    {
+      "text": " most interesting one. And it is called",
+      "start": 657.012,
+      "duration": 4.867
+    },
+    {
+      "text": " many-to-many RNN. Okay? Can you",
+      "start": 660.999,
+      "duration": 4.1
+    },
+    {
+      "text": " understand from the name? A",
+      "start": 664.146,
+      "duration": 2.891
+    },
+    {
+      "text": " many-to-many RNN is an RNN type where",
+      "start": 666.135,
+      "duration": 4.626
+    },
+    {
+      "text": " you get sequential data in the input",
+      "start": 669.859,
+      "duration": 4.529
+    },
+    {
+      "text": " and you provide sequential data in the",
+      "start": 673.486,
+      "duration": 4.724
+    },
+    {
+      "text": " output as well. Okay? And because of",
+      "start": 677.308,
+      "duration": 5.39
+    },
+    {
+      "text": " this, it is often called a",
+      "start": 681.769,
+      "duration": 2.854
+    },
+    {
+      "text": " sequence-to-sequence model. And we are",
+      "start": 683.694,
+      "duration": 3.896
+    },
+    {
+      "text": " going to work a lot on this in the",
+      "start": 686.639,
+      "duration": 2.668
+    },
+    {
+      "text": " future. Okay? So sequence-to-sequence",
+      "start": 688.356,
+      "duration": 4.423
+    },
+    {
+      "text": " models or many-to-many RNNs are such",
+      "start": 691.854,
+      "duration": 3.691
+    },
+    {
+      "text": " RNN architectures where you get",
+      "start": 694.619,
+      "duration": 3.318
+    },
+    {
+      "text": " sequential data as input and you",
+      "start": 697.011,
+      "duration": 3.392
+    },
+    {
+      "text": " provide sequential data as output. Okay",
+      "start": 699.478,
+      "duration": 4.769
+    },
+    {
+      "text": "? Now, there are two types of this. The",
+      "start": 703.247,
+      "duration": 5.294
+    },
+    {
+      "text": " first type is same-length many-to-many.",
+      "start": 707.609,
+      "duration": 6.85
+    },
+    {
+      "text": " And the second is variable-length",
+      "start": 714.46,
+      "duration": 2.824
+    },
+    {
+      "text": " many-to-many. I am explaining the",
+      "start": 716.34,
+      "duration": 3.795
+    },
+    {
+      "text": " difference between the two to you. Same",
+      "start": 719.178,
+      "duration": 3.478
+    },
+    {
+      "text": " length happens when your input sequence",
+      "start": 721.77,
+      "duration": 5.458
+    },
+    {
+      "text": " size is the same as your output",
+      "start": 726.342,
+      "duration": 4.543
+    },
+    {
+      "text": " sequence size. All right? One example",
+      "start": 729.999,
+      "duration": 6.76
+    },
+    {
+      "text": " could be part-of-speech tagging. So, if",
+      "start": 735.871,
+      "duration": 6.036
+    },
+    {
+      "text": " you have studied a little bit of NLP,",
+      "start": 740.969,
+      "duration": 3.272
+    },
+    {
+      "text": " it is a very, very popular task in NLP.",
+      "start": 743.303,
+      "duration": 3.396
+    },
+    {
+      "text": " Where what you do is, you have an input",
+      "start": 746.179,
+      "duration": 3.451
+    },
+    {
+      "text": " sentence. Let's say, \"My name is Nitish",
+      "start": 748.693,
+      "duration": 6.518
+    },
+    {
+      "text": ".\" And what you have to do is, in the",
+      "start": 754.211,
+      "duration": 5.037
+    },
+    {
+      "text": " pre-processing stage, find the",
+      "start": 758.307,
+      "duration": 2.756
+    },
+    {
+      "text": " part-of-speech of every word. Because",
+      "start": 760.121,
+      "duration": 3.921
+    },
+    {
+      "text": " apparently, it will help you later on.",
+      "start": 763.097,
+      "duration": 3.082
+    },
+    {
+      "text": " Like, this is a pronoun. This is a noun",
+      "start": 765.959,
+      "duration": 5.43
+    },
+    {
+      "text": ". This is a helping verb. And this is a",
+      "start": 770.389,
+      "duration": 5.388
+    },
+    {
+      "text": " noun. All right? So you can see, what",
+      "start": 774.874,
+      "duration": 3.918
+    },
+    {
+      "text": " are you doing in the input? You are",
+      "start": 777.844,
+      "duration": 3.185
+    },
+    {
+      "text": " giving four words. And for every word,",
+      "start": 780.111,
+      "duration": 4.699
+    },
+    {
+      "text": " you are also getting an output. So this",
+      "start": 783.919,
+      "duration": 4.984
+    },
+    {
+      "text": " is an application where as many inputs",
+      "start": 787.963,
+      "duration": 3.302
+    },
+    {
+      "text": " as you provide, you will get the same",
+      "start": 790.326,
+      "duration": 3.241
+    },
+    {
+      "text": " number of outputs. All right? Another",
+      "start": 792.628,
+      "duration": 3.492
+    },
+    {
+      "text": " example of this type of application",
+      "start": 795.209,
+      "duration": 4.132
+    },
+    {
+      "text": " could be Named Entity Recognition.",
+      "start": 798.431,
+      "duration": 4.043
+    },
+    {
+      "text": " Again, a very popular task where for",
+      "start": 801.699,
+      "duration": 3.896
+    },
+    {
+      "text": " every word you decide whether it is an",
+      "start": 804.675,
+      "duration": 4.057
+    },
+    {
+      "text": " entity or not. All right? Like, \"Let's",
+      "start": 807.812,
+      "duration": 6.029
+    },
+    {
+      "text": " meet at 7 PM\"\"at the airport.\" All",
+      "start": 813.039,
+      "duration": 10.347
+    },
+    {
+      "text": " right? And you have to figure out which",
+      "start": 822.43,
+      "duration": 3.237
+    },
+    {
+      "text": " of these are entities that you need to",
+      "start": 824.726,
+      "duration": 3.225
+    },
+    {
+      "text": " work on in the future. So for every",
+      "start": 827.009,
+      "duration": 3.139
+    },
+    {
+      "text": " input, for every word, you will assign",
+      "start": 829.211,
+      "duration": 3.378
+    },
+    {
+      "text": " a number, one or zero; for example, 7",
+      "start": 831.651,
+      "duration": 3.315
+    },
+    {
+      "text": " PM could be an entity, airport could be",
+      "start": 834.029,
+      "duration": 3.44
+    },
+    {
+      "text": " an entity. So generally, this thing",
+      "start": 836.532,
+      "duration": 3.336
+    },
+    {
+      "text": " comes in very handy when building",
+      "start": 838.919,
+      "duration": 2.663
+    },
+    {
+      "text": " chatbots and such. So these are both",
+      "start": 840.632,
+      "duration": 3.475
+    },
+    {
+      "text": " applications of the same length type.",
+      "start": 843.161,
+      "duration": 3.019
+    },
+    {
+      "text": " And if you talk about it",
+      "start": 846.639,
+      "duration": 2.695
+    },
+    {
+      "text": " architecturally, how the architecture",
+      "start": 848.405,
+      "duration": 3.614
+    },
+    {
+      "text": " of a same-length many-to-many RNN looks",
+      "start": 851.09,
+      "duration": 3.756
+    },
+    {
+      "text": ", I will quickly draw and show you. So",
+      "start": 853.846,
+      "duration": 4.867
+    },
+    {
+      "text": " what happens is that you have the same",
+      "start": 857.78,
+      "duration": 3.533
+    },
+    {
+      "text": " RNN or a simple RNN module. You send",
+      "start": 860.38,
+      "duration": 4.569
+    },
+    {
+      "text": " your inputs there, and for every time",
+      "start": 864.043,
+      "duration": 4.466
+    },
+    {
+      "text": " step, you also get an output. And you",
+      "start": 867.603,
+      "duration": 5.121
+    },
+    {
+      "text": " send that output to the next time step.",
+      "start": 871.781,
+      "duration": 3.258
+    },
+    {
+      "text": " Where you provide the next input as",
+      "start": 874.219,
+      "duration": 3.491
+    },
+    {
+      "text": " well, and then calculate the next",
+      "start": 876.781,
+      "duration": 3.349
+    },
+    {
+      "text": " output. And this goes on until the",
+      "start": 879.201,
+      "duration": 4.332
+    },
+    {
+      "text": " number of inputs are exhausted. All",
+      "start": 882.635,
+      "duration": 4.572
+    },
+    {
+      "text": " right? So this is the flow diagram of a",
+      "start": 886.263,
+      "duration": 6.383
+    },
+    {
+      "text": " same-length many-to-many RNN. All right",
+      "start": 891.779,
+      "duration": 11.181
+    },
+    {
+      "text": "? So I told you that there are two",
+      "start": 901.96,
+      "duration": 4.04
+    },
+    {
+      "text": " types. So we have discussed the first",
+      "start": 905.077,
+      "duration": 2.866
+    },
+    {
+      "text": " type, the same-length one. Now let me",
+      "start": 906.986,
+      "duration": 3.488
+    },
+    {
+      "text": " show you what a variable-length",
+      "start": 909.575,
+      "duration": 4.147
+    },
+    {
+      "text": " many-to-many RNN is and how it works.",
+      "start": 912.823,
+      "duration": 4.756
+    },
+    {
+      "text": " So first, let me tell you again an",
+      "start": 917.079,
+      "duration": 3.304
+    },
+    {
+      "text": " application of a variable-length one. A",
+      "start": 919.451,
+      "duration": 5.174
+    },
+    {
+      "text": " very good example of variable-length is",
+      "start": 923.731,
+      "duration": 5.127
+    },
+    {
+      "text": " machine translation. All right? Machine",
+      "start": 927.963,
+      "duration": 5.464
+    },
+    {
+      "text": " translation means an application where",
+      "start": 932.528,
+      "duration": 4.847
+    },
+    {
+      "text": " you translate a sentence from one",
+      "start": 936.477,
+      "duration": 4.341
+    },
+    {
+      "text": " language into a second language. You",
+      "start": 939.919,
+      "duration": 6.173
+    },
+    {
+      "text": " have probably used this in Google",
+      "start": 945.17,
+      "duration": 3.57
+    },
+    {
+      "text": " Translate as well. Right? Google",
+      "start": 947.818,
+      "duration": 4.433
+    },
+    {
+      "text": " Translate internally uses this type of",
+      "start": 951.324,
+      "duration": 3.741
+    },
+    {
+      "text": " RNN model. Right? So why is it variable",
+      "start": 954.137,
+      "duration": 4.343
+    },
+    {
+      "text": " length? Let's try to understand that.",
+      "start": 957.558,
+      "duration": 3.521
+    },
+    {
+      "text": " Right? I don't have an exact example",
+      "start": 960.739,
+      "duration": 3.418
+    },
+    {
+      "text": " coming to mind at this moment. But I",
+      "start": 963.219,
+      "duration": 3.188
+    },
+    {
+      "text": " will still try to explain it to you.",
+      "start": 965.453,
+      "duration": 2.646
+    },
+    {
+      "text": " Let's say I said, \"Hi, my name is",
+      "start": 967.299,
+      "duration": 7.254
+    },
+    {
+      "text": " Nitish.\" Right? This is our input in",
+      "start": 973.742,
+      "duration": 5.631
+    },
+    {
+      "text": " English, and let's say we have to",
+      "start": 978.429,
+      "duration": 2.872
+    },
+    {
+      "text": " translate it into Hindi. And let's say",
+      "start": 980.357,
+      "duration": 3.589
+    },
+    {
+      "text": " the translation in Hindi is: \"Mera naam",
+      "start": 983.027,
+      "duration": 4.144
+    },
+    {
+      "text": " Nitish hai.\" Right? Now, this is an",
+      "start": 986.251,
+      "duration": 5.682
+    },
+    {
+      "text": " example where the number of words in",
+      "start": 990.993,
+      "duration": 3.148
+    },
+    {
+      "text": " your English input is the same as the",
+      "start": 993.201,
+      "duration": 3.207
+    },
+    {
+      "text": " words in your Hindi output. But I guess",
+      "start": 995.468,
+      "duration": 4.07
+    },
+    {
+      "text": " you can understand that you cannot",
+      "start": 998.594,
+      "duration": 2.914
+    },
+    {
+      "text": " guarantee that the number of words in",
+      "start": 1000.564,
+      "duration": 3.083
+    },
+    {
+      "text": " the input will be the same as the",
+      "start": 1002.704,
+      "duration": 2.857
+    },
+    {
+      "text": " output language. It is possible that",
+      "start": 1004.618,
+      "duration": 4.842
+    },
+    {
+      "text": " some languages represent sentences very",
+      "start": 1008.549,
+      "duration": 4.452
+    },
+    {
+      "text": " efficiently in fewer words, while some",
+      "start": 1012.089,
+      "duration": 4.364
+    },
+    {
+      "text": " languages might not be as efficient and",
+      "start": 1015.542,
+      "duration": 4.452
+    },
+    {
+      "text": " take more words. So, machine",
+      "start": 1019.082,
+      "duration": 4.775
+    },
+    {
+      "text": " translation is a very good example of a",
+      "start": 1022.944,
+      "duration": 4.396
+    },
+    {
+      "text": " variable-length many-to-many RNN. Right",
+      "start": 1026.427,
+      "duration": 5.052
+    },
+    {
+      "text": "? If you talk from an architectural",
+      "start": 1030.479,
+      "duration": 3.73
+    },
+    {
+      "text": " point of view, the architecture of such",
+      "start": 1033.277,
+      "duration": 3.659
+    },
+    {
+      "text": " an application looks something like",
+      "start": 1036.004,
+      "duration": 3.386
+    },
+    {
+      "text": " this. So, what do you do in the",
+      "start": 1038.459,
+      "duration": 3.978
+    },
+    {
+      "text": " beginning? You first provide your",
+      "start": 1041.523,
+      "duration": 4.133
+    },
+    {
+      "text": " entire input. For example, if I had",
+      "start": 1044.721,
+      "duration": 4.628
+    },
+    {
+      "text": " four words here, what would I do? I",
+      "start": 1048.443,
+      "duration": 4.397
+    },
+    {
+      "text": " would input all four first, like this.",
+      "start": 1051.941,
+      "duration": 4.838
+    },
+    {
+      "text": " At every time step, I am providing my",
+      "start": 1056.719,
+      "duration": 4.454
+    },
+    {
+      "text": " input like this. Right? Now, once I",
+      "start": 1060.266,
+      "duration": 8.145
+    },
+    {
+      "text": " have provided the last word as input,",
+      "start": 1067.498,
+      "duration": 4.205
+    },
+    {
+      "text": " the translation actually starts from",
+      "start": 1070.789,
+      "duration": 4.119
+    },
+    {
+      "text": " there, and here I get my y1. Then y2.",
+      "start": 1073.994,
+      "duration": 6.886
+    },
+    {
+      "text": " Then y3, and so on, for however many",
+      "start": 1082.179,
+      "duration": 4.621
+    },
+    {
+      "text": " words are coming in the output. So, I",
+      "start": 1085.9,
+      "duration": 6.004
+    },
+    {
+      "text": " guess the question might be arising in",
+      "start": 1090.981,
+      "duration": 3.927
+    },
+    {
+      "text": " your mind: why did we follow this",
+      "start": 1093.985,
+      "duration": 3.543
+    },
+    {
+      "text": " architecture where we waited to see the",
+      "start": 1096.605,
+      "duration": 4.005
+    },
+    {
+      "text": " entire input before giving a single",
+      "start": 1099.687,
+      "duration": 3.696
+    },
+    {
+      "text": " output? I guess if you try to",
+      "start": 1102.46,
+      "duration": 4.244
+    },
+    {
+      "text": " understand it logically, you will",
+      "start": 1105.775,
+      "duration": 3.35
+    },
+    {
+      "text": " realize that translation is a task",
+      "start": 1108.196,
+      "duration": 3.421
+    },
+    {
+      "text": " where you don't translate on a",
+      "start": 1110.688,
+      "duration": 3.136
+    },
+    {
+      "text": " word-by-word level. Right? You always",
+      "start": 1112.896,
+      "duration": 3.836
+    },
+    {
+      "text": " read the whole sentence to perform a",
+      "start": 1115.783,
+      "duration": 2.848
+    },
+    {
+      "text": " translation. You read its meaning,",
+      "start": 1117.683,
+      "duration": 3.353
+    },
+    {
+      "text": " understand the grammar, and only then",
+      "start": 1120.097,
+      "duration": 3.286
+    },
+    {
+      "text": " do you decide what its translation",
+      "start": 1122.445,
+      "duration": 3.1
+    },
+    {
+      "text": " should be in another language. You",
+      "start": 1124.606,
+      "duration": 3.268
+    },
+    {
+      "text": " don't just read the first word and",
+      "start": 1126.954,
+      "duration": 3.715
+    },
+    {
+      "text": " translate it. Read the second word and",
+      "start": 1129.749,
+      "duration": 3.215
+    },
+    {
+      "text": " translated it. Read the third and",
+      "start": 1132.009,
+      "duration": 2.553
+    },
+    {
+      "text": " translated it. If you do this, you",
+      "start": 1133.608,
+      "duration": 2.962
+    },
+    {
+      "text": " might lose both the grammatical meaning",
+      "start": 1135.634,
+      "duration": 3.504
+    },
+    {
+      "text": " and the context. That is why this",
+      "start": 1138.202,
+      "duration": 4.561
+    },
+    {
+      "text": " architecture first looks at the entire",
+      "start": 1141.839,
+      "duration": 3.907
+    },
+    {
+      "text": " input and starts generating output only",
+      "start": 1144.823,
+      "duration": 3.984
+    },
+    {
+      "text": " after you send the last input. Okay? I",
+      "start": 1147.883,
+      "duration": 5.172
+    },
+    {
+      "text": " hope you are understanding this whole",
+      "start": 1152.122,
+      "duration": 3.478
+    },
+    {
+      "text": " point. Now, you will see such",
+      "start": 1154.667,
+      "duration": 3.813
+    },
+    {
+      "text": " architectures referred to as",
+      "start": 1157.584,
+      "duration": 3.903
+    },
+    {
+      "text": " encoder-decoder models later. So, this",
+      "start": 1160.591,
+      "duration": 5.2
+    },
+    {
+      "text": " part where you are providing the input",
+      "start": 1164.862,
+      "duration": 3.715
+    },
+    {
+      "text": " is called the encoder. And the rest,",
+      "start": 1167.648,
+      "duration": 5.058
+    },
+    {
+      "text": " from where you are extracting the",
+      "start": 1171.762,
+      "duration": 2.845
+    },
+    {
+      "text": " output, is called the decoder. Okay? In",
+      "start": 1173.663,
+      "duration": 4.188
+    },
+    {
+      "text": " the future, when we study",
+      "start": 1176.907,
+      "duration": 2.408
+    },
+    {
+      "text": " sequence-to-sequence models, we will",
+      "start": 1178.372,
+      "duration": 3.027
+    },
+    {
+      "text": " cover encoder-decoder networks there.",
+      "start": 1180.455,
+      "duration": 3.084
+    },
+    {
+      "text": " Okay? But I have already given you a",
+      "start": 1182.82,
+      "duration": 3.318
+    },
+    {
+      "text": " kind of introduction. Okay? Now let's",
+      "start": 1185.183,
+      "duration": 4.117
+    },
+    {
+      "text": " move on to our last type. That is",
+      "start": 1188.387,
+      "duration": 3.996
+    },
+    {
+      "text": " one-to-one. The last type of RNN",
+      "start": 1191.469,
+      "duration": 3.417
+    },
+    {
+      "text": " architecture is one-to-one. Technically",
+      "start": 1193.944,
+      "duration": 3.65
+    },
+    {
+      "text": " speaking, this is not a type of RNN.",
+      "start": 1196.659,
+      "duration": 3.34
+    },
+    {
+      "text": " Because if an RNN were one-to-one, it",
+      "start": 1199.13,
+      "duration": 3.52
+    },
+    {
+      "text": " wouldn't be an RNN at all. If you think",
+      "start": 1201.718,
+      "duration": 3.548
+    },
+    {
+      "text": " about it. One-to-one means you have an",
+      "start": 1204.322,
+      "duration": 5.223
+    },
+    {
+      "text": " architecture that expects",
+      "start": 1208.64,
+      "duration": 3.363
+    },
+    {
+      "text": " non-sequential data as input and",
+      "start": 1211.097,
+      "duration": 4.025
+    },
+    {
+      "text": " provides non-sequential data as output",
+      "start": 1214.216,
+      "duration": 4.592
+    },
+    {
+      "text": " as well. Okay? A very simple example of",
+      "start": 1217.902,
+      "duration": 5.546
+    },
+    {
+      "text": " such an application can be image",
+      "start": 1222.532,
+      "duration": 3.679
+    },
+    {
+      "text": " classification, where your input data",
+      "start": 1225.294,
+      "duration": 4.097
+    },
+    {
+      "text": " is an image. It is an image, meaning a",
+      "start": 1228.475,
+      "duration": 3.632
+    },
+    {
+      "text": " grid of values or a matrix, and your",
+      "start": 1231.163,
+      "duration": 3.026
+    },
+    {
+      "text": " output is one or zero, whether it is a",
+      "start": 1233.245,
+      "duration": 3.139
+    },
+    {
+      "text": " cat or not. Okay? So basically,",
+      "start": 1235.44,
+      "duration": 4.157
+    },
+    {
+      "text": " architecture-wise, it looks like you",
+      "start": 1238.676,
+      "duration": 3.818
+    },
+    {
+      "text": " are given an input here and you are",
+      "start": 1241.573,
+      "duration": 3.74
+    },
+    {
+      "text": " generating an output from here. So",
+      "start": 1244.391,
+      "duration": 4.252
+    },
+    {
+      "text": " basically, there is no recurrence. Okay",
+      "start": 1247.71,
+      "duration": 3.727
+    },
+    {
+      "text": "? There is no feedback. You are not",
+      "start": 1250.437,
+      "duration": 3.156
+    },
+    {
+      "text": " talking about any time steps.",
+      "start": 1252.65,
+      "duration": 2.67
+    },
+    {
+      "text": " Everything is happening in a single",
+      "start": 1254.479,
+      "duration": 2.522
+    },
+    {
+      "text": " time step. So technically, this is not",
+      "start": 1256.045,
+      "duration": 3.514
+    },
+    {
+      "text": " an RNN. This is your simple neural",
+      "start": 1258.627,
+      "duration": 3.231
+    },
+    {
+      "text": " network that you have studied so far.",
+      "start": 1260.915,
+      "duration": 3.105
+    },
+    {
+      "text": " Your ANN or your CNN. They actually",
+      "start": 1263.18,
+      "duration": 5.926
+    },
+    {
+      "text": " fall under this. Okay? So I just",
+      "start": 1268.193,
+      "duration": 3.595
+    },
+    {
+      "text": " mentioned it so you have an",
+      "start": 1270.847,
+      "duration": 2.589
+    },
+    {
+      "text": " understanding of when things fall under",
+      "start": 1272.495,
+      "duration": 3.295
+    },
+    {
+      "text": " RNNs and when they do not. Technically",
+      "start": 1274.849,
+      "duration": 3.376
+    },
+    {
+      "text": " speaking, there are only three types.",
+      "start": 1277.276,
+      "duration": 2.903
+    },
+    {
+      "text": " Many-to-one, one-to-many, and",
+      "start": 1279.359,
+      "duration": 8.176
+    },
+    {
+      "text": " many-to-many. And many-to-many has two",
+      "start": 1286.626,
+      "duration": 4.653
+    },
+    {
+      "text": " types that we just saw. One is same",
+      "start": 1290.342,
+      "duration": 4.251
+    },
+    {
+      "text": " length and one is variable length. Okay",
+      "start": 1293.726,
+      "duration": 6.847
+    },
+    {
+      "text": "? So, that is all I wanted to tell you.",
+      "start": 1299.573,
+      "duration": 3.194
+    },
+    {
+      "text": " This video is short, but it will give",
+      "start": 1301.867,
+      "duration": 3.444
+    },
+    {
+      "text": " you some perspective on the different",
+      "start": 1304.377,
+      "duration": 3.444
+    },
+    {
+      "text": " types of architectures. Going forward,",
+      "start": 1306.887,
+      "duration": 4.481
+    },
+    {
+      "text": " in the next video when we study",
+      "start": 1310.437,
+      "duration": 3.145
+    },
+    {
+      "text": " backpropagation, I will explain how",
+      "start": 1312.651,
+      "duration": 3.422
+    },
+    {
+      "text": " backpropagation works for these three",
+      "start": 1315.142,
+      "duration": 3.56
+    },
+    {
+      "text": " architectures, and then we will",
+      "start": 1317.771,
+      "duration": 3.144
+    },
+    {
+      "text": " definitely work on many-to-many. Okay?",
+      "start": 1319.985,
+      "duration": 4.924
+    },
+    {
+      "text": " So, that's it. So, I hope you",
+      "start": 1324.009,
+      "duration": 3.681
+    },
+    {
+      "text": " understood this entire topic. And if",
+      "start": 1326.744,
+      "duration": 3.693
+    },
+    {
+      "text": " you liked the video, please like it,",
+      "start": 1329.487,
+      "duration": 2.79
+    },
+    {
+      "text": " and if you haven't subscribed to the",
+      "start": 1331.327,
+      "duration": 2.79
+    },
+    {
+      "text": " channel, please subscribe. Okay? See",
+      "start": 1333.167,
+      "duration": 3.735
+    },
+    {
+      "text": " you in the next video where we will",
+      "start": 1335.949,
+      "duration": 2.671
+    },
+    {
+      "text": " cover backpropagation. Bye.",
+      "start": 1337.668,
+      "duration": 2.858
+    }
+  ]
+}

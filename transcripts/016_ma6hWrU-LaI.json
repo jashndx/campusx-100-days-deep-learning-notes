@@ -1,0 +1,5560 @@
+{
+  "id": "ma6hWrU-LaI",
+  "index": 16,
+  "title": "Backpropagation Part 2 | The How | Complete Deep Learning Playlist",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish, and welcome  to my YouTube channel. So, we're  continuing with our Deep Learning  playlist. We started with  backpropagation in the last video.  There, I explained the what part of  backpropagation and a little bit about  how it works. Now, in today's video,  we'll look at the how part. That is,  we'll take two data sets, one in the  regression domain and one in the  classification domain, and run our own  code on those data sets to perform  backpropagation. Okay? So, after seeing  these two things, you'll have a little  more clarity on how backpropagation  works exactly behind the scenes. Okay?  I'll also run the same code in Keras,  so that you can compare the two. Okay?  So, I hope you enjoyed the video. Let's  start the video. So, guys, we'll start  with the regression problem first. Okay ? So, whatever you saw in the last  video, the first video I made on  backpropagation, we'll apply it to this  data set. Okay? Our goal is to train  this neural network on this data set.  And we won't be training it using Keras . We won't be using Keras. We'll use  our own code. We'll convert the  algorithm we created into code and  train our model. Okay? So, the data set  is the same as the one we used in the  last class and the last video. I just  made one change here. I replaced IQ  with Resume Score. The reason for this  is that IQ generally ranges from 80 to  120. So, it's a bit larger, and the  CGPA ranges from zero to 10. So, it's  generally said that your inputs to  neural networks should be in the same  range. This makes the training a little  better. We'll learn why this happens  later. But for now, I've replaced IQ  with Reverse Score. The output column  is still the same. I have data for a  total of four students. Okay? We're  going to proceed with just four  students because I need to manually run  this code and show you. The  architecture is the same. There's  nothing special here. Let me summarize  once again. The back preparation  algorithm we created in the last class.  So what will we do? We'll run our code  five times. Each will run in five  epochs. Okay? Within each epoch, we'll  do the following. Okay? So what do we  do? Within each epoch, we'll select all  four students one by one, as we have a  total of four students. We'll select  all four students one by one. Okay?  We'll select all four students.  Basically, the inner loop will run four  times. Okay? So, the first time you'll  select the first student. I'll explain  later that this selection of students  is random. I'll explain this later.  That's why I've included the word \" random\" here. But for now, imagine that  the first time we're in the loop, we'll  select the first student. What will we  do next? We'll use their inputs and  make a prediction using forward  propagation. We'll make a prediction.  Okay? Based on each prediction, we'll  calculate our loss using the mean  square error. Okay? And then what will  we do? We have nine rates and biases in  this architecture. There are nine  weights and biases. So we'll update  them all using this formula: gradient  descent. Okay? Now, in this, I told you  that this is all we had to calculate.  We calculated all of this in the last  video. We calculated the values of all  the derivatives. Okay? So, we'll update  all the weights. Then we'll move on to  the second student. We'll do the same  thing for him. We'll make predictions.  We'll calculate losses. Once your first  epoch is over—that is, once you've  met all four students—you'll exit the  inner loop and calculate the average  loss. Average loss means you calculated  the losses for all four of your  students. L1, L2, L3, and L4. Divide  that by four. That will become your  average loss for that epoch. And in  this way, every time the outer loop  runs, you'll calculate the average loss . So, what you'll see on the screen is  something like this: In epoch one, the  loss was five. In epoch two, the loss  decreased slightly, say, to four. In  epoch three, it decreased slightly, to  three. Okay? So, this is all about the  average loss. This is the combined loss  of all four students. Okay? So, we've  done everything. All our math  formulations are ready. Now, what do we  have to do? We need to feed this entire  data set into our code. I've already  written the code. I'll show you that  next. So, guys, let me explain the code  from scratch. This is the complete code . It might seem a little complicated at  first, but I'll explain it to you one  by one. Okay? So, what we did here  initially is import both libraries.  Okay? And if you notice in the next  line, I created my data set. I created  a PADAS data frame containing data from  exactly the same four students. Let me  run it and show you. And you can see,  this is the output. This is exactly the  same data I showed you here. Okay? Same  data. Now, from here, we'll discuss our  code. Okay? So, I've divided the code  by function. So, my first function is  called initializeParameters. Okay? You  just need to send your architecture as  input. For example, what is our  architecture? According to our  architecture, our input consists of two  nodes. These two inputs are meeting at  the edge. There's two in the middle,  and one here. So, our architecture  input will be 2 1. As soon as you give  this function this 2 2 1 input, it will  create a total of nine weights and  biases for you, adding them together,  and assign them a value. What value  will it assign? For now, I've set the  weights to one and the biases to zero.  I could have used random values, but  I've set the six weights to one and the  three biases to zero. Let me show you.  I'll run this function and demonstrate  its use. So, watch carefully as I run  this code. Now, the logic behind it is  very simple. So, you can try it once.  Let's not waste time explaining it now.  I'll call this the initialize parameter  function, and here I passed 2 2 1. Okay , this is my architecture for my neural  network. And you'd see that here you'll  see that it's created four different  arrays. This is array one, this is  array two, this is array three, and  this is array four. Notice how it's  structured. So, what is W1? W1 is the  matrix of the four weights. So, if you  notice, there are four numbers in W1.  Basically, all four weights have been  initialized. Okay? What is W2? The  values of the two weights in this layer  are here. Okay? Then what is B1? B1 is  its value and its bias. That's why  there are two numbers here. And what is  B2? B2 is its bias. That's why there  are one number here. Okay? So, what is  this initialize parameter function  doing for me? A given neural network is  giving me initialized weights and  biases based on its architecture. Now,  I've used a function called \" measurement\" with ones and zeros here.  I could have just as easily used \" random\" for random initialization. I  hope you understand this function. Okay ? Now, my next function is called \" linear forward.\" What does \"linear  forward\" do? It calculates the output  of any given neuron. Okay? The output  of any given neuron depends on five  things: first, the number of weights  coming into it, second, the number of  inputs it receives, and third, its own  bias. Five things in total. For example , if you talk about it, there will be  five things: its own bias, these two  weights, and the input it receives. The  input it receives means the output of  this node. The output of this node is  the edge input it receives. Okay? So  its logic is very simple. I'm simply  doing the MP-Rod product between what  we get from the previous layer, the  weights, and the bias, and then adding  the bias to it, I'm returning Z. Okay?  Now this is my main function that will  perform forward propagation. I'll write  it here. This is the main function that  will perform forward propagation for me . Okay? Now you can see the logic of  how it works. It's a very simple  function. You'll understand it once you  sit down and take a pen and paper and  understand it. But let me show you how  we'll use it to perform forward  propagation. So I'm running this  function as well. Okay? Now watch  carefully. What am I going to do? If  you remember what we're supposed to do  according to our algorithm? We're going  to go inside the epoch and pick up  every point. And pick up every point  and make a prediction for it. So I  already have that much code. So what am  I going to do? I'm going to pick my  first student. Okay? And I'm going to  send that first student into this  function. Okay? And inside this  function, I'm also going to send my  parameters. That's it. This is the  whole thing. Okay? And what will this  function do once it receives these two  inputs? It will make a prediction for  that particular student. Okay? Let me  show you how. So guys, look, what we've  done is, from my data frame x, I've  taken the first row and stored it in x.  Then, I've taken the lp edge in ry  value of the first row and stored it in  y. Let me quickly show it to you. So if  I print x here, it will give me the  input of the first student, 8 and 8.  And if I type y, it will give me the  output value of the first student,  which is four. Okay? And the third  thing we'll do is initialize the  parameters again. I already showed you  all two, but I'm doing it again. These  are my parameters. Nine weights and  biases. Okay? Now all I have to do is  call this function above. Okay? This  function. And it needs two inputs.  What's the first input? x is basically  the input of the first student and the  current value of the parameters. Now,  as soon as I run this, pay attention to  what happens. An error occurs. The  reason is that we haven't run this  function. Let's run it once. So what's  happening is that this function is  internally using this function. You can  see. Okay? That's why the error  occurred. Let's run it again. And you  can see. This is the output. Okay? Now,  let's understand what's happening here.  So, you'll see an A notation here. A0,  A1, and finally, A2. Let me tell you  what this A1, A2 is. Look carefully. So  when you're taking the first student's  data and feeding it into this neural  network through the input layer, that's  a knot. Basically, this input of@and@ for the first student is my A knot.  Okay? Now, these weights are being  multiplied with this. Both biases are  being added. So, these two outputs are  being calculated: O11 and O12. These  two outputs are being calculated. I'm  calling the combination of these two,  A1. You can also call them activations.  So, these are O11 and O12. And finally,  in this layer, its output is being  calculated, which you can call O21 or Y  hat. So, this is a single number. This  is your A2. So, finally, in our case,  the output is A. A2 is also called O21.  Okay? So, notice what this function is  doing? First of all, it's telling me  what A knot is. The a knot is what was  inside X. You're calling the one inside  X the A knot. Then he's saying that W1  had these weights and B1 had this. Okay ? Using these three things, he  calculated A1. So what now? What's the  output of this node and this node? 1.6,  okay? Then what did he do? Grab A1,  grab W2, grab B2, and from that, he  calculated a2. And what is a2 for you?  Which is your final output. So, here's  my prediction for the first student:  his package will cost 32 lax. Okay? I  hope you understand this far. Also,  remember that this function returns two  things. When you call this function for  forward propagation, it returns two  things. It's returning me a to, which  is the final prediction. It's also  returning the output of these two nodes , which you've stored in A1. I need  both of these. Why? Think about it. If  you go up here, you'll notice that you  need the value of the output from the  previous layer to calculate some  derivatives. That's why I've also  returned a previous edge in A1 at  return time in this function. Okay? Now  what do I have to do? Store these. In  fact, we might as well not store them.  In fact, let's go back to the algorithm . Let's go back to the algorithm. Look  how much we've done. We picked the  first student. We did this step. We  made a prediction for that. So, I got  the prediction. This is the prediction.  32 is what I got. Now, what do I have  to do? I have to calculate the loss.  Okay? How do I calculate the loss? The  whole square of y-y. So basically, what  do I need to do? I'm going here and  calculating the loss. I'm doing it  manually. I'm not going through code.  What will my loss be? My loss will be y  as in this data, y minus the square of  32. And here's my loss for the first  student. This is the loss for the first  student. We calculated this loss for  the first student. It's coming out to  be 13 something. That's done. Now what  do I need to do? Now I need to update  all my weights and biases using this  formula. Okay? Using this formula. And  notice what I've done now? I've created  another function called  updateParameters, and it looks a little  scary, but its job is basically to  perform these nine operations, take  these nine updates. That's it. So, if  you count it, there are a total of nine  lines of code here, handling each  parameter. Look what we're doing? We're  grabbing each parameter and updating it . And what was the update rule? Old  equals to, sorry, new = old minus. The  plus here is because in our formula,  when we calculated the derivatives,  there's a minus before each one; so  this minus and this minus become a plus . And next to the plus, I've put my  learning rate, 01. This was giving the  best results on this data, and next to  it, I've written the same thing. If you  sit down and pause the video for a  moment, it's exactly the same as what's  written here. Look, this formula has  been applied to the weights. Notice.  What is A1? A1 is basically the output  of your previous layer here. Okay? And  I applied all these formulas very  calmly, sitting down. There might be  some mistakes, so please review the  code. Okay? Basically, I've converted  these nine formulas into code here.  Okay? What am I going to do now? I'm  going to call this. It needs all the  parameters to do its job. What is Y? Y  is your current student's LPA package  data. What is Y? His prediction. For  example, the prediction for the current  one was 32. Then I need A1. What is A1?  The previous layer. Basically, I need  the output of these two nodes, this  output, and this output. I also need x  of my data. Okay, so many things are  needed here. Okay? So look carefully,  what am I going to do? Whatever I'm  returning from here, I'm returning two  things. One is y which is the  prediction, and this is A1. So I'm  going to store them here for the first  student. Look, I wrote y hat comma a1 =  this run. Okay? Now if I show you here,  here is my y hat. This is y hat. Now  the problem is that I probably want  this in the form of a number. So what I  would do is I would write it like this  zero of 0, okay? I would get a number  because I used it directly here. I used  it directly. So let's write some code:  y t = y t 0 of zero. And here is my A1  output from the previous layer. Okay?  This is in the correct form. We'll use  it like this because look here, I've  taken things out in matrix notation.  Okay? Okay. So now we're ready. Now  what we'll do is I'll run update  parameters. And I have everything. I  have the parameters. I have y for the  first student. I also have y hat for  the first student. I have A1, the  output from the previous layer, and I  already have x. Okay? Now, as soon as I  think about it, I'll return this. As  soon as I call this function, it will  make changes to the parameters. Okay?  What should I notice? As I'm running  this, an error will appear because  obviously we haven't run this code. We  did run it. And now we've called this.  Look, it's changed all the parameters.  Now, if I run the parameters again,  here are my parameters. Notice they've  changed. My first layer's weights were  one. Now they've changed to something  else. My second layer's weights were  also one. They've changed to something  else. My B1 was zero. My B2 was also  zero. And all of this has changed now.  So what happened? Exactly, if we go  back to the algorithm, after  calculating the loss, as soon as we  applied this step, all my weights and  biases were updated. What do I do now?  Now, within this loop, I need to select  another student. I need to select  another student and repeat these same  steps for them. Okay? So, look what I'm  doing? I'm going to go back and copy a  little bit of code. I'll copy this  entire code. I'll copy this entire code . I'll go down to this place, and I  won't re-initialize the parameters here . Okay? And now I need the second  student. Here's the second student.  Okay? We'll call it again to do forward  propagation. In this step, I'll get the  second student's y value. Look, the  second student's y value is 50. Okay,  this is the second student's y value.  Now what I'll do is call update again,  and I'll get all these inputs. This is  the current value of the parameter. y  value is now in, and A1 and X value are  also in. And I'll run it. It's done  running. Now, look, the parameters will  have changed a little again. Look, the  parameters have changed a little more.  It's changing a little more. Notice,  this was above, it's changing a little  more. Okay? I need to do this two more  times. So what I would do is, this is  where I'll make the changes. Now I'm  picking the third student. This is my  third student. And again, I'm doing  forward preparation. I'm storing  whatever output is coming here. Look,  this is my prediction for the third  student. 60, okay? We could have also  calculated the loss. I forgot to  calculate the loss. And I'm calling  this again. Notice the parameters will  change again. Look, the parameters have  changed again. Now I'll pick the last  student, which is three, and again I'll  pick three here. Run again. This is the  prediction for my fourth student. I'll  call updateParameters again, and the  parameters will change further. Look,  the parameters will change. So, in  short, we've demonstrated this to you  once. The inner loop ran a total of  four times. The inner loop ran four  times. Okay? The outer loop just ran  once. For one epoch. But now you'll  repeat this same task five times.  Repeating the entire task five times  will result in five epoxes. Okay? Now,  instead of doing five epoxes, what am I  doing? I've written a single piece of  code that does all of this at once. Let  me show you. Here's the epox  implementation. Okay? Here I'm doing  everything from scratch. Okay? Here I  initialized the parameters. I don't  need to keep the epox to 75. Let's keep  it to 10 for now. What about 10? Let's  keep it to five for now. Okay? Look  here, I ran a loop for i in the range  of epoxes. Here I've created a loss  function. Basically, I'll calculate the  loss internally at this point, and then  I'll calculate the average loss. So  what am I doing? Internally, I'll  append all four losses to the list each  time, and then come here and apply the  average to that loss. Okay? So, look  carefully. Here's the loss. Now I'm  looping over all my data. Each time,  I'm picking a student by adding jj.  Okay? So, x and y are being output.  Then I'm doing forward propagation. I'm  getting yhat and a1. I'm extracting  yhat. I'm calling updateParameters.  Simultaneously, I'm getting the loss.  Here's the loss, and I'm appending the  loss to the loss. And as soon as the  inner loop completes, I'm exiting. And  I'm calculating the mean over the loss  so that the loss incurred in that  particular epoch is printed. And at the  end, after exiting both loops, I'm  printing the parameters. This is the  code C. Look, this must have run four  times. 20 times in total. In fact, all  this is being printed. I do one thing.  This is my function, this function, in  which I have deliberately printed  things. I'm commenting out all these  print statements. This is just to show  you. I'm commenting out all this so  that the output isn't so big. Okay? I  ran it again. Going down. Here's the  epoch implementation. I ran this code.  This is the output. Look, guys. The  first time you cycled through all five  points, your average loss was 25. By  the second time, the parameters had  adjusted so that the loss reduced to  18. The third time, the loss reduced  further to 9.47. The fifth time, it  dropped to three, and finally stopped  at 1.3. Okay? And finally, after  everything was done, I printed out my  weights and biases. Look, we started  from point one and reached where we  ended up. Okay? So this is the  demonstration. Now, just one last thing . I'll write this same code for you in  Keras. A: Where we'll use the Keras  library to see the output on the same  data. Okay? So let me show you that. So  guys, this is the Keras code. Let's run  this one too. Everything is the same. I  created the same data frame here.  Here's our data frame. We imported all  the libraries here. And what have I  done here? I've created our neural  network with the same architecture.  There's an input layer. There are two  hidden units. All of them have linear  activations. Okay? We've run it. Here's  a summary of my model. There are a  total of nine tradable parameters.  There are six weights, two biases. Now,  look what Keras does here is it  randomly initializes the weights. Okay?  So what am I doing to make this similar ? What did I do to make it similar to  the model we created? I extracted all  the weights from the first model using  get weights. So look, all the weights  are visible in the \"weights\" field.  Exactly the same as mine here. Okay?  Exactly the same way. Now what did I do ? I created a new array called \"weights .\" What did I do? I assigned all the  weights to 0.1. I assigned all the  biases to zero. Okay? And then I called  Keras's \"setWeights\" function and set  the new weights. So what's next? The  Keras model's initial weights are  exactly the same as mine. I did this  just to show similarity. Okay? Now what  did I do next? I went into the  optimizer and set the learning rate  because it's the same in my case. Okay?  And after doing that, I calculated the  mean squared error and finally, I  fitted the model. A different optimizer  is used here, meaning \"Most Likely.\" So , it took 75 epochs for Keras to  converge. Okay? See, here I'm running  it. The model is trained, and here's my  loss: around 1.47. Our loss was a  little lower, around 1.34. Now, what  did I do again? I added  model.getweights. And here are the  changes I made to our weights. Okay? So , you can do the same thing we do in  Keras by using your own code. Okay? The  most important thing is to practically  convert this algorithm we learned into  code. Okay? And we did this for a  regression problem. What will we do  next? We'll repeat this same process  for a classification problem. What will  that do? It will solidify our  understanding a little more. So, guys,  we've looked at a regression example  step by step. Now, let's look at a  classification example. Okay?  Everything is going to be very similar.  But I want to give you a taste of  classification. Look, we made a few  changes to the same data set and  created a new one. This data set is for  classification. Here, you have the CGPA  as input, the student's profile score,  and placement status as one or zero.  Okay? And guess what? I've kept the  neural network architecture exactly the  same. We have three layers: input,  hidden, and output. There are two in  the input, two in the hidden, and one  in the output. Okay? Now, the only  major change here is that in the  regression example above, my activation  function was linear in all three layers . But since this is a classification  example, what I've done here is add a  sigmoid to all three layers. The  addition of this sigmoid will cause  some slight changes. Okay? Also, your  loss function here is binary  cross-entropy. We've already seen this.  Okay? So look here, notice when forward  propagation happens. Let's say you give  something as input. Your initial  weights are one. This is also one. All  four of these weights are one. This is  also one. The bias is zero. So let me  quickly explain how the output is  calculated at this node. Let's say the  input for the first student is 8 and 8.  So your output will be calculated.  First, you calculate z. What will z be?  1*8 + 1*8 + 0 becomes z. Now you just  pass this to the sigmoid, and this will  be your output. Okay? So, there's just  this extra step here. After you find z,  you send it to the sigmoid function,  and what comes out is your output. This  is the extra step you need to do here.  Okay? This is the change that happened  with the introduction of this sigmoid.  Okay? And your loss function has  changed. Before, it was the whole  square of y-y. Now it's this. Okay? So  these are the two changes in the  classification problem. The  backpropagation algorithm will remain  exactly the same. You'll start with the  number of epochs. You'll enter within  epochs. You'll run the inner loop as  many times as there are days in your  data. Inside, you can either pick  points randomly or one by one. We're  currently using a one-by-one approach.  For each point as in each student,  you'll perform forward propagation to  predict placement or not, and then  calculate the loss. This will be binary  cross-entropy, not MSC. Okay? What will  you do after that? This is your main  step where you'll update your nine  weights and biases using gradient  descent. Okay? Now, the problem is that  we haven't calculated all these  derivatives yet. So what do we need to  do? We'll need to calculate all these  derivatives one by one. Just like I  showed you in the last video for  regression. So that's our next task.  I'll show you step by step. The good  thing is that since you've already done  it once, it won't seem that difficult.  Okay? So watch carefully. I'm starting.  Let's say this is my neural network  architecture. This is the neural  network architecture. First, here's my  y-value, which then enters the loss  function. So, first, I'm going to  calculate these weights, these weights,  and their biases. The derivative of  these three with respect to the loss  function. Okay? I'm rewriting the loss  function here. The loss function is-y  log of y t-1-y log 1-y t. Okay? Now,  look, what are we doing first? We're  going to calculate the del of l with  respect to these weights. Okay? Now,  you'll remember our logic: if you want  to make changes to L, you'll obviously  have to make changes to Y. So, what is  Y? Y is basically the sigmoid of Z,  right? And Z is the sigmoid of Z for  this node. Right? So, Y, in turn, will  depend on Z. Let's call it the z-final,  because this final is the last note.  Right? Now, this z-final is what is  this z-final? It's basically a linear  sum-linear combination here: W211*bias,  its output O11, plus W2, this weight 21 , its output O12, plus its own bias B21 . Okay, so here, you see, we're  calculating based only on this weight,  so Z depends on W211. So, if you make a  slight change to this, Z will change.  Changing Z will change Y, and changing  Y will change L. So if I come here, I  can break this whole thing down and  write it like this. Okay? That means if  I want to calculate this, I have to  calculate these three things. Okay?  Let's do something similar. Let's write  this down too. What will be the  derivative with respect to this weight?  What will happen with this? The same  path will follow. What will come last  here? W21. So everything will be the  same. The first two derivatives will be  exactly the same. W21 will come last  here. And then if you look at this bias , everything will be the same. The  first two will come here. Bias 21. So  what we have to do now is the good  thing is that this is common, so much  is common in all three. Okay? So we  have to find these two and these three.  So, in total, finding five derivatives  will do our job of three. Okay? So  let's focus. First, we'll find the  derivative of l with respect to y hat.  So basically, I have to find this.  Sorry, there's no minus here. Here it's  y minus 1-y. Here it's log 1-y. Okay? I  need to find the derivative of this  thing. Look, it's very simple. First,  we'll derive this term. We'll  differentiate it. I'm sorry. So here  it's-y divided by log of this thing by  y minus 1-y. The derivative of this  whole term becomes 1-y. Then you  differentiate this inner term, and this  negative comes out and a plus comes in.  If you solve this, this would become (- y*(1-y)) plus (y times*(1-y)) and then  y*(1-y). If you multiply this out  completely, you get y + yt + yt-y*yt  divided by y*(1-y) t. Okay, this and  this will cancel out, and you're left  with (y y t) by (y y t)/(y y t*(1-y)) y  t, so this is the derivative. You can  see. So guys, we've solved this one.  Now we'll solve this one. Okay? This  one is pretty easy too. We'll go down  and write this code. Not code, I'm  sorry, we'll write this expression, and  basically we have to solve this. Okay?  Because y y t is nothing but the  sigmoid of Z. Now, if you know, the  derivative of sigmoid is sigmoid  multiplied by 1-sigmoid. You have to  remember this. Okay? So this becomes  sigmoid 1-sigmoid. And what do I do  here? I'll replace this with y t. So  this would become y t times y-y t. Okay ? So now we've solved this one too. Now  the cool thing is that you have to  multiply these two. You have to  multiply these two. Now notice what  happens when you multiply these two.  I'll write it out for you. See, our  result was minus (y-y)*y*(1-y) and this  is our result, y*(1-y). Now notice, we  have to multiply these two in all three  equations. So when you multiply these  two, this would become: multiply by y,  plus z would become-(y-y)*(1-y)*by y*(1 -y). This and this term will cancel out , and multiplying these two gives me y  times y. Okay? So it's a great thing  that the multiplication of these two  terms, the multiplication of these two  terms, is a very simple term, and  that's y-y. Okay? Now, all we have to  do is find these three terms. These  three terms are also very simple.  Notice what our z is? At this point,  our z is W211 + W21 = O12 + B21. Now,  when you differentiate this with  respect to W211, you get O11. So, I'm  writing it here; its value will be O11.  And when you differentiate it with  respect to W211, the value will be O12.  And when you differentiate it with  respect to W211, since there's no term  here, the answer will be one. This  means, I can reduce down and write this  expression. Look carefully. I can write  this. This would become-y = y times O11 . Here's its differentiation. Equal to  this, this will come to y-y t 012 and  this will come to y-y t here, and  nothing else will happen. We've  calculated these three. Okay? If you  want, you can compare these expressions  to the regression expression. You would  see that this was there. Compare it.  It's not -2. Here it's -1. This is the  only difference. You can compare it.  Now we'll calculate the derivative of  these three: this weight, this weight,  and this bias. Okay? So let's see what  path to follow. Here's the loss. Here's  y hat. And y hat will depend on z. The  z we get from this will depend on z.  The output we get from this, and its  output now depends on the rest. Okay?  So basically, we have to calculate  three things. We have to calculate this  weight. We have to calculate this  weight. And we have to calculate this  bias. Okay? Let's do it one by one.  Let's focus on this weight. Let's see  how this weight is connected. So, loss  depends on the y-value. Y-value depends  on the Z value of this node. We call  this the Z value. Z-value depends on  this output. This output depends on the  Z value. The Z value calculated in this  node, and this Z value calculated,  depends on W11. Okay? So if you were to  write this out, it would look something  like this: de l del hut del y-value del  zf del zf del o11 del o11 del z  previous del z previous del W1. Now  there's no need to worry. What's the  good thing? We've already calculated  both of these. We've already calculated  both of these. We know the answer to  this one. -y-y is T. We already know  this answer. Let's talk about this one.  What's the relationship between Z-value  and O11? Look, what is Z-value? Z final  is W211, this weight times O 11's  output, plus W 21's weight, this output  O12, plus this bias. Okay? Now, when  you differentiate this with respect to  O11, what do you get? You get this  weight. Okay? So, I'll write it here.  Its output will be W211. Okay? Now,  let's focus on this. What is O11? You  can write O11 as the sigmoid of Z  previous. Here, it's the sigmoid of the  value of Z. So, what does this become?  Z previous = 1-sigmoid of Z previous.  Right? Now, what can you write this?  You can write Z previous as O11*bias  O11. Okay? So the answer is O11 = 1-O11 . Okay? Now, just this last one is left  where you need to find out what Z  previous is when you subtract Z  previous from W21. Z is the previous  value of Z here, so how do you get this ? W2, sorry, W1, this weight multiplied  by this input, Xi1, plus this weight,  W121, multiplied by this input, plus  its own bias. Now, when you  differentiate this with respect to this  weight, what's left as the output? Just  this. So, its input will be its  derivative, xi1. So, what can I do? I  can write this whole thing here, and it  will become: (minus y-y)*w2 1* multiplied by output one*(one minus-) 0  11*xi1. Okay. Now, if you take the next  one (I'll put it in the box), if you  take the next one, meaning with respect  to this weight, you'll understand that  only the last element will change. Okay ? Only the last element will change,  and if you take the derivative with  respect to this weight, you'll get xi2.  So, you can write it here very easily.  Everything will remain the same. These  weights will remain the same. This  output will remain the same. Just the  last one will be xi2. Okay? And finally , when you go to calculate the bias,  everything will remain the same. Just  the last one will be 1. Doing this all  by yourself once with a pen and paper  will give you a little more confidence.  It looks a little scary on the screen,  but it's not that simple. Your brain  will automatically start looking for  patterns. Okay? So, we've calculated  these three with respect to each other.  Now we'll calculate these remaining  three with respect to this weight, this  with respect to this weight, and this  one with respect to its bias. So,  basically, I have to calculate three  things. I have to calculate W12, W1,  222, and this one. I have to calculate  these three things. Okay? Let's first  calculate them with respect to this one . See what the overall relationship  looks like. Loss will depend on Y's hat . Y's hat will depend on Z's final. Z's  final will depend on its output. On O12 , O12 will depend on Z previous and Z  previous will depend on W12. So if I  want to write, I would write this is  equal to del del Hut multiplied by del  Hut del ZF*by del ZF del O12*by del O12  Z previous*by previous W12 Now the good  thing is that we have calculated this.  Okay? Also, it is very easy to  calculate this. Because I told you  earlier what Z final is. Z final is W1  sorry W21 times O11 this weight and its  output plus W21 times O11 this weight  and its output plus the bias of this  node B21. When you differentiate this  with respect to an O sorry, O12 will  come here. When you differentiate O12,  you will get this weight. So its output  will be this. W2 2 like this was here.  Okay? Also, when you differentiate this , like you did here when you  differentiated O11, you'll get this  term exactly the same way you got this  term here. Okay? And you'll get this  from this last one. I'm sorry, I typed  it wrong here. We're not using this one . We're using this one. I typed it  wrong. oh, here I typed it correctly.  This is 1 2, this is W112, and this is  W122. Here I typed it correctly. Here I  typed it wrong. I'm sorry. Okay? Now  what are you doing? With respect to  this, when you do ZP, you'll get XI1  here. So the output will be XI1. Okay?  So I can write here that del I W12  would be B minus times Y-Y hat times  W21 O12 1-O12*by X is 1, okay? Now, if  you go the same way and calculate W1  222, everything will remain the same.  The whole thing will remain the same.  It's just that instead of xi1, xi2 will  appear here. And if you try to  calculate ys, everything will remain  the same. Nothing will remain here.  Here are your remaining three  derivatives. This is all calculated.  Okay? That's three. That's three. And  where did these go, man? That's three.  Okay? So, in our backpropagation  algorithm, I've got this thing. I've  calculated all nine derivatives. Now  what do I have to do? I'll convert this  algorithm back into code. And I'll show  you how. Okay? So, now let's move to  the coding window. So guys, I already  have the code written. Let me explain  it to you. It's exactly the same code  we wrote for regression. Just a small  change. I've made two changes: one to  the activation function and the other  to the loss function. Look carefully.  We're importing everything. This is my  data set. Exactly the one I showed you  a moment ago. It looks like this. Okay?  The same functions are here. This is  the initialize parameter, which, based  on a given architecture, will  initialize all the weights to one and  all the biases to zero. Okay? Here I  just created a utility function called  sigmoid, which, if you enter z,  calculates a sigmoid over it and  returns 1 + 1/1 + e to the power-z.  Okay? It returns. Now, you have the  same function here. There's not much  difference between this function and  this one. If you think of it as a  linear forward function, you were  simply doing the dot product and  returning it. But here, after doing the  dot product, you're sending it to the  sigmoid. So this is the difference. The  next main function, A, is copied  exactly the same here. What's its  function? Sending that. And the  previous layer, this layer, just give  me a second, I'll open one note. So,  this layer gives me the output of O11  and the output of O12. Okay? So, this  will give me three things. Y will  remove O12, and O11 will give O12. Okay ? Now, look here, the main thing is  that the update parameters here are  slightly different. They're slightly  different from the update parameters  here. Look here, everything is two  times. Here, you'll notice the current  values. The formulas we derived for the  current values, the formulas we derived  here, you can go and check what you can  do with these formulas. It may seem a  little confusing, but if you do it  yourself, you'll understand. Basically,  I modified this function according to  these formulas. Okay? And this is my  update parameter. Now, let me show you  how to apply backpropagation. What do I  do? First, I'll run the first epoch  manually. I'm removing the first  student. The value of c here is zero.  This is the first student. When I ran  the first student, the loss for him was  61. Here, I'm also calculating the loss . Okay? And here are the changes in his  weights. Look, there's a slight change.  It was one, but a slight change from  one. Look, the bias has changed quite a  bit. Yes, the bias has changed quite a  bit. It hasn't changed much. Actually,  10 to the power is -7, so it's around  zero. Then I grabbed the next student  and sent him. I ran it again. And you'd  see that this student's loss decreased  slightly, and the weights changed  slightly. Okay? Then I sent the third  student, putting p to here. And you'd  see that the loss is a little higher.  And that's obvious. Look here, the  third student has a good CGPA and  profile score, but he didn't get placed . So, this is where our model is making  a mistake. Let's go here. This is the  third student. Now we'll move on to the  fourth student and run it for him. And  you'd see that the loss is still higher . But the idea is that this whole thing  is gradually changing. Okay? Our  weights are changing. Okay? Now, what  have I done here? I've installed the  implementation from Epoch. All the code  is exactly the same. Everything is  exactly the same. Nothing is different.  Nothing has changed. Everything is  exactly the same. Only the loss  function calculation is different, like  this. Okay? Everything else is the same . I ran it on a lot of Epochs. I ran it  on around 550 Epochs. But unfortunately , I noticed that the loss wasn't going  below 69. You can see. Now, this could  be due to any number of reasons:  insufficient data, a glitch in the  initialization technique, or something  wrong with the optimizer. Anything  could be wrong. But anyway, this is the  output. So, I wondered if I had done  something wrong. So, what did I do? I  wrote the same code in Keras. Look,  it's exactly the same code in Keras.  This is the code. Here, I created a  neural network with the same  architecture. Here again, there were  nine trainable parameters. I did all  the gateways. I set the new weights,  which will be my weights. And now, look , these are the new weights. Now, I set  the learning rate, etc., all the same.  I put the loss function, binary  cross-entropy. And when I trained the  model here for 50 boxes, look, it's not  going beyond 69. So, even Keras isn't  able to converge with four rows on this  data. But the loss function is exactly  the same. This shows me that we're  doing it right. Okay? So this is the  notebook. Again, I'd say, pick up this  notebook once and run it yourself.  You'll get a lot of perspective. Okay?  So, this is what the case is doing  internally. So, I hope you understand  the whole thing. So that was the video,  guys. I hope you understood the video.  One thing I would recommend is that you  please take a pen and paper and your  machine and watch this video so you can  practice. Because what I'm teaching in  this video is a matter of practice. The  more you practice, the more conceptual  clarity you'll gain. Okay? Now, there's  just one more video left on  backpropagation, where we'll cover the  Y part. That's the subsection. So,  please watch that. Okay? So that's it  from my side. Thanks for watching. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish, and welcome",
+      "start": 0.255,
+      "duration": 3.541
+    },
+    {
+      "text": " to my YouTube channel. So, we're",
+      "start": 2.861,
+      "duration": 3.138
+    },
+    {
+      "text": " continuing with our Deep Learning",
+      "start": 5.048,
+      "duration": 2.618
+    },
+    {
+      "text": " playlist. We started with",
+      "start": 6.715,
+      "duration": 2.368
+    },
+    {
+      "text": " backpropagation in the last video.",
+      "start": 8.132,
+      "duration": 2.687
+    },
+    {
+      "text": " There, I explained the what part of",
+      "start": 10.899,
+      "duration": 3.529
+    },
+    {
+      "text": " backpropagation and a little bit about",
+      "start": 13.5,
+      "duration": 3.747
+    },
+    {
+      "text": " how it works. Now, in today's video,",
+      "start": 16.319,
+      "duration": 4.5
+    },
+    {
+      "text": " we'll look at the how part. That is,",
+      "start": 19.884,
+      "duration": 3.56
+    },
+    {
+      "text": " we'll take two data sets, one in the",
+      "start": 22.505,
+      "duration": 3.181
+    },
+    {
+      "text": " regression domain and one in the",
+      "start": 24.747,
+      "duration": 2.939
+    },
+    {
+      "text": " classification domain, and run our own",
+      "start": 26.746,
+      "duration": 3.303
+    },
+    {
+      "text": " code on those data sets to perform",
+      "start": 29.109,
+      "duration": 3.06
+    },
+    {
+      "text": " backpropagation. Okay? So, after seeing",
+      "start": 31.23,
+      "duration": 4.185
+    },
+    {
+      "text": " these two things, you'll have a little",
+      "start": 34.476,
+      "duration": 3.289
+    },
+    {
+      "text": " more clarity on how backpropagation",
+      "start": 36.825,
+      "duration": 3.109
+    },
+    {
+      "text": " works exactly behind the scenes. Okay?",
+      "start": 38.994,
+      "duration": 3.945
+    },
+    {
+      "text": " I'll also run the same code in Keras,",
+      "start": 42.614,
+      "duration": 3.453
+    },
+    {
+      "text": " so that you can compare the two. Okay?",
+      "start": 45.133,
+      "duration": 3.698
+    },
+    {
+      "text": " So, I hope you enjoyed the video. Let's",
+      "start": 47.931,
+      "duration": 3.184
+    },
+    {
+      "text": " start the video. So, guys, we'll start",
+      "start": 50.171,
+      "duration": 3.583
+    },
+    {
+      "text": " with the regression problem first. Okay",
+      "start": 52.8,
+      "duration": 3.527
+    },
+    {
+      "text": "? So, whatever you saw in the last",
+      "start": 55.327,
+      "duration": 3.914
+    },
+    {
+      "text": " video, the first video I made on",
+      "start": 58.321,
+      "duration": 3.583
+    },
+    {
+      "text": " backpropagation, we'll apply it to this",
+      "start": 60.984,
+      "duration": 4.148
+    },
+    {
+      "text": " data set. Okay? Our goal is to train",
+      "start": 64.212,
+      "duration": 5.073
+    },
+    {
+      "text": " this neural network on this data set.",
+      "start": 68.385,
+      "duration": 4.674
+    },
+    {
+      "text": " And we won't be training it using Keras",
+      "start": 73.11,
+      "duration": 5.056
+    },
+    {
+      "text": ". We won't be using Keras. We'll use",
+      "start": 77.166,
+      "duration": 4.584
+    },
+    {
+      "text": " our own code. We'll convert the",
+      "start": 80.833,
+      "duration": 4.248
+    },
+    {
+      "text": " algorithm we created into code and",
+      "start": 84.151,
+      "duration": 3.365
+    },
+    {
+      "text": " train our model. Okay? So, the data set",
+      "start": 86.585,
+      "duration": 3.714
+    },
+    {
+      "text": " is the same as the one we used in the",
+      "start": 89.347,
+      "duration": 2.758
+    },
+    {
+      "text": " last class and the last video. I just",
+      "start": 91.153,
+      "duration": 3.357
+    },
+    {
+      "text": " made one change here. I replaced IQ",
+      "start": 93.559,
+      "duration": 3.176
+    },
+    {
+      "text": " with Resume Score. The reason for this",
+      "start": 95.796,
+      "duration": 4.158
+    },
+    {
+      "text": " is that IQ generally ranges from 80 to",
+      "start": 99.036,
+      "duration": 4.112
+    },
+    {
+      "text": " 120. So, it's a bit larger, and the",
+      "start": 102.23,
+      "duration": 3.866
+    },
+    {
+      "text": " CGPA ranges from zero to 10. So, it's",
+      "start": 105.178,
+      "duration": 4.03
+    },
+    {
+      "text": " generally said that your inputs to",
+      "start": 108.289,
+      "duration": 3.785
+    },
+    {
+      "text": " neural networks should be in the same",
+      "start": 111.155,
+      "duration": 4.03
+    },
+    {
+      "text": " range. This makes the training a little",
+      "start": 114.267,
+      "duration": 3.236
+    },
+    {
+      "text": " better. We'll learn why this happens",
+      "start": 116.54,
+      "duration": 3.066
+    },
+    {
+      "text": " later. But for now, I've replaced IQ",
+      "start": 118.653,
+      "duration": 3.544
+    },
+    {
+      "text": " with Reverse Score. The output column",
+      "start": 121.26,
+      "duration": 3.456
+    },
+    {
+      "text": " is still the same. I have data for a",
+      "start": 123.759,
+      "duration": 2.948
+    },
+    {
+      "text": " total of four students. Okay? We're",
+      "start": 125.762,
+      "duration": 4.537
+    },
+    {
+      "text": " going to proceed with just four",
+      "start": 129.339,
+      "duration": 2.24
+    },
+    {
+      "text": " students because I need to manually run",
+      "start": 130.619,
+      "duration": 2.56
+    },
+    {
+      "text": " this code and show you. The",
+      "start": 132.219,
+      "duration": 2.452
+    },
+    {
+      "text": " architecture is the same. There's",
+      "start": 133.711,
+      "duration": 2.487
+    },
+    {
+      "text": " nothing special here. Let me summarize",
+      "start": 135.231,
+      "duration": 2.866
+    },
+    {
+      "text": " once again. The back preparation",
+      "start": 137.142,
+      "duration": 2.991
+    },
+    {
+      "text": " algorithm we created in the last class.",
+      "start": 139.179,
+      "duration": 2.82
+    },
+    {
+      "text": " So what will we do? We'll run our code",
+      "start": 141.126,
+      "duration": 3.006
+    },
+    {
+      "text": " five times. Each will run in five",
+      "start": 143.183,
+      "duration": 2.954
+    },
+    {
+      "text": " epochs. Okay? Within each epoch, we'll",
+      "start": 145.192,
+      "duration": 4.448
+    },
+    {
+      "text": " do the following. Okay? So what do we",
+      "start": 148.699,
+      "duration": 3.902
+    },
+    {
+      "text": " do? Within each epoch, we'll select all",
+      "start": 151.655,
+      "duration": 2.862
+    },
+    {
+      "text": " four students one by one, as we have a",
+      "start": 153.562,
+      "duration": 2.737
+    },
+    {
+      "text": " total of four students. We'll select",
+      "start": 155.345,
+      "duration": 3.492
+    },
+    {
+      "text": " all four students one by one. Okay?",
+      "start": 157.923,
+      "duration": 4.061
+    },
+    {
+      "text": " We'll select all four students.",
+      "start": 161.084,
+      "duration": 2.155
+    },
+    {
+      "text": " Basically, the inner loop will run four",
+      "start": 162.39,
+      "duration": 2.966
+    },
+    {
+      "text": " times. Okay? So, the first time you'll",
+      "start": 164.407,
+      "duration": 3.712
+    },
+    {
+      "text": " select the first student. I'll explain",
+      "start": 167.164,
+      "duration": 4.904
+    },
+    {
+      "text": " later that this selection of students",
+      "start": 171.124,
+      "duration": 3.062
+    },
+    {
+      "text": " is random. I'll explain this later.",
+      "start": 173.242,
+      "duration": 3.837
+    },
+    {
+      "text": " That's why I've included the word \"",
+      "start": 176.179,
+      "duration": 2.106
+    },
+    {
+      "text": "random\" here. But for now, imagine that",
+      "start": 177.285,
+      "duration": 3.063
+    },
+    {
+      "text": " the first time we're in the loop, we'll",
+      "start": 179.406,
+      "duration": 3.28
+    },
+    {
+      "text": " select the first student. What will we",
+      "start": 181.744,
+      "duration": 3.344
+    },
+    {
+      "text": " do next? We'll use their inputs and",
+      "start": 184.147,
+      "duration": 3.447
+    },
+    {
+      "text": " make a prediction using forward",
+      "start": 186.651,
+      "duration": 2.764
+    },
+    {
+      "text": " propagation. We'll make a prediction.",
+      "start": 188.472,
+      "duration": 4.248
+    },
+    {
+      "text": " Okay? Based on each prediction, we'll",
+      "start": 192.139,
+      "duration": 4.259
+    },
+    {
+      "text": " calculate our loss using the mean",
+      "start": 195.475,
+      "duration": 3.557
+    },
+    {
+      "text": " square error. Okay? And then what will",
+      "start": 198.109,
+      "duration": 3.95
+    },
+    {
+      "text": " we do? We have nine rates and biases in",
+      "start": 201.113,
+      "duration": 3.517
+    },
+    {
+      "text": " this architecture. There are nine",
+      "start": 203.681,
+      "duration": 3.739
+    },
+    {
+      "text": " weights and biases. So we'll update",
+      "start": 206.478,
+      "duration": 3.881
+    },
+    {
+      "text": " them all using this formula: gradient",
+      "start": 209.438,
+      "duration": 3.913
+    },
+    {
+      "text": " descent. Okay? Now, in this, I told you",
+      "start": 212.43,
+      "duration": 3.798
+    },
+    {
+      "text": " that this is all we had to calculate.",
+      "start": 215.281,
+      "duration": 2.958
+    },
+    {
+      "text": " We calculated all of this in the last",
+      "start": 217.839,
+      "duration": 2.95
+    },
+    {
+      "text": " video. We calculated the values of all",
+      "start": 219.842,
+      "duration": 4.032
+    },
+    {
+      "text": " the derivatives. Okay? So, we'll update",
+      "start": 222.939,
+      "duration": 5.686
+    },
+    {
+      "text": " all the weights. Then we'll move on to",
+      "start": 227.692,
+      "duration": 3.605
+    },
+    {
+      "text": " the second student. We'll do the same",
+      "start": 230.345,
+      "duration": 3.435
+    },
+    {
+      "text": " thing for him. We'll make predictions.",
+      "start": 232.818,
+      "duration": 2.749
+    },
+    {
+      "text": " We'll calculate losses. Once your first",
+      "start": 234.939,
+      "duration": 4.928
+    },
+    {
+      "text": " epoch is over—that is, once you've",
+      "start": 238.943,
+      "duration": 3.709
+    },
+    {
+      "text": " met all four students—you'll exit the",
+      "start": 241.727,
+      "duration": 3.935
+    },
+    {
+      "text": " inner loop and calculate the average",
+      "start": 244.738,
+      "duration": 3.709
+    },
+    {
+      "text": " loss. Average loss means you calculated",
+      "start": 247.522,
+      "duration": 4.874
+    },
+    {
+      "text": " the losses for all four of your",
+      "start": 251.463,
+      "duration": 3.084
+    },
+    {
+      "text": " students. L1, L2, L3, and L4. Divide",
+      "start": 253.614,
+      "duration": 5.141
+    },
+    {
+      "text": " that by four. That will become your",
+      "start": 257.841,
+      "duration": 4.405
+    },
+    {
+      "text": " average loss for that epoch. And in",
+      "start": 261.309,
+      "duration": 4.382
+    },
+    {
+      "text": " this way, every time the outer loop",
+      "start": 264.766,
+      "duration": 3.631
+    },
+    {
+      "text": " runs, you'll calculate the average loss",
+      "start": 267.472,
+      "duration": 3.932
+    },
+    {
+      "text": ". So, what you'll see on the screen is",
+      "start": 270.404,
+      "duration": 4.239
+    },
+    {
+      "text": " something like this: In epoch one, the",
+      "start": 273.72,
+      "duration": 3.939
+    },
+    {
+      "text": " loss was five. In epoch two, the loss",
+      "start": 276.736,
+      "duration": 4.15
+    },
+    {
+      "text": " decreased slightly, say, to four. In",
+      "start": 279.958,
+      "duration": 3.913
+    },
+    {
+      "text": " epoch three, it decreased slightly, to",
+      "start": 282.925,
+      "duration": 3.058
+    },
+    {
+      "text": " three. Okay? So, this is all about the",
+      "start": 285.038,
+      "duration": 3.556
+    },
+    {
+      "text": " average loss. This is the combined loss",
+      "start": 287.652,
+      "duration": 4.029
+    },
+    {
+      "text": " of all four students. Okay? So, we've",
+      "start": 290.723,
+      "duration": 4.37
+    },
+    {
+      "text": " done everything. All our math",
+      "start": 294.155,
+      "duration": 3.024
+    },
+    {
+      "text": " formulations are ready. Now, what do we",
+      "start": 296.232,
+      "duration": 3.454
+    },
+    {
+      "text": " have to do? We need to feed this entire",
+      "start": 298.743,
+      "duration": 3.963
+    },
+    {
+      "text": " data set into our code. I've already",
+      "start": 301.786,
+      "duration": 3.4
+    },
+    {
+      "text": " written the code. I'll show you that",
+      "start": 304.225,
+      "duration": 3.044
+    },
+    {
+      "text": " next. So, guys, let me explain the code",
+      "start": 306.334,
+      "duration": 3.754
+    },
+    {
+      "text": " from scratch. This is the complete code",
+      "start": 309.141,
+      "duration": 2.713
+    },
+    {
+      "text": ". It might seem a little complicated at",
+      "start": 310.854,
+      "duration": 4.255
+    },
+    {
+      "text": " first, but I'll explain it to you one",
+      "start": 314.162,
+      "duration": 2.943
+    },
+    {
+      "text": " by one. Okay? So, what we did here",
+      "start": 316.158,
+      "duration": 3.906
+    },
+    {
+      "text": " initially is import both libraries.",
+      "start": 319.139,
+      "duration": 3.6
+    },
+    {
+      "text": " Okay? And if you notice in the next",
+      "start": 322.4,
+      "duration": 4.299
+    },
+    {
+      "text": " line, I created my data set. I created",
+      "start": 325.769,
+      "duration": 4.073
+    },
+    {
+      "text": " a PADAS data frame containing data from",
+      "start": 328.902,
+      "duration": 3.35
+    },
+    {
+      "text": " exactly the same four students. Let me",
+      "start": 331.312,
+      "duration": 4.269
+    },
+    {
+      "text": " run it and show you. And you can see,",
+      "start": 334.649,
+      "duration": 5.719
+    },
+    {
+      "text": " this is the output. This is exactly the",
+      "start": 339.469,
+      "duration": 7.287
+    },
+    {
+      "text": " same data I showed you here. Okay? Same",
+      "start": 345.85,
+      "duration": 6.441
+    },
+    {
+      "text": " data. Now, from here, we'll discuss our",
+      "start": 351.375,
+      "duration": 4.717
+    },
+    {
+      "text": " code. Okay? So, I've divided the code",
+      "start": 355.173,
+      "duration": 4.246
+    },
+    {
+      "text": " by function. So, my first function is",
+      "start": 358.487,
+      "duration": 4.871
+    },
+    {
+      "text": " called initializeParameters. Okay? You",
+      "start": 362.432,
+      "duration": 5.383
+    },
+    {
+      "text": " just need to send your architecture as",
+      "start": 366.867,
+      "duration": 2.986
+    },
+    {
+      "text": " input. For example, what is our",
+      "start": 368.905,
+      "duration": 2.811
+    },
+    {
+      "text": " architecture? According to our",
+      "start": 370.763,
+      "duration": 3.162
+    },
+    {
+      "text": " architecture, our input consists of two",
+      "start": 372.989,
+      "duration": 3.501
+    },
+    {
+      "text": " nodes. These two inputs are meeting at",
+      "start": 375.554,
+      "duration": 2.706
+    },
+    {
+      "text": " the edge. There's two in the middle,",
+      "start": 377.297,
+      "duration": 3.25
+    },
+    {
+      "text": " and one here. So, our architecture",
+      "start": 379.595,
+      "duration": 3.379
+    },
+    {
+      "text": " input will be 2 1. As soon as you give",
+      "start": 382.05,
+      "duration": 3.917
+    },
+    {
+      "text": " this function this 2 2 1 input, it will",
+      "start": 385.044,
+      "duration": 3.993
+    },
+    {
+      "text": " create a total of nine weights and",
+      "start": 388.114,
+      "duration": 3.609
+    },
+    {
+      "text": " biases for you, adding them together,",
+      "start": 390.8,
+      "duration": 3.84
+    },
+    {
+      "text": " and assign them a value. What value",
+      "start": 393.716,
+      "duration": 3.659
+    },
+    {
+      "text": " will it assign? For now, I've set the",
+      "start": 396.423,
+      "duration": 3.76
+    },
+    {
+      "text": " weights to one and the biases to zero.",
+      "start": 399.267,
+      "duration": 4.192
+    },
+    {
+      "text": " I could have used random values, but",
+      "start": 403.183,
+      "duration": 3.292
+    },
+    {
+      "text": " I've set the six weights to one and the",
+      "start": 405.539,
+      "duration": 3.483
+    },
+    {
+      "text": " three biases to zero. Let me show you.",
+      "start": 408.086,
+      "duration": 3.669
+    },
+    {
+      "text": " I'll run this function and demonstrate",
+      "start": 410.855,
+      "duration": 3.36
+    },
+    {
+      "text": " its use. So, watch carefully as I run",
+      "start": 413.277,
+      "duration": 4.652
+    },
+    {
+      "text": " this code. Now, the logic behind it is",
+      "start": 417.001,
+      "duration": 3.319
+    },
+    {
+      "text": " very simple. So, you can try it once.",
+      "start": 419.362,
+      "duration": 2.872
+    },
+    {
+      "text": " Let's not waste time explaining it now.",
+      "start": 421.599,
+      "duration": 2.96
+    },
+    {
+      "text": " I'll call this the initialize parameter",
+      "start": 423.999,
+      "duration": 7.337
+    },
+    {
+      "text": " function, and here I passed 2 2 1. Okay",
+      "start": 430.42,
+      "duration": 4.281
+    },
+    {
+      "text": ", this is my architecture for my neural",
+      "start": 433.701,
+      "duration": 4.281
+    },
+    {
+      "text": " network. And you'd see that here you'll",
+      "start": 437.066,
+      "duration": 4.941
+    },
+    {
+      "text": " see that it's created four different",
+      "start": 441.101,
+      "duration": 4.418
+    },
+    {
+      "text": " arrays. This is array one, this is",
+      "start": 444.614,
+      "duration": 3.442
+    },
+    {
+      "text": " array two, this is array three, and",
+      "start": 447.108,
+      "duration": 2.827
+    },
+    {
+      "text": " this is array four. Notice how it's",
+      "start": 448.987,
+      "duration": 3.099
+    },
+    {
+      "text": " structured. So, what is W1? W1 is the",
+      "start": 451.144,
+      "duration": 7.016
+    },
+    {
+      "text": " matrix of the four weights. So, if you",
+      "start": 457.26,
+      "duration": 6.007
+    },
+    {
+      "text": " notice, there are four numbers in W1.",
+      "start": 462.378,
+      "duration": 5.101
+    },
+    {
+      "text": " Basically, all four weights have been",
+      "start": 466.899,
+      "duration": 2.953
+    },
+    {
+      "text": " initialized. Okay? What is W2? The",
+      "start": 468.905,
+      "duration": 4.723
+    },
+    {
+      "text": " values of the two weights in this layer",
+      "start": 472.711,
+      "duration": 4.238
+    },
+    {
+      "text": " are here. Okay? Then what is B1? B1 is",
+      "start": 476.032,
+      "duration": 5.653
+    },
+    {
+      "text": " its value and its bias. That's why",
+      "start": 480.757,
+      "duration": 3.474
+    },
+    {
+      "text": " there are two numbers here. And what is",
+      "start": 483.274,
+      "duration": 3.602
+    },
+    {
+      "text": " B2? B2 is its bias. That's why there",
+      "start": 485.967,
+      "duration": 3.606
+    },
+    {
+      "text": " are one number here. Okay? So, what is",
+      "start": 488.615,
+      "duration": 3.503
+    },
+    {
+      "text": " this initialize parameter function",
+      "start": 491.171,
+      "duration": 2.791
+    },
+    {
+      "text": " doing for me? A given neural network is",
+      "start": 493.015,
+      "duration": 3.775
+    },
+    {
+      "text": " giving me initialized weights and",
+      "start": 495.854,
+      "duration": 3.1
+    },
+    {
+      "text": " biases based on its architecture. Now,",
+      "start": 498.018,
+      "duration": 3.747
+    },
+    {
+      "text": " I've used a function called \"",
+      "start": 500.807,
+      "duration": 2.208
+    },
+    {
+      "text": "measurement\" with ones and zeros here.",
+      "start": 502.015,
+      "duration": 2.584
+    },
+    {
+      "text": " I could have just as easily used \"",
+      "start": 504.049,
+      "duration": 2.66
+    },
+    {
+      "text": "random\" for random initialization. I",
+      "start": 505.709,
+      "duration": 3.003
+    },
+    {
+      "text": " hope you understand this function. Okay",
+      "start": 507.765,
+      "duration": 3.693
+    },
+    {
+      "text": "? Now, my next function is called \"",
+      "start": 510.458,
+      "duration": 4.453
+    },
+    {
+      "text": "linear forward.\" What does \"linear",
+      "start": 513.911,
+      "duration": 3.832
+    },
+    {
+      "text": " forward\" do? It calculates the output",
+      "start": 516.795,
+      "duration": 5.912
+    },
+    {
+      "text": " of any given neuron. Okay? The output",
+      "start": 521.832,
+      "duration": 6.451
+    },
+    {
+      "text": " of any given neuron depends on five",
+      "start": 527.361,
+      "duration": 3.733
+    },
+    {
+      "text": " things: first, the number of weights",
+      "start": 530.172,
+      "duration": 3.811
+    },
+    {
+      "text": " coming into it, second, the number of",
+      "start": 533.061,
+      "duration": 3.888
+    },
+    {
+      "text": " inputs it receives, and third, its own",
+      "start": 536.027,
+      "duration": 3.967
+    },
+    {
+      "text": " bias. Five things in total. For example",
+      "start": 539.072,
+      "duration": 3.265
+    },
+    {
+      "text": ", if you talk about it, there will be",
+      "start": 541.337,
+      "duration": 3.14
+    },
+    {
+      "text": " five things: its own bias, these two",
+      "start": 543.535,
+      "duration": 3.082
+    },
+    {
+      "text": " weights, and the input it receives. The",
+      "start": 545.675,
+      "duration": 3.326
+    },
+    {
+      "text": " input it receives means the output of",
+      "start": 548.055,
+      "duration": 2.993
+    },
+    {
+      "text": " this node. The output of this node is",
+      "start": 550.102,
+      "duration": 4.12
+    },
+    {
+      "text": " the edge input it receives. Okay? So",
+      "start": 553.282,
+      "duration": 3.376
+    },
+    {
+      "text": " its logic is very simple. I'm simply",
+      "start": 555.716,
+      "duration": 4.031
+    },
+    {
+      "text": " doing the MP-Rod product between what",
+      "start": 558.823,
+      "duration": 3.833
+    },
+    {
+      "text": " we get from the previous layer, the",
+      "start": 561.732,
+      "duration": 3.679
+    },
+    {
+      "text": " weights, and the bias, and then adding",
+      "start": 564.488,
+      "duration": 3.908
+    },
+    {
+      "text": " the bias to it, I'm returning Z. Okay?",
+      "start": 567.473,
+      "duration": 3.909
+    },
+    {
+      "text": " Now this is my main function that will",
+      "start": 572.019,
+      "duration": 2.746
+    },
+    {
+      "text": " perform forward propagation. I'll write",
+      "start": 573.811,
+      "duration": 3.198
+    },
+    {
+      "text": " it here. This is the main function that",
+      "start": 576.047,
+      "duration": 4.033
+    },
+    {
+      "text": " will perform forward propagation for me",
+      "start": 579.148,
+      "duration": 3.658
+    },
+    {
+      "text": ". Okay? Now you can see the logic of",
+      "start": 581.806,
+      "duration": 5.097
+    },
+    {
+      "text": " how it works. It's a very simple",
+      "start": 585.978,
+      "duration": 2.969
+    },
+    {
+      "text": " function. You'll understand it once you",
+      "start": 587.984,
+      "duration": 2.428
+    },
+    {
+      "text": " sit down and take a pen and paper and",
+      "start": 589.444,
+      "duration": 2.192
+    },
+    {
+      "text": " understand it. But let me show you how",
+      "start": 590.668,
+      "duration": 3.912
+    },
+    {
+      "text": " we'll use it to perform forward",
+      "start": 593.646,
+      "duration": 3.043
+    },
+    {
+      "text": " propagation. So I'm running this",
+      "start": 595.755,
+      "duration": 3.447
+    },
+    {
+      "text": " function as well. Okay? Now watch",
+      "start": 598.248,
+      "duration": 4.736
+    },
+    {
+      "text": " carefully. What am I going to do? If",
+      "start": 602.068,
+      "duration": 3.451
+    },
+    {
+      "text": " you remember what we're supposed to do",
+      "start": 604.579,
+      "duration": 3.291
+    },
+    {
+      "text": " according to our algorithm? We're going",
+      "start": 606.931,
+      "duration": 3.819
+    },
+    {
+      "text": " to go inside the epoch and pick up",
+      "start": 609.806,
+      "duration": 2.89
+    },
+    {
+      "text": " every point. And pick up every point",
+      "start": 611.751,
+      "duration": 3.872
+    },
+    {
+      "text": " and make a prediction for it. So I",
+      "start": 614.679,
+      "duration": 3.183
+    },
+    {
+      "text": " already have that much code. So what am",
+      "start": 616.917,
+      "duration": 3.466
+    },
+    {
+      "text": " I going to do? I'm going to pick my",
+      "start": 619.437,
+      "duration": 2.953
+    },
+    {
+      "text": " first student. Okay? And I'm going to",
+      "start": 621.443,
+      "duration": 3.995
+    },
+    {
+      "text": " send that first student into this",
+      "start": 624.513,
+      "duration": 3.464
+    },
+    {
+      "text": " function. Okay? And inside this",
+      "start": 627.052,
+      "duration": 3.734
+    },
+    {
+      "text": " function, I'm also going to send my",
+      "start": 629.852,
+      "duration": 3.289
+    },
+    {
+      "text": " parameters. That's it. This is the",
+      "start": 632.206,
+      "duration": 4.033
+    },
+    {
+      "text": " whole thing. Okay? And what will this",
+      "start": 635.279,
+      "duration": 3.171
+    },
+    {
+      "text": " function do once it receives these two",
+      "start": 637.497,
+      "duration": 2.777
+    },
+    {
+      "text": " inputs? It will make a prediction for",
+      "start": 639.321,
+      "duration": 4.676
+    },
+    {
+      "text": " that particular student. Okay? Let me",
+      "start": 643.071,
+      "duration": 5.569
+    },
+    {
+      "text": " show you how. So guys, look, what we've",
+      "start": 647.732,
+      "duration": 6.631
+    },
+    {
+      "text": " done is, from my data frame x, I've",
+      "start": 653.464,
+      "duration": 4.507
+    },
+    {
+      "text": " taken the first row and stored it in x.",
+      "start": 657.071,
+      "duration": 4.908
+    },
+    {
+      "text": " Then, I've taken the lp edge in ry",
+      "start": 662.939,
+      "duration": 3.349
+    },
+    {
+      "text": " value of the first row and stored it in",
+      "start": 665.357,
+      "duration": 3.694
+    },
+    {
+      "text": " y. Let me quickly show it to you. So if",
+      "start": 668.12,
+      "duration": 3.784
+    },
+    {
+      "text": " I print x here, it will give me the",
+      "start": 671.021,
+      "duration": 5.098
+    },
+    {
+      "text": " input of the first student, 8 and 8.",
+      "start": 675.236,
+      "duration": 5.216
+    },
+    {
+      "text": " And if I type y, it will give me the",
+      "start": 679.569,
+      "duration": 5.215
+    },
+    {
+      "text": " output value of the first student,",
+      "start": 683.901,
+      "duration": 4.981
+    },
+    {
+      "text": " which is four. Okay? And the third",
+      "start": 687.999,
+      "duration": 6.891
+    },
+    {
+      "text": " thing we'll do is initialize the",
+      "start": 693.984,
+      "duration": 4.001
+    },
+    {
+      "text": " parameters again. I already showed you",
+      "start": 697.078,
+      "duration": 3.989
+    },
+    {
+      "text": " all two, but I'm doing it again. These",
+      "start": 700.114,
+      "duration": 3.178
+    },
+    {
+      "text": " are my parameters. Nine weights and",
+      "start": 702.359,
+      "duration": 4.256
+    },
+    {
+      "text": " biases. Okay? Now all I have to do is",
+      "start": 705.688,
+      "duration": 4.884
+    },
+    {
+      "text": " call this function above. Okay? This",
+      "start": 709.657,
+      "duration": 6.379
+    },
+    {
+      "text": " function. And it needs two inputs.",
+      "start": 715.11,
+      "duration": 4.949
+    },
+    {
+      "text": " What's the first input? x is basically",
+      "start": 719.619,
+      "duration": 4.154
+    },
+    {
+      "text": " the input of the first student and the",
+      "start": 722.829,
+      "duration": 3.103
+    },
+    {
+      "text": " current value of the parameters. Now,",
+      "start": 724.987,
+      "duration": 3.345
+    },
+    {
+      "text": " as soon as I run this, pay attention to",
+      "start": 727.391,
+      "duration": 3.313
+    },
+    {
+      "text": " what happens. An error occurs. The",
+      "start": 729.763,
+      "duration": 4.863
+    },
+    {
+      "text": " reason is that we haven't run this",
+      "start": 733.675,
+      "duration": 2.672
+    },
+    {
+      "text": " function. Let's run it once. So what's",
+      "start": 735.396,
+      "duration": 3.732
+    },
+    {
+      "text": " happening is that this function is",
+      "start": 738.159,
+      "duration": 2.038
+    },
+    {
+      "text": " internally using this function. You can",
+      "start": 739.227,
+      "duration": 4.91
+    },
+    {
+      "text": " see. Okay? That's why the error",
+      "start": 743.163,
+      "duration": 2.762
+    },
+    {
+      "text": " occurred. Let's run it again. And you",
+      "start": 744.943,
+      "duration": 4.314
+    },
+    {
+      "text": " can see. This is the output. Okay? Now,",
+      "start": 748.332,
+      "duration": 4.017
+    },
+    {
+      "text": " let's understand what's happening here.",
+      "start": 751.402,
+      "duration": 3.057
+    },
+    {
+      "text": " So, you'll see an A notation here. A0,",
+      "start": 754.04,
+      "duration": 5.177
+    },
+    {
+      "text": " A1, and finally, A2. Let me tell you",
+      "start": 758.345,
+      "duration": 6.092
+    },
+    {
+      "text": " what this A1, A2 is. Look carefully. So",
+      "start": 763.502,
+      "duration": 6.194
+    },
+    {
+      "text": " when you're taking the first student's",
+      "start": 768.764,
+      "duration": 3.606
+    },
+    {
+      "text": " data and feeding it into this neural",
+      "start": 771.439,
+      "duration": 3.468
+    },
+    {
+      "text": " network through the input layer, that's",
+      "start": 773.976,
+      "duration": 3.674
+    },
+    {
+      "text": " a knot. Basically, this input of@and@",
+      "start": 776.719,
+      "duration": 4.87
+    },
+    {
+      "text": "for the first student is my A knot.",
+      "start": 780.589,
+      "duration": 3.45
+    },
+    {
+      "text": " Okay? Now, these weights are being",
+      "start": 783.42,
+      "duration": 3.6
+    },
+    {
+      "text": " multiplied with this. Both biases are",
+      "start": 786.087,
+      "duration": 3.398
+    },
+    {
+      "text": " being added. So, these two outputs are",
+      "start": 788.531,
+      "duration": 3.887
+    },
+    {
+      "text": " being calculated: O11 and O12. These",
+      "start": 791.498,
+      "duration": 4.196
+    },
+    {
+      "text": " two outputs are being calculated. I'm",
+      "start": 794.742,
+      "duration": 3.042
+    },
+    {
+      "text": " calling the combination of these two,",
+      "start": 796.839,
+      "duration": 3.039
+    },
+    {
+      "text": " A1. You can also call them activations.",
+      "start": 798.933,
+      "duration": 3.467
+    },
+    {
+      "text": " So, these are O11 and O12. And finally,",
+      "start": 801.939,
+      "duration": 4.964
+    },
+    {
+      "text": " in this layer, its output is being",
+      "start": 805.972,
+      "duration": 3.335
+    },
+    {
+      "text": " calculated, which you can call O21 or Y",
+      "start": 808.376,
+      "duration": 3.679
+    },
+    {
+      "text": " hat. So, this is a single number. This",
+      "start": 811.124,
+      "duration": 3.185
+    },
+    {
+      "text": " is your A2. So, finally, in our case,",
+      "start": 813.376,
+      "duration": 4.964
+    },
+    {
+      "text": " the output is A. A2 is also called O21.",
+      "start": 817.439,
+      "duration": 4.84
+    },
+    {
+      "text": " Okay? So, notice what this function is",
+      "start": 821.578,
+      "duration": 3.046
+    },
+    {
+      "text": " doing? First of all, it's telling me",
+      "start": 823.678,
+      "duration": 2.603
+    },
+    {
+      "text": " what A knot is. The a knot is what was",
+      "start": 825.322,
+      "duration": 3.06
+    },
+    {
+      "text": " inside X. You're calling the one inside",
+      "start": 827.439,
+      "duration": 3.237
+    },
+    {
+      "text": " X the A knot. Then he's saying that W1",
+      "start": 829.734,
+      "duration": 3.977
+    },
+    {
+      "text": " had these weights and B1 had this. Okay",
+      "start": 832.782,
+      "duration": 4.585
+    },
+    {
+      "text": "? Using these three things, he",
+      "start": 836.367,
+      "duration": 3.786
+    },
+    {
+      "text": " calculated A1. So what now? What's the",
+      "start": 839.223,
+      "duration": 4.768
+    },
+    {
+      "text": " output of this node and this node? 1.6,",
+      "start": 843.052,
+      "duration": 3.675
+    },
+    {
+      "text": " okay? Then what did he do? Grab A1,",
+      "start": 845.851,
+      "duration": 3.629
+    },
+    {
+      "text": " grab W2, grab B2, and from that, he",
+      "start": 848.587,
+      "duration": 4.749
+    },
+    {
+      "text": " calculated a2. And what is a2 for you?",
+      "start": 852.444,
+      "duration": 4.635
+    },
+    {
+      "text": " Which is your final output. So, here's",
+      "start": 856.239,
+      "duration": 3.253
+    },
+    {
+      "text": " my prediction for the first student:",
+      "start": 858.556,
+      "duration": 3.282
+    },
+    {
+      "text": " his package will cost 32 lax. Okay? I",
+      "start": 860.901,
+      "duration": 3.724
+    },
+    {
+      "text": " hope you understand this far. Also,",
+      "start": 863.674,
+      "duration": 3.665
+    },
+    {
+      "text": " remember that this function returns two",
+      "start": 866.424,
+      "duration": 4.296
+    },
+    {
+      "text": " things. When you call this function for",
+      "start": 869.805,
+      "duration": 4.468
+    },
+    {
+      "text": " forward propagation, it returns two",
+      "start": 873.335,
+      "duration": 3.184
+    },
+    {
+      "text": " things. It's returning me a to, which",
+      "start": 875.582,
+      "duration": 4.771
+    },
+    {
+      "text": " is the final prediction. It's also",
+      "start": 879.43,
+      "duration": 5.492
+    },
+    {
+      "text": " returning the output of these two nodes",
+      "start": 883.98,
+      "duration": 3.269
+    },
+    {
+      "text": ", which you've stored in A1. I need",
+      "start": 886.249,
+      "duration": 3.844
+    },
+    {
+      "text": " both of these. Why? Think about it. If",
+      "start": 889.158,
+      "duration": 4.789
+    },
+    {
+      "text": " you go up here, you'll notice that you",
+      "start": 893.015,
+      "duration": 3.578
+    },
+    {
+      "text": " need the value of the output from the",
+      "start": 895.661,
+      "duration": 3.51
+    },
+    {
+      "text": " previous layer to calculate some",
+      "start": 898.239,
+      "duration": 3.171
+    },
+    {
+      "text": " derivatives. That's why I've also",
+      "start": 900.478,
+      "duration": 4.983
+    },
+    {
+      "text": " returned a previous edge in A1 at",
+      "start": 904.54,
+      "duration": 3.577
+    },
+    {
+      "text": " return time in this function. Okay? Now",
+      "start": 907.195,
+      "duration": 4.881
+    },
+    {
+      "text": " what do I have to do? Store these. In",
+      "start": 911.138,
+      "duration": 5.785
+    },
+    {
+      "text": " fact, we might as well not store them.",
+      "start": 915.979,
+      "duration": 3.152
+    },
+    {
+      "text": " In fact, let's go back to the algorithm",
+      "start": 918.508,
+      "duration": 3.222
+    },
+    {
+      "text": ". Let's go back to the algorithm. Look",
+      "start": 920.73,
+      "duration": 3.478
+    },
+    {
+      "text": " how much we've done. We picked the",
+      "start": 923.263,
+      "duration": 3.389
+    },
+    {
+      "text": " first student. We did this step. We",
+      "start": 925.731,
+      "duration": 4.098
+    },
+    {
+      "text": " made a prediction for that. So, I got",
+      "start": 928.875,
+      "duration": 3.165
+    },
+    {
+      "text": " the prediction. This is the prediction.",
+      "start": 931.103,
+      "duration": 4.483
+    },
+    {
+      "text": " 32 is what I got. Now, what do I have",
+      "start": 935.572,
+      "duration": 3.903
+    },
+    {
+      "text": " to do? I have to calculate the loss.",
+      "start": 938.542,
+      "duration": 3.497
+    },
+    {
+      "text": " Okay? How do I calculate the loss? The",
+      "start": 941.499,
+      "duration": 4.068
+    },
+    {
+      "text": " whole square of y-y. So basically, what",
+      "start": 944.71,
+      "duration": 4.831
+    },
+    {
+      "text": " do I need to do? I'm going here and",
+      "start": 948.585,
+      "duration": 2.775
+    },
+    {
+      "text": " calculating the loss. I'm doing it",
+      "start": 950.406,
+      "duration": 2.727
+    },
+    {
+      "text": " manually. I'm not going through code.",
+      "start": 952.168,
+      "duration": 2.451
+    },
+    {
+      "text": " What will my loss be? My loss will be y",
+      "start": 953.959,
+      "duration": 4.196
+    },
+    {
+      "text": " as in this data, y minus the square of",
+      "start": 957.223,
+      "duration": 13.229
+    },
+    {
+      "text": " 32. And here's my loss for the first",
+      "start": 969.714,
+      "duration": 7.015
+    },
+    {
+      "text": " student. This is the loss for the first",
+      "start": 975.783,
+      "duration": 4.222
+    },
+    {
+      "text": " student. We calculated this loss for",
+      "start": 979.065,
+      "duration": 3.277
+    },
+    {
+      "text": " the first student. It's coming out to",
+      "start": 981.399,
+      "duration": 3.278
+    },
+    {
+      "text": " be 13 something. That's done. Now what",
+      "start": 983.713,
+      "duration": 3.408
+    },
+    {
+      "text": " do I need to do? Now I need to update",
+      "start": 986.174,
+      "duration": 4.223
+    },
+    {
+      "text": " all my weights and biases using this",
+      "start": 989.496,
+      "duration": 4.556
+    },
+    {
+      "text": " formula. Okay? Using this formula. And",
+      "start": 993.15,
+      "duration": 4.545
+    },
+    {
+      "text": " notice what I've done now? I've created",
+      "start": 996.76,
+      "duration": 4.031
+    },
+    {
+      "text": " another function called",
+      "start": 999.869,
+      "duration": 2.799
+    },
+    {
+      "text": " updateParameters, and it looks a little",
+      "start": 1001.746,
+      "duration": 4.05
+    },
+    {
+      "text": " scary, but its job is basically to",
+      "start": 1004.874,
+      "duration": 3.659
+    },
+    {
+      "text": " perform these nine operations, take",
+      "start": 1007.611,
+      "duration": 3.737
+    },
+    {
+      "text": " these nine updates. That's it. So, if",
+      "start": 1010.426,
+      "duration": 3.847
+    },
+    {
+      "text": " you count it, there are a total of nine",
+      "start": 1013.34,
+      "duration": 3.605
+    },
+    {
+      "text": " lines of code here, handling each",
+      "start": 1016.012,
+      "duration": 3.205
+    },
+    {
+      "text": " parameter. Look what we're doing? We're",
+      "start": 1018.283,
+      "duration": 4.179
+    },
+    {
+      "text": " grabbing each parameter and updating it",
+      "start": 1021.531,
+      "duration": 3.679
+    },
+    {
+      "text": ". And what was the update rule? Old",
+      "start": 1024.21,
+      "duration": 3.811
+    },
+    {
+      "text": " equals to, sorry, new = old minus. The",
+      "start": 1027.212,
+      "duration": 8.367
+    },
+    {
+      "text": " plus here is because in our formula,",
+      "start": 1034.639,
+      "duration": 3.155
+    },
+    {
+      "text": " when we calculated the derivatives,",
+      "start": 1036.854,
+      "duration": 3.096
+    },
+    {
+      "text": " there's a minus before each one; so",
+      "start": 1039.009,
+      "duration": 3.096
+    },
+    {
+      "text": " this minus and this minus become a plus",
+      "start": 1041.165,
+      "duration": 3.335
+    },
+    {
+      "text": ". And next to the plus, I've put my",
+      "start": 1043.5,
+      "duration": 4.514
+    },
+    {
+      "text": " learning rate, 01. This was giving the",
+      "start": 1047.066,
+      "duration": 2.953
+    },
+    {
+      "text": " best results on this data, and next to",
+      "start": 1049.07,
+      "duration": 2.953
+    },
+    {
+      "text": " it, I've written the same thing. If you",
+      "start": 1051.074,
+      "duration": 4.613
+    },
+    {
+      "text": " sit down and pause the video for a",
+      "start": 1054.742,
+      "duration": 2.861
+    },
+    {
+      "text": " moment, it's exactly the same as what's",
+      "start": 1056.658,
+      "duration": 3.135
+    },
+    {
+      "text": " written here. Look, this formula has",
+      "start": 1058.848,
+      "duration": 4.289
+    },
+    {
+      "text": " been applied to the weights. Notice.",
+      "start": 1062.2,
+      "duration": 4.539
+    },
+    {
+      "text": " What is A1? A1 is basically the output",
+      "start": 1067.499,
+      "duration": 5.115
+    },
+    {
+      "text": " of your previous layer here. Okay? And",
+      "start": 1071.697,
+      "duration": 5.966
+    },
+    {
+      "text": " I applied all these formulas very",
+      "start": 1076.734,
+      "duration": 3.326
+    },
+    {
+      "text": " calmly, sitting down. There might be",
+      "start": 1079.131,
+      "duration": 3.872
+    },
+    {
+      "text": " some mistakes, so please review the",
+      "start": 1082.07,
+      "duration": 3.35
+    },
+    {
+      "text": " code. Okay? Basically, I've converted",
+      "start": 1084.487,
+      "duration": 4.086
+    },
+    {
+      "text": " these nine formulas into code here.",
+      "start": 1087.643,
+      "duration": 3.456
+    },
+    {
+      "text": " Okay? What am I going to do now? I'm",
+      "start": 1090.753,
+      "duration": 2.826
+    },
+    {
+      "text": " going to call this. It needs all the",
+      "start": 1092.627,
+      "duration": 4.02
+    },
+    {
+      "text": " parameters to do its job. What is Y? Y",
+      "start": 1095.701,
+      "duration": 5.49
+    },
+    {
+      "text": " is your current student's LPA package",
+      "start": 1100.303,
+      "duration": 5.144
+    },
+    {
+      "text": " data. What is Y? His prediction. For",
+      "start": 1104.559,
+      "duration": 3.847
+    },
+    {
+      "text": " example, the prediction for the current",
+      "start": 1107.454,
+      "duration": 2.878
+    },
+    {
+      "text": " one was 32. Then I need A1. What is A1?",
+      "start": 1109.38,
+      "duration": 3.477
+    },
+    {
+      "text": " The previous layer. Basically, I need",
+      "start": 1112.039,
+      "duration": 5.838
+    },
+    {
+      "text": " the output of these two nodes, this",
+      "start": 1116.967,
+      "duration": 4.141
+    },
+    {
+      "text": " output, and this output. I also need x",
+      "start": 1120.198,
+      "duration": 4.717
+    },
+    {
+      "text": " of my data. Okay, so many things are",
+      "start": 1123.989,
+      "duration": 3.902
+    },
+    {
+      "text": " needed here. Okay? So look carefully,",
+      "start": 1126.952,
+      "duration": 3.729
+    },
+    {
+      "text": " what am I going to do? Whatever I'm",
+      "start": 1129.728,
+      "duration": 3.132
+    },
+    {
+      "text": " returning from here, I'm returning two",
+      "start": 1131.929,
+      "duration": 3.602
+    },
+    {
+      "text": " things. One is y which is the",
+      "start": 1134.599,
+      "duration": 3.76
+    },
+    {
+      "text": " prediction, and this is A1. So I'm",
+      "start": 1137.421,
+      "duration": 3.822
+    },
+    {
+      "text": " going to store them here for the first",
+      "start": 1140.286,
+      "duration": 2.633
+    },
+    {
+      "text": " student. Look, I wrote y hat comma a1 =",
+      "start": 1141.962,
+      "duration": 6.747
+    },
+    {
+      "text": " this run. Okay? Now if I show you here,",
+      "start": 1147.866,
+      "duration": 7.018
+    },
+    {
+      "text": " here is my y hat. This is y hat. Now",
+      "start": 1153.991,
+      "duration": 8.834
+    },
+    {
+      "text": " the problem is that I probably want",
+      "start": 1161.897,
+      "duration": 3.515
+    },
+    {
+      "text": " this in the form of a number. So what I",
+      "start": 1164.484,
+      "duration": 4.161
+    },
+    {
+      "text": " would do is I would write it like this",
+      "start": 1167.701,
+      "duration": 3.139
+    },
+    {
+      "text": " zero of 0, okay? I would get a number",
+      "start": 1169.896,
+      "duration": 6.188
+    },
+    {
+      "text": " because I used it directly here. I used",
+      "start": 1175.132,
+      "duration": 3.628
+    },
+    {
+      "text": " it directly. So let's write some code:",
+      "start": 1177.816,
+      "duration": 6.061
+    },
+    {
+      "text": " y t = y t 0 of zero. And here is my A1",
+      "start": 1183.036,
+      "duration": 5.716
+    },
+    {
+      "text": " output from the previous layer. Okay?",
+      "start": 1187.83,
+      "duration": 4.129
+    },
+    {
+      "text": " This is in the correct form. We'll use",
+      "start": 1191.169,
+      "duration": 2.683
+    },
+    {
+      "text": " it like this because look here, I've",
+      "start": 1192.893,
+      "duration": 2.492
+    },
+    {
+      "text": " taken things out in matrix notation.",
+      "start": 1194.426,
+      "duration": 2.493
+    },
+    {
+      "text": " Okay? Okay. So now we're ready. Now",
+      "start": 1196.699,
+      "duration": 4.24
+    },
+    {
+      "text": " what we'll do is I'll run update",
+      "start": 1200.101,
+      "duration": 6.2
+    },
+    {
+      "text": " parameters. And I have everything. I",
+      "start": 1205.463,
+      "duration": 5.466
+    },
+    {
+      "text": " have the parameters. I have y for the",
+      "start": 1210.0,
+      "duration": 5.756
+    },
+    {
+      "text": " first student. I also have y hat for",
+      "start": 1214.828,
+      "duration": 3.514
+    },
+    {
+      "text": " the first student. I have A1, the",
+      "start": 1217.399,
+      "duration": 3.168
+    },
+    {
+      "text": " output from the previous layer, and I",
+      "start": 1219.617,
+      "duration": 2.872
+    },
+    {
+      "text": " already have x. Okay? Now, as soon as I",
+      "start": 1221.54,
+      "duration": 4.206
+    },
+    {
+      "text": " think about it, I'll return this. As",
+      "start": 1224.813,
+      "duration": 3.874
+    },
+    {
+      "text": " soon as I call this function, it will",
+      "start": 1227.731,
+      "duration": 2.624
+    },
+    {
+      "text": " make changes to the parameters. Okay?",
+      "start": 1229.398,
+      "duration": 3.461
+    },
+    {
+      "text": " What should I notice? As I'm running",
+      "start": 1232.06,
+      "duration": 3.178
+    },
+    {
+      "text": " this, an error will appear because",
+      "start": 1234.297,
+      "duration": 3.016
+    },
+    {
+      "text": " obviously we haven't run this code. We",
+      "start": 1236.372,
+      "duration": 4.271
+    },
+    {
+      "text": " did run it. And now we've called this.",
+      "start": 1239.703,
+      "duration": 3.226
+    },
+    {
+      "text": " Look, it's changed all the parameters.",
+      "start": 1244.52,
+      "duration": 2.959
+    },
+    {
+      "text": " Now, if I run the parameters again,",
+      "start": 1247.511,
+      "duration": 3.61
+    },
+    {
+      "text": " here are my parameters. Notice they've",
+      "start": 1250.195,
+      "duration": 4.372
+    },
+    {
+      "text": " changed. My first layer's weights were",
+      "start": 1253.626,
+      "duration": 4.202
+    },
+    {
+      "text": " one. Now they've changed to something",
+      "start": 1256.882,
+      "duration": 3.364
+    },
+    {
+      "text": " else. My second layer's weights were",
+      "start": 1259.288,
+      "duration": 3.651
+    },
+    {
+      "text": " also one. They've changed to something",
+      "start": 1261.997,
+      "duration": 3.042
+    },
+    {
+      "text": " else. My B1 was zero. My B2 was also",
+      "start": 1264.079,
+      "duration": 4.608
+    },
+    {
+      "text": " zero. And all of this has changed now.",
+      "start": 1267.749,
+      "duration": 2.85
+    },
+    {
+      "text": " So what happened? Exactly, if we go",
+      "start": 1269.74,
+      "duration": 3.578
+    },
+    {
+      "text": " back to the algorithm, after",
+      "start": 1272.375,
+      "duration": 2.58
+    },
+    {
+      "text": " calculating the loss, as soon as we",
+      "start": 1274.012,
+      "duration": 2.976
+    },
+    {
+      "text": " applied this step, all my weights and",
+      "start": 1276.044,
+      "duration": 3.089
+    },
+    {
+      "text": " biases were updated. What do I do now?",
+      "start": 1278.189,
+      "duration": 4.87
+    },
+    {
+      "text": " Now, within this loop, I need to select",
+      "start": 1282.256,
+      "duration": 2.95
+    },
+    {
+      "text": " another student. I need to select",
+      "start": 1284.256,
+      "duration": 3.555
+    },
+    {
+      "text": " another student and repeat these same",
+      "start": 1286.883,
+      "duration": 3.664
+    },
+    {
+      "text": " steps for them. Okay? So, look what I'm",
+      "start": 1289.619,
+      "duration": 4.72
+    },
+    {
+      "text": " doing? I'm going to go back and copy a",
+      "start": 1293.406,
+      "duration": 3.316
+    },
+    {
+      "text": " little bit of code. I'll copy this",
+      "start": 1295.757,
+      "duration": 2.951
+    },
+    {
+      "text": " entire code. I'll copy this entire code",
+      "start": 1297.741,
+      "duration": 7.964
+    },
+    {
+      "text": ". I'll go down to this place, and I",
+      "start": 1304.705,
+      "duration": 5.158
+    },
+    {
+      "text": " won't re-initialize the parameters here",
+      "start": 1308.976,
+      "duration": 5.406
+    },
+    {
+      "text": ". Okay? And now I need the second",
+      "start": 1313.382,
+      "duration": 4.813
+    },
+    {
+      "text": " student. Here's the second student.",
+      "start": 1317.272,
+      "duration": 3.74
+    },
+    {
+      "text": " Okay? We'll call it again to do forward",
+      "start": 1320.112,
+      "duration": 4.248
+    },
+    {
+      "text": " propagation. In this step, I'll get the",
+      "start": 1323.439,
+      "duration": 3.646
+    },
+    {
+      "text": " second student's y value. Look, the",
+      "start": 1326.14,
+      "duration": 3.889
+    },
+    {
+      "text": " second student's y value is 50. Okay,",
+      "start": 1329.093,
+      "duration": 4.85
+    },
+    {
+      "text": " this is the second student's y value.",
+      "start": 1332.984,
+      "duration": 2.515
+    },
+    {
+      "text": " Now what I'll do is call update again,",
+      "start": 1335.076,
+      "duration": 5.957
+    },
+    {
+      "text": " and I'll get all these inputs. This is",
+      "start": 1340.163,
+      "duration": 5.878
+    },
+    {
+      "text": " the current value of the parameter. y",
+      "start": 1345.073,
+      "duration": 2.366
+    },
+    {
+      "text": " value is now in, and A1 and X value are",
+      "start": 1346.503,
+      "duration": 3.496
+    },
+    {
+      "text": " also in. And I'll run it. It's done",
+      "start": 1349.063,
+      "duration": 3.869
+    },
+    {
+      "text": " running. Now, look, the parameters will",
+      "start": 1351.983,
+      "duration": 3.037
+    },
+    {
+      "text": " have changed a little again. Look, the",
+      "start": 1354.062,
+      "duration": 5.626
+    },
+    {
+      "text": " parameters have changed a little more.",
+      "start": 1358.729,
+      "duration": 2.584
+    },
+    {
+      "text": " It's changing a little more. Notice,",
+      "start": 1361.607,
+      "duration": 2.778
+    },
+    {
+      "text": " this was above, it's changing a little",
+      "start": 1363.463,
+      "duration": 3.951
+    },
+    {
+      "text": " more. Okay? I need to do this two more",
+      "start": 1366.492,
+      "duration": 3.303
+    },
+    {
+      "text": " times. So what I would do is, this is",
+      "start": 1368.832,
+      "duration": 3.049
+    },
+    {
+      "text": " where I'll make the changes. Now I'm",
+      "start": 1370.932,
+      "duration": 3.107
+    },
+    {
+      "text": " picking the third student. This is my",
+      "start": 1373.099,
+      "duration": 4.724
+    },
+    {
+      "text": " third student. And again, I'm doing",
+      "start": 1376.877,
+      "duration": 2.979
+    },
+    {
+      "text": " forward preparation. I'm storing",
+      "start": 1378.901,
+      "duration": 3.143
+    },
+    {
+      "text": " whatever output is coming here. Look,",
+      "start": 1381.104,
+      "duration": 5.46
+    },
+    {
+      "text": " this is my prediction for the third",
+      "start": 1385.608,
+      "duration": 2.568
+    },
+    {
+      "text": " student. 60, okay? We could have also",
+      "start": 1387.221,
+      "duration": 3.325
+    },
+    {
+      "text": " calculated the loss. I forgot to",
+      "start": 1389.581,
+      "duration": 2.568
+    },
+    {
+      "text": " calculate the loss. And I'm calling",
+      "start": 1391.204,
+      "duration": 3.215
+    },
+    {
+      "text": " this again. Notice the parameters will",
+      "start": 1393.486,
+      "duration": 4.543
+    },
+    {
+      "text": " change again. Look, the parameters have",
+      "start": 1397.094,
+      "duration": 4.15
+    },
+    {
+      "text": " changed again. Now I'll pick the last",
+      "start": 1400.289,
+      "duration": 4.462
+    },
+    {
+      "text": " student, which is three, and again I'll",
+      "start": 1403.842,
+      "duration": 4.575
+    },
+    {
+      "text": " pick three here. Run again. This is the",
+      "start": 1407.508,
+      "duration": 5.43
+    },
+    {
+      "text": " prediction for my fourth student. I'll",
+      "start": 1412.003,
+      "duration": 4.239
+    },
+    {
+      "text": " call updateParameters again, and the",
+      "start": 1415.326,
+      "duration": 4.018
+    },
+    {
+      "text": " parameters will change further. Look,",
+      "start": 1418.428,
+      "duration": 4.039
+    },
+    {
+      "text": " the parameters will change. So, in",
+      "start": 1421.517,
+      "duration": 3.439
+    },
+    {
+      "text": " short, we've demonstrated this to you",
+      "start": 1424.04,
+      "duration": 4.108
+    },
+    {
+      "text": " once. The inner loop ran a total of",
+      "start": 1427.232,
+      "duration": 3.902
+    },
+    {
+      "text": " four times. The inner loop ran four",
+      "start": 1430.198,
+      "duration": 3.496
+    },
+    {
+      "text": " times. Okay? The outer loop just ran",
+      "start": 1432.756,
+      "duration": 3.613
+    },
+    {
+      "text": " once. For one epoch. But now you'll",
+      "start": 1435.432,
+      "duration": 3.405
+    },
+    {
+      "text": " repeat this same task five times.",
+      "start": 1437.881,
+      "duration": 2.458
+    },
+    {
+      "text": " Repeating the entire task five times",
+      "start": 1439.64,
+      "duration": 2.844
+    },
+    {
+      "text": " will result in five epoxes. Okay? Now,",
+      "start": 1441.535,
+      "duration": 3.749
+    },
+    {
+      "text": " instead of doing five epoxes, what am I",
+      "start": 1444.33,
+      "duration": 2.805
+    },
+    {
+      "text": " doing? I've written a single piece of",
+      "start": 1446.181,
+      "duration": 3.527
+    },
+    {
+      "text": " code that does all of this at once. Let",
+      "start": 1448.771,
+      "duration": 4.014
+    },
+    {
+      "text": " me show you. Here's the epox",
+      "start": 1451.843,
+      "duration": 2.826
+    },
+    {
+      "text": " implementation. Okay? Here I'm doing",
+      "start": 1453.728,
+      "duration": 3.128
+    },
+    {
+      "text": " everything from scratch. Okay? Here I",
+      "start": 1455.893,
+      "duration": 3.063
+    },
+    {
+      "text": " initialized the parameters. I don't",
+      "start": 1458.028,
+      "duration": 4.403
+    },
+    {
+      "text": " need to keep the epox to 75. Let's keep",
+      "start": 1461.503,
+      "duration": 3.784
+    },
+    {
+      "text": " it to 10 for now. What about 10? Let's",
+      "start": 1464.358,
+      "duration": 3.162
+    },
+    {
+      "text": " keep it to five for now. Okay? Look",
+      "start": 1466.558,
+      "duration": 3.246
+    },
+    {
+      "text": " here, I ran a loop for i in the range",
+      "start": 1468.896,
+      "duration": 4.407
+    },
+    {
+      "text": " of epoxes. Here I've created a loss",
+      "start": 1472.395,
+      "duration": 3.703
+    },
+    {
+      "text": " function. Basically, I'll calculate the",
+      "start": 1475.152,
+      "duration": 4.236
+    },
+    {
+      "text": " loss internally at this point, and then",
+      "start": 1478.444,
+      "duration": 3.218
+    },
+    {
+      "text": " I'll calculate the average loss. So",
+      "start": 1480.719,
+      "duration": 4.116
+    },
+    {
+      "text": " what am I doing? Internally, I'll",
+      "start": 1483.873,
+      "duration": 2.886
+    },
+    {
+      "text": " append all four losses to the list each",
+      "start": 1485.81,
+      "duration": 3.0
+    },
+    {
+      "text": " time, and then come here and apply the",
+      "start": 1487.862,
+      "duration": 2.948
+    },
+    {
+      "text": " average to that loss. Okay? So, look",
+      "start": 1489.862,
+      "duration": 3.896
+    },
+    {
+      "text": " carefully. Here's the loss. Now I'm",
+      "start": 1492.819,
+      "duration": 3.607
+    },
+    {
+      "text": " looping over all my data. Each time,",
+      "start": 1495.516,
+      "duration": 4.208
+    },
+    {
+      "text": " I'm picking a student by adding jj.",
+      "start": 1498.781,
+      "duration": 2.977
+    },
+    {
+      "text": " Okay? So, x and y are being output.",
+      "start": 1501.015,
+      "duration": 2.966
+    },
+    {
+      "text": " Then I'm doing forward propagation. I'm",
+      "start": 1503.108,
+      "duration": 3.436
+    },
+    {
+      "text": " getting yhat and a1. I'm extracting",
+      "start": 1505.593,
+      "duration": 3.207
+    },
+    {
+      "text": " yhat. I'm calling updateParameters.",
+      "start": 1507.86,
+      "duration": 3.245
+    },
+    {
+      "text": " Simultaneously, I'm getting the loss.",
+      "start": 1510.625,
+      "duration": 2.0
+    },
+    {
+      "text": " Here's the loss, and I'm appending the",
+      "start": 1512.479,
+      "duration": 2.764
+    },
+    {
+      "text": " loss to the loss. And as soon as the",
+      "start": 1514.289,
+      "duration": 3.373
+    },
+    {
+      "text": " inner loop completes, I'm exiting. And",
+      "start": 1516.711,
+      "duration": 3.797
+    },
+    {
+      "text": " I'm calculating the mean over the loss",
+      "start": 1519.564,
+      "duration": 3.128
+    },
+    {
+      "text": " so that the loss incurred in that",
+      "start": 1521.748,
+      "duration": 2.848
+    },
+    {
+      "text": " particular epoch is printed. And at the",
+      "start": 1523.652,
+      "duration": 3.938
+    },
+    {
+      "text": " end, after exiting both loops, I'm",
+      "start": 1526.647,
+      "duration": 2.963
+    },
+    {
+      "text": " printing the parameters. This is the",
+      "start": 1528.667,
+      "duration": 4.243
+    },
+    {
+      "text": " code C. Look, this must have run four",
+      "start": 1532.03,
+      "duration": 5.412
+    },
+    {
+      "text": " times. 20 times in total. In fact, all",
+      "start": 1536.561,
+      "duration": 4.268
+    },
+    {
+      "text": " this is being printed. I do one thing.",
+      "start": 1539.882,
+      "duration": 2.997
+    },
+    {
+      "text": " This is my function, this function, in",
+      "start": 1542.159,
+      "duration": 3.641
+    },
+    {
+      "text": " which I have deliberately printed",
+      "start": 1544.869,
+      "duration": 3.294
+    },
+    {
+      "text": " things. I'm commenting out all these",
+      "start": 1547.232,
+      "duration": 3.576
+    },
+    {
+      "text": " print statements. This is just to show",
+      "start": 1549.862,
+      "duration": 3.389
+    },
+    {
+      "text": " you. I'm commenting out all this so",
+      "start": 1552.3,
+      "duration": 3.939
+    },
+    {
+      "text": " that the output isn't so big. Okay? I",
+      "start": 1555.303,
+      "duration": 3.794
+    },
+    {
+      "text": " ran it again. Going down. Here's the",
+      "start": 1558.156,
+      "duration": 5.903
+    },
+    {
+      "text": " epoch implementation. I ran this code.",
+      "start": 1563.122,
+      "duration": 3.773
+    },
+    {
+      "text": " This is the output. Look, guys. The",
+      "start": 1566.739,
+      "duration": 6.693
+    },
+    {
+      "text": " first time you cycled through all five",
+      "start": 1572.506,
+      "duration": 3.796
+    },
+    {
+      "text": " points, your average loss was 25. By",
+      "start": 1575.376,
+      "duration": 3.649
+    },
+    {
+      "text": " the second time, the parameters had",
+      "start": 1578.099,
+      "duration": 3.576
+    },
+    {
+      "text": " adjusted so that the loss reduced to",
+      "start": 1580.748,
+      "duration": 3.65
+    },
+    {
+      "text": " 18. The third time, the loss reduced",
+      "start": 1583.471,
+      "duration": 3.649
+    },
+    {
+      "text": " further to 9.47. The fifth time, it",
+      "start": 1586.194,
+      "duration": 4.813
+    },
+    {
+      "text": " dropped to three, and finally stopped",
+      "start": 1590.074,
+      "duration": 3.475
+    },
+    {
+      "text": " at 1.3. Okay? And finally, after",
+      "start": 1592.615,
+      "duration": 3.47
+    },
+    {
+      "text": " everything was done, I printed out my",
+      "start": 1595.14,
+      "duration": 3.025
+    },
+    {
+      "text": " weights and biases. Look, we started",
+      "start": 1597.22,
+      "duration": 3.898
+    },
+    {
+      "text": " from point one and reached where we",
+      "start": 1600.17,
+      "duration": 2.806
+    },
+    {
+      "text": " ended up. Okay? So this is the",
+      "start": 1602.028,
+      "duration": 3.665
+    },
+    {
+      "text": " demonstration. Now, just one last thing",
+      "start": 1604.746,
+      "duration": 3.428
+    },
+    {
+      "text": ". I'll write this same code for you in",
+      "start": 1607.174,
+      "duration": 3.701
+    },
+    {
+      "text": " Keras. A: Where we'll use the Keras",
+      "start": 1609.936,
+      "duration": 4.467
+    },
+    {
+      "text": " library to see the output on the same",
+      "start": 1613.458,
+      "duration": 3.015
+    },
+    {
+      "text": " data. Okay? So let me show you that. So",
+      "start": 1615.527,
+      "duration": 5.462
+    },
+    {
+      "text": " guys, this is the Keras code. Let's run",
+      "start": 1620.04,
+      "duration": 3.218
+    },
+    {
+      "text": " this one too. Everything is the same. I",
+      "start": 1622.31,
+      "duration": 3.696
+    },
+    {
+      "text": " created the same data frame here.",
+      "start": 1625.072,
+      "duration": 3.188
+    },
+    {
+      "text": " Here's our data frame. We imported all",
+      "start": 1628.126,
+      "duration": 4.075
+    },
+    {
+      "text": " the libraries here. And what have I",
+      "start": 1631.272,
+      "duration": 4.028
+    },
+    {
+      "text": " done here? I've created our neural",
+      "start": 1634.371,
+      "duration": 3.225
+    },
+    {
+      "text": " network with the same architecture.",
+      "start": 1636.655,
+      "duration": 3.065
+    },
+    {
+      "text": " There's an input layer. There are two",
+      "start": 1639.313,
+      "duration": 3.096
+    },
+    {
+      "text": " hidden units. All of them have linear",
+      "start": 1641.469,
+      "duration": 3.366
+    },
+    {
+      "text": " activations. Okay? We've run it. Here's",
+      "start": 1643.886,
+      "duration": 4.712
+    },
+    {
+      "text": " a summary of my model. There are a",
+      "start": 1647.652,
+      "duration": 2.88
+    },
+    {
+      "text": " total of nine tradable parameters.",
+      "start": 1649.585,
+      "duration": 2.774
+    },
+    {
+      "text": " There are six weights, two biases. Now,",
+      "start": 1651.659,
+      "duration": 3.936
+    },
+    {
+      "text": " look what Keras does here is it",
+      "start": 1654.664,
+      "duration": 3.144
+    },
+    {
+      "text": " randomly initializes the weights. Okay?",
+      "start": 1656.877,
+      "duration": 4.371
+    },
+    {
+      "text": " So what am I doing to make this similar",
+      "start": 1660.348,
+      "duration": 2.95
+    },
+    {
+      "text": "? What did I do to make it similar to",
+      "start": 1662.298,
+      "duration": 2.918
+    },
+    {
+      "text": " the model we created? I extracted all",
+      "start": 1664.266,
+      "duration": 2.86
+    },
+    {
+      "text": " the weights from the first model using",
+      "start": 1666.173,
+      "duration": 2.769
+    },
+    {
+      "text": " get weights. So look, all the weights",
+      "start": 1667.989,
+      "duration": 2.841
+    },
+    {
+      "text": " are visible in the \"weights\" field.",
+      "start": 1669.877,
+      "duration": 2.657
+    },
+    {
+      "text": " Exactly the same as mine here. Okay?",
+      "start": 1671.639,
+      "duration": 3.951
+    },
+    {
+      "text": " Exactly the same way. Now what did I do",
+      "start": 1674.69,
+      "duration": 3.557
+    },
+    {
+      "text": "? I created a new array called \"weights",
+      "start": 1677.247,
+      "duration": 3.941
+    },
+    {
+      "text": ".\" What did I do? I assigned all the",
+      "start": 1680.188,
+      "duration": 3.133
+    },
+    {
+      "text": " weights to 0.1. I assigned all the",
+      "start": 1682.375,
+      "duration": 2.765
+    },
+    {
+      "text": " biases to zero. Okay? And then I called",
+      "start": 1684.181,
+      "duration": 3.65
+    },
+    {
+      "text": " Keras's \"setWeights\" function and set",
+      "start": 1686.899,
+      "duration": 3.507
+    },
+    {
+      "text": " the new weights. So what's next? The",
+      "start": 1689.474,
+      "duration": 4.377
+    },
+    {
+      "text": " Keras model's initial weights are",
+      "start": 1692.915,
+      "duration": 3.116
+    },
+    {
+      "text": " exactly the same as mine. I did this",
+      "start": 1695.095,
+      "duration": 4.327
+    },
+    {
+      "text": " just to show similarity. Okay? Now what",
+      "start": 1698.48,
+      "duration": 3.841
+    },
+    {
+      "text": " did I do next? I went into the",
+      "start": 1701.366,
+      "duration": 3.129
+    },
+    {
+      "text": " optimizer and set the learning rate",
+      "start": 1703.579,
+      "duration": 3.932
+    },
+    {
+      "text": " because it's the same in my case. Okay?",
+      "start": 1706.594,
+      "duration": 5.225
+    },
+    {
+      "text": " And after doing that, I calculated the",
+      "start": 1711.269,
+      "duration": 3.567
+    },
+    {
+      "text": " mean squared error and finally, I",
+      "start": 1713.903,
+      "duration": 3.23
+    },
+    {
+      "text": " fitted the model. A different optimizer",
+      "start": 1716.2,
+      "duration": 5.275
+    },
+    {
+      "text": " is used here, meaning \"Most Likely.\" So",
+      "start": 1720.542,
+      "duration": 4.268
+    },
+    {
+      "text": ", it took 75 epochs for Keras to",
+      "start": 1723.81,
+      "duration": 4.054
+    },
+    {
+      "text": " converge. Okay? See, here I'm running",
+      "start": 1726.96,
+      "duration": 4.549
+    },
+    {
+      "text": " it. The model is trained, and here's my",
+      "start": 1730.594,
+      "duration": 7.536
+    },
+    {
+      "text": " loss: around 1.47. Our loss was a",
+      "start": 1737.238,
+      "duration": 5.777
+    },
+    {
+      "text": " little lower, around 1.34. Now, what",
+      "start": 1742.163,
+      "duration": 6.845
+    },
+    {
+      "text": " did I do again? I added",
+      "start": 1748.063,
+      "duration": 2.24
+    },
+    {
+      "text": " model.getweights. And here are the",
+      "start": 1749.35,
+      "duration": 4.044
+    },
+    {
+      "text": " changes I made to our weights. Okay? So",
+      "start": 1752.48,
+      "duration": 5.096
+    },
+    {
+      "text": ", you can do the same thing we do in",
+      "start": 1756.576,
+      "duration": 5.998
+    },
+    {
+      "text": " Keras by using your own code. Okay? The",
+      "start": 1761.713,
+      "duration": 6.675
+    },
+    {
+      "text": " most important thing is to practically",
+      "start": 1767.471,
+      "duration": 4.163
+    },
+    {
+      "text": " convert this algorithm we learned into",
+      "start": 1770.717,
+      "duration": 4.162
+    },
+    {
+      "text": " code. Okay? And we did this for a",
+      "start": 1773.962,
+      "duration": 3.676
+    },
+    {
+      "text": " regression problem. What will we do",
+      "start": 1776.692,
+      "duration": 3.132
+    },
+    {
+      "text": " next? We'll repeat this same process",
+      "start": 1778.883,
+      "duration": 3.165
+    },
+    {
+      "text": " for a classification problem. What will",
+      "start": 1781.098,
+      "duration": 3.301
+    },
+    {
+      "text": " that do? It will solidify our",
+      "start": 1783.445,
+      "duration": 2.796
+    },
+    {
+      "text": " understanding a little more. So, guys,",
+      "start": 1785.307,
+      "duration": 4.76
+    },
+    {
+      "text": " we've looked at a regression example",
+      "start": 1789.127,
+      "duration": 3.185
+    },
+    {
+      "text": " step by step. Now, let's look at a",
+      "start": 1791.373,
+      "duration": 3.464
+    },
+    {
+      "text": " classification example. Okay?",
+      "start": 1793.889,
+      "duration": 2.991
+    },
+    {
+      "text": " Everything is going to be very similar.",
+      "start": 1795.98,
+      "duration": 2.475
+    },
+    {
+      "text": " But I want to give you a taste of",
+      "start": 1797.739,
+      "duration": 2.508
+    },
+    {
+      "text": " classification. Look, we made a few",
+      "start": 1799.293,
+      "duration": 3.147
+    },
+    {
+      "text": " changes to the same data set and",
+      "start": 1801.506,
+      "duration": 3.127
+    },
+    {
+      "text": " created a new one. This data set is for",
+      "start": 1803.7,
+      "duration": 3.385
+    },
+    {
+      "text": " classification. Here, you have the CGPA",
+      "start": 1806.139,
+      "duration": 3.601
+    },
+    {
+      "text": " as input, the student's profile score,",
+      "start": 1808.802,
+      "duration": 3.349
+    },
+    {
+      "text": " and placement status as one or zero.",
+      "start": 1811.213,
+      "duration": 3.226
+    },
+    {
+      "text": " Okay? And guess what? I've kept the",
+      "start": 1813.949,
+      "duration": 3.262
+    },
+    {
+      "text": " neural network architecture exactly the",
+      "start": 1816.278,
+      "duration": 3.618
+    },
+    {
+      "text": " same. We have three layers: input,",
+      "start": 1818.963,
+      "duration": 4.13
+    },
+    {
+      "text": " hidden, and output. There are two in",
+      "start": 1822.18,
+      "duration": 4.03
+    },
+    {
+      "text": " the input, two in the hidden, and one",
+      "start": 1825.282,
+      "duration": 3.659
+    },
+    {
+      "text": " in the output. Okay? Now, the only",
+      "start": 1828.013,
+      "duration": 4.04
+    },
+    {
+      "text": " major change here is that in the",
+      "start": 1831.141,
+      "duration": 3.812
+    },
+    {
+      "text": " regression example above, my activation",
+      "start": 1834.041,
+      "duration": 4.427
+    },
+    {
+      "text": " function was linear in all three layers",
+      "start": 1837.556,
+      "duration": 4.427
+    },
+    {
+      "text": ". But since this is a classification",
+      "start": 1840.983,
+      "duration": 4.7
+    },
+    {
+      "text": " example, what I've done here is add a",
+      "start": 1844.743,
+      "duration": 3.212
+    },
+    {
+      "text": " sigmoid to all three layers. The",
+      "start": 1847.015,
+      "duration": 4.12
+    },
+    {
+      "text": " addition of this sigmoid will cause",
+      "start": 1850.174,
+      "duration": 2.353
+    },
+    {
+      "text": " some slight changes. Okay? Also, your",
+      "start": 1851.566,
+      "duration": 4.438
+    },
+    {
+      "text": " loss function here is binary",
+      "start": 1855.084,
+      "duration": 3.219
+    },
+    {
+      "text": " cross-entropy. We've already seen this.",
+      "start": 1857.383,
+      "duration": 4.856
+    },
+    {
+      "text": " Okay? So look here, notice when forward",
+      "start": 1863.379,
+      "duration": 3.596
+    },
+    {
+      "text": " propagation happens. Let's say you give",
+      "start": 1866.027,
+      "duration": 4.013
+    },
+    {
+      "text": " something as input. Your initial",
+      "start": 1869.089,
+      "duration": 3.216
+    },
+    {
+      "text": " weights are one. This is also one. All",
+      "start": 1871.383,
+      "duration": 4.216
+    },
+    {
+      "text": " four of these weights are one. This is",
+      "start": 1874.628,
+      "duration": 2.31
+    },
+    {
+      "text": " also one. The bias is zero. So let me",
+      "start": 1875.985,
+      "duration": 3.331
+    },
+    {
+      "text": " quickly explain how the output is",
+      "start": 1878.369,
+      "duration": 2.746
+    },
+    {
+      "text": " calculated at this node. Let's say the",
+      "start": 1880.168,
+      "duration": 3.372
+    },
+    {
+      "text": " input for the first student is 8 and 8.",
+      "start": 1882.591,
+      "duration": 2.986
+    },
+    {
+      "text": " So your output will be calculated.",
+      "start": 1884.628,
+      "duration": 2.732
+    },
+    {
+      "text": " First, you calculate z. What will z be?",
+      "start": 1887.063,
+      "duration": 3.657
+    },
+    {
+      "text": " 1*8 + 1*8 + 0 becomes z. Now you just",
+      "start": 1890.66,
+      "duration": 7.767
+    },
+    {
+      "text": " pass this to the sigmoid, and this will",
+      "start": 1897.488,
+      "duration": 3.365
+    },
+    {
+      "text": " be your output. Okay? So, there's just",
+      "start": 1899.914,
+      "duration": 6.259
+    },
+    {
+      "text": " this extra step here. After you find z,",
+      "start": 1905.222,
+      "duration": 3.312
+    },
+    {
+      "text": " you send it to the sigmoid function,",
+      "start": 1907.585,
+      "duration": 2.812
+    },
+    {
+      "text": " and what comes out is your output. This",
+      "start": 1909.447,
+      "duration": 3.108
+    },
+    {
+      "text": " is the extra step you need to do here.",
+      "start": 1911.594,
+      "duration": 2.485
+    },
+    {
+      "text": " Okay? This is the change that happened",
+      "start": 1913.191,
+      "duration": 2.577
+    },
+    {
+      "text": " with the introduction of this sigmoid.",
+      "start": 1914.796,
+      "duration": 2.091
+    },
+    {
+      "text": " Okay? And your loss function has",
+      "start": 1916.111,
+      "duration": 2.873
+    },
+    {
+      "text": " changed. Before, it was the whole",
+      "start": 1918.031,
+      "duration": 3.414
+    },
+    {
+      "text": " square of y-y. Now it's this. Okay? So",
+      "start": 1920.522,
+      "duration": 3.772
+    },
+    {
+      "text": " these are the two changes in the",
+      "start": 1923.341,
+      "duration": 2.503
+    },
+    {
+      "text": " classification problem. The",
+      "start": 1924.891,
+      "duration": 2.294
+    },
+    {
+      "text": " backpropagation algorithm will remain",
+      "start": 1926.223,
+      "duration": 2.405
+    },
+    {
+      "text": " exactly the same. You'll start with the",
+      "start": 1927.666,
+      "duration": 3.44
+    },
+    {
+      "text": " number of epochs. You'll enter within",
+      "start": 1930.165,
+      "duration": 3.787
+    },
+    {
+      "text": " epochs. You'll run the inner loop as",
+      "start": 1933.005,
+      "duration": 2.929
+    },
+    {
+      "text": " many times as there are days in your",
+      "start": 1934.985,
+      "duration": 2.846
+    },
+    {
+      "text": " data. Inside, you can either pick",
+      "start": 1936.882,
+      "duration": 3.833
+    },
+    {
+      "text": " points randomly or one by one. We're",
+      "start": 1939.787,
+      "duration": 3.934
+    },
+    {
+      "text": " currently using a one-by-one approach.",
+      "start": 1942.766,
+      "duration": 2.693
+    },
+    {
+      "text": " For each point as in each student,",
+      "start": 1945.007,
+      "duration": 3.42
+    },
+    {
+      "text": " you'll perform forward propagation to",
+      "start": 1947.498,
+      "duration": 3.634
+    },
+    {
+      "text": " predict placement or not, and then",
+      "start": 1950.203,
+      "duration": 3.42
+    },
+    {
+      "text": " calculate the loss. This will be binary",
+      "start": 1952.694,
+      "duration": 4.508
+    },
+    {
+      "text": " cross-entropy, not MSC. Okay? What will",
+      "start": 1956.285,
+      "duration": 4.591
+    },
+    {
+      "text": " you do after that? This is your main",
+      "start": 1959.936,
+      "duration": 3.416
+    },
+    {
+      "text": " step where you'll update your nine",
+      "start": 1962.424,
+      "duration": 3.473
+    },
+    {
+      "text": " weights and biases using gradient",
+      "start": 1964.969,
+      "duration": 3.4
+    },
+    {
+      "text": " descent. Okay? Now, the problem is that",
+      "start": 1967.442,
+      "duration": 3.977
+    },
+    {
+      "text": " we haven't calculated all these",
+      "start": 1970.486,
+      "duration": 3.067
+    },
+    {
+      "text": " derivatives yet. So what do we need to",
+      "start": 1972.62,
+      "duration": 3.977
+    },
+    {
+      "text": " do? We'll need to calculate all these",
+      "start": 1975.667,
+      "duration": 3.164
+    },
+    {
+      "text": " derivatives one by one. Just like I",
+      "start": 1977.886,
+      "duration": 3.28
+    },
+    {
+      "text": " showed you in the last video for",
+      "start": 1980.217,
+      "duration": 2.623
+    },
+    {
+      "text": " regression. So that's our next task.",
+      "start": 1981.891,
+      "duration": 3.208
+    },
+    {
+      "text": " I'll show you step by step. The good",
+      "start": 1984.356,
+      "duration": 2.887
+    },
+    {
+      "text": " thing is that since you've already done",
+      "start": 1986.288,
+      "duration": 2.775
+    },
+    {
+      "text": " it once, it won't seem that difficult.",
+      "start": 1988.109,
+      "duration": 2.73
+    },
+    {
+      "text": " Okay? So watch carefully. I'm starting.",
+      "start": 1990.006,
+      "duration": 3.473
+    },
+    {
+      "text": " Let's say this is my neural network",
+      "start": 1992.715,
+      "duration": 2.542
+    },
+    {
+      "text": " architecture. This is the neural",
+      "start": 1994.301,
+      "duration": 5.369
+    },
+    {
+      "text": " network architecture. First, here's my",
+      "start": 1998.732,
+      "duration": 4.926
+    },
+    {
+      "text": " y-value, which then enters the loss",
+      "start": 2002.737,
+      "duration": 3.754
+    },
+    {
+      "text": " function. So, first, I'm going to",
+      "start": 2005.57,
+      "duration": 3.939
+    },
+    {
+      "text": " calculate these weights, these weights,",
+      "start": 2008.564,
+      "duration": 3.176
+    },
+    {
+      "text": " and their biases. The derivative of",
+      "start": 2010.796,
+      "duration": 4.236
+    },
+    {
+      "text": " these three with respect to the loss",
+      "start": 2014.095,
+      "duration": 3.273
+    },
+    {
+      "text": " function. Okay? I'm rewriting the loss",
+      "start": 2016.431,
+      "duration": 3.848
+    },
+    {
+      "text": " function here. The loss function is-y",
+      "start": 2019.323,
+      "duration": 3.736
+    },
+    {
+      "text": " log of y t-1-y log 1-y t. Okay? Now,",
+      "start": 2023.939,
+      "duration": 10.17
+    },
+    {
+      "text": " look, what are we doing first? We're",
+      "start": 2033.161,
+      "duration": 3.676
+    },
+    {
+      "text": " going to calculate the del of l with",
+      "start": 2035.884,
+      "duration": 2.716
+    },
+    {
+      "text": " respect to these weights. Okay? Now,",
+      "start": 2037.647,
+      "duration": 6.959
+    },
+    {
+      "text": " you'll remember our logic: if you want",
+      "start": 2043.665,
+      "duration": 6.757
+    },
+    {
+      "text": " to make changes to L, you'll obviously",
+      "start": 2049.505,
+      "duration": 4.189
+    },
+    {
+      "text": " have to make changes to Y. So, what is",
+      "start": 2052.778,
+      "duration": 4.189
+    },
+    {
+      "text": " Y? Y is basically the sigmoid of Z,",
+      "start": 2056.051,
+      "duration": 5.659
+    },
+    {
+      "text": " right? And Z is the sigmoid of Z for",
+      "start": 2060.834,
+      "duration": 4.671
+    },
+    {
+      "text": " this node. Right? So, Y, in turn, will",
+      "start": 2064.599,
+      "duration": 4.315
+    },
+    {
+      "text": " depend on Z. Let's call it the z-final,",
+      "start": 2067.985,
+      "duration": 3.799
+    },
+    {
+      "text": " because this final is the last note.",
+      "start": 2070.855,
+      "duration": 3.584
+    },
+    {
+      "text": " Right? Now, this z-final is what is",
+      "start": 2073.859,
+      "duration": 3.64
+    },
+    {
+      "text": " this z-final? It's basically a linear",
+      "start": 2076.57,
+      "duration": 4.564
+    },
+    {
+      "text": " sum-linear combination here: W211*bias,",
+      "start": 2080.226,
+      "duration": 7.119
+    },
+    {
+      "text": " its output O11, plus W2, this weight 21",
+      "start": 2086.497,
+      "duration": 6.895
+    },
+    {
+      "text": ", its output O12, plus its own bias B21",
+      "start": 2092.392,
+      "duration": 6.895
+    },
+    {
+      "text": ". Okay, so here, you see, we're",
+      "start": 2098.287,
+      "duration": 5.284
+    },
+    {
+      "text": " calculating based only on this weight,",
+      "start": 2102.672,
+      "duration": 4.817
+    },
+    {
+      "text": " so Z depends on W211. So, if you make a",
+      "start": 2106.589,
+      "duration": 4.749
+    },
+    {
+      "text": " slight change to this, Z will change.",
+      "start": 2110.399,
+      "duration": 3.261
+    },
+    {
+      "text": " Changing Z will change Y, and changing",
+      "start": 2114.017,
+      "duration": 3.452
+    },
+    {
+      "text": " Y will change L. So if I come here, I",
+      "start": 2116.533,
+      "duration": 3.388
+    },
+    {
+      "text": " can break this whole thing down and",
+      "start": 2118.986,
+      "duration": 3.259
+    },
+    {
+      "text": " write it like this. Okay? That means if",
+      "start": 2121.309,
+      "duration": 17.084
+    },
+    {
+      "text": " I want to calculate this, I have to",
+      "start": 2137.466,
+      "duration": 3.57
+    },
+    {
+      "text": " calculate these three things. Okay?",
+      "start": 2140.109,
+      "duration": 5.07
+    },
+    {
+      "text": " Let's do something similar. Let's write",
+      "start": 2144.295,
+      "duration": 4.945
+    },
+    {
+      "text": " this down too. What will be the",
+      "start": 2148.289,
+      "duration": 4.582
+    },
+    {
+      "text": " derivative with respect to this weight?",
+      "start": 2151.922,
+      "duration": 2.978
+    },
+    {
+      "text": " What will happen with this? The same",
+      "start": 2155.008,
+      "duration": 2.765
+    },
+    {
+      "text": " path will follow. What will come last",
+      "start": 2156.817,
+      "duration": 3.148
+    },
+    {
+      "text": " here? W21. So everything will be the",
+      "start": 2159.026,
+      "duration": 4.122
+    },
+    {
+      "text": " same. The first two derivatives will be",
+      "start": 2162.185,
+      "duration": 4.305
+    },
+    {
+      "text": " exactly the same. W21 will come last",
+      "start": 2165.578,
+      "duration": 5.681
+    },
+    {
+      "text": " here. And then if you look at this bias",
+      "start": 2170.402,
+      "duration": 5.996
+    },
+    {
+      "text": ", everything will be the same. The",
+      "start": 2175.398,
+      "duration": 4.84
+    },
+    {
+      "text": " first two will come here. Bias 21. So",
+      "start": 2179.347,
+      "duration": 10.281
+    },
+    {
+      "text": " what we have to do now is the good",
+      "start": 2188.714,
+      "duration": 3.934
+    },
+    {
+      "text": " thing is that this is common, so much",
+      "start": 2191.734,
+      "duration": 4.193
+    },
+    {
+      "text": " is common in all three. Okay? So we",
+      "start": 2195.014,
+      "duration": 6.217
+    },
+    {
+      "text": " have to find these two and these three.",
+      "start": 2200.299,
+      "duration": 3.67
+    },
+    {
+      "text": " So, in total, finding five derivatives",
+      "start": 2203.54,
+      "duration": 4.04
+    },
+    {
+      "text": " will do our job of three. Okay? So",
+      "start": 2206.66,
+      "duration": 4.027
+    },
+    {
+      "text": " let's focus. First, we'll find the",
+      "start": 2209.762,
+      "duration": 4.75
+    },
+    {
+      "text": " derivative of l with respect to y hat.",
+      "start": 2213.6,
+      "duration": 4.344
+    },
+    {
+      "text": " So basically, I have to find this.",
+      "start": 2218.379,
+      "duration": 2.84
+    },
+    {
+      "text": " Sorry, there's no minus here. Here it's",
+      "start": 2226.88,
+      "duration": 6.987
+    },
+    {
+      "text": " y minus 1-y. Here it's log 1-y. Okay? I",
+      "start": 2232.999,
+      "duration": 13.708
+    },
+    {
+      "text": " need to find the derivative of this",
+      "start": 2246.54,
+      "duration": 1.46
+    },
+    {
+      "text": " thing. Look, it's very simple. First,",
+      "start": 2247.014,
+      "duration": 2.84
+    },
+    {
+      "text": " we'll derive this term. We'll",
+      "start": 2248.918,
+      "duration": 2.835
+    },
+    {
+      "text": " differentiate it. I'm sorry. So here",
+      "start": 2250.804,
+      "duration": 3.471
+    },
+    {
+      "text": " it's-y divided by log of this thing by",
+      "start": 2253.355,
+      "duration": 9.71
+    },
+    {
+      "text": " y minus 1-y. The derivative of this",
+      "start": 2262.26,
+      "duration": 5.338
+    },
+    {
+      "text": " whole term becomes 1-y. Then you",
+      "start": 2266.68,
+      "duration": 3.627
+    },
+    {
+      "text": " differentiate this inner term, and this",
+      "start": 2269.389,
+      "duration": 4.201
+    },
+    {
+      "text": " negative comes out and a plus comes in.",
+      "start": 2272.672,
+      "duration": 4.201
+    },
+    {
+      "text": " If you solve this, this would become (-",
+      "start": 2276.849,
+      "duration": 6.514
+    },
+    {
+      "text": "y*(1-y)) plus (y times*(1-y)) and then",
+      "start": 2282.363,
+      "duration": 6.373
+    },
+    {
+      "text": " y*(1-y). If you multiply this out",
+      "start": 2287.877,
+      "duration": 6.238
+    },
+    {
+      "text": " completely, you get y + yt + yt-y*yt",
+      "start": 2293.187,
+      "duration": 9.253
+    },
+    {
+      "text": " divided by y*(1-y) t. Okay, this and",
+      "start": 2304.184,
+      "duration": 6.674
+    },
+    {
+      "text": " this will cancel out, and you're left",
+      "start": 2309.94,
+      "duration": 4.01
+    },
+    {
+      "text": " with (y y t) by (y y t)/(y y t*(1-y)) y",
+      "start": 2313.031,
+      "duration": 9.158
+    },
+    {
+      "text": " t, so this is the derivative. You can",
+      "start": 2321.329,
+      "duration": 8.83
+    },
+    {
+      "text": " see. So guys, we've solved this one.",
+      "start": 2329.259,
+      "duration": 6.52
+    },
+    {
+      "text": " Now we'll solve this one. Okay? This",
+      "start": 2335.011,
+      "duration": 3.672
+    },
+    {
+      "text": " one is pretty easy too. We'll go down",
+      "start": 2337.731,
+      "duration": 2.9
+    },
+    {
+      "text": " and write this code. Not code, I'm",
+      "start": 2339.679,
+      "duration": 3.692
+    },
+    {
+      "text": " sorry, we'll write this expression, and",
+      "start": 2342.454,
+      "duration": 4.23
+    },
+    {
+      "text": " basically we have to solve this. Okay?",
+      "start": 2345.767,
+      "duration": 8.572
+    },
+    {
+      "text": " Because y y t is nothing but the",
+      "start": 2354.12,
+      "duration": 3.587
+    },
+    {
+      "text": " sigmoid of Z. Now, if you know, the",
+      "start": 2356.788,
+      "duration": 3.83
+    },
+    {
+      "text": " derivative of sigmoid is sigmoid",
+      "start": 2359.699,
+      "duration": 7.567
+    },
+    {
+      "text": " multiplied by 1-sigmoid. You have to",
+      "start": 2366.411,
+      "duration": 5.091
+    },
+    {
+      "text": " remember this. Okay? So this becomes",
+      "start": 2370.54,
+      "duration": 5.599
+    },
+    {
+      "text": " sigmoid 1-sigmoid. And what do I do",
+      "start": 2375.285,
+      "duration": 6.012
+    },
+    {
+      "text": " here? I'll replace this with y t. So",
+      "start": 2380.381,
+      "duration": 4.396
+    },
+    {
+      "text": " this would become y t times y-y t. Okay",
+      "start": 2383.886,
+      "duration": 5.822
+    },
+    {
+      "text": "? So now we've solved this one too. Now",
+      "start": 2388.708,
+      "duration": 5.138
+    },
+    {
+      "text": " the cool thing is that you have to",
+      "start": 2392.915,
+      "duration": 3.321
+    },
+    {
+      "text": " multiply these two. You have to",
+      "start": 2395.304,
+      "duration": 3.47
+    },
+    {
+      "text": " multiply these two. Now notice what",
+      "start": 2397.815,
+      "duration": 2.988
+    },
+    {
+      "text": " happens when you multiply these two.",
+      "start": 2399.864,
+      "duration": 3.216
+    },
+    {
+      "text": " I'll write it out for you. See, our",
+      "start": 2402.359,
+      "duration": 9.101
+    },
+    {
+      "text": " result was minus (y-y)*y*(1-y) and this",
+      "start": 2410.697,
+      "duration": 10.243
+    },
+    {
+      "text": " is our result, y*(1-y). Now notice, we",
+      "start": 2420.177,
+      "duration": 7.931
+    },
+    {
+      "text": " have to multiply these two in all three",
+      "start": 2427.164,
+      "duration": 3.184
+    },
+    {
+      "text": " equations. So when you multiply these",
+      "start": 2429.404,
+      "duration": 3.916
+    },
+    {
+      "text": " two, this would become: multiply by y,",
+      "start": 2432.402,
+      "duration": 9.344
+    },
+    {
+      "text": " plus z would become-(y-y)*(1-y)*by y*(1",
+      "start": 2440.89,
+      "duration": 11.507
+    },
+    {
+      "text": "-y). This and this term will cancel out",
+      "start": 2451.397,
+      "duration": 5.731
+    },
+    {
+      "text": ", and multiplying these two gives me y",
+      "start": 2456.128,
+      "duration": 3.552
+    },
+    {
+      "text": " times y. Okay? So it's a great thing",
+      "start": 2458.747,
+      "duration": 6.311
+    },
+    {
+      "text": " that the multiplication of these two",
+      "start": 2464.143,
+      "duration": 4.051
+    },
+    {
+      "text": " terms, the multiplication of these two",
+      "start": 2467.279,
+      "duration": 4.221
+    },
+    {
+      "text": " terms, is a very simple term, and",
+      "start": 2470.585,
+      "duration": 3.796
+    },
+    {
+      "text": " that's y-y. Okay? Now, all we have to",
+      "start": 2473.466,
+      "duration": 6.046
+    },
+    {
+      "text": " do is find these three terms. These",
+      "start": 2478.571,
+      "duration": 4.028
+    },
+    {
+      "text": " three terms are also very simple.",
+      "start": 2481.639,
+      "duration": 2.32
+    },
+    {
+      "text": " Notice what our z is? At this point,",
+      "start": 2483.219,
+      "duration": 5.5
+    },
+    {
+      "text": " our z is W211 + W21 = O12 + B21. Now,",
+      "start": 2487.789,
+      "duration": 15.374
+    },
+    {
+      "text": " when you differentiate this with",
+      "start": 2502.23,
+      "duration": 3.132
+    },
+    {
+      "text": " respect to W211, you get O11. So, I'm",
+      "start": 2504.428,
+      "duration": 3.775
+    },
+    {
+      "text": " writing it here; its value will be O11.",
+      "start": 2507.242,
+      "duration": 2.527
+    },
+    {
+      "text": " And when you differentiate it with",
+      "start": 2509.864,
+      "duration": 2.323
+    },
+    {
+      "text": " respect to W211, the value will be O12.",
+      "start": 2511.226,
+      "duration": 2.518
+    },
+    {
+      "text": " And when you differentiate it with",
+      "start": 2513.359,
+      "duration": 2.663
+    },
+    {
+      "text": " respect to W211, since there's no term",
+      "start": 2515.071,
+      "duration": 2.86
+    },
+    {
+      "text": " here, the answer will be one. This",
+      "start": 2516.979,
+      "duration": 3.276
+    },
+    {
+      "text": " means, I can reduce down and write this",
+      "start": 2519.327,
+      "duration": 3.814
+    },
+    {
+      "text": " expression. Look carefully. I can write",
+      "start": 2522.213,
+      "duration": 4.146
+    },
+    {
+      "text": " this. This would become-y = y times O11",
+      "start": 2525.451,
+      "duration": 9.441
+    },
+    {
+      "text": ". Here's its differentiation. Equal to",
+      "start": 2533.892,
+      "duration": 4.756
+    },
+    {
+      "text": " this, this will come to y-y t 012 and",
+      "start": 2537.764,
+      "duration": 8.48
+    },
+    {
+      "text": " this will come to y-y t here, and",
+      "start": 2545.322,
+      "duration": 3.599
+    },
+    {
+      "text": " nothing else will happen. We've",
+      "start": 2547.999,
+      "duration": 4.831
+    },
+    {
+      "text": " calculated these three. Okay? If you",
+      "start": 2551.896,
+      "duration": 5.636
+    },
+    {
+      "text": " want, you can compare these expressions",
+      "start": 2556.591,
+      "duration": 3.3
+    },
+    {
+      "text": " to the regression expression. You would",
+      "start": 2558.95,
+      "duration": 6.064
+    },
+    {
+      "text": " see that this was there. Compare it.",
+      "start": 2564.124,
+      "duration": 6.087
+    },
+    {
+      "text": " It's not -2. Here it's -1. This is the",
+      "start": 2569.459,
+      "duration": 6.565
+    },
+    {
+      "text": " only difference. You can compare it.",
+      "start": 2575.094,
+      "duration": 4.053
+    },
+    {
+      "text": " Now we'll calculate the derivative of",
+      "start": 2582.719,
+      "duration": 4.106
+    },
+    {
+      "text": " these three: this weight, this weight,",
+      "start": 2585.909,
+      "duration": 4.191
+    },
+    {
+      "text": " and this bias. Okay? So let's see what",
+      "start": 2589.184,
+      "duration": 5.069
+    },
+    {
+      "text": " path to follow. Here's the loss. Here's",
+      "start": 2593.303,
+      "duration": 4.028
+    },
+    {
+      "text": " y hat. And y hat will depend on z. The",
+      "start": 2596.426,
+      "duration": 5.568
+    },
+    {
+      "text": " z we get from this will depend on z.",
+      "start": 2601.058,
+      "duration": 3.305
+    },
+    {
+      "text": " The output we get from this, and its",
+      "start": 2603.82,
+      "duration": 3.788
+    },
+    {
+      "text": " output now depends on the rest. Okay?",
+      "start": 2606.685,
+      "duration": 5.455
+    },
+    {
+      "text": " So basically, we have to calculate",
+      "start": 2611.24,
+      "duration": 2.384
+    },
+    {
+      "text": " three things. We have to calculate this",
+      "start": 2612.664,
+      "duration": 4.675
+    },
+    {
+      "text": " weight. We have to calculate this",
+      "start": 2618.239,
+      "duration": 9.727
+    },
+    {
+      "text": " weight. And we have to calculate this",
+      "start": 2627.052,
+      "duration": 6.015
+    },
+    {
+      "text": " bias. Okay? Let's do it one by one.",
+      "start": 2632.183,
+      "duration": 3.83
+    },
+    {
+      "text": " Let's focus on this weight. Let's see",
+      "start": 2635.955,
+      "duration": 3.144
+    },
+    {
+      "text": " how this weight is connected. So, loss",
+      "start": 2638.153,
+      "duration": 4.086
+    },
+    {
+      "text": " depends on the y-value. Y-value depends",
+      "start": 2641.344,
+      "duration": 5.103
+    },
+    {
+      "text": " on the Z value of this node. We call",
+      "start": 2645.51,
+      "duration": 4.317
+    },
+    {
+      "text": " this the Z value. Z-value depends on",
+      "start": 2648.906,
+      "duration": 5.117
+    },
+    {
+      "text": " this output. This output depends on the",
+      "start": 2653.104,
+      "duration": 6.035
+    },
+    {
+      "text": " Z value. The Z value calculated in this",
+      "start": 2658.261,
+      "duration": 5.619
+    },
+    {
+      "text": " node, and this Z value calculated,",
+      "start": 2662.969,
+      "duration": 4.039
+    },
+    {
+      "text": " depends on W11. Okay? So if you were to",
+      "start": 2666.098,
+      "duration": 5.845
+    },
+    {
+      "text": " write this out, it would look something",
+      "start": 2671.037,
+      "duration": 4.64
+    },
+    {
+      "text": " like this: de l del hut del y-value del",
+      "start": 2674.77,
+      "duration": 7.454
+    },
+    {
+      "text": " zf del zf del o11 del o11 del z",
+      "start": 2681.452,
+      "duration": 8.045
+    },
+    {
+      "text": " previous del z previous del W1. Now",
+      "start": 2688.724,
+      "duration": 10.819
+    },
+    {
+      "text": " there's no need to worry. What's the",
+      "start": 2698.584,
+      "duration": 2.799
+    },
+    {
+      "text": " good thing? We've already calculated",
+      "start": 2700.44,
+      "duration": 3.224
+    },
+    {
+      "text": " both of these. We've already calculated",
+      "start": 2702.718,
+      "duration": 4.536
+    },
+    {
+      "text": " both of these. We know the answer to",
+      "start": 2706.293,
+      "duration": 2.692
+    },
+    {
+      "text": " this one. -y-y is T. We already know",
+      "start": 2708.025,
+      "duration": 4.887
+    },
+    {
+      "text": " this answer. Let's talk about this one.",
+      "start": 2712.037,
+      "duration": 4.672
+    },
+    {
+      "text": " What's the relationship between Z-value",
+      "start": 2716.419,
+      "duration": 3.112
+    },
+    {
+      "text": " and O11? Look, what is Z-value? Z final",
+      "start": 2718.585,
+      "duration": 4.975
+    },
+    {
+      "text": " is W211, this weight times O 11's",
+      "start": 2722.703,
+      "duration": 5.717
+    },
+    {
+      "text": " output, plus W 21's weight, this output",
+      "start": 2727.563,
+      "duration": 9.451
+    },
+    {
+      "text": " O12, plus this bias. Okay? Now, when",
+      "start": 2736.139,
+      "duration": 7.096
+    },
+    {
+      "text": " you differentiate this with respect to",
+      "start": 2742.301,
+      "duration": 3.519
+    },
+    {
+      "text": " O11, what do you get? You get this",
+      "start": 2744.887,
+      "duration": 3.596
+    },
+    {
+      "text": " weight. Okay? So, I'll write it here.",
+      "start": 2747.575,
+      "duration": 4.302
+    },
+    {
+      "text": " Its output will be W211. Okay? Now,",
+      "start": 2751.32,
+      "duration": 7.243
+    },
+    {
+      "text": " let's focus on this. What is O11? You",
+      "start": 2757.624,
+      "duration": 5.803
+    },
+    {
+      "text": " can write O11 as the sigmoid of Z",
+      "start": 2762.542,
+      "duration": 4.82
+    },
+    {
+      "text": " previous. Here, it's the sigmoid of the",
+      "start": 2766.478,
+      "duration": 4.292
+    },
+    {
+      "text": " value of Z. So, what does this become?",
+      "start": 2769.832,
+      "duration": 3.347
+    },
+    {
+      "text": " Z previous = 1-sigmoid of Z previous.",
+      "start": 2773.646,
+      "duration": 8.079
+    },
+    {
+      "text": " Right? Now, what can you write this?",
+      "start": 2780.939,
+      "duration": 3.62
+    },
+    {
+      "text": " You can write Z previous as O11*bias",
+      "start": 2784.179,
+      "duration": 4.652
+    },
+    {
+      "text": " O11. Okay? So the answer is O11 = 1-O11",
+      "start": 2787.933,
+      "duration": 6.879
+    },
+    {
+      "text": ". Okay? Now, just this last one is left",
+      "start": 2793.812,
+      "duration": 5.445
+    },
+    {
+      "text": " where you need to find out what Z",
+      "start": 2798.33,
+      "duration": 3.401
+    },
+    {
+      "text": " previous is when you subtract Z",
+      "start": 2800.804,
+      "duration": 3.255
+    },
+    {
+      "text": " previous from W21. Z is the previous",
+      "start": 2803.132,
+      "duration": 3.762
+    },
+    {
+      "text": " value of Z here, so how do you get this",
+      "start": 2805.956,
+      "duration": 3.421
+    },
+    {
+      "text": "? W2, sorry, W1, this weight multiplied",
+      "start": 2808.377,
+      "duration": 8.709
+    },
+    {
+      "text": " by this input, Xi1, plus this weight,",
+      "start": 2816.267,
+      "duration": 7.687
+    },
+    {
+      "text": " W121, multiplied by this input, plus",
+      "start": 2823.135,
+      "duration": 10.534
+    },
+    {
+      "text": " its own bias. Now, when you",
+      "start": 2832.806,
+      "duration": 5.271
+    },
+    {
+      "text": " differentiate this with respect to this",
+      "start": 2837.161,
+      "duration": 4.269
+    },
+    {
+      "text": " weight, what's left as the output? Just",
+      "start": 2840.514,
+      "duration": 4.253
+    },
+    {
+      "text": " this. So, its input will be its",
+      "start": 2843.843,
+      "duration": 3.842
+    },
+    {
+      "text": " derivative, xi1. So, what can I do? I",
+      "start": 2846.772,
+      "duration": 4.848
+    },
+    {
+      "text": " can write this whole thing here, and it",
+      "start": 2850.762,
+      "duration": 6.535
+    },
+    {
+      "text": " will become: (minus y-y)*w2 1*",
+      "start": 2856.439,
+      "duration": 5.257
+    },
+    {
+      "text": "multiplied by output one*(one minus-) 0",
+      "start": 2860.696,
+      "duration": 6.535
+    },
+    {
+      "text": " 11*xi1. Okay. Now, if you take the next",
+      "start": 2866.373,
+      "duration": 9.236
+    },
+    {
+      "text": " one (I'll put it in the box), if you",
+      "start": 2874.701,
+      "duration": 8.856
+    },
+    {
+      "text": " take the next one, meaning with respect",
+      "start": 2882.623,
+      "duration": 3.587
+    },
+    {
+      "text": " to this weight, you'll understand that",
+      "start": 2885.276,
+      "duration": 3.521
+    },
+    {
+      "text": " only the last element will change. Okay",
+      "start": 2887.863,
+      "duration": 3.971
+    },
+    {
+      "text": "? Only the last element will change,",
+      "start": 2890.834,
+      "duration": 2.804
+    },
+    {
+      "text": " and if you take the derivative with",
+      "start": 2892.685,
+      "duration": 2.664
+    },
+    {
+      "text": " respect to this weight, you'll get xi2.",
+      "start": 2894.397,
+      "duration": 2.854
+    },
+    {
+      "text": " So, you can write it here very easily.",
+      "start": 2896.719,
+      "duration": 2.88
+    },
+    {
+      "text": " Everything will remain the same. These",
+      "start": 2902.9,
+      "duration": 4.733
+    },
+    {
+      "text": " weights will remain the same. This",
+      "start": 2906.696,
+      "duration": 3.425
+    },
+    {
+      "text": " output will remain the same. Just the",
+      "start": 2909.191,
+      "duration": 3.743
+    },
+    {
+      "text": " last one will be xi2. Okay? And finally",
+      "start": 2912.004,
+      "duration": 8.115
+    },
+    {
+      "text": ", when you go to calculate the bias,",
+      "start": 2919.119,
+      "duration": 2.638
+    },
+    {
+      "text": " everything will remain the same. Just",
+      "start": 2920.803,
+      "duration": 4.423
+    },
+    {
+      "text": " the last one will be 1. Doing this all",
+      "start": 2924.274,
+      "duration": 2.822
+    },
+    {
+      "text": " by yourself once with a pen and paper",
+      "start": 2926.144,
+      "duration": 2.773
+    },
+    {
+      "text": " will give you a little more confidence.",
+      "start": 2927.965,
+      "duration": 2.87
+    },
+    {
+      "text": " It looks a little scary on the screen,",
+      "start": 2931.176,
+      "duration": 2.828
+    },
+    {
+      "text": " but it's not that simple. Your brain",
+      "start": 2933.052,
+      "duration": 2.995
+    },
+    {
+      "text": " will automatically start looking for",
+      "start": 2935.089,
+      "duration": 2.541
+    },
+    {
+      "text": " patterns. Okay? So, we've calculated",
+      "start": 2936.673,
+      "duration": 3.684
+    },
+    {
+      "text": " these three with respect to each other.",
+      "start": 2939.416,
+      "duration": 3.323
+    },
+    {
+      "text": " Now we'll calculate these remaining",
+      "start": 2943.86,
+      "duration": 3.006
+    },
+    {
+      "text": " three with respect to this weight, this",
+      "start": 2945.924,
+      "duration": 3.236
+    },
+    {
+      "text": " with respect to this weight, and this",
+      "start": 2948.218,
+      "duration": 3.121
+    },
+    {
+      "text": " one with respect to its bias. So,",
+      "start": 2950.397,
+      "duration": 3.057
+    },
+    {
+      "text": " basically, I have to calculate three",
+      "start": 2952.492,
+      "duration": 2.38
+    },
+    {
+      "text": " things. I have to calculate W12, W1,",
+      "start": 2953.91,
+      "duration": 10.33
+    },
+    {
+      "text": " 222, and this one. I have to calculate",
+      "start": 2963.468,
+      "duration": 7.901
+    },
+    {
+      "text": " these three things. Okay? Let's first",
+      "start": 2970.407,
+      "duration": 2.917
+    },
+    {
+      "text": " calculate them with respect to this one",
+      "start": 2972.359,
+      "duration": 2.357
+    },
+    {
+      "text": ". See what the overall relationship",
+      "start": 2973.716,
+      "duration": 2.471
+    },
+    {
+      "text": " looks like. Loss will depend on Y's hat",
+      "start": 2975.227,
+      "duration": 3.589
+    },
+    {
+      "text": ". Y's hat will depend on Z's final. Z's",
+      "start": 2977.816,
+      "duration": 5.199
+    },
+    {
+      "text": " final will depend on its output. On O12",
+      "start": 2982.074,
+      "duration": 4.701
+    },
+    {
+      "text": ", O12 will depend on Z previous and Z",
+      "start": 2985.775,
+      "duration": 6.16
+    },
+    {
+      "text": " previous will depend on W12. So if I",
+      "start": 2991.075,
+      "duration": 6.017
+    },
+    {
+      "text": " want to write, I would write this is",
+      "start": 2996.165,
+      "duration": 6.977
+    },
+    {
+      "text": " equal to del del Hut multiplied by del",
+      "start": 3002.344,
+      "duration": 8.675
+    },
+    {
+      "text": " Hut del ZF*by del ZF del O12*by del O12",
+      "start": 3010.221,
+      "duration": 8.878
+    },
+    {
+      "text": " Z previous*by previous W12 Now the good",
+      "start": 3021.12,
+      "duration": 11.414
+    },
+    {
+      "text": " thing is that we have calculated this.",
+      "start": 3031.607,
+      "duration": 3.772
+    },
+    {
+      "text": " Okay? Also, it is very easy to",
+      "start": 3036.34,
+      "duration": 3.586
+    },
+    {
+      "text": " calculate this. Because I told you",
+      "start": 3038.991,
+      "duration": 3.256
+    },
+    {
+      "text": " earlier what Z final is. Z final is W1",
+      "start": 3041.307,
+      "duration": 4.952
+    },
+    {
+      "text": " sorry W21 times O11 this weight and its",
+      "start": 3047.8,
+      "duration": 5.141
+    },
+    {
+      "text": " output plus W21 times O11 this weight",
+      "start": 3052.047,
+      "duration": 7.749
+    },
+    {
+      "text": " and its output plus the bias of this",
+      "start": 3058.877,
+      "duration": 3.944
+    },
+    {
+      "text": " node B21. When you differentiate this",
+      "start": 3061.903,
+      "duration": 5.237
+    },
+    {
+      "text": " with respect to an O sorry, O12 will",
+      "start": 3066.206,
+      "duration": 6.485
+    },
+    {
+      "text": " come here. When you differentiate O12,",
+      "start": 3071.796,
+      "duration": 4.331
+    },
+    {
+      "text": " you will get this weight. So its output",
+      "start": 3075.2,
+      "duration": 3.944
+    },
+    {
+      "text": " will be this. W2 2 like this was here.",
+      "start": 3078.213,
+      "duration": 5.939
+    },
+    {
+      "text": " Okay? Also, when you differentiate this",
+      "start": 3084.059,
+      "duration": 4.589
+    },
+    {
+      "text": ", like you did here when you",
+      "start": 3087.648,
+      "duration": 3.316
+    },
+    {
+      "text": " differentiated O11, you'll get this",
+      "start": 3090.047,
+      "duration": 3.895
+    },
+    {
+      "text": " term exactly the same way you got this",
+      "start": 3093.025,
+      "duration": 4.144
+    },
+    {
+      "text": " term here. Okay? And you'll get this",
+      "start": 3096.251,
+      "duration": 6.676
+    },
+    {
+      "text": " from this last one. I'm sorry, I typed",
+      "start": 3102.007,
+      "duration": 7.695
+    },
+    {
+      "text": " it wrong here. We're not using this one",
+      "start": 3108.771,
+      "duration": 4.746
+    },
+    {
+      "text": ". We're using this one. I typed it",
+      "start": 3112.517,
+      "duration": 5.447
+    },
+    {
+      "text": " wrong. oh, here I typed it correctly.",
+      "start": 3117.035,
+      "duration": 3.724
+    },
+    {
+      "text": " This is 1 2, this is W112, and this is",
+      "start": 3119.939,
+      "duration": 4.386
+    },
+    {
+      "text": " W122. Here I typed it correctly. Here I",
+      "start": 3123.414,
+      "duration": 3.544
+    },
+    {
+      "text": " typed it wrong. I'm sorry. Okay? Now",
+      "start": 3125.999,
+      "duration": 3.279
+    },
+    {
+      "text": " what are you doing? With respect to",
+      "start": 3128.32,
+      "duration": 3.104
+    },
+    {
+      "text": " this, when you do ZP, you'll get XI1",
+      "start": 3130.505,
+      "duration": 3.928
+    },
+    {
+      "text": " here. So the output will be XI1. Okay?",
+      "start": 3133.515,
+      "duration": 4.964
+    },
+    {
+      "text": " So I can write here that del I W12",
+      "start": 3138.479,
+      "duration": 5.859
+    },
+    {
+      "text": " would be B minus times Y-Y hat times",
+      "start": 3143.481,
+      "duration": 6.146
+    },
+    {
+      "text": " W21 O12 1-O12*by X is 1, okay? Now, if",
+      "start": 3148.77,
+      "duration": 12.987
+    },
+    {
+      "text": " you go the same way and calculate W1",
+      "start": 3160.864,
+      "duration": 4.863
+    },
+    {
+      "text": " 222, everything will remain the same.",
+      "start": 3164.835,
+      "duration": 4.971
+    },
+    {
+      "text": " The whole thing will remain the same.",
+      "start": 3169.544,
+      "duration": 1.999
+    },
+    {
+      "text": " It's just that instead of xi1, xi2 will",
+      "start": 3175.359,
+      "duration": 2.98
+    },
+    {
+      "text": " appear here. And if you try to",
+      "start": 3177.389,
+      "duration": 3.209
+    },
+    {
+      "text": " calculate ys, everything will remain",
+      "start": 3179.651,
+      "duration": 9.05
+    },
+    {
+      "text": " the same. Nothing will remain here.",
+      "start": 3189.962,
+      "duration": 4.953
+    },
+    {
+      "text": " Here are your remaining three",
+      "start": 3194.932,
+      "duration": 4.462
+    },
+    {
+      "text": " derivatives. This is all calculated.",
+      "start": 3198.513,
+      "duration": 5.299
+    },
+    {
+      "text": " Okay? That's three. That's three. And",
+      "start": 3203.619,
+      "duration": 8.055
+    },
+    {
+      "text": " where did these go, man? That's three.",
+      "start": 3210.725,
+      "duration": 4.544
+    },
+    {
+      "text": " Okay? So, in our backpropagation",
+      "start": 3214.62,
+      "duration": 4.584
+    },
+    {
+      "text": " algorithm, I've got this thing. I've",
+      "start": 3218.309,
+      "duration": 5.355
+    },
+    {
+      "text": " calculated all nine derivatives. Now",
+      "start": 3222.711,
+      "duration": 2.875
+    },
+    {
+      "text": " what do I have to do? I'll convert this",
+      "start": 3224.648,
+      "duration": 3.898
+    },
+    {
+      "text": " algorithm back into code. And I'll show",
+      "start": 3227.633,
+      "duration": 5.772
+    },
+    {
+      "text": " you how. Okay? So, now let's move to",
+      "start": 3232.492,
+      "duration": 3.448
+    },
+    {
+      "text": " the coding window. So guys, I already",
+      "start": 3234.989,
+      "duration": 3.314
+    },
+    {
+      "text": " have the code written. Let me explain",
+      "start": 3237.343,
+      "duration": 3.292
+    },
+    {
+      "text": " it to you. It's exactly the same code",
+      "start": 3239.678,
+      "duration": 3.041
+    },
+    {
+      "text": " we wrote for regression. Just a small",
+      "start": 3241.761,
+      "duration": 2.945
+    },
+    {
+      "text": " change. I've made two changes: one to",
+      "start": 3243.768,
+      "duration": 3.45
+    },
+    {
+      "text": " the activation function and the other",
+      "start": 3246.269,
+      "duration": 2.862
+    },
+    {
+      "text": " to the loss function. Look carefully.",
+      "start": 3248.181,
+      "duration": 3.7
+    },
+    {
+      "text": " We're importing everything. This is my",
+      "start": 3251.16,
+      "duration": 3.679
+    },
+    {
+      "text": " data set. Exactly the one I showed you",
+      "start": 3253.889,
+      "duration": 3.075
+    },
+    {
+      "text": " a moment ago. It looks like this. Okay?",
+      "start": 3256.017,
+      "duration": 3.84
+    },
+    {
+      "text": " The same functions are here. This is",
+      "start": 3258.979,
+      "duration": 3.301
+    },
+    {
+      "text": " the initialize parameter, which, based",
+      "start": 3261.359,
+      "duration": 3.974
+    },
+    {
+      "text": " on a given architecture, will",
+      "start": 3264.411,
+      "duration": 3.27
+    },
+    {
+      "text": " initialize all the weights to one and",
+      "start": 3266.759,
+      "duration": 3.896
+    },
+    {
+      "text": " all the biases to zero. Okay? Here I",
+      "start": 3269.733,
+      "duration": 5.255
+    },
+    {
+      "text": " just created a utility function called",
+      "start": 3274.056,
+      "duration": 3.592
+    },
+    {
+      "text": " sigmoid, which, if you enter z,",
+      "start": 3276.717,
+      "duration": 3.114
+    },
+    {
+      "text": " calculates a sigmoid over it and",
+      "start": 3278.9,
+      "duration": 3.183
+    },
+    {
+      "text": " returns 1 + 1/1 + e to the power-z.",
+      "start": 3281.151,
+      "duration": 3.388
+    },
+    {
+      "text": " Okay? It returns. Now, you have the",
+      "start": 3284.8,
+      "duration": 4.077
+    },
+    {
+      "text": " same function here. There's not much",
+      "start": 3287.947,
+      "duration": 3.75
+    },
+    {
+      "text": " difference between this function and",
+      "start": 3290.744,
+      "duration": 2.692
+    },
+    {
+      "text": " this one. If you think of it as a",
+      "start": 3292.483,
+      "duration": 3.218
+    },
+    {
+      "text": " linear forward function, you were",
+      "start": 3294.77,
+      "duration": 3.298
+    },
+    {
+      "text": " simply doing the dot product and",
+      "start": 3297.137,
+      "duration": 3.228
+    },
+    {
+      "text": " returning it. But here, after doing the",
+      "start": 3299.435,
+      "duration": 3.416
+    },
+    {
+      "text": " dot product, you're sending it to the",
+      "start": 3301.89,
+      "duration": 2.439
+    },
+    {
+      "text": " sigmoid. So this is the difference. The",
+      "start": 3303.368,
+      "duration": 4.677
+    },
+    {
+      "text": " next main function, A, is copied",
+      "start": 3307.139,
+      "duration": 3.994
+    },
+    {
+      "text": " exactly the same here. What's its",
+      "start": 3310.227,
+      "duration": 4.532
+    },
+    {
+      "text": " function? Sending that. And the",
+      "start": 3313.815,
+      "duration": 4.764
+    },
+    {
+      "text": " previous layer, this layer, just give",
+      "start": 3317.673,
+      "duration": 4.511
+    },
+    {
+      "text": " me a second, I'll open one note. So,",
+      "start": 3321.279,
+      "duration": 10.428
+    },
+    {
+      "text": " this layer gives me the output of O11",
+      "start": 3330.83,
+      "duration": 7.681
+    },
+    {
+      "text": " and the output of O12. Okay? So, this",
+      "start": 3337.586,
+      "duration": 3.893
+    },
+    {
+      "text": " will give me three things. Y will",
+      "start": 3340.511,
+      "duration": 2.706
+    },
+    {
+      "text": " remove O12, and O11 will give O12. Okay",
+      "start": 3342.336,
+      "duration": 5.631
+    },
+    {
+      "text": "? Now, look here, the main thing is",
+      "start": 3346.967,
+      "duration": 3.121
+    },
+    {
+      "text": " that the update parameters here are",
+      "start": 3349.123,
+      "duration": 2.227
+    },
+    {
+      "text": " slightly different. They're slightly",
+      "start": 3350.385,
+      "duration": 3.672
+    },
+    {
+      "text": " different from the update parameters",
+      "start": 3353.095,
+      "duration": 2.392
+    },
+    {
+      "text": " here. Look here, everything is two",
+      "start": 3354.525,
+      "duration": 4.13
+    },
+    {
+      "text": " times. Here, you'll notice the current",
+      "start": 3357.721,
+      "duration": 4.164
+    },
+    {
+      "text": " values. The formulas we derived for the",
+      "start": 3360.952,
+      "duration": 5.896
+    },
+    {
+      "text": " current values, the formulas we derived",
+      "start": 3365.907,
+      "duration": 3.3
+    },
+    {
+      "text": " here, you can go and check what you can",
+      "start": 3368.266,
+      "duration": 3.299
+    },
+    {
+      "text": " do with these formulas. It may seem a",
+      "start": 3370.624,
+      "duration": 3.707
+    },
+    {
+      "text": " little confusing, but if you do it",
+      "start": 3373.369,
+      "duration": 2.29
+    },
+    {
+      "text": " yourself, you'll understand. Basically,",
+      "start": 3374.697,
+      "duration": 3.603
+    },
+    {
+      "text": " I modified this function according to",
+      "start": 3377.408,
+      "duration": 5.001
+    },
+    {
+      "text": " these formulas. Okay? And this is my",
+      "start": 3381.517,
+      "duration": 4.499
+    },
+    {
+      "text": " update parameter. Now, let me show you",
+      "start": 3385.077,
+      "duration": 3.054
+    },
+    {
+      "text": " how to apply backpropagation. What do I",
+      "start": 3387.172,
+      "duration": 2.845
+    },
+    {
+      "text": " do? First, I'll run the first epoch",
+      "start": 3389.072,
+      "duration": 3.646
+    },
+    {
+      "text": " manually. I'm removing the first",
+      "start": 3391.794,
+      "duration": 3.301
+    },
+    {
+      "text": " student. The value of c here is zero.",
+      "start": 3394.148,
+      "duration": 3.251
+    },
+    {
+      "text": " This is the first student. When I ran",
+      "start": 3396.659,
+      "duration": 4.021
+    },
+    {
+      "text": " the first student, the loss for him was",
+      "start": 3399.744,
+      "duration": 3.503
+    },
+    {
+      "text": " 61. Here, I'm also calculating the loss",
+      "start": 3402.311,
+      "duration": 3.503
+    },
+    {
+      "text": ". Okay? And here are the changes in his",
+      "start": 3404.814,
+      "duration": 3.817
+    },
+    {
+      "text": " weights. Look, there's a slight change.",
+      "start": 3407.683,
+      "duration": 2.632
+    },
+    {
+      "text": " It was one, but a slight change from",
+      "start": 3409.858,
+      "duration": 2.475
+    },
+    {
+      "text": " one. Look, the bias has changed quite a",
+      "start": 3411.374,
+      "duration": 3.164
+    },
+    {
+      "text": " bit. Yes, the bias has changed quite a",
+      "start": 3413.588,
+      "duration": 4.368
+    },
+    {
+      "text": " bit. It hasn't changed much. Actually,",
+      "start": 3417.005,
+      "duration": 3.035
+    },
+    {
+      "text": " 10 to the power is -7, so it's around",
+      "start": 3419.086,
+      "duration": 2.732
+    },
+    {
+      "text": " zero. Then I grabbed the next student",
+      "start": 3420.865,
+      "duration": 3.792
+    },
+    {
+      "text": " and sent him. I ran it again. And you'd",
+      "start": 3423.728,
+      "duration": 4.922
+    },
+    {
+      "text": " see that this student's loss decreased",
+      "start": 3427.723,
+      "duration": 3.759
+    },
+    {
+      "text": " slightly, and the weights changed",
+      "start": 3430.554,
+      "duration": 3.396
+    },
+    {
+      "text": " slightly. Okay? Then I sent the third",
+      "start": 3433.023,
+      "duration": 4.076
+    },
+    {
+      "text": " student, putting p to here. And you'd",
+      "start": 3436.156,
+      "duration": 4.341
+    },
+    {
+      "text": " see that the loss is a little higher.",
+      "start": 3439.541,
+      "duration": 2.638
+    },
+    {
+      "text": " And that's obvious. Look here, the",
+      "start": 3441.4,
+      "duration": 2.794
+    },
+    {
+      "text": " third student has a good CGPA and",
+      "start": 3443.239,
+      "duration": 2.498
+    },
+    {
+      "text": " profile score, but he didn't get placed",
+      "start": 3444.783,
+      "duration": 2.77
+    },
+    {
+      "text": ". So, this is where our model is making",
+      "start": 3446.553,
+      "duration": 2.573
+    },
+    {
+      "text": " a mistake. Let's go here. This is the",
+      "start": 3448.164,
+      "duration": 3.773
+    },
+    {
+      "text": " third student. Now we'll move on to the",
+      "start": 3450.997,
+      "duration": 3.274
+    },
+    {
+      "text": " fourth student and run it for him. And",
+      "start": 3453.324,
+      "duration": 3.192
+    },
+    {
+      "text": " you'd see that the loss is still higher",
+      "start": 3455.561,
+      "duration": 2.773
+    },
+    {
+      "text": ". But the idea is that this whole thing",
+      "start": 3457.334,
+      "duration": 4.076
+    },
+    {
+      "text": " is gradually changing. Okay? Our",
+      "start": 3460.477,
+      "duration": 3.481
+    },
+    {
+      "text": " weights are changing. Okay? Now, what",
+      "start": 3463.012,
+      "duration": 3.409
+    },
+    {
+      "text": " have I done here? I've installed the",
+      "start": 3465.479,
+      "duration": 2.948
+    },
+    {
+      "text": " implementation from Epoch. All the code",
+      "start": 3467.469,
+      "duration": 3.296
+    },
+    {
+      "text": " is exactly the same. Everything is",
+      "start": 3469.82,
+      "duration": 2.65
+    },
+    {
+      "text": " exactly the same. Nothing is different.",
+      "start": 3471.504,
+      "duration": 2.871
+    },
+    {
+      "text": " Nothing has changed. Everything is",
+      "start": 3473.52,
+      "duration": 2.602
+    },
+    {
+      "text": " exactly the same. Only the loss",
+      "start": 3475.161,
+      "duration": 2.967
+    },
+    {
+      "text": " function calculation is different, like",
+      "start": 3477.22,
+      "duration": 4.569
+    },
+    {
+      "text": " this. Okay? Everything else is the same",
+      "start": 3480.881,
+      "duration": 3.604
+    },
+    {
+      "text": ". I ran it on a lot of Epochs. I ran it",
+      "start": 3483.485,
+      "duration": 3.867
+    },
+    {
+      "text": " on around 550 Epochs. But unfortunately",
+      "start": 3486.446,
+      "duration": 4.433
+    },
+    {
+      "text": ", I noticed that the loss wasn't going",
+      "start": 3489.879,
+      "duration": 3.787
+    },
+    {
+      "text": " below 69. You can see. Now, this could",
+      "start": 3492.739,
+      "duration": 4.909
+    },
+    {
+      "text": " be due to any number of reasons:",
+      "start": 3496.695,
+      "duration": 2.496
+    },
+    {
+      "text": " insufficient data, a glitch in the",
+      "start": 3498.238,
+      "duration": 2.59
+    },
+    {
+      "text": " initialization technique, or something",
+      "start": 3499.875,
+      "duration": 2.777
+    },
+    {
+      "text": " wrong with the optimizer. Anything",
+      "start": 3501.698,
+      "duration": 3.441
+    },
+    {
+      "text": " could be wrong. But anyway, this is the",
+      "start": 3504.19,
+      "duration": 3.371
+    },
+    {
+      "text": " output. So, I wondered if I had done",
+      "start": 3506.623,
+      "duration": 2.636
+    },
+    {
+      "text": " something wrong. So, what did I do? I",
+      "start": 3508.295,
+      "duration": 3.084
+    },
+    {
+      "text": " wrote the same code in Keras. Look,",
+      "start": 3510.462,
+      "duration": 3.79
+    },
+    {
+      "text": " it's exactly the same code in Keras.",
+      "start": 3513.299,
+      "duration": 2.68
+    },
+    {
+      "text": " This is the code. Here, I created a",
+      "start": 3515.429,
+      "duration": 3.338
+    },
+    {
+      "text": " neural network with the same",
+      "start": 3517.834,
+      "duration": 2.885
+    },
+    {
+      "text": " architecture. Here again, there were",
+      "start": 3519.786,
+      "duration": 3.039
+    },
+    {
+      "text": " nine trainable parameters. I did all",
+      "start": 3521.862,
+      "duration": 2.808
+    },
+    {
+      "text": " the gateways. I set the new weights,",
+      "start": 3523.738,
+      "duration": 3.37
+    },
+    {
+      "text": " which will be my weights. And now, look",
+      "start": 3526.154,
+      "duration": 3.108
+    },
+    {
+      "text": ", these are the new weights. Now, I set",
+      "start": 3528.262,
+      "duration": 3.219
+    },
+    {
+      "text": " the learning rate, etc., all the same.",
+      "start": 3530.534,
+      "duration": 3.017
+    },
+    {
+      "text": " I put the loss function, binary",
+      "start": 3532.679,
+      "duration": 2.428
+    },
+    {
+      "text": " cross-entropy. And when I trained the",
+      "start": 3534.153,
+      "duration": 4.065
+    },
+    {
+      "text": " model here for 50 boxes, look, it's not",
+      "start": 3537.275,
+      "duration": 3.234
+    },
+    {
+      "text": " going beyond 69. So, even Keras isn't",
+      "start": 3539.566,
+      "duration": 3.119
+    },
+    {
+      "text": " able to converge with four rows on this",
+      "start": 3541.742,
+      "duration": 3.233
+    },
+    {
+      "text": " data. But the loss function is exactly",
+      "start": 3544.032,
+      "duration": 4.282
+    },
+    {
+      "text": " the same. This shows me that we're",
+      "start": 3547.364,
+      "duration": 3.707
+    },
+    {
+      "text": " doing it right. Okay? So this is the",
+      "start": 3550.149,
+      "duration": 4.337
+    },
+    {
+      "text": " notebook. Again, I'd say, pick up this",
+      "start": 3553.543,
+      "duration": 3.372
+    },
+    {
+      "text": " notebook once and run it yourself.",
+      "start": 3555.956,
+      "duration": 2.404
+    },
+    {
+      "text": " You'll get a lot of perspective. Okay?",
+      "start": 3558.579,
+      "duration": 2.77
+    },
+    {
+      "text": " So, this is what the case is doing",
+      "start": 3560.449,
+      "duration": 2.36
+    },
+    {
+      "text": " internally. So, I hope you understand",
+      "start": 3561.849,
+      "duration": 2.816
+    },
+    {
+      "text": " the whole thing. So that was the video,",
+      "start": 3563.712,
+      "duration": 3.247
+    },
+    {
+      "text": " guys. I hope you understood the video.",
+      "start": 3566.008,
+      "duration": 3.366
+    },
+    {
+      "text": " One thing I would recommend is that you",
+      "start": 3569.519,
+      "duration": 2.956
+    },
+    {
+      "text": " please take a pen and paper and your",
+      "start": 3571.525,
+      "duration": 2.806
+    },
+    {
+      "text": " machine and watch this video so you can",
+      "start": 3573.381,
+      "duration": 2.956
+    },
+    {
+      "text": " practice. Because what I'm teaching in",
+      "start": 3575.387,
+      "duration": 3.782
+    },
+    {
+      "text": " this video is a matter of practice. The",
+      "start": 3578.21,
+      "duration": 2.983
+    },
+    {
+      "text": " more you practice, the more conceptual",
+      "start": 3580.244,
+      "duration": 2.955
+    },
+    {
+      "text": " clarity you'll gain. Okay? Now, there's",
+      "start": 3582.25,
+      "duration": 3.951
+    },
+    {
+      "text": " just one more video left on",
+      "start": 3585.253,
+      "duration": 2.39
+    },
+    {
+      "text": " backpropagation, where we'll cover the",
+      "start": 3586.695,
+      "duration": 2.957
+    },
+    {
+      "text": " Y part. That's the subsection. So,",
+      "start": 3588.703,
+      "duration": 3.198
+    },
+    {
+      "text": " please watch that. Okay? So that's it",
+      "start": 3590.97,
+      "duration": 3.507
+    },
+    {
+      "text": " from my side. Thanks for watching. Bye.",
+      "start": 3593.53,
+      "duration": 3.209
+    }
+  ]
+}

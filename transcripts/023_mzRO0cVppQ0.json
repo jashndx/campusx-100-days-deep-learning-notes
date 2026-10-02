@@ -1,0 +1,1925 @@
+{
+  "id": "mzRO0cVppQ0",
+  "index": 23,
+  "title": "Data Scaling in Neural Network | Feature Scaling in ANN | End to End Deep Learning Course",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish, and welcome  to my YouTube channel. In this video,  we'll continue our Deep Learning  playlist. As I told you in the last  video, where we discussed the concept  of early stopping, in the next few  videos, we'll learn how to improve the  performance of our neural networks. So,  in today's video, we're going to do the  same. So, I've done one thing: I've  created a cheat sheet of sorts, which  we'll refer to as we move forward. Let  me show you that cheat sheet. It's  basically a document I've created for  you to use as a reference in the future . So, here I've written down all the  methods you can use to improve the  performance of your neural network.  Okay? So, everything is written down  here. If you're facing the vanishing  gradient problem, you can change your  activation functions. You can also use  different kinds of weight  initialization techniques. If you're  experiencing overfitting, you can use  these techniques. We covered early  stopping in the last video. Then,  normalization is a step. Gradient  checking and clipping are another step.  Optimizers, learning gradient  scheduling, and hyperparameter tuning.  We need to cover all of these things.  Right? Because by doing all of these,  you can improve the performance of your  neural network. So far, we've only  covered one thing: early stopping,  which can be used to reduce overfitting . In this video, we'll cover something  new: normalizing inputs. Right? By  using this, you can speed up the  training of your neural network. Right?  Why am I picking topics so randomly?  Because I want to cover the easy topics  first. After that, we'll move on to the  more difficult topics. So today's topic  would be normalization and in that too  we will learn normalizing inputs. So  basically I will explain to you in one  line what we are going to do in this  video. So let's start with a  classification problem where you have  two input columns and you have to  predict yes or no in the output. Now  what is the problem? What if the scale  of both your input columns is very  different. Scale means that the range  will be very different. For example,  let me give you an example. One input  column is your age and the other is  salary. So now think about the range of  age. From zero to 60, 70, 80 and  maximum salary can have a huge range.  Meaning salary could be thousands,  lakhs and crores. So, if you're working  with data like this, where one input  feature is in a very small range and  the other is in a very large range,  you'll notice that when you train your  neural network on this kind of data, it  takes a lot of time to learn and update  the weights. Okay? And the way to solve  this problem is to bring your inputs to  the same scale. Okay? This is called  normalizing inputs. Okay? So what am I  going to do in today's video? I'll  first show you that this problem  actually exists. Then I'll show you why  this happens, what is the intuition  behind this problem. Then we'll discuss  the solution and how the solution works . We'll also get some intuition about  that. Okay? So I've already created a  Google Colab notebook here. I'll share  it with you. So I didn't do anything  here. Things are imported here. Here I  imported a data set. This is a very  famous data set. I've done work on it  many times in the past on my channel.  Here's this data set. It has three  things: Age, Estateed Salary, and  Purchased. Age is in a very small range , in 10s. Estateed Salary is in  thousands or lakhs. Okay? And Purchased  is zero or one. Purchased or not? Okay?  Classification problem. What are we  doing now? Ah, I've plotted a graph  once to show the scatter plot of age  versus salary. Ah, we'll get to that a  little later. But for now, you can see  this is the distribution. What did I do  next? I separated x and y. I did a  train-test split. Then I imported all  the TensorFlow libraries. And I created  a model. A deep learning model. There  are three layers: one input, one hidden , and one output layer. The hidden  layer has 128 neurons. The activation  function is value, and my output neuron  has one node, and the output function  is sigmoid, because this is a binary  classification problem. Okay? Then I  summarized the model. This is the  summary. I guess you already know all  this. Then I compiled the model. I used  Adamm as the optimizer. My loss is  binary cross-entropy, and my metric is  accuracy. Here, I trained my model:  train x, train y, and validate. I used  x, test y, and test y. The validation  accuracy will immediately tell me how  my model is performing. And I currently  trained my model for 100 epochs. Now,  when I trained this model, you'll  notice that the validation accuracy  here oscillated between 40 and 60. It  fluctuated. Right? And even after  training, like 100 epochs, the  validation accuracy still didn't go  above 60. Right? In fact, when I  plotted the graph of validation  accuracy, this is the result. Over 100  epochs, the accuracy oscillated from 60  to 40, but never converged. And this is  the problem I'm talking about. Right?  If the scale of your input columns is  very different, very different, your  neural network takes a lot of time to  train, or in some scenarios, it may not  train at all, as you can see here.  Maybe with a few more epochs, it could  have improved a bit, but right now, its  performance is not at all good. So,  first, we'll understand the reason  behind this irregularity. What's the  reason behind this inconsistency? Okay?  After that, I'll tell you how we can  fix it. Now, guys, why does this happen ? I'll give you a very simple intuition . It's very simple. If you've studied  backpropagation, you'll probably  understand why this is happening.  Suppose you have two features, x1 and  x2, and their corresponding weights,  let's call them w1 and w2. Let's say x2  is my salary feature, and x1 is my age  feature. So, what happens when the  backpropagation algorithm works is that  in backpropagation, you update these  rates using this formula. So, since W2  is related to a larger feature, all the  focus during the update will shift to  W2. Meaning, the entire algorithm will  focus on W2 and not value W1 as much  because it will see more changes in W2,  so it will kind of ignore W1, which  ultimately will cause your training to  be inefficient. Right? Now, Andrew Eng  gave a great geometric intuition for  why training is unstable. The reason is  that if you're working with  unnormalized data. Unnormalized means  where the scale of the data is  different. Like age and salary, your  cost function graph is uneven in both  dimensions. Right? See? It's slightly  higher on one side and slightly lower  on the other. So, this is the contour  of the loss function. You can see that  your training process oscillates a lot  before reaching the correct solution.  If you give a normalized input, which  means both your features are on the  same scale, your loss function looks  something like this. Right? Very  symmetrical. Now, because of this  symmetry, if you focus on this contour,  you can see that it's very easy to  reach the optimized solution. There  won't be as many oscillations. So, the  geometric intuition behind this whole  thing is that if you have unnormalized  features, meaning features of different  scales, your loss function will be  non-symmetrical. However, if you have  normalized inputs, then your loss  function will be symmetric. Its contour  will be like this, and it will be very  easy for your back-preparation  algorithm to traverse it. Gradient  descent will converge very quickly and  reach the correct solution. In fact,  I'll demonstrate this to you. It's  simple. What do we do? To solve this  problem, we need to perform feature  scaling. Okay? We need to bring both of  our features to the same scale. And  we've learned how this is done in  machine learning. We learned two ways.  You either standardize or you normalize . Standardize means you subtract the  mean from each of your values and  divide by the standard deviation. And  normalize means you divide each of your  values by the mean, or subtract the  mean, and divide by that value. Okay? I  told you the geometric intuition behind  both of these. I'll share the links to  both of them with you. So, it basically  means that if your graph, your data,  looks like this, let's say like this,  then standardizing means what you're  doing. First, you're mean-centering all  the data, making the mean zero, and the  standard deviation one. So, basically,  you're bringing it into a unit circle.  Right? That's how your data fits in.  Right? And normalizing means you're  bringing it into a unit box. Right?  Because when you do this, your minimum  value can be zero and your maximum  value can be one. So, your entire data  will fit into this box. That's the  intuition behind both. I explained this  in great detail in my 100 Days of  Machine Learning playlist. I'll include  links to both videos. But just in a  nutshell, what do you do? It's very  simple. If you have unscaled data, you  either standardize it or normalize it.  What both operations do is bring your  data to an equal scale. Okay? And as  soon as it's on the same scale, as I  mentioned here, I probably forgot to  mention that when you standardize, it  generally falls between -1 and +1, and  when you normalize, it falls between 0  and 1. So, once you bring it to the  same scale, you have your solution. All  you have to do is run normal  backpropagation. Since your cost  function will be very symmetric, you'll  immediately converge on the solution.  Okay? Now, one question people ask is  when should you standardize? When  should you normalize? It's simple. If  you already know the maximum or minimum  value of your column, what do you do?  You normalize. Otherwise, it's  standardized. Okay? So, for example, we  have salary. So, we don't know what the  maximum or minimum salary can be. So,  we'll standardize that. We won't  normalize it. But if you're talking  about CGPA, where I know the minimum is  zero and the maximum is 10. In that  case, what I'll do is simply normalize.  Okay? So, it depends on you. Also, if  your data is normally distributed, if  its PDF is normally distributed or  close to normally distributed, then it  should be standardized. I've explained  everything in great detail in my video,  \"100 Days of Machine Learning,\" in the  playlist. You should go and watch it  once and you'll understand. Also, if  your data is already on the same scale,  there's no need to do this. You can  train it directly. There won't be any  problem giving it to a neural network.  Okay? So, these are some key points to  remember. Now, let me quickly show you  the solution and what I'll do to get  the correct results. So, I've shown you  up to this point. What am I doing now?  I'm importing a standard scaler from \" ascale.prepping.\" This is the class,  and I'm transforming \"x-train\" into \" x-train.scaled.\" I'm also transforming  my test data. Once I've finished this  code, if you look here, here's my \" extent.scaled.\" You can see all these  values. The first column is the \"age\"  column, and the second column is your \" salary.\" But you can see these values  vary between -1 and 1. Also, if you  want to plot it, you can write \"s-s dot  scatter plot x-train scaled.\" I want  all the rows and the zeroth column.  Similarly, I would just copy this and  paste this and put one here. You can  see this graph. The graph above is  exactly the same. There's no difference  between these two graphs. Look at this.  What's the only difference? It's a  difference in scale. Let me show you.  If you go down, look at this, just look  at the difference in scale. This data  roughly falls between -1 and 1. Okay?  Everything else is the same. We didn't  make any other changes. And now I ran  the same model. It's the same model.  It's a value of 128. One is in the  output layer. It's a sigmoid. The  entire compilation process is the same.  And I ran it exactly for 100 boxes.  Just notice one thing here: I've scaled  the train data as x and scaled the  validation data as x. And now, as I  trained this model, you'd see your  accuracy continuously going up. In fact , it breached 92%. And this is the  curve. As the epoch increases, your  accuracy also increases. And this was  possible because we did this. We  brought both our inputs to the same  scale. We used standardization to do  this, and after that, our work became  very easy. Our gradient descent very  easily traversed this loss function and  reached the correct optimal solution.  So, I'm summarizing the entire video  once. The simple concept is that if you  have data where the scale varies—one  very small, one very large—then when  you train your neural network on such  inputs, the training is either very  slow or very unstable, and you don't  get accurate results. So, the reason  for this problem is that due to the  different scales of your data, the  graph of your loss function is very  asymmetric, and gradient descent cannot  traverse it. It faces a lot of  difficulty. The solution is to bring  both your data, or all of your data, to  the same scale. There are two ways to  bring them to the same scale. Either  you standardize or normalize. Right?  You can bring them to the same scale  using both methods. When should you  standardize? When your distribution is  normally distributed. And when should  you normalize? When you know the  maximum and minimum values. Right? Or  when your data has outliers, etc. I've  explained all this. You should watch  that video once. You'll understand when  to standardize and when to normalize.  But as soon as you bring both of your  data to the same scale, you'll  automatically notice that your training  will improve. Right? So the summary is:  always do this step. In my experience,  I've noticed that doing this step never  causes any harm. It's beneficial in  many scenarios. So, this should be done . Take it as a pre-processing step, so  whenever I give data to the neural  network, I'll scale it. Okay? So, today  we covered another topic, which is kind  of interesting because if you want to  learn how to train a neural network  well, this was an important component.  We learned that. Okay? Now what will we  do? We'll gradually cover the remaining  topics in this sheet, one by one. Okay?  Once you learn all these techniques,  trust me, you'll be able to train a  neural network on any kind of data.  Okay? So, if you liked the video,  please like and also subscribe to my  channel. That's from my side. Thanks  for watching. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish, and welcome",
+      "start": 0.451,
+      "duration": 3.591
+    },
+    {
+      "text": " to my YouTube channel. In this video,",
+      "start": 3.109,
+      "duration": 3.476
+    },
+    {
+      "text": " we'll continue our Deep Learning",
+      "start": 5.639,
+      "duration": 2.706
+    },
+    {
+      "text": " playlist. As I told you in the last",
+      "start": 7.399,
+      "duration": 3.575
+    },
+    {
+      "text": " video, where we discussed the concept",
+      "start": 10.038,
+      "duration": 3.361
+    },
+    {
+      "text": " of early stopping, in the next few",
+      "start": 12.463,
+      "duration": 3.169
+    },
+    {
+      "text": " videos, we'll learn how to improve the",
+      "start": 14.696,
+      "duration": 3.425
+    },
+    {
+      "text": " performance of our neural networks. So,",
+      "start": 17.185,
+      "duration": 3.992
+    },
+    {
+      "text": " in today's video, we're going to do the",
+      "start": 20.216,
+      "duration": 2.528
+    },
+    {
+      "text": " same. So, I've done one thing: I've",
+      "start": 21.783,
+      "duration": 3.355
+    },
+    {
+      "text": " created a cheat sheet of sorts, which",
+      "start": 24.194,
+      "duration": 3.06
+    },
+    {
+      "text": " we'll refer to as we move forward. Let",
+      "start": 26.31,
+      "duration": 3.47
+    },
+    {
+      "text": " me show you that cheat sheet. It's",
+      "start": 28.854,
+      "duration": 3.599
+    },
+    {
+      "text": " basically a document I've created for",
+      "start": 31.531,
+      "duration": 3.907
+    },
+    {
+      "text": " you to use as a reference in the future",
+      "start": 34.516,
+      "duration": 4.064
+    },
+    {
+      "text": ". So, here I've written down all the",
+      "start": 37.58,
+      "duration": 4.135
+    },
+    {
+      "text": " methods you can use to improve the",
+      "start": 40.786,
+      "duration": 3.435
+    },
+    {
+      "text": " performance of your neural network.",
+      "start": 43.293,
+      "duration": 3.507
+    },
+    {
+      "text": " Okay? So, everything is written down",
+      "start": 46.299,
+      "duration": 2.993
+    },
+    {
+      "text": " here. If you're facing the vanishing",
+      "start": 48.346,
+      "duration": 3.111
+    },
+    {
+      "text": " gradient problem, you can change your",
+      "start": 50.509,
+      "duration": 2.941
+    },
+    {
+      "text": " activation functions. You can also use",
+      "start": 52.502,
+      "duration": 3.142
+    },
+    {
+      "text": " different kinds of weight",
+      "start": 54.692,
+      "duration": 2.218
+    },
+    {
+      "text": " initialization techniques. If you're",
+      "start": 55.958,
+      "duration": 3.046
+    },
+    {
+      "text": " experiencing overfitting, you can use",
+      "start": 58.049,
+      "duration": 2.662
+    },
+    {
+      "text": " these techniques. We covered early",
+      "start": 59.756,
+      "duration": 3.308
+    },
+    {
+      "text": " stopping in the last video. Then,",
+      "start": 62.123,
+      "duration": 3.377
+    },
+    {
+      "text": " normalization is a step. Gradient",
+      "start": 64.552,
+      "duration": 2.874
+    },
+    {
+      "text": " checking and clipping are another step.",
+      "start": 66.47,
+      "duration": 2.69
+    },
+    {
+      "text": " Optimizers, learning gradient",
+      "start": 68.517,
+      "duration": 2.791
+    },
+    {
+      "text": " scheduling, and hyperparameter tuning.",
+      "start": 70.369,
+      "duration": 3.348
+    },
+    {
+      "text": " We need to cover all of these things.",
+      "start": 72.859,
+      "duration": 2.36
+    },
+    {
+      "text": " Right? Because by doing all of these,",
+      "start": 74.45,
+      "duration": 2.734
+    },
+    {
+      "text": " you can improve the performance of your",
+      "start": 76.23,
+      "duration": 2.814
+    },
+    {
+      "text": " neural network. So far, we've only",
+      "start": 78.091,
+      "duration": 2.843
+    },
+    {
+      "text": " covered one thing: early stopping,",
+      "start": 79.99,
+      "duration": 2.88
+    },
+    {
+      "text": " which can be used to reduce overfitting",
+      "start": 81.926,
+      "duration": 3.157
+    },
+    {
+      "text": ". In this video, we'll cover something",
+      "start": 84.083,
+      "duration": 4.829
+    },
+    {
+      "text": " new: normalizing inputs. Right? By",
+      "start": 87.996,
+      "duration": 4.497
+    },
+    {
+      "text": " using this, you can speed up the",
+      "start": 91.55,
+      "duration": 2.826
+    },
+    {
+      "text": " training of your neural network. Right?",
+      "start": 93.433,
+      "duration": 3.426
+    },
+    {
+      "text": " Why am I picking topics so randomly?",
+      "start": 95.999,
+      "duration": 3.08
+    },
+    {
+      "text": " Because I want to cover the easy topics",
+      "start": 98.219,
+      "duration": 3.136
+    },
+    {
+      "text": " first. After that, we'll move on to the",
+      "start": 100.41,
+      "duration": 2.969
+    },
+    {
+      "text": " more difficult topics. So today's topic",
+      "start": 102.419,
+      "duration": 3.363
+    },
+    {
+      "text": " would be normalization and in that too",
+      "start": 104.839,
+      "duration": 3.187
+    },
+    {
+      "text": " we will learn normalizing inputs. So",
+      "start": 107.083,
+      "duration": 3.275
+    },
+    {
+      "text": " basically I will explain to you in one",
+      "start": 109.397,
+      "duration": 2.502
+    },
+    {
+      "text": " line what we are going to do in this",
+      "start": 110.939,
+      "duration": 2.423
+    },
+    {
+      "text": " video. So let's start with a",
+      "start": 112.401,
+      "duration": 3.098
+    },
+    {
+      "text": " classification problem where you have",
+      "start": 114.561,
+      "duration": 3.326
+    },
+    {
+      "text": " two input columns and you have to",
+      "start": 116.95,
+      "duration": 3.074
+    },
+    {
+      "text": " predict yes or no in the output. Now",
+      "start": 119.087,
+      "duration": 3.567
+    },
+    {
+      "text": " what is the problem? What if the scale",
+      "start": 121.695,
+      "duration": 2.808
+    },
+    {
+      "text": " of both your input columns is very",
+      "start": 123.554,
+      "duration": 2.749
+    },
+    {
+      "text": " different. Scale means that the range",
+      "start": 125.354,
+      "duration": 3.287
+    },
+    {
+      "text": " will be very different. For example,",
+      "start": 127.697,
+      "duration": 2.97
+    },
+    {
+      "text": " let me give you an example. One input",
+      "start": 129.696,
+      "duration": 2.637
+    },
+    {
+      "text": " column is your age and the other is",
+      "start": 131.395,
+      "duration": 3.166
+    },
+    {
+      "text": " salary. So now think about the range of",
+      "start": 133.623,
+      "duration": 3.958
+    },
+    {
+      "text": " age. From zero to 60, 70, 80 and",
+      "start": 136.654,
+      "duration": 3.694
+    },
+    {
+      "text": " maximum salary can have a huge range.",
+      "start": 139.43,
+      "duration": 4.029
+    },
+    {
+      "text": " Meaning salary could be thousands,",
+      "start": 142.834,
+      "duration": 3.223
+    },
+    {
+      "text": " lakhs and crores. So, if you're working",
+      "start": 145.122,
+      "duration": 3.811
+    },
+    {
+      "text": " with data like this, where one input",
+      "start": 147.998,
+      "duration": 3.354
+    },
+    {
+      "text": " feature is in a very small range and",
+      "start": 150.418,
+      "duration": 3.354
+    },
+    {
+      "text": " the other is in a very large range,",
+      "start": 152.837,
+      "duration": 3.289
+    },
+    {
+      "text": " you'll notice that when you train your",
+      "start": 155.192,
+      "duration": 3.485
+    },
+    {
+      "text": " neural network on this kind of data, it",
+      "start": 157.742,
+      "duration": 3.551
+    },
+    {
+      "text": " takes a lot of time to learn and update",
+      "start": 160.358,
+      "duration": 3.55
+    },
+    {
+      "text": " the weights. Okay? And the way to solve",
+      "start": 162.974,
+      "duration": 3.996
+    },
+    {
+      "text": " this problem is to bring your inputs to",
+      "start": 166.038,
+      "duration": 3.647
+    },
+    {
+      "text": " the same scale. Okay? This is called",
+      "start": 168.753,
+      "duration": 3.608
+    },
+    {
+      "text": " normalizing inputs. Okay? So what am I",
+      "start": 171.424,
+      "duration": 3.295
+    },
+    {
+      "text": " going to do in today's video? I'll",
+      "start": 173.765,
+      "duration": 2.812
+    },
+    {
+      "text": " first show you that this problem",
+      "start": 175.667,
+      "duration": 3.868
+    },
+    {
+      "text": " actually exists. Then I'll show you why",
+      "start": 178.624,
+      "duration": 4.53
+    },
+    {
+      "text": " this happens, what is the intuition",
+      "start": 182.217,
+      "duration": 3.215
+    },
+    {
+      "text": " behind this problem. Then we'll discuss",
+      "start": 184.496,
+      "duration": 3.591
+    },
+    {
+      "text": " the solution and how the solution works",
+      "start": 187.154,
+      "duration": 3.617
+    },
+    {
+      "text": ". We'll also get some intuition about",
+      "start": 189.771,
+      "duration": 2.712
+    },
+    {
+      "text": " that. Okay? So I've already created a",
+      "start": 191.523,
+      "duration": 3.912
+    },
+    {
+      "text": " Google Colab notebook here. I'll share",
+      "start": 194.517,
+      "duration": 4.683
+    },
+    {
+      "text": " it with you. So I didn't do anything",
+      "start": 198.252,
+      "duration": 2.95
+    },
+    {
+      "text": " here. Things are imported here. Here I",
+      "start": 200.245,
+      "duration": 3.17
+    },
+    {
+      "text": " imported a data set. This is a very",
+      "start": 202.474,
+      "duration": 2.92
+    },
+    {
+      "text": " famous data set. I've done work on it",
+      "start": 204.438,
+      "duration": 2.765
+    },
+    {
+      "text": " many times in the past on my channel.",
+      "start": 206.251,
+      "duration": 2.786
+    },
+    {
+      "text": " Here's this data set. It has three",
+      "start": 208.529,
+      "duration": 3.538
+    },
+    {
+      "text": " things: Age, Estateed Salary, and",
+      "start": 211.161,
+      "duration": 4.103
+    },
+    {
+      "text": " Purchased. Age is in a very small range",
+      "start": 214.358,
+      "duration": 4.462
+    },
+    {
+      "text": ", in 10s. Estateed Salary is in",
+      "start": 217.82,
+      "duration": 3.287
+    },
+    {
+      "text": " thousands or lakhs. Okay? And Purchased",
+      "start": 220.163,
+      "duration": 3.313
+    },
+    {
+      "text": " is zero or one. Purchased or not? Okay?",
+      "start": 222.524,
+      "duration": 2.969
+    },
+    {
+      "text": " Classification problem. What are we",
+      "start": 224.593,
+      "duration": 3.139
+    },
+    {
+      "text": " doing now? Ah, I've plotted a graph",
+      "start": 226.776,
+      "duration": 3.305
+    },
+    {
+      "text": " once to show the scatter plot of age",
+      "start": 229.154,
+      "duration": 3.654
+    },
+    {
+      "text": " versus salary. Ah, we'll get to that a",
+      "start": 231.882,
+      "duration": 3.895
+    },
+    {
+      "text": " little later. But for now, you can see",
+      "start": 234.83,
+      "duration": 3.257
+    },
+    {
+      "text": " this is the distribution. What did I do",
+      "start": 237.14,
+      "duration": 3.339
+    },
+    {
+      "text": " next? I separated x and y. I did a",
+      "start": 239.531,
+      "duration": 4.344
+    },
+    {
+      "text": " train-test split. Then I imported all",
+      "start": 242.923,
+      "duration": 3.693
+    },
+    {
+      "text": " the TensorFlow libraries. And I created",
+      "start": 245.697,
+      "duration": 3.816
+    },
+    {
+      "text": " a model. A deep learning model. There",
+      "start": 248.559,
+      "duration": 3.727
+    },
+    {
+      "text": " are three layers: one input, one hidden",
+      "start": 251.345,
+      "duration": 3.294
+    },
+    {
+      "text": ", and one output layer. The hidden",
+      "start": 253.639,
+      "duration": 3.469
+    },
+    {
+      "text": " layer has 128 neurons. The activation",
+      "start": 256.2,
+      "duration": 4.144
+    },
+    {
+      "text": " function is value, and my output neuron",
+      "start": 259.401,
+      "duration": 3.243
+    },
+    {
+      "text": " has one node, and the output function",
+      "start": 261.702,
+      "duration": 3.128
+    },
+    {
+      "text": " is sigmoid, because this is a binary",
+      "start": 263.888,
+      "duration": 3.07
+    },
+    {
+      "text": " classification problem. Okay? Then I",
+      "start": 266.016,
+      "duration": 3.581
+    },
+    {
+      "text": " summarized the model. This is the",
+      "start": 268.665,
+      "duration": 2.994
+    },
+    {
+      "text": " summary. I guess you already know all",
+      "start": 270.703,
+      "duration": 2.851
+    },
+    {
+      "text": " this. Then I compiled the model. I used",
+      "start": 272.6,
+      "duration": 3.303
+    },
+    {
+      "text": " Adamm as the optimizer. My loss is",
+      "start": 274.947,
+      "duration": 2.707
+    },
+    {
+      "text": " binary cross-entropy, and my metric is",
+      "start": 276.708,
+      "duration": 3.035
+    },
+    {
+      "text": " accuracy. Here, I trained my model:",
+      "start": 278.796,
+      "duration": 3.004
+    },
+    {
+      "text": " train x, train y, and validate. I used",
+      "start": 280.832,
+      "duration": 3.426
+    },
+    {
+      "text": " x, test y, and test y. The validation",
+      "start": 283.32,
+      "duration": 3.386
+    },
+    {
+      "text": " accuracy will immediately tell me how",
+      "start": 285.75,
+      "duration": 2.655
+    },
+    {
+      "text": " my model is performing. And I currently",
+      "start": 287.45,
+      "duration": 3.53
+    },
+    {
+      "text": " trained my model for 100 epochs. Now,",
+      "start": 290.049,
+      "duration": 3.798
+    },
+    {
+      "text": " when I trained this model, you'll",
+      "start": 292.925,
+      "duration": 3.587
+    },
+    {
+      "text": " notice that the validation accuracy",
+      "start": 295.591,
+      "duration": 3.743
+    },
+    {
+      "text": " here oscillated between 40 and 60. It",
+      "start": 298.413,
+      "duration": 3.9
+    },
+    {
+      "text": " fluctuated. Right? And even after",
+      "start": 301.391,
+      "duration": 3.939
+    },
+    {
+      "text": " training, like 100 epochs, the",
+      "start": 304.411,
+      "duration": 3.424
+    },
+    {
+      "text": " validation accuracy still didn't go",
+      "start": 306.916,
+      "duration": 3.829
+    },
+    {
+      "text": " above 60. Right? In fact, when I",
+      "start": 309.825,
+      "duration": 3.282
+    },
+    {
+      "text": " plotted the graph of validation",
+      "start": 312.163,
+      "duration": 2.707
+    },
+    {
+      "text": " accuracy, this is the result. Over 100",
+      "start": 313.925,
+      "duration": 3.435
+    },
+    {
+      "text": " epochs, the accuracy oscillated from 60",
+      "start": 316.442,
+      "duration": 4.223
+    },
+    {
+      "text": " to 40, but never converged. And this is",
+      "start": 319.747,
+      "duration": 4.225
+    },
+    {
+      "text": " the problem I'm talking about. Right?",
+      "start": 323.039,
+      "duration": 3.381
+    },
+    {
+      "text": " If the scale of your input columns is",
+      "start": 325.979,
+      "duration": 3.358
+    },
+    {
+      "text": " very different, very different, your",
+      "start": 328.401,
+      "duration": 3.295
+    },
+    {
+      "text": " neural network takes a lot of time to",
+      "start": 330.759,
+      "duration": 3.359
+    },
+    {
+      "text": " train, or in some scenarios, it may not",
+      "start": 333.181,
+      "duration": 3.486
+    },
+    {
+      "text": " train at all, as you can see here.",
+      "start": 335.731,
+      "duration": 3.168
+    },
+    {
+      "text": " Maybe with a few more epochs, it could",
+      "start": 338.379,
+      "duration": 2.81
+    },
+    {
+      "text": " have improved a bit, but right now, its",
+      "start": 340.236,
+      "duration": 2.858
+    },
+    {
+      "text": " performance is not at all good. So,",
+      "start": 342.142,
+      "duration": 3.038
+    },
+    {
+      "text": " first, we'll understand the reason",
+      "start": 344.282,
+      "duration": 4.464
+    },
+    {
+      "text": " behind this irregularity. What's the",
+      "start": 347.848,
+      "duration": 4.423
+    },
+    {
+      "text": " reason behind this inconsistency? Okay?",
+      "start": 351.329,
+      "duration": 3.31
+    },
+    {
+      "text": " After that, I'll tell you how we can",
+      "start": 353.919,
+      "duration": 3.585
+    },
+    {
+      "text": " fix it. Now, guys, why does this happen",
+      "start": 356.576,
+      "duration": 3.324
+    },
+    {
+      "text": "? I'll give you a very simple intuition",
+      "start": 358.9,
+      "duration": 2.816
+    },
+    {
+      "text": ". It's very simple. If you've studied",
+      "start": 360.716,
+      "duration": 4.453
+    },
+    {
+      "text": " backpropagation, you'll probably",
+      "start": 364.216,
+      "duration": 2.493
+    },
+    {
+      "text": " understand why this is happening.",
+      "start": 365.756,
+      "duration": 2.54
+    },
+    {
+      "text": " Suppose you have two features, x1 and",
+      "start": 367.453,
+      "duration": 4.338
+    },
+    {
+      "text": " x2, and their corresponding weights,",
+      "start": 370.881,
+      "duration": 4.248
+    },
+    {
+      "text": " let's call them w1 and w2. Let's say x2",
+      "start": 374.219,
+      "duration": 8.121
+    },
+    {
+      "text": " is my salary feature, and x1 is my age",
+      "start": 381.437,
+      "duration": 4.699
+    },
+    {
+      "text": " feature. So, what happens when the",
+      "start": 385.234,
+      "duration": 3.756
+    },
+    {
+      "text": " backpropagation algorithm works is that",
+      "start": 388.051,
+      "duration": 3.389
+    },
+    {
+      "text": " in backpropagation, you update these",
+      "start": 390.501,
+      "duration": 3.205
+    },
+    {
+      "text": " rates using this formula. So, since W2",
+      "start": 392.767,
+      "duration": 6.196
+    },
+    {
+      "text": " is related to a larger feature, all the",
+      "start": 398.062,
+      "duration": 4.85
+    },
+    {
+      "text": " focus during the update will shift to",
+      "start": 402.011,
+      "duration": 4.653
+    },
+    {
+      "text": " W2. Meaning, the entire algorithm will",
+      "start": 405.762,
+      "duration": 4.658
+    },
+    {
+      "text": " focus on W2 and not value W1 as much",
+      "start": 409.504,
+      "duration": 4.03
+    },
+    {
+      "text": " because it will see more changes in W2,",
+      "start": 412.618,
+      "duration": 4.282
+    },
+    {
+      "text": " so it will kind of ignore W1, which",
+      "start": 415.984,
+      "duration": 3.946
+    },
+    {
+      "text": " ultimately will cause your training to",
+      "start": 419.014,
+      "duration": 4.198
+    },
+    {
+      "text": " be inefficient. Right? Now, Andrew Eng",
+      "start": 422.296,
+      "duration": 4.592
+    },
+    {
+      "text": " gave a great geometric intuition for",
+      "start": 425.986,
+      "duration": 4.526
+    },
+    {
+      "text": " why training is unstable. The reason is",
+      "start": 429.61,
+      "duration": 4.678
+    },
+    {
+      "text": " that if you're working with",
+      "start": 433.353,
+      "duration": 2.764
+    },
+    {
+      "text": " unnormalized data. Unnormalized means",
+      "start": 435.183,
+      "duration": 3.219
+    },
+    {
+      "text": " where the scale of the data is",
+      "start": 437.444,
+      "duration": 2.26
+    },
+    {
+      "text": " different. Like age and salary, your",
+      "start": 438.746,
+      "duration": 4.27
+    },
+    {
+      "text": " cost function graph is uneven in both",
+      "start": 442.124,
+      "duration": 8.228
+    },
+    {
+      "text": " dimensions. Right? See? It's slightly",
+      "start": 449.464,
+      "duration": 4.207
+    },
+    {
+      "text": " higher on one side and slightly lower",
+      "start": 452.741,
+      "duration": 3.595
+    },
+    {
+      "text": " on the other. So, this is the contour",
+      "start": 455.407,
+      "duration": 4.131
+    },
+    {
+      "text": " of the loss function. You can see that",
+      "start": 458.616,
+      "duration": 4.266
+    },
+    {
+      "text": " your training process oscillates a lot",
+      "start": 461.95,
+      "duration": 3.599
+    },
+    {
+      "text": " before reaching the correct solution.",
+      "start": 464.617,
+      "duration": 3.531
+    },
+    {
+      "text": " If you give a normalized input, which",
+      "start": 467.949,
+      "duration": 3.587
+    },
+    {
+      "text": " means both your features are on the",
+      "start": 470.606,
+      "duration": 3.447
+    },
+    {
+      "text": " same scale, your loss function looks",
+      "start": 473.123,
+      "duration": 3.517
+    },
+    {
+      "text": " something like this. Right? Very",
+      "start": 475.71,
+      "duration": 3.334
+    },
+    {
+      "text": " symmetrical. Now, because of this",
+      "start": 478.117,
+      "duration": 3.223
+    },
+    {
+      "text": " symmetry, if you focus on this contour,",
+      "start": 480.397,
+      "duration": 3.234
+    },
+    {
+      "text": " you can see that it's very easy to",
+      "start": 482.689,
+      "duration": 2.947
+    },
+    {
+      "text": " reach the optimized solution. There",
+      "start": 484.693,
+      "duration": 3.32
+    },
+    {
+      "text": " won't be as many oscillations. So, the",
+      "start": 487.06,
+      "duration": 3.29
+    },
+    {
+      "text": " geometric intuition behind this whole",
+      "start": 489.419,
+      "duration": 3.525
+    },
+    {
+      "text": " thing is that if you have unnormalized",
+      "start": 492.012,
+      "duration": 3.594
+    },
+    {
+      "text": " features, meaning features of different",
+      "start": 494.674,
+      "duration": 3.662
+    },
+    {
+      "text": " scales, your loss function will be",
+      "start": 497.404,
+      "duration": 3.32
+    },
+    {
+      "text": " non-symmetrical. However, if you have",
+      "start": 499.793,
+      "duration": 3.936
+    },
+    {
+      "text": " normalized inputs, then your loss",
+      "start": 502.816,
+      "duration": 3.849
+    },
+    {
+      "text": " function will be symmetric. Its contour",
+      "start": 505.751,
+      "duration": 4.012
+    },
+    {
+      "text": " will be like this, and it will be very",
+      "start": 508.814,
+      "duration": 2.946
+    },
+    {
+      "text": " easy for your back-preparation",
+      "start": 510.811,
+      "duration": 2.537
+    },
+    {
+      "text": " algorithm to traverse it. Gradient",
+      "start": 512.399,
+      "duration": 2.984
+    },
+    {
+      "text": " descent will converge very quickly and",
+      "start": 514.431,
+      "duration": 2.824
+    },
+    {
+      "text": " reach the correct solution. In fact,",
+      "start": 516.303,
+      "duration": 3.481
+    },
+    {
+      "text": " I'll demonstrate this to you. It's",
+      "start": 518.846,
+      "duration": 4.293
+    },
+    {
+      "text": " simple. What do we do? To solve this",
+      "start": 522.189,
+      "duration": 3.082
+    },
+    {
+      "text": " problem, we need to perform feature",
+      "start": 524.33,
+      "duration": 3.045
+    },
+    {
+      "text": " scaling. Okay? We need to bring both of",
+      "start": 526.434,
+      "duration": 3.176
+    },
+    {
+      "text": " our features to the same scale. And",
+      "start": 528.647,
+      "duration": 2.658
+    },
+    {
+      "text": " we've learned how this is done in",
+      "start": 530.341,
+      "duration": 2.176
+    },
+    {
+      "text": " machine learning. We learned two ways.",
+      "start": 531.553,
+      "duration": 3.226
+    },
+    {
+      "text": " You either standardize or you normalize",
+      "start": 534.06,
+      "duration": 6.809
+    },
+    {
+      "text": ". Standardize means you subtract the",
+      "start": 539.869,
+      "duration": 5.564
+    },
+    {
+      "text": " mean from each of your values and",
+      "start": 544.509,
+      "duration": 3.497
+    },
+    {
+      "text": " divide by the standard deviation. And",
+      "start": 547.082,
+      "duration": 4.241
+    },
+    {
+      "text": " normalize means you divide each of your",
+      "start": 550.417,
+      "duration": 4.682
+    },
+    {
+      "text": " values by the mean, or subtract the",
+      "start": 554.194,
+      "duration": 4.304
+    },
+    {
+      "text": " mean, and divide by that value. Okay? I",
+      "start": 557.593,
+      "duration": 4.934
+    },
+    {
+      "text": " told you the geometric intuition behind",
+      "start": 561.575,
+      "duration": 2.867
+    },
+    {
+      "text": " both of these. I'll share the links to",
+      "start": 563.49,
+      "duration": 2.91
+    },
+    {
+      "text": " both of them with you. So, it basically",
+      "start": 565.438,
+      "duration": 3.766
+    },
+    {
+      "text": " means that if your graph, your data,",
+      "start": 568.279,
+      "duration": 3.688
+    },
+    {
+      "text": " looks like this, let's say like this,",
+      "start": 571.042,
+      "duration": 3.762
+    },
+    {
+      "text": " then standardizing means what you're",
+      "start": 573.879,
+      "duration": 3.688
+    },
+    {
+      "text": " doing. First, you're mean-centering all",
+      "start": 576.642,
+      "duration": 5.358
+    },
+    {
+      "text": " the data, making the mean zero, and the",
+      "start": 581.117,
+      "duration": 5.583
+    },
+    {
+      "text": " standard deviation one. So, basically,",
+      "start": 585.817,
+      "duration": 4.734
+    },
+    {
+      "text": " you're bringing it into a unit circle.",
+      "start": 589.608,
+      "duration": 3.151
+    },
+    {
+      "text": " Right? That's how your data fits in.",
+      "start": 592.078,
+      "duration": 2.666
+    },
+    {
+      "text": " Right? And normalizing means you're",
+      "start": 593.844,
+      "duration": 6.149
+    },
+    {
+      "text": " bringing it into a unit box. Right?",
+      "start": 599.084,
+      "duration": 4.415
+    },
+    {
+      "text": " Because when you do this, your minimum",
+      "start": 602.599,
+      "duration": 4.04
+    },
+    {
+      "text": " value can be zero and your maximum",
+      "start": 605.719,
+      "duration": 3.72
+    },
+    {
+      "text": " value can be one. So, your entire data",
+      "start": 608.519,
+      "duration": 4.277
+    },
+    {
+      "text": " will fit into this box. That's the",
+      "start": 611.868,
+      "duration": 3.758
+    },
+    {
+      "text": " intuition behind both. I explained this",
+      "start": 614.665,
+      "duration": 2.68
+    },
+    {
+      "text": " in great detail in my 100 Days of",
+      "start": 616.389,
+      "duration": 2.457
+    },
+    {
+      "text": " Machine Learning playlist. I'll include",
+      "start": 617.89,
+      "duration": 3.024
+    },
+    {
+      "text": " links to both videos. But just in a",
+      "start": 619.967,
+      "duration": 3.412
+    },
+    {
+      "text": " nutshell, what do you do? It's very",
+      "start": 622.455,
+      "duration": 3.652
+    },
+    {
+      "text": " simple. If you have unscaled data, you",
+      "start": 625.164,
+      "duration": 5.148
+    },
+    {
+      "text": " either standardize it or normalize it.",
+      "start": 629.42,
+      "duration": 5.12
+    },
+    {
+      "text": " What both operations do is bring your",
+      "start": 633.919,
+      "duration": 4.251
+    },
+    {
+      "text": " data to an equal scale. Okay? And as",
+      "start": 637.258,
+      "duration": 4.26
+    },
+    {
+      "text": " soon as it's on the same scale, as I",
+      "start": 640.581,
+      "duration": 3.279
+    },
+    {
+      "text": " mentioned here, I probably forgot to",
+      "start": 642.923,
+      "duration": 3.278
+    },
+    {
+      "text": " mention that when you standardize, it",
+      "start": 645.264,
+      "duration": 3.342
+    },
+    {
+      "text": " generally falls between -1 and +1, and",
+      "start": 647.669,
+      "duration": 3.405
+    },
+    {
+      "text": " when you normalize, it falls between 0",
+      "start": 650.137,
+      "duration": 3.405
+    },
+    {
+      "text": " and 1. So, once you bring it to the",
+      "start": 652.605,
+      "duration": 3.215
+    },
+    {
+      "text": " same scale, you have your solution. All",
+      "start": 654.884,
+      "duration": 4.134
+    },
+    {
+      "text": " you have to do is run normal",
+      "start": 658.084,
+      "duration": 2.851
+    },
+    {
+      "text": " backpropagation. Since your cost",
+      "start": 660.002,
+      "duration": 2.967
+    },
+    {
+      "text": " function will be very symmetric, you'll",
+      "start": 662.016,
+      "duration": 2.846
+    },
+    {
+      "text": " immediately converge on the solution.",
+      "start": 663.909,
+      "duration": 2.751
+    },
+    {
+      "text": " Okay? Now, one question people ask is",
+      "start": 666.159,
+      "duration": 2.702
+    },
+    {
+      "text": " when should you standardize? When",
+      "start": 667.904,
+      "duration": 2.63
+    },
+    {
+      "text": " should you normalize? It's simple. If",
+      "start": 669.582,
+      "duration": 3.365
+    },
+    {
+      "text": " you already know the maximum or minimum",
+      "start": 672.051,
+      "duration": 5.047
+    },
+    {
+      "text": " value of your column, what do you do?",
+      "start": 676.202,
+      "duration": 6.212
+    },
+    {
+      "text": " You normalize. Otherwise, it's",
+      "start": 681.514,
+      "duration": 2.896
+    },
+    {
+      "text": " standardized. Okay? So, for example, we",
+      "start": 683.478,
+      "duration": 4.543
+    },
+    {
+      "text": " have salary. So, we don't know what the",
+      "start": 687.109,
+      "duration": 3.933
+    },
+    {
+      "text": " maximum or minimum salary can be. So,",
+      "start": 690.103,
+      "duration": 3.284
+    },
+    {
+      "text": " we'll standardize that. We won't",
+      "start": 692.424,
+      "duration": 2.471
+    },
+    {
+      "text": " normalize it. But if you're talking",
+      "start": 693.935,
+      "duration": 3.307
+    },
+    {
+      "text": " about CGPA, where I know the minimum is",
+      "start": 696.313,
+      "duration": 3.767
+    },
+    {
+      "text": " zero and the maximum is 10. In that",
+      "start": 699.151,
+      "duration": 3.484
+    },
+    {
+      "text": " case, what I'll do is simply normalize.",
+      "start": 701.705,
+      "duration": 3.768
+    },
+    {
+      "text": " Okay? So, it depends on you. Also, if",
+      "start": 704.573,
+      "duration": 4.059
+    },
+    {
+      "text": " your data is normally distributed, if",
+      "start": 707.681,
+      "duration": 2.819
+    },
+    {
+      "text": " its PDF is normally distributed or",
+      "start": 709.549,
+      "duration": 2.672
+    },
+    {
+      "text": " close to normally distributed, then it",
+      "start": 711.27,
+      "duration": 2.869
+    },
+    {
+      "text": " should be standardized. I've explained",
+      "start": 713.188,
+      "duration": 3.471
+    },
+    {
+      "text": " everything in great detail in my video,",
+      "start": 715.704,
+      "duration": 2.757
+    },
+    {
+      "text": " \"100 Days of Machine Learning,\" in the",
+      "start": 717.506,
+      "duration": 2.712
+    },
+    {
+      "text": " playlist. You should go and watch it",
+      "start": 719.263,
+      "duration": 2.537
+    },
+    {
+      "text": " once and you'll understand. Also, if",
+      "start": 720.839,
+      "duration": 3.578
+    },
+    {
+      "text": " your data is already on the same scale,",
+      "start": 723.482,
+      "duration": 3.545
+    },
+    {
+      "text": " there's no need to do this. You can",
+      "start": 726.092,
+      "duration": 3.39
+    },
+    {
+      "text": " train it directly. There won't be any",
+      "start": 728.558,
+      "duration": 3.412
+    },
+    {
+      "text": " problem giving it to a neural network.",
+      "start": 731.019,
+      "duration": 2.84
+    },
+    {
+      "text": " Okay? So, these are some key points to",
+      "start": 733.299,
+      "duration": 2.488
+    },
+    {
+      "text": " remember. Now, let me quickly show you",
+      "start": 734.824,
+      "duration": 3.504
+    },
+    {
+      "text": " the solution and what I'll do to get",
+      "start": 737.394,
+      "duration": 3.378
+    },
+    {
+      "text": " the correct results. So, I've shown you",
+      "start": 739.838,
+      "duration": 4.382
+    },
+    {
+      "text": " up to this point. What am I doing now?",
+      "start": 743.303,
+      "duration": 3.796
+    },
+    {
+      "text": " I'm importing a standard scaler from \"",
+      "start": 746.219,
+      "duration": 4.344
+    },
+    {
+      "text": "ascale.prepping.\" This is the class,",
+      "start": 749.563,
+      "duration": 6.157
+    },
+    {
+      "text": " and I'm transforming \"x-train\" into \"",
+      "start": 754.783,
+      "duration": 3.343
+    },
+    {
+      "text": "x-train.scaled.\" I'm also transforming",
+      "start": 757.126,
+      "duration": 3.407
+    },
+    {
+      "text": " my test data. Once I've finished this",
+      "start": 759.596,
+      "duration": 6.093
+    },
+    {
+      "text": " code, if you look here, here's my \"",
+      "start": 764.77,
+      "duration": 3.838
+    },
+    {
+      "text": "extent.scaled.\" You can see all these",
+      "start": 767.608,
+      "duration": 6.675
+    },
+    {
+      "text": " values. The first column is the \"age\"",
+      "start": 773.478,
+      "duration": 5.042
+    },
+    {
+      "text": " column, and the second column is your \"",
+      "start": 777.591,
+      "duration": 3.755
+    },
+    {
+      "text": "salary.\" But you can see these values",
+      "start": 780.346,
+      "duration": 5.519
+    },
+    {
+      "text": " vary between -1 and 1. Also, if you",
+      "start": 785.002,
+      "duration": 5.817
+    },
+    {
+      "text": " want to plot it, you can write \"s-s dot",
+      "start": 789.957,
+      "duration": 6.367
+    },
+    {
+      "text": " scatter plot x-train scaled.\" I want",
+      "start": 795.462,
+      "duration": 5.668
+    },
+    {
+      "text": " all the rows and the zeroth column.",
+      "start": 800.226,
+      "duration": 4.367
+    },
+    {
+      "text": " Similarly, I would just copy this and",
+      "start": 803.799,
+      "duration": 5.345
+    },
+    {
+      "text": " paste this and put one here. You can",
+      "start": 808.219,
+      "duration": 6.787
+    },
+    {
+      "text": " see this graph. The graph above is",
+      "start": 814.076,
+      "duration": 3.362
+    },
+    {
+      "text": " exactly the same. There's no difference",
+      "start": 816.505,
+      "duration": 3.497
+    },
+    {
+      "text": " between these two graphs. Look at this.",
+      "start": 819.049,
+      "duration": 3.062
+    },
+    {
+      "text": " What's the only difference? It's a",
+      "start": 821.769,
+      "duration": 2.322
+    },
+    {
+      "text": " difference in scale. Let me show you.",
+      "start": 823.128,
+      "duration": 3.011
+    },
+    {
+      "text": " If you go down, look at this, just look",
+      "start": 825.309,
+      "duration": 2.513
+    },
+    {
+      "text": " at the difference in scale. This data",
+      "start": 826.861,
+      "duration": 3.981
+    },
+    {
+      "text": " roughly falls between -1 and 1. Okay?",
+      "start": 829.856,
+      "duration": 1.504
+    },
+    {
+      "text": " Everything else is the same. We didn't",
+      "start": 833.273,
+      "duration": 2.498
+    },
+    {
+      "text": " make any other changes. And now I ran",
+      "start": 834.783,
+      "duration": 3.433
+    },
+    {
+      "text": " the same model. It's the same model.",
+      "start": 837.227,
+      "duration": 2.887
+    },
+    {
+      "text": " It's a value of 128. One is in the",
+      "start": 842.143,
+      "duration": 1.48
+    },
+    {
+      "text": " output layer. It's a sigmoid. The",
+      "start": 842.638,
+      "duration": 2.78
+    },
+    {
+      "text": " entire compilation process is the same.",
+      "start": 844.465,
+      "duration": 2.814
+    },
+    {
+      "text": " And I ran it exactly for 100 boxes.",
+      "start": 846.492,
+      "duration": 3.56
+    },
+    {
+      "text": " Just notice one thing here: I've scaled",
+      "start": 849.152,
+      "duration": 3.648
+    },
+    {
+      "text": " the train data as x and scaled the",
+      "start": 851.868,
+      "duration": 3.309
+    },
+    {
+      "text": " validation data as x. And now, as I",
+      "start": 854.245,
+      "duration": 3.636
+    },
+    {
+      "text": " trained this model, you'd see your",
+      "start": 856.946,
+      "duration": 3.193
+    },
+    {
+      "text": " accuracy continuously going up. In fact",
+      "start": 859.204,
+      "duration": 4.25
+    },
+    {
+      "text": ", it breached 92%. And this is the",
+      "start": 862.454,
+      "duration": 3.632
+    },
+    {
+      "text": " curve. As the epoch increases, your",
+      "start": 865.148,
+      "duration": 2.816
+    },
+    {
+      "text": " accuracy also increases. And this was",
+      "start": 867.008,
+      "duration": 2.528
+    },
+    {
+      "text": " possible because we did this. We",
+      "start": 868.561,
+      "duration": 6.11
+    },
+    {
+      "text": " brought both our inputs to the same",
+      "start": 873.717,
+      "duration": 2.618
+    },
+    {
+      "text": " scale. We used standardization to do",
+      "start": 875.381,
+      "duration": 4.626
+    },
+    {
+      "text": " this, and after that, our work became",
+      "start": 879.074,
+      "duration": 3.486
+    },
+    {
+      "text": " very easy. Our gradient descent very",
+      "start": 881.627,
+      "duration": 3.446
+    },
+    {
+      "text": " easily traversed this loss function and",
+      "start": 884.134,
+      "duration": 3.362
+    },
+    {
+      "text": " reached the correct optimal solution.",
+      "start": 886.557,
+      "duration": 3.242
+    },
+    {
+      "text": " So, I'm summarizing the entire video",
+      "start": 889.039,
+      "duration": 3.297
+    },
+    {
+      "text": " once. The simple concept is that if you",
+      "start": 891.399,
+      "duration": 4.772
+    },
+    {
+      "text": " have data where the scale varies—one",
+      "start": 895.24,
+      "duration": 3.61
+    },
+    {
+      "text": " very small, one very large—then when",
+      "start": 897.919,
+      "duration": 3.61
+    },
+    {
+      "text": " you train your neural network on such",
+      "start": 900.598,
+      "duration": 3.542
+    },
+    {
+      "text": " inputs, the training is either very",
+      "start": 903.208,
+      "duration": 3.405
+    },
+    {
+      "text": " slow or very unstable, and you don't",
+      "start": 905.681,
+      "duration": 3.473
+    },
+    {
+      "text": " get accurate results. So, the reason",
+      "start": 908.223,
+      "duration": 3.593
+    },
+    {
+      "text": " for this problem is that due to the",
+      "start": 910.881,
+      "duration": 3.293
+    },
+    {
+      "text": " different scales of your data, the",
+      "start": 913.24,
+      "duration": 3.227
+    },
+    {
+      "text": " graph of your loss function is very",
+      "start": 915.533,
+      "duration": 3.293
+    },
+    {
+      "text": " asymmetric, and gradient descent cannot",
+      "start": 917.892,
+      "duration": 3.555
+    },
+    {
+      "text": " traverse it. It faces a lot of",
+      "start": 920.512,
+      "duration": 2.903
+    },
+    {
+      "text": " difficulty. The solution is to bring",
+      "start": 922.451,
+      "duration": 3.346
+    },
+    {
+      "text": " both your data, or all of your data, to",
+      "start": 924.858,
+      "duration": 3.355
+    },
+    {
+      "text": " the same scale. There are two ways to",
+      "start": 927.274,
+      "duration": 2.591
+    },
+    {
+      "text": " bring them to the same scale. Either",
+      "start": 928.892,
+      "duration": 2.321
+    },
+    {
+      "text": " you standardize or normalize. Right?",
+      "start": 930.282,
+      "duration": 3.777
+    },
+    {
+      "text": " You can bring them to the same scale",
+      "start": 933.199,
+      "duration": 2.26
+    },
+    {
+      "text": " using both methods. When should you",
+      "start": 934.494,
+      "duration": 2.589
+    },
+    {
+      "text": " standardize? When your distribution is",
+      "start": 936.127,
+      "duration": 3.225
+    },
+    {
+      "text": " normally distributed. And when should",
+      "start": 938.414,
+      "duration": 3.445
+    },
+    {
+      "text": " you normalize? When you know the",
+      "start": 940.915,
+      "duration": 2.713
+    },
+    {
+      "text": " maximum and minimum values. Right? Or",
+      "start": 942.677,
+      "duration": 2.843
+    },
+    {
+      "text": " when your data has outliers, etc. I've",
+      "start": 944.562,
+      "duration": 2.615
+    },
+    {
+      "text": " explained all this. You should watch",
+      "start": 946.22,
+      "duration": 2.33
+    },
+    {
+      "text": " that video once. You'll understand when",
+      "start": 947.576,
+      "duration": 2.834
+    },
+    {
+      "text": " to standardize and when to normalize.",
+      "start": 949.47,
+      "duration": 3.206
+    },
+    {
+      "text": " But as soon as you bring both of your",
+      "start": 951.959,
+      "duration": 3.086
+    },
+    {
+      "text": " data to the same scale, you'll",
+      "start": 954.101,
+      "duration": 2.692
+    },
+    {
+      "text": " automatically notice that your training",
+      "start": 955.85,
+      "duration": 3.199
+    },
+    {
+      "text": " will improve. Right? So the summary is:",
+      "start": 958.105,
+      "duration": 4.394
+    },
+    {
+      "text": " always do this step. In my experience,",
+      "start": 961.58,
+      "duration": 3.685
+    },
+    {
+      "text": " I've noticed that doing this step never",
+      "start": 964.322,
+      "duration": 3.214
+    },
+    {
+      "text": " causes any harm. It's beneficial in",
+      "start": 966.592,
+      "duration": 3.884
+    },
+    {
+      "text": " many scenarios. So, this should be done",
+      "start": 969.529,
+      "duration": 2.925
+    },
+    {
+      "text": ". Take it as a pre-processing step, so",
+      "start": 971.454,
+      "duration": 3.039
+    },
+    {
+      "text": " whenever I give data to the neural",
+      "start": 973.542,
+      "duration": 2.66
+    },
+    {
+      "text": " network, I'll scale it. Okay? So, today",
+      "start": 975.251,
+      "duration": 3.507
+    },
+    {
+      "text": " we covered another topic, which is kind",
+      "start": 977.829,
+      "duration": 3.796
+    },
+    {
+      "text": " of interesting because if you want to",
+      "start": 980.696,
+      "duration": 3.653
+    },
+    {
+      "text": " learn how to train a neural network",
+      "start": 983.42,
+      "duration": 3.509
+    },
+    {
+      "text": " well, this was an important component.",
+      "start": 986.001,
+      "duration": 3.724
+    },
+    {
+      "text": " We learned that. Okay? Now what will we",
+      "start": 988.942,
+      "duration": 4.527
+    },
+    {
+      "text": " do? We'll gradually cover the remaining",
+      "start": 992.519,
+      "duration": 3.511
+    },
+    {
+      "text": " topics in this sheet, one by one. Okay?",
+      "start": 995.093,
+      "duration": 3.586
+    },
+    {
+      "text": " Once you learn all these techniques,",
+      "start": 997.859,
+      "duration": 3.293
+    },
+    {
+      "text": " trust me, you'll be able to train a",
+      "start": 1000.216,
+      "duration": 3.229
+    },
+    {
+      "text": " neural network on any kind of data.",
+      "start": 1002.509,
+      "duration": 3.23
+    },
+    {
+      "text": " Okay? So, if you liked the video,",
+      "start": 1005.019,
+      "duration": 3.592
+    },
+    {
+      "text": " please like and also subscribe to my",
+      "start": 1007.68,
+      "duration": 3.485
+    },
+    {
+      "text": " channel. That's from my side. Thanks",
+      "start": 1010.234,
+      "duration": 3.394
+    },
+    {
+      "text": " for watching. Bye.",
+      "start": 1012.664,
+      "duration": 2.088
+    }
+  ]
+}

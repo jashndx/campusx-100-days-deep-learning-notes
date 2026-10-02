@@ -1,0 +1,3880 @@
+{
+  "id": "vVS4csXRlcQ",
+  "index": 34,
+  "title": "SGD with Momentum Explained in Detail with Animations | Optimizers in Deep Learning Part 2",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and you are  welcome to my YouTube channel. In this  video, we will continue with our deep  learning playlist. We are studying  optimization techniques in deep  learning. In the last video, we covered  a very important topic: exponentially  weighted moving averages. From this  video onwards, we will start all our  optimization techniques one by one. The  first optimization technique we will  study is called SGD with momentum. It  is a very, very important optimization  technique. Because it not only speeds  up the training of the neural network  itself. At the same time, this concept  of momentum is something you will see  in further optimization techniques as  well. So, in that sense, this technique  becomes very important. Now, I will  give you a brief introduction to how I  have structured this entire video. I  have tried to cover all the basics. I  have presented all the mathematical  formulations to you. And even more than  that, I have tried to bring in a lot of  animations and visualizations for you.  Because I feel this is a bit of a  difficult topic, and people mostly  understand the math, but they don't  grasp the intuition part of the  algorithms. For that, I have added  plenty of animations and visualizations  in this video. So if you like it,  please subscribe to the channel, and if  you like the video, give it a like as  well. Okay? Let's start the video. Now,  before starting this video, I want to  discuss some basic concepts with you.  Because in this video, you will see a  lot of conceptual things. And if your  basics aren't clear, you won't be able  to fully understand this video. Among  the different basics, the first thing I  need to discuss with you is the  different types of graphs you will see  in this video. So you should already  have an idea of what these different  graphs represent. Precisely, you will  see three different graphs in this  video and the next few videos. So you  should know in advance what these three  graphs represent. Okay? So there are  three graphs here. This is a 2D graph,  the first one. This is a 3D graph. And  this is called a contour plot. Now  let's try to understand what these  three graphs represent. To understand  the underlying meaning of these three  graphs, let's go back and understand  what happens in deep learning, in  summary. In deep learning, you have a  neural network and either a regression  or a classification problem. Suppose  it’s a regression problem where you  have three input columns and you are  predicting some output from them. Okay?  Now, the way to determine if the output  is correct or not is a loss function.  What does a loss function do? A loss  function is basically a mathematical  function whose job is to establish a  mathematical relationship between your  prediction and the actual output value.  For example, one loss function is (y- y-hat) squared, which you call Mean  Squared Error. Okay? So, now understand  the whole concept here. You send the  input and calculate y-hat. And then,  from this y-hat, you calculate the loss . If the loss is very high, it means  your neural network is performing  poorly. The way to improve it is by  changing the values of these weights  and these biases, and changing these  values changes the y-hat. Changing the  y-hat, in turn, changes the L again.  Okay? So, in a way, you can say that  this loss of yours is actually a  function of your weights and your  biases. Okay? So, if you want, like As  in math, if you write y = f (x), then  you can plot this graph. What changes  will occur in y by changing x?  Similarly, if you want, you can also  plot this function, the loss function,  with respect to all of these parameters . The only problem is that we humans  can only see up to 3D. But here,  suppose if you have 15 weights and 10  biases, then this becomes a 25- dimensional graph that you cannot see.  So, if we assume for a moment that we  have a neural network that has only one  node and no bias in it. Just one weight  that is giving us an output, and here I  am getting the input. So now, the loss  function here will be a function of  only w, and you can plot it like this.  Meaning, what changes will happen in L  by changing w. This graph that you are  seeing is exactly that. When you plot  your loss function against any one of  your single parameters, you will see a  graph like this. Okay? One input and  one output, meaning a 2D graph. Now,  suppose that this neuron you have also  has a bias. So now you have two  parameters. This means the loss is a  function of W and B, so the graph will  be plotted in 3D and will look like  this. Okay? I hope you are  understanding this. We cannot plot  three parameters because the graph  would become 3 + 1 = 4D, which we  cannot imagine. Okay? So, moving  forward in this entire video. I will  show you the loss plotted against  either a single parameter or two  parameters. Okay? You will see both of  these graphs. Now the question is, what  is this third graph? This third graph  is very simple. It is a 2D projection  of this graph. Meaning, if you look  from above, take a top view, you can  actually plot this graph on the ground  like this. Meaning, for different  values of B and A, the loss value looks  like this. Okay? It's as if you drew  concentric circles on this curve. Like  this. Okay? And then you projected it  onto the ground below. That is what a  contour plot is. Okay? It is a way to  view this 3D graph in 2D. Okay? Contour  plots can be a bit difficult to imagine  or understand. So I will show you some  examples so that you can get a clearer  picture in your mind, so that if you  are shown this graph, you can create a  contour, or if you are shown a contour,  you can imagine the 3D. So guys, I have  done some searches on Google and found  some images based on that. I will show  you the examples through those images.  My only suggestion is to develop an  intuition. Once the intuition is  developed, it becomes easier to  understand contour plots. Okay? Also,  as you convert 3D to 2D, you are  basically losing information of one  dimension, so that lost information is  represented by color in a contour plot.  So here you can see that there are four  maxima. Okay? A raised surface. So how  is that shown? By using yellow color.  Okay? Yellow color means this innermost  circle is slightly raised, and the more  purple the shade, the lower it is. So  this color tells you the height, which  is the third dimension. Okay? So that  was one example. You can see this one.  You can imagine this as a sheet coming  down from above with a pit in the  middle. Okay? So its representation,  you can see on the contour plot below,  it looks like this. Blue color  represents a pit or lower altitude, and  brown color represents higher altitude.  Okay? This is similar as well. Here in  the middle, there is a flat lower  surface which is represented by this  ellipse below. The next one is this.  This type of surface is called a saddle  point. We will discuss this in a little  while. But you can see how the contour  plot below appears. It is raised on two  sides, so it is represented by the  orange color, and on two sides, it is  quite sunken. The bottom part is  represented by the blue color. And in  the middle, there is a flat surface. So  wherever there is a flat surface, the  concentric circles will be far apart  from each other. You need to remember  this because these concentric circles  represent the same altitude. So where  it is flat, everyone has the same  altitude. That is why there is no need  for more than one concentric circle.  Okay? Similarly, you can see this is a  sheet that is bent to one side, and it  looks like this. Okay? The red side  represents higher altitude. The blue  side represents the lowest altitude.  This is also interesting. Yellow color  represents higher altitude. Blue color  represents lower altitude. So if you  remove this 3D surface and look only at  the contour, you will see a contour  like this. Okay? So this is one more.  This is again a saddle point where the  surface is rising from two sides. And  the surface is dipping from two sides.  Okay? This is actually the curve for  x²-y². So you can see that blue color  represents the minima and orange color  represents the maxima. In the middle is  this saddle point where all your  concentric lines or curves are a bit  far from each other. Which indicates  that for a long distance, your value  remains very much the same. Again, it  is similar. The raised point is orange.  The sunken part below is blue. Let's  look at the last two. Again, this one,  the whitish shade shows it is raised,  and the dark brown/orange shade shows  it is sunken. You have understood the  graphs. Now, there is one more concept  you should know before going deeper  into this video. And that concept is  convex versus non-convex optimization.  Although, I have already made an entire  video on this. But let me quickly  explain to you that when you are  working in deep learning and building  complex neural network architectures,  the graph of your loss function is not  that simple. It is a bit on the complex  side. Okay? That is exactly what is  being shown here. In the first diagram,  you can see we are using a graph where  we are plotting the loss against just  one parameter. And you can see that you  will encounter such loss functions in  deep learning. Okay? A 3D version of  this is here. This is a very simple  loss function, a convex optimization  problem, and this is a non-convex  optimization problem. Now, if you want  to understand the difference between  convex and non-convex, I will link a  video. You can go and watch that. Now  the question is, non-convex  optimization, as is visible, would  obviously be more difficult to reach  the correct solution here. By the way,  the correct solution means this is your  parameter. This is your loss, and your  graph looks something like this. You  need to find a value of loss for which,  oh, I am sorry. You need to find a  value of weight, as in W, for which the  loss value is minimum. Basically, you  have to traverse to the minima of this  curve. We have already understood this  concept. You need to reach here or here . You need to reach the minima of the  curve. Now, if you are in a non-convex  optimization problem, reaching the  minima becomes very difficult. And  there are primarily three reasons for  that. The first reason is local minima.  The second reason is saddle points. And  the third is high curvature. I will  visualize these three for you once.  Local minima means a place where the  slope is zero. We stop right here. Now  the problem is, suppose you randomly  initialized your weights from here,  then obviously, as you take jumps, you  will end up stopping at this minima.  You will never be able to reach here.  Meaning, you will get a suboptimal  solution, which results in poor  performance. Right? So, if you want to  understand local minima in 3D, think of  it as getting stuck in this pit when  you were supposed to reach here.  Because you started from here. It is  possible that if you had started from  here, you would have reached here  directly. But since you started from  here randomly, you got stuck here. So,  local minima gives you a sub-optimal  solution, and you end up getting stuck  in it. This is the first problem with  non-convex optimization. The second  problem is the saddle point. So, a  saddle point is a point where in one  direction your surface is rising, and  in the other direction, it is falling.  It is going down. For instance, look  here; this area, the one between these  two heights, this area is a saddle  point. Right? Now, the problem with a  saddle point is that you see a flat  surface for a long distance. I mean, a  saddle point looks something like this.  On one side it is rising, and on the  other, it is falling. So, for a long  distance, the slope changes very  gradually. And what happens because of  that? Since our entire navigation is  based on the slope. So, if your slope  changes very gradually, your speed  becomes very slow, and your training  becomes very slow. Like, look at this  point. If you get here, it will take  you a lot of time to get from here to  there. Because you will spend a lot of  time in this area. Because the slope is  very low. You move forward very slowly.  Right? Similarly, if you get stuck here , you will face the same problem. So,  in non-convex, you can also encounter  saddle points. And the last problem is  high curvature. What is curvature?  Let's understand. Here, you are able to  draw two circles. So, the one with the  larger radius has smaller curvature,  and the one with the smaller radius has  larger curvature. So, this one, this  curve, has a very large curvature. So,  traversing this curvature becomes a bit  difficult, and you will see this  curvature to be very high in non-convex  optimization. So, because of these  three problems, you have to apply  optimization techniques. Your vanilla  gradient descent or stochastic gradient  descent doesn't navigate these three  problems very well, which leads to  either poor training, as in you get a  sub-optimal solution, or your training  is very slow. So, I will now show you  how your vanilla gradient descent or  your stochastic gradient descent  navigates the loss curve, and then I  will tell you how you can bring in  improvements by applying optimization.  So, what I’m going to show you now is  a demonstration of the three algorithms  we have studied so far. Batch Gradient  Descent, Stochastic Gradient Descent,  and Mini-batch Gradient Descent. And  these three visualizations I’m  showing you are for a convex  optimization problem. Meaning, the  curve of your loss function is very  simple. You can see it’s a 3D  parabola. So first, let me show you  Batch Gradient Descent. Where you  update your weights 'values after you  have seen the entire dataset once. So  you can see, it reaches the minima  quite smoothly like this. Right? It  takes large jumps at the beginning and  as it approaches the minima, it starts  taking smaller jumps. Next, I’m going  to show you Stochastic Gradient Descent , where you update your weights after  seeing just one row of data, meaning  you are making changes to the weights  by trusting very little data. Because  of this, its graph is a bit erratic. It  is spiky. You can see. Watch it once  again. In the beginning, you can see  it’s going up and down. It is even  leaving the curve. But eventually, it  is reaching the right place. And the  middle ground between these two is  Mini-batch Gradient Descent, where you  update your weights after seeing a  batch of data. And you can see it is  slightly stochastic. And it's an  algorithm between the two. It is spiky  but also a bit smooth. Now, we will  start the topic of today’s video from  here. Momentum Optimization. Right? So,  what is momentum? Before knowing that,  I would like to tell you what problem  momentum solves. A while ago, I told  you that in neural networks, you  encounter non-convex optimization.  Which, in simple words, means that the  entire curve of your loss function is  very complex. And because of that  complexity, two or three problems arise . The first problem that arises is that  of high curvature. I told you about it  a little while ago. The second problem  that arises is that of consistent  gradients. Consistent gradients.  Meaning, your slope changes in a way  that is very slow. So, in this, your  normal gradient descent algorithms  become slow. Because your update is  based on the slope, and since the slope  is not changing much, the update  doesn't happen much either. Basically,  your algorithm has slowed down. And the  third one is noisy gradient. Noisy  gradient means that your gradient has  some noise in it. Meaning, it is  fluctuating a lot. Due to which you  have to face local minima, and many  times you get stuck in local minima and  have to settle for a sub-optimal  solution, which is not good. So, the  momentum technique we are about to  study now is able to navigate all these  three problems. Okay? Even if the slope  is very low, it is still able to move  forward with speed. If there is a local  minima, it has the capability to get  out of it, and it can also easily  navigate loss functions with high  curvature. So, if someone asks you why  momentum should be used? Why should  momentum be used as an optimization  technique? You can tell them these  three scenarios where momentum performs  well. Okay? So, that was about why it  should be used. Now I will tell you  what the momentum optimization  technique actually is. What principle  is it based on, and what is the  mathematics behind it? So, I will give  you an intuition of the core principle  of momentum optimization. I will give  you two types of intuition. One very  common example and one physics-based  example. So, through a common example,  I will explain to you exactly how  momentum optimization works. So,  suppose you are in a car starting from  point A and going to point B, and you  don't know the way to reach B. So,  obviously, what will you do? You will  stop and ask people where B is. Now,  suppose you asked at four places. On  the way, from four different people,  where B is, and everyone pointed you in  this direction. So just think, when  four people are telling you that B is  in this direction, then automatically  you get confidence and you will move in  this direction at a higher speed.  Whereas, if two people had said go  forward and two had said go backward,  then perhaps you would have gone  forward, but at a lower speed. So, the  whole idea of momentum optimization is  that if your previous gradients are  making you move in one direction, then  you will confidently move in that  direction by increasing your speed. I  will explain this to you through an  example. Suppose you started from here,  and your last four updates are telling  you to move in this same direction,  then you will increase your speed. And  you will move very quickly in this  direction. You can also understand this  through a physics analogy, where you  start behaving like a ball that gains  more momentum as it rolls down. And  that is why this algorithm is named  Momentum. Because the mathematics we  are about to look at, you will notice  it behaves like momentum in Newtonian  physics. Okay? The formula for momentum  is mass times velocity. Since we don't  have any mass, we assume a unit mass.  And we basically rely on velocity. We  calculate a velocity term, and we use  the previous velocity or the history of  our updates to build momentum. Now,  what is all this? You will understand  in a little while. Just understand the  core idea first. The core idea is  simply that if your previous gradients  are all pushing you in one direction,  you will confidently increase your  speed. You will move rapidly in that  direction. And that is why, if someone  asks you, what is the single most  important benefit of using momentum  optimization? It is speed. 99%of the  time, your momentum optimization or  momentum with SGD will be faster than  normal SGD or batch gradient descent.  Okay? If you have understood this much,  now let's think about the math we can  apply to implement this momentum in our  gradient descent algorithm. Alright  guys, let's discuss mathematically how  you implement momentum. It's very  simple. We studied exponentially  weighted moving averages in the last  video. We use that exact concept here.  How does the momentum algorithm  accumulate momentum? It maintains an  exponentially decaying moving average  of all the past gradients. Let me try  to explain it to you. In a normal  gradient descent algorithm, how do you  update your weights using this formula?  Right? So, it's a very simple formula.  What you are doing is, how do you  calculate the weight at the next time  stamp? Current weight minus learning  rate times the gradient of the loss  function with respect to your weight.  Right? What do you do here? In momentum , you take a term called V, which you  can consider as velocity. Okay? And  your update now becomes this. Velocity  at time t, you have replaced this. With  this term. Now, how is this vt  calculated? We discussed this in the  last video. You calculate vt using this  formula. This is the formula. So, what  did you do? You took a factor called  beta. A constant whose value is  generally 0.9 between 0 and 1, and you  are calculating vt-1. What is vt-1?  Velocity at the previous step, and you  are multiplying the current gradient by  it. Adding the learning rate times the  current gradient at time t. So,  basically, this component is the  momentum component. This is the  component. Right? Because to find vt-1,  you need vt-2. Meaning for velocity at  time t-2, you need vt-3. And by doing  this, you are using all the previous  velocities. You are using a kind of  history of velocities as momentum, and  that is the main concept that provides  you with acceleration. If many past  updates are moving in the same  direction, they will add up and give  you speed. Now, let me show you what  happens with this small change. Here is  a small diagram on the screen. This is  standard SGD, and this is SGD with  momentum that we just studied. You can  see that while navigating the error  surface, SGD takes a lot of vertical  direction steps. Due to which  convergence takes time. Right? Now,  what will happen is that if you apply  momentum, the velocity in this  direction, the horizontal direction,  increases. Because of that, your steps  start looking like this. Like this, as  you can see here. Okay? So, this is the  biggest benefit of momentum. Although I  will show you more examples now. But if  you try to understand through this  contour plot, it minimizes the zigzag  motion in the vertical direction and  increases your movement in the  horizontal direction. Due to which you  are getting faster convergence. Guys,  let's try to understand the role of  this beta in momentum. Because it is a  parameter that you can change to induce  different types of behavior. First of  all, let's answer this question: what  happens if the value of beta becomes  zero? As soon as the value of beta  becomes zero, this entire term becomes  zero and the value of vt becomes this,  and if you replace it here, you get SGD . The same thing that used to happen  before will happen. This formula will  come up. And this is the formula for  SGD. This means when beta is zero,  momentum will act like normal SGD. Okay ? So beta is called the decaying factor  here. Because this beta tells how fast  the past velocities are decaying.  Meaning, the older the velocity, there  will be multiple updates. Update one,  update two, like that there will be  multiple updates. So when talking about  the current update, the value of the  very first update for it will be very  low. A bit more for the next update,  and a bit more for the update after  that. So this value that is  exponentially decaying is governed by  beta. Okay? So it is said that this  exponential average you are taking is  equal to 1/1-beta. So if you have taken  .9, then it is as if your current  velocity, at time t, will be equal to  the average of the past 10 velocities.  Okay? Because 1/1-0.9 = 10, okay? So  this beta decides how much contribution  the past velocities will have in  momentum. Okay? And the older the  velocities, the less impact they will  have. The more recent the velocity, the  greater its impact will be. Now think  once, what will happen if the value of  beta becomes one? I will show you that.  Look at this, guys. If the value of  beta becomes one, there will be no  decay and this algorithm of yours, this  ball, will keep rolling on the error  surface just like that because there is  no friction involved, so a kind of  dynamic equilibrium will be reached. So  again, it is not desired. That is why  the value of beta is generally  fluctuated between 0.9 or 0.999 or 0.5;  you generally don't set it to zero  because it will become SGD, and you  don't set it to one because there will  be no decay and it can get stuck in a  kind of dynamic equilibrium. So guys,  next I want to discuss with you what  the problem with the momentum  optimization approach is. What is its  problem? But before discussing that, I  want to show you the two biggest  benefits of momentum, and they are on  your screen. Here you can see two balls  floating on an error surface. Now, the  blue ball here is gradient descent.  Vanilla gradient descent and the purple  ball is your momentum. Okay? Now, you  will see two benefits here. The first  benefit you will clearly see is that  momentum is faster. Notice when both  balls are released from the top, the  blue ball is actually coming down at a  constant speed. Whereas the purple ball  is gaining speed as it comes down. Okay ? And it arrives sooner. Right? So the  first point for which momentum is used  is acceleration. Fast speed. You get  the training solution quickly. So that  is visible to you. The second big thing  you might be seeing in this image is  that momentum escapes local minima. You  can see there are two pits here. The  small pit represents local minima, the  large pit represents global minima. And  you have to reach the global minima.  And you can see that when the blue ball  came into that small pit, it got stuck  there. It could not get out of it.  Because it didn't have the speed to get  out. Whereas if you talk about momentum , it has momentum, which is why it got  out of that small pit and then entered  the global minima. Now, you might see a  problem here that the biggest benefit  of momentum, its biggest advantage,  sometimes becomes its disadvantage.  Notice once when the purple ball is  entering the large pit, it is not  stopping immediately. Look, it is doing  a to-and-fro motion once. Because it  has momentum. And because of the decay  factor, your velocities are decreasing.  So eventually it settles down. But  before settling down, it takes some  time moving back and forth. So because  of this, momentum becomes a bit slow to  reach the optimum solution. Although it  will remain faster than gradient  descent. But compared to the algorithms  we will study later, it gets a bit weak  because of this behavior. That it  starts to oscillate after reaching  there. This is its biggest disadvantage . I will show you this through another  graph. Now let's look at this error  surface. Which looks something like  this in 3D. So it is high in this way,  the surface is up. And the minima is  right here. This is the pit. We need to  reach here. Okay? The contour of the  same is here. Now, when you apply  momentum, the momentum will build up  very quickly. It will reach here, but  it will be moving so fast that it will  cross it and go higher, then head back  down. Then, it will move in this manner  until it finally stops. So basically, a  lot of time is wasted in these  oscillations. Because of this, momentum  does not become the fastest  optimization technique. This is the  biggest flaw with momentum: when it  gains momentum, it often crosses the  optimum solution, and then, due to the  decay factor we generally use, it  gradually starts to forget the old  velocities while oscillating. Since the  recent velocity is lower, it eventually  stops at the right place. So, that is  how momentum works. And if someone asks  you what the biggest problem is? Then  the biggest problem with momentum is  momentum itself. So guys, in the end,  you should have a feel for all these  optimization algorithms. You should  understand their intuition. And that is  why, before ending the video, I want to  show you this great visualization tool.  Which is a web-based visualization tool . Here, you can see there is a contour  plot with two minima. This is your  global minima. This is your local  minima. Although both look comparable  in size to me. But here, you can click  on any point on this entire surface to  see how your different optimization  algorithms behave. So, I am showing you  a comparison between SGD and momentum.  Although it seems to me that it is not  SGD but batch gradient descent here,  regardless, you should focus more on  momentum. So, you clicked anywhere, and  you can see the blue line is momentum  and the black line is SGD. So, you can  see how it is traversing this entire  terrain. Let's say if you start from  here, you can see these are the same  oscillations I told you about a while  ago, where before reaching the local  minima, momentum will oscillate and  eventually stop when its velocity dies  out. Right? I am showing you by  starting from different points.  Although I will share the code for this  with you. And more than anything, it's  very satisfying. Watching this entire  algorithm work gives a very good  feeling. So, when you get this tool,  you should also try it out. You can see  the momentum went ahead and then came  back. Then it came back and stopped  here after oscillating like this. Maybe  it will be better understood from this  angle. Look at this. See, see. Alright.  So play around with this a bit. It is  quite fun and build your intuition a  little. So that was the video, guys. I  hope you liked it and you could  understand SGD with momentum, our  optimization technique. If you could  understand this well, then it's great  because we will use it again later in  other optimization techniques. So  that's it from my side. See you in the  next video. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and you are",
+      "start": 0.1,
+      "duration": 3.091
+    },
+    {
+      "text": " welcome to my YouTube channel. In this",
+      "start": 2.246,
+      "duration": 3.134
+    },
+    {
+      "text": " video, we will continue with our deep",
+      "start": 4.435,
+      "duration": 3.023
+    },
+    {
+      "text": " learning playlist. We are studying",
+      "start": 6.513,
+      "duration": 2.888
+    },
+    {
+      "text": " optimization techniques in deep",
+      "start": 8.453,
+      "duration": 2.613
+    },
+    {
+      "text": " learning. In the last video, we covered",
+      "start": 10.118,
+      "duration": 3.253
+    },
+    {
+      "text": " a very important topic: exponentially",
+      "start": 12.429,
+      "duration": 3.149
+    },
+    {
+      "text": " weighted moving averages. From this",
+      "start": 14.636,
+      "duration": 3.052
+    },
+    {
+      "text": " video onwards, we will start all our",
+      "start": 16.743,
+      "duration": 3.002
+    },
+    {
+      "text": " optimization techniques one by one. The",
+      "start": 18.801,
+      "duration": 3.351
+    },
+    {
+      "text": " first optimization technique we will",
+      "start": 21.209,
+      "duration": 3.052
+    },
+    {
+      "text": " study is called SGD with momentum. It",
+      "start": 23.318,
+      "duration": 3.211
+    },
+    {
+      "text": " is a very, very important optimization",
+      "start": 25.59,
+      "duration": 3.327
+    },
+    {
+      "text": " technique. Because it not only speeds",
+      "start": 27.978,
+      "duration": 3.232
+    },
+    {
+      "text": " up the training of the neural network",
+      "start": 30.261,
+      "duration": 2.874
+    },
+    {
+      "text": " itself. At the same time, this concept",
+      "start": 32.186,
+      "duration": 2.986
+    },
+    {
+      "text": " of momentum is something you will see",
+      "start": 34.223,
+      "duration": 2.89
+    },
+    {
+      "text": " in further optimization techniques as",
+      "start": 36.164,
+      "duration": 2.889
+    },
+    {
+      "text": " well. So, in that sense, this technique",
+      "start": 38.104,
+      "duration": 3.301
+    },
+    {
+      "text": " becomes very important. Now, I will",
+      "start": 40.464,
+      "duration": 3.035
+    },
+    {
+      "text": " give you a brief introduction to how I",
+      "start": 42.552,
+      "duration": 3.001
+    },
+    {
+      "text": " have structured this entire video. I",
+      "start": 44.606,
+      "duration": 3.716
+    },
+    {
+      "text": " have tried to cover all the basics. I",
+      "start": 47.372,
+      "duration": 3.895
+    },
+    {
+      "text": " have presented all the mathematical",
+      "start": 50.319,
+      "duration": 2.814
+    },
+    {
+      "text": " formulations to you. And even more than",
+      "start": 52.185,
+      "duration": 3.509
+    },
+    {
+      "text": " that, I have tried to bring in a lot of",
+      "start": 54.746,
+      "duration": 3.026
+    },
+    {
+      "text": " animations and visualizations for you.",
+      "start": 56.824,
+      "duration": 2.975
+    },
+    {
+      "text": " Because I feel this is a bit of a",
+      "start": 60.095,
+      "duration": 2.794
+    },
+    {
+      "text": " difficult topic, and people mostly",
+      "start": 61.943,
+      "duration": 2.849
+    },
+    {
+      "text": " understand the math, but they don't",
+      "start": 63.847,
+      "duration": 2.903
+    },
+    {
+      "text": " grasp the intuition part of the",
+      "start": 65.804,
+      "duration": 2.686
+    },
+    {
+      "text": " algorithms. For that, I have added",
+      "start": 67.544,
+      "duration": 4.354
+    },
+    {
+      "text": " plenty of animations and visualizations",
+      "start": 70.955,
+      "duration": 3.223
+    },
+    {
+      "text": " in this video. So if you like it,",
+      "start": 73.235,
+      "duration": 4.11
+    },
+    {
+      "text": " please subscribe to the channel, and if",
+      "start": 76.398,
+      "duration": 3.048
+    },
+    {
+      "text": " you like the video, give it a like as",
+      "start": 78.499,
+      "duration": 2.943
+    },
+    {
+      "text": " well. Okay? Let's start the video. Now,",
+      "start": 80.495,
+      "duration": 5.096
+    },
+    {
+      "text": " before starting this video, I want to",
+      "start": 84.648,
+      "duration": 3.105
+    },
+    {
+      "text": " discuss some basic concepts with you.",
+      "start": 86.81,
+      "duration": 3.105
+    },
+    {
+      "text": " Because in this video, you will see a",
+      "start": 89.886,
+      "duration": 3.106
+    },
+    {
+      "text": " lot of conceptual things. And if your",
+      "start": 92.048,
+      "duration": 4.318
+    },
+    {
+      "text": " basics aren't clear, you won't be able",
+      "start": 95.416,
+      "duration": 2.916
+    },
+    {
+      "text": " to fully understand this video. Among",
+      "start": 97.383,
+      "duration": 5.226
+    },
+    {
+      "text": " the different basics, the first thing I",
+      "start": 101.656,
+      "duration": 2.85
+    },
+    {
+      "text": " need to discuss with you is the",
+      "start": 103.554,
+      "duration": 2.47
+    },
+    {
+      "text": " different types of graphs you will see",
+      "start": 105.071,
+      "duration": 2.803
+    },
+    {
+      "text": " in this video. So you should already",
+      "start": 106.921,
+      "duration": 5.413
+    },
+    {
+      "text": " have an idea of what these different",
+      "start": 111.38,
+      "duration": 2.663
+    },
+    {
+      "text": " graphs represent. Precisely, you will",
+      "start": 113.089,
+      "duration": 3.732
+    },
+    {
+      "text": " see three different graphs in this",
+      "start": 115.876,
+      "duration": 2.878
+    },
+    {
+      "text": " video and the next few videos. So you",
+      "start": 117.809,
+      "duration": 3.198
+    },
+    {
+      "text": " should know in advance what these three",
+      "start": 120.054,
+      "duration": 2.848
+    },
+    {
+      "text": " graphs represent. Okay? So there are",
+      "start": 121.949,
+      "duration": 3.48
+    },
+    {
+      "text": " three graphs here. This is a 2D graph,",
+      "start": 124.477,
+      "duration": 3.816
+    },
+    {
+      "text": " the first one. This is a 3D graph. And",
+      "start": 127.361,
+      "duration": 5.493
+    },
+    {
+      "text": " this is called a contour plot. Now",
+      "start": 131.905,
+      "duration": 3.629
+    },
+    {
+      "text": " let's try to understand what these",
+      "start": 134.582,
+      "duration": 2.633
+    },
+    {
+      "text": " three graphs represent. To understand",
+      "start": 136.263,
+      "duration": 4.882
+    },
+    {
+      "text": " the underlying meaning of these three",
+      "start": 140.199,
+      "duration": 2.983
+    },
+    {
+      "text": " graphs, let's go back and understand",
+      "start": 142.235,
+      "duration": 2.93
+    },
+    {
+      "text": " what happens in deep learning, in",
+      "start": 144.218,
+      "duration": 2.769
+    },
+    {
+      "text": " summary. In deep learning, you have a",
+      "start": 146.041,
+      "duration": 5.983
+    },
+    {
+      "text": " neural network and either a regression",
+      "start": 151.077,
+      "duration": 3.003
+    },
+    {
+      "text": " or a classification problem. Suppose",
+      "start": 153.133,
+      "duration": 5.525
+    },
+    {
+      "text": " it’s a regression problem where you",
+      "start": 157.705,
+      "duration": 2.727
+    },
+    {
+      "text": " have three input columns and you are",
+      "start": 159.479,
+      "duration": 2.68
+    },
+    {
+      "text": " predicting some output from them. Okay?",
+      "start": 161.206,
+      "duration": 4.61
+    },
+    {
+      "text": " Now, the way to determine if the output",
+      "start": 166.848,
+      "duration": 3.097
+    },
+    {
+      "text": " is correct or not is a loss function.",
+      "start": 168.999,
+      "duration": 2.991
+    },
+    {
+      "text": " What does a loss function do? A loss",
+      "start": 173.333,
+      "duration": 5.043
+    },
+    {
+      "text": " function is basically a mathematical",
+      "start": 177.43,
+      "duration": 2.931
+    },
+    {
+      "text": " function whose job is to establish a",
+      "start": 179.414,
+      "duration": 2.931
+    },
+    {
+      "text": " mathematical relationship between your",
+      "start": 181.399,
+      "duration": 3.038
+    },
+    {
+      "text": " prediction and the actual output value.",
+      "start": 183.491,
+      "duration": 3.092
+    },
+    {
+      "text": " For example, one loss function is (y-",
+      "start": 187.864,
+      "duration": 3.564
+    },
+    {
+      "text": "y-hat) squared, which you call Mean",
+      "start": 190.428,
+      "duration": 3.427
+    },
+    {
+      "text": " Squared Error. Okay? So, now understand",
+      "start": 192.924,
+      "duration": 4.443
+    },
+    {
+      "text": " the whole concept here. You send the",
+      "start": 196.431,
+      "duration": 4.597
+    },
+    {
+      "text": " input and calculate y-hat. And then,",
+      "start": 200.088,
+      "duration": 6.733
+    },
+    {
+      "text": " from this y-hat, you calculate the loss",
+      "start": 205.885,
+      "duration": 3.48
+    },
+    {
+      "text": ". If the loss is very high, it means",
+      "start": 208.365,
+      "duration": 4.091
+    },
+    {
+      "text": " your neural network is performing",
+      "start": 211.512,
+      "duration": 2.836
+    },
+    {
+      "text": " poorly. The way to improve it is by",
+      "start": 213.404,
+      "duration": 5.534
+    },
+    {
+      "text": " changing the values of these weights",
+      "start": 217.993,
+      "duration": 2.993
+    },
+    {
+      "text": " and these biases, and changing these",
+      "start": 220.042,
+      "duration": 2.992
+    },
+    {
+      "text": " values changes the y-hat. Changing the",
+      "start": 222.09,
+      "duration": 5.348
+    },
+    {
+      "text": " y-hat, in turn, changes the L again.",
+      "start": 226.502,
+      "duration": 3.303
+    },
+    {
+      "text": " Okay? So, in a way, you can say that",
+      "start": 228.905,
+      "duration": 4.928
+    },
+    {
+      "text": " this loss of yours is actually a",
+      "start": 232.888,
+      "duration": 2.772
+    },
+    {
+      "text": " function of your weights and your",
+      "start": 234.715,
+      "duration": 2.827
+    },
+    {
+      "text": " biases. Okay? So, if you want, like As",
+      "start": 236.597,
+      "duration": 10.501
+    },
+    {
+      "text": " in math, if you write y = f (x), then",
+      "start": 246.171,
+      "duration": 3.694
+    },
+    {
+      "text": " you can plot this graph. What changes",
+      "start": 248.937,
+      "duration": 5.151
+    },
+    {
+      "text": " will occur in y by changing x?",
+      "start": 253.15,
+      "duration": 2.865
+    },
+    {
+      "text": " Similarly, if you want, you can also",
+      "start": 256.231,
+      "duration": 3.09
+    },
+    {
+      "text": " plot this function, the loss function,",
+      "start": 258.379,
+      "duration": 3.207
+    },
+    {
+      "text": " with respect to all of these parameters",
+      "start": 260.644,
+      "duration": 3.264
+    },
+    {
+      "text": ". The only problem is that we humans",
+      "start": 262.908,
+      "duration": 4.927
+    },
+    {
+      "text": " can only see up to 3D. But here,",
+      "start": 266.892,
+      "duration": 5.064
+    },
+    {
+      "text": " suppose if you have 15 weights and 10",
+      "start": 271.02,
+      "duration": 3.364
+    },
+    {
+      "text": " biases, then this becomes a 25-",
+      "start": 273.448,
+      "duration": 2.98
+    },
+    {
+      "text": "dimensional graph that you cannot see.",
+      "start": 275.428,
+      "duration": 3.428
+    },
+    {
+      "text": " So, if we assume for a moment that we",
+      "start": 281.51,
+      "duration": 3.058
+    },
+    {
+      "text": " have a neural network that has only one",
+      "start": 283.623,
+      "duration": 3.17
+    },
+    {
+      "text": " node and no bias in it. Just one weight",
+      "start": 285.848,
+      "duration": 5.259
+    },
+    {
+      "text": " that is giving us an output, and here I",
+      "start": 290.156,
+      "duration": 2.877
+    },
+    {
+      "text": " am getting the input. So now, the loss",
+      "start": 292.081,
+      "duration": 4.813
+    },
+    {
+      "text": " function here will be a function of",
+      "start": 295.954,
+      "duration": 3.069
+    },
+    {
+      "text": " only w, and you can plot it like this.",
+      "start": 298.082,
+      "duration": 3.247
+    },
+    {
+      "text": " Meaning, what changes will happen in L",
+      "start": 301.963,
+      "duration": 3.518
+    },
+    {
+      "text": " by changing w. This graph that you are",
+      "start": 304.547,
+      "duration": 4.306
+    },
+    {
+      "text": " seeing is exactly that. When you plot",
+      "start": 307.904,
+      "duration": 5.279
+    },
+    {
+      "text": " your loss function against any one of",
+      "start": 312.233,
+      "duration": 2.841
+    },
+    {
+      "text": " your single parameters, you will see a",
+      "start": 314.124,
+      "duration": 2.891
+    },
+    {
+      "text": " graph like this. Okay? One input and",
+      "start": 316.064,
+      "duration": 4.932
+    },
+    {
+      "text": " one output, meaning a 2D graph. Now,",
+      "start": 320.064,
+      "duration": 4.244
+    },
+    {
+      "text": " suppose that this neuron you have also",
+      "start": 323.37,
+      "duration": 3.346
+    },
+    {
+      "text": " has a bias. So now you have two",
+      "start": 325.778,
+      "duration": 3.263
+    },
+    {
+      "text": " parameters. This means the loss is a",
+      "start": 328.099,
+      "duration": 5.188
+    },
+    {
+      "text": " function of W and B, so the graph will",
+      "start": 332.345,
+      "duration": 3.175
+    },
+    {
+      "text": " be plotted in 3D and will look like",
+      "start": 334.577,
+      "duration": 3.004
+    },
+    {
+      "text": " this. Okay? I hope you are",
+      "start": 336.638,
+      "duration": 5.41
+    },
+    {
+      "text": " understanding this. We cannot plot",
+      "start": 341.098,
+      "duration": 3.48
+    },
+    {
+      "text": " three parameters because the graph",
+      "start": 343.645,
+      "duration": 3.28
+    },
+    {
+      "text": " would become 3 + 1 = 4D, which we",
+      "start": 345.993,
+      "duration": 3.213
+    },
+    {
+      "text": " cannot imagine. Okay? So, moving",
+      "start": 348.273,
+      "duration": 4.121
+    },
+    {
+      "text": " forward in this entire video. I will",
+      "start": 351.462,
+      "duration": 6.894
+    },
+    {
+      "text": " show you the loss plotted against",
+      "start": 357.407,
+      "duration": 2.666
+    },
+    {
+      "text": " either a single parameter or two",
+      "start": 359.123,
+      "duration": 2.616
+    },
+    {
+      "text": " parameters. Okay? You will see both of",
+      "start": 360.789,
+      "duration": 6.679
+    },
+    {
+      "text": " these graphs. Now the question is, what",
+      "start": 366.517,
+      "duration": 3.314
+    },
+    {
+      "text": " is this third graph? This third graph",
+      "start": 368.886,
+      "duration": 3.393
+    },
+    {
+      "text": " is very simple. It is a 2D projection",
+      "start": 371.335,
+      "duration": 4.162
+    },
+    {
+      "text": " of this graph. Meaning, if you look",
+      "start": 374.557,
+      "duration": 6.325
+    },
+    {
+      "text": " from above, take a top view, you can",
+      "start": 379.938,
+      "duration": 3.017
+    },
+    {
+      "text": " actually plot this graph on the ground",
+      "start": 382.011,
+      "duration": 3.128
+    },
+    {
+      "text": " like this. Meaning, for different",
+      "start": 384.195,
+      "duration": 6.916
+    },
+    {
+      "text": " values of B and A, the loss value looks",
+      "start": 390.173,
+      "duration": 3.387
+    },
+    {
+      "text": " like this. Okay? It's as if you drew",
+      "start": 392.621,
+      "duration": 5.08
+    },
+    {
+      "text": " concentric circles on this curve. Like",
+      "start": 396.751,
+      "duration": 4.781
+    },
+    {
+      "text": " this. Okay? And then you projected it",
+      "start": 400.599,
+      "duration": 4.725
+    },
+    {
+      "text": " onto the ground below. That is what a",
+      "start": 404.369,
+      "duration": 3.744
+    },
+    {
+      "text": " contour plot is. Okay? It is a way to",
+      "start": 407.17,
+      "duration": 3.828
+    },
+    {
+      "text": " view this 3D graph in 2D. Okay? Contour",
+      "start": 410.065,
+      "duration": 4.928
+    },
+    {
+      "text": " plots can be a bit difficult to imagine",
+      "start": 414.048,
+      "duration": 3.154
+    },
+    {
+      "text": " or understand. So I will show you some",
+      "start": 416.257,
+      "duration": 5.155
+    },
+    {
+      "text": " examples so that you can get a clearer",
+      "start": 420.467,
+      "duration": 3.078
+    },
+    {
+      "text": " picture in your mind, so that if you",
+      "start": 422.6,
+      "duration": 2.969
+    },
+    {
+      "text": " are shown this graph, you can create a",
+      "start": 424.624,
+      "duration": 3.078
+    },
+    {
+      "text": " contour, or if you are shown a contour,",
+      "start": 426.757,
+      "duration": 3.133
+    },
+    {
+      "text": " you can imagine the 3D. So guys, I have",
+      "start": 428.945,
+      "duration": 4.818
+    },
+    {
+      "text": " done some searches on Google and found",
+      "start": 432.818,
+      "duration": 3.079
+    },
+    {
+      "text": " some images based on that. I will show",
+      "start": 434.952,
+      "duration": 3.533
+    },
+    {
+      "text": " you the examples through those images.",
+      "start": 437.533,
+      "duration": 2.829
+    },
+    {
+      "text": " My only suggestion is to develop an",
+      "start": 440.103,
+      "duration": 3.009
+    },
+    {
+      "text": " intuition. Once the intuition is",
+      "start": 442.169,
+      "duration": 2.839
+    },
+    {
+      "text": " developed, it becomes easier to",
+      "start": 444.063,
+      "duration": 2.719
+    },
+    {
+      "text": " understand contour plots. Okay? Also,",
+      "start": 445.837,
+      "duration": 4.774
+    },
+    {
+      "text": " as you convert 3D to 2D, you are",
+      "start": 449.675,
+      "duration": 3.053
+    },
+    {
+      "text": " basically losing information of one",
+      "start": 451.793,
+      "duration": 3.245
+    },
+    {
+      "text": " dimension, so that lost information is",
+      "start": 454.102,
+      "duration": 3.438
+    },
+    {
+      "text": " represented by color in a contour plot.",
+      "start": 456.604,
+      "duration": 3.503
+    },
+    {
+      "text": " So here you can see that there are four",
+      "start": 461.672,
+      "duration": 2.87
+    },
+    {
+      "text": " maxima. Okay? A raised surface. So how",
+      "start": 463.59,
+      "duration": 5.767
+    },
+    {
+      "text": " is that shown? By using yellow color.",
+      "start": 468.415,
+      "duration": 3.716
+    },
+    {
+      "text": " Okay? Yellow color means this innermost",
+      "start": 471.383,
+      "duration": 4.627
+    },
+    {
+      "text": " circle is slightly raised, and the more",
+      "start": 475.067,
+      "duration": 3.207
+    },
+    {
+      "text": " purple the shade, the lower it is. So",
+      "start": 477.33,
+      "duration": 4.747
+    },
+    {
+      "text": " this color tells you the height, which",
+      "start": 481.128,
+      "duration": 2.946
+    },
+    {
+      "text": " is the third dimension. Okay? So that",
+      "start": 483.125,
+      "duration": 3.593
+    },
+    {
+      "text": " was one example. You can see this one.",
+      "start": 485.774,
+      "duration": 3.773
+    },
+    {
+      "text": " You can imagine this as a sheet coming",
+      "start": 490.138,
+      "duration": 2.805
+    },
+    {
+      "text": " down from above with a pit in the",
+      "start": 491.991,
+      "duration": 2.568
+    },
+    {
+      "text": " middle. Okay? So its representation,",
+      "start": 493.607,
+      "duration": 4.05
+    },
+    {
+      "text": " you can see on the contour plot below,",
+      "start": 496.714,
+      "duration": 3.183
+    },
+    {
+      "text": " it looks like this. Blue color",
+      "start": 498.954,
+      "duration": 4.311
+    },
+    {
+      "text": " represents a pit or lower altitude, and",
+      "start": 502.322,
+      "duration": 3.245
+    },
+    {
+      "text": " brown color represents higher altitude.",
+      "start": 504.624,
+      "duration": 3.245
+    },
+    {
+      "text": " Okay? This is similar as well. Here in",
+      "start": 508.862,
+      "duration": 6.168
+    },
+    {
+      "text": " the middle, there is a flat lower",
+      "start": 514.081,
+      "duration": 2.712
+    },
+    {
+      "text": " surface which is represented by this",
+      "start": 515.845,
+      "duration": 2.867
+    },
+    {
+      "text": " ellipse below. The next one is this.",
+      "start": 517.764,
+      "duration": 5.585
+    },
+    {
+      "text": " This type of surface is called a saddle",
+      "start": 523.444,
+      "duration": 2.958
+    },
+    {
+      "text": " point. We will discuss this in a little",
+      "start": 525.452,
+      "duration": 3.215
+    },
+    {
+      "text": " while. But you can see how the contour",
+      "start": 527.714,
+      "duration": 3.501
+    },
+    {
+      "text": " plot below appears. It is raised on two",
+      "start": 530.269,
+      "duration": 3.705
+    },
+    {
+      "text": " sides, so it is represented by the",
+      "start": 533.034,
+      "duration": 3.064
+    },
+    {
+      "text": " orange color, and on two sides, it is",
+      "start": 535.159,
+      "duration": 3.246
+    },
+    {
+      "text": " quite sunken. The bottom part is",
+      "start": 537.465,
+      "duration": 2.772
+    },
+    {
+      "text": " represented by the blue color. And in",
+      "start": 539.286,
+      "duration": 2.868
+    },
+    {
+      "text": " the middle, there is a flat surface. So",
+      "start": 541.204,
+      "duration": 2.985
+    },
+    {
+      "text": " wherever there is a flat surface, the",
+      "start": 543.241,
+      "duration": 2.916
+    },
+    {
+      "text": " concentric circles will be far apart",
+      "start": 545.208,
+      "duration": 2.864
+    },
+    {
+      "text": " from each other. You need to remember",
+      "start": 547.124,
+      "duration": 4.299
+    },
+    {
+      "text": " this because these concentric circles",
+      "start": 550.474,
+      "duration": 2.916
+    },
+    {
+      "text": " represent the same altitude. So where",
+      "start": 552.441,
+      "duration": 4.833
+    },
+    {
+      "text": " it is flat, everyone has the same",
+      "start": 556.334,
+      "duration": 2.99
+    },
+    {
+      "text": " altitude. That is why there is no need",
+      "start": 558.384,
+      "duration": 3.95
+    },
+    {
+      "text": " for more than one concentric circle.",
+      "start": 561.384,
+      "duration": 2.803
+    },
+    {
+      "text": " Okay? Similarly, you can see this is a",
+      "start": 563.902,
+      "duration": 5.102
+    },
+    {
+      "text": " sheet that is bent to one side, and it",
+      "start": 568.06,
+      "duration": 3.139
+    },
+    {
+      "text": " looks like this. Okay? The red side",
+      "start": 570.255,
+      "duration": 4.054
+    },
+    {
+      "text": " represents higher altitude. The blue",
+      "start": 573.365,
+      "duration": 3.676
+    },
+    {
+      "text": " side represents the lowest altitude.",
+      "start": 576.096,
+      "duration": 2.981
+    },
+    {
+      "text": " This is also interesting. Yellow color",
+      "start": 579.444,
+      "duration": 3.506
+    },
+    {
+      "text": " represents higher altitude. Blue color",
+      "start": 582.006,
+      "duration": 3.256
+    },
+    {
+      "text": " represents lower altitude. So if you",
+      "start": 584.32,
+      "duration": 3.105
+    },
+    {
+      "text": " remove this 3D surface and look only at",
+      "start": 586.481,
+      "duration": 3.178
+    },
+    {
+      "text": " the contour, you will see a contour",
+      "start": 588.715,
+      "duration": 2.955
+    },
+    {
+      "text": " like this. Okay? So this is one more.",
+      "start": 590.726,
+      "duration": 4.1
+    },
+    {
+      "text": " This is again a saddle point where the",
+      "start": 594.819,
+      "duration": 3.035
+    },
+    {
+      "text": " surface is rising from two sides. And",
+      "start": 596.907,
+      "duration": 3.016
+    },
+    {
+      "text": " the surface is dipping from two sides.",
+      "start": 598.973,
+      "duration": 2.883
+    },
+    {
+      "text": " Okay? This is actually the curve for",
+      "start": 600.956,
+      "duration": 3.9
+    },
+    {
+      "text": " x²-y². So you can see that blue color",
+      "start": 603.935,
+      "duration": 3.964
+    },
+    {
+      "text": " represents the minima and orange color",
+      "start": 606.95,
+      "duration": 2.947
+    },
+    {
+      "text": " represents the maxima. In the middle is",
+      "start": 608.948,
+      "duration": 5.058
+    },
+    {
+      "text": " this saddle point where all your",
+      "start": 613.054,
+      "duration": 2.565
+    },
+    {
+      "text": " concentric lines or curves are a bit",
+      "start": 614.667,
+      "duration": 2.76
+    },
+    {
+      "text": " far from each other. Which indicates",
+      "start": 616.476,
+      "duration": 4.301
+    },
+    {
+      "text": " that for a long distance, your value",
+      "start": 619.833,
+      "duration": 2.989
+    },
+    {
+      "text": " remains very much the same. Again, it",
+      "start": 621.877,
+      "duration": 4.621
+    },
+    {
+      "text": " is similar. The raised point is orange.",
+      "start": 625.565,
+      "duration": 3.637
+    },
+    {
+      "text": " The sunken part below is blue. Let's",
+      "start": 629.034,
+      "duration": 4.018
+    },
+    {
+      "text": " look at the last two. Again, this one,",
+      "start": 632.097,
+      "duration": 4.279
+    },
+    {
+      "text": " the whitish shade shows it is raised,",
+      "start": 635.436,
+      "duration": 3.223
+    },
+    {
+      "text": " and the dark brown/orange shade shows",
+      "start": 637.719,
+      "duration": 3.222
+    },
+    {
+      "text": " it is sunken. You have understood the",
+      "start": 640.002,
+      "duration": 4.087
+    },
+    {
+      "text": " graphs. Now, there is one more concept",
+      "start": 643.138,
+      "duration": 3.189
+    },
+    {
+      "text": " you should know before going deeper",
+      "start": 645.382,
+      "duration": 2.922
+    },
+    {
+      "text": " into this video. And that concept is",
+      "start": 647.359,
+      "duration": 3.438
+    },
+    {
+      "text": " convex versus non-convex optimization.",
+      "start": 649.861,
+      "duration": 3.439
+    },
+    {
+      "text": " Although, I have already made an entire",
+      "start": 652.614,
+      "duration": 3.231
+    },
+    {
+      "text": " video on this. But let me quickly",
+      "start": 654.902,
+      "duration": 6.409
+    },
+    {
+      "text": " explain to you that when you are",
+      "start": 660.361,
+      "duration": 2.615
+    },
+    {
+      "text": " working in deep learning and building",
+      "start": 662.026,
+      "duration": 2.867
+    },
+    {
+      "text": " complex neural network architectures,",
+      "start": 663.944,
+      "duration": 2.867
+    },
+    {
+      "text": " the graph of your loss function is not",
+      "start": 665.861,
+      "duration": 2.918
+    },
+    {
+      "text": " that simple. It is a bit on the complex",
+      "start": 667.829,
+      "duration": 7.269
+    },
+    {
+      "text": " side. Okay? That is exactly what is",
+      "start": 674.152,
+      "duration": 3.573
+    },
+    {
+      "text": " being shown here. In the first diagram,",
+      "start": 676.775,
+      "duration": 3.825
+    },
+    {
+      "text": " you can see we are using a graph where",
+      "start": 679.653,
+      "duration": 3.011
+    },
+    {
+      "text": " we are plotting the loss against just",
+      "start": 681.717,
+      "duration": 2.957
+    },
+    {
+      "text": " one parameter. And you can see that you",
+      "start": 683.727,
+      "duration": 5.498
+    },
+    {
+      "text": " will encounter such loss functions in",
+      "start": 688.273,
+      "duration": 2.769
+    },
+    {
+      "text": " deep learning. Okay? A 3D version of",
+      "start": 690.09,
+      "duration": 5.06
+    },
+    {
+      "text": " this is here. This is a very simple",
+      "start": 694.212,
+      "duration": 3.444
+    },
+    {
+      "text": " loss function, a convex optimization",
+      "start": 696.718,
+      "duration": 3.223
+    },
+    {
+      "text": " problem, and this is a non-convex",
+      "start": 699.002,
+      "duration": 3.038
+    },
+    {
+      "text": " optimization problem. Now, if you want",
+      "start": 701.102,
+      "duration": 3.578
+    },
+    {
+      "text": " to understand the difference between",
+      "start": 703.737,
+      "duration": 3.036
+    },
+    {
+      "text": " convex and non-convex, I will link a",
+      "start": 705.83,
+      "duration": 3.036
+    },
+    {
+      "text": " video. You can go and watch that. Now",
+      "start": 707.922,
+      "duration": 4.344
+    },
+    {
+      "text": " the question is, non-convex",
+      "start": 711.325,
+      "duration": 2.573
+    },
+    {
+      "text": " optimization, as is visible, would",
+      "start": 712.956,
+      "duration": 2.981
+    },
+    {
+      "text": " obviously be more difficult to reach",
+      "start": 714.995,
+      "duration": 3.097
+    },
+    {
+      "text": " the correct solution here. By the way,",
+      "start": 717.151,
+      "duration": 4.598
+    },
+    {
+      "text": " the correct solution means this is your",
+      "start": 720.801,
+      "duration": 3.047
+    },
+    {
+      "text": " parameter. This is your loss, and your",
+      "start": 722.901,
+      "duration": 3.78
+    },
+    {
+      "text": " graph looks something like this. You",
+      "start": 725.733,
+      "duration": 3.781
+    },
+    {
+      "text": " need to find a value of loss for which,",
+      "start": 728.576,
+      "duration": 3.42
+    },
+    {
+      "text": " oh, I am sorry. You need to find a",
+      "start": 731.058,
+      "duration": 3.846
+    },
+    {
+      "text": " value of weight, as in W, for which the",
+      "start": 733.961,
+      "duration": 3.245
+    },
+    {
+      "text": " loss value is minimum. Basically, you",
+      "start": 736.263,
+      "duration": 3.677
+    },
+    {
+      "text": " have to traverse to the minima of this",
+      "start": 738.991,
+      "duration": 2.944
+    },
+    {
+      "text": " curve. We have already understood this",
+      "start": 740.987,
+      "duration": 3.588
+    },
+    {
+      "text": " concept. You need to reach here or here",
+      "start": 743.627,
+      "duration": 4.186
+    },
+    {
+      "text": ". You need to reach the minima of the",
+      "start": 746.813,
+      "duration": 4.037
+    },
+    {
+      "text": " curve. Now, if you are in a non-convex",
+      "start": 749.894,
+      "duration": 3.951
+    },
+    {
+      "text": " optimization problem, reaching the",
+      "start": 752.904,
+      "duration": 3.01
+    },
+    {
+      "text": " minima becomes very difficult. And",
+      "start": 754.973,
+      "duration": 3.86
+    },
+    {
+      "text": " there are primarily three reasons for",
+      "start": 757.878,
+      "duration": 2.671
+    },
+    {
+      "text": " that. The first reason is local minima.",
+      "start": 759.595,
+      "duration": 6.156
+    },
+    {
+      "text": " The second reason is saddle points. And",
+      "start": 768.386,
+      "duration": 7.419
+    },
+    {
+      "text": " the third is high curvature. I will",
+      "start": 774.852,
+      "duration": 4.696
+    },
+    {
+      "text": " visualize these three for you once.",
+      "start": 778.601,
+      "duration": 2.862
+    },
+    {
+      "text": " Local minima means a place where the",
+      "start": 781.984,
+      "duration": 2.997
+    },
+    {
+      "text": " slope is zero. We stop right here. Now",
+      "start": 784.037,
+      "duration": 5.923
+    },
+    {
+      "text": " the problem is, suppose you randomly",
+      "start": 789.016,
+      "duration": 3.012
+    },
+    {
+      "text": " initialized your weights from here,",
+      "start": 791.083,
+      "duration": 2.956
+    },
+    {
+      "text": " then obviously, as you take jumps, you",
+      "start": 793.095,
+      "duration": 3.123
+    },
+    {
+      "text": " will end up stopping at this minima.",
+      "start": 795.274,
+      "duration": 3.012
+    },
+    {
+      "text": " You will never be able to reach here.",
+      "start": 798.277,
+      "duration": 2.685
+    },
+    {
+      "text": " Meaning, you will get a suboptimal",
+      "start": 800.697,
+      "duration": 2.947
+    },
+    {
+      "text": " solution, which results in poor",
+      "start": 802.701,
+      "duration": 2.775
+    },
+    {
+      "text": " performance. Right? So, if you want to",
+      "start": 804.533,
+      "duration": 5.101
+    },
+    {
+      "text": " understand local minima in 3D, think of",
+      "start": 808.688,
+      "duration": 3.106
+    },
+    {
+      "text": " it as getting stuck in this pit when",
+      "start": 810.848,
+      "duration": 2.945
+    },
+    {
+      "text": " you were supposed to reach here.",
+      "start": 812.847,
+      "duration": 2.729
+    },
+    {
+      "text": " Because you started from here. It is",
+      "start": 815.738,
+      "duration": 2.665
+    },
+    {
+      "text": " possible that if you had started from",
+      "start": 817.443,
+      "duration": 2.491
+    },
+    {
+      "text": " here, you would have reached here",
+      "start": 818.974,
+      "duration": 2.33
+    },
+    {
+      "text": " directly. But since you started from",
+      "start": 820.344,
+      "duration": 2.753
+    },
+    {
+      "text": " here randomly, you got stuck here. So,",
+      "start": 822.146,
+      "duration": 2.958
+    },
+    {
+      "text": " local minima gives you a sub-optimal",
+      "start": 824.16,
+      "duration": 3.042
+    },
+    {
+      "text": " solution, and you end up getting stuck",
+      "start": 826.259,
+      "duration": 3.155
+    },
+    {
+      "text": " in it. This is the first problem with",
+      "start": 828.471,
+      "duration": 3.116
+    },
+    {
+      "text": " non-convex optimization. The second",
+      "start": 830.643,
+      "duration": 3.014
+    },
+    {
+      "text": " problem is the saddle point. So, a",
+      "start": 832.706,
+      "duration": 4.425
+    },
+    {
+      "text": " saddle point is a point where in one",
+      "start": 836.189,
+      "duration": 3.106
+    },
+    {
+      "text": " direction your surface is rising, and",
+      "start": 838.353,
+      "duration": 3.164
+    },
+    {
+      "text": " in the other direction, it is falling.",
+      "start": 840.576,
+      "duration": 3.223
+    },
+    {
+      "text": " It is going down. For instance, look",
+      "start": 844.062,
+      "duration": 4.634
+    },
+    {
+      "text": " here; this area, the one between these",
+      "start": 847.756,
+      "duration": 3.297
+    },
+    {
+      "text": " two heights, this area is a saddle",
+      "start": 850.113,
+      "duration": 3.055
+    },
+    {
+      "text": " point. Right? Now, the problem with a",
+      "start": 852.229,
+      "duration": 6.046
+    },
+    {
+      "text": " saddle point is that you see a flat",
+      "start": 857.331,
+      "duration": 2.938
+    },
+    {
+      "text": " surface for a long distance. I mean, a",
+      "start": 859.325,
+      "duration": 3.844
+    },
+    {
+      "text": " saddle point looks something like this.",
+      "start": 862.222,
+      "duration": 3.032
+    },
+    {
+      "text": " On one side it is rising, and on the",
+      "start": 864.354,
+      "duration": 3.15
+    },
+    {
+      "text": " other, it is falling. So, for a long",
+      "start": 866.564,
+      "duration": 3.264
+    },
+    {
+      "text": " distance, the slope changes very",
+      "start": 868.893,
+      "duration": 3.079
+    },
+    {
+      "text": " gradually. And what happens because of",
+      "start": 871.037,
+      "duration": 2.899
+    },
+    {
+      "text": " that? Since our entire navigation is",
+      "start": 872.979,
+      "duration": 3.653
+    },
+    {
+      "text": " based on the slope. So, if your slope",
+      "start": 875.686,
+      "duration": 4.132
+    },
+    {
+      "text": " changes very gradually, your speed",
+      "start": 878.882,
+      "duration": 3.187
+    },
+    {
+      "text": " becomes very slow, and your training",
+      "start": 881.133,
+      "duration": 3.316
+    },
+    {
+      "text": " becomes very slow. Like, look at this",
+      "start": 883.513,
+      "duration": 3.222
+    },
+    {
+      "text": " point. If you get here, it will take",
+      "start": 885.789,
+      "duration": 3.101
+    },
+    {
+      "text": " you a lot of time to get from here to",
+      "start": 887.937,
+      "duration": 2.74
+    },
+    {
+      "text": " there. Because you will spend a lot of",
+      "start": 889.724,
+      "duration": 2.846
+    },
+    {
+      "text": " time in this area. Because the slope is",
+      "start": 891.618,
+      "duration": 3.065
+    },
+    {
+      "text": " very low. You move forward very slowly.",
+      "start": 893.739,
+      "duration": 3.451
+    },
+    {
+      "text": " Right? Similarly, if you get stuck here",
+      "start": 896.734,
+      "duration": 3.476
+    },
+    {
+      "text": ", you will face the same problem. So,",
+      "start": 899.21,
+      "duration": 3.568
+    },
+    {
+      "text": " in non-convex, you can also encounter",
+      "start": 901.846,
+      "duration": 3.517
+    },
+    {
+      "text": " saddle points. And the last problem is",
+      "start": 904.431,
+      "duration": 4.259
+    },
+    {
+      "text": " high curvature. What is curvature?",
+      "start": 907.739,
+      "duration": 3.443
+    },
+    {
+      "text": " Let's understand. Here, you are able to",
+      "start": 910.434,
+      "duration": 3.776
+    },
+    {
+      "text": " draw two circles. So, the one with the",
+      "start": 913.271,
+      "duration": 3.803
+    },
+    {
+      "text": " larger radius has smaller curvature,",
+      "start": 916.13,
+      "duration": 3.04
+    },
+    {
+      "text": " and the one with the smaller radius has",
+      "start": 918.227,
+      "duration": 3.21
+    },
+    {
+      "text": " larger curvature. So, this one, this",
+      "start": 920.493,
+      "duration": 3.546
+    },
+    {
+      "text": " curve, has a very large curvature. So,",
+      "start": 923.109,
+      "duration": 5.035
+    },
+    {
+      "text": " traversing this curvature becomes a bit",
+      "start": 927.202,
+      "duration": 3.248
+    },
+    {
+      "text": " difficult, and you will see this",
+      "start": 929.508,
+      "duration": 2.845
+    },
+    {
+      "text": " curvature to be very high in non-convex",
+      "start": 931.41,
+      "duration": 3.248
+    },
+    {
+      "text": " optimization. So, because of these",
+      "start": 933.716,
+      "duration": 5.199
+    },
+    {
+      "text": " three problems, you have to apply",
+      "start": 937.973,
+      "duration": 2.901
+    },
+    {
+      "text": " optimization techniques. Your vanilla",
+      "start": 939.931,
+      "duration": 5.946
+    },
+    {
+      "text": " gradient descent or stochastic gradient",
+      "start": 944.933,
+      "duration": 3.173
+    },
+    {
+      "text": " descent doesn't navigate these three",
+      "start": 947.162,
+      "duration": 3.006
+    },
+    {
+      "text": " problems very well, which leads to",
+      "start": 949.223,
+      "duration": 2.895
+    },
+    {
+      "text": " either poor training, as in you get a",
+      "start": 951.174,
+      "duration": 3.061
+    },
+    {
+      "text": " sub-optimal solution, or your training",
+      "start": 953.291,
+      "duration": 3.117
+    },
+    {
+      "text": " is very slow. So, I will now show you",
+      "start": 955.464,
+      "duration": 9.717
+    },
+    {
+      "text": " how your vanilla gradient descent or",
+      "start": 964.234,
+      "duration": 2.922
+    },
+    {
+      "text": " your stochastic gradient descent",
+      "start": 966.209,
+      "duration": 2.709
+    },
+    {
+      "text": " navigates the loss curve, and then I",
+      "start": 967.971,
+      "duration": 2.922
+    },
+    {
+      "text": " will tell you how you can bring in",
+      "start": 969.947,
+      "duration": 2.815
+    },
+    {
+      "text": " improvements by applying optimization.",
+      "start": 971.816,
+      "duration": 3.029
+    },
+    {
+      "text": " So, what I’m going to show you now is",
+      "start": 979.242,
+      "duration": 3.057
+    },
+    {
+      "text": " a demonstration of the three algorithms",
+      "start": 981.352,
+      "duration": 3.057
+    },
+    {
+      "text": " we have studied so far. Batch Gradient",
+      "start": 983.462,
+      "duration": 3.386
+    },
+    {
+      "text": " Descent, Stochastic Gradient Descent,",
+      "start": 985.91,
+      "duration": 3.272
+    },
+    {
+      "text": " and Mini-batch Gradient Descent. And",
+      "start": 988.243,
+      "duration": 3.47
+    },
+    {
+      "text": " these three visualizations I’m",
+      "start": 990.765,
+      "duration": 2.68
+    },
+    {
+      "text": " showing you are for a convex",
+      "start": 992.497,
+      "duration": 2.47
+    },
+    {
+      "text": " optimization problem. Meaning, the",
+      "start": 994.019,
+      "duration": 3.499
+    },
+    {
+      "text": " curve of your loss function is very",
+      "start": 996.573,
+      "duration": 2.926
+    },
+    {
+      "text": " simple. You can see it’s a 3D",
+      "start": 998.554,
+      "duration": 3.093
+    },
+    {
+      "text": " parabola. So first, let me show you",
+      "start": 1000.703,
+      "duration": 3.125
+    },
+    {
+      "text": " Batch Gradient Descent. Where you",
+      "start": 1002.889,
+      "duration": 3.926
+    },
+    {
+      "text": " update your weights 'values after you",
+      "start": 1005.871,
+      "duration": 3.062
+    },
+    {
+      "text": " have seen the entire dataset once. So",
+      "start": 1007.989,
+      "duration": 4.861
+    },
+    {
+      "text": " you can see, it reaches the minima",
+      "start": 1011.906,
+      "duration": 2.924
+    },
+    {
+      "text": " quite smoothly like this. Right? It",
+      "start": 1013.886,
+      "duration": 5.479
+    },
+    {
+      "text": " takes large jumps at the beginning and",
+      "start": 1018.421,
+      "duration": 3.104
+    },
+    {
+      "text": " as it approaches the minima, it starts",
+      "start": 1020.58,
+      "duration": 3.104
+    },
+    {
+      "text": " taking smaller jumps. Next, I’m going",
+      "start": 1022.74,
+      "duration": 6.802
+    },
+    {
+      "text": " to show you Stochastic Gradient Descent",
+      "start": 1028.596,
+      "duration": 3.088
+    },
+    {
+      "text": ", where you update your weights after",
+      "start": 1030.684,
+      "duration": 2.98
+    },
+    {
+      "text": " seeing just one row of data, meaning",
+      "start": 1032.718,
+      "duration": 2.927
+    },
+    {
+      "text": " you are making changes to the weights",
+      "start": 1034.698,
+      "duration": 2.981
+    },
+    {
+      "text": " by trusting very little data. Because",
+      "start": 1036.732,
+      "duration": 6.138
+    },
+    {
+      "text": " of this, its graph is a bit erratic. It",
+      "start": 1041.929,
+      "duration": 4.334
+    },
+    {
+      "text": " is spiky. You can see. Watch it once",
+      "start": 1045.337,
+      "duration": 9.443
+    },
+    {
+      "text": " again. In the beginning, you can see",
+      "start": 1053.832,
+      "duration": 2.752
+    },
+    {
+      "text": " it’s going up and down. It is even",
+      "start": 1055.63,
+      "duration": 2.725
+    },
+    {
+      "text": " leaving the curve. But eventually, it",
+      "start": 1057.402,
+      "duration": 2.944
+    },
+    {
+      "text": " is reaching the right place. And the",
+      "start": 1059.402,
+      "duration": 11.879
+    },
+    {
+      "text": " middle ground between these two is",
+      "start": 1070.33,
+      "duration": 2.673
+    },
+    {
+      "text": " Mini-batch Gradient Descent, where you",
+      "start": 1072.052,
+      "duration": 2.869
+    },
+    {
+      "text": " update your weights after seeing a",
+      "start": 1073.97,
+      "duration": 2.673
+    },
+    {
+      "text": " batch of data. And you can see it is",
+      "start": 1075.692,
+      "duration": 6.347
+    },
+    {
+      "text": " slightly stochastic. And it's an",
+      "start": 1081.092,
+      "duration": 7.047
+    },
+    {
+      "text": " algorithm between the two. It is spiky",
+      "start": 1087.187,
+      "duration": 4.04
+    },
+    {
+      "text": " but also a bit smooth. Now, we will",
+      "start": 1090.289,
+      "duration": 4.029
+    },
+    {
+      "text": " start the topic of today’s video from",
+      "start": 1093.373,
+      "duration": 3.112
+    },
+    {
+      "text": " here. Momentum Optimization. Right? So,",
+      "start": 1095.539,
+      "duration": 5.199
+    },
+    {
+      "text": " what is momentum? Before knowing that,",
+      "start": 1099.81,
+      "duration": 5.036
+    },
+    {
+      "text": " I would like to tell you what problem",
+      "start": 1103.896,
+      "duration": 2.846
+    },
+    {
+      "text": " momentum solves. A while ago, I told",
+      "start": 1105.791,
+      "duration": 6.276
+    },
+    {
+      "text": " you that in neural networks, you",
+      "start": 1111.128,
+      "duration": 2.949
+    },
+    {
+      "text": " encounter non-convex optimization.",
+      "start": 1113.137,
+      "duration": 3.071
+    },
+    {
+      "text": " Which, in simple words, means that the",
+      "start": 1118.462,
+      "duration": 3.311
+    },
+    {
+      "text": " entire curve of your loss function is",
+      "start": 1120.834,
+      "duration": 3.251
+    },
+    {
+      "text": " very complex. And because of that",
+      "start": 1123.146,
+      "duration": 4.771
+    },
+    {
+      "text": " complexity, two or three problems arise",
+      "start": 1126.975,
+      "duration": 3.277
+    },
+    {
+      "text": ". The first problem that arises is that",
+      "start": 1129.252,
+      "duration": 3.648
+    },
+    {
+      "text": " of high curvature. I told you about it",
+      "start": 1131.951,
+      "duration": 3.905
+    },
+    {
+      "text": " a little while ago. The second problem",
+      "start": 1134.903,
+      "duration": 4.586
+    },
+    {
+      "text": " that arises is that of consistent",
+      "start": 1138.541,
+      "duration": 2.735
+    },
+    {
+      "text": " gradients. Consistent gradients.",
+      "start": 1140.329,
+      "duration": 5.319
+    },
+    {
+      "text": " Meaning, your slope changes in a way",
+      "start": 1146.997,
+      "duration": 3.149
+    },
+    {
+      "text": " that is very slow. So, in this, your",
+      "start": 1149.206,
+      "duration": 6.206
+    },
+    {
+      "text": " normal gradient descent algorithms",
+      "start": 1154.478,
+      "duration": 3.253
+    },
+    {
+      "text": " become slow. Because your update is",
+      "start": 1156.797,
+      "duration": 4.809
+    },
+    {
+      "text": " based on the slope, and since the slope",
+      "start": 1160.658,
+      "duration": 3.006
+    },
+    {
+      "text": " is not changing much, the update",
+      "start": 1162.716,
+      "duration": 2.646
+    },
+    {
+      "text": " doesn't happen much either. Basically,",
+      "start": 1164.413,
+      "duration": 3.774
+    },
+    {
+      "text": " your algorithm has slowed down. And the",
+      "start": 1167.246,
+      "duration": 4.287
+    },
+    {
+      "text": " third one is noisy gradient. Noisy",
+      "start": 1170.587,
+      "duration": 4.981
+    },
+    {
+      "text": " gradient means that your gradient has",
+      "start": 1174.62,
+      "duration": 2.901
+    },
+    {
+      "text": " some noise in it. Meaning, it is",
+      "start": 1176.573,
+      "duration": 3.665
+    },
+    {
+      "text": " fluctuating a lot. Due to which you",
+      "start": 1179.302,
+      "duration": 5.52
+    },
+    {
+      "text": " have to face local minima, and many",
+      "start": 1183.876,
+      "duration": 2.892
+    },
+    {
+      "text": " times you get stuck in local minima and",
+      "start": 1185.822,
+      "duration": 3.108
+    },
+    {
+      "text": " have to settle for a sub-optimal",
+      "start": 1187.984,
+      "duration": 2.729
+    },
+    {
+      "text": " solution, which is not good. So, the",
+      "start": 1189.767,
+      "duration": 5.78
+    },
+    {
+      "text": " momentum technique we are about to",
+      "start": 1194.604,
+      "duration": 2.954
+    },
+    {
+      "text": " study now is able to navigate all these",
+      "start": 1196.615,
+      "duration": 6.243
+    },
+    {
+      "text": " three problems. Okay? Even if the slope",
+      "start": 1201.91,
+      "duration": 5.932
+    },
+    {
+      "text": " is very low, it is still able to move",
+      "start": 1206.896,
+      "duration": 3.016
+    },
+    {
+      "text": " forward with speed. If there is a local",
+      "start": 1208.966,
+      "duration": 6.251
+    },
+    {
+      "text": " minima, it has the capability to get",
+      "start": 1214.271,
+      "duration": 2.946
+    },
+    {
+      "text": " out of it, and it can also easily",
+      "start": 1216.271,
+      "duration": 2.784
+    },
+    {
+      "text": " navigate loss functions with high",
+      "start": 1218.109,
+      "duration": 2.783
+    },
+    {
+      "text": " curvature. So, if someone asks you why",
+      "start": 1219.946,
+      "duration": 5.235
+    },
+    {
+      "text": " momentum should be used? Why should",
+      "start": 1224.243,
+      "duration": 3.252
+    },
+    {
+      "text": " momentum be used as an optimization",
+      "start": 1226.548,
+      "duration": 2.862
+    },
+    {
+      "text": " technique? You can tell them these",
+      "start": 1228.463,
+      "duration": 4.076
+    },
+    {
+      "text": " three scenarios where momentum performs",
+      "start": 1231.59,
+      "duration": 2.964
+    },
+    {
+      "text": " well. Okay? So, that was about why it",
+      "start": 1233.605,
+      "duration": 4.858
+    },
+    {
+      "text": " should be used. Now I will tell you",
+      "start": 1237.522,
+      "duration": 4.075
+    },
+    {
+      "text": " what the momentum optimization",
+      "start": 1240.65,
+      "duration": 2.58
+    },
+    {
+      "text": " technique actually is. What principle",
+      "start": 1242.283,
+      "duration": 3.938
+    },
+    {
+      "text": " is it based on, and what is the",
+      "start": 1245.275,
+      "duration": 2.659
+    },
+    {
+      "text": " mathematics behind it? So, I will give",
+      "start": 1246.988,
+      "duration": 4.961
+    },
+    {
+      "text": " you an intuition of the core principle",
+      "start": 1251.006,
+      "duration": 3.142
+    },
+    {
+      "text": " of momentum optimization. I will give",
+      "start": 1253.204,
+      "duration": 3.925
+    },
+    {
+      "text": " you two types of intuition. One very",
+      "start": 1256.18,
+      "duration": 3.143
+    },
+    {
+      "text": " common example and one physics-based",
+      "start": 1258.384,
+      "duration": 3.192
+    },
+    {
+      "text": " example. So, through a common example,",
+      "start": 1260.636,
+      "duration": 4.039
+    },
+    {
+      "text": " I will explain to you exactly how",
+      "start": 1263.736,
+      "duration": 3.027
+    },
+    {
+      "text": " momentum optimization works. So,",
+      "start": 1265.825,
+      "duration": 5.403
+    },
+    {
+      "text": " suppose you are in a car starting from",
+      "start": 1270.286,
+      "duration": 3.209
+    },
+    {
+      "text": " point A and going to point B, and you",
+      "start": 1272.553,
+      "duration": 3.151
+    },
+    {
+      "text": " don't know the way to reach B. So,",
+      "start": 1274.762,
+      "duration": 2.977
+    },
+    {
+      "text": " obviously, what will you do? You will",
+      "start": 1276.797,
+      "duration": 5.82
+    },
+    {
+      "text": " stop and ask people where B is. Now,",
+      "start": 1281.672,
+      "duration": 3.828
+    },
+    {
+      "text": " suppose you asked at four places. On",
+      "start": 1284.566,
+      "duration": 4.25
+    },
+    {
+      "text": " the way, from four different people,",
+      "start": 1287.873,
+      "duration": 3.043
+    },
+    {
+      "text": " where B is, and everyone pointed you in",
+      "start": 1289.973,
+      "duration": 3.213
+    },
+    {
+      "text": " this direction. So just think, when",
+      "start": 1292.243,
+      "duration": 5.601
+    },
+    {
+      "text": " four people are telling you that B is",
+      "start": 1296.896,
+      "duration": 2.894
+    },
+    {
+      "text": " in this direction, then automatically",
+      "start": 1298.842,
+      "duration": 2.894
+    },
+    {
+      "text": " you get confidence and you will move in",
+      "start": 1300.787,
+      "duration": 2.997
+    },
+    {
+      "text": " this direction at a higher speed.",
+      "start": 1302.836,
+      "duration": 2.69
+    },
+    {
+      "text": " Whereas, if two people had said go",
+      "start": 1306.821,
+      "duration": 2.769
+    },
+    {
+      "text": " forward and two had said go backward,",
+      "start": 1308.642,
+      "duration": 2.925
+    },
+    {
+      "text": " then perhaps you would have gone",
+      "start": 1310.619,
+      "duration": 2.665
+    },
+    {
+      "text": " forward, but at a lower speed. So, the",
+      "start": 1312.336,
+      "duration": 6.191
+    },
+    {
+      "text": " whole idea of momentum optimization is",
+      "start": 1317.581,
+      "duration": 3.04
+    },
+    {
+      "text": " that if your previous gradients are",
+      "start": 1319.675,
+      "duration": 2.879
+    },
+    {
+      "text": " making you move in one direction, then",
+      "start": 1321.608,
+      "duration": 3.04
+    },
+    {
+      "text": " you will confidently move in that",
+      "start": 1323.702,
+      "duration": 2.772
+    },
+    {
+      "text": " direction by increasing your speed. I",
+      "start": 1325.527,
+      "duration": 6.053
+    },
+    {
+      "text": " will explain this to you through an",
+      "start": 1330.626,
+      "duration": 2.622
+    },
+    {
+      "text": " example. Suppose you started from here,",
+      "start": 1332.294,
+      "duration": 4.46
+    },
+    {
+      "text": " and your last four updates are telling",
+      "start": 1335.804,
+      "duration": 2.905
+    },
+    {
+      "text": " you to move in this same direction,",
+      "start": 1337.76,
+      "duration": 2.754
+    },
+    {
+      "text": " then you will increase your speed. And",
+      "start": 1339.564,
+      "duration": 5.676
+    },
+    {
+      "text": " you will move very quickly in this",
+      "start": 1344.289,
+      "duration": 2.641
+    },
+    {
+      "text": " direction. You can also understand this",
+      "start": 1345.979,
+      "duration": 6.698
+    },
+    {
+      "text": " through a physics analogy, where you",
+      "start": 1351.729,
+      "duration": 2.898
+    },
+    {
+      "text": " start behaving like a ball that gains",
+      "start": 1353.68,
+      "duration": 2.951
+    },
+    {
+      "text": " more momentum as it rolls down. And",
+      "start": 1355.683,
+      "duration": 6.435
+    },
+    {
+      "text": " that is why this algorithm is named",
+      "start": 1361.169,
+      "duration": 2.76
+    },
+    {
+      "text": " Momentum. Because the mathematics we",
+      "start": 1362.98,
+      "duration": 5.863
+    },
+    {
+      "text": " are about to look at, you will notice",
+      "start": 1367.896,
+      "duration": 2.951
+    },
+    {
+      "text": " it behaves like momentum in Newtonian",
+      "start": 1369.9,
+      "duration": 2.952
+    },
+    {
+      "text": " physics. Okay? The formula for momentum",
+      "start": 1371.905,
+      "duration": 7.254
+    },
+    {
+      "text": " is mass times velocity. Since we don't",
+      "start": 1378.219,
+      "duration": 5.61
+    },
+    {
+      "text": " have any mass, we assume a unit mass.",
+      "start": 1382.89,
+      "duration": 3.249
+    },
+    {
+      "text": " And we basically rely on velocity. We",
+      "start": 1387.681,
+      "duration": 9.701
+    },
+    {
+      "text": " calculate a velocity term, and we use",
+      "start": 1396.439,
+      "duration": 3.114
+    },
+    {
+      "text": " the previous velocity or the history of",
+      "start": 1398.61,
+      "duration": 3.229
+    },
+    {
+      "text": " our updates to build momentum. Now,",
+      "start": 1400.896,
+      "duration": 7.282
+    },
+    {
+      "text": " what is all this? You will understand",
+      "start": 1407.24,
+      "duration": 2.99
+    },
+    {
+      "text": " in a little while. Just understand the",
+      "start": 1409.273,
+      "duration": 3.017
+    },
+    {
+      "text": " core idea first. The core idea is",
+      "start": 1411.35,
+      "duration": 5.168
+    },
+    {
+      "text": " simply that if your previous gradients",
+      "start": 1415.57,
+      "duration": 2.978
+    },
+    {
+      "text": " are all pushing you in one direction,",
+      "start": 1417.6,
+      "duration": 2.926
+    },
+    {
+      "text": " you will confidently increase your",
+      "start": 1419.578,
+      "duration": 2.769
+    },
+    {
+      "text": " speed. You will move rapidly in that",
+      "start": 1421.399,
+      "duration": 5.253
+    },
+    {
+      "text": " direction. And that is why, if someone",
+      "start": 1425.702,
+      "duration": 4.058
+    },
+    {
+      "text": " asks you, what is the single most",
+      "start": 1428.816,
+      "duration": 2.852
+    },
+    {
+      "text": " important benefit of using momentum",
+      "start": 1430.724,
+      "duration": 2.963
+    },
+    {
+      "text": " optimization? It is speed. 99%of the",
+      "start": 1432.743,
+      "duration": 7.959
+    },
+    {
+      "text": " time, your momentum optimization or",
+      "start": 1439.77,
+      "duration": 3.376
+    },
+    {
+      "text": " momentum with SGD will be faster than",
+      "start": 1442.214,
+      "duration": 3.513
+    },
+    {
+      "text": " normal SGD or batch gradient descent.",
+      "start": 1444.795,
+      "duration": 3.513
+    },
+    {
+      "text": " Okay? If you have understood this much,",
+      "start": 1449.343,
+      "duration": 5.724
+    },
+    {
+      "text": " now let's think about the math we can",
+      "start": 1454.117,
+      "duration": 2.836
+    },
+    {
+      "text": " apply to implement this momentum in our",
+      "start": 1456.003,
+      "duration": 2.935
+    },
+    {
+      "text": " gradient descent algorithm. Alright",
+      "start": 1457.988,
+      "duration": 6.57
+    },
+    {
+      "text": " guys, let's discuss mathematically how",
+      "start": 1463.615,
+      "duration": 3.172
+    },
+    {
+      "text": " you implement momentum. It's very",
+      "start": 1465.845,
+      "duration": 4.144
+    },
+    {
+      "text": " simple. We studied exponentially",
+      "start": 1469.048,
+      "duration": 2.994
+    },
+    {
+      "text": " weighted moving averages in the last",
+      "start": 1471.098,
+      "duration": 3.003
+    },
+    {
+      "text": " video. We use that exact concept here.",
+      "start": 1473.157,
+      "duration": 3.72
+    },
+    {
+      "text": " How does the momentum algorithm",
+      "start": 1477.073,
+      "duration": 2.629
+    },
+    {
+      "text": " accumulate momentum? It maintains an",
+      "start": 1478.755,
+      "duration": 5.786
+    },
+    {
+      "text": " exponentially decaying moving average",
+      "start": 1483.597,
+      "duration": 3.039
+    },
+    {
+      "text": " of all the past gradients. Let me try",
+      "start": 1485.691,
+      "duration": 5.025
+    },
+    {
+      "text": " to explain it to you. In a normal",
+      "start": 1489.763,
+      "duration": 5.535
+    },
+    {
+      "text": " gradient descent algorithm, how do you",
+      "start": 1494.35,
+      "duration": 2.99
+    },
+    {
+      "text": " update your weights using this formula?",
+      "start": 1496.393,
+      "duration": 3.043
+    },
+    {
+      "text": " Right? So, it's a very simple formula.",
+      "start": 1504.415,
+      "duration": 3.808
+    },
+    {
+      "text": " What you are doing is, how do you",
+      "start": 1508.466,
+      "duration": 2.635
+    },
+    {
+      "text": " calculate the weight at the next time",
+      "start": 1510.151,
+      "duration": 2.834
+    },
+    {
+      "text": " stamp? Current weight minus learning",
+      "start": 1512.034,
+      "duration": 5.871
+    },
+    {
+      "text": " rate times the gradient of the loss",
+      "start": 1516.951,
+      "duration": 2.641
+    },
+    {
+      "text": " function with respect to your weight.",
+      "start": 1518.639,
+      "duration": 2.734
+    },
+    {
+      "text": " Right? What do you do here? In momentum",
+      "start": 1522.455,
+      "duration": 4.721
+    },
+    {
+      "text": ", you take a term called V, which you",
+      "start": 1526.176,
+      "duration": 3.195
+    },
+    {
+      "text": " can consider as velocity. Okay? And",
+      "start": 1528.43,
+      "duration": 6.114
+    },
+    {
+      "text": " your update now becomes this. Velocity",
+      "start": 1533.598,
+      "duration": 7.739
+    },
+    {
+      "text": " at time t, you have replaced this. With",
+      "start": 1540.401,
+      "duration": 4.546
+    },
+    {
+      "text": " this term. Now, how is this vt",
+      "start": 1543.996,
+      "duration": 3.141
+    },
+    {
+      "text": " calculated? We discussed this in the",
+      "start": 1546.211,
+      "duration": 3.264
+    },
+    {
+      "text": " last video. You calculate vt using this",
+      "start": 1548.527,
+      "duration": 4.895
+    },
+    {
+      "text": " formula. This is the formula. So, what",
+      "start": 1552.486,
+      "duration": 14.499
+    },
+    {
+      "text": " did you do? You took a factor called",
+      "start": 1566.052,
+      "duration": 3.362
+    },
+    {
+      "text": " beta. A constant whose value is",
+      "start": 1568.469,
+      "duration": 6.86
+    },
+    {
+      "text": " generally 0.9 between 0 and 1, and you",
+      "start": 1574.408,
+      "duration": 4.027
+    },
+    {
+      "text": " are calculating vt-1. What is vt-1?",
+      "start": 1577.515,
+      "duration": 4.807
+    },
+    {
+      "text": " Velocity at the previous step, and you",
+      "start": 1582.677,
+      "duration": 3.041
+    },
+    {
+      "text": " are multiplying the current gradient by",
+      "start": 1584.772,
+      "duration": 3.095
+    },
+    {
+      "text": " it. Adding the learning rate times the",
+      "start": 1586.92,
+      "duration": 4.91
+    },
+    {
+      "text": " current gradient at time t. So,",
+      "start": 1590.88,
+      "duration": 5.499
+    },
+    {
+      "text": " basically, this component is the",
+      "start": 1595.441,
+      "duration": 2.97
+    },
+    {
+      "text": " momentum component. This is the",
+      "start": 1597.473,
+      "duration": 5.047
+    },
+    {
+      "text": " component. Right? Because to find vt-1,",
+      "start": 1601.567,
+      "duration": 4.681
+    },
+    {
+      "text": " you need vt-2. Meaning for velocity at",
+      "start": 1605.331,
+      "duration": 5.151
+    },
+    {
+      "text": " time t-2, you need vt-3. And by doing",
+      "start": 1609.559,
+      "duration": 5.833
+    },
+    {
+      "text": " this, you are using all the previous",
+      "start": 1614.454,
+      "duration": 6.505
+    },
+    {
+      "text": " velocities. You are using a kind of",
+      "start": 1620.019,
+      "duration": 8.866
+    },
+    {
+      "text": " history of velocities as momentum, and",
+      "start": 1627.938,
+      "duration": 3.021
+    },
+    {
+      "text": " that is the main concept that provides",
+      "start": 1630.012,
+      "duration": 3.02
+    },
+    {
+      "text": " you with acceleration. If many past",
+      "start": 1632.086,
+      "duration": 13.397
+    },
+    {
+      "text": " updates are moving in the same",
+      "start": 1644.536,
+      "duration": 2.572
+    },
+    {
+      "text": " direction, they will add up and give",
+      "start": 1646.16,
+      "duration": 2.886
+    },
+    {
+      "text": " you speed. Now, let me show you what",
+      "start": 1648.099,
+      "duration": 5.554
+    },
+    {
+      "text": " happens with this small change. Here is",
+      "start": 1652.706,
+      "duration": 3.112
+    },
+    {
+      "text": " a small diagram on the screen. This is",
+      "start": 1654.873,
+      "duration": 3.951
+    },
+    {
+      "text": " standard SGD, and this is SGD with",
+      "start": 1657.888,
+      "duration": 3.184
+    },
+    {
+      "text": " momentum that we just studied. You can",
+      "start": 1660.137,
+      "duration": 7.051
+    },
+    {
+      "text": " see that while navigating the error",
+      "start": 1666.245,
+      "duration": 3.0
+    },
+    {
+      "text": " surface, SGD takes a lot of vertical",
+      "start": 1668.302,
+      "duration": 3.056
+    },
+    {
+      "text": " direction steps. Due to which",
+      "start": 1670.416,
+      "duration": 5.302
+    },
+    {
+      "text": " convergence takes time. Right? Now,",
+      "start": 1674.772,
+      "duration": 6.439
+    },
+    {
+      "text": " what will happen is that if you apply",
+      "start": 1680.271,
+      "duration": 3.218
+    },
+    {
+      "text": " momentum, the velocity in this",
+      "start": 1682.549,
+      "duration": 2.799
+    },
+    {
+      "text": " direction, the horizontal direction,",
+      "start": 1684.408,
+      "duration": 3.158
+    },
+    {
+      "text": " increases. Because of that, your steps",
+      "start": 1686.626,
+      "duration": 5.826
+    },
+    {
+      "text": " start looking like this. Like this, as",
+      "start": 1691.505,
+      "duration": 5.634
+    },
+    {
+      "text": " you can see here. Okay? So, this is the",
+      "start": 1696.195,
+      "duration": 4.315
+    },
+    {
+      "text": " biggest benefit of momentum. Although I",
+      "start": 1699.569,
+      "duration": 3.463
+    },
+    {
+      "text": " will show you more examples now. But if",
+      "start": 1702.081,
+      "duration": 5.96
+    },
+    {
+      "text": " you try to understand through this",
+      "start": 1707.092,
+      "duration": 2.731
+    },
+    {
+      "text": " contour plot, it minimizes the zigzag",
+      "start": 1708.874,
+      "duration": 2.884
+    },
+    {
+      "text": " motion in the vertical direction and",
+      "start": 1710.809,
+      "duration": 2.834
+    },
+    {
+      "text": " increases your movement in the",
+      "start": 1712.694,
+      "duration": 2.527
+    },
+    {
+      "text": " horizontal direction. Due to which you",
+      "start": 1714.272,
+      "duration": 6.933
+    },
+    {
+      "text": " are getting faster convergence. Guys,",
+      "start": 1720.254,
+      "duration": 4.307
+    },
+    {
+      "text": " let's try to understand the role of",
+      "start": 1723.616,
+      "duration": 2.915
+    },
+    {
+      "text": " this beta in momentum. Because it is a",
+      "start": 1725.586,
+      "duration": 4.769
+    },
+    {
+      "text": " parameter that you can change to induce",
+      "start": 1729.403,
+      "duration": 2.853
+    },
+    {
+      "text": " different types of behavior. First of",
+      "start": 1731.304,
+      "duration": 4.709
+    },
+    {
+      "text": " all, let's answer this question: what",
+      "start": 1735.072,
+      "duration": 3.175
+    },
+    {
+      "text": " happens if the value of beta becomes",
+      "start": 1737.305,
+      "duration": 3.117
+    },
+    {
+      "text": " zero? As soon as the value of beta",
+      "start": 1739.481,
+      "duration": 3.364
+    },
+    {
+      "text": " becomes zero, this entire term becomes",
+      "start": 1741.908,
+      "duration": 3.4
+    },
+    {
+      "text": " zero and the value of vt becomes this,",
+      "start": 1744.371,
+      "duration": 3.4
+    },
+    {
+      "text": " and if you replace it here, you get SGD",
+      "start": 1746.834,
+      "duration": 3.463
+    },
+    {
+      "text": ". The same thing that used to happen",
+      "start": 1749.297,
+      "duration": 4.856
+    },
+    {
+      "text": " before will happen. This formula will",
+      "start": 1753.198,
+      "duration": 3.803
+    },
+    {
+      "text": " come up. And this is the formula for",
+      "start": 1756.052,
+      "duration": 6.273
+    },
+    {
+      "text": " SGD. This means when beta is zero,",
+      "start": 1761.387,
+      "duration": 4.89
+    },
+    {
+      "text": " momentum will act like normal SGD. Okay",
+      "start": 1765.345,
+      "duration": 5.664
+    },
+    {
+      "text": "? So beta is called the decaying factor",
+      "start": 1770.009,
+      "duration": 4.897
+    },
+    {
+      "text": " here. Because this beta tells how fast",
+      "start": 1773.962,
+      "duration": 8.74
+    },
+    {
+      "text": " the past velocities are decaying.",
+      "start": 1781.76,
+      "duration": 2.913
+    },
+    {
+      "text": " Meaning, the older the velocity, there",
+      "start": 1786.867,
+      "duration": 3.152
+    },
+    {
+      "text": " will be multiple updates. Update one,",
+      "start": 1789.075,
+      "duration": 4.148
+    },
+    {
+      "text": " update two, like that there will be",
+      "start": 1792.283,
+      "duration": 3.11
+    },
+    {
+      "text": " multiple updates. So when talking about",
+      "start": 1794.453,
+      "duration": 4.539
+    },
+    {
+      "text": " the current update, the value of the",
+      "start": 1798.045,
+      "duration": 2.912
+    },
+    {
+      "text": " very first update for it will be very",
+      "start": 1800.01,
+      "duration": 2.965
+    },
+    {
+      "text": " low. A bit more for the next update,",
+      "start": 1802.028,
+      "duration": 3.427
+    },
+    {
+      "text": " and a bit more for the update after",
+      "start": 1804.503,
+      "duration": 2.68
+    },
+    {
+      "text": " that. So this value that is",
+      "start": 1806.231,
+      "duration": 2.804
+    },
+    {
+      "text": " exponentially decaying is governed by",
+      "start": 1808.091,
+      "duration": 3.071
+    },
+    {
+      "text": " beta. Okay? So it is said that this",
+      "start": 1810.218,
+      "duration": 5.502
+    },
+    {
+      "text": " exponential average you are taking is",
+      "start": 1814.779,
+      "duration": 3.173
+    },
+    {
+      "text": " equal to 1/1-beta. So if you have taken",
+      "start": 1817.011,
+      "duration": 7.723
+    },
+    {
+      "text": " .9, then it is as if your current",
+      "start": 1823.796,
+      "duration": 3.019
+    },
+    {
+      "text": " velocity, at time t, will be equal to",
+      "start": 1825.876,
+      "duration": 3.265
+    },
+    {
+      "text": " the average of the past 10 velocities.",
+      "start": 1828.202,
+      "duration": 3.326
+    },
+    {
+      "text": " Okay? Because 1/1-0.9 = 10, okay? So",
+      "start": 1833.862,
+      "duration": 8.768
+    },
+    {
+      "text": " this beta decides how much contribution",
+      "start": 1841.688,
+      "duration": 3.242
+    },
+    {
+      "text": " the past velocities will have in",
+      "start": 1843.988,
+      "duration": 2.84
+    },
+    {
+      "text": " momentum. Okay? And the older the",
+      "start": 1845.885,
+      "duration": 5.159
+    },
+    {
+      "text": " velocities, the less impact they will",
+      "start": 1850.094,
+      "duration": 2.85
+    },
+    {
+      "text": " have. The more recent the velocity, the",
+      "start": 1851.994,
+      "duration": 4.022
+    },
+    {
+      "text": " greater its impact will be. Now think",
+      "start": 1855.07,
+      "duration": 3.997
+    },
+    {
+      "text": " once, what will happen if the value of",
+      "start": 1858.124,
+      "duration": 3.173
+    },
+    {
+      "text": " beta becomes one? I will show you that.",
+      "start": 1860.354,
+      "duration": 3.798
+    },
+    {
+      "text": " Look at this, guys. If the value of",
+      "start": 1863.271,
+      "duration": 6.009
+    },
+    {
+      "text": " beta becomes one, there will be no",
+      "start": 1868.334,
+      "duration": 2.848
+    },
+    {
+      "text": " decay and this algorithm of yours, this",
+      "start": 1870.236,
+      "duration": 3.12
+    },
+    {
+      "text": " ball, will keep rolling on the error",
+      "start": 1872.41,
+      "duration": 2.957
+    },
+    {
+      "text": " surface just like that because there is",
+      "start": 1874.421,
+      "duration": 3.119
+    },
+    {
+      "text": " no friction involved, so a kind of",
+      "start": 1876.595,
+      "duration": 2.848
+    },
+    {
+      "text": " dynamic equilibrium will be reached. So",
+      "start": 1878.497,
+      "duration": 6.01
+    },
+    {
+      "text": " again, it is not desired. That is why",
+      "start": 1883.578,
+      "duration": 4.255
+    },
+    {
+      "text": " the value of beta is generally",
+      "start": 1886.899,
+      "duration": 2.966
+    },
+    {
+      "text": " fluctuated between 0.9 or 0.999 or 0.5;",
+      "start": 1888.93,
+      "duration": 3.556
+    },
+    {
+      "text": " you generally don't set it to zero",
+      "start": 1891.551,
+      "duration": 3.228
+    },
+    {
+      "text": " because it will become SGD, and you",
+      "start": 1893.845,
+      "duration": 3.293
+    },
+    {
+      "text": " don't set it to one because there will",
+      "start": 1896.204,
+      "duration": 3.49
+    },
+    {
+      "text": " be no decay and it can get stuck in a",
+      "start": 1898.76,
+      "duration": 3.424
+    },
+    {
+      "text": " kind of dynamic equilibrium. So guys,",
+      "start": 1901.25,
+      "duration": 4.556
+    },
+    {
+      "text": " next I want to discuss with you what",
+      "start": 1904.86,
+      "duration": 2.924
+    },
+    {
+      "text": " the problem with the momentum",
+      "start": 1906.838,
+      "duration": 2.55
+    },
+    {
+      "text": " optimization approach is. What is its",
+      "start": 1908.442,
+      "duration": 3.563
+    },
+    {
+      "text": " problem? But before discussing that, I",
+      "start": 1911.051,
+      "duration": 4.892
+    },
+    {
+      "text": " want to show you the two biggest",
+      "start": 1914.993,
+      "duration": 2.602
+    },
+    {
+      "text": " benefits of momentum, and they are on",
+      "start": 1916.645,
+      "duration": 2.852
+    },
+    {
+      "text": " your screen. Here you can see two balls",
+      "start": 1918.547,
+      "duration": 6.509
+    },
+    {
+      "text": " floating on an error surface. Now, the",
+      "start": 1924.107,
+      "duration": 5.822
+    },
+    {
+      "text": " blue ball here is gradient descent.",
+      "start": 1928.991,
+      "duration": 3.175
+    },
+    {
+      "text": " Vanilla gradient descent and the purple",
+      "start": 1933.87,
+      "duration": 3.024
+    },
+    {
+      "text": " ball is your momentum. Okay? Now, you",
+      "start": 1935.946,
+      "duration": 5.452
+    },
+    {
+      "text": " will see two benefits here. The first",
+      "start": 1940.458,
+      "duration": 3.663
+    },
+    {
+      "text": " benefit you will clearly see is that",
+      "start": 1943.175,
+      "duration": 2.915
+    },
+    {
+      "text": " momentum is faster. Notice when both",
+      "start": 1945.143,
+      "duration": 4.447
+    },
+    {
+      "text": " balls are released from the top, the",
+      "start": 1948.643,
+      "duration": 2.903
+    },
+    {
+      "text": " blue ball is actually coming down at a",
+      "start": 1950.599,
+      "duration": 3.008
+    },
+    {
+      "text": " constant speed. Whereas the purple ball",
+      "start": 1952.66,
+      "duration": 5.67
+    },
+    {
+      "text": " is gaining speed as it comes down. Okay",
+      "start": 1957.381,
+      "duration": 4.668
+    },
+    {
+      "text": "? And it arrives sooner. Right? So the",
+      "start": 1961.049,
+      "duration": 4.618
+    },
+    {
+      "text": " first point for which momentum is used",
+      "start": 1964.722,
+      "duration": 3.085
+    },
+    {
+      "text": " is acceleration. Fast speed. You get",
+      "start": 1966.862,
+      "duration": 4.581
+    },
+    {
+      "text": " the training solution quickly. So that",
+      "start": 1970.493,
+      "duration": 3.426
+    },
+    {
+      "text": " is visible to you. The second big thing",
+      "start": 1972.972,
+      "duration": 4.985
+    },
+    {
+      "text": " you might be seeing in this image is",
+      "start": 1977.006,
+      "duration": 2.797
+    },
+    {
+      "text": " that momentum escapes local minima. You",
+      "start": 1978.853,
+      "duration": 5.209
+    },
+    {
+      "text": " can see there are two pits here. The",
+      "start": 1983.109,
+      "duration": 2.891
+    },
+    {
+      "text": " small pit represents local minima, the",
+      "start": 1985.058,
+      "duration": 3.185
+    },
+    {
+      "text": " large pit represents global minima. And",
+      "start": 1987.3,
+      "duration": 3.25
+    },
+    {
+      "text": " you have to reach the global minima.",
+      "start": 1989.596,
+      "duration": 2.648
+    },
+    {
+      "text": " And you can see that when the blue ball",
+      "start": 1992.474,
+      "duration": 2.95
+    },
+    {
+      "text": " came into that small pit, it got stuck",
+      "start": 1994.474,
+      "duration": 2.9
+    },
+    {
+      "text": " there. It could not get out of it.",
+      "start": 1996.424,
+      "duration": 3.503
+    },
+    {
+      "text": " Because it didn't have the speed to get",
+      "start": 1999.612,
+      "duration": 2.679
+    },
+    {
+      "text": " out. Whereas if you talk about momentum",
+      "start": 2001.334,
+      "duration": 5.921
+    },
+    {
+      "text": ", it has momentum, which is why it got",
+      "start": 2006.255,
+      "duration": 2.942
+    },
+    {
+      "text": " out of that small pit and then entered",
+      "start": 2008.248,
+      "duration": 2.942
+    },
+    {
+      "text": " the global minima. Now, you might see a",
+      "start": 2010.241,
+      "duration": 7.732
+    },
+    {
+      "text": " problem here that the biggest benefit",
+      "start": 2017.03,
+      "duration": 3.126
+    },
+    {
+      "text": " of momentum, its biggest advantage,",
+      "start": 2019.214,
+      "duration": 3.011
+    },
+    {
+      "text": " sometimes becomes its disadvantage.",
+      "start": 2021.282,
+      "duration": 3.012
+    },
+    {
+      "text": " Notice once when the purple ball is",
+      "start": 2026.167,
+      "duration": 2.871
+    },
+    {
+      "text": " entering the large pit, it is not",
+      "start": 2028.091,
+      "duration": 2.764
+    },
+    {
+      "text": " stopping immediately. Look, it is doing",
+      "start": 2029.909,
+      "duration": 4.437
+    },
+    {
+      "text": " a to-and-fro motion once. Because it",
+      "start": 2033.411,
+      "duration": 3.681
+    },
+    {
+      "text": " has momentum. And because of the decay",
+      "start": 2036.145,
+      "duration": 4.58
+    },
+    {
+      "text": " factor, your velocities are decreasing.",
+      "start": 2039.779,
+      "duration": 3.115
+    },
+    {
+      "text": " So eventually it settles down. But",
+      "start": 2043.541,
+      "duration": 4.094
+    },
+    {
+      "text": " before settling down, it takes some",
+      "start": 2046.692,
+      "duration": 2.977
+    },
+    {
+      "text": " time moving back and forth. So because",
+      "start": 2048.726,
+      "duration": 4.498
+    },
+    {
+      "text": " of this, momentum becomes a bit slow to",
+      "start": 2052.281,
+      "duration": 3.225
+    },
+    {
+      "text": " reach the optimum solution. Although it",
+      "start": 2054.563,
+      "duration": 3.408
+    },
+    {
+      "text": " will remain faster than gradient",
+      "start": 2057.019,
+      "duration": 2.545
+    },
+    {
+      "text": " descent. But compared to the algorithms",
+      "start": 2058.612,
+      "duration": 3.551
+    },
+    {
+      "text": " we will study later, it gets a bit weak",
+      "start": 2061.214,
+      "duration": 2.984
+    },
+    {
+      "text": " because of this behavior. That it",
+      "start": 2063.249,
+      "duration": 3.683
+    },
+    {
+      "text": " starts to oscillate after reaching",
+      "start": 2065.979,
+      "duration": 2.606
+    },
+    {
+      "text": " there. This is its biggest disadvantage",
+      "start": 2067.632,
+      "duration": 3.562
+    },
+    {
+      "text": ". I will show you this through another",
+      "start": 2070.194,
+      "duration": 3.658
+    },
+    {
+      "text": " graph. Now let's look at this error",
+      "start": 2072.897,
+      "duration": 3.588
+    },
+    {
+      "text": " surface. Which looks something like",
+      "start": 2075.532,
+      "duration": 3.401
+    },
+    {
+      "text": " this in 3D. So it is high in this way,",
+      "start": 2077.987,
+      "duration": 4.69
+    },
+    {
+      "text": " the surface is up. And the minima is",
+      "start": 2081.734,
+      "duration": 4.302
+    },
+    {
+      "text": " right here. This is the pit. We need to",
+      "start": 2085.084,
+      "duration": 3.156
+    },
+    {
+      "text": " reach here. Okay? The contour of the",
+      "start": 2087.287,
+      "duration": 3.333
+    },
+    {
+      "text": " same is here. Now, when you apply",
+      "start": 2089.67,
+      "duration": 3.563
+    },
+    {
+      "text": " momentum, the momentum will build up",
+      "start": 2092.293,
+      "duration": 3.174
+    },
+    {
+      "text": " very quickly. It will reach here, but",
+      "start": 2094.527,
+      "duration": 5.477
+    },
+    {
+      "text": " it will be moving so fast that it will",
+      "start": 2099.058,
+      "duration": 3.037
+    },
+    {
+      "text": " cross it and go higher, then head back",
+      "start": 2101.149,
+      "duration": 3.038
+    },
+    {
+      "text": " down. Then, it will move in this manner",
+      "start": 2103.24,
+      "duration": 5.5
+    },
+    {
+      "text": " until it finally stops. So basically, a",
+      "start": 2107.798,
+      "duration": 4.41
+    },
+    {
+      "text": " lot of time is wasted in these",
+      "start": 2111.269,
+      "duration": 2.821
+    },
+    {
+      "text": " oscillations. Because of this, momentum",
+      "start": 2113.15,
+      "duration": 5.16
+    },
+    {
+      "text": " does not become the fastest",
+      "start": 2117.367,
+      "duration": 2.537
+    },
+    {
+      "text": " optimization technique. This is the",
+      "start": 2118.961,
+      "duration": 6.405
+    },
+    {
+      "text": " biggest flaw with momentum: when it",
+      "start": 2124.424,
+      "duration": 3.042
+    },
+    {
+      "text": " gains momentum, it often crosses the",
+      "start": 2126.524,
+      "duration": 3.1
+    },
+    {
+      "text": " optimum solution, and then, due to the",
+      "start": 2128.682,
+      "duration": 3.217
+    },
+    {
+      "text": " decay factor we generally use, it",
+      "start": 2130.957,
+      "duration": 2.925
+    },
+    {
+      "text": " gradually starts to forget the old",
+      "start": 2132.94,
+      "duration": 2.984
+    },
+    {
+      "text": " velocities while oscillating. Since the",
+      "start": 2134.982,
+      "duration": 8.658
+    },
+    {
+      "text": " recent velocity is lower, it eventually",
+      "start": 2142.697,
+      "duration": 3.243
+    },
+    {
+      "text": " stops at the right place. So, that is",
+      "start": 2144.997,
+      "duration": 5.277
+    },
+    {
+      "text": " how momentum works. And if someone asks",
+      "start": 2149.339,
+      "duration": 3.219
+    },
+    {
+      "text": " you what the biggest problem is? Then",
+      "start": 2151.604,
+      "duration": 2.788
+    },
+    {
+      "text": " the biggest problem with momentum is",
+      "start": 2153.443,
+      "duration": 2.836
+    },
+    {
+      "text": " momentum itself. So guys, in the end,",
+      "start": 2155.33,
+      "duration": 3.607
+    },
+    {
+      "text": " you should have a feel for all these",
+      "start": 2157.993,
+      "duration": 3.026
+    },
+    {
+      "text": " optimization algorithms. You should",
+      "start": 2160.076,
+      "duration": 4.099
+    },
+    {
+      "text": " understand their intuition. And that is",
+      "start": 2163.222,
+      "duration": 3.331
+    },
+    {
+      "text": " why, before ending the video, I want to",
+      "start": 2165.609,
+      "duration": 3.177
+    },
+    {
+      "text": " show you this great visualization tool.",
+      "start": 2167.842,
+      "duration": 3.178
+    },
+    {
+      "text": " Which is a web-based visualization tool",
+      "start": 2171.609,
+      "duration": 3.322
+    },
+    {
+      "text": ". Here, you can see there is a contour",
+      "start": 2173.931,
+      "duration": 4.46
+    },
+    {
+      "text": " plot with two minima. This is your",
+      "start": 2177.447,
+      "duration": 3.158
+    },
+    {
+      "text": " global minima. This is your local",
+      "start": 2179.654,
+      "duration": 2.802
+    },
+    {
+      "text": " minima. Although both look comparable",
+      "start": 2181.508,
+      "duration": 3.294
+    },
+    {
+      "text": " in size to me. But here, you can click",
+      "start": 2183.854,
+      "duration": 5.882
+    },
+    {
+      "text": " on any point on this entire surface to",
+      "start": 2188.79,
+      "duration": 3.036
+    },
+    {
+      "text": " see how your different optimization",
+      "start": 2190.88,
+      "duration": 2.875
+    },
+    {
+      "text": " algorithms behave. So, I am showing you",
+      "start": 2192.809,
+      "duration": 5.921
+    },
+    {
+      "text": " a comparison between SGD and momentum.",
+      "start": 2197.796,
+      "duration": 3.516
+    },
+    {
+      "text": " Although it seems to me that it is not",
+      "start": 2200.789,
+      "duration": 3.199
+    },
+    {
+      "text": " SGD but batch gradient descent here,",
+      "start": 2203.046,
+      "duration": 3.083
+    },
+    {
+      "text": " regardless, you should focus more on",
+      "start": 2205.187,
+      "duration": 3.084
+    },
+    {
+      "text": " momentum. So, you clicked anywhere, and",
+      "start": 2207.329,
+      "duration": 4.784
+    },
+    {
+      "text": " you can see the blue line is momentum",
+      "start": 2211.173,
+      "duration": 3.233
+    },
+    {
+      "text": " and the black line is SGD. So, you can",
+      "start": 2213.466,
+      "duration": 4.924
+    },
+    {
+      "text": " see how it is traversing this entire",
+      "start": 2217.45,
+      "duration": 3.157
+    },
+    {
+      "text": " terrain. Let's say if you start from",
+      "start": 2219.667,
+      "duration": 7.265
+    },
+    {
+      "text": " here, you can see these are the same",
+      "start": 2225.987,
+      "duration": 2.966
+    },
+    {
+      "text": " oscillations I told you about a while",
+      "start": 2228.008,
+      "duration": 3.021
+    },
+    {
+      "text": " ago, where before reaching the local",
+      "start": 2230.083,
+      "duration": 2.967
+    },
+    {
+      "text": " minima, momentum will oscillate and",
+      "start": 2232.104,
+      "duration": 2.912
+    },
+    {
+      "text": " eventually stop when its velocity dies",
+      "start": 2234.071,
+      "duration": 3.075
+    },
+    {
+      "text": " out. Right? I am showing you by",
+      "start": 2236.201,
+      "duration": 6.441
+    },
+    {
+      "text": " starting from different points.",
+      "start": 2241.69,
+      "duration": 2.497
+    },
+    {
+      "text": " Although I will share the code for this",
+      "start": 2243.925,
+      "duration": 2.645
+    },
+    {
+      "text": " with you. And more than anything, it's",
+      "start": 2245.613,
+      "duration": 4.947
+    },
+    {
+      "text": " very satisfying. Watching this entire",
+      "start": 2249.618,
+      "duration": 3.97
+    },
+    {
+      "text": " algorithm work gives a very good",
+      "start": 2252.644,
+      "duration": 2.777
+    },
+    {
+      "text": " feeling. So, when you get this tool,",
+      "start": 2254.476,
+      "duration": 4.895
+    },
+    {
+      "text": " you should also try it out. You can see",
+      "start": 2258.426,
+      "duration": 4.473
+    },
+    {
+      "text": " the momentum went ahead and then came",
+      "start": 2261.946,
+      "duration": 2.748
+    },
+    {
+      "text": " back. Then it came back and stopped",
+      "start": 2263.741,
+      "duration": 3.055
+    },
+    {
+      "text": " here after oscillating like this. Maybe",
+      "start": 2265.846,
+      "duration": 2.974
+    },
+    {
+      "text": " it will be better understood from this",
+      "start": 2267.866,
+      "duration": 2.737
+    },
+    {
+      "text": " angle. Look at this. See, see. Alright.",
+      "start": 2269.648,
+      "duration": 8.725
+    },
+    {
+      "text": " So play around with this a bit. It is",
+      "start": 2277.77,
+      "duration": 3.942
+    },
+    {
+      "text": " quite fun and build your intuition a",
+      "start": 2280.761,
+      "duration": 2.74
+    },
+    {
+      "text": " little. So that was the video, guys. I",
+      "start": 2282.549,
+      "duration": 5.108
+    },
+    {
+      "text": " hope you liked it and you could",
+      "start": 2286.713,
+      "duration": 2.743
+    },
+    {
+      "text": " understand SGD with momentum, our",
+      "start": 2288.513,
+      "duration": 2.856
+    },
+    {
+      "text": " optimization technique. If you could",
+      "start": 2290.425,
+      "duration": 4.964
+    },
+    {
+      "text": " understand this well, then it's great",
+      "start": 2294.438,
+      "duration": 2.815
+    },
+    {
+      "text": " because we will use it again later in",
+      "start": 2296.302,
+      "duration": 2.815
+    },
+    {
+      "text": " other optimization techniques. So",
+      "start": 2298.166,
+      "duration": 3.682
+    },
+    {
+      "text": " that's it from my side. See you in the",
+      "start": 2300.902,
+      "duration": 3.18
+    },
+    {
+      "text": " next video. Bye.",
+      "start": 2303.132,
+      "duration": 2.018
+    }
+  ]
+}

@@ -1,0 +1,1280 @@
+{
+  "id": "N5AynalXD9g",
+  "index": 38,
+  "title": "Adam Optimizer Explained in Detail with Animations | Optimizers in Deep Learning Part 5",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitesh and you are  welcome to my YouTube channel. In this  video as well, we will continue our  Deep Learning playlist. We are studying  optimization techniques and we have  covered three or four of them. Today,  we will study our final optimization  technique, which is called Adam.  Honestly, Adam is the optimization  technique that is the most famous and  perhaps the most widely used. So, I  feel it is very important for you to  have an idea about it. And that is what  we have covered in this video. I have  tried to explain the mathematical  details behind Adam and, like every  other video, I have tried to clarify  things through animations. So, let's  start the video. So guys, let's start  our discussion on Adam. Uh, first of  all, let's look at the full form of  Adam. The full form of Adam is Adaptive  Moment Estimation. Okay? Uh, honestly  speaking, Adam is currently the most  powerful optimization technique. And  most of the time you will see that if  you are working with an ANN, CNN, or an  RNN, most of the time you optimize it  using Adam. Okay? Now, to understand  Adam, you should have some idea about  the other optimization techniques we  have studied so far. Okay? So far in  this course, we have studied SGD, Batch  Gradient Descent, and Mini-batch  Gradient Descent, which are the most  basic techniques. After that, we  studied four more techniques. We  studied Momentum. Along with Momentum,  we looked at NAG (Nesterov Accelerated  Gradients). After that, we studied  Adagrad, and in the last video, we  looked at RMSprop. So, if you want to  understand Adam properly, you should  have an idea about all these techniques . The reason for that is that Adam  borrows concepts from these older  techniques. Okay? So, honestly, if you  haven't watched them, watch the last  four or five videos in this playlist.  Things will become clear to you. If you  don't have time, then I will give you a  quick summary of what these five  techniques are known for and how they  work. So, The whole story started with  Batch Gradient Descent. So, if you have  a valley like this where you need to  reach the minima, then what does Batch  Gradient Descent do? It descends into  this valley very quietly. The only  problem is speed. Batch Gradient  Descent does not work very fast. So,  that is where the concept of Momentum  came in. So, what is the concept of  Momentum? That you use past gradients  for your current update. Okay? That is  why you notice that while it takes 101  epochs to descend this valley, momentum  would have taken only two to three  epochs. See, in around four epochs you  reached the very bottom of the valley.  Because you are using the concept of  momentum. You are using the concept of  velocity. Then what was the problem  with momentum? We keep crossing these  oscillations. Then coming back. Then  crossing again. And slowly we settle  into our minima. So, this is where the  concept of NAG, Nesterov Accelerated  Gradients, came in, which dampens these  oscillations. You can see the  oscillations are a bit higher here. You  would see the oscillations are a bit  higher. Look, you are coming down by  making a large circle. Whereas in NAG,  you are making a smaller circle.  Because you have dampened the  oscillations. See, this is what I am  saying. You can compare. Okay? So,  everything was fine up to this point.  But then a new problem arose: if you  have sparse data or a sparse column,  what starts happening is that if you  are using batch gradient descent on  sparse data, you descend the valley in  this manner. First, you descend from  the non-sparse column side, and then  you slowly move toward the sparse side.  So, obviously, this is not very fast.  The same problem happens with momentum,  where you descend rapidly in one  direction first, then move in another  direction. So, to solve this problem,  we studied AdaGrad, which descends  straight on such data. Look, notice  this. Okay? But then what was the  problem with AdaGrad? It misses the  minima slightly. Because what do you do  in AdaGrad? You decay, or reduce, the  learning rate. But while decaying, it  decays so much that after a point, it  stops taking updates altogether. So,  the solution to this was RMSProp, which  works perfectly and reaches exactly  down to your minima. Okay? So, we  covered the theory up to this point.  Now, honestly, if you think about it,  we worked on two main interesting ideas . The first was the idea of momentum.  And the second was learning rate. Decay . Here you can see that momentum and  NAG are based on this idea. AdaGrad and  RMSProp are based on this idea. Now,  what Adam does is that it merges both  of these ideas. Computer scientists  thought that this idea is good. This  idea is also good. What if we combine  both of them, then maybe we can  generate an even better idea. And that  is the main principle behind Adam. Okay ? So, next I will give you a  mathematical intuition of how Adam  works. Show you the mathematical  formulation of Adam. Okay? The  mathematical formulation of Adam is  this. Mt is equal to—in fact, let me  first show you this. wt + 1 = wt- learning rate divided by vt +  multiplied by mt Okay, where mt = beta1  times mt-1 + 1-beta1 times gradient of  weight vector and vt = beta2 times vt-1  + 1-beta2*by gradient squared. Okay?  Now, if you have watched both the  previous videos, of Momentum and  AdaGrad, then you might be able to  recognize what is happening here. So,  this concept, this equation, is coming  from Momentum. In Momentum, we used to  do exactly this. Okay? And this concept , this equation, is coming from AdaGrad , where we used to divide this vt term  with the learning rate. Okay? Now,  there is just one more thing you need  to do here. After calculating these two , you have to do something called bias  correction. So, in bias correction,  what you do is that after calculating  mt and vt, you calculate mt-hat and  vt-hat, whose formula is mt/1-beta1 ^ t  and vt-hat = vt/1-beta2 ^ t, where T is  your epoch number. So, if you are  calculating in the first epoch, then  one will come in place of T. In the  second epoch, two will come in place of  T. Okay? I am only talking about this T , the one at the bottom. Okay? I am not  talking about the one at the top. Okay?  Also, what are the values of beta1 and  beta2? I will tell you that. The value  of beta1 is generally 0.9 and the value  of beta2 is 0.99, and this is  configurable; you can change it as a  parameter in Keras. Okay? So, what will  you do first? You will calculate this.  Then you will calculate this. Then you  will calculate this. Then you will  calculate this and put it into this  formula. Okay? The learning rate, since  it keeps changing. You can start with a  learning rate of 1 or 0.01, anything  works. You can tune that and see. In  Adam, you don't really need to change  the learning rate too much. It gets  handled automatically. Okay? The main  thing you need to understand here is  what you did. You had studied two core  ideas before this. One was momentum and  the other was learning rate decay. You  applied both of them in a single  formula. Okay? Also, I didn't explain  why bias correction is necessary. Bias  correction is required because  initially, MT and vt, both have a  starting value of zero. Meaning, M of 0  is zero. v of 0 is also zero. So, there  is a bias in the beginning. It starts  right from near zero. To offset that,  to change that, you do this bias  correction. This is just a mathematical  detail. There is no need to go too deep  into this. You just need to understand  the core idea. As for the code, you can  just run it directly using Keras. Okay?  So, I hope you understood this whole  thing. Now I will show you the  animation of how Adam performs. So here  is the Adam animation and I have taken  the sparse dataset again. Where one  column is sparse. And you can see that  this animation shows you both behaviors . First, it is showing you the momentum  behavior and second, it is also showing  you the learning rate decay behavior.  Okay? The original momentum was working  something like this. It was coming from  the side, but our Adam is coming from  the center. Meaning, it is optimized  and it turns after coming here, which  shows that there is a component of  momentum in our algorithm as well, and  it is also converging the fastest. It  is converging a few epochs earlier.  Although, in this convex optimization  problem, you won't realize it as much.  But when you are working with a proper  complex neural network where a  non-convex optimization is happening,  this algorithm performs very well. So  now comes the big question that we have  studied five or six types of  optimization techniques. In fact, there  are some other optimization techniques  too. Like AdaDelta and Nadam, we  haven't studied those. But which one  should we use? So in most cases, if you  are working in deep learning, then Adam  is a good starting point. Try running  Adam and see the results. If you are  not getting good results with that,  then you can try RMSprop. If you have  Sometimes it also happens that momentum  performs well. So in short, there is no  clear answer, but in the last three to  four years, Adam has generally been  giving better results over different  kinds of problems. So Adam is a good  starting point, but you can always do  hyperparameter tuning and you can run  it to see which thing gives you the  best results on your data. Okay? So my  verdict would just be to start with  Adam. And if you are not satisfied with  the result, try RMSprop and then do  hyperparameter tuning to check which  one is working the best.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitesh and you are",
+      "start": 0.199,
+      "duration": 2.894
+    },
+    {
+      "text": " welcome to my YouTube channel. In this",
+      "start": 2.143,
+      "duration": 3.046
+    },
+    {
+      "text": " video as well, we will continue our",
+      "start": 4.236,
+      "duration": 2.651
+    },
+    {
+      "text": " Deep Learning playlist. We are studying",
+      "start": 5.934,
+      "duration": 3.195
+    },
+    {
+      "text": " optimization techniques and we have",
+      "start": 8.187,
+      "duration": 3.032
+    },
+    {
+      "text": " covered three or four of them. Today,",
+      "start": 10.277,
+      "duration": 3.328
+    },
+    {
+      "text": " we will study our final optimization",
+      "start": 12.666,
+      "duration": 3.198
+    },
+    {
+      "text": " technique, which is called Adam.",
+      "start": 14.925,
+      "duration": 2.954
+    },
+    {
+      "text": " Honestly, Adam is the optimization",
+      "start": 17.439,
+      "duration": 2.68
+    },
+    {
+      "text": " technique that is the most famous and",
+      "start": 19.168,
+      "duration": 2.828
+    },
+    {
+      "text": " perhaps the most widely used. So, I",
+      "start": 21.046,
+      "duration": 2.991
+    },
+    {
+      "text": " feel it is very important for you to",
+      "start": 23.097,
+      "duration": 3.149
+    },
+    {
+      "text": " have an idea about it. And that is what",
+      "start": 25.305,
+      "duration": 3.147
+    },
+    {
+      "text": " we have covered in this video. I have",
+      "start": 27.493,
+      "duration": 3.827
+    },
+    {
+      "text": " tried to explain the mathematical",
+      "start": 30.38,
+      "duration": 2.98
+    },
+    {
+      "text": " details behind Adam and, like every",
+      "start": 32.42,
+      "duration": 3.1
+    },
+    {
+      "text": " other video, I have tried to clarify",
+      "start": 34.58,
+      "duration": 3.16
+    },
+    {
+      "text": " things through animations. So, let's",
+      "start": 36.8,
+      "duration": 4.23
+    },
+    {
+      "text": " start the video. So guys, let's start",
+      "start": 40.083,
+      "duration": 3.09
+    },
+    {
+      "text": " our discussion on Adam. Uh, first of",
+      "start": 42.226,
+      "duration": 2.949
+    },
+    {
+      "text": " all, let's look at the full form of",
+      "start": 44.211,
+      "duration": 2.271
+    },
+    {
+      "text": " Adam. The full form of Adam is Adaptive",
+      "start": 45.518,
+      "duration": 3.437
+    },
+    {
+      "text": " Moment Estimation. Okay? Uh, honestly",
+      "start": 48.017,
+      "duration": 4.886
+    },
+    {
+      "text": " speaking, Adam is currently the most",
+      "start": 51.977,
+      "duration": 3.652
+    },
+    {
+      "text": " powerful optimization technique. And",
+      "start": 54.702,
+      "duration": 5.032
+    },
+    {
+      "text": " most of the time you will see that if",
+      "start": 58.833,
+      "duration": 4.637
+    },
+    {
+      "text": " you are working with an ANN, CNN, or an",
+      "start": 62.569,
+      "duration": 4.834
+    },
+    {
+      "text": " RNN, most of the time you optimize it",
+      "start": 66.501,
+      "duration": 4.638
+    },
+    {
+      "text": " using Adam. Okay? Now, to understand",
+      "start": 70.237,
+      "duration": 5.02
+    },
+    {
+      "text": " Adam, you should have some idea about",
+      "start": 74.305,
+      "duration": 2.766
+    },
+    {
+      "text": " the other optimization techniques we",
+      "start": 76.119,
+      "duration": 2.717
+    },
+    {
+      "text": " have studied so far. Okay? So far in",
+      "start": 77.884,
+      "duration": 4.097
+    },
+    {
+      "text": " this course, we have studied SGD, Batch",
+      "start": 81.061,
+      "duration": 4.132
+    },
+    {
+      "text": " Gradient Descent, and Mini-batch",
+      "start": 84.273,
+      "duration": 3.57
+    },
+    {
+      "text": " Gradient Descent, which are the most",
+      "start": 86.923,
+      "duration": 3.891
+    },
+    {
+      "text": " basic techniques. After that, we",
+      "start": 89.894,
+      "duration": 3.345
+    },
+    {
+      "text": " studied four more techniques. We",
+      "start": 92.289,
+      "duration": 2.766
+    },
+    {
+      "text": " studied Momentum. Along with Momentum,",
+      "start": 94.153,
+      "duration": 5.406
+    },
+    {
+      "text": " we looked at NAG (Nesterov Accelerated",
+      "start": 98.626,
+      "duration": 3.548
+    },
+    {
+      "text": " Gradients). After that, we studied",
+      "start": 101.241,
+      "duration": 4.899
+    },
+    {
+      "text": " Adagrad, and in the last video, we",
+      "start": 105.243,
+      "duration": 4.526
+    },
+    {
+      "text": " looked at RMSprop. So, if you want to",
+      "start": 108.872,
+      "duration": 5.707
+    },
+    {
+      "text": " understand Adam properly, you should",
+      "start": 113.635,
+      "duration": 3.04
+    },
+    {
+      "text": " have an idea about all these techniques",
+      "start": 115.732,
+      "duration": 3.21
+    },
+    {
+      "text": ". The reason for that is that Adam",
+      "start": 117.942,
+      "duration": 3.648
+    },
+    {
+      "text": " borrows concepts from these older",
+      "start": 120.654,
+      "duration": 3.115
+    },
+    {
+      "text": " techniques. Okay? So, honestly, if you",
+      "start": 122.833,
+      "duration": 4.441
+    },
+    {
+      "text": " haven't watched them, watch the last",
+      "start": 126.318,
+      "duration": 2.577
+    },
+    {
+      "text": " four or five videos in this playlist.",
+      "start": 127.938,
+      "duration": 2.621
+    },
+    {
+      "text": " Things will become clear to you. If you",
+      "start": 130.379,
+      "duration": 3.477
+    },
+    {
+      "text": " don't have time, then I will give you a",
+      "start": 132.915,
+      "duration": 3.321
+    },
+    {
+      "text": " quick summary of what these five",
+      "start": 135.296,
+      "duration": 2.904
+    },
+    {
+      "text": " techniques are known for and how they",
+      "start": 137.259,
+      "duration": 3.202
+    },
+    {
+      "text": " work. So, The whole story started with",
+      "start": 139.521,
+      "duration": 6.196
+    },
+    {
+      "text": " Batch Gradient Descent. So, if you have",
+      "start": 144.776,
+      "duration": 4.568
+    },
+    {
+      "text": " a valley like this where you need to",
+      "start": 148.399,
+      "duration": 2.98
+    },
+    {
+      "text": " reach the minima, then what does Batch",
+      "start": 150.434,
+      "duration": 3.09
+    },
+    {
+      "text": " Gradient Descent do? It descends into",
+      "start": 152.579,
+      "duration": 4.044
+    },
+    {
+      "text": " this valley very quietly. The only",
+      "start": 155.682,
+      "duration": 3.34
+    },
+    {
+      "text": " problem is speed. Batch Gradient",
+      "start": 158.097,
+      "duration": 3.51
+    },
+    {
+      "text": " Descent does not work very fast. So,",
+      "start": 160.682,
+      "duration": 3.693
+    },
+    {
+      "text": " that is where the concept of Momentum",
+      "start": 163.427,
+      "duration": 2.924
+    },
+    {
+      "text": " came in. So, what is the concept of",
+      "start": 165.403,
+      "duration": 3.152
+    },
+    {
+      "text": " Momentum? That you use past gradients",
+      "start": 167.61,
+      "duration": 3.91
+    },
+    {
+      "text": " for your current update. Okay? That is",
+      "start": 170.601,
+      "duration": 4.248
+    },
+    {
+      "text": " why you notice that while it takes 101",
+      "start": 173.919,
+      "duration": 3.663
+    },
+    {
+      "text": " epochs to descend this valley, momentum",
+      "start": 176.652,
+      "duration": 3.733
+    },
+    {
+      "text": " would have taken only two to three",
+      "start": 179.455,
+      "duration": 3.383
+    },
+    {
+      "text": " epochs. See, in around four epochs you",
+      "start": 181.908,
+      "duration": 3.502
+    },
+    {
+      "text": " reached the very bottom of the valley.",
+      "start": 184.467,
+      "duration": 3.159
+    },
+    {
+      "text": " Because you are using the concept of",
+      "start": 186.726,
+      "duration": 2.531
+    },
+    {
+      "text": " momentum. You are using the concept of",
+      "start": 188.3,
+      "duration": 3.045
+    },
+    {
+      "text": " velocity. Then what was the problem",
+      "start": 190.4,
+      "duration": 2.749
+    },
+    {
+      "text": " with momentum? We keep crossing these",
+      "start": 192.195,
+      "duration": 3.14
+    },
+    {
+      "text": " oscillations. Then coming back. Then",
+      "start": 194.399,
+      "duration": 3.115
+    },
+    {
+      "text": " crossing again. And slowly we settle",
+      "start": 196.559,
+      "duration": 3.158
+    },
+    {
+      "text": " into our minima. So, this is where the",
+      "start": 198.786,
+      "duration": 4.439
+    },
+    {
+      "text": " concept of NAG, Nesterov Accelerated",
+      "start": 202.275,
+      "duration": 2.826
+    },
+    {
+      "text": " Gradients, came in, which dampens these",
+      "start": 204.152,
+      "duration": 2.978
+    },
+    {
+      "text": " oscillations. You can see the",
+      "start": 206.18,
+      "duration": 3.678
+    },
+    {
+      "text": " oscillations are a bit higher here. You",
+      "start": 208.902,
+      "duration": 3.059
+    },
+    {
+      "text": " would see the oscillations are a bit",
+      "start": 211.009,
+      "duration": 2.71
+    },
+    {
+      "text": " higher. Look, you are coming down by",
+      "start": 212.767,
+      "duration": 2.829
+    },
+    {
+      "text": " making a large circle. Whereas in NAG,",
+      "start": 214.643,
+      "duration": 2.921
+    },
+    {
+      "text": " you are making a smaller circle.",
+      "start": 216.612,
+      "duration": 2.547
+    },
+    {
+      "text": " Because you have dampened the",
+      "start": 218.339,
+      "duration": 2.753
+    },
+    {
+      "text": " oscillations. See, this is what I am",
+      "start": 220.152,
+      "duration": 3.208
+    },
+    {
+      "text": " saying. You can compare. Okay? So,",
+      "start": 222.417,
+      "duration": 3.905
+    },
+    {
+      "text": " everything was fine up to this point.",
+      "start": 225.37,
+      "duration": 2.769
+    },
+    {
+      "text": " But then a new problem arose: if you",
+      "start": 228.059,
+      "duration": 3.552
+    },
+    {
+      "text": " have sparse data or a sparse column,",
+      "start": 230.682,
+      "duration": 3.553
+    },
+    {
+      "text": " what starts happening is that if you",
+      "start": 233.306,
+      "duration": 3.553
+    },
+    {
+      "text": " are using batch gradient descent on",
+      "start": 235.929,
+      "duration": 3.482
+    },
+    {
+      "text": " sparse data, you descend the valley in",
+      "start": 238.482,
+      "duration": 3.695
+    },
+    {
+      "text": " this manner. First, you descend from",
+      "start": 241.248,
+      "duration": 3.814
+    },
+    {
+      "text": " the non-sparse column side, and then",
+      "start": 244.12,
+      "duration": 3.103
+    },
+    {
+      "text": " you slowly move toward the sparse side.",
+      "start": 246.281,
+      "duration": 3.278
+    },
+    {
+      "text": " So, obviously, this is not very fast.",
+      "start": 248.699,
+      "duration": 3.12
+    },
+    {
+      "text": " The same problem happens with momentum,",
+      "start": 251.139,
+      "duration": 2.946
+    },
+    {
+      "text": " where you descend rapidly in one",
+      "start": 253.135,
+      "duration": 2.598
+    },
+    {
+      "text": " direction first, then move in another",
+      "start": 254.782,
+      "duration": 2.847
+    },
+    {
+      "text": " direction. So, to solve this problem,",
+      "start": 256.679,
+      "duration": 3.814
+    },
+    {
+      "text": " we studied AdaGrad, which descends",
+      "start": 259.549,
+      "duration": 2.926
+    },
+    {
+      "text": " straight on such data. Look, notice",
+      "start": 261.532,
+      "duration": 4.821
+    },
+    {
+      "text": " this. Okay? But then what was the",
+      "start": 265.497,
+      "duration": 4.573
+    },
+    {
+      "text": " problem with AdaGrad? It misses the",
+      "start": 269.13,
+      "duration": 3.147
+    },
+    {
+      "text": " minima slightly. Because what do you do",
+      "start": 271.337,
+      "duration": 3.253
+    },
+    {
+      "text": " in AdaGrad? You decay, or reduce, the",
+      "start": 273.644,
+      "duration": 3.467
+    },
+    {
+      "text": " learning rate. But while decaying, it",
+      "start": 276.182,
+      "duration": 3.526
+    },
+    {
+      "text": " decays so much that after a point, it",
+      "start": 278.772,
+      "duration": 3.372
+    },
+    {
+      "text": " stops taking updates altogether. So,",
+      "start": 281.208,
+      "duration": 4.044
+    },
+    {
+      "text": " the solution to this was RMSProp, which",
+      "start": 284.316,
+      "duration": 3.512
+    },
+    {
+      "text": " works perfectly and reaches exactly",
+      "start": 286.892,
+      "duration": 3.254
+    },
+    {
+      "text": " down to your minima. Okay? So, we",
+      "start": 289.211,
+      "duration": 3.953
+    },
+    {
+      "text": " covered the theory up to this point.",
+      "start": 292.214,
+      "duration": 2.775
+    },
+    {
+      "text": " Now, honestly, if you think about it,",
+      "start": 294.279,
+      "duration": 3.808
+    },
+    {
+      "text": " we worked on two main interesting ideas",
+      "start": 297.163,
+      "duration": 3.96
+    },
+    {
+      "text": ". The first was the idea of momentum.",
+      "start": 300.123,
+      "duration": 4.696
+    },
+    {
+      "text": " And the second was learning rate. Decay",
+      "start": 305.899,
+      "duration": 7.086
+    },
+    {
+      "text": ". Here you can see that momentum and",
+      "start": 311.985,
+      "duration": 3.715
+    },
+    {
+      "text": " NAG are based on this idea. AdaGrad and",
+      "start": 314.761,
+      "duration": 3.81
+    },
+    {
+      "text": " RMSProp are based on this idea. Now,",
+      "start": 317.661,
+      "duration": 4.876
+    },
+    {
+      "text": " what Adam does is that it merges both",
+      "start": 321.607,
+      "duration": 3.577
+    },
+    {
+      "text": " of these ideas. Computer scientists",
+      "start": 324.254,
+      "duration": 5.266
+    },
+    {
+      "text": " thought that this idea is good. This",
+      "start": 328.578,
+      "duration": 3.072
+    },
+    {
+      "text": " idea is also good. What if we combine",
+      "start": 330.7,
+      "duration": 3.048
+    },
+    {
+      "text": " both of them, then maybe we can",
+      "start": 332.806,
+      "duration": 2.807
+    },
+    {
+      "text": " generate an even better idea. And that",
+      "start": 334.671,
+      "duration": 3.425
+    },
+    {
+      "text": " is the main principle behind Adam. Okay",
+      "start": 337.176,
+      "duration": 4.015
+    },
+    {
+      "text": "? So, next I will give you a",
+      "start": 340.191,
+      "duration": 3.319
+    },
+    {
+      "text": " mathematical intuition of how Adam",
+      "start": 342.571,
+      "duration": 3.079
+    },
+    {
+      "text": " works. Show you the mathematical",
+      "start": 344.712,
+      "duration": 3.444
+    },
+    {
+      "text": " formulation of Adam. Okay? The",
+      "start": 347.214,
+      "duration": 3.602
+    },
+    {
+      "text": " mathematical formulation of Adam is",
+      "start": 349.868,
+      "duration": 2.837
+    },
+    {
+      "text": " this. Mt is equal to—in fact, let me",
+      "start": 351.757,
+      "duration": 5.196
+    },
+    {
+      "text": " first show you this. wt + 1 = wt-",
+      "start": 356.057,
+      "duration": 12.899
+    },
+    {
+      "text": "learning rate divided by vt +",
+      "start": 367.956,
+      "duration": 6.143
+    },
+    {
+      "text": " multiplied by mt Okay, where mt = beta1",
+      "start": 376.799,
+      "duration": 13.36
+    },
+    {
+      "text": " times mt-1 + 1-beta1 times gradient of",
+      "start": 391.28,
+      "duration": 10.799
+    },
+    {
+      "text": " weight vector and vt = beta2 times vt-1",
+      "start": 401.337,
+      "duration": 14.003
+    },
+    {
+      "text": " + 1-beta2*by gradient squared. Okay?",
+      "start": 414.726,
+      "duration": 11.893
+    },
+    {
+      "text": " Now, if you have watched both the",
+      "start": 426.68,
+      "duration": 3.189
+    },
+    {
+      "text": " previous videos, of Momentum and",
+      "start": 428.936,
+      "duration": 3.123
+    },
+    {
+      "text": " AdaGrad, then you might be able to",
+      "start": 431.126,
+      "duration": 3.256
+    },
+    {
+      "text": " recognize what is happening here. So,",
+      "start": 433.449,
+      "duration": 5.138
+    },
+    {
+      "text": " this concept, this equation, is coming",
+      "start": 437.683,
+      "duration": 4.653
+    },
+    {
+      "text": " from Momentum. In Momentum, we used to",
+      "start": 441.433,
+      "duration": 7.842
+    },
+    {
+      "text": " do exactly this. Okay? And this concept",
+      "start": 448.327,
+      "duration": 5.029
+    },
+    {
+      "text": ", this equation, is coming from AdaGrad",
+      "start": 452.356,
+      "duration": 5.04
+    },
+    {
+      "text": ", where we used to divide this vt term",
+      "start": 456.396,
+      "duration": 4.937
+    },
+    {
+      "text": " with the learning rate. Okay? Now,",
+      "start": 460.437,
+      "duration": 4.936
+    },
+    {
+      "text": " there is just one more thing you need",
+      "start": 464.417,
+      "duration": 2.617
+    },
+    {
+      "text": " to do here. After calculating these two",
+      "start": 466.078,
+      "duration": 4.823
+    },
+    {
+      "text": ", you have to do something called bias",
+      "start": 469.901,
+      "duration": 4.494
+    },
+    {
+      "text": " correction. So, in bias correction,",
+      "start": 473.487,
+      "duration": 5.371
+    },
+    {
+      "text": " what you do is that after calculating",
+      "start": 477.909,
+      "duration": 2.897
+    },
+    {
+      "text": " mt and vt, you calculate mt-hat and",
+      "start": 479.857,
+      "duration": 10.074
+    },
+    {
+      "text": " vt-hat, whose formula is mt/1-beta1 ^ t",
+      "start": 489.128,
+      "duration": 8.669
+    },
+    {
+      "text": " and vt-hat = vt/1-beta2 ^ t, where T is",
+      "start": 496.993,
+      "duration": 8.669
+    },
+    {
+      "text": " your epoch number. So, if you are",
+      "start": 504.859,
+      "duration": 7.34
+    },
+    {
+      "text": " calculating in the first epoch, then",
+      "start": 511.241,
+      "duration": 2.493
+    },
+    {
+      "text": " one will come in place of T. In the",
+      "start": 512.775,
+      "duration": 2.452
+    },
+    {
+      "text": " second epoch, two will come in place of",
+      "start": 514.269,
+      "duration": 2.617
+    },
+    {
+      "text": " T. Okay? I am only talking about this T",
+      "start": 515.928,
+      "duration": 3.158
+    },
+    {
+      "text": ", the one at the bottom. Okay? I am not",
+      "start": 518.086,
+      "duration": 4.014
+    },
+    {
+      "text": " talking about the one at the top. Okay?",
+      "start": 521.147,
+      "duration": 3.198
+    },
+    {
+      "text": " Also, what are the values of beta1 and",
+      "start": 523.445,
+      "duration": 3.755
+    },
+    {
+      "text": " beta2? I will tell you that. The value",
+      "start": 526.272,
+      "duration": 4.198
+    },
+    {
+      "text": " of beta1 is generally 0.9 and the value",
+      "start": 529.555,
+      "duration": 4.338
+    },
+    {
+      "text": " of beta2 is 0.99, and this is",
+      "start": 532.979,
+      "duration": 3.481
+    },
+    {
+      "text": " configurable; you can change it as a",
+      "start": 535.546,
+      "duration": 4.081
+    },
+    {
+      "text": " parameter in Keras. Okay? So, what will",
+      "start": 538.712,
+      "duration": 5.411
+    },
+    {
+      "text": " you do first? You will calculate this.",
+      "start": 543.196,
+      "duration": 3.329
+    },
+    {
+      "text": " Then you will calculate this. Then you",
+      "start": 545.625,
+      "duration": 2.928
+    },
+    {
+      "text": " will calculate this. Then you will",
+      "start": 547.599,
+      "duration": 2.679
+    },
+    {
+      "text": " calculate this and put it into this",
+      "start": 549.328,
+      "duration": 2.755
+    },
+    {
+      "text": " formula. Okay? The learning rate, since",
+      "start": 551.133,
+      "duration": 4.397
+    },
+    {
+      "text": " it keeps changing. You can start with a",
+      "start": 554.615,
+      "duration": 4.479
+    },
+    {
+      "text": " learning rate of 1 or 0.01, anything",
+      "start": 558.153,
+      "duration": 3.114
+    },
+    {
+      "text": " works. You can tune that and see. In",
+      "start": 560.326,
+      "duration": 3.504
+    },
+    {
+      "text": " Adam, you don't really need to change",
+      "start": 562.879,
+      "duration": 2.806
+    },
+    {
+      "text": " the learning rate too much. It gets",
+      "start": 564.734,
+      "duration": 2.801
+    },
+    {
+      "text": " handled automatically. Okay? The main",
+      "start": 566.59,
+      "duration": 3.952
+    },
+    {
+      "text": " thing you need to understand here is",
+      "start": 569.595,
+      "duration": 2.903
+    },
+    {
+      "text": " what you did. You had studied two core",
+      "start": 571.551,
+      "duration": 3.75
+    },
+    {
+      "text": " ideas before this. One was momentum and",
+      "start": 574.358,
+      "duration": 3.127
+    },
+    {
+      "text": " the other was learning rate decay. You",
+      "start": 576.532,
+      "duration": 3.658
+    },
+    {
+      "text": " applied both of them in a single",
+      "start": 579.26,
+      "duration": 3.247
+    },
+    {
+      "text": " formula. Okay? Also, I didn't explain",
+      "start": 581.577,
+      "duration": 4.413
+    },
+    {
+      "text": " why bias correction is necessary. Bias",
+      "start": 585.051,
+      "duration": 3.53
+    },
+    {
+      "text": " correction is required because",
+      "start": 587.636,
+      "duration": 2.665
+    },
+    {
+      "text": " initially, MT and vt, both have a",
+      "start": 589.357,
+      "duration": 4.984
+    },
+    {
+      "text": " starting value of zero. Meaning, M of 0",
+      "start": 593.423,
+      "duration": 4.133
+    },
+    {
+      "text": " is zero. v of 0 is also zero. So, there",
+      "start": 596.632,
+      "duration": 4.022
+    },
+    {
+      "text": " is a bias in the beginning. It starts",
+      "start": 599.711,
+      "duration": 3.306
+    },
+    {
+      "text": " right from near zero. To offset that,",
+      "start": 602.088,
+      "duration": 3.971
+    },
+    {
+      "text": " to change that, you do this bias",
+      "start": 605.113,
+      "duration": 2.75
+    },
+    {
+      "text": " correction. This is just a mathematical",
+      "start": 606.917,
+      "duration": 4.151
+    },
+    {
+      "text": " detail. There is no need to go too deep",
+      "start": 610.135,
+      "duration": 3.568
+    },
+    {
+      "text": " into this. You just need to understand",
+      "start": 612.754,
+      "duration": 3.279
+    },
+    {
+      "text": " the core idea. As for the code, you can",
+      "start": 615.093,
+      "duration": 3.744
+    },
+    {
+      "text": " just run it directly using Keras. Okay?",
+      "start": 617.909,
+      "duration": 4.08
+    },
+    {
+      "text": " So, I hope you understood this whole",
+      "start": 621.089,
+      "duration": 2.64
+    },
+    {
+      "text": " thing. Now I will show you the",
+      "start": 622.775,
+      "duration": 3.653
+    },
+    {
+      "text": " animation of how Adam performs. So here",
+      "start": 625.501,
+      "duration": 6.1
+    },
+    {
+      "text": " is the Adam animation and I have taken",
+      "start": 630.67,
+      "duration": 3.617
+    },
+    {
+      "text": " the sparse dataset again. Where one",
+      "start": 633.356,
+      "duration": 4.07
+    },
+    {
+      "text": " column is sparse. And you can see that",
+      "start": 636.491,
+      "duration": 4.274
+    },
+    {
+      "text": " this animation shows you both behaviors",
+      "start": 639.845,
+      "duration": 4.094
+    },
+    {
+      "text": ". First, it is showing you the momentum",
+      "start": 642.939,
+      "duration": 3.557
+    },
+    {
+      "text": " behavior and second, it is also showing",
+      "start": 645.548,
+      "duration": 3.021
+    },
+    {
+      "text": " you the learning rate decay behavior.",
+      "start": 647.621,
+      "duration": 2.918
+    },
+    {
+      "text": " Okay? The original momentum was working",
+      "start": 649.639,
+      "duration": 3.801
+    },
+    {
+      "text": " something like this. It was coming from",
+      "start": 652.505,
+      "duration": 3.711
+    },
+    {
+      "text": " the side, but our Adam is coming from",
+      "start": 655.289,
+      "duration": 3.698
+    },
+    {
+      "text": " the center. Meaning, it is optimized",
+      "start": 658.06,
+      "duration": 3.205
+    },
+    {
+      "text": " and it turns after coming here, which",
+      "start": 660.319,
+      "duration": 3.008
+    },
+    {
+      "text": " shows that there is a component of",
+      "start": 662.381,
+      "duration": 2.846
+    },
+    {
+      "text": " momentum in our algorithm as well, and",
+      "start": 664.281,
+      "duration": 3.062
+    },
+    {
+      "text": " it is also converging the fastest. It",
+      "start": 666.397,
+      "duration": 3.049
+    },
+    {
+      "text": " is converging a few epochs earlier.",
+      "start": 668.497,
+      "duration": 2.806
+    },
+    {
+      "text": " Although, in this convex optimization",
+      "start": 670.42,
+      "duration": 2.81
+    },
+    {
+      "text": " problem, you won't realize it as much.",
+      "start": 672.279,
+      "duration": 2.86
+    },
+    {
+      "text": " But when you are working with a proper",
+      "start": 675.179,
+      "duration": 3.344
+    },
+    {
+      "text": " complex neural network where a",
+      "start": 677.584,
+      "duration": 2.851
+    },
+    {
+      "text": " non-convex optimization is happening,",
+      "start": 679.497,
+      "duration": 3.282
+    },
+    {
+      "text": " this algorithm performs very well. So",
+      "start": 681.841,
+      "duration": 4.056
+    },
+    {
+      "text": " now comes the big question that we have",
+      "start": 684.946,
+      "duration": 2.918
+    },
+    {
+      "text": " studied five or six types of",
+      "start": 686.913,
+      "duration": 2.376
+    },
+    {
+      "text": " optimization techniques. In fact, there",
+      "start": 688.339,
+      "duration": 2.868
+    },
+    {
+      "text": " are some other optimization techniques",
+      "start": 690.25,
+      "duration": 2.598
+    },
+    {
+      "text": " too. Like AdaDelta and Nadam, we",
+      "start": 691.89,
+      "duration": 3.032
+    },
+    {
+      "text": " haven't studied those. But which one",
+      "start": 693.983,
+      "duration": 3.95
+    },
+    {
+      "text": " should we use? So in most cases, if you",
+      "start": 696.999,
+      "duration": 4.736
+    },
+    {
+      "text": " are working in deep learning, then Adam",
+      "start": 700.812,
+      "duration": 4.016
+    },
+    {
+      "text": " is a good starting point. Try running",
+      "start": 703.905,
+      "duration": 3.942
+    },
+    {
+      "text": " Adam and see the results. If you are",
+      "start": 706.926,
+      "duration": 4.048
+    },
+    {
+      "text": " not getting good results with that,",
+      "start": 710.02,
+      "duration": 2.594
+    },
+    {
+      "text": " then you can try RMSprop. If you have",
+      "start": 711.66,
+      "duration": 5.579
+    },
+    {
+      "text": " Sometimes it also happens that momentum",
+      "start": 718.899,
+      "duration": 3.166
+    },
+    {
+      "text": " performs well. So in short, there is no",
+      "start": 721.121,
+      "duration": 4.072
+    },
+    {
+      "text": " clear answer, but in the last three to",
+      "start": 724.254,
+      "duration": 3.334
+    },
+    {
+      "text": " four years, Adam has generally been",
+      "start": 726.649,
+      "duration": 3.15
+    },
+    {
+      "text": " giving better results over different",
+      "start": 728.86,
+      "duration": 3.212
+    },
+    {
+      "text": " kinds of problems. So Adam is a good",
+      "start": 731.133,
+      "duration": 4.641
+    },
+    {
+      "text": " starting point, but you can always do",
+      "start": 734.848,
+      "duration": 3.732
+    },
+    {
+      "text": " hyperparameter tuning and you can run",
+      "start": 737.654,
+      "duration": 3.732
+    },
+    {
+      "text": " it to see which thing gives you the",
+      "start": 740.46,
+      "duration": 3.585
+    },
+    {
+      "text": " best results on your data. Okay? So my",
+      "start": 743.119,
+      "duration": 4.747
+    },
+    {
+      "text": " verdict would just be to start with",
+      "start": 746.937,
+      "duration": 3.503
+    },
+    {
+      "text": " Adam. And if you are not satisfied with",
+      "start": 749.511,
+      "duration": 3.722
+    },
+    {
+      "text": " the result, try RMSprop and then do",
+      "start": 752.291,
+      "duration": 3.031
+    },
+    {
+      "text": " hyperparameter tuning to check which",
+      "start": 754.38,
+      "duration": 3.088
+    },
+    {
+      "text": " one is working the best.",
+      "start": 756.526,
+      "duration": 2.393
+    }
+  ]
+}

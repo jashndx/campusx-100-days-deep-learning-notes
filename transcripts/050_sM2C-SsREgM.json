@@ -1,0 +1,3205 @@
+{
+  "id": "sM2C-SsREgM",
+  "index": 50,
+  "title": "Data Augmentation in Deep Learning | CNN",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and you are  welcome to CampusX. In this video, we  will continue our deep learning  playlist. In the last video, we built a  cat-dog classifier. Today, we are going  to learn a new technique that you can  use to create data. Okay? This  technique is called data augmentation.  And by using this technique, you are  able to create data. So let's say you  are working on a project, a CNN project , and you have a very limited amount of  data. Then, using data augmentation,  you can generate data. Okay? Today's  video is actually a recording of one of  my old sessions. I am presenting that  recording to you. The reason being, I  was running out of time. I didn't have  time to shoot a new video. And this  recording from the old session is quite  good, and I have explained very well  how data augmentation works in it. So  we will understand both things. First,  we will study the theory about data  augmentation. We will apply it to a  single image to see it, and then we  will come back and apply data  augmentation to our cat vs dog  classifier. Okay? So, all in all, the  video will be very interesting. Watch  it until the very end. Okay? Let's  start the video. So, what is data  augmentation? Let me tell you about it  quickly. Data augmentation is a simple  and smart technique used to reduce  overfitting. In fact, you solve two  problems. The first problem—I am  actually sharing this blog with you.  Read this blog whenever you have time.  The person who created Keras wrote this  blog. And the title of this blog is \" Building powerful image classification  models using very little data.\" Okay?  So, in data augmentation, what you do  is, let's say you have a photo. Okay?  Then you create more new photos from  that photo. That's the whole idea. Okay ? I will show you. Like here, you have  this one image. Okay? This is one image . Now, what will you do? Using Keras,  you will create more photos from this  same photo by applying certain image  transformations. Okay? Shifting,  rotating, or zooming. Zoom in, zoom out , vertical flipping, horizontal  flipping, shear—there are different  types of operations. What you're doing  with it is generating multiple images.  Right? So what happens is, let's say  you're working on a dataset where you  don't have enough data, and you know  deep learning is all about data. You  need a lot of data. So if you don't  have that much data, what can you do?  You can generate data for yourself.  Right? Using this technique. Okay? So,  what is the main reason for using this?  That if you don't have data, you can  generate it. And this is actually very  useful, because how are we doing it  right now? We just go to Kaggle and  pick up data. Right? Because we are  students. So it doesn't really matter  to us. We aren't building an actual  product. We are just learning. But if  you think in terms of companies, data  gathering itself is a very difficult  and expensive process. I will give you  an example. Let's say you are a startup . Let's say a startup in the medical  field, like PharmEasy or any of these  medicine companies. Let's say you are  in this domain. You have a company and  you need to build, I don't know, a  malaria detection classifier. Right?  Now for a malaria detection classifier,  what do you need? You need images of  cells. You need images of biological  cells. Now the problem is, how will you  gather that data? Because you need data  from actual patients. You need photos  of biological cells from actual  patients. Right? Now, you would have to  pay a cost to acquire that, wouldn't  you? Like, there is a cost involved. So , even getting 1,000 data points there  is a big deal. Going for 10,000 could  cost you a lot of money. So if there is  a field where data acquisition is very  costly, techniques like data  augmentation will help you a lot. Right ? It helps the most in the medical  field, in the medical domain. Why is  data augmentation good, secondly? The  reason is that it reduces overfitting.  How? Let me tell you. Like, let's say  you have photos of cats, and every time  the cat is looking to the left. Like in  this example, this brown cat is always  looking to the left. Right? Now, in all  the photos, all the cats are looking to  the left. So now our model might pick  up this feature that if this species is  looking towards the left side, then the  probability of it being a cat is higher . Right? It could pick up such a  feature. Whereas in the actual world,  this is not a feature at all. Cats look  in both directions. Right? So what will  you do now? You take this image and  apply transformations to it. Like, once  this transformation is applied to it,  the cat is now looking to the right  side as well. So now your model will  start to generalize and will start  thinking, \"Oh, okay, no, it looks to  the left, and it looks to the right,\"  so the chance of overfitting is reduced . Okay? So these are the two major  reasons why you use data augmentation.  Okay? The first is to generate data if  you don't have enough, and the second  is to reduce overfitting. Okay? And  it's an important concept, so that's  why we are studying it. Okay? What will  you have to do for this? You have a  module here in Keras called  ImageDataGenerator. We will use this  and by using this, we will generate  data. Okay? So do one thing guys, we  will learn in two ways. First, we will  generate images like this on a single  image. Then we will do it on an entire  folder. Okay? When we do actual model  building. Okay? So do one thing, create  a new folder in your Jupyter Notebook  and just make sure you have some setup  there, I will show you, keep a setup  there that If you go there, I have  already created a separate folder for  you guys. So if you go here, yes, I  need a setup where you have a folder,  and in that folder, you just keep one  image, I only need a single image. A  cat is fine, a dog is also fine. It  makes no difference. I just need one  image. Any image will work. Something  other than a cat or dog will also work.  Okay? And now what are we doing? We are  creating a new file. Okay? We are  creating a new file in this place. Okay ? So basically, from here you can  access the train directly. Yeah, so  okay. Let's see how to do this whole  thing. So the first thing that you do  is, in fact, let's do one thing. I have  already written this entire code. I was  trying all of this out. So, I will walk  you through it. It will be easier and  save time. Okay? So, the first thing  you do is import these two things.  First is ImageDataGenerator from  keras.preprocessing.image, which will  help you generate these images. Okay?  And the second is this image. It  behaves like OpenCV. It is like inside  Keras, and it helps you work with  images, similar to OpenCV. Okay? So we  used both of them. Just like how you  use imread with OpenCV, you use  image.load_img with this. Okay? What  did I do there? I specified my path. My  path was train.train_cat_18. jpg,  whatever my image name was. Here is my  image name: cat. 18. Okay? After that,  I specified while importing itself that  its size should be 200 by 200. This is  my desired size. Okay? And after that,  what did I do? My image has already  arrived. So, I imported Matplotlib and  just ran it. Actually, there is no need  to do that. Even if you just do this,  wait, one second, let's import these  two once. Let's run this once as well.  And by running it once, it shows up  directly. You don't need to use  Matplotlib. Okay? So, until now, I have  just used the Keras preprocessing image  to load the image and convert it to a  desired size. That's it. Okay? One more  thing, this type, like when you import  in OpenCV, it's a NumPy array. That is  not the case here. Here, it is a PIL  image. Okay? It is an object from the  Python Imaging Library. Okay? So, you  cannot consider it a NumPy array. This  is not a NumPy array. You cannot  directly perform NumPy operations on it . Okay? This is the main line. This is  the main line. Okay? And by the way  guys, I have taken all this code from  this blog. Like, everything is from  this blog. All of today's code is  actually from this blog. It is very  good. The blog is very good for data  augmentation. So yeah, what did we do  here? We created an object of this  class. Calling it data gen. We created  an object of the class we imported, by  the name of data gen. Right? And what  did we do here? We passed some values  into some parameters. For example, what  is one value? Rotation range. Right?  Why did I give the rotation range as  two? This should be around 30. How is  it here? Yes. It's 40 here. So  basically, this is an angle. Like, how  much do you want to rotate the image.  Right? Then there is the shear  operation. In shear, the image gets  slightly distorted. Right? So, on a  scale of one, we are doing a distortion  of two. In zoom, it can zoom in or zoom  out. And all of this is random. Meaning  two is the maximum. It will stay below  this. Right? I set horizontal flip to  true. There is also a vertical flip  here. But we won't keep vertical flip.  Can anyone tell why we aren't keeping  vertical flip? Because if you do a  vertical flip, there is a chance the  cat might look upside down, with its  feet on top and head at the bottom.  Generally speaking, cats don't look  like that. So, vertical flip is not a  common-sensical approach. You won't do  that. Right? Cats don't appear that way . That's the reason. Right? Width shift  range means what are you doing? You are  shifting the image slightly. Right? And  in height shift range, you are also  shifting the image slightly up or down.  So basically, you are defining these  transformations. That's it. As soon as  you hit Shift + Tab in this, you will  start seeing all the transformations  here. There are many transformations.  Right? So, there is no need to use  everything. Look here, you will also  see things like brightness. I saw  brightness range somewhere. Right? So,  there are many operations. At this  point, we are just doing these. In fact , I just copy-pasted theirs. What they  have done. Right? I didn't think too  much about it. We can look into it when  needed. But for now, this is our object . Right? This is the object. Okay? Now,  what did we do? Our image here was of  type PIL. What did I do? I passed my  image to the image_to_array function,  which is inside the image module. As  soon as I passed this image, it got  converted into a NumPy array. I will  show you. If I run this here for you,  now check the type of img. Now this has  been converted to a NumPy array. It has  been converted to NumPy. Okay? And if  you check its shape, it is now  200/200/3. Because when we imported it,  it was 200/200, and since it is color,  it became three channels. Okay? And now  what are you doing? What do you have to  do here? When you provide images, you  generally have to provide them in  batches, indicating how many images you  are giving. So, you have to reshape it  and add an extra dimension to specify  how many images we will process during  this entire transformation. So, I just  reshaped it with into one. Like, how  much is it now? An image with this  dimension. That's it. And this will  become my input batch. Okay? This is  the code. Nothing special done until  here. We have only done two things so  far. Imported the image. Converted it  into a NumPy array. Changed its shape.  This is the first task. In the second  task, what did we do? We created this  object that will tell us what kind of  transformations to apply. We have done  two things until here. Okay? Now, what  are we doing in the third step? We are  calling this function. This data_gen is  an object of this class. Now, in this  class, there is a function called flow.  Okay? You use flow when you are  applying it to a single image or  directly applying it to a NumPy array.  And there is another one called ' flow_from_directory', which you use  when all your photos are stored in a  directory and you want to process them  all at once. During training time, I  will show that after this. Okay? For  now, understand it as us processing a  single image and using flow. Okay? What  are we doing here? We are specifying  this is my input batch and for the  output batch, we need a batch size of  one, meaning another batch will form  when the output is created. Okay? And  what are we doing? We are storing all  the images that are being created in  this directory. So what have I done  here? Uh, if you see here, I have  created another directory. Actually, I  haven't. I am doing one thing. I am  creating a new directory here. By the  name of AUG. So, all the new images  that are created will appear here. Okay ? Inside AUG. Okay? So this loop ran,  and here, what's happening is that this  is an infinite loop. Like, there is no  breaking condition here. Meaning it  will keep creating new images. If you  don't stop it. So what did we do? We  added a stopping condition. i = 0,  incremented i, and if i becomes 10, we  are breaking. Meaning this loop will  run from zero to nine. Meaning a total  of 10 images will be formed. That's it.  Okay? So what am I doing? Now I am  running this code. Input batch is not  defined. Let's run this. And now let's  run this. And it ran. And now if I go  to my AUG folder, I have 10 images here . These are those 10 images. Okay? This  is the first image. This is the second,  third. Are you seeing this? They are  shifting slightly. Are you seeing? And  because of that, the pixels here are  behaving a bit differently. Look. Okay?  The previous one was zoomed. Okay? So,  basically, what did we do? We generated  10 images from one. Okay? Now there are  one or two things here. I'll show you  quickly. Uh, like, uh. There is a  parameter here. Uh, its name is. This.  What is its name? Fill mode. So,  sometimes when you are shifting images,  these pixels become empty. Right?  Meaning if you are pushing them, these  pixels are becoming empty. So, what to  do with those pixels? Fill mode tells  us exactly that. Like, fill mode, uh, ' nearest' says to populate them with the  nearby pixels. So that is what happened  here. Look at your images, what  happened is that as soon as this image  shifted slightly, see, it got populated  with the nearby pixels. So that's why  it doesn't look weird. Okay? There are  some other options here too. If I  remember correctly, there is an option,  I will show you. One fill mode is  reflect. What does reflect do? Reflect.  What will reflect do? Let me run this  code again once. I am deleting all  these images. Going back and running  this again. And here are the new images . Look at this. What is happening now?  It is reflecting here. Meaning, what  was on this side has come back on this  side. How do I explain it to you? I  guess you are understanding. From this  part here, you will understand how the  reflection is happening. So it shifted  a little, and what was in this spot got  copied over to this side. So it is up  to you. Which one do you want to use?  Like, look at the reflection here. See,  it came from top to bottom, so it  reflected. Okay? There are others too.  There is a solid one. With solid, it  becomes black, I think. I guess there  is a solid one. Let's check that once.  It's probably solid, right? Let's take  a look once. And coming back, let's  delete this and run it again. Boundary  mode not supported. Just one second. I  will have to check what the names were.  Fill mode image generator. Image data  generator has three or four options. Uh  it is constant. Actually, it is  constant. What will we have to do here?  In place of solid, we have to put  constant here. Constant, and now let's  run it. Going back. Yes. Look what is  happening here, whatever went away,  went away. It turned black. See, from  here you will understand better how the  transformations are being applied. Okay ? Okay? So these are two or three  options. You check what kind of data  you have. If you already have data that  is black around the edges, then  constant will be better, or reflect  might work well, or I don't know.  Whatever you feel is right, you can use  that. Okay? So this is how data  augmentation works. Okay? This is a  good demonstration, and looking at this , you will understand well what data  augmentation is doing behind the scenes . It takes a single image and applies  transformations to it, and in a way,  you are creating cheap data. Okay? So  now that we understand how this works.  What will we do now? We will build a  cat-dog classifier project using data  augmentation. All right? So if you  remember, in the last class when we  were building the cat-dog classifier,  we worked on 23,000 images there. All  right? But what are we going to do  today? What have I done? Today I have  intentionally reduced the data. Here is  my data folder right here. It contains  three separate folders. Train,  Validation, Test. All right? If I go  into Train, there are folders named  Cats and Dogs. If I go into Cats, there  are only 1000 items. See, it is visible  here at the bottom, there are 1000  items. All right? Similarly, if I go  into Dogs, there are only 1000 items.  Meaning, I have reduced the data  significantly. Earlier I had 12,500  cats. 12,500 dogs. Let's assume we  don't have that much data at all.  Meaning, the data itself is scarce. So  what can we do? I will show you two  cases now. The first case is that I  will train this model normally without  data augmentation on 2000 images and  show you the accuracy, and then I will  run it on the same 2000 images using  data augmentation, and you will see  that your accuracy will increase. All  right? So I have already trained it.  Otherwise, it takes time to train. So  this file here is Cat Dog Normal.  Meaning, data augmentation hasn't been  used here. All right? And this code is  exactly what we did in the last class.  Look here. This is my directory. I  created this called Categories. I ran  the loop that I ran in the last class.  After that, I shuffled it. Extracted X  and Y. Converted them to NumPy. After  that, I built the model. What did I do  while building the model? I have taken  three convolution layers and three max  pooling layers. All right? 32, 32, and  the last one is 64. This is the  architecture. All right? After that, I  took Flatten. After Flatten, I took  Dense with a dropout of .5. And then I  added a Sigmoid at the end in the  output layer. All right? I have taken  the RMSprop optimizer and applied  binary cross-entropy. Again, this is  not my architecture. I have followed  this blog completely. This is exactly  the copied and pasted code. All right?  I haven't written anything myself. Okay ? Uh, after that, as soon as I ran this  model for five epochs, you can see that  the maximum validation accuracy I was  able to reach was 57%. I was getting 57 %accuracy without data augmentation.  Okay, now what did I do? I applied data  augmentation. Okay, so how do you apply  data augmentation to the entire  directory? Like, if your data is  organized this way, how would you do it ? Take a look. So here too, you  imported the same thing. Imported Keras  preprocessing image ImageDataGenerator.  Okay? After that, what do you do? If  this code looks a bit intimidating,  just focus on this part. Just on this.  So here, you are doing exactly what you  did before. In fact, you are doing even  less. You are doing the exact same  thing here. You are creating a data gen  object, which is an object of this  class, and here we have just kept a few  operations. Rescale, shear, zoom,  horizontal flip. We aren't even using  the other operations. Okay? And for our  test data, we are not applying any  transformations. We are applying only  one transformation. That is rescale,  and we are setting it to 1/255. Can  anyone guess why we aren't applying the  other transformations to the test data?  Okay? So the reason is that you will  perform predictions on the test data.  During training, you need to perform  data augmentation. To increase the data  or to reduce overfitting. You will not  mess with the test data. Okay? That is  why you won't do anything here. You  will leave the test data as it is. You  will only mess around with the training  data. Okay? After that, the next part  is this. This part is actually  equivalent to this part. The data.flow  we were using here. Now, what will you  use here? flow_from_directory. Okay? So  if your data is already organized such  that one class is entirely inside one  folder. And the other class is entirely  inside another folder. Then what do you  do? You use flow_from_directory. Okay?  And in flow_from_directory, you just  specify the path to where the data is  located. Like in my case, with  reference to my file, like this is my  file. With reference to this, the data  is inside data/train. So that is what I  wrote here. Okay? Here, I have also  specified what my target size will be.  I have specified my batch size is 16.  Again, I took this from the block and  made no changes. Class mode is binary  since we use binary cross-entropy loss,  we need binary labels. All right? And  after that, what did I do? My  validation set, which I will run  alongside to test how my data is  performing. It is the same thing for  the validation set. Here too, there are  500 images of cats and 500 images of  dogs. This is my validation set. All  right? So I applied the test data  generator to the validation set. Which  is this one. No transformations. Only  scaling is happening. All right? And  the folder is different here. The  target size is the same. Here is the  batch size. Class mode binary. All  right? As soon as I ran this code, what  is it saying? Found 2000 images  belonging to two classes. This is  coming from the training set. All right ? And then here it says found 1000  classes. 1000 images belonging to two  classes. This is coming from the  validation set. Look, this is my train  set. In train, 1000 cats and 1000 dogs,  so 2000 in train. All right? And in  valid, 500 cats and 500 dogs. All right ? So that is what it is saying here,  that I found these many images. Okay? I  found these many images. Now, what did  I do? Used the same model that I used  here. In this place, this is the same  model. The exact same model. Okay? The  exact same model. And what will you do  now? Always remember one thing, guys,  this is a bit new. Whenever you use  image generator, whenever you use image  data generator, you call fit generator  instead of model dot fit. All right?  And instead of giving X and Y here, you  give the train generator. So this is  happening through a slightly different  pipeline. So the train generator has  all the images. So one more thing to  keep in mind, guys, is what happens?  There is a bit of confusion about what  you are doing. You have 1000-2000  photos. You are creating new images by  doing data augmentation on those 2000  photos. Right? Now, the new images  being created are what will be used  during training. The original ones will  not be used. Remember this, the 2000  original images you have are not being  used. The transformation happening  there and the new image being created  is what's being used. All right? So  what's happening is that the images  inside the train generator are being  sent to training. All right? And I had  set epochs to 25, but I will show you  how it goes at five, and I put the  validation generator in the validation  data. All right? And what are these  steps per epoch? Let's discuss that in  a while. All right? Now look, when I  trained this after data augmentation,  and look here, let's compare them  side-by-side. So here after five epochs , on the same architecture, the  accuracy was coming out to be 57%. Here  you can see that after five epochs, we  were above 69%. All right? So you can  see the performance of our model  increased immediately. All right? So  what did I do then? I trained this same  model further up to 25 epochs, as much  time as I had, and I was getting 74% accuracy at this point. Right around 75 . All right? So that was the video,  guys. I hope I was able to explain to  you how the data augmentation technique  works. In the future, if possible, we  will implement this in some project. In  some proper real-world project. If you  liked the video, then hit like, and if  you haven't subscribed to the channel,  then please subscribe. That's it from  my side. See you in the next video. Bye .",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and you are",
+      "start": 0.359,
+      "duration": 3.148
+    },
+    {
+      "text": " welcome to CampusX. In this video, we",
+      "start": 2.564,
+      "duration": 3.308
+    },
+    {
+      "text": " will continue our deep learning",
+      "start": 4.927,
+      "duration": 2.702
+    },
+    {
+      "text": " playlist. In the last video, we built a",
+      "start": 6.684,
+      "duration": 3.591
+    },
+    {
+      "text": " cat-dog classifier. Today, we are going",
+      "start": 9.336,
+      "duration": 4.306
+    },
+    {
+      "text": " to learn a new technique that you can",
+      "start": 12.712,
+      "duration": 3.575
+    },
+    {
+      "text": " use to create data. Okay? This",
+      "start": 15.357,
+      "duration": 3.892
+    },
+    {
+      "text": " technique is called data augmentation.",
+      "start": 18.304,
+      "duration": 3.086
+    },
+    {
+      "text": " And by using this technique, you are",
+      "start": 20.64,
+      "duration": 4.082
+    },
+    {
+      "text": " able to create data. So let's say you",
+      "start": 23.807,
+      "duration": 4.175
+    },
+    {
+      "text": " are working on a project, a CNN project",
+      "start": 27.051,
+      "duration": 3.688
+    },
+    {
+      "text": ", and you have a very limited amount of",
+      "start": 29.739,
+      "duration": 3.687
+    },
+    {
+      "text": " data. Then, using data augmentation,",
+      "start": 32.495,
+      "duration": 3.412
+    },
+    {
+      "text": " you can generate data. Okay? Today's",
+      "start": 34.972,
+      "duration": 3.813
+    },
+    {
+      "text": " video is actually a recording of one of",
+      "start": 37.84,
+      "duration": 3.145
+    },
+    {
+      "text": " my old sessions. I am presenting that",
+      "start": 40.04,
+      "duration": 4.14
+    },
+    {
+      "text": " recording to you. The reason being, I",
+      "start": 43.241,
+      "duration": 4.014
+    },
+    {
+      "text": " was running out of time. I didn't have",
+      "start": 46.303,
+      "duration": 2.784
+    },
+    {
+      "text": " time to shoot a new video. And this",
+      "start": 48.126,
+      "duration": 2.746
+    },
+    {
+      "text": " recording from the old session is quite",
+      "start": 49.934,
+      "duration": 3.405
+    },
+    {
+      "text": " good, and I have explained very well",
+      "start": 52.4,
+      "duration": 3.22
+    },
+    {
+      "text": " how data augmentation works in it. So",
+      "start": 54.682,
+      "duration": 3.353
+    },
+    {
+      "text": " we will understand both things. First,",
+      "start": 57.083,
+      "duration": 3.027
+    },
+    {
+      "text": " we will study the theory about data",
+      "start": 59.165,
+      "duration": 2.925
+    },
+    {
+      "text": " augmentation. We will apply it to a",
+      "start": 61.145,
+      "duration": 3.67
+    },
+    {
+      "text": " single image to see it, and then we",
+      "start": 63.871,
+      "duration": 2.96
+    },
+    {
+      "text": " will come back and apply data",
+      "start": 65.887,
+      "duration": 2.624
+    },
+    {
+      "text": " augmentation to our cat vs dog",
+      "start": 67.567,
+      "duration": 2.68
+    },
+    {
+      "text": " classifier. Okay? So, all in all, the",
+      "start": 69.303,
+      "duration": 3.7
+    },
+    {
+      "text": " video will be very interesting. Watch",
+      "start": 72.047,
+      "duration": 2.714
+    },
+    {
+      "text": " it until the very end. Okay? Let's",
+      "start": 73.81,
+      "duration": 2.955
+    },
+    {
+      "text": " start the video. So, what is data",
+      "start": 75.814,
+      "duration": 2.864
+    },
+    {
+      "text": " augmentation? Let me tell you about it",
+      "start": 77.739,
+      "duration": 2.772
+    },
+    {
+      "text": " quickly. Data augmentation is a simple",
+      "start": 79.548,
+      "duration": 4.505
+    },
+    {
+      "text": " and smart technique used to reduce",
+      "start": 83.132,
+      "duration": 3.667
+    },
+    {
+      "text": " overfitting. In fact, you solve two",
+      "start": 85.877,
+      "duration": 4.282
+    },
+    {
+      "text": " problems. The first problem—I am",
+      "start": 89.219,
+      "duration": 3.152
+    },
+    {
+      "text": " actually sharing this blog with you.",
+      "start": 91.431,
+      "duration": 3.148
+    },
+    {
+      "text": " Read this blog whenever you have time.",
+      "start": 93.753,
+      "duration": 2.84
+    },
+    {
+      "text": " The person who created Keras wrote this",
+      "start": 95.693,
+      "duration": 3.491
+    },
+    {
+      "text": " blog. And the title of this blog is \"",
+      "start": 98.248,
+      "duration": 3.278
+    },
+    {
+      "text": "Building powerful image classification",
+      "start": 100.526,
+      "duration": 3.277
+    },
+    {
+      "text": " models using very little data.\" Okay?",
+      "start": 102.863,
+      "duration": 3.511
+    },
+    {
+      "text": " So, in data augmentation, what you do",
+      "start": 105.474,
+      "duration": 2.768
+    },
+    {
+      "text": " is, let's say you have a photo. Okay?",
+      "start": 107.29,
+      "duration": 3.017
+    },
+    {
+      "text": " Then you create more new photos from",
+      "start": 109.407,
+      "duration": 3.4
+    },
+    {
+      "text": " that photo. That's the whole idea. Okay",
+      "start": 111.873,
+      "duration": 3.52
+    },
+    {
+      "text": "? I will show you. Like here, you have",
+      "start": 114.393,
+      "duration": 3.593
+    },
+    {
+      "text": " this one image. Okay? This is one image",
+      "start": 117.064,
+      "duration": 3.979
+    },
+    {
+      "text": ". Now, what will you do? Using Keras,",
+      "start": 120.043,
+      "duration": 3.731
+    },
+    {
+      "text": " you will create more photos from this",
+      "start": 122.844,
+      "duration": 3.576
+    },
+    {
+      "text": " same photo by applying certain image",
+      "start": 125.489,
+      "duration": 3.507
+    },
+    {
+      "text": " transformations. Okay? Shifting,",
+      "start": 128.066,
+      "duration": 4.636
+    },
+    {
+      "text": " rotating, or zooming. Zoom in, zoom out",
+      "start": 131.809,
+      "duration": 5.25
+    },
+    {
+      "text": ", vertical flipping, horizontal",
+      "start": 136.059,
+      "duration": 2.715
+    },
+    {
+      "text": " flipping, shear—there are different",
+      "start": 137.83,
+      "duration": 3.047
+    },
+    {
+      "text": " types of operations. What you're doing",
+      "start": 139.932,
+      "duration": 4.29
+    },
+    {
+      "text": " with it is generating multiple images.",
+      "start": 143.3,
+      "duration": 3.959
+    },
+    {
+      "text": " Right? So what happens is, let's say",
+      "start": 146.4,
+      "duration": 3.397
+    },
+    {
+      "text": " you're working on a dataset where you",
+      "start": 148.858,
+      "duration": 3.269
+    },
+    {
+      "text": " don't have enough data, and you know",
+      "start": 151.188,
+      "duration": 3.207
+    },
+    {
+      "text": " deep learning is all about data. You",
+      "start": 153.456,
+      "duration": 3.476
+    },
+    {
+      "text": " need a lot of data. So if you don't",
+      "start": 155.996,
+      "duration": 3.602
+    },
+    {
+      "text": " have that much data, what can you do?",
+      "start": 158.643,
+      "duration": 2.676
+    },
+    {
+      "text": " You can generate data for yourself.",
+      "start": 161.032,
+      "duration": 2.837
+    },
+    {
+      "text": " Right? Using this technique. Okay? So,",
+      "start": 162.969,
+      "duration": 3.388
+    },
+    {
+      "text": " what is the main reason for using this?",
+      "start": 165.417,
+      "duration": 3.337
+    },
+    {
+      "text": " That if you don't have data, you can",
+      "start": 167.854,
+      "duration": 3.756
+    },
+    {
+      "text": " generate it. And this is actually very",
+      "start": 170.687,
+      "duration": 3.388
+    },
+    {
+      "text": " useful, because how are we doing it",
+      "start": 173.13,
+      "duration": 2.918
+    },
+    {
+      "text": " right now? We just go to Kaggle and",
+      "start": 175.103,
+      "duration": 2.766
+    },
+    {
+      "text": " pick up data. Right? Because we are",
+      "start": 176.916,
+      "duration": 3.022
+    },
+    {
+      "text": " students. So it doesn't really matter",
+      "start": 178.986,
+      "duration": 2.538
+    },
+    {
+      "text": " to us. We aren't building an actual",
+      "start": 180.561,
+      "duration": 2.468
+    },
+    {
+      "text": " product. We are just learning. But if",
+      "start": 182.07,
+      "duration": 3.733
+    },
+    {
+      "text": " you think in terms of companies, data",
+      "start": 184.861,
+      "duration": 3.12
+    },
+    {
+      "text": " gathering itself is a very difficult",
+      "start": 187.038,
+      "duration": 3.063
+    },
+    {
+      "text": " and expensive process. I will give you",
+      "start": 189.159,
+      "duration": 4.027
+    },
+    {
+      "text": " an example. Let's say you are a startup",
+      "start": 192.231,
+      "duration": 4.683
+    },
+    {
+      "text": ". Let's say a startup in the medical",
+      "start": 195.914,
+      "duration": 3.892
+    },
+    {
+      "text": " field, like PharmEasy or any of these",
+      "start": 198.862,
+      "duration": 3.076
+    },
+    {
+      "text": " medicine companies. Let's say you are",
+      "start": 200.994,
+      "duration": 3.669
+    },
+    {
+      "text": " in this domain. You have a company and",
+      "start": 203.71,
+      "duration": 3.902
+    },
+    {
+      "text": " you need to build, I don't know, a",
+      "start": 206.706,
+      "duration": 4.205
+    },
+    {
+      "text": " malaria detection classifier. Right?",
+      "start": 210.005,
+      "duration": 4.12
+    },
+    {
+      "text": " Now for a malaria detection classifier,",
+      "start": 213.225,
+      "duration": 3.014
+    },
+    {
+      "text": " what do you need? You need images of",
+      "start": 215.29,
+      "duration": 3.38
+    },
+    {
+      "text": " cells. You need images of biological",
+      "start": 217.747,
+      "duration": 3.013
+    },
+    {
+      "text": " cells. Now the problem is, how will you",
+      "start": 219.81,
+      "duration": 4.012
+    },
+    {
+      "text": " gather that data? Because you need data",
+      "start": 222.899,
+      "duration": 3.828
+    },
+    {
+      "text": " from actual patients. You need photos",
+      "start": 225.79,
+      "duration": 3.227
+    },
+    {
+      "text": " of biological cells from actual",
+      "start": 228.068,
+      "duration": 2.588
+    },
+    {
+      "text": " patients. Right? Now, you would have to",
+      "start": 229.707,
+      "duration": 3.722
+    },
+    {
+      "text": " pay a cost to acquire that, wouldn't",
+      "start": 232.494,
+      "duration": 3.34
+    },
+    {
+      "text": " you? Like, there is a cost involved. So",
+      "start": 234.899,
+      "duration": 2.873
+    },
+    {
+      "text": ", even getting 1,000 data points there",
+      "start": 236.772,
+      "duration": 2.574
+    },
+    {
+      "text": " is a big deal. Going for 10,000 could",
+      "start": 238.388,
+      "duration": 3.049
+    },
+    {
+      "text": " cost you a lot of money. So if there is",
+      "start": 240.492,
+      "duration": 3.976
+    },
+    {
+      "text": " a field where data acquisition is very",
+      "start": 243.521,
+      "duration": 2.978
+    },
+    {
+      "text": " costly, techniques like data",
+      "start": 245.551,
+      "duration": 2.458
+    },
+    {
+      "text": " augmentation will help you a lot. Right",
+      "start": 247.061,
+      "duration": 3.912
+    },
+    {
+      "text": "? It helps the most in the medical",
+      "start": 249.973,
+      "duration": 2.844
+    },
+    {
+      "text": " field, in the medical domain. Why is",
+      "start": 251.869,
+      "duration": 2.987
+    },
+    {
+      "text": " data augmentation good, secondly? The",
+      "start": 253.92,
+      "duration": 3.587
+    },
+    {
+      "text": " reason is that it reduces overfitting.",
+      "start": 256.585,
+      "duration": 3.968
+    },
+    {
+      "text": " How? Let me tell you. Like, let's say",
+      "start": 259.653,
+      "duration": 3.805
+    },
+    {
+      "text": " you have photos of cats, and every time",
+      "start": 262.53,
+      "duration": 3.832
+    },
+    {
+      "text": " the cat is looking to the left. Like in",
+      "start": 265.435,
+      "duration": 3.77
+    },
+    {
+      "text": " this example, this brown cat is always",
+      "start": 268.265,
+      "duration": 3.276
+    },
+    {
+      "text": " looking to the left. Right? Now, in all",
+      "start": 270.601,
+      "duration": 3.988
+    },
+    {
+      "text": " the photos, all the cats are looking to",
+      "start": 273.657,
+      "duration": 3.66
+    },
+    {
+      "text": " the left. So now our model might pick",
+      "start": 276.385,
+      "duration": 3.833
+    },
+    {
+      "text": " up this feature that if this species is",
+      "start": 279.277,
+      "duration": 3.308
+    },
+    {
+      "text": " looking towards the left side, then the",
+      "start": 281.644,
+      "duration": 3.309
+    },
+    {
+      "text": " probability of it being a cat is higher",
+      "start": 284.012,
+      "duration": 3.308
+    },
+    {
+      "text": ". Right? It could pick up such a",
+      "start": 286.32,
+      "duration": 2.817
+    },
+    {
+      "text": " feature. Whereas in the actual world,",
+      "start": 288.18,
+      "duration": 2.57
+    },
+    {
+      "text": " this is not a feature at all. Cats look",
+      "start": 289.79,
+      "duration": 2.743
+    },
+    {
+      "text": " in both directions. Right? So what will",
+      "start": 291.587,
+      "duration": 3.502
+    },
+    {
+      "text": " you do now? You take this image and",
+      "start": 294.145,
+      "duration": 3.364
+    },
+    {
+      "text": " apply transformations to it. Like, once",
+      "start": 296.579,
+      "duration": 3.531
+    },
+    {
+      "text": " this transformation is applied to it,",
+      "start": 299.147,
+      "duration": 2.374
+    },
+    {
+      "text": " the cat is now looking to the right",
+      "start": 300.559,
+      "duration": 2.3
+    },
+    {
+      "text": " side as well. So now your model will",
+      "start": 301.896,
+      "duration": 3.213
+    },
+    {
+      "text": " start to generalize and will start",
+      "start": 304.149,
+      "duration": 2.376
+    },
+    {
+      "text": " thinking, \"Oh, okay, no, it looks to",
+      "start": 305.565,
+      "duration": 2.457
+    },
+    {
+      "text": " the left, and it looks to the right,\"",
+      "start": 307.062,
+      "duration": 2.498
+    },
+    {
+      "text": " so the chance of overfitting is reduced",
+      "start": 308.6,
+      "duration": 2.578
+    },
+    {
+      "text": ". Okay? So these are the two major",
+      "start": 310.178,
+      "duration": 4.783
+    },
+    {
+      "text": " reasons why you use data augmentation.",
+      "start": 314.054,
+      "duration": 4.534
+    },
+    {
+      "text": " Okay? The first is to generate data if",
+      "start": 317.688,
+      "duration": 4.097
+    },
+    {
+      "text": " you don't have enough, and the second",
+      "start": 320.858,
+      "duration": 3.688
+    },
+    {
+      "text": " is to reduce overfitting. Okay? And",
+      "start": 323.619,
+      "duration": 3.571
+    },
+    {
+      "text": " it's an important concept, so that's",
+      "start": 326.23,
+      "duration": 2.422
+    },
+    {
+      "text": " why we are studying it. Okay? What will",
+      "start": 327.692,
+      "duration": 3.126
+    },
+    {
+      "text": " you have to do for this? You have a",
+      "start": 329.876,
+      "duration": 3.428
+    },
+    {
+      "text": " module here in Keras called",
+      "start": 332.386,
+      "duration": 3.216
+    },
+    {
+      "text": " ImageDataGenerator. We will use this",
+      "start": 334.684,
+      "duration": 3.893
+    },
+    {
+      "text": " and by using this, we will generate",
+      "start": 337.654,
+      "duration": 3.699
+    },
+    {
+      "text": " data. Okay? So do one thing guys, we",
+      "start": 340.43,
+      "duration": 4.129
+    },
+    {
+      "text": " will learn in two ways. First, we will",
+      "start": 343.625,
+      "duration": 4.102
+    },
+    {
+      "text": " generate images like this on a single",
+      "start": 346.784,
+      "duration": 3.082
+    },
+    {
+      "text": " image. Then we will do it on an entire",
+      "start": 348.922,
+      "duration": 3.25
+    },
+    {
+      "text": " folder. Okay? When we do actual model",
+      "start": 351.226,
+      "duration": 3.718
+    },
+    {
+      "text": " building. Okay? So do one thing, create",
+      "start": 354.018,
+      "duration": 5.225
+    },
+    {
+      "text": " a new folder in your Jupyter Notebook",
+      "start": 358.336,
+      "duration": 4.45
+    },
+    {
+      "text": " and just make sure you have some setup",
+      "start": 361.88,
+      "duration": 4.543
+    },
+    {
+      "text": " there, I will show you, keep a setup",
+      "start": 365.516,
+      "duration": 4.357
+    },
+    {
+      "text": " there that If you go there, I have",
+      "start": 368.966,
+      "duration": 6.682
+    },
+    {
+      "text": " already created a separate folder for",
+      "start": 374.705,
+      "duration": 3.105
+    },
+    {
+      "text": " you guys. So if you go here, yes, I",
+      "start": 376.867,
+      "duration": 4.024
+    },
+    {
+      "text": " need a setup where you have a folder,",
+      "start": 379.966,
+      "duration": 3.742
+    },
+    {
+      "text": " and in that folder, you just keep one",
+      "start": 382.782,
+      "duration": 3.742
+    },
+    {
+      "text": " image, I only need a single image. A",
+      "start": 385.599,
+      "duration": 3.936
+    },
+    {
+      "text": " cat is fine, a dog is also fine. It",
+      "start": 388.592,
+      "duration": 2.999
+    },
+    {
+      "text": " makes no difference. I just need one",
+      "start": 390.632,
+      "duration": 2.578
+    },
+    {
+      "text": " image. Any image will work. Something",
+      "start": 392.254,
+      "duration": 2.948
+    },
+    {
+      "text": " other than a cat or dog will also work.",
+      "start": 394.238,
+      "duration": 2.403
+    },
+    {
+      "text": " Okay? And now what are we doing? We are",
+      "start": 395.741,
+      "duration": 4.737
+    },
+    {
+      "text": " creating a new file. Okay? We are",
+      "start": 402.959,
+      "duration": 4.367
+    },
+    {
+      "text": " creating a new file in this place. Okay",
+      "start": 406.381,
+      "duration": 3.726
+    },
+    {
+      "text": "? So basically, from here you can",
+      "start": 409.107,
+      "duration": 4.951
+    },
+    {
+      "text": " access the train directly. Yeah, so",
+      "start": 413.127,
+      "duration": 4.732
+    },
+    {
+      "text": " okay. Let's see how to do this whole",
+      "start": 417.079,
+      "duration": 4.161
+    },
+    {
+      "text": " thing. So the first thing that you do",
+      "start": 420.302,
+      "duration": 3.217
+    },
+    {
+      "text": " is, in fact, let's do one thing. I have",
+      "start": 422.572,
+      "duration": 3.183
+    },
+    {
+      "text": " already written this entire code. I was",
+      "start": 424.801,
+      "duration": 2.981
+    },
+    {
+      "text": " trying all of this out. So, I will walk",
+      "start": 426.843,
+      "duration": 3.561
+    },
+    {
+      "text": " you through it. It will be easier and",
+      "start": 429.473,
+      "duration": 3.567
+    },
+    {
+      "text": " save time. Okay? So, the first thing",
+      "start": 432.106,
+      "duration": 4.029
+    },
+    {
+      "text": " you do is import these two things.",
+      "start": 435.218,
+      "duration": 3.821
+    },
+    {
+      "text": " First is ImageDataGenerator from",
+      "start": 438.399,
+      "duration": 3.183
+    },
+    {
+      "text": " keras.preprocessing.image, which will",
+      "start": 440.65,
+      "duration": 3.525
+    },
+    {
+      "text": " help you generate these images. Okay?",
+      "start": 443.243,
+      "duration": 3.856
+    },
+    {
+      "text": " And the second is this image. It",
+      "start": 446.199,
+      "duration": 2.905
+    },
+    {
+      "text": " behaves like OpenCV. It is like inside",
+      "start": 448.206,
+      "duration": 4.376
+    },
+    {
+      "text": " Keras, and it helps you work with",
+      "start": 451.645,
+      "duration": 3.064
+    },
+    {
+      "text": " images, similar to OpenCV. Okay? So we",
+      "start": 453.772,
+      "duration": 3.67
+    },
+    {
+      "text": " used both of them. Just like how you",
+      "start": 456.519,
+      "duration": 4.179
+    },
+    {
+      "text": " use imread with OpenCV, you use",
+      "start": 459.794,
+      "duration": 3.976
+    },
+    {
+      "text": " image.load_img with this. Okay? What",
+      "start": 462.866,
+      "duration": 4.245
+    },
+    {
+      "text": " did I do there? I specified my path. My",
+      "start": 466.164,
+      "duration": 3.356
+    },
+    {
+      "text": " path was train.train_cat_18. jpg,",
+      "start": 468.637,
+      "duration": 5.012
+    },
+    {
+      "text": " whatever my image name was. Here is my",
+      "start": 472.721,
+      "duration": 3.805
+    },
+    {
+      "text": " image name: cat. 18. Okay? After that,",
+      "start": 475.593,
+      "duration": 4.709
+    },
+    {
+      "text": " I specified while importing itself that",
+      "start": 479.373,
+      "duration": 3.778
+    },
+    {
+      "text": " its size should be 200 by 200. This is",
+      "start": 482.222,
+      "duration": 3.974
+    },
+    {
+      "text": " my desired size. Okay? And after that,",
+      "start": 485.256,
+      "duration": 3.55
+    },
+    {
+      "text": " what did I do? My image has already",
+      "start": 487.862,
+      "duration": 3.149
+    },
+    {
+      "text": " arrived. So, I imported Matplotlib and",
+      "start": 490.075,
+      "duration": 3.931
+    },
+    {
+      "text": " just ran it. Actually, there is no need",
+      "start": 493.067,
+      "duration": 3.999
+    },
+    {
+      "text": " to do that. Even if you just do this,",
+      "start": 496.127,
+      "duration": 4.714
+    },
+    {
+      "text": " wait, one second, let's import these",
+      "start": 499.95,
+      "duration": 4.92
+    },
+    {
+      "text": " two once. Let's run this once as well.",
+      "start": 503.979,
+      "duration": 4.78
+    },
+    {
+      "text": " And by running it once, it shows up",
+      "start": 508.453,
+      "duration": 3.333
+    },
+    {
+      "text": " directly. You don't need to use",
+      "start": 510.853,
+      "duration": 3.176
+    },
+    {
+      "text": " Matplotlib. Okay? So, until now, I have",
+      "start": 513.099,
+      "duration": 4.231
+    },
+    {
+      "text": " just used the Keras preprocessing image",
+      "start": 516.41,
+      "duration": 4.15
+    },
+    {
+      "text": " to load the image and convert it to a",
+      "start": 519.641,
+      "duration": 3.989
+    },
+    {
+      "text": " desired size. That's it. Okay? One more",
+      "start": 522.71,
+      "duration": 4.249
+    },
+    {
+      "text": " thing, this type, like when you import",
+      "start": 526.037,
+      "duration": 3.971
+    },
+    {
+      "text": " in OpenCV, it's a NumPy array. That is",
+      "start": 529.086,
+      "duration": 3.679
+    },
+    {
+      "text": " not the case here. Here, it is a PIL",
+      "start": 531.798,
+      "duration": 2.739
+    },
+    {
+      "text": " image. Okay? It is an object from the",
+      "start": 533.599,
+      "duration": 3.664
+    },
+    {
+      "text": " Python Imaging Library. Okay? So, you",
+      "start": 536.328,
+      "duration": 3.422
+    },
+    {
+      "text": " cannot consider it a NumPy array. This",
+      "start": 538.794,
+      "duration": 2.711
+    },
+    {
+      "text": " is not a NumPy array. You cannot",
+      "start": 540.549,
+      "duration": 2.444
+    },
+    {
+      "text": " directly perform NumPy operations on it",
+      "start": 542.033,
+      "duration": 2.574
+    },
+    {
+      "text": ". Okay? This is the main line. This is",
+      "start": 543.607,
+      "duration": 3.076
+    },
+    {
+      "text": " the main line. Okay? And by the way",
+      "start": 545.725,
+      "duration": 2.86
+    },
+    {
+      "text": " guys, I have taken all this code from",
+      "start": 547.622,
+      "duration": 2.389
+    },
+    {
+      "text": " this blog. Like, everything is from",
+      "start": 549.048,
+      "duration": 2.673
+    },
+    {
+      "text": " this blog. All of today's code is",
+      "start": 550.771,
+      "duration": 2.642
+    },
+    {
+      "text": " actually from this blog. It is very",
+      "start": 552.461,
+      "duration": 2.708
+    },
+    {
+      "text": " good. The blog is very good for data",
+      "start": 554.216,
+      "duration": 2.697
+    },
+    {
+      "text": " augmentation. So yeah, what did we do",
+      "start": 555.958,
+      "duration": 3.561
+    },
+    {
+      "text": " here? We created an object of this",
+      "start": 558.599,
+      "duration": 4.253
+    },
+    {
+      "text": " class. Calling it data gen. We created",
+      "start": 561.944,
+      "duration": 3.685
+    },
+    {
+      "text": " an object of the class we imported, by",
+      "start": 564.71,
+      "duration": 4.085
+    },
+    {
+      "text": " the name of data gen. Right? And what",
+      "start": 567.876,
+      "duration": 3.827
+    },
+    {
+      "text": " did we do here? We passed some values",
+      "start": 570.754,
+      "duration": 2.89
+    },
+    {
+      "text": " into some parameters. For example, what",
+      "start": 572.693,
+      "duration": 3.107
+    },
+    {
+      "text": " is one value? Rotation range. Right?",
+      "start": 574.858,
+      "duration": 3.721
+    },
+    {
+      "text": " Why did I give the rotation range as",
+      "start": 577.699,
+      "duration": 3.282
+    },
+    {
+      "text": " two? This should be around 30. How is",
+      "start": 580.045,
+      "duration": 6.243
+    },
+    {
+      "text": " it here? Yes. It's 40 here. So",
+      "start": 585.36,
+      "duration": 2.952
+    },
+    {
+      "text": " basically, this is an angle. Like, how",
+      "start": 587.352,
+      "duration": 2.706
+    },
+    {
+      "text": " much do you want to rotate the image.",
+      "start": 589.109,
+      "duration": 2.858
+    },
+    {
+      "text": " Right? Then there is the shear",
+      "start": 591.067,
+      "duration": 2.589
+    },
+    {
+      "text": " operation. In shear, the image gets",
+      "start": 592.7,
+      "duration": 2.939
+    },
+    {
+      "text": " slightly distorted. Right? So, on a",
+      "start": 594.697,
+      "duration": 3.237
+    },
+    {
+      "text": " scale of one, we are doing a distortion",
+      "start": 596.986,
+      "duration": 3.032
+    },
+    {
+      "text": " of two. In zoom, it can zoom in or zoom",
+      "start": 599.07,
+      "duration": 3.425
+    },
+    {
+      "text": " out. And all of this is random. Meaning",
+      "start": 601.559,
+      "duration": 2.832
+    },
+    {
+      "text": " two is the maximum. It will stay below",
+      "start": 603.443,
+      "duration": 2.851
+    },
+    {
+      "text": " this. Right? I set horizontal flip to",
+      "start": 605.336,
+      "duration": 3.294
+    },
+    {
+      "text": " true. There is also a vertical flip",
+      "start": 607.684,
+      "duration": 2.713
+    },
+    {
+      "text": " here. But we won't keep vertical flip.",
+      "start": 609.444,
+      "duration": 2.887
+    },
+    {
+      "text": " Can anyone tell why we aren't keeping",
+      "start": 611.431,
+      "duration": 2.65
+    },
+    {
+      "text": " vertical flip? Because if you do a",
+      "start": 613.126,
+      "duration": 3.305
+    },
+    {
+      "text": " vertical flip, there is a chance the",
+      "start": 615.487,
+      "duration": 3.032
+    },
+    {
+      "text": " cat might look upside down, with its",
+      "start": 617.576,
+      "duration": 3.032
+    },
+    {
+      "text": " feet on top and head at the bottom.",
+      "start": 619.664,
+      "duration": 2.976
+    },
+    {
+      "text": " Generally speaking, cats don't look",
+      "start": 622.299,
+      "duration": 3.221
+    },
+    {
+      "text": " like that. So, vertical flip is not a",
+      "start": 624.584,
+      "duration": 3.609
+    },
+    {
+      "text": " common-sensical approach. You won't do",
+      "start": 627.263,
+      "duration": 3.674
+    },
+    {
+      "text": " that. Right? Cats don't appear that way",
+      "start": 630.006,
+      "duration": 3.382
+    },
+    {
+      "text": ". That's the reason. Right? Width shift",
+      "start": 632.388,
+      "duration": 3.234
+    },
+    {
+      "text": " range means what are you doing? You are",
+      "start": 634.673,
+      "duration": 3.057
+    },
+    {
+      "text": " shifting the image slightly. Right? And",
+      "start": 636.78,
+      "duration": 3.406
+    },
+    {
+      "text": " in height shift range, you are also",
+      "start": 639.235,
+      "duration": 2.719
+    },
+    {
+      "text": " shifting the image slightly up or down.",
+      "start": 641.003,
+      "duration": 2.916
+    },
+    {
+      "text": " So basically, you are defining these",
+      "start": 643.04,
+      "duration": 2.412
+    },
+    {
+      "text": " transformations. That's it. As soon as",
+      "start": 644.492,
+      "duration": 3.158
+    },
+    {
+      "text": " you hit Shift + Tab in this, you will",
+      "start": 646.697,
+      "duration": 2.74
+    },
+    {
+      "text": " start seeing all the transformations",
+      "start": 648.484,
+      "duration": 2.693
+    },
+    {
+      "text": " here. There are many transformations.",
+      "start": 650.224,
+      "duration": 2.683
+    },
+    {
+      "text": " Right? So, there is no need to use",
+      "start": 652.007,
+      "duration": 2.616
+    },
+    {
+      "text": " everything. Look here, you will also",
+      "start": 653.663,
+      "duration": 2.649
+    },
+    {
+      "text": " see things like brightness. I saw",
+      "start": 655.356,
+      "duration": 3.102
+    },
+    {
+      "text": " brightness range somewhere. Right? So,",
+      "start": 657.606,
+      "duration": 6.075
+    },
+    {
+      "text": " there are many operations. At this",
+      "start": 662.746,
+      "duration": 3.141
+    },
+    {
+      "text": " point, we are just doing these. In fact",
+      "start": 664.936,
+      "duration": 2.979
+    },
+    {
+      "text": ", I just copy-pasted theirs. What they",
+      "start": 666.915,
+      "duration": 2.926
+    },
+    {
+      "text": " have done. Right? I didn't think too",
+      "start": 668.883,
+      "duration": 3.117
+    },
+    {
+      "text": " much about it. We can look into it when",
+      "start": 671.054,
+      "duration": 3.022
+    },
+    {
+      "text": " needed. But for now, this is our object",
+      "start": 673.124,
+      "duration": 3.672
+    },
+    {
+      "text": ". Right? This is the object. Okay? Now,",
+      "start": 675.796,
+      "duration": 3.248
+    },
+    {
+      "text": " what did we do? Our image here was of",
+      "start": 678.09,
+      "duration": 3.895
+    },
+    {
+      "text": " type PIL. What did I do? I passed my",
+      "start": 681.084,
+      "duration": 4.779
+    },
+    {
+      "text": " image to the image_to_array function,",
+      "start": 684.958,
+      "duration": 4.513
+    },
+    {
+      "text": " which is inside the image module. As",
+      "start": 688.565,
+      "duration": 5.425
+    },
+    {
+      "text": " soon as I passed this image, it got",
+      "start": 693.087,
+      "duration": 4.376
+    },
+    {
+      "text": " converted into a NumPy array. I will",
+      "start": 696.56,
+      "duration": 4.348
+    },
+    {
+      "text": " show you. If I run this here for you,",
+      "start": 699.983,
+      "duration": 4.292
+    },
+    {
+      "text": " now check the type of img. Now this has",
+      "start": 703.368,
+      "duration": 4.184
+    },
+    {
+      "text": " been converted to a NumPy array. It has",
+      "start": 706.607,
+      "duration": 3.131
+    },
+    {
+      "text": " been converted to NumPy. Okay? And if",
+      "start": 708.783,
+      "duration": 3.085
+    },
+    {
+      "text": " you check its shape, it is now",
+      "start": 710.929,
+      "duration": 2.85
+    },
+    {
+      "text": " 200/200/3. Because when we imported it,",
+      "start": 712.841,
+      "duration": 2.849
+    },
+    {
+      "text": " it was 200/200, and since it is color,",
+      "start": 714.73,
+      "duration": 2.536
+    },
+    {
+      "text": " it became three channels. Okay? And now",
+      "start": 716.307,
+      "duration": 3.081
+    },
+    {
+      "text": " what are you doing? What do you have to",
+      "start": 718.432,
+      "duration": 3.195
+    },
+    {
+      "text": " do here? When you provide images, you",
+      "start": 720.688,
+      "duration": 3.439
+    },
+    {
+      "text": " generally have to provide them in",
+      "start": 723.192,
+      "duration": 3.13
+    },
+    {
+      "text": " batches, indicating how many images you",
+      "start": 725.386,
+      "duration": 3.518
+    },
+    {
+      "text": " are giving. So, you have to reshape it",
+      "start": 727.968,
+      "duration": 3.931
+    },
+    {
+      "text": " and add an extra dimension to specify",
+      "start": 730.977,
+      "duration": 3.904
+    },
+    {
+      "text": " how many images we will process during",
+      "start": 733.96,
+      "duration": 3.982
+    },
+    {
+      "text": " this entire transformation. So, I just",
+      "start": 737.021,
+      "duration": 4.177
+    },
+    {
+      "text": " reshaped it with into one. Like, how",
+      "start": 740.25,
+      "duration": 3.611
+    },
+    {
+      "text": " much is it now? An image with this",
+      "start": 742.935,
+      "duration": 3.503
+    },
+    {
+      "text": " dimension. That's it. And this will",
+      "start": 745.509,
+      "duration": 3.339
+    },
+    {
+      "text": " become my input batch. Okay? This is",
+      "start": 747.899,
+      "duration": 3.273
+    },
+    {
+      "text": " the code. Nothing special done until",
+      "start": 750.224,
+      "duration": 2.537
+    },
+    {
+      "text": " here. We have only done two things so",
+      "start": 751.799,
+      "duration": 2.56
+    },
+    {
+      "text": " far. Imported the image. Converted it",
+      "start": 753.399,
+      "duration": 3.955
+    },
+    {
+      "text": " into a NumPy array. Changed its shape.",
+      "start": 756.405,
+      "duration": 3.298
+    },
+    {
+      "text": " This is the first task. In the second",
+      "start": 758.803,
+      "duration": 2.535
+    },
+    {
+      "text": " task, what did we do? We created this",
+      "start": 760.381,
+      "duration": 3.094
+    },
+    {
+      "text": " object that will tell us what kind of",
+      "start": 762.525,
+      "duration": 2.817
+    },
+    {
+      "text": " transformations to apply. We have done",
+      "start": 764.391,
+      "duration": 3.302
+    },
+    {
+      "text": " two things until here. Okay? Now, what",
+      "start": 766.729,
+      "duration": 2.804
+    },
+    {
+      "text": " are we doing in the third step? We are",
+      "start": 768.576,
+      "duration": 3.023
+    },
+    {
+      "text": " calling this function. This data_gen is",
+      "start": 770.696,
+      "duration": 4.652
+    },
+    {
+      "text": " an object of this class. Now, in this",
+      "start": 774.437,
+      "duration": 3.92
+    },
+    {
+      "text": " class, there is a function called flow.",
+      "start": 777.409,
+      "duration": 3.01
+    },
+    {
+      "text": " Okay? You use flow when you are",
+      "start": 779.699,
+      "duration": 3.912
+    },
+    {
+      "text": " applying it to a single image or",
+      "start": 782.694,
+      "duration": 3.652
+    },
+    {
+      "text": " directly applying it to a NumPy array.",
+      "start": 785.429,
+      "duration": 4.15
+    },
+    {
+      "text": " And there is another one called '",
+      "start": 788.78,
+      "duration": 2.437
+    },
+    {
+      "text": "flow_from_directory', which you use",
+      "start": 790.217,
+      "duration": 2.525
+    },
+    {
+      "text": " when all your photos are stored in a",
+      "start": 791.786,
+      "duration": 2.568
+    },
+    {
+      "text": " directory and you want to process them",
+      "start": 793.398,
+      "duration": 2.655
+    },
+    {
+      "text": " all at once. During training time, I",
+      "start": 795.097,
+      "duration": 2.772
+    },
+    {
+      "text": " will show that after this. Okay? For",
+      "start": 796.916,
+      "duration": 3.22
+    },
+    {
+      "text": " now, understand it as us processing a",
+      "start": 799.208,
+      "duration": 3.664
+    },
+    {
+      "text": " single image and using flow. Okay? What",
+      "start": 801.944,
+      "duration": 4.114
+    },
+    {
+      "text": " are we doing here? We are specifying",
+      "start": 805.092,
+      "duration": 3.232
+    },
+    {
+      "text": " this is my input batch and for the",
+      "start": 807.38,
+      "duration": 2.931
+    },
+    {
+      "text": " output batch, we need a batch size of",
+      "start": 809.368,
+      "duration": 3.1
+    },
+    {
+      "text": " one, meaning another batch will form",
+      "start": 811.525,
+      "duration": 3.044
+    },
+    {
+      "text": " when the output is created. Okay? And",
+      "start": 813.626,
+      "duration": 3.65
+    },
+    {
+      "text": " what are we doing? We are storing all",
+      "start": 816.322,
+      "duration": 2.828
+    },
+    {
+      "text": " the images that are being created in",
+      "start": 818.201,
+      "duration": 2.825
+    },
+    {
+      "text": " this directory. So what have I done",
+      "start": 820.077,
+      "duration": 2.805
+    },
+    {
+      "text": " here? Uh, if you see here, I have",
+      "start": 821.932,
+      "duration": 3.526
+    },
+    {
+      "text": " created another directory. Actually, I",
+      "start": 824.535,
+      "duration": 3.54
+    },
+    {
+      "text": " haven't. I am doing one thing. I am",
+      "start": 827.115,
+      "duration": 2.485
+    },
+    {
+      "text": " creating a new directory here. By the",
+      "start": 828.652,
+      "duration": 3.328
+    },
+    {
+      "text": " name of AUG. So, all the new images",
+      "start": 831.076,
+      "duration": 3.498
+    },
+    {
+      "text": " that are created will appear here. Okay",
+      "start": 833.628,
+      "duration": 3.311
+    },
+    {
+      "text": "? Inside AUG. Okay? So this loop ran,",
+      "start": 835.939,
+      "duration": 4.096
+    },
+    {
+      "text": " and here, what's happening is that this",
+      "start": 839.099,
+      "duration": 3.5
+    },
+    {
+      "text": " is an infinite loop. Like, there is no",
+      "start": 841.663,
+      "duration": 3.173
+    },
+    {
+      "text": " breaking condition here. Meaning it",
+      "start": 843.883,
+      "duration": 2.85
+    },
+    {
+      "text": " will keep creating new images. If you",
+      "start": 845.796,
+      "duration": 3.531
+    },
+    {
+      "text": " don't stop it. So what did we do? We",
+      "start": 848.386,
+      "duration": 3.05
+    },
+    {
+      "text": " added a stopping condition. i = 0,",
+      "start": 850.488,
+      "duration": 3.615
+    },
+    {
+      "text": " incremented i, and if i becomes 10, we",
+      "start": 853.183,
+      "duration": 4.066
+    },
+    {
+      "text": " are breaking. Meaning this loop will",
+      "start": 856.33,
+      "duration": 3.475
+    },
+    {
+      "text": " run from zero to nine. Meaning a total",
+      "start": 858.853,
+      "duration": 2.801
+    },
+    {
+      "text": " of 10 images will be formed. That's it.",
+      "start": 860.697,
+      "duration": 3.045
+    },
+    {
+      "text": " Okay? So what am I doing? Now I am",
+      "start": 862.842,
+      "duration": 3.309
+    },
+    {
+      "text": " running this code. Input batch is not",
+      "start": 865.225,
+      "duration": 4.434
+    },
+    {
+      "text": " defined. Let's run this. And now let's",
+      "start": 868.716,
+      "duration": 3.891
+    },
+    {
+      "text": " run this. And it ran. And now if I go",
+      "start": 871.692,
+      "duration": 4.489
+    },
+    {
+      "text": " to my AUG folder, I have 10 images here",
+      "start": 875.276,
+      "duration": 4.698
+    },
+    {
+      "text": ". These are those 10 images. Okay? This",
+      "start": 878.974,
+      "duration": 3.717
+    },
+    {
+      "text": " is the first image. This is the second,",
+      "start": 881.747,
+      "duration": 3.542
+    },
+    {
+      "text": " third. Are you seeing this? They are",
+      "start": 884.361,
+      "duration": 2.703
+    },
+    {
+      "text": " shifting slightly. Are you seeing? And",
+      "start": 886.11,
+      "duration": 2.327
+    },
+    {
+      "text": " because of that, the pixels here are",
+      "start": 887.475,
+      "duration": 2.394
+    },
+    {
+      "text": " behaving a bit differently. Look. Okay?",
+      "start": 888.908,
+      "duration": 4.985
+    },
+    {
+      "text": " The previous one was zoomed. Okay? So,",
+      "start": 892.993,
+      "duration": 3.05
+    },
+    {
+      "text": " basically, what did we do? We generated",
+      "start": 895.102,
+      "duration": 3.47
+    },
+    {
+      "text": " 10 images from one. Okay? Now there are",
+      "start": 897.641,
+      "duration": 3.428
+    },
+    {
+      "text": " one or two things here. I'll show you",
+      "start": 900.099,
+      "duration": 2.601
+    },
+    {
+      "text": " quickly. Uh, like, uh. There is a",
+      "start": 901.761,
+      "duration": 6.031
+    },
+    {
+      "text": " parameter here. Uh, its name is. This.",
+      "start": 906.928,
+      "duration": 7.331
+    },
+    {
+      "text": " What is its name? Fill mode. So,",
+      "start": 915.259,
+      "duration": 3.633
+    },
+    {
+      "text": " sometimes when you are shifting images,",
+      "start": 917.951,
+      "duration": 3.293
+    },
+    {
+      "text": " these pixels become empty. Right?",
+      "start": 920.303,
+      "duration": 3.144
+    },
+    {
+      "text": " Meaning if you are pushing them, these",
+      "start": 922.547,
+      "duration": 2.911
+    },
+    {
+      "text": " pixels are becoming empty. So, what to",
+      "start": 924.509,
+      "duration": 2.941
+    },
+    {
+      "text": " do with those pixels? Fill mode tells",
+      "start": 926.498,
+      "duration": 2.831
+    },
+    {
+      "text": " us exactly that. Like, fill mode, uh, '",
+      "start": 928.376,
+      "duration": 3.623
+    },
+    {
+      "text": "nearest' says to populate them with the",
+      "start": 930.999,
+      "duration": 3.34
+    },
+    {
+      "text": " nearby pixels. So that is what happened",
+      "start": 933.399,
+      "duration": 3.22
+    },
+    {
+      "text": " here. Look at your images, what",
+      "start": 935.652,
+      "duration": 2.97
+    },
+    {
+      "text": " happened is that as soon as this image",
+      "start": 937.676,
+      "duration": 3.043
+    },
+    {
+      "text": " shifted slightly, see, it got populated",
+      "start": 939.772,
+      "duration": 3.097
+    },
+    {
+      "text": " with the nearby pixels. So that's why",
+      "start": 941.922,
+      "duration": 2.945
+    },
+    {
+      "text": " it doesn't look weird. Okay? There are",
+      "start": 943.904,
+      "duration": 2.972
+    },
+    {
+      "text": " some other options here too. If I",
+      "start": 945.916,
+      "duration": 2.556
+    },
+    {
+      "text": " remember correctly, there is an option,",
+      "start": 947.554,
+      "duration": 4.199
+    },
+    {
+      "text": " I will show you. One fill mode is",
+      "start": 950.835,
+      "duration": 3.846
+    },
+    {
+      "text": " reflect. What does reflect do? Reflect.",
+      "start": 953.771,
+      "duration": 4.988
+    },
+    {
+      "text": " What will reflect do? Let me run this",
+      "start": 957.919,
+      "duration": 3.778
+    },
+    {
+      "text": " code again once. I am deleting all",
+      "start": 960.759,
+      "duration": 3.965
+    },
+    {
+      "text": " these images. Going back and running",
+      "start": 963.808,
+      "duration": 6.293
+    },
+    {
+      "text": " this again. And here are the new images",
+      "start": 969.177,
+      "duration": 4.993
+    },
+    {
+      "text": ". Look at this. What is happening now?",
+      "start": 973.17,
+      "duration": 3.029
+    },
+    {
+      "text": " It is reflecting here. Meaning, what",
+      "start": 975.32,
+      "duration": 3.034
+    },
+    {
+      "text": " was on this side has come back on this",
+      "start": 977.417,
+      "duration": 3.385
+    },
+    {
+      "text": " side. How do I explain it to you? I",
+      "start": 979.865,
+      "duration": 3.012
+    },
+    {
+      "text": " guess you are understanding. From this",
+      "start": 981.921,
+      "duration": 2.645
+    },
+    {
+      "text": " part here, you will understand how the",
+      "start": 983.601,
+      "duration": 2.333
+    },
+    {
+      "text": " reflection is happening. So it shifted",
+      "start": 984.969,
+      "duration": 2.901
+    },
+    {
+      "text": " a little, and what was in this spot got",
+      "start": 986.922,
+      "duration": 3.014
+    },
+    {
+      "text": " copied over to this side. So it is up",
+      "start": 988.987,
+      "duration": 3.273
+    },
+    {
+      "text": " to you. Which one do you want to use?",
+      "start": 991.323,
+      "duration": 2.891
+    },
+    {
+      "text": " Like, look at the reflection here. See,",
+      "start": 993.314,
+      "duration": 3.146
+    },
+    {
+      "text": " it came from top to bottom, so it",
+      "start": 995.517,
+      "duration": 2.878
+    },
+    {
+      "text": " reflected. Okay? There are others too.",
+      "start": 997.452,
+      "duration": 3.324
+    },
+    {
+      "text": " There is a solid one. With solid, it",
+      "start": 999.876,
+      "duration": 2.88
+    },
+    {
+      "text": " becomes black, I think. I guess there",
+      "start": 1001.799,
+      "duration": 3.002
+    },
+    {
+      "text": " is a solid one. Let's check that once.",
+      "start": 1003.846,
+      "duration": 3.583
+    },
+    {
+      "text": " It's probably solid, right? Let's take",
+      "start": 1008.4,
+      "duration": 3.06
+    },
+    {
+      "text": " a look once. And coming back, let's",
+      "start": 1010.519,
+      "duration": 5.962
+    },
+    {
+      "text": " delete this and run it again. Boundary",
+      "start": 1015.574,
+      "duration": 4.997
+    },
+    {
+      "text": " mode not supported. Just one second. I",
+      "start": 1019.636,
+      "duration": 3.256
+    },
+    {
+      "text": " will have to check what the names were.",
+      "start": 1021.949,
+      "duration": 3.207
+    },
+    {
+      "text": " Fill mode image generator. Image data",
+      "start": 1024.279,
+      "duration": 6.002
+    },
+    {
+      "text": " generator has three or four options. Uh",
+      "start": 1029.405,
+      "duration": 6.335
+    },
+    {
+      "text": " it is constant. Actually, it is",
+      "start": 1036.961,
+      "duration": 4.241
+    },
+    {
+      "text": " constant. What will we have to do here?",
+      "start": 1040.347,
+      "duration": 4.812
+    },
+    {
+      "text": " In place of solid, we have to put",
+      "start": 1045.079,
+      "duration": 3.585
+    },
+    {
+      "text": " constant here. Constant, and now let's",
+      "start": 1047.742,
+      "duration": 7.234
+    },
+    {
+      "text": " run it. Going back. Yes. Look what is",
+      "start": 1054.106,
+      "duration": 6.301
+    },
+    {
+      "text": " happening here, whatever went away,",
+      "start": 1059.466,
+      "duration": 3.065
+    },
+    {
+      "text": " went away. It turned black. See, from",
+      "start": 1061.59,
+      "duration": 4.193
+    },
+    {
+      "text": " here you will understand better how the",
+      "start": 1064.837,
+      "duration": 3.098
+    },
+    {
+      "text": " transformations are being applied. Okay",
+      "start": 1066.989,
+      "duration": 3.658
+    },
+    {
+      "text": "? Okay? So these are two or three",
+      "start": 1069.647,
+      "duration": 3.551
+    },
+    {
+      "text": " options. You check what kind of data",
+      "start": 1072.232,
+      "duration": 2.687
+    },
+    {
+      "text": " you have. If you already have data that",
+      "start": 1073.967,
+      "duration": 3.356
+    },
+    {
+      "text": " is black around the edges, then",
+      "start": 1076.385,
+      "duration": 2.945
+    },
+    {
+      "text": " constant will be better, or reflect",
+      "start": 1078.392,
+      "duration": 3.196
+    },
+    {
+      "text": " might work well, or I don't know.",
+      "start": 1080.651,
+      "duration": 3.07
+    },
+    {
+      "text": " Whatever you feel is right, you can use",
+      "start": 1082.821,
+      "duration": 2.664
+    },
+    {
+      "text": " that. Okay? So this is how data",
+      "start": 1084.527,
+      "duration": 4.031
+    },
+    {
+      "text": " augmentation works. Okay? This is a",
+      "start": 1087.655,
+      "duration": 3.982
+    },
+    {
+      "text": " good demonstration, and looking at this",
+      "start": 1090.686,
+      "duration": 2.889
+    },
+    {
+      "text": ", you will understand well what data",
+      "start": 1092.575,
+      "duration": 2.744
+    },
+    {
+      "text": " augmentation is doing behind the scenes",
+      "start": 1094.367,
+      "duration": 2.889
+    },
+    {
+      "text": ". It takes a single image and applies",
+      "start": 1096.256,
+      "duration": 3.103
+    },
+    {
+      "text": " transformations to it, and in a way,",
+      "start": 1098.415,
+      "duration": 3.01
+    },
+    {
+      "text": " you are creating cheap data. Okay? So",
+      "start": 1100.481,
+      "duration": 3.719
+    },
+    {
+      "text": " now that we understand how this works.",
+      "start": 1103.291,
+      "duration": 4.449
+    },
+    {
+      "text": " What will we do now? We will build a",
+      "start": 1107.14,
+      "duration": 3.594
+    },
+    {
+      "text": " cat-dog classifier project using data",
+      "start": 1109.811,
+      "duration": 3.85
+    },
+    {
+      "text": " augmentation. All right? So if you",
+      "start": 1112.738,
+      "duration": 4.093
+    },
+    {
+      "text": " remember, in the last class when we",
+      "start": 1115.881,
+      "duration": 2.759
+    },
+    {
+      "text": " were building the cat-dog classifier,",
+      "start": 1117.69,
+      "duration": 2.86
+    },
+    {
+      "text": " we worked on 23,000 images there. All",
+      "start": 1119.6,
+      "duration": 3.972
+    },
+    {
+      "text": " right? But what are we going to do",
+      "start": 1122.623,
+      "duration": 2.753
+    },
+    {
+      "text": " today? What have I done? Today I have",
+      "start": 1124.426,
+      "duration": 3.084
+    },
+    {
+      "text": " intentionally reduced the data. Here is",
+      "start": 1126.576,
+      "duration": 3.778
+    },
+    {
+      "text": " my data folder right here. It contains",
+      "start": 1129.444,
+      "duration": 3.954
+    },
+    {
+      "text": " three separate folders. Train,",
+      "start": 1132.446,
+      "duration": 2.762
+    },
+    {
+      "text": " Validation, Test. All right? If I go",
+      "start": 1134.301,
+      "duration": 3.743
+    },
+    {
+      "text": " into Train, there are folders named",
+      "start": 1137.107,
+      "duration": 3.221
+    },
+    {
+      "text": " Cats and Dogs. If I go into Cats, there",
+      "start": 1139.391,
+      "duration": 3.326
+    },
+    {
+      "text": " are only 1000 items. See, it is visible",
+      "start": 1141.768,
+      "duration": 2.848
+    },
+    {
+      "text": " here at the bottom, there are 1000",
+      "start": 1143.654,
+      "duration": 2.315
+    },
+    {
+      "text": " items. All right? Similarly, if I go",
+      "start": 1145.008,
+      "duration": 3.552
+    },
+    {
+      "text": " into Dogs, there are only 1000 items.",
+      "start": 1147.648,
+      "duration": 4.251
+    },
+    {
+      "text": " Meaning, I have reduced the data",
+      "start": 1151.099,
+      "duration": 2.661
+    },
+    {
+      "text": " significantly. Earlier I had 12,500",
+      "start": 1152.812,
+      "duration": 3.651
+    },
+    {
+      "text": " cats. 12,500 dogs. Let's assume we",
+      "start": 1155.552,
+      "duration": 4.768
+    },
+    {
+      "text": " don't have that much data at all.",
+      "start": 1159.375,
+      "duration": 2.805
+    },
+    {
+      "text": " Meaning, the data itself is scarce. So",
+      "start": 1161.36,
+      "duration": 3.099
+    },
+    {
+      "text": " what can we do? I will show you two",
+      "start": 1163.519,
+      "duration": 3.23
+    },
+    {
+      "text": " cases now. The first case is that I",
+      "start": 1165.806,
+      "duration": 3.697
+    },
+    {
+      "text": " will train this model normally without",
+      "start": 1168.571,
+      "duration": 3.57
+    },
+    {
+      "text": " data augmentation on 2000 images and",
+      "start": 1171.209,
+      "duration": 3.435
+    },
+    {
+      "text": " show you the accuracy, and then I will",
+      "start": 1173.711,
+      "duration": 3.571
+    },
+    {
+      "text": " run it on the same 2000 images using",
+      "start": 1176.349,
+      "duration": 3.436
+    },
+    {
+      "text": " data augmentation, and you will see",
+      "start": 1178.852,
+      "duration": 3.368
+    },
+    {
+      "text": " that your accuracy will increase. All",
+      "start": 1181.287,
+      "duration": 3.936
+    },
+    {
+      "text": " right? So I have already trained it.",
+      "start": 1184.271,
+      "duration": 2.948
+    },
+    {
+      "text": " Otherwise, it takes time to train. So",
+      "start": 1186.359,
+      "duration": 3.217
+    },
+    {
+      "text": " this file here is Cat Dog Normal.",
+      "start": 1188.685,
+      "duration": 4.594
+    },
+    {
+      "text": " Meaning, data augmentation hasn't been",
+      "start": 1192.447,
+      "duration": 4.381
+    },
+    {
+      "text": " used here. All right? And this code is",
+      "start": 1195.917,
+      "duration": 3.271
+    },
+    {
+      "text": " exactly what we did in the last class.",
+      "start": 1198.235,
+      "duration": 2.767
+    },
+    {
+      "text": " Look here. This is my directory. I",
+      "start": 1200.102,
+      "duration": 3.565
+    },
+    {
+      "text": " created this called Categories. I ran",
+      "start": 1202.725,
+      "duration": 3.395
+    },
+    {
+      "text": " the loop that I ran in the last class.",
+      "start": 1205.188,
+      "duration": 3.591
+    },
+    {
+      "text": " After that, I shuffled it. Extracted X",
+      "start": 1208.085,
+      "duration": 4.036
+    },
+    {
+      "text": " and Y. Converted them to NumPy. After",
+      "start": 1211.21,
+      "duration": 4.091
+    },
+    {
+      "text": " that, I built the model. What did I do",
+      "start": 1214.349,
+      "duration": 2.797
+    },
+    {
+      "text": " while building the model? I have taken",
+      "start": 1216.188,
+      "duration": 2.992
+    },
+    {
+      "text": " three convolution layers and three max",
+      "start": 1218.242,
+      "duration": 3.359
+    },
+    {
+      "text": " pooling layers. All right? 32, 32, and",
+      "start": 1220.663,
+      "duration": 3.345
+    },
+    {
+      "text": " the last one is 64. This is the",
+      "start": 1223.072,
+      "duration": 2.806
+    },
+    {
+      "text": " architecture. All right? After that, I",
+      "start": 1224.923,
+      "duration": 3.158
+    },
+    {
+      "text": " took Flatten. After Flatten, I took",
+      "start": 1227.14,
+      "duration": 3.186
+    },
+    {
+      "text": " Dense with a dropout of .5. And then I",
+      "start": 1229.388,
+      "duration": 3.266
+    },
+    {
+      "text": " added a Sigmoid at the end in the",
+      "start": 1231.699,
+      "duration": 2.503
+    },
+    {
+      "text": " output layer. All right? I have taken",
+      "start": 1233.248,
+      "duration": 2.995
+    },
+    {
+      "text": " the RMSprop optimizer and applied",
+      "start": 1235.289,
+      "duration": 2.513
+    },
+    {
+      "text": " binary cross-entropy. Again, this is",
+      "start": 1236.848,
+      "duration": 2.626
+    },
+    {
+      "text": " not my architecture. I have followed",
+      "start": 1238.514,
+      "duration": 2.61
+    },
+    {
+      "text": " this blog completely. This is exactly",
+      "start": 1240.171,
+      "duration": 2.734
+    },
+    {
+      "text": " the copied and pasted code. All right?",
+      "start": 1241.948,
+      "duration": 2.804
+    },
+    {
+      "text": " I haven't written anything myself. Okay",
+      "start": 1243.852,
+      "duration": 2.536
+    },
+    {
+      "text": "? Uh, after that, as soon as I ran this",
+      "start": 1245.388,
+      "duration": 4.18
+    },
+    {
+      "text": " model for five epochs, you can see that",
+      "start": 1248.627,
+      "duration": 3.329
+    },
+    {
+      "text": " the maximum validation accuracy I was",
+      "start": 1251.016,
+      "duration": 3.209
+    },
+    {
+      "text": " able to reach was 57%. I was getting 57",
+      "start": 1253.285,
+      "duration": 6.417
+    },
+    {
+      "text": "%accuracy without data augmentation.",
+      "start": 1258.702,
+      "duration": 3.798
+    },
+    {
+      "text": " Okay, now what did I do? I applied data",
+      "start": 1261.859,
+      "duration": 3.74
+    },
+    {
+      "text": " augmentation. Okay, so how do you apply",
+      "start": 1264.664,
+      "duration": 4.344
+    },
+    {
+      "text": " data augmentation to the entire",
+      "start": 1268.069,
+      "duration": 2.897
+    },
+    {
+      "text": " directory? Like, if your data is",
+      "start": 1270.027,
+      "duration": 3.903
+    },
+    {
+      "text": " organized this way, how would you do it",
+      "start": 1272.994,
+      "duration": 3.491
+    },
+    {
+      "text": "? Take a look. So here too, you",
+      "start": 1275.485,
+      "duration": 3.14
+    },
+    {
+      "text": " imported the same thing. Imported Keras",
+      "start": 1277.681,
+      "duration": 3.551
+    },
+    {
+      "text": " preprocessing image ImageDataGenerator.",
+      "start": 1280.297,
+      "duration": 3.543
+    },
+    {
+      "text": " Okay? After that, what do you do? If",
+      "start": 1282.981,
+      "duration": 2.987
+    },
+    {
+      "text": " this code looks a bit intimidating,",
+      "start": 1285.025,
+      "duration": 3.005
+    },
+    {
+      "text": " just focus on this part. Just on this.",
+      "start": 1287.087,
+      "duration": 3.673
+    },
+    {
+      "text": " So here, you are doing exactly what you",
+      "start": 1290.619,
+      "duration": 3.783
+    },
+    {
+      "text": " did before. In fact, you are doing even",
+      "start": 1293.473,
+      "duration": 3.247
+    },
+    {
+      "text": " less. You are doing the exact same",
+      "start": 1295.77,
+      "duration": 2.637
+    },
+    {
+      "text": " thing here. You are creating a data gen",
+      "start": 1297.453,
+      "duration": 3.186
+    },
+    {
+      "text": " object, which is an object of this",
+      "start": 1299.686,
+      "duration": 2.586
+    },
+    {
+      "text": " class, and here we have just kept a few",
+      "start": 1301.319,
+      "duration": 2.82
+    },
+    {
+      "text": " operations. Rescale, shear, zoom,",
+      "start": 1303.185,
+      "duration": 3.928
+    },
+    {
+      "text": " horizontal flip. We aren't even using",
+      "start": 1306.215,
+      "duration": 3.514
+    },
+    {
+      "text": " the other operations. Okay? And for our",
+      "start": 1308.769,
+      "duration": 3.91
+    },
+    {
+      "text": " test data, we are not applying any",
+      "start": 1311.761,
+      "duration": 3.785
+    },
+    {
+      "text": " transformations. We are applying only",
+      "start": 1314.628,
+      "duration": 3.411
+    },
+    {
+      "text": " one transformation. That is rescale,",
+      "start": 1317.083,
+      "duration": 3.042
+    },
+    {
+      "text": " and we are setting it to 1/255. Can",
+      "start": 1319.194,
+      "duration": 3.427
+    },
+    {
+      "text": " anyone guess why we aren't applying the",
+      "start": 1321.68,
+      "duration": 3.274
+    },
+    {
+      "text": " other transformations to the test data?",
+      "start": 1324.012,
+      "duration": 3.275
+    },
+    {
+      "text": " Okay? So the reason is that you will",
+      "start": 1326.387,
+      "duration": 3.12
+    },
+    {
+      "text": " perform predictions on the test data.",
+      "start": 1328.556,
+      "duration": 2.807
+    },
+    {
+      "text": " During training, you need to perform",
+      "start": 1330.463,
+      "duration": 2.49
+    },
+    {
+      "text": " data augmentation. To increase the data",
+      "start": 1331.994,
+      "duration": 3.116
+    },
+    {
+      "text": " or to reduce overfitting. You will not",
+      "start": 1334.166,
+      "duration": 3.293
+    },
+    {
+      "text": " mess with the test data. Okay? That is",
+      "start": 1336.512,
+      "duration": 3.47
+    },
+    {
+      "text": " why you won't do anything here. You",
+      "start": 1339.045,
+      "duration": 3.194
+    },
+    {
+      "text": " will leave the test data as it is. You",
+      "start": 1341.286,
+      "duration": 2.84
+    },
+    {
+      "text": " will only mess around with the training",
+      "start": 1343.171,
+      "duration": 2.783
+    },
+    {
+      "text": " data. Okay? After that, the next part",
+      "start": 1345.0,
+      "duration": 3.926
+    },
+    {
+      "text": " is this. This part is actually",
+      "start": 1347.991,
+      "duration": 3.856
+    },
+    {
+      "text": " equivalent to this part. The data.flow",
+      "start": 1350.903,
+      "duration": 4.34
+    },
+    {
+      "text": " we were using here. Now, what will you",
+      "start": 1354.322,
+      "duration": 4.037
+    },
+    {
+      "text": " use here? flow_from_directory. Okay? So",
+      "start": 1357.429,
+      "duration": 4.315
+    },
+    {
+      "text": " if your data is already organized such",
+      "start": 1360.837,
+      "duration": 4.529
+    },
+    {
+      "text": " that one class is entirely inside one",
+      "start": 1364.459,
+      "duration": 4.437
+    },
+    {
+      "text": " folder. And the other class is entirely",
+      "start": 1367.988,
+      "duration": 3.195
+    },
+    {
+      "text": " inside another folder. Then what do you",
+      "start": 1370.229,
+      "duration": 3.078
+    },
+    {
+      "text": " do? You use flow_from_directory. Okay?",
+      "start": 1372.365,
+      "duration": 3.994
+    },
+    {
+      "text": " And in flow_from_directory, you just",
+      "start": 1375.459,
+      "duration": 2.804
+    },
+    {
+      "text": " specify the path to where the data is",
+      "start": 1377.313,
+      "duration": 2.854
+    },
+    {
+      "text": " located. Like in my case, with",
+      "start": 1379.218,
+      "duration": 3.329
+    },
+    {
+      "text": " reference to my file, like this is my",
+      "start": 1381.624,
+      "duration": 3.869
+    },
+    {
+      "text": " file. With reference to this, the data",
+      "start": 1384.571,
+      "duration": 3.779
+    },
+    {
+      "text": " is inside data/train. So that is what I",
+      "start": 1387.412,
+      "duration": 3.264
+    },
+    {
+      "text": " wrote here. Okay? Here, I have also",
+      "start": 1389.723,
+      "duration": 3.601
+    },
+    {
+      "text": " specified what my target size will be.",
+      "start": 1392.389,
+      "duration": 3.47
+    },
+    {
+      "text": " I have specified my batch size is 16.",
+      "start": 1395.019,
+      "duration": 3.28
+    },
+    {
+      "text": " Again, I took this from the block and",
+      "start": 1397.459,
+      "duration": 2.452
+    },
+    {
+      "text": " made no changes. Class mode is binary",
+      "start": 1398.95,
+      "duration": 2.919
+    },
+    {
+      "text": " since we use binary cross-entropy loss,",
+      "start": 1400.922,
+      "duration": 3.048
+    },
+    {
+      "text": " we need binary labels. All right? And",
+      "start": 1403.023,
+      "duration": 3.152
+    },
+    {
+      "text": " after that, what did I do? My",
+      "start": 1405.22,
+      "duration": 2.402
+    },
+    {
+      "text": " validation set, which I will run",
+      "start": 1406.679,
+      "duration": 2.84
+    },
+    {
+      "text": " alongside to test how my data is",
+      "start": 1408.577,
+      "duration": 2.84
+    },
+    {
+      "text": " performing. It is the same thing for",
+      "start": 1410.474,
+      "duration": 2.732
+    },
+    {
+      "text": " the validation set. Here too, there are",
+      "start": 1412.247,
+      "duration": 3.399
+    },
+    {
+      "text": " 500 images of cats and 500 images of",
+      "start": 1414.726,
+      "duration": 3.856
+    },
+    {
+      "text": " dogs. This is my validation set. All",
+      "start": 1417.662,
+      "duration": 2.878
+    },
+    {
+      "text": " right? So I applied the test data",
+      "start": 1419.584,
+      "duration": 2.581
+    },
+    {
+      "text": " generator to the validation set. Which",
+      "start": 1421.212,
+      "duration": 3.067
+    },
+    {
+      "text": " is this one. No transformations. Only",
+      "start": 1423.372,
+      "duration": 3.987
+    },
+    {
+      "text": " scaling is happening. All right? And",
+      "start": 1426.414,
+      "duration": 2.939
+    },
+    {
+      "text": " the folder is different here. The",
+      "start": 1428.401,
+      "duration": 2.655
+    },
+    {
+      "text": " target size is the same. Here is the",
+      "start": 1430.104,
+      "duration": 2.833
+    },
+    {
+      "text": " batch size. Class mode binary. All",
+      "start": 1431.99,
+      "duration": 2.976
+    },
+    {
+      "text": " right? As soon as I ran this code, what",
+      "start": 1434.01,
+      "duration": 2.958
+    },
+    {
+      "text": " is it saying? Found 2000 images",
+      "start": 1436.018,
+      "duration": 3.283
+    },
+    {
+      "text": " belonging to two classes. This is",
+      "start": 1438.392,
+      "duration": 3.636
+    },
+    {
+      "text": " coming from the training set. All right",
+      "start": 1441.068,
+      "duration": 2.677
+    },
+    {
+      "text": "? And then here it says found 1000",
+      "start": 1442.745,
+      "duration": 3.36
+    },
+    {
+      "text": " classes. 1000 images belonging to two",
+      "start": 1445.174,
+      "duration": 3.294
+    },
+    {
+      "text": " classes. This is coming from the",
+      "start": 1447.526,
+      "duration": 2.417
+    },
+    {
+      "text": " validation set. Look, this is my train",
+      "start": 1448.98,
+      "duration": 4.383
+    },
+    {
+      "text": " set. In train, 1000 cats and 1000 dogs,",
+      "start": 1452.487,
+      "duration": 5.13
+    },
+    {
+      "text": " so 2000 in train. All right? And in",
+      "start": 1456.719,
+      "duration": 4.466
+    },
+    {
+      "text": " valid, 500 cats and 500 dogs. All right",
+      "start": 1460.333,
+      "duration": 6.095
+    },
+    {
+      "text": "? So that is what it is saying here,",
+      "start": 1465.428,
+      "duration": 2.783
+    },
+    {
+      "text": " that I found these many images. Okay? I",
+      "start": 1467.259,
+      "duration": 3.299
+    },
+    {
+      "text": " found these many images. Now, what did",
+      "start": 1469.624,
+      "duration": 3.37
+    },
+    {
+      "text": " I do? Used the same model that I used",
+      "start": 1472.046,
+      "duration": 3.711
+    },
+    {
+      "text": " here. In this place, this is the same",
+      "start": 1474.827,
+      "duration": 4.826
+    },
+    {
+      "text": " model. The exact same model. Okay? The",
+      "start": 1478.731,
+      "duration": 4.637
+    },
+    {
+      "text": " exact same model. And what will you do",
+      "start": 1482.432,
+      "duration": 3.35
+    },
+    {
+      "text": " now? Always remember one thing, guys,",
+      "start": 1484.84,
+      "duration": 3.401
+    },
+    {
+      "text": " this is a bit new. Whenever you use",
+      "start": 1487.303,
+      "duration": 4.087
+    },
+    {
+      "text": " image generator, whenever you use image",
+      "start": 1490.465,
+      "duration": 3.953
+    },
+    {
+      "text": " data generator, you call fit generator",
+      "start": 1493.494,
+      "duration": 3.876
+    },
+    {
+      "text": " instead of model dot fit. All right?",
+      "start": 1496.446,
+      "duration": 3.979
+    },
+    {
+      "text": " And instead of giving X and Y here, you",
+      "start": 1499.525,
+      "duration": 3.154
+    },
+    {
+      "text": " give the train generator. So this is",
+      "start": 1501.734,
+      "duration": 2.921
+    },
+    {
+      "text": " happening through a slightly different",
+      "start": 1503.699,
+      "duration": 2.675
+    },
+    {
+      "text": " pipeline. So the train generator has",
+      "start": 1505.418,
+      "duration": 2.877
+    },
+    {
+      "text": " all the images. So one more thing to",
+      "start": 1507.348,
+      "duration": 2.77
+    },
+    {
+      "text": " keep in mind, guys, is what happens?",
+      "start": 1509.162,
+      "duration": 2.573
+    },
+    {
+      "text": " There is a bit of confusion about what",
+      "start": 1510.835,
+      "duration": 2.862
+    },
+    {
+      "text": " you are doing. You have 1000-2000",
+      "start": 1512.746,
+      "duration": 3.245
+    },
+    {
+      "text": " photos. You are creating new images by",
+      "start": 1515.071,
+      "duration": 3.088
+    },
+    {
+      "text": " doing data augmentation on those 2000",
+      "start": 1517.206,
+      "duration": 2.762
+    },
+    {
+      "text": " photos. Right? Now, the new images",
+      "start": 1519.015,
+      "duration": 3.108
+    },
+    {
+      "text": " being created are what will be used",
+      "start": 1521.175,
+      "duration": 2.803
+    },
+    {
+      "text": " during training. The original ones will",
+      "start": 1523.029,
+      "duration": 2.98
+    },
+    {
+      "text": " not be used. Remember this, the 2000",
+      "start": 1525.056,
+      "duration": 3.353
+    },
+    {
+      "text": " original images you have are not being",
+      "start": 1527.481,
+      "duration": 3.727
+    },
+    {
+      "text": " used. The transformation happening",
+      "start": 1530.28,
+      "duration": 2.773
+    },
+    {
+      "text": " there and the new image being created",
+      "start": 1532.097,
+      "duration": 2.632
+    },
+    {
+      "text": " is what's being used. All right? So",
+      "start": 1533.773,
+      "duration": 2.771
+    },
+    {
+      "text": " what's happening is that the images",
+      "start": 1535.597,
+      "duration": 2.853
+    },
+    {
+      "text": " inside the train generator are being",
+      "start": 1537.503,
+      "duration": 2.905
+    },
+    {
+      "text": " sent to training. All right? And I had",
+      "start": 1539.461,
+      "duration": 5.394
+    },
+    {
+      "text": " set epochs to 25, but I will show you",
+      "start": 1543.915,
+      "duration": 3.19
+    },
+    {
+      "text": " how it goes at five, and I put the",
+      "start": 1546.164,
+      "duration": 3.012
+    },
+    {
+      "text": " validation generator in the validation",
+      "start": 1548.235,
+      "duration": 3.249
+    },
+    {
+      "text": " data. All right? And what are these",
+      "start": 1550.544,
+      "duration": 3.354
+    },
+    {
+      "text": " steps per epoch? Let's discuss that in",
+      "start": 1552.961,
+      "duration": 3.0
+    },
+    {
+      "text": " a while. All right? Now look, when I",
+      "start": 1555.004,
+      "duration": 3.289
+    },
+    {
+      "text": " trained this after data augmentation,",
+      "start": 1557.345,
+      "duration": 2.931
+    },
+    {
+      "text": " and look here, let's compare them",
+      "start": 1559.328,
+      "duration": 2.721
+    },
+    {
+      "text": " side-by-side. So here after five epochs",
+      "start": 1561.101,
+      "duration": 4.008
+    },
+    {
+      "text": ", on the same architecture, the",
+      "start": 1564.109,
+      "duration": 2.649
+    },
+    {
+      "text": " accuracy was coming out to be 57%. Here",
+      "start": 1565.811,
+      "duration": 4.612
+    },
+    {
+      "text": " you can see that after five epochs, we",
+      "start": 1569.499,
+      "duration": 3.886
+    },
+    {
+      "text": " were above 69%. All right? So you can",
+      "start": 1572.461,
+      "duration": 3.669
+    },
+    {
+      "text": " see the performance of our model",
+      "start": 1575.185,
+      "duration": 2.765
+    },
+    {
+      "text": " increased immediately. All right? So",
+      "start": 1577.005,
+      "duration": 3.111
+    },
+    {
+      "text": " what did I do then? I trained this same",
+      "start": 1579.16,
+      "duration": 3.134
+    },
+    {
+      "text": " model further up to 25 epochs, as much",
+      "start": 1581.351,
+      "duration": 3.151
+    },
+    {
+      "text": " time as I had, and I was getting 74%",
+      "start": 1583.559,
+      "duration": 3.037
+    },
+    {
+      "text": "accuracy at this point. Right around 75",
+      "start": 1585.596,
+      "duration": 3.71
+    },
+    {
+      "text": ". All right? So that was the video,",
+      "start": 1588.306,
+      "duration": 2.673
+    },
+    {
+      "text": " guys. I hope I was able to explain to",
+      "start": 1590.022,
+      "duration": 2.759
+    },
+    {
+      "text": " you how the data augmentation technique",
+      "start": 1591.827,
+      "duration": 2.812
+    },
+    {
+      "text": " works. In the future, if possible, we",
+      "start": 1593.686,
+      "duration": 3.062
+    },
+    {
+      "text": " will implement this in some project. In",
+      "start": 1595.804,
+      "duration": 3.299
+    },
+    {
+      "text": " some proper real-world project. If you",
+      "start": 1598.166,
+      "duration": 3.795
+    },
+    {
+      "text": " liked the video, then hit like, and if",
+      "start": 1601.001,
+      "duration": 2.534
+    },
+    {
+      "text": " you haven't subscribed to the channel,",
+      "start": 1602.576,
+      "duration": 2.534
+    },
+    {
+      "text": " then please subscribe. That's it from",
+      "start": 1604.15,
+      "duration": 3.025
+    },
+    {
+      "text": " my side. See you in the next video. Bye",
+      "start": 1606.226,
+      "duration": 3.001
+    },
+    {
+      "text": ".",
+      "start": 1608.227,
+      "duration": 1.099
+    }
+  ]
+}

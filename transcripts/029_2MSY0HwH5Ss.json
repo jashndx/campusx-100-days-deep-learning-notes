@@ -1,0 +1,4780 @@
+{
+  "id": "2MSY0HwH5Ss",
+  "index": 29,
+  "title": "Weight Initialization Techniques | What not to do? | Deep Learning",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and welcome  to my YouTube channel. In this video,  we will continue our deep learning  playlist and today we will cover a very  important topic: weight initialization  techniques. Okay? So, we are learning  how we can improve our neural networks,  and a very solid way to improve a  neural network is by initializing the  weights correctly. This topic is quite  important, which is why I have made a  very detailed video on it. While  recording, I realized that the video  had become a bit long. That is why I  have divided the entire video into two  parts. In the first part, I am going to  explain very clearly what should not be  done. What kind of weight  initialization techniques should not be  used. That is the topic for today's  video, and in the next video, once we  learn what not to do. I will tell you  about the techniques that are used  today and that you should follow. Along  with that, I will also show you how to  run their Keras code. So that is the  plan. Let's start the video. So guys,  we will start the discussion on weight  initialization techniques from scratch.  Because it is a very important topic.  First, we will discuss why weight  initialization is important. Why should  one study this? Now, to understand this , you will have to go back a little.  Where I explained to you how a neural  network works. So here we have a neural  network. And these are the series of  steps that this neural network follows  to make predictions. So in step one,  what you do is initialize all your  parameters. Parameters mean all your  weights and all your biases; you give  them an initial value. Okay? Then you  choose an optimization algorithm and  then you repeat these four steps. The  first step is forward propagation.  Where what do you do? As soon as you  get an input, you send that input into  this network and use forward  propagation to calculate y-hat.  Basically, you calculate the output for  a given input. Then you calculate the  loss from that output. Based on the  loss, you calculate the gradient of  every parameter. Which you then send to  the gradient descent step. Where you  update all your parameters. I have  explained all of this to you in great  detail. But if you notice, the very  first step in this entire process is  kind of very important. Because this is  where it's decided how the neural  network will perform. Trust me, if you  take your initial parameter values  incorrectly. There can be many types of  problems. Let me tell you about a few  problems. The first problem that can  occur is the vanishing gradient problem . The second problem that can occur is  the exploding gradient problem. The  third problem that can occur is slow  convergence. Meaning you will reach the  right answer after a very long time.  Right? You can face all these three  problems. If the weights you  initialized are not correct. In fact,  this is such an important point that  around 2000, deep learning research had  completely stopped. It had completely  halted because of this vanishing  gradient problem. And when people found  a solution, they realized there were  two major culprits. First, the sigmoid  activation function, and second, the  wrong weight initialization technique.  Due to these two reasons, the vanishing  gradient problem was occurring, and the  solution wasn't being found in 2000.  Okay? So, what has been happening  continuously since then? There has been  a lot of research going on regarding  weight initialization techniques. Okay?  So, my plan for today's video is that  first I will tell you about some wrong  weight initialization techniques that  you should not do. And from this, we  will learn what not to do. And then we  will study what to do. Basically, we  will study the correct weight  initialization techniques used today.  Okay? And then we will also implement  them using Keras. So guys, let's start  with some weight initialization  techniques that we should not follow.  Okay? The first case among them is zero  initialization. Zero initialization  means you are setting the value of all  your weights to zero at the beginning.  Honestly, you should not do this. I  will give you the reason in a moment,  and you should also know this. In fact,  this is a very famous interview  question in deep learning where it is  asked, tell us why the initial value of  your weights should not be zero for all  weights. This is exactly what we are  going to discuss now. Before the  discussion, I will explain the entire  setup to you. We are working on a  regression problem. Imagine any small  regression problem. Where you have two  inputs and some output will be  generated. For example, based on CGPA  and IQ, we need to determine the  student's salary package in lakhs.  Right? Our neural network is very  simple. There are two neurons in the  hidden layer and a single neuron in the  output layer. Here, we have a linear  activation function. Because we are  solving a regression problem. Now, what  will we do? We will discuss three cases . The first case will be when we  consider ReLU. Meaning, the activation  function for this neuron and this  neuron would be ReLU. Then, in the  second case, we will discuss using tanh . And then, in the third case, we will  discuss using sigmoid. And through all  three, we need to find out why weights  should not be zero initially. Right? So , let's start our discussion. For a  while, let's assume that this  activation function is ReLU, and this  one is also ReLU. Right? Now, suppose  you provided inputs x1 and x2; first,  we will calculate the activation of  this neuron and this neuron. Right? The  activations are a11 and a12. It's  simple. A11 will be equal to the max of  0, Z11, where Z11 is equal to this  weight multiplied by this W11 X1 plus  this weight multiplied by W12  multiplied by X2 plus its own bias,  Right? Similarly, if you calculate its  activation, A12 will be the max of 0,  Z12, where Z12 will be equal to this  weight W12*X1 plus this weight  multiplied by X2 plus its own bias.  Right? Now, what had we assumed? That  all our weights are zero. And we also  assumed the biases to be zero. So,  following this logic, this entire term  will become zero. And similarly, this  term will also become zero. And because  both of these are zero, this will also  become zero and this will also become  zero. In short, you can say that the  activation, or the output, of both  nodes in this layer is zero. And more  importantly, equal. Equal and zero. Now , you can very easily understand what  you want to do here. You want to apply  backpropagation. What do you do in  backpropagation? Pick any particular  weight. Suppose you picked this weight.  You want to update it. Using this  update rule. And in this same way, you  are going to do the same for all four.  But if you think about it, when you go  to calculate this particular derivative , what will you have to do? At some  point, you will have to calculate the  derivative of this activation as well.  But since this thing is zero, its  derivative will also be zero. Because  of which, this entire term will become  zero itself. This means the old and new  W11 will remain the same. Basically, it  will be a case of no update. In short,  I want to tell you that if you chose  the ReLU activation function and set  all your weight values to zero, then no  training will happen at all. No  training will take place. Just think  about it. Because while calculating  this derivative, it will become zero.  So W11 will not be updated. It will.  W11 is still zero. Then you will  calculate Z11, and since everything is  zero. Your term will be like this again  and it will constantly remain zero.  Training will never happen. And forever , your weight values will remain stuck  at zero. So that is why if you are  using a ReLU activation function, you  should not initialize your weights to  zero. Now let's talk about tanh. In  tanh, the exact same thing will happen,  and the values will always stop at zero . The reason for that is that in the  case of tanh, the formula is not this.  Now in the case of tanh, the formula  becomes: a11 = e to the power z11-e to  the power-z11 divided by e to the power  z11 + e to the power-z11. Now since z11  is zero, the top term becomes one, this  also becomes one, 1-1 is 0, so  basically a11 will again come out to be  zero, and a22 will also come out to be  zero again. So the derivative of both  will again be zero. This entire term  will again be zero and all these  weights of yours will again not be  updated, and during the entire training , your weights will remain zero.  Basically, there will be no training at  all. Now, I will show you both these  scenarios in the code. So guys, to  prove this small point, I have created  a notebook in which I have taken this  small dataset, which has two input  columns, and we are working on a binary  classification problem. Currently, our  dataset looks like this. There are two  classes. These are all toy datasets.  You must already know them. I have  extracted X and y here. Then I have  done the model building. I have built  exactly the same model that I showed  you. Let's assume there are two layers  here, a hidden layer and an output  layer, and both are ReLU. And here is  my model. Now, what am I doing? Using  model.get_weights, I am showing you all  the weights that Keras sets by default.  These are the default weights and  biases. What did I do? I changed all  the default weights and biases to make  this. Look here, we won't use np.ones.  We will use zeros. I was testing some  things for future code. So I will  replace this entire thing with zeros.  This will ensure that all of our  weights and biases are set. Equal to  zero. Look here. Previously, these were  the default values. We overrode them  and set everything to zero. Okay? Now I  am training my model. 100 epochs, let's  train it right in front of you. So, the  model is training. So, the model is  trained. And now look at what I am  doing. I am running model.get_weights.  Okay? After the model is trained, I am  finding the values of the weights. And  you can see everything is still zero.  No changes have occurred. It is exactly  as it was. And look guys, obviously our  model will perform terribly. Look, it  is predicting one for everything. So,  there is 50%accuracy, but it is a very  poor model. Obviously. Now, let me  quickly show you another example. Where  what I will do is, instead of ReLU, I  will keep tanh. Everything will be  exactly the same. These are the initial  weights right now. The ones that Keras  set. I am setting everything to zero.  And you can see everything became zero,  and I am compiling and running the  model. And look, the model is trained.  I did model.get_weights, still zero,  nothing changed. And if I plot the  model's performance again. See, nothing . In the case of sigmoid, this  discussion gets a bit interesting. Let  me tell you why. So, everything is the  same. The setup is exactly the same.  The only thing we did is that we made  the activation function of this hidden  layer a sigmoid. Okay? Now, what will  we do? We will again calculate the  output or activation of both nodes of  our hidden layer. So A11 will be the  sigmoid of Z11, where Z11 is exactly  the same as it was above. Since this  thing and the weights are zero, this  will be zero. But this time, sigmoid of  Z11 will be .5, because if you have  seen the sigmoid function, it looks  like this. So at zero, the sigmoid  value is .5. All right? Going by the  same logic, the value of A12 will also  be .5, so this time your activations  are not zero. This is the very first  point of difference. So let's discuss  what happens if the activations are not  zero. But one thing is still worth  noticing here: the values of the  activations are still the same. So  tomorrow, if there were another node  here, its value would also be .5. All  right? Now look, what do we have to do?  We have these four weights. We need to  update their values. And to update, we  apply the update rule. New weight value  is equal to old weight value minus  learning rate times this. All right? So  we will do one thing. We will calculate  this derivative for all these four  weights. So I will show you once. First , I am showing. What will be the  derivative of del L by del w1 for this  weight, this weight here? If you apply  the chain rule, it's the derivative of  loss with respect to y-hat, derivative  of y-hat with respect to...This  activation. Derivative of this  activation with respect to Z11. And  derivative of Z11 with respect to this  weight. All right? Similarly, if we  find the derivative of this weight.  This is our weight 112, so everything  will be the same. Up to here...actually , these two terms will be the same. del  L by del y-hat, del y-hat by del A11.  Actually, it won't be A11. I guess it  will be A12 because we are now coming  back through this path. A12. A12 will  depend on Z12 and Z12 will depend on... W12. On that. Now we will calculate for  this weight del L. W1, this weight is  21. In this case, these three things  will be the same. Only in the end, Z11  will depend on W1. On that. And lastly,  we need to calculate the value of del  W122. The three things will be the same . Lastly, just del L, Z12, Z12 will  depend on...All right? Now look, the  thing to understand here is that when  you are calculating derivatives, this  term is the same in all of them. This  term is the same in all of them. We are  taking some observations. All right?  Now one more thing, A11 = A12. Also,  Z11 = Z12, all right? And basically,  your A11...And this A12 are equal. And  Z11 and Z12 are also equal. So  basically, what I'm trying to say is  that the derivative you calculate for  this term will also be the same. So  these three terms are common across all  four weights. What is different then?  Just this last one. Now we can  calculate the last one. When you derive  Z11 with respect to W11. Look, Z11 is  here. When you derive and differentiate  this with respect to W11, you get X1.  So in a way, what can we do? Instead of  this, we can write X1, the first input.  Right? If you differentiate Z12 with  respect to W12, then again, we get x1  here. So we can remove this and write  x1 in its place. And going by the same  logic, both of these places will have  x2. And x2, you can go back and check  if you want. So in short, I just want  to tell you that this derivative and  this derivative will always remain the  same, and these two derivatives will  also always remain the same. You need  to understand this. So in short, what  am I saying? Look at it once again. I  will take some other color. So this  weight W11 and this weight W12, the  derivatives of these two will always be  the same, and the derivatives of these  two will also always be the same. This  means that if these two weights, this  weight and this weight, start from zero . Then their derivatives will also  always be the same. So when you  differentiate and subtract, the new  value of these weights will also be the  same. This means these two weights will  always grow together. The value of  these two weights will always remain  the same. Similarly, the value of these  two weights will also always remain the  same. This set will have a different  value. This set will have a different  value. Because you are multiplying by  X2 and multiplying by X1. But what you  need to understand here is that these  two sets will behave exactly as if they  are a single weight. So you can assume  that these two weights aren't really  here. It's a single weight. Meaning,  this is your first input. Two weights  aren't coming out from here. Only one  weight is coming out from here.  Similarly, from this second input too,  two weights aren't coming out. Only one  weight is coming out. And in a way, it  is being added to a single neuron. So  basically, these two neurons of yours  won't even remain as two neurons. It  will behave just like a single neuron.  Okay? Now, if you extrapolate this a  bit. Suppose there was one more neuron  here. Then another weight would be  coming out from this input here, and  another weight would be coming out from  this input as well. But this weight,  this weight, and this weight, all three  would behave exactly the same.  Similarly, this weight, this weight,  and this weight would behave exactly  the same. So in short, if you have used  sigmoid and you have initialized all  your values to zero, then what will  happen is that in this hidden layer, no  matter how many thousands or lakhs of  nodes you add, it will act as a single  node. Okay? So in short, it won't be  able to capture non-linearity at all  because it will behave exactly like a  perceptron. That's the whole idea. Okay ? I am explaining to you, simplifying  it here, that no matter how many  neurons you add here. If you have given  all of them sigmoid and you have  initialized all these weights to zero,  then all of them will behave as if it  is a single node and it will become a  linear model, and this is a very  important concept. I hope I was able to  explain it to you. So, to demonstrate  my point, I have created a notebook  again. You can see it's the exact same  data that I showed you a little while  ago. Only this time our model is  different because the activation  function is sigmoid. Okay? Now moving  forward. Fetched the weights again. So  we showed you the weights that Keras  provided. Now we will set all the  weights to zero. See, like this. Okay?  Compiled the model here. Trained the  model here, and after training the  model, when I did get_weights, see what  is happening this time. I will run it  one more time. Sorry. I did this a  little while ago with three neurons. I  am running this entire code again. See  this. These are the two weights coming  from the first input, both going to  different nodes. And these are the ones  coming from the second input. Are you  seeing this? The values of all weights  coming from the first input are the  same, and the values of all weights  coming from the second input are also  the same. But they are both different  from each other. Okay? To prove this  point even better, I'll do one thing. I  will here I am adding 10 nodes to the  hidden layer. Okay? So now our model  will look like you have a total of  parameters. There are 20 weights. 2  cross 10 and 10 biases. Okay? Did get  weights. Here are all our weights.  There are a few more weights this time.  And we again set all the initial  weights to zero. Everything is set to  zero. Okay? Trained the model again.  Look at our weights. Notice this. The  10 weights coming from the first input,  entering the 10 different nodes, they  are all exactly the same. And the  second set of weights coming from the  second input for all nodes are exactly  the same. So it is as if these weights  are tied up and acting exactly like a  single weight. And these are also  acting like a single weight. It means  even though you added 10 nodes to our  hidden layer, they are acting as a  single node. Okay? It became a linear  model. And to prove this point, if I  plot the decision boundary for you, you  can see this is the decision boundary,  which is a line. Line means a linear  model. Even though you added so many  nodes, no non-linearity could be  captured. It is acting like a linear  model. It is working like a perceptron.  I hope you understood the point. It is  clear that we cannot initialize our  weights to zero. So let's do one thing.  Let's initialize them with a non-zero  value. And we will still give all  weights the same value. But it won't be  zero. Let's assume for a while that we  give our weights and biases a value of  five. Okay? The value of all weights  and biases is 5. Okay? What will happen  now? I will give you a hint in advance.  It will behave exactly like what we  studied earlier in Sigmoid. Sigmoid,  where we were using zero. It will  behave exactly the same way. It will  just remain a linear model. Let me give  you an example. Suppose there is ReLU  here. tanh and ReLU, and in fact,  Sigmoid will also give the same result.  Okay? Let's see quickly. A11 will be  max of 0, Z11 where Z11 is W11 X1 + W 1  2 X2 + B1 And this value, depending on  the input, will be some non-zero value.  This will not be equal to 0, it will be  some positive value if x1 and x2 are  positive, so this will also be some  value, this will also be non-zero, okay ? Similarly, a12 will be max of 0, z12.  Where z12 = uh, w12. x1 + w22*x2 + b12,  okay? This will again be not equal to 0 . And similarly, this will not be equal  to 0, okay? But one thing to notice is  that since these weights are all equal,  and x1, x2 are both in it, and the  value of b1, b12 is also the same. So  z1, z, meaning z12 will be equal to z11 , because of which a11 will be equal to  a12. Meaning all the nodes in this  layer will have the same activation.  Now, as soon as the activation is the  same, you can see again that the  derivative of all weights coming from a  particular input. Will again be the  same. This means all the weights  originating from one input will be  updated by the same value. So, this  means that, just like before, even if  three or two things are coming out of  one input. They will act as if they are  a single weight. So even if you add  three nodes. It will act as if. It will  act as if there is a single neuron. The  same thing will happen that happened a  while ago. Okay? So in short, we  learned that you cannot initialize your  values to zero, nor can you initialize  them to a non-zero constant value. Okay ? You only have one option, which is to  initialize your values randomly. We  have understood this now. Now I will  just do one thing. I will show you in  code what I have just discussed with  you. We will proceed with the same  example. I am just doing one thing  differently here this time. Here is the  value and. I extracted the initial  weights using get_weights and set them  to np.ones*5. So now the value of all  my weights is 5. Okay? Compiled the  model. Trained the model. And after  training, when I extracted get_weights,  you can see all weights coming from one  input are the same. All weights coming  from the second input are the same.  Okay? And look, your model is now  working like a linear model. And look  guys, when I did this again with tanh,  the result with tanh is exactly the  same. Although the numbers are  different. But you can see that again,  all the weights coming from one input  are the same. All the weights coming  from the second input are the same. And  lastly, I tested it with Sigmoid as  well. Everything is the same. And look,  again, the weights coming from one  input are the same. The weights coming  from the second input are the same. In  short, we have understood two things so  far. First, you cannot set the weights  to zero. Okay? The model won't even  train in the case of ReLU and tanh. And  you cannot initialize all the weights  with the same non-zero value either.  Because even if you do that, the model  will train, but it will act as a linear  model. It won't be able to capture  non-linearity. Okay? I have already  told you the reason. So guys, we have  understood two things. First, we cannot  initialize our weights with zero.  Second, we cannot initialize them with  any non-zero constant value either.  This means we have to give every weight  a different value. So here, we will now  discuss case three. Where we will study  random initialization. What will we do?  We will randomly initialize our weights . Okay? I will teach you two cases here . The first will be small random values  and the second will be large random  values. First, we will discuss the case  of small random values, and let's  discuss first about tanh and Sigmoid,  and then we will discuss ReLU. Uh, let  me explain the setup to you a bit. So  suppose we have data where we have 500  columns in the input and there is a  single target column in the output.  Okay? And suppose we have 1000 rows  like this. Okay? So our input shape is  1000*500. Also, in every row, these 500  numbers that form a single row together . For a while, let's assume that all  these numbers have been drawn from a  Gaussian distribution. Basically, it is  normal. Okay? If you plot these 500  numbers, you will see a curve like this . Okay? This is our setup. Now, what  did we do next? We added some hidden  layers, three hidden layers, and all  three have 500 nodes each. Okay? Now we  will have a little discussion on what  happens if you send the rows one by one . Suppose you picked up the numbers  from this first row and inserted the  500 values into this network from here.  Okay? And one more thing, the weight  initialization that we have done It is  random, and let me tell you how it is  random. We initialized it this way:  np.random.randn, right? I have  specified the shape here as 500/500.  There will be 250,000 weights here. So  500/500, and we multiplied all these  weights by 0.01. So in a way, these are  all small values. Right? We have  initially set all the biases to zero.  This is the setup. Now try to  understand what will happen. Let's  focus on the output of this neuron, for  example. What will its activation be?  Its activation will be σ wi xi, right?  The weighted sum of these inputs and  all these 500 weights coming in; since  our xi is itself between zero and one.  It is normalized. Because your mean is  zero and standard deviation is one.  Let's assume it ranges from 0 to 1, or  -1 to 1. It ranges between -1 and 1.  And these weights of ours are very  small numbers. Numbers like these. So  when you multiply many such numbers and  then add them up, you can understand  that this resulting number will also be  a small number. This will also be a  small number. Right? So our z is a  small number. Okay. Now let's assume  for a moment that the activation  function here is tanh. Right? I guess  you know the graph of tanh. The tanh  graph looks like this. Right? If the  value of x is zero, then the value of y  is also zero. And if the value of x is  slightly more than zero, it will be  somewhere here. Which is again very  small. Right? So just understand that  in this layer, all the nodes, the 500  nodes, will have an output. They will  all have an activation. All these  activations will be very close to zero.  Just think about it. Because this  number is small. When you pass it  through tanh, looking at this graph,  you can understand that the output will  also be very close to zero. So what did  I do? I plotted a histogram here. This  histogram is of our input. Our input,  which we took from a normal Gaussian  distribution. So when it was the input,  it looked like this. Then what did I do ? There will be 500 activations coming  out of this layer of ours. When I  plotted the histogram for these 500  activations, it looks something like  this. Right? Because most of the values  are around zero. And similarly, when  you pass these values forward, since  the weights here are also very small.  So, when you pass them forward,  following the same logic, your  histogram will look like this. Because  most of the values would be very, very  close to zero. So, understand what will  happen now. If the activations of all  your layers are very close to zero,  then when you differentiate them to  calculate the gradient, that will also  be very, very small and close to zero.  And as you keep increasing these layers , during backpropagation, when a lot of  small numbers are multiplied by other  small numbers, your gradient will be  very small. Or you can assume it will  be close to zero. And because of that,  when you update the weights, Since this  derivative is very small or close to  zero, there won't be any update at all.  In a way, you can say that your  vanishing gradient problem is taking  effect. The vanishing gradient problem  is applying here. So, the simple  principle is that if you initialize  with very small weights, like  multiplying by .01. When you initialize  with very small weights, tanh will give  you the vanishing gradient problem.  Okay? If you analyze sigmoid, it will  be almost the same. In the case of  sigmoid, the only difference is the  graph looks like this. Meaning, when  the value of x is zero, the value of y  is .5. So, its histogram won't be as  severely centered at zero. There will  be slightly more values there. The  graph will be a bit more spread out  from zero, but you can still face the  same vanishing gradient problem there.  If your neural network is very deep.  Meaning, it has many layers. In a  shallow neural network, there won't be  a problem because all the gradients  won't be multiplied. But in a deep one,  it can be a major issue. So, let me  summarize it for you. In summary, if  you use very small weights as your  initial weights—say, if you take  these unit weights and use tanh—you  get a very severe vanishing gradient  problem. It is possible that your  weights won't update at all, training  won't happen, and everything will  become zero. In the case of sigmoid too , The vanishing gradient problem will  apply. It just won't be as severe as it  is with tanh. But even with Sigmoid,  training will be very, very slow or it  won't happen at all. In the case of  ReLU, small values will still persist.  So, the vanishing gradient problem will  occur here too, but not as much,  because of its values. Things don't  become zero. So what is the benefit  here? The benefit is just that the  vanishing gradient problem won't be as  severe. But the training will be very  slow. Training will be very slow. The  convergence will be very, very slow. So  you will see results only after many  epochs. All right? Let me show you a  small demonstration of this. So guys,  let me show you a small example. If you  initialize the weights with very, very  small numbers, what will happen? We are  working on the same data. Only this  time, I have built a deep neural  network that has four hidden layers and  I have given them all a Tanh activation  function, and the input won't be here.  Right? So, this is the neural network.  I fetched the current weights from all  the gets. And I changed them all. Here  you can see that I have multiplied the  initialized weights by 0.1 along with  the random ones. And I left the biases  as zero. That doesn't make any  difference. And I set the new weights  using set weights. You can see these  are my new weights. All the weights are  very, very small. Biases are zero. All  the weights are very small. Okay? Now  what did I do? I trained the model for  100 epochs. And after doing that, when  I fetched all the weights back using  get weights after training, you can see  and compare side by side that your  weights have barely updated. Do you see ? Those 0.07 have only changed slightly  after many decimal places. Which shows  that the vanishing gradient problem has  occurred here. Okay? If you go a little  further down. I plotted a graph. You  can see the performance is very, very  bad. It is predicting one for  everything. Our model is working at 50% accuracy. Okay? Now I will show you  what happens in the case of ReLU. So  this is a very good visualization tool.  Here we selected this kind of data and  selected too small weights. As soon as  we started training. You would see that  here you can see different labels are  there. Uh, what will happen is that  with ReLU, the vanishing gradient  problem won't occur as strongly. But,  you would notice that it will take a  lot of time for this network to  converge; okay, it will take around  1000 epochs. Whereas if you used  another weight initialization technique  that I will show later, this network  would converge much faster. Let me wait , and you can see guys, after waiting  for almost 5 minutes and running 1500  epochs, our error is now finally  reducing and our model is now  converging and you can see, a decision  boundary will start to appear. So in  the case of ReLU, your convergence  would be extremely slow. If you  initialize your weights with very small  values. Now let us discuss random  initialization but with large values.  Okay? Large values, I mean how large?  Suppose the setup is the same. We have  500 inputs and there are three hidden  layers. All of them have 500 neurons  each. It is the exact same previous  setup. So this time, our weight  initialization will be large, as in,  they will be big numbers. So the  numbers could be in the range of zero  to one. And yes. This is what is called  large in deep learning. If you are  initializing in the zero to one range,  then this is a big number. Why? Here  you can see that if you calculate the  activation of any particular neuron,  that will be σwi, xi right? Now if  every x and every w is in the range of  zero to one and you are adding 500 such  values, then the sum can become any  number in the range of 100 to 500,  which is quite big. Okay? So suppose if  we talk about tanh or sigmoid, and  suppose we randomly initialized numbers  in this zero to one range, then what  will happen is that saturation will  start to occur. Saturation means that  σwi xi for every node will be quite  large. Like, it could be in the range  of up to 100. Just think yourself, if  you put 100 into sigmoid or put 100  into tanh, it will saturate. Saturate  means it will either take its highest  value or, if negative, the highest  negative value. So you can see, when I  plotted the same histogram, the input  is normal again, but when I plotted the  histogram of activations for tanh, your  largest values are appearing more, the  -1 and 1 ones, you can see in all the  layers. Okay? Similarly, when you do  the same thing for sigmoid, the same  thing happens again. Saturating values  are appearing. In the case of sigmoid,  the input is 0 to 1 because the output  of sigmoid is between 0 and 1. The  output of tan h is between -1 and 1. So  basically, because of this saturation,  two things can happen. Either there  will be slow training. Meaning  convergence would be slow, or in the  worst-case scenario, the vanishing  gradient problem could occur again. We  read about this. When we made the video  on the vanishing gradient problem. Okay ? So, if someone asks you that if the  weights are a bit large and your  activation function is tan h or sigmoid , you should say that saturation will  occur because of these big values. This  term will be very large, and when you  send it into your activation function,  saturating values like this will appear . And because of that, there will  either be slow convergence or, in the  worst-case scenario, the vanishing  gradient problem might occur. The case  for ReLU is a bit different because  ReLU is a non-saturating function in  the positive direction. This is the  graph. So, there are no restrictions  here. Therefore, the larger the WI XI  is in the positive direction, the  larger the output value will be.  Suppose its output was 250, then the  ReLU output will also be 250. And if  these numbers are large, then your  gradients will also be very large. If  the gradients are large, when you go to  update them, you will make very large  changes to your weights, which will  cause your gradient descent to take big  jumps like this. And basically, you  will get an unstable gradient, and  again, you won't reach the correct  solution. You won't be able to reach it . Okay? So, I hope you are  understanding this entire discussion.  In summary, you cannot initialize with  zero. You cannot initialize with the  same non-zero value either. You cannot  initialize with small random values.  And you cannot initialize with large  random values either. You cannot do any  of these four things. This is what we  have learned so far. We just discussed  that your training would be very  unstable. Right? You can see that this  is what is happening here. Some weights  are becoming very large, and there will  be a lot of fluctuation in them as well . Because your gradients will take on  very large values. Due to which  training will be unstable and you will  not be able to reach the right result.  Okay? You can see here it is trying  hard, but it is not able to reach the  right result. So that was the video,  guys. I know it was quite long and had  a lot of concepts hidden in it. I hope  you liked it and understood the things.  If you liked the video then please like  it and if you haven't subscribed to my  channel then please do subscribe.  Thanks for watching. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and welcome",
+      "start": 0.139,
+      "duration": 3.516
+    },
+    {
+      "text": " to my YouTube channel. In this video,",
+      "start": 2.721,
+      "duration": 3.534
+    },
+    {
+      "text": " we will continue our deep learning",
+      "start": 5.317,
+      "duration": 3.128
+    },
+    {
+      "text": " playlist and today we will cover a very",
+      "start": 7.507,
+      "duration": 3.44
+    },
+    {
+      "text": " important topic: weight initialization",
+      "start": 10.01,
+      "duration": 3.378
+    },
+    {
+      "text": " techniques. Okay? So, we are learning",
+      "start": 12.45,
+      "duration": 3.774
+    },
+    {
+      "text": " how we can improve our neural networks,",
+      "start": 15.287,
+      "duration": 3.455
+    },
+    {
+      "text": " and a very solid way to improve a",
+      "start": 17.805,
+      "duration": 3.076
+    },
+    {
+      "text": " neural network is by initializing the",
+      "start": 19.944,
+      "duration": 3.329
+    },
+    {
+      "text": " weights correctly. This topic is quite",
+      "start": 22.336,
+      "duration": 3.646
+    },
+    {
+      "text": " important, which is why I have made a",
+      "start": 25.045,
+      "duration": 3.344
+    },
+    {
+      "text": " very detailed video on it. While",
+      "start": 27.453,
+      "duration": 3.089
+    },
+    {
+      "text": " recording, I realized that the video",
+      "start": 29.59,
+      "duration": 2.75
+    },
+    {
+      "text": " had become a bit long. That is why I",
+      "start": 31.389,
+      "duration": 2.831
+    },
+    {
+      "text": " have divided the entire video into two",
+      "start": 33.265,
+      "duration": 2.701
+    },
+    {
+      "text": " parts. In the first part, I am going to",
+      "start": 35.011,
+      "duration": 4.176
+    },
+    {
+      "text": " explain very clearly what should not be",
+      "start": 38.251,
+      "duration": 3.521
+    },
+    {
+      "text": " done. What kind of weight",
+      "start": 40.836,
+      "duration": 3.122
+    },
+    {
+      "text": " initialization techniques should not be",
+      "start": 43.008,
+      "duration": 2.968
+    },
+    {
+      "text": " used. That is the topic for today's",
+      "start": 45.026,
+      "duration": 3.741
+    },
+    {
+      "text": " video, and in the next video, once we",
+      "start": 47.836,
+      "duration": 3.561
+    },
+    {
+      "text": " learn what not to do. I will tell you",
+      "start": 50.466,
+      "duration": 3.923
+    },
+    {
+      "text": " about the techniques that are used",
+      "start": 53.432,
+      "duration": 2.473
+    },
+    {
+      "text": " today and that you should follow. Along",
+      "start": 54.949,
+      "duration": 3.326
+    },
+    {
+      "text": " with that, I will also show you how to",
+      "start": 57.322,
+      "duration": 2.797
+    },
+    {
+      "text": " run their Keras code. So that is the",
+      "start": 59.166,
+      "duration": 2.897
+    },
+    {
+      "text": " plan. Let's start the video. So guys,",
+      "start": 61.119,
+      "duration": 3.713
+    },
+    {
+      "text": " we will start the discussion on weight",
+      "start": 63.888,
+      "duration": 3.149
+    },
+    {
+      "text": " initialization techniques from scratch.",
+      "start": 66.093,
+      "duration": 3.206
+    },
+    {
+      "text": " Because it is a very important topic.",
+      "start": 68.457,
+      "duration": 2.92
+    },
+    {
+      "text": " First, we will discuss why weight",
+      "start": 70.477,
+      "duration": 3.368
+    },
+    {
+      "text": " initialization is important. Why should",
+      "start": 72.916,
+      "duration": 3.821
+    },
+    {
+      "text": " one study this? Now, to understand this",
+      "start": 75.808,
+      "duration": 3.252
+    },
+    {
+      "text": ", you will have to go back a little.",
+      "start": 78.06,
+      "duration": 2.707
+    },
+    {
+      "text": " Where I explained to you how a neural",
+      "start": 80.059,
+      "duration": 3.874
+    },
+    {
+      "text": " network works. So here we have a neural",
+      "start": 83.011,
+      "duration": 4.417
+    },
+    {
+      "text": " network. And these are the series of",
+      "start": 86.496,
+      "duration": 3.15
+    },
+    {
+      "text": " steps that this neural network follows",
+      "start": 88.699,
+      "duration": 3.009
+    },
+    {
+      "text": " to make predictions. So in step one,",
+      "start": 90.761,
+      "duration": 3.569
+    },
+    {
+      "text": " what you do is initialize all your",
+      "start": 93.387,
+      "duration": 2.93
+    },
+    {
+      "text": " parameters. Parameters mean all your",
+      "start": 95.374,
+      "duration": 5.155
+    },
+    {
+      "text": " weights and all your biases; you give",
+      "start": 99.613,
+      "duration": 4.099
+    },
+    {
+      "text": " them an initial value. Okay? Then you",
+      "start": 102.796,
+      "duration": 5.76
+    },
+    {
+      "text": " choose an optimization algorithm and",
+      "start": 107.616,
+      "duration": 3.151
+    },
+    {
+      "text": " then you repeat these four steps. The",
+      "start": 109.827,
+      "duration": 3.978
+    },
+    {
+      "text": " first step is forward propagation.",
+      "start": 112.867,
+      "duration": 3.112
+    },
+    {
+      "text": " Where what do you do? As soon as you",
+      "start": 115.219,
+      "duration": 4.172
+    },
+    {
+      "text": " get an input, you send that input into",
+      "start": 118.462,
+      "duration": 3.693
+    },
+    {
+      "text": " this network and use forward",
+      "start": 121.226,
+      "duration": 2.984
+    },
+    {
+      "text": " propagation to calculate y-hat.",
+      "start": 123.281,
+      "duration": 3.198
+    },
+    {
+      "text": " Basically, you calculate the output for",
+      "start": 126.499,
+      "duration": 3.455
+    },
+    {
+      "text": " a given input. Then you calculate the",
+      "start": 129.017,
+      "duration": 4.017
+    },
+    {
+      "text": " loss from that output. Based on the",
+      "start": 132.125,
+      "duration": 4.098
+    },
+    {
+      "text": " loss, you calculate the gradient of",
+      "start": 135.291,
+      "duration": 3.347
+    },
+    {
+      "text": " every parameter. Which you then send to",
+      "start": 137.705,
+      "duration": 3.736
+    },
+    {
+      "text": " the gradient descent step. Where you",
+      "start": 140.504,
+      "duration": 3.555
+    },
+    {
+      "text": " update all your parameters. I have",
+      "start": 143.137,
+      "duration": 3.662
+    },
+    {
+      "text": " explained all of this to you in great",
+      "start": 145.849,
+      "duration": 2.85
+    },
+    {
+      "text": " detail. But if you notice, the very",
+      "start": 147.749,
+      "duration": 3.808
+    },
+    {
+      "text": " first step in this entire process is",
+      "start": 150.635,
+      "duration": 3.799
+    },
+    {
+      "text": " kind of very important. Because this is",
+      "start": 153.512,
+      "duration": 4.324
+    },
+    {
+      "text": " where it's decided how the neural",
+      "start": 156.881,
+      "duration": 2.487
+    },
+    {
+      "text": " network will perform. Trust me, if you",
+      "start": 158.413,
+      "duration": 4.126
+    },
+    {
+      "text": " take your initial parameter values",
+      "start": 161.602,
+      "duration": 3.168
+    },
+    {
+      "text": " incorrectly. There can be many types of",
+      "start": 163.834,
+      "duration": 3.453
+    },
+    {
+      "text": " problems. Let me tell you about a few",
+      "start": 166.339,
+      "duration": 3.079
+    },
+    {
+      "text": " problems. The first problem that can",
+      "start": 168.472,
+      "duration": 3.524
+    },
+    {
+      "text": " occur is the vanishing gradient problem",
+      "start": 171.049,
+      "duration": 3.096
+    },
+    {
+      "text": ". The second problem that can occur is",
+      "start": 173.145,
+      "duration": 6.077
+    },
+    {
+      "text": " the exploding gradient problem. The",
+      "start": 178.274,
+      "duration": 4.208
+    },
+    {
+      "text": " third problem that can occur is slow",
+      "start": 181.536,
+      "duration": 2.956
+    },
+    {
+      "text": " convergence. Meaning you will reach the",
+      "start": 183.546,
+      "duration": 3.543
+    },
+    {
+      "text": " right answer after a very long time.",
+      "start": 186.155,
+      "duration": 3.378
+    },
+    {
+      "text": " Right? You can face all these three",
+      "start": 188.633,
+      "duration": 2.995
+    },
+    {
+      "text": " problems. If the weights you",
+      "start": 190.675,
+      "duration": 3.419
+    },
+    {
+      "text": " initialized are not correct. In fact,",
+      "start": 193.15,
+      "duration": 5.421
+    },
+    {
+      "text": " this is such an important point that",
+      "start": 197.643,
+      "duration": 3.578
+    },
+    {
+      "text": " around 2000, deep learning research had",
+      "start": 200.293,
+      "duration": 3.793
+    },
+    {
+      "text": " completely stopped. It had completely",
+      "start": 203.158,
+      "duration": 4.571
+    },
+    {
+      "text": " halted because of this vanishing",
+      "start": 206.789,
+      "duration": 2.939
+    },
+    {
+      "text": " gradient problem. And when people found",
+      "start": 208.789,
+      "duration": 3.717
+    },
+    {
+      "text": " a solution, they realized there were",
+      "start": 211.558,
+      "duration": 2.865
+    },
+    {
+      "text": " two major culprits. First, the sigmoid",
+      "start": 213.474,
+      "duration": 4.368
+    },
+    {
+      "text": " activation function, and second, the",
+      "start": 216.958,
+      "duration": 5.166
+    },
+    {
+      "text": " wrong weight initialization technique.",
+      "start": 221.24,
+      "duration": 5.399
+    },
+    {
+      "text": " Due to these two reasons, the vanishing",
+      "start": 225.879,
+      "duration": 3.178
+    },
+    {
+      "text": " gradient problem was occurring, and the",
+      "start": 228.113,
+      "duration": 3.179
+    },
+    {
+      "text": " solution wasn't being found in 2000.",
+      "start": 230.347,
+      "duration": 3.012
+    },
+    {
+      "text": " Okay? So, what has been happening",
+      "start": 232.539,
+      "duration": 3.732
+    },
+    {
+      "text": " continuously since then? There has been",
+      "start": 235.343,
+      "duration": 3.915
+    },
+    {
+      "text": " a lot of research going on regarding",
+      "start": 238.303,
+      "duration": 2.644
+    },
+    {
+      "text": " weight initialization techniques. Okay?",
+      "start": 239.992,
+      "duration": 3.468
+    },
+    {
+      "text": " So, my plan for today's video is that",
+      "start": 243.419,
+      "duration": 4.082
+    },
+    {
+      "text": " first I will tell you about some wrong",
+      "start": 246.584,
+      "duration": 4.166
+    },
+    {
+      "text": " weight initialization techniques that",
+      "start": 249.833,
+      "duration": 4.083
+    },
+    {
+      "text": " you should not do. And from this, we",
+      "start": 252.999,
+      "duration": 5.424
+    },
+    {
+      "text": " will learn what not to do. And then we",
+      "start": 257.49,
+      "duration": 3.977
+    },
+    {
+      "text": " will study what to do. Basically, we",
+      "start": 260.562,
+      "duration": 5.026
+    },
+    {
+      "text": " will study the correct weight",
+      "start": 264.636,
+      "duration": 2.403
+    },
+    {
+      "text": " initialization techniques used today.",
+      "start": 266.088,
+      "duration": 2.791
+    },
+    {
+      "text": " Okay? And then we will also implement",
+      "start": 268.779,
+      "duration": 3.564
+    },
+    {
+      "text": " them using Keras. So guys, let's start",
+      "start": 271.408,
+      "duration": 4.004
+    },
+    {
+      "text": " with some weight initialization",
+      "start": 274.471,
+      "duration": 2.818
+    },
+    {
+      "text": " techniques that we should not follow.",
+      "start": 276.348,
+      "duration": 3.171
+    },
+    {
+      "text": " Okay? The first case among them is zero",
+      "start": 279.219,
+      "duration": 4.639
+    },
+    {
+      "text": " initialization. Zero initialization",
+      "start": 282.935,
+      "duration": 4.168
+    },
+    {
+      "text": " means you are setting the value of all",
+      "start": 286.164,
+      "duration": 3.287
+    },
+    {
+      "text": " your weights to zero at the beginning.",
+      "start": 288.512,
+      "duration": 3.288
+    },
+    {
+      "text": " Honestly, you should not do this. I",
+      "start": 291.091,
+      "duration": 2.99
+    },
+    {
+      "text": " will give you the reason in a moment,",
+      "start": 293.135,
+      "duration": 2.987
+    },
+    {
+      "text": " and you should also know this. In fact,",
+      "start": 295.176,
+      "duration": 3.602
+    },
+    {
+      "text": " this is a very famous interview",
+      "start": 297.843,
+      "duration": 3.012
+    },
+    {
+      "text": " question in deep learning where it is",
+      "start": 299.92,
+      "duration": 3.401
+    },
+    {
+      "text": " asked, tell us why the initial value of",
+      "start": 302.386,
+      "duration": 3.532
+    },
+    {
+      "text": " your weights should not be zero for all",
+      "start": 304.983,
+      "duration": 3.531
+    },
+    {
+      "text": " weights. This is exactly what we are",
+      "start": 307.579,
+      "duration": 3.378
+    },
+    {
+      "text": " going to discuss now. Before the",
+      "start": 310.004,
+      "duration": 2.725
+    },
+    {
+      "text": " discussion, I will explain the entire",
+      "start": 311.777,
+      "duration": 2.742
+    },
+    {
+      "text": " setup to you. We are working on a",
+      "start": 313.566,
+      "duration": 3.079
+    },
+    {
+      "text": " regression problem. Imagine any small",
+      "start": 315.712,
+      "duration": 3.626
+    },
+    {
+      "text": " regression problem. Where you have two",
+      "start": 318.405,
+      "duration": 4.018
+    },
+    {
+      "text": " inputs and some output will be",
+      "start": 321.494,
+      "duration": 3.14
+    },
+    {
+      "text": " generated. For example, based on CGPA",
+      "start": 323.705,
+      "duration": 3.505
+    },
+    {
+      "text": " and IQ, we need to determine the",
+      "start": 326.267,
+      "duration": 2.811
+    },
+    {
+      "text": " student's salary package in lakhs.",
+      "start": 328.135,
+      "duration": 2.925
+    },
+    {
+      "text": " Right? Our neural network is very",
+      "start": 330.3,
+      "duration": 3.337
+    },
+    {
+      "text": " simple. There are two neurons in the",
+      "start": 332.695,
+      "duration": 4.177
+    },
+    {
+      "text": " hidden layer and a single neuron in the",
+      "start": 335.931,
+      "duration": 3.302
+    },
+    {
+      "text": " output layer. Here, we have a linear",
+      "start": 338.292,
+      "duration": 4.383
+    },
+    {
+      "text": " activation function. Because we are",
+      "start": 341.748,
+      "duration": 3.324
+    },
+    {
+      "text": " solving a regression problem. Now, what",
+      "start": 344.124,
+      "duration": 3.04
+    },
+    {
+      "text": " will we do? We will discuss three cases",
+      "start": 346.21,
+      "duration": 3.183
+    },
+    {
+      "text": ". The first case will be when we",
+      "start": 348.393,
+      "duration": 4.12
+    },
+    {
+      "text": " consider ReLU. Meaning, the activation",
+      "start": 351.602,
+      "duration": 4.024
+    },
+    {
+      "text": " function for this neuron and this",
+      "start": 354.69,
+      "duration": 3.105
+    },
+    {
+      "text": " neuron would be ReLU. Then, in the",
+      "start": 356.859,
+      "duration": 3.286
+    },
+    {
+      "text": " second case, we will discuss using tanh",
+      "start": 359.204,
+      "duration": 3.297
+    },
+    {
+      "text": ". And then, in the third case, we will",
+      "start": 361.501,
+      "duration": 3.624
+    },
+    {
+      "text": " discuss using sigmoid. And through all",
+      "start": 364.193,
+      "duration": 3.617
+    },
+    {
+      "text": " three, we need to find out why weights",
+      "start": 366.875,
+      "duration": 3.461
+    },
+    {
+      "text": " should not be zero initially. Right? So",
+      "start": 369.4,
+      "duration": 4.466
+    },
+    {
+      "text": ", let's start our discussion. For a",
+      "start": 372.866,
+      "duration": 4.408
+    },
+    {
+      "text": " while, let's assume that this",
+      "start": 376.349,
+      "duration": 3.18
+    },
+    {
+      "text": " activation function is ReLU, and this",
+      "start": 378.604,
+      "duration": 3.782
+    },
+    {
+      "text": " one is also ReLU. Right? Now, suppose",
+      "start": 381.461,
+      "duration": 5.069
+    },
+    {
+      "text": " you provided inputs x1 and x2; first,",
+      "start": 385.601,
+      "duration": 3.625
+    },
+    {
+      "text": " we will calculate the activation of",
+      "start": 388.297,
+      "duration": 3.484
+    },
+    {
+      "text": " this neuron and this neuron. Right? The",
+      "start": 390.852,
+      "duration": 4.561
+    },
+    {
+      "text": " activations are a11 and a12. It's",
+      "start": 394.494,
+      "duration": 4.552
+    },
+    {
+      "text": " simple. A11 will be equal to the max of",
+      "start": 398.182,
+      "duration": 7.414
+    },
+    {
+      "text": " 0, Z11, where Z11 is equal to this",
+      "start": 404.75,
+      "duration": 8.195
+    },
+    {
+      "text": " weight multiplied by this W11 X1 plus",
+      "start": 412.052,
+      "duration": 10.707
+    },
+    {
+      "text": " this weight multiplied by W12",
+      "start": 421.911,
+      "duration": 7.654
+    },
+    {
+      "text": " multiplied by X2 plus its own bias,",
+      "start": 428.753,
+      "duration": 7.606
+    },
+    {
+      "text": " Right? Similarly, if you calculate its",
+      "start": 437.979,
+      "duration": 6.446
+    },
+    {
+      "text": " activation, A12 will be the max of 0,",
+      "start": 443.555,
+      "duration": 5.807
+    },
+    {
+      "text": " Z12, where Z12 will be equal to this",
+      "start": 448.492,
+      "duration": 8.503
+    },
+    {
+      "text": " weight W12*X1 plus this weight",
+      "start": 456.18,
+      "duration": 6.526
+    },
+    {
+      "text": " multiplied by X2 plus its own bias.",
+      "start": 461.891,
+      "duration": 7.448
+    },
+    {
+      "text": " Right? Now, what had we assumed? That",
+      "start": 471.419,
+      "duration": 4.167
+    },
+    {
+      "text": " all our weights are zero. And we also",
+      "start": 474.657,
+      "duration": 3.768
+    },
+    {
+      "text": " assumed the biases to be zero. So,",
+      "start": 477.499,
+      "duration": 3.62
+    },
+    {
+      "text": " following this logic, this entire term",
+      "start": 480.199,
+      "duration": 4.04
+    },
+    {
+      "text": " will become zero. And similarly, this",
+      "start": 483.319,
+      "duration": 4.431
+    },
+    {
+      "text": " term will also become zero. And because",
+      "start": 486.805,
+      "duration": 3.358
+    },
+    {
+      "text": " both of these are zero, this will also",
+      "start": 489.21,
+      "duration": 2.811
+    },
+    {
+      "text": " become zero and this will also become",
+      "start": 491.069,
+      "duration": 2.764
+    },
+    {
+      "text": " zero. In short, you can say that the",
+      "start": 492.88,
+      "duration": 5.762
+    },
+    {
+      "text": " activation, or the output, of both",
+      "start": 497.755,
+      "duration": 4.834
+    },
+    {
+      "text": " nodes in this layer is zero. And more",
+      "start": 501.701,
+      "duration": 6.11
+    },
+    {
+      "text": " importantly, equal. Equal and zero. Now",
+      "start": 506.902,
+      "duration": 6.963
+    },
+    {
+      "text": ", you can very easily understand what",
+      "start": 512.865,
+      "duration": 3.086
+    },
+    {
+      "text": " you want to do here. You want to apply",
+      "start": 515.008,
+      "duration": 3.719
+    },
+    {
+      "text": " backpropagation. What do you do in",
+      "start": 517.814,
+      "duration": 3.28
+    },
+    {
+      "text": " backpropagation? Pick any particular",
+      "start": 520.139,
+      "duration": 3.097
+    },
+    {
+      "text": " weight. Suppose you picked this weight.",
+      "start": 522.303,
+      "duration": 3.367
+    },
+    {
+      "text": " You want to update it. Using this",
+      "start": 524.879,
+      "duration": 5.486
+    },
+    {
+      "text": " update rule. And in this same way, you",
+      "start": 529.467,
+      "duration": 5.181
+    },
+    {
+      "text": " are going to do the same for all four.",
+      "start": 533.693,
+      "duration": 2.687
+    },
+    {
+      "text": " But if you think about it, when you go",
+      "start": 536.219,
+      "duration": 3.591
+    },
+    {
+      "text": " to calculate this particular derivative",
+      "start": 538.878,
+      "duration": 3.659
+    },
+    {
+      "text": ", what will you have to do? At some",
+      "start": 541.537,
+      "duration": 3.968
+    },
+    {
+      "text": " point, you will have to calculate the",
+      "start": 544.555,
+      "duration": 2.832
+    },
+    {
+      "text": " derivative of this activation as well.",
+      "start": 546.437,
+      "duration": 2.882
+    },
+    {
+      "text": " But since this thing is zero, its",
+      "start": 548.605,
+      "duration": 2.697
+    },
+    {
+      "text": " derivative will also be zero. Because",
+      "start": 550.353,
+      "duration": 3.033
+    },
+    {
+      "text": " of which, this entire term will become",
+      "start": 552.449,
+      "duration": 3.395
+    },
+    {
+      "text": " zero itself. This means the old and new",
+      "start": 554.907,
+      "duration": 3.337
+    },
+    {
+      "text": " W11 will remain the same. Basically, it",
+      "start": 557.3,
+      "duration": 3.204
+    },
+    {
+      "text": " will be a case of no update. In short,",
+      "start": 559.557,
+      "duration": 4.084
+    },
+    {
+      "text": " I want to tell you that if you chose",
+      "start": 562.726,
+      "duration": 4.05
+    },
+    {
+      "text": " the ReLU activation function and set",
+      "start": 565.861,
+      "duration": 4.051
+    },
+    {
+      "text": " all your weight values to zero, then no",
+      "start": 568.996,
+      "duration": 4.305
+    },
+    {
+      "text": " training will happen at all. No",
+      "start": 572.386,
+      "duration": 4.91
+    },
+    {
+      "text": " training will take place. Just think",
+      "start": 576.444,
+      "duration": 5.846
+    },
+    {
+      "text": " about it. Because while calculating",
+      "start": 581.349,
+      "duration": 2.756
+    },
+    {
+      "text": " this derivative, it will become zero.",
+      "start": 583.15,
+      "duration": 2.66
+    },
+    {
+      "text": " So W11 will not be updated. It will.",
+      "start": 584.91,
+      "duration": 3.43
+    },
+    {
+      "text": " W11 is still zero. Then you will",
+      "start": 587.44,
+      "duration": 3.725
+    },
+    {
+      "text": " calculate Z11, and since everything is",
+      "start": 590.232,
+      "duration": 3.533
+    },
+    {
+      "text": " zero. Your term will be like this again",
+      "start": 592.831,
+      "duration": 3.833
+    },
+    {
+      "text": " and it will constantly remain zero.",
+      "start": 595.727,
+      "duration": 3.212
+    },
+    {
+      "text": " Training will never happen. And forever",
+      "start": 598.639,
+      "duration": 3.406
+    },
+    {
+      "text": ", your weight values will remain stuck",
+      "start": 601.045,
+      "duration": 4.196
+    },
+    {
+      "text": " at zero. So that is why if you are",
+      "start": 604.326,
+      "duration": 4.488
+    },
+    {
+      "text": " using a ReLU activation function, you",
+      "start": 607.885,
+      "duration": 3.628
+    },
+    {
+      "text": " should not initialize your weights to",
+      "start": 610.584,
+      "duration": 3.628
+    },
+    {
+      "text": " zero. Now let's talk about tanh. In",
+      "start": 613.283,
+      "duration": 4.868
+    },
+    {
+      "text": " tanh, the exact same thing will happen,",
+      "start": 617.209,
+      "duration": 3.236
+    },
+    {
+      "text": " and the values will always stop at zero",
+      "start": 619.502,
+      "duration": 3.236
+    },
+    {
+      "text": ". The reason for that is that in the",
+      "start": 621.738,
+      "duration": 2.816
+    },
+    {
+      "text": " case of tanh, the formula is not this.",
+      "start": 623.602,
+      "duration": 2.854
+    },
+    {
+      "text": " Now in the case of tanh, the formula",
+      "start": 625.556,
+      "duration": 5.542
+    },
+    {
+      "text": " becomes: a11 = e to the power z11-e to",
+      "start": 630.224,
+      "duration": 5.795
+    },
+    {
+      "text": " the power-z11 divided by e to the power",
+      "start": 635.146,
+      "duration": 5.921
+    },
+    {
+      "text": " z11 + e to the power-z11. Now since z11",
+      "start": 640.193,
+      "duration": 8.56
+    },
+    {
+      "text": " is zero, the top term becomes one, this",
+      "start": 647.822,
+      "duration": 3.683
+    },
+    {
+      "text": " also becomes one, 1-1 is 0, so",
+      "start": 650.574,
+      "duration": 3.064
+    },
+    {
+      "text": " basically a11 will again come out to be",
+      "start": 652.707,
+      "duration": 3.683
+    },
+    {
+      "text": " zero, and a22 will also come out to be",
+      "start": 655.459,
+      "duration": 3.614
+    },
+    {
+      "text": " zero again. So the derivative of both",
+      "start": 658.142,
+      "duration": 3.186
+    },
+    {
+      "text": " will again be zero. This entire term",
+      "start": 660.379,
+      "duration": 3.198
+    },
+    {
+      "text": " will again be zero and all these",
+      "start": 662.642,
+      "duration": 3.076
+    },
+    {
+      "text": " weights of yours will again not be",
+      "start": 664.783,
+      "duration": 3.206
+    },
+    {
+      "text": " updated, and during the entire training",
+      "start": 667.054,
+      "duration": 3.53
+    },
+    {
+      "text": ", your weights will remain zero.",
+      "start": 669.584,
+      "duration": 3.076
+    },
+    {
+      "text": " Basically, there will be no training at",
+      "start": 671.88,
+      "duration": 2.984
+    },
+    {
+      "text": " all. Now, I will show you both these",
+      "start": 673.915,
+      "duration": 2.873
+    },
+    {
+      "text": " scenarios in the code. So guys, to",
+      "start": 675.836,
+      "duration": 3.499
+    },
+    {
+      "text": " prove this small point, I have created",
+      "start": 678.391,
+      "duration": 3.13
+    },
+    {
+      "text": " a notebook in which I have taken this",
+      "start": 680.577,
+      "duration": 3.074
+    },
+    {
+      "text": " small dataset, which has two input",
+      "start": 682.707,
+      "duration": 2.905
+    },
+    {
+      "text": " columns, and we are working on a binary",
+      "start": 684.668,
+      "duration": 3.186
+    },
+    {
+      "text": " classification problem. Currently, our",
+      "start": 686.91,
+      "duration": 3.846
+    },
+    {
+      "text": " dataset looks like this. There are two",
+      "start": 689.808,
+      "duration": 3.322
+    },
+    {
+      "text": " classes. These are all toy datasets.",
+      "start": 692.187,
+      "duration": 3.188
+    },
+    {
+      "text": " You must already know them. I have",
+      "start": 694.475,
+      "duration": 2.686
+    },
+    {
+      "text": " extracted X and y here. Then I have",
+      "start": 696.239,
+      "duration": 3.668
+    },
+    {
+      "text": " done the model building. I have built",
+      "start": 698.972,
+      "duration": 3.305
+    },
+    {
+      "text": " exactly the same model that I showed",
+      "start": 701.325,
+      "duration": 2.734
+    },
+    {
+      "text": " you. Let's assume there are two layers",
+      "start": 703.107,
+      "duration": 5.156
+    },
+    {
+      "text": " here, a hidden layer and an output",
+      "start": 707.37,
+      "duration": 4.631
+    },
+    {
+      "text": " layer, and both are ReLU. And here is",
+      "start": 711.108,
+      "duration": 4.986
+    },
+    {
+      "text": " my model. Now, what am I doing? Using",
+      "start": 715.204,
+      "duration": 3.891
+    },
+    {
+      "text": " model.get_weights, I am showing you all",
+      "start": 718.154,
+      "duration": 3.313
+    },
+    {
+      "text": " the weights that Keras sets by default.",
+      "start": 720.526,
+      "duration": 3.313
+    },
+    {
+      "text": " These are the default weights and",
+      "start": 723.079,
+      "duration": 2.867
+    },
+    {
+      "text": " biases. What did I do? I changed all",
+      "start": 725.002,
+      "duration": 3.8
+    },
+    {
+      "text": " the default weights and biases to make",
+      "start": 727.9,
+      "duration": 4.721
+    },
+    {
+      "text": " this. Look here, we won't use np.ones.",
+      "start": 731.719,
+      "duration": 6.821
+    },
+    {
+      "text": " We will use zeros. I was testing some",
+      "start": 737.859,
+      "duration": 4.8
+    },
+    {
+      "text": " things for future code. So I will",
+      "start": 741.746,
+      "duration": 3.966
+    },
+    {
+      "text": " replace this entire thing with zeros.",
+      "start": 744.798,
+      "duration": 4.182
+    },
+    {
+      "text": " This will ensure that all of our",
+      "start": 748.279,
+      "duration": 4.882
+    },
+    {
+      "text": " weights and biases are set. Equal to",
+      "start": 752.283,
+      "duration": 5.062
+    },
+    {
+      "text": " zero. Look here. Previously, these were",
+      "start": 756.43,
+      "duration": 4.104
+    },
+    {
+      "text": " the default values. We overrode them",
+      "start": 759.589,
+      "duration": 3.141
+    },
+    {
+      "text": " and set everything to zero. Okay? Now I",
+      "start": 761.788,
+      "duration": 3.788
+    },
+    {
+      "text": " am training my model. 100 epochs, let's",
+      "start": 764.659,
+      "duration": 4.902
+    },
+    {
+      "text": " train it right in front of you. So, the",
+      "start": 768.683,
+      "duration": 9.832
+    },
+    {
+      "text": " model is training. So, the model is",
+      "start": 777.589,
+      "duration": 10.268
+    },
+    {
+      "text": " trained. And now look at what I am",
+      "start": 786.905,
+      "duration": 2.358
+    },
+    {
+      "text": " doing. I am running model.get_weights.",
+      "start": 788.298,
+      "duration": 3.421
+    },
+    {
+      "text": " Okay? After the model is trained, I am",
+      "start": 790.91,
+      "duration": 3.395
+    },
+    {
+      "text": " finding the values of the weights. And",
+      "start": 793.361,
+      "duration": 3.311
+    },
+    {
+      "text": " you can see everything is still zero.",
+      "start": 795.743,
+      "duration": 3.636
+    },
+    {
+      "text": " No changes have occurred. It is exactly",
+      "start": 798.519,
+      "duration": 3.131
+    },
+    {
+      "text": " as it was. And look guys, obviously our",
+      "start": 800.702,
+      "duration": 3.869
+    },
+    {
+      "text": " model will perform terribly. Look, it",
+      "start": 803.626,
+      "duration": 8.568
+    },
+    {
+      "text": " is predicting one for everything. So,",
+      "start": 811.256,
+      "duration": 3.409
+    },
+    {
+      "text": " there is 50%accuracy, but it is a very",
+      "start": 813.73,
+      "duration": 3.477
+    },
+    {
+      "text": " poor model. Obviously. Now, let me",
+      "start": 816.272,
+      "duration": 3.519
+    },
+    {
+      "text": " quickly show you another example. Where",
+      "start": 818.86,
+      "duration": 3.83
+    },
+    {
+      "text": " what I will do is, instead of ReLU, I",
+      "start": 821.779,
+      "duration": 4.293
+    },
+    {
+      "text": " will keep tanh. Everything will be",
+      "start": 825.161,
+      "duration": 6.964
+    },
+    {
+      "text": " exactly the same. These are the initial",
+      "start": 831.178,
+      "duration": 2.66
+    },
+    {
+      "text": " weights right now. The ones that Keras",
+      "start": 832.869,
+      "duration": 2.55
+    },
+    {
+      "text": " set. I am setting everything to zero.",
+      "start": 834.465,
+      "duration": 2.845
+    },
+    {
+      "text": " And you can see everything became zero,",
+      "start": 836.899,
+      "duration": 3.638
+    },
+    {
+      "text": " and I am compiling and running the",
+      "start": 839.605,
+      "duration": 3.3
+    },
+    {
+      "text": " model. And look, the model is trained.",
+      "start": 841.973,
+      "duration": 9.966
+    },
+    {
+      "text": " I did model.get_weights, still zero,",
+      "start": 851.059,
+      "duration": 3.635
+    },
+    {
+      "text": " nothing changed. And if I plot the",
+      "start": 853.767,
+      "duration": 4.699
+    },
+    {
+      "text": " model's performance again. See, nothing",
+      "start": 857.541,
+      "duration": 8.306
+    },
+    {
+      "text": ". In the case of sigmoid, this",
+      "start": 864.847,
+      "duration": 2.81
+    },
+    {
+      "text": " discussion gets a bit interesting. Let",
+      "start": 866.713,
+      "duration": 3.276
+    },
+    {
+      "text": " me tell you why. So, everything is the",
+      "start": 869.079,
+      "duration": 3.504
+    },
+    {
+      "text": " same. The setup is exactly the same.",
+      "start": 871.629,
+      "duration": 2.41
+    },
+    {
+      "text": " The only thing we did is that we made",
+      "start": 873.279,
+      "duration": 3.355
+    },
+    {
+      "text": " the activation function of this hidden",
+      "start": 875.698,
+      "duration": 3.419
+    },
+    {
+      "text": " layer a sigmoid. Okay? Now, what will",
+      "start": 878.181,
+      "duration": 3.739
+    },
+    {
+      "text": " we do? We will again calculate the",
+      "start": 880.969,
+      "duration": 4.176
+    },
+    {
+      "text": " output or activation of both nodes of",
+      "start": 884.215,
+      "duration": 3.586
+    },
+    {
+      "text": " our hidden layer. So A11 will be the",
+      "start": 886.871,
+      "duration": 5.372
+    },
+    {
+      "text": " sigmoid of Z11, where Z11 is exactly",
+      "start": 891.357,
+      "duration": 5.088
+    },
+    {
+      "text": " the same as it was above. Since this",
+      "start": 895.559,
+      "duration": 5.642
+    },
+    {
+      "text": " thing and the weights are zero, this",
+      "start": 900.267,
+      "duration": 3.384
+    },
+    {
+      "text": " will be zero. But this time, sigmoid of",
+      "start": 902.718,
+      "duration": 4.588
+    },
+    {
+      "text": " Z11 will be .5, because if you have",
+      "start": 906.397,
+      "duration": 4.202
+    },
+    {
+      "text": " seen the sigmoid function, it looks",
+      "start": 909.69,
+      "duration": 4.202
+    },
+    {
+      "text": " like this. So at zero, the sigmoid",
+      "start": 912.984,
+      "duration": 3.566
+    },
+    {
+      "text": " value is .5. All right? Going by the",
+      "start": 915.612,
+      "duration": 3.865
+    },
+    {
+      "text": " same logic, the value of A12 will also",
+      "start": 918.552,
+      "duration": 3.847
+    },
+    {
+      "text": " be .5, so this time your activations",
+      "start": 921.473,
+      "duration": 3.697
+    },
+    {
+      "text": " are not zero. This is the very first",
+      "start": 924.245,
+      "duration": 3.943
+    },
+    {
+      "text": " point of difference. So let's discuss",
+      "start": 927.245,
+      "duration": 3.406
+    },
+    {
+      "text": " what happens if the activations are not",
+      "start": 929.717,
+      "duration": 3.567
+    },
+    {
+      "text": " zero. But one thing is still worth",
+      "start": 932.349,
+      "duration": 4.087
+    },
+    {
+      "text": " noticing here: the values of the",
+      "start": 935.488,
+      "duration": 2.665
+    },
+    {
+      "text": " activations are still the same. So",
+      "start": 937.205,
+      "duration": 3.996
+    },
+    {
+      "text": " tomorrow, if there were another node",
+      "start": 940.263,
+      "duration": 3.209
+    },
+    {
+      "text": " here, its value would also be .5. All",
+      "start": 942.533,
+      "duration": 3.602
+    },
+    {
+      "text": " right? Now look, what do we have to do?",
+      "start": 945.187,
+      "duration": 2.932
+    },
+    {
+      "text": " We have these four weights. We need to",
+      "start": 947.379,
+      "duration": 6.053
+    },
+    {
+      "text": " update their values. And to update, we",
+      "start": 952.491,
+      "duration": 3.507
+    },
+    {
+      "text": " apply the update rule. New weight value",
+      "start": 955.065,
+      "duration": 4.778
+    },
+    {
+      "text": " is equal to old weight value minus",
+      "start": 958.937,
+      "duration": 4.197
+    },
+    {
+      "text": " learning rate times this. All right? So",
+      "start": 962.228,
+      "duration": 5.374
+    },
+    {
+      "text": " we will do one thing. We will calculate",
+      "start": 966.654,
+      "duration": 3.418
+    },
+    {
+      "text": " this derivative for all these four",
+      "start": 969.12,
+      "duration": 2.628
+    },
+    {
+      "text": " weights. So I will show you once. First",
+      "start": 970.796,
+      "duration": 4.243
+    },
+    {
+      "text": ", I am showing. What will be the",
+      "start": 974.039,
+      "duration": 4.098
+    },
+    {
+      "text": " derivative of del L by del w1 for this",
+      "start": 977.245,
+      "duration": 5.129
+    },
+    {
+      "text": " weight, this weight here? If you apply",
+      "start": 981.482,
+      "duration": 5.475
+    },
+    {
+      "text": " the chain rule, it's the derivative of",
+      "start": 986.028,
+      "duration": 3.718
+    },
+    {
+      "text": " loss with respect to y-hat, derivative",
+      "start": 988.818,
+      "duration": 3.718
+    },
+    {
+      "text": " of y-hat with respect to...This",
+      "start": 991.607,
+      "duration": 7.972
+    },
+    {
+      "text": " activation. Derivative of this",
+      "start": 998.664,
+      "duration": 5.943
+    },
+    {
+      "text": " activation with respect to Z11. And",
+      "start": 1003.663,
+      "duration": 5.638
+    },
+    {
+      "text": " derivative of Z11 with respect to this",
+      "start": 1008.382,
+      "duration": 4.07
+    },
+    {
+      "text": " weight. All right? Similarly, if we",
+      "start": 1011.533,
+      "duration": 7.858
+    },
+    {
+      "text": " find the derivative of this weight.",
+      "start": 1018.452,
+      "duration": 3.127
+    },
+    {
+      "text": " This is our weight 112, so everything",
+      "start": 1022.439,
+      "duration": 4.336
+    },
+    {
+      "text": " will be the same. Up to here...actually",
+      "start": 1025.865,
+      "duration": 5.174
+    },
+    {
+      "text": ", these two terms will be the same. del",
+      "start": 1030.039,
+      "duration": 5.049
+    },
+    {
+      "text": " L by del y-hat, del y-hat by del A11.",
+      "start": 1034.218,
+      "duration": 5.801
+    },
+    {
+      "text": " Actually, it won't be A11. I guess it",
+      "start": 1040.984,
+      "duration": 3.185
+    },
+    {
+      "text": " will be A12 because we are now coming",
+      "start": 1043.254,
+      "duration": 4.135
+    },
+    {
+      "text": " back through this path. A12. A12 will",
+      "start": 1046.474,
+      "duration": 7.281
+    },
+    {
+      "text": " depend on Z12 and Z12 will depend on...",
+      "start": 1052.95,
+      "duration": 8.614
+    },
+    {
+      "text": "W12. On that. Now we will calculate for",
+      "start": 1063.0,
+      "duration": 6.989
+    },
+    {
+      "text": " this weight del L. W1, this weight is",
+      "start": 1069.079,
+      "duration": 6.229
+    },
+    {
+      "text": " 21. In this case, these three things",
+      "start": 1074.42,
+      "duration": 5.653
+    },
+    {
+      "text": " will be the same. Only in the end, Z11",
+      "start": 1079.152,
+      "duration": 13.457
+    },
+    {
+      "text": " will depend on W1. On that. And lastly,",
+      "start": 1091.711,
+      "duration": 6.544
+    },
+    {
+      "text": " we need to calculate the value of del",
+      "start": 1097.336,
+      "duration": 4.014
+    },
+    {
+      "text": " W122. The three things will be the same",
+      "start": 1100.431,
+      "duration": 3.909
+    },
+    {
+      "text": ". Lastly, just del L, Z12, Z12 will",
+      "start": 1103.34,
+      "duration": 15.097
+    },
+    {
+      "text": " depend on...All right? Now look, the",
+      "start": 1117.525,
+      "duration": 5.842
+    },
+    {
+      "text": " thing to understand here is that when",
+      "start": 1122.428,
+      "duration": 3.244
+    },
+    {
+      "text": " you are calculating derivatives, this",
+      "start": 1124.733,
+      "duration": 3.244
+    },
+    {
+      "text": " term is the same in all of them. This",
+      "start": 1127.038,
+      "duration": 5.272
+    },
+    {
+      "text": " term is the same in all of them. We are",
+      "start": 1131.363,
+      "duration": 3.831
+    },
+    {
+      "text": " taking some observations. All right?",
+      "start": 1134.266,
+      "duration": 3.713
+    },
+    {
+      "text": " Now one more thing, A11 = A12. Also,",
+      "start": 1137.36,
+      "duration": 8.106
+    },
+    {
+      "text": " Z11 = Z12, all right? And basically,",
+      "start": 1144.627,
+      "duration": 6.721
+    },
+    {
+      "text": " your A11...And this A12 are equal. And",
+      "start": 1150.497,
+      "duration": 9.877
+    },
+    {
+      "text": " Z11 and Z12 are also equal. So",
+      "start": 1159.459,
+      "duration": 4.291
+    },
+    {
+      "text": " basically, what I'm trying to say is",
+      "start": 1162.796,
+      "duration": 2.636
+    },
+    {
+      "text": " that the derivative you calculate for",
+      "start": 1164.477,
+      "duration": 2.682
+    },
+    {
+      "text": " this term will also be the same. So",
+      "start": 1166.204,
+      "duration": 3.45
+    },
+    {
+      "text": " these three terms are common across all",
+      "start": 1168.712,
+      "duration": 3.257
+    },
+    {
+      "text": " four weights. What is different then?",
+      "start": 1171.027,
+      "duration": 3.332
+    },
+    {
+      "text": " Just this last one. Now we can",
+      "start": 1173.499,
+      "duration": 3.137
+    },
+    {
+      "text": " calculate the last one. When you derive",
+      "start": 1175.688,
+      "duration": 3.686
+    },
+    {
+      "text": " Z11 with respect to W11. Look, Z11 is",
+      "start": 1178.451,
+      "duration": 4.521
+    },
+    {
+      "text": " here. When you derive and differentiate",
+      "start": 1182.097,
+      "duration": 4.431
+    },
+    {
+      "text": " this with respect to W11, you get X1.",
+      "start": 1185.588,
+      "duration": 3.231
+    },
+    {
+      "text": " So in a way, what can we do? Instead of",
+      "start": 1188.76,
+      "duration": 4.447
+    },
+    {
+      "text": " this, we can write X1, the first input.",
+      "start": 1192.323,
+      "duration": 5.556
+    },
+    {
+      "text": " Right? If you differentiate Z12 with",
+      "start": 1197.119,
+      "duration": 5.585
+    },
+    {
+      "text": " respect to W12, then again, we get x1",
+      "start": 1201.806,
+      "duration": 5.426
+    },
+    {
+      "text": " here. So we can remove this and write",
+      "start": 1206.29,
+      "duration": 5.669
+    },
+    {
+      "text": " x1 in its place. And going by the same",
+      "start": 1211.033,
+      "duration": 6.726
+    },
+    {
+      "text": " logic, both of these places will have",
+      "start": 1216.83,
+      "duration": 3.609
+    },
+    {
+      "text": " x2. And x2, you can go back and check",
+      "start": 1222.86,
+      "duration": 5.589
+    },
+    {
+      "text": " if you want. So in short, I just want",
+      "start": 1227.522,
+      "duration": 5.388
+    },
+    {
+      "text": " to tell you that this derivative and",
+      "start": 1231.964,
+      "duration": 8.294
+    },
+    {
+      "text": " this derivative will always remain the",
+      "start": 1239.35,
+      "duration": 4.518
+    },
+    {
+      "text": " same, and these two derivatives will",
+      "start": 1242.961,
+      "duration": 4.333
+    },
+    {
+      "text": " also always remain the same. You need",
+      "start": 1246.386,
+      "duration": 4.896
+    },
+    {
+      "text": " to understand this. So in short, what",
+      "start": 1250.326,
+      "duration": 2.864
+    },
+    {
+      "text": " am I saying? Look at it once again. I",
+      "start": 1252.244,
+      "duration": 3.277
+    },
+    {
+      "text": " will take some other color. So this",
+      "start": 1254.587,
+      "duration": 3.811
+    },
+    {
+      "text": " weight W11 and this weight W12, the",
+      "start": 1257.484,
+      "duration": 3.997
+    },
+    {
+      "text": " derivatives of these two will always be",
+      "start": 1260.567,
+      "duration": 4.34
+    },
+    {
+      "text": " the same, and the derivatives of these",
+      "start": 1263.993,
+      "duration": 4.254
+    },
+    {
+      "text": " two will also always be the same. This",
+      "start": 1267.333,
+      "duration": 4.591
+    },
+    {
+      "text": " means that if these two weights, this",
+      "start": 1271.01,
+      "duration": 4.192
+    },
+    {
+      "text": " weight and this weight, start from zero",
+      "start": 1274.288,
+      "duration": 4.364
+    },
+    {
+      "text": ". Then their derivatives will also",
+      "start": 1277.652,
+      "duration": 2.887
+    },
+    {
+      "text": " always be the same. So when you",
+      "start": 1279.589,
+      "duration": 3.473
+    },
+    {
+      "text": " differentiate and subtract, the new",
+      "start": 1282.113,
+      "duration": 2.792
+    },
+    {
+      "text": " value of these weights will also be the",
+      "start": 1283.956,
+      "duration": 2.996
+    },
+    {
+      "text": " same. This means these two weights will",
+      "start": 1286.004,
+      "duration": 4.207
+    },
+    {
+      "text": " always grow together. The value of",
+      "start": 1289.264,
+      "duration": 3.088
+    },
+    {
+      "text": " these two weights will always remain",
+      "start": 1291.391,
+      "duration": 2.391
+    },
+    {
+      "text": " the same. Similarly, the value of these",
+      "start": 1292.821,
+      "duration": 2.91
+    },
+    {
+      "text": " two weights will also always remain the",
+      "start": 1294.781,
+      "duration": 2.967
+    },
+    {
+      "text": " same. This set will have a different",
+      "start": 1296.798,
+      "duration": 2.805
+    },
+    {
+      "text": " value. This set will have a different",
+      "start": 1298.651,
+      "duration": 2.492
+    },
+    {
+      "text": " value. Because you are multiplying by",
+      "start": 1300.18,
+      "duration": 2.966
+    },
+    {
+      "text": " X2 and multiplying by X1. But what you",
+      "start": 1302.2,
+      "duration": 3.262
+    },
+    {
+      "text": " need to understand here is that these",
+      "start": 1304.524,
+      "duration": 3.294
+    },
+    {
+      "text": " two sets will behave exactly as if they",
+      "start": 1306.88,
+      "duration": 3.417
+    },
+    {
+      "text": " are a single weight. So you can assume",
+      "start": 1309.359,
+      "duration": 3.838
+    },
+    {
+      "text": " that these two weights aren't really",
+      "start": 1312.247,
+      "duration": 2.776
+    },
+    {
+      "text": " here. It's a single weight. Meaning,",
+      "start": 1314.072,
+      "duration": 2.974
+    },
+    {
+      "text": " this is your first input. Two weights",
+      "start": 1316.091,
+      "duration": 2.819
+    },
+    {
+      "text": " aren't coming out from here. Only one",
+      "start": 1317.951,
+      "duration": 2.856
+    },
+    {
+      "text": " weight is coming out from here.",
+      "start": 1319.853,
+      "duration": 2.426
+    },
+    {
+      "text": " Similarly, from this second input too,",
+      "start": 1321.499,
+      "duration": 3.313
+    },
+    {
+      "text": " two weights aren't coming out. Only one",
+      "start": 1323.873,
+      "duration": 3.512
+    },
+    {
+      "text": " weight is coming out. And in a way, it",
+      "start": 1326.439,
+      "duration": 3.061
+    },
+    {
+      "text": " is being added to a single neuron. So",
+      "start": 1328.553,
+      "duration": 3.117
+    },
+    {
+      "text": " basically, these two neurons of yours",
+      "start": 1330.736,
+      "duration": 3.42
+    },
+    {
+      "text": " won't even remain as two neurons. It",
+      "start": 1333.221,
+      "duration": 3.508
+    },
+    {
+      "text": " will behave just like a single neuron.",
+      "start": 1335.807,
+      "duration": 3.966
+    },
+    {
+      "text": " Okay? Now, if you extrapolate this a",
+      "start": 1338.873,
+      "duration": 3.254
+    },
+    {
+      "text": " bit. Suppose there was one more neuron",
+      "start": 1341.184,
+      "duration": 3.813
+    },
+    {
+      "text": " here. Then another weight would be",
+      "start": 1344.047,
+      "duration": 4.02
+    },
+    {
+      "text": " coming out from this input here, and",
+      "start": 1347.114,
+      "duration": 2.682
+    },
+    {
+      "text": " another weight would be coming out from",
+      "start": 1348.842,
+      "duration": 2.822
+    },
+    {
+      "text": " this input as well. But this weight,",
+      "start": 1350.711,
+      "duration": 3.378
+    },
+    {
+      "text": " this weight, and this weight, all three",
+      "start": 1353.159,
+      "duration": 3.707
+    },
+    {
+      "text": " would behave exactly the same.",
+      "start": 1355.936,
+      "duration": 3.083
+    },
+    {
+      "text": " Similarly, this weight, this weight,",
+      "start": 1358.299,
+      "duration": 2.752
+    },
+    {
+      "text": " and this weight would behave exactly",
+      "start": 1360.099,
+      "duration": 2.753
+    },
+    {
+      "text": " the same. So in short, if you have used",
+      "start": 1361.9,
+      "duration": 4.959
+    },
+    {
+      "text": " sigmoid and you have initialized all",
+      "start": 1365.94,
+      "duration": 3.905
+    },
+    {
+      "text": " your values to zero, then what will",
+      "start": 1368.926,
+      "duration": 3.825
+    },
+    {
+      "text": " happen is that in this hidden layer, no",
+      "start": 1371.832,
+      "duration": 4.147
+    },
+    {
+      "text": " matter how many thousands or lakhs of",
+      "start": 1375.06,
+      "duration": 3.987
+    },
+    {
+      "text": " nodes you add, it will act as a single",
+      "start": 1378.127,
+      "duration": 4.067
+    },
+    {
+      "text": " node. Okay? So in short, it won't be",
+      "start": 1381.275,
+      "duration": 6.19
+    },
+    {
+      "text": " able to capture non-linearity at all",
+      "start": 1386.532,
+      "duration": 3.44
+    },
+    {
+      "text": " because it will behave exactly like a",
+      "start": 1389.039,
+      "duration": 3.507
+    },
+    {
+      "text": " perceptron. That's the whole idea. Okay",
+      "start": 1391.614,
+      "duration": 4.647
+    },
+    {
+      "text": "? I am explaining to you, simplifying",
+      "start": 1395.261,
+      "duration": 4.723
+    },
+    {
+      "text": " it here, that no matter how many",
+      "start": 1399.085,
+      "duration": 7.326
+    },
+    {
+      "text": " neurons you add here. If you have given",
+      "start": 1405.495,
+      "duration": 5.157
+    },
+    {
+      "text": " all of them sigmoid and you have",
+      "start": 1409.726,
+      "duration": 3.359
+    },
+    {
+      "text": " initialized all these weights to zero,",
+      "start": 1412.159,
+      "duration": 3.802
+    },
+    {
+      "text": " then all of them will behave as if it",
+      "start": 1415.034,
+      "duration": 3.729
+    },
+    {
+      "text": " is a single node and it will become a",
+      "start": 1417.836,
+      "duration": 3.728
+    },
+    {
+      "text": " linear model, and this is a very",
+      "start": 1420.638,
+      "duration": 3.36
+    },
+    {
+      "text": " important concept. I hope I was able to",
+      "start": 1423.071,
+      "duration": 4.277
+    },
+    {
+      "text": " explain it to you. So, to demonstrate",
+      "start": 1426.408,
+      "duration": 3.096
+    },
+    {
+      "text": " my point, I have created a notebook",
+      "start": 1428.553,
+      "duration": 2.722
+    },
+    {
+      "text": " again. You can see it's the exact same",
+      "start": 1430.324,
+      "duration": 2.953
+    },
+    {
+      "text": " data that I showed you a little while",
+      "start": 1432.324,
+      "duration": 2.739
+    },
+    {
+      "text": " ago. Only this time our model is",
+      "start": 1434.11,
+      "duration": 2.995
+    },
+    {
+      "text": " different because the activation",
+      "start": 1436.157,
+      "duration": 2.643
+    },
+    {
+      "text": " function is sigmoid. Okay? Now moving",
+      "start": 1437.851,
+      "duration": 3.564
+    },
+    {
+      "text": " forward. Fetched the weights again. So",
+      "start": 1440.47,
+      "duration": 3.128
+    },
+    {
+      "text": " we showed you the weights that Keras",
+      "start": 1442.663,
+      "duration": 3.351
+    },
+    {
+      "text": " provided. Now we will set all the",
+      "start": 1445.08,
+      "duration": 2.951
+    },
+    {
+      "text": " weights to zero. See, like this. Okay?",
+      "start": 1447.086,
+      "duration": 4.093
+    },
+    {
+      "text": " Compiled the model here. Trained the",
+      "start": 1450.46,
+      "duration": 3.915
+    },
+    {
+      "text": " model here, and after training the",
+      "start": 1453.418,
+      "duration": 2.471
+    },
+    {
+      "text": " model, when I did get_weights, see what",
+      "start": 1454.932,
+      "duration": 2.688
+    },
+    {
+      "text": " is happening this time. I will run it",
+      "start": 1456.663,
+      "duration": 4.748
+    },
+    {
+      "text": " one more time. Sorry. I did this a",
+      "start": 1460.519,
+      "duration": 7.147
+    },
+    {
+      "text": " little while ago with three neurons. I",
+      "start": 1466.719,
+      "duration": 3.076
+    },
+    {
+      "text": " am running this entire code again. See",
+      "start": 1468.871,
+      "duration": 15.941
+    },
+    {
+      "text": " this. These are the two weights coming",
+      "start": 1483.963,
+      "duration": 4.938
+    },
+    {
+      "text": " from the first input, both going to",
+      "start": 1487.96,
+      "duration": 3.059
+    },
+    {
+      "text": " different nodes. And these are the ones",
+      "start": 1490.077,
+      "duration": 3.359
+    },
+    {
+      "text": " coming from the second input. Are you",
+      "start": 1492.477,
+      "duration": 2.597
+    },
+    {
+      "text": " seeing this? The values of all weights",
+      "start": 1494.116,
+      "duration": 2.985
+    },
+    {
+      "text": " coming from the first input are the",
+      "start": 1496.144,
+      "duration": 2.487
+    },
+    {
+      "text": " same, and the values of all weights",
+      "start": 1497.673,
+      "duration": 2.487
+    },
+    {
+      "text": " coming from the second input are also",
+      "start": 1499.202,
+      "duration": 2.572
+    },
+    {
+      "text": " the same. But they are both different",
+      "start": 1500.816,
+      "duration": 2.564
+    },
+    {
+      "text": " from each other. Okay? To prove this",
+      "start": 1502.408,
+      "duration": 3.175
+    },
+    {
+      "text": " point even better, I'll do one thing. I",
+      "start": 1504.642,
+      "duration": 3.97
+    },
+    {
+      "text": " will here I am adding 10 nodes to the",
+      "start": 1507.725,
+      "duration": 6.686
+    },
+    {
+      "text": " hidden layer. Okay? So now our model",
+      "start": 1513.474,
+      "duration": 4.204
+    },
+    {
+      "text": " will look like you have a total of",
+      "start": 1516.78,
+      "duration": 4.448
+    },
+    {
+      "text": " parameters. There are 20 weights. 2",
+      "start": 1524.74,
+      "duration": 3.321
+    },
+    {
+      "text": " cross 10 and 10 biases. Okay? Did get",
+      "start": 1527.143,
+      "duration": 4.022
+    },
+    {
+      "text": " weights. Here are all our weights.",
+      "start": 1530.222,
+      "duration": 2.751
+    },
+    {
+      "text": " There are a few more weights this time.",
+      "start": 1532.073,
+      "duration": 2.359
+    },
+    {
+      "text": " And we again set all the initial",
+      "start": 1533.899,
+      "duration": 3.377
+    },
+    {
+      "text": " weights to zero. Everything is set to",
+      "start": 1536.35,
+      "duration": 3.473
+    },
+    {
+      "text": " zero. Okay? Trained the model again.",
+      "start": 1538.872,
+      "duration": 3.967
+    },
+    {
+      "text": " Look at our weights. Notice this. The",
+      "start": 1554.259,
+      "duration": 4.745
+    },
+    {
+      "text": " 10 weights coming from the first input,",
+      "start": 1558.06,
+      "duration": 3.158
+    },
+    {
+      "text": " entering the 10 different nodes, they",
+      "start": 1560.273,
+      "duration": 3.047
+    },
+    {
+      "text": " are all exactly the same. And the",
+      "start": 1562.375,
+      "duration": 3.984
+    },
+    {
+      "text": " second set of weights coming from the",
+      "start": 1565.422,
+      "duration": 3.331
+    },
+    {
+      "text": " second input for all nodes are exactly",
+      "start": 1567.816,
+      "duration": 3.394
+    },
+    {
+      "text": " the same. So it is as if these weights",
+      "start": 1570.273,
+      "duration": 4.274
+    },
+    {
+      "text": " are tied up and acting exactly like a",
+      "start": 1573.602,
+      "duration": 3.047
+    },
+    {
+      "text": " single weight. And these are also",
+      "start": 1575.704,
+      "duration": 3.436
+    },
+    {
+      "text": " acting like a single weight. It means",
+      "start": 1578.194,
+      "duration": 3.26
+    },
+    {
+      "text": " even though you added 10 nodes to our",
+      "start": 1580.529,
+      "duration": 3.756
+    },
+    {
+      "text": " hidden layer, they are acting as a",
+      "start": 1583.359,
+      "duration": 3.532
+    },
+    {
+      "text": " single node. Okay? It became a linear",
+      "start": 1585.966,
+      "duration": 3.518
+    },
+    {
+      "text": " model. And to prove this point, if I",
+      "start": 1588.534,
+      "duration": 3.78
+    },
+    {
+      "text": " plot the decision boundary for you, you",
+      "start": 1591.396,
+      "duration": 4.205
+    },
+    {
+      "text": " can see this is the decision boundary,",
+      "start": 1594.683,
+      "duration": 4.122
+    },
+    {
+      "text": " which is a line. Line means a linear",
+      "start": 1597.887,
+      "duration": 3.515
+    },
+    {
+      "text": " model. Even though you added so many",
+      "start": 1600.455,
+      "duration": 3.476
+    },
+    {
+      "text": " nodes, no non-linearity could be",
+      "start": 1602.975,
+      "duration": 2.405
+    },
+    {
+      "text": " captured. It is acting like a linear",
+      "start": 1604.424,
+      "duration": 4.037
+    },
+    {
+      "text": " model. It is working like a perceptron.",
+      "start": 1607.526,
+      "duration": 3.314
+    },
+    {
+      "text": " I hope you understood the point. It is",
+      "start": 1610.099,
+      "duration": 4.284
+    },
+    {
+      "text": " clear that we cannot initialize our",
+      "start": 1613.452,
+      "duration": 3.414
+    },
+    {
+      "text": " weights to zero. So let's do one thing.",
+      "start": 1615.935,
+      "duration": 4.344
+    },
+    {
+      "text": " Let's initialize them with a non-zero",
+      "start": 1619.559,
+      "duration": 2.95
+    },
+    {
+      "text": " value. And we will still give all",
+      "start": 1621.562,
+      "duration": 3.086
+    },
+    {
+      "text": " weights the same value. But it won't be",
+      "start": 1623.707,
+      "duration": 3.433
+    },
+    {
+      "text": " zero. Let's assume for a while that we",
+      "start": 1626.205,
+      "duration": 4.558
+    },
+    {
+      "text": " give our weights and biases a value of",
+      "start": 1629.83,
+      "duration": 3.546
+    },
+    {
+      "text": " five. Okay? The value of all weights",
+      "start": 1632.443,
+      "duration": 5.34
+    },
+    {
+      "text": " and biases is 5. Okay? What will happen",
+      "start": 1636.851,
+      "duration": 4.24
+    },
+    {
+      "text": " now? I will give you a hint in advance.",
+      "start": 1640.145,
+      "duration": 3.274
+    },
+    {
+      "text": " It will behave exactly like what we",
+      "start": 1642.719,
+      "duration": 3.8
+    },
+    {
+      "text": " studied earlier in Sigmoid. Sigmoid,",
+      "start": 1645.599,
+      "duration": 4.144
+    },
+    {
+      "text": " where we were using zero. It will",
+      "start": 1648.834,
+      "duration": 3.846
+    },
+    {
+      "text": " behave exactly the same way. It will",
+      "start": 1651.734,
+      "duration": 3.077
+    },
+    {
+      "text": " just remain a linear model. Let me give",
+      "start": 1653.867,
+      "duration": 3.377
+    },
+    {
+      "text": " you an example. Suppose there is ReLU",
+      "start": 1656.306,
+      "duration": 3.546
+    },
+    {
+      "text": " here. tanh and ReLU, and in fact,",
+      "start": 1658.923,
+      "duration": 3.7
+    },
+    {
+      "text": " Sigmoid will also give the same result.",
+      "start": 1661.687,
+      "duration": 3.492
+    },
+    {
+      "text": " Okay? Let's see quickly. A11 will be",
+      "start": 1664.479,
+      "duration": 5.619
+    },
+    {
+      "text": " max of 0, Z11 where Z11 is W11 X1 + W 1",
+      "start": 1669.276,
+      "duration": 13.19
+    },
+    {
+      "text": " 2 X2 + B1 And this value, depending on",
+      "start": 1681.833,
+      "duration": 8.31
+    },
+    {
+      "text": " the input, will be some non-zero value.",
+      "start": 1689.212,
+      "duration": 3.707
+    },
+    {
+      "text": " This will not be equal to 0, it will be",
+      "start": 1692.648,
+      "duration": 4.466
+    },
+    {
+      "text": " some positive value if x1 and x2 are",
+      "start": 1696.203,
+      "duration": 4.201
+    },
+    {
+      "text": " positive, so this will also be some",
+      "start": 1699.492,
+      "duration": 4.112
+    },
+    {
+      "text": " value, this will also be non-zero, okay",
+      "start": 1702.693,
+      "duration": 4.467
+    },
+    {
+      "text": "? Similarly, a12 will be max of 0, z12.",
+      "start": 1706.16,
+      "duration": 5.236
+    },
+    {
+      "text": " Where z12 = uh, w12. x1 + w22*x2 + b12,",
+      "start": 1712.0,
+      "duration": 10.789
+    },
+    {
+      "text": " okay? This will again be not equal to 0",
+      "start": 1722.035,
+      "duration": 4.118
+    },
+    {
+      "text": ". And similarly, this will not be equal",
+      "start": 1725.153,
+      "duration": 6.351
+    },
+    {
+      "text": " to 0, okay? But one thing to notice is",
+      "start": 1730.567,
+      "duration": 4.467
+    },
+    {
+      "text": " that since these weights are all equal,",
+      "start": 1734.101,
+      "duration": 3.604
+    },
+    {
+      "text": " and x1, x2 are both in it, and the",
+      "start": 1736.772,
+      "duration": 3.27
+    },
+    {
+      "text": " value of b1, b12 is also the same. So",
+      "start": 1739.109,
+      "duration": 4.443
+    },
+    {
+      "text": " z1, z, meaning z12 will be equal to z11",
+      "start": 1742.639,
+      "duration": 4.393
+    },
+    {
+      "text": ", because of which a11 will be equal to",
+      "start": 1746.032,
+      "duration": 4.392
+    },
+    {
+      "text": " a12. Meaning all the nodes in this",
+      "start": 1749.511,
+      "duration": 6.752
+    },
+    {
+      "text": " layer will have the same activation.",
+      "start": 1755.367,
+      "duration": 4.753
+    },
+    {
+      "text": " Now, as soon as the activation is the",
+      "start": 1760.619,
+      "duration": 4.202
+    },
+    {
+      "text": " same, you can see again that the",
+      "start": 1763.908,
+      "duration": 3.77
+    },
+    {
+      "text": " derivative of all weights coming from a",
+      "start": 1766.764,
+      "duration": 4.376
+    },
+    {
+      "text": " particular input. Will again be the",
+      "start": 1770.227,
+      "duration": 6.697
+    },
+    {
+      "text": " same. This means all the weights",
+      "start": 1775.983,
+      "duration": 4.218
+    },
+    {
+      "text": " originating from one input will be",
+      "start": 1779.274,
+      "duration": 3.489
+    },
+    {
+      "text": " updated by the same value. So, this",
+      "start": 1781.836,
+      "duration": 4.222
+    },
+    {
+      "text": " means that, just like before, even if",
+      "start": 1785.13,
+      "duration": 3.68
+    },
+    {
+      "text": " three or two things are coming out of",
+      "start": 1787.882,
+      "duration": 3.68
+    },
+    {
+      "text": " one input. They will act as if they are",
+      "start": 1790.634,
+      "duration": 3.433
+    },
+    {
+      "text": " a single weight. So even if you add",
+      "start": 1793.123,
+      "duration": 3.516
+    },
+    {
+      "text": " three nodes. It will act as if. It will",
+      "start": 1795.719,
+      "duration": 8.2
+    },
+    {
+      "text": " act as if there is a single neuron. The",
+      "start": 1802.996,
+      "duration": 4.174
+    },
+    {
+      "text": " same thing will happen that happened a",
+      "start": 1806.214,
+      "duration": 2.663
+    },
+    {
+      "text": " while ago. Okay? So in short, we",
+      "start": 1807.921,
+      "duration": 3.975
+    },
+    {
+      "text": " learned that you cannot initialize your",
+      "start": 1810.965,
+      "duration": 3.697
+    },
+    {
+      "text": " values to zero, nor can you initialize",
+      "start": 1813.731,
+      "duration": 3.627
+    },
+    {
+      "text": " them to a non-zero constant value. Okay",
+      "start": 1816.427,
+      "duration": 4.544
+    },
+    {
+      "text": "? You only have one option, which is to",
+      "start": 1819.971,
+      "duration": 4.242
+    },
+    {
+      "text": " initialize your values randomly. We",
+      "start": 1823.281,
+      "duration": 4.036
+    },
+    {
+      "text": " have understood this now. Now I will",
+      "start": 1826.4,
+      "duration": 3.792
+    },
+    {
+      "text": " just do one thing. I will show you in",
+      "start": 1829.254,
+      "duration": 3.43
+    },
+    {
+      "text": " code what I have just discussed with",
+      "start": 1831.751,
+      "duration": 3.424
+    },
+    {
+      "text": " you. We will proceed with the same",
+      "start": 1834.242,
+      "duration": 3.801
+    },
+    {
+      "text": " example. I am just doing one thing",
+      "start": 1837.112,
+      "duration": 2.83
+    },
+    {
+      "text": " differently here this time. Here is the",
+      "start": 1838.98,
+      "duration": 3.539
+    },
+    {
+      "text": " value and. I extracted the initial",
+      "start": 1841.635,
+      "duration": 6.009
+    },
+    {
+      "text": " weights using get_weights and set them",
+      "start": 1846.71,
+      "duration": 3.52
+    },
+    {
+      "text": " to np.ones*5. So now the value of all",
+      "start": 1849.296,
+      "duration": 4.926
+    },
+    {
+      "text": " my weights is 5. Okay? Compiled the",
+      "start": 1853.323,
+      "duration": 4.901
+    },
+    {
+      "text": " model. Trained the model. And after",
+      "start": 1857.306,
+      "duration": 4.211
+    },
+    {
+      "text": " training, when I extracted get_weights,",
+      "start": 1860.586,
+      "duration": 3.676
+    },
+    {
+      "text": " you can see all weights coming from one",
+      "start": 1863.33,
+      "duration": 3.676
+    },
+    {
+      "text": " input are the same. All weights coming",
+      "start": 1866.075,
+      "duration": 3.964
+    },
+    {
+      "text": " from the second input are the same.",
+      "start": 1869.092,
+      "duration": 2.868
+    },
+    {
+      "text": " Okay? And look, your model is now",
+      "start": 1871.119,
+      "duration": 3.728
+    },
+    {
+      "text": " working like a linear model. And look",
+      "start": 1873.919,
+      "duration": 4.145
+    },
+    {
+      "text": " guys, when I did this again with tanh,",
+      "start": 1877.134,
+      "duration": 3.681
+    },
+    {
+      "text": " the result with tanh is exactly the",
+      "start": 1879.886,
+      "duration": 3.469
+    },
+    {
+      "text": " same. Although the numbers are",
+      "start": 1882.426,
+      "duration": 2.316
+    },
+    {
+      "text": " different. But you can see that again,",
+      "start": 1883.776,
+      "duration": 3.154
+    },
+    {
+      "text": " all the weights coming from one input",
+      "start": 1885.986,
+      "duration": 3.099
+    },
+    {
+      "text": " are the same. All the weights coming",
+      "start": 1888.141,
+      "duration": 3.276
+    },
+    {
+      "text": " from the second input are the same. And",
+      "start": 1890.472,
+      "duration": 3.401
+    },
+    {
+      "text": " lastly, I tested it with Sigmoid as",
+      "start": 1892.925,
+      "duration": 2.804
+    },
+    {
+      "text": " well. Everything is the same. And look,",
+      "start": 1894.781,
+      "duration": 3.429
+    },
+    {
+      "text": " again, the weights coming from one",
+      "start": 1897.268,
+      "duration": 2.973
+    },
+    {
+      "text": " input are the same. The weights coming",
+      "start": 1899.299,
+      "duration": 3.069
+    },
+    {
+      "text": " from the second input are the same. In",
+      "start": 1901.416,
+      "duration": 2.993
+    },
+    {
+      "text": " short, we have understood two things so",
+      "start": 1903.464,
+      "duration": 3.158
+    },
+    {
+      "text": " far. First, you cannot set the weights",
+      "start": 1905.677,
+      "duration": 3.935
+    },
+    {
+      "text": " to zero. Okay? The model won't even",
+      "start": 1908.69,
+      "duration": 3.446
+    },
+    {
+      "text": " train in the case of ReLU and tanh. And",
+      "start": 1911.189,
+      "duration": 3.493
+    },
+    {
+      "text": " you cannot initialize all the weights",
+      "start": 1913.756,
+      "duration": 3.751
+    },
+    {
+      "text": " with the same non-zero value either.",
+      "start": 1916.582,
+      "duration": 3.677
+    },
+    {
+      "text": " Because even if you do that, the model",
+      "start": 1919.759,
+      "duration": 3.324
+    },
+    {
+      "text": " will train, but it will act as a linear",
+      "start": 1922.144,
+      "duration": 3.386
+    },
+    {
+      "text": " model. It won't be able to capture",
+      "start": 1924.591,
+      "duration": 2.808
+    },
+    {
+      "text": " non-linearity. Okay? I have already",
+      "start": 1926.445,
+      "duration": 2.958
+    },
+    {
+      "text": " told you the reason. So guys, we have",
+      "start": 1928.459,
+      "duration": 3.291
+    },
+    {
+      "text": " understood two things. First, we cannot",
+      "start": 1930.81,
+      "duration": 3.942
+    },
+    {
+      "text": " initialize our weights with zero.",
+      "start": 1933.832,
+      "duration": 3.668
+    },
+    {
+      "text": " Second, we cannot initialize them with",
+      "start": 1936.74,
+      "duration": 2.991
+    },
+    {
+      "text": " any non-zero constant value either.",
+      "start": 1938.784,
+      "duration": 2.835
+    },
+    {
+      "text": " This means we have to give every weight",
+      "start": 1941.699,
+      "duration": 3.716
+    },
+    {
+      "text": " a different value. So here, we will now",
+      "start": 1944.485,
+      "duration": 4.514
+    },
+    {
+      "text": " discuss case three. Where we will study",
+      "start": 1948.064,
+      "duration": 3.952
+    },
+    {
+      "text": " random initialization. What will we do?",
+      "start": 1951.088,
+      "duration": 3.652
+    },
+    {
+      "text": " We will randomly initialize our weights",
+      "start": 1953.96,
+      "duration": 3.729
+    },
+    {
+      "text": ". Okay? I will teach you two cases here",
+      "start": 1956.689,
+      "duration": 4.583
+    },
+    {
+      "text": ". The first will be small random values",
+      "start": 1960.272,
+      "duration": 4.826
+    },
+    {
+      "text": " and the second will be large random",
+      "start": 1964.172,
+      "duration": 3.61
+    },
+    {
+      "text": " values. First, we will discuss the case",
+      "start": 1966.857,
+      "duration": 4.983
+    },
+    {
+      "text": " of small random values, and let's",
+      "start": 1970.9,
+      "duration": 2.98
+    },
+    {
+      "text": " discuss first about tanh and Sigmoid,",
+      "start": 1972.94,
+      "duration": 5.811
+    },
+    {
+      "text": " and then we will discuss ReLU. Uh, let",
+      "start": 1977.848,
+      "duration": 4.537
+    },
+    {
+      "text": " me explain the setup to you a bit. So",
+      "start": 1981.432,
+      "duration": 3.44
+    },
+    {
+      "text": " suppose we have data where we have 500",
+      "start": 1983.978,
+      "duration": 5.049
+    },
+    {
+      "text": " columns in the input and there is a",
+      "start": 1988.134,
+      "duration": 4.729
+    },
+    {
+      "text": " single target column in the output.",
+      "start": 1991.969,
+      "duration": 4.73
+    },
+    {
+      "text": " Okay? And suppose we have 1000 rows",
+      "start": 1996.26,
+      "duration": 5.315
+    },
+    {
+      "text": " like this. Okay? So our input shape is",
+      "start": 2000.679,
+      "duration": 5.524
+    },
+    {
+      "text": " 1000*500. Also, in every row, these 500",
+      "start": 2005.308,
+      "duration": 6.406
+    },
+    {
+      "text": " numbers that form a single row together",
+      "start": 2010.821,
+      "duration": 5.19
+    },
+    {
+      "text": ". For a while, let's assume that all",
+      "start": 2015.011,
+      "duration": 3.483
+    },
+    {
+      "text": " these numbers have been drawn from a",
+      "start": 2017.551,
+      "duration": 3.07
+    },
+    {
+      "text": " Gaussian distribution. Basically, it is",
+      "start": 2019.679,
+      "duration": 8.15
+    },
+    {
+      "text": " normal. Okay? If you plot these 500",
+      "start": 2026.88,
+      "duration": 3.199
+    },
+    {
+      "text": " numbers, you will see a curve like this",
+      "start": 2029.131,
+      "duration": 3.013
+    },
+    {
+      "text": ". Okay? This is our setup. Now, what",
+      "start": 2031.144,
+      "duration": 4.217
+    },
+    {
+      "text": " did we do next? We added some hidden",
+      "start": 2034.409,
+      "duration": 3.808
+    },
+    {
+      "text": " layers, three hidden layers, and all",
+      "start": 2037.289,
+      "duration": 3.588
+    },
+    {
+      "text": " three have 500 nodes each. Okay? Now we",
+      "start": 2039.949,
+      "duration": 5.463
+    },
+    {
+      "text": " will have a little discussion on what",
+      "start": 2044.48,
+      "duration": 3.542
+    },
+    {
+      "text": " happens if you send the rows one by one",
+      "start": 2047.091,
+      "duration": 3.679
+    },
+    {
+      "text": ". Suppose you picked up the numbers",
+      "start": 2049.77,
+      "duration": 3.494
+    },
+    {
+      "text": " from this first row and inserted the",
+      "start": 2052.319,
+      "duration": 2.99
+    },
+    {
+      "text": " 500 values into this network from here.",
+      "start": 2054.364,
+      "duration": 3.156
+    },
+    {
+      "text": " Okay? And one more thing, the weight",
+      "start": 2056.939,
+      "duration": 4.09
+    },
+    {
+      "text": " initialization that we have done It is",
+      "start": 2060.089,
+      "duration": 5.837
+    },
+    {
+      "text": " random, and let me tell you how it is",
+      "start": 2065.008,
+      "duration": 4.018
+    },
+    {
+      "text": " random. We initialized it this way:",
+      "start": 2068.108,
+      "duration": 6.674
+    },
+    {
+      "text": " np.random.randn, right? I have",
+      "start": 2073.958,
+      "duration": 5.648
+    },
+    {
+      "text": " specified the shape here as 500/500.",
+      "start": 2078.657,
+      "duration": 2.843
+    },
+    {
+      "text": " There will be 250,000 weights here. So",
+      "start": 2082.281,
+      "duration": 2.796
+    },
+    {
+      "text": " 500/500, and we multiplied all these",
+      "start": 2084.195,
+      "duration": 5.269
+    },
+    {
+      "text": " weights by 0.01. So in a way, these are",
+      "start": 2088.582,
+      "duration": 4.71
+    },
+    {
+      "text": " all small values. Right? We have",
+      "start": 2092.358,
+      "duration": 5.665
+    },
+    {
+      "text": " initially set all the biases to zero.",
+      "start": 2097.109,
+      "duration": 4.191
+    },
+    {
+      "text": " This is the setup. Now try to",
+      "start": 2100.519,
+      "duration": 3.993
+    },
+    {
+      "text": " understand what will happen. Let's",
+      "start": 2103.601,
+      "duration": 5.116
+    },
+    {
+      "text": " focus on the output of this neuron, for",
+      "start": 2107.801,
+      "duration": 4.264
+    },
+    {
+      "text": " example. What will its activation be?",
+      "start": 2111.149,
+      "duration": 3.87
+    },
+    {
+      "text": " Its activation will be σ wi xi, right?",
+      "start": 2114.199,
+      "duration": 5.88
+    },
+    {
+      "text": " The weighted sum of these inputs and",
+      "start": 2121.44,
+      "duration": 4.208
+    },
+    {
+      "text": " all these 500 weights coming in; since",
+      "start": 2124.737,
+      "duration": 4.387
+    },
+    {
+      "text": " our xi is itself between zero and one.",
+      "start": 2128.213,
+      "duration": 4.387
+    },
+    {
+      "text": " It is normalized. Because your mean is",
+      "start": 2133.08,
+      "duration": 4.644
+    },
+    {
+      "text": " zero and standard deviation is one.",
+      "start": 2136.794,
+      "duration": 3.425
+    },
+    {
+      "text": " Let's assume it ranges from 0 to 1, or",
+      "start": 2140.379,
+      "duration": 3.102
+    },
+    {
+      "text": " -1 to 1. It ranges between -1 and 1.",
+      "start": 2142.536,
+      "duration": 3.803
+    },
+    {
+      "text": " And these weights of ours are very",
+      "start": 2145.719,
+      "duration": 3.387
+    },
+    {
+      "text": " small numbers. Numbers like these. So",
+      "start": 2148.176,
+      "duration": 4.079
+    },
+    {
+      "text": " when you multiply many such numbers and",
+      "start": 2151.343,
+      "duration": 4.444
+    },
+    {
+      "text": " then add them up, you can understand",
+      "start": 2154.875,
+      "duration": 4.179
+    },
+    {
+      "text": " that this resulting number will also be",
+      "start": 2158.142,
+      "duration": 4.444
+    },
+    {
+      "text": " a small number. This will also be a",
+      "start": 2161.674,
+      "duration": 4.394
+    },
+    {
+      "text": " small number. Right? So our z is a",
+      "start": 2165.127,
+      "duration": 3.938
+    },
+    {
+      "text": " small number. Okay. Now let's assume",
+      "start": 2168.172,
+      "duration": 5.939
+    },
+    {
+      "text": " for a moment that the activation",
+      "start": 2173.165,
+      "duration": 2.724
+    },
+    {
+      "text": " function here is tanh. Right? I guess",
+      "start": 2174.943,
+      "duration": 5.12
+    },
+    {
+      "text": " you know the graph of tanh. The tanh",
+      "start": 2179.129,
+      "duration": 3.699
+    },
+    {
+      "text": " graph looks like this. Right? If the",
+      "start": 2181.904,
+      "duration": 5.935
+    },
+    {
+      "text": " value of x is zero, then the value of y",
+      "start": 2186.899,
+      "duration": 3.34
+    },
+    {
+      "text": " is also zero. And if the value of x is",
+      "start": 2189.299,
+      "duration": 3.278
+    },
+    {
+      "text": " slightly more than zero, it will be",
+      "start": 2191.633,
+      "duration": 2.953
+    },
+    {
+      "text": " somewhere here. Which is again very",
+      "start": 2193.642,
+      "duration": 3.363
+    },
+    {
+      "text": " small. Right? So just understand that",
+      "start": 2196.073,
+      "duration": 5.063
+    },
+    {
+      "text": " in this layer, all the nodes, the 500",
+      "start": 2200.227,
+      "duration": 4.342
+    },
+    {
+      "text": " nodes, will have an output. They will",
+      "start": 2203.659,
+      "duration": 4.682
+    },
+    {
+      "text": " all have an activation. All these",
+      "start": 2207.396,
+      "duration": 3.691
+    },
+    {
+      "text": " activations will be very close to zero.",
+      "start": 2210.162,
+      "duration": 3.898
+    },
+    {
+      "text": " Just think about it. Because this",
+      "start": 2213.759,
+      "duration": 4.565
+    },
+    {
+      "text": " number is small. When you pass it",
+      "start": 2217.386,
+      "duration": 3.571
+    },
+    {
+      "text": " through tanh, looking at this graph,",
+      "start": 2220.018,
+      "duration": 3.202
+    },
+    {
+      "text": " you can understand that the output will",
+      "start": 2222.281,
+      "duration": 3.385
+    },
+    {
+      "text": " also be very close to zero. So what did",
+      "start": 2224.727,
+      "duration": 3.829
+    },
+    {
+      "text": " I do? I plotted a histogram here. This",
+      "start": 2227.615,
+      "duration": 3.541
+    },
+    {
+      "text": " histogram is of our input. Our input,",
+      "start": 2230.215,
+      "duration": 3.869
+    },
+    {
+      "text": " which we took from a normal Gaussian",
+      "start": 2233.135,
+      "duration": 2.817
+    },
+    {
+      "text": " distribution. So when it was the input,",
+      "start": 2235.002,
+      "duration": 3.679
+    },
+    {
+      "text": " it looked like this. Then what did I do",
+      "start": 2237.742,
+      "duration": 3.422
+    },
+    {
+      "text": "? There will be 500 activations coming",
+      "start": 2240.164,
+      "duration": 3.235
+    },
+    {
+      "text": " out of this layer of ours. When I",
+      "start": 2242.456,
+      "duration": 3.149
+    },
+    {
+      "text": " plotted the histogram for these 500",
+      "start": 2244.673,
+      "duration": 3.372
+    },
+    {
+      "text": " activations, it looks something like",
+      "start": 2247.113,
+      "duration": 3.44
+    },
+    {
+      "text": " this. Right? Because most of the values",
+      "start": 2249.621,
+      "duration": 5.932
+    },
+    {
+      "text": " are around zero. And similarly, when",
+      "start": 2254.623,
+      "duration": 3.441
+    },
+    {
+      "text": " you pass these values forward, since",
+      "start": 2257.112,
+      "duration": 2.715
+    },
+    {
+      "text": " the weights here are also very small.",
+      "start": 2258.875,
+      "duration": 2.764
+    },
+    {
+      "text": " So, when you pass them forward,",
+      "start": 2261.219,
+      "duration": 2.613
+    },
+    {
+      "text": " following the same logic, your",
+      "start": 2262.884,
+      "duration": 2.561
+    },
+    {
+      "text": " histogram will look like this. Because",
+      "start": 2264.497,
+      "duration": 4.127
+    },
+    {
+      "text": " most of the values would be very, very",
+      "start": 2267.687,
+      "duration": 3.417
+    },
+    {
+      "text": " close to zero. So, understand what will",
+      "start": 2270.168,
+      "duration": 4.685
+    },
+    {
+      "text": " happen now. If the activations of all",
+      "start": 2273.915,
+      "duration": 3.741
+    },
+    {
+      "text": " your layers are very close to zero,",
+      "start": 2276.725,
+      "duration": 3.432
+    },
+    {
+      "text": " then when you differentiate them to",
+      "start": 2279.227,
+      "duration": 3.432
+    },
+    {
+      "text": " calculate the gradient, that will also",
+      "start": 2281.728,
+      "duration": 3.641
+    },
+    {
+      "text": " be very, very small and close to zero.",
+      "start": 2284.438,
+      "duration": 3.641
+    },
+    {
+      "text": " And as you keep increasing these layers",
+      "start": 2288.179,
+      "duration": 3.694
+    },
+    {
+      "text": ", during backpropagation, when a lot of",
+      "start": 2290.873,
+      "duration": 3.695
+    },
+    {
+      "text": " small numbers are multiplied by other",
+      "start": 2293.637,
+      "duration": 3.556
+    },
+    {
+      "text": " small numbers, your gradient will be",
+      "start": 2296.262,
+      "duration": 3.487
+    },
+    {
+      "text": " very small. Or you can assume it will",
+      "start": 2298.819,
+      "duration": 5.516
+    },
+    {
+      "text": " be close to zero. And because of that,",
+      "start": 2303.419,
+      "duration": 4.039
+    },
+    {
+      "text": " when you update the weights, Since this",
+      "start": 2306.516,
+      "duration": 6.874
+    },
+    {
+      "text": " derivative is very small or close to",
+      "start": 2312.451,
+      "duration": 3.202
+    },
+    {
+      "text": " zero, there won't be any update at all.",
+      "start": 2314.714,
+      "duration": 3.385
+    },
+    {
+      "text": " In a way, you can say that your",
+      "start": 2318.36,
+      "duration": 3.414
+    },
+    {
+      "text": " vanishing gradient problem is taking",
+      "start": 2320.852,
+      "duration": 3.804
+    },
+    {
+      "text": " effect. The vanishing gradient problem",
+      "start": 2323.734,
+      "duration": 5.986
+    },
+    {
+      "text": " is applying here. So, the simple",
+      "start": 2328.786,
+      "duration": 3.575
+    },
+    {
+      "text": " principle is that if you initialize",
+      "start": 2331.456,
+      "duration": 4.304
+    },
+    {
+      "text": " with very small weights, like",
+      "start": 2334.854,
+      "duration": 3.738
+    },
+    {
+      "text": " multiplying by .01. When you initialize",
+      "start": 2337.686,
+      "duration": 4.933
+    },
+    {
+      "text": " with very small weights, tanh will give",
+      "start": 2341.693,
+      "duration": 3.873
+    },
+    {
+      "text": " you the vanishing gradient problem.",
+      "start": 2344.64,
+      "duration": 3.579
+    },
+    {
+      "text": " Okay? If you analyze sigmoid, it will",
+      "start": 2348.04,
+      "duration": 4.283
+    },
+    {
+      "text": " be almost the same. In the case of",
+      "start": 2351.381,
+      "duration": 3.853
+    },
+    {
+      "text": " sigmoid, the only difference is the",
+      "start": 2354.289,
+      "duration": 2.937
+    },
+    {
+      "text": " graph looks like this. Meaning, when",
+      "start": 2356.281,
+      "duration": 3.193
+    },
+    {
+      "text": " the value of x is zero, the value of y",
+      "start": 2358.539,
+      "duration": 3.5
+    },
+    {
+      "text": " is .5. So, its histogram won't be as",
+      "start": 2361.105,
+      "duration": 3.649
+    },
+    {
+      "text": " severely centered at zero. There will",
+      "start": 2363.829,
+      "duration": 3.449
+    },
+    {
+      "text": " be slightly more values there. The",
+      "start": 2366.32,
+      "duration": 2.582
+    },
+    {
+      "text": " graph will be a bit more spread out",
+      "start": 2367.97,
+      "duration": 3.378
+    },
+    {
+      "text": " from zero, but you can still face the",
+      "start": 2370.416,
+      "duration": 3.513
+    },
+    {
+      "text": " same vanishing gradient problem there.",
+      "start": 2372.997,
+      "duration": 3.582
+    },
+    {
+      "text": " If your neural network is very deep.",
+      "start": 2375.717,
+      "duration": 3.04
+    },
+    {
+      "text": " Meaning, it has many layers. In a",
+      "start": 2377.857,
+      "duration": 2.99
+    },
+    {
+      "text": " shallow neural network, there won't be",
+      "start": 2379.901,
+      "duration": 3.065
+    },
+    {
+      "text": " a problem because all the gradients",
+      "start": 2382.02,
+      "duration": 2.902
+    },
+    {
+      "text": " won't be multiplied. But in a deep one,",
+      "start": 2383.977,
+      "duration": 2.927
+    },
+    {
+      "text": " it can be a major issue. So, let me",
+      "start": 2385.945,
+      "duration": 2.598
+    },
+    {
+      "text": " summarize it for you. In summary, if",
+      "start": 2387.594,
+      "duration": 4.509
+    },
+    {
+      "text": " you use very small weights as your",
+      "start": 2391.2,
+      "duration": 4.311
+    },
+    {
+      "text": " initial weights—say, if you take",
+      "start": 2394.609,
+      "duration": 4.311
+    },
+    {
+      "text": " these unit weights and use tanh—you",
+      "start": 2398.017,
+      "duration": 4.603
+    },
+    {
+      "text": " get a very severe vanishing gradient",
+      "start": 2401.717,
+      "duration": 4.506
+    },
+    {
+      "text": " problem. It is possible that your",
+      "start": 2405.32,
+      "duration": 3.745
+    },
+    {
+      "text": " weights won't update at all, training",
+      "start": 2408.106,
+      "duration": 2.521
+    },
+    {
+      "text": " won't happen, and everything will",
+      "start": 2409.668,
+      "duration": 2.356
+    },
+    {
+      "text": " become zero. In the case of sigmoid too",
+      "start": 2411.065,
+      "duration": 3.173
+    },
+    {
+      "text": ", The vanishing gradient problem will",
+      "start": 2413.238,
+      "duration": 4.974
+    },
+    {
+      "text": " apply. It just won't be as severe as it",
+      "start": 2417.259,
+      "duration": 2.74
+    },
+    {
+      "text": " is with tanh. But even with Sigmoid,",
+      "start": 2419.039,
+      "duration": 2.916
+    },
+    {
+      "text": " training will be very, very slow or it",
+      "start": 2421.005,
+      "duration": 2.928
+    },
+    {
+      "text": " won't happen at all. In the case of",
+      "start": 2422.984,
+      "duration": 4.346
+    },
+    {
+      "text": " ReLU, small values will still persist.",
+      "start": 2426.425,
+      "duration": 4.614
+    },
+    {
+      "text": " So, the vanishing gradient problem will",
+      "start": 2430.819,
+      "duration": 3.348
+    },
+    {
+      "text": " occur here too, but not as much,",
+      "start": 2433.227,
+      "duration": 2.927
+    },
+    {
+      "text": " because of its values. Things don't",
+      "start": 2435.214,
+      "duration": 3.393
+    },
+    {
+      "text": " become zero. So what is the benefit",
+      "start": 2437.671,
+      "duration": 3.448
+    },
+    {
+      "text": " here? The benefit is just that the",
+      "start": 2440.189,
+      "duration": 3.125
+    },
+    {
+      "text": " vanishing gradient problem won't be as",
+      "start": 2442.348,
+      "duration": 2.297
+    },
+    {
+      "text": " severe. But the training will be very",
+      "start": 2443.68,
+      "duration": 5.548
+    },
+    {
+      "text": " slow. Training will be very slow. The",
+      "start": 2448.373,
+      "duration": 4.068
+    },
+    {
+      "text": " convergence will be very, very slow. So",
+      "start": 2451.531,
+      "duration": 7.125
+    },
+    {
+      "text": " you will see results only after many",
+      "start": 2457.724,
+      "duration": 3.45
+    },
+    {
+      "text": " epochs. All right? Let me show you a",
+      "start": 2460.242,
+      "duration": 3.298
+    },
+    {
+      "text": " small demonstration of this. So guys,",
+      "start": 2462.597,
+      "duration": 3.552
+    },
+    {
+      "text": " let me show you a small example. If you",
+      "start": 2465.22,
+      "duration": 3.681
+    },
+    {
+      "text": " initialize the weights with very, very",
+      "start": 2467.951,
+      "duration": 2.91
+    },
+    {
+      "text": " small numbers, what will happen? We are",
+      "start": 2469.911,
+      "duration": 3.715
+    },
+    {
+      "text": " working on the same data. Only this",
+      "start": 2472.687,
+      "duration": 3.845
+    },
+    {
+      "text": " time, I have built a deep neural",
+      "start": 2475.611,
+      "duration": 3.536
+    },
+    {
+      "text": " network that has four hidden layers and",
+      "start": 2478.226,
+      "duration": 4.091
+    },
+    {
+      "text": " I have given them all a Tanh activation",
+      "start": 2481.397,
+      "duration": 4.091
+    },
+    {
+      "text": " function, and the input won't be here.",
+      "start": 2484.567,
+      "duration": 4.012
+    },
+    {
+      "text": " Right? So, this is the neural network.",
+      "start": 2493.299,
+      "duration": 5.12
+    },
+    {
+      "text": " I fetched the current weights from all",
+      "start": 2497.699,
+      "duration": 3.311
+    },
+    {
+      "text": " the gets. And I changed them all. Here",
+      "start": 2500.071,
+      "duration": 6.157
+    },
+    {
+      "text": " you can see that I have multiplied the",
+      "start": 2505.301,
+      "duration": 3.745
+    },
+    {
+      "text": " initialized weights by 0.1 along with",
+      "start": 2508.118,
+      "duration": 3.673
+    },
+    {
+      "text": " the random ones. And I left the biases",
+      "start": 2510.863,
+      "duration": 4.406
+    },
+    {
+      "text": " as zero. That doesn't make any",
+      "start": 2514.329,
+      "duration": 2.572
+    },
+    {
+      "text": " difference. And I set the new weights",
+      "start": 2515.949,
+      "duration": 2.922
+    },
+    {
+      "text": " using set weights. You can see these",
+      "start": 2517.922,
+      "duration": 3.231
+    },
+    {
+      "text": " are my new weights. All the weights are",
+      "start": 2520.21,
+      "duration": 3.295
+    },
+    {
+      "text": " very, very small. Biases are zero. All",
+      "start": 2522.558,
+      "duration": 3.787
+    },
+    {
+      "text": " the weights are very small. Okay? Now",
+      "start": 2525.4,
+      "duration": 3.612
+    },
+    {
+      "text": " what did I do? I trained the model for",
+      "start": 2528.063,
+      "duration": 3.538
+    },
+    {
+      "text": " 100 epochs. And after doing that, when",
+      "start": 2530.674,
+      "duration": 3.986
+    },
+    {
+      "text": " I fetched all the weights back using",
+      "start": 2533.729,
+      "duration": 3.466
+    },
+    {
+      "text": " get weights after training, you can see",
+      "start": 2536.263,
+      "duration": 3.672
+    },
+    {
+      "text": " and compare side by side that your",
+      "start": 2539.003,
+      "duration": 3.329
+    },
+    {
+      "text": " weights have barely updated. Do you see",
+      "start": 2541.401,
+      "duration": 4.021
+    },
+    {
+      "text": "? Those 0.07 have only changed slightly",
+      "start": 2544.422,
+      "duration": 3.612
+    },
+    {
+      "text": " after many decimal places. Which shows",
+      "start": 2547.097,
+      "duration": 3.528
+    },
+    {
+      "text": " that the vanishing gradient problem has",
+      "start": 2549.68,
+      "duration": 3.151
+    },
+    {
+      "text": " occurred here. Okay? If you go a little",
+      "start": 2551.886,
+      "duration": 3.276
+    },
+    {
+      "text": " further down. I plotted a graph. You",
+      "start": 2554.201,
+      "duration": 2.858
+    },
+    {
+      "text": " can see the performance is very, very",
+      "start": 2556.099,
+      "duration": 2.471
+    },
+    {
+      "text": " bad. It is predicting one for",
+      "start": 2557.609,
+      "duration": 2.056
+    },
+    {
+      "text": " everything. Our model is working at 50%",
+      "start": 2558.698,
+      "duration": 3.385
+    },
+    {
+      "text": "accuracy. Okay? Now I will show you",
+      "start": 2561.083,
+      "duration": 3.295
+    },
+    {
+      "text": " what happens in the case of ReLU. So",
+      "start": 2563.427,
+      "duration": 2.828
+    },
+    {
+      "text": " this is a very good visualization tool.",
+      "start": 2565.323,
+      "duration": 3.629
+    },
+    {
+      "text": " Here we selected this kind of data and",
+      "start": 2568.62,
+      "duration": 3.786
+    },
+    {
+      "text": " selected too small weights. As soon as",
+      "start": 2571.479,
+      "duration": 4.304
+    },
+    {
+      "text": " we started training. You would see that",
+      "start": 2574.851,
+      "duration": 4.105
+    },
+    {
+      "text": " here you can see different labels are",
+      "start": 2578.039,
+      "duration": 4.078
+    },
+    {
+      "text": " there. Uh, what will happen is that",
+      "start": 2581.2,
+      "duration": 3.707
+    },
+    {
+      "text": " with ReLU, the vanishing gradient",
+      "start": 2583.979,
+      "duration": 3.39
+    },
+    {
+      "text": " problem won't occur as strongly. But,",
+      "start": 2586.441,
+      "duration": 4.228
+    },
+    {
+      "text": " you would notice that it will take a",
+      "start": 2589.742,
+      "duration": 3.608
+    },
+    {
+      "text": " lot of time for this network to",
+      "start": 2592.423,
+      "duration": 3.246
+    },
+    {
+      "text": " converge; okay, it will take around",
+      "start": 2594.741,
+      "duration": 3.537
+    },
+    {
+      "text": " 1000 epochs. Whereas if you used",
+      "start": 2597.35,
+      "duration": 4.227
+    },
+    {
+      "text": " another weight initialization technique",
+      "start": 2600.63,
+      "duration": 3.089
+    },
+    {
+      "text": " that I will show later, this network",
+      "start": 2602.772,
+      "duration": 2.928
+    },
+    {
+      "text": " would converge much faster. Let me wait",
+      "start": 2604.754,
+      "duration": 5.321
+    },
+    {
+      "text": ", and you can see guys, after waiting",
+      "start": 2609.075,
+      "duration": 3.676
+    },
+    {
+      "text": " for almost 5 minutes and running 1500",
+      "start": 2611.824,
+      "duration": 3.676
+    },
+    {
+      "text": " epochs, our error is now finally",
+      "start": 2614.572,
+      "duration": 3.315
+    },
+    {
+      "text": " reducing and our model is now",
+      "start": 2616.959,
+      "duration": 3.097
+    },
+    {
+      "text": " converging and you can see, a decision",
+      "start": 2619.129,
+      "duration": 3.748
+    },
+    {
+      "text": " boundary will start to appear. So in",
+      "start": 2621.95,
+      "duration": 4.659
+    },
+    {
+      "text": " the case of ReLU, your convergence",
+      "start": 2625.687,
+      "duration": 3.658
+    },
+    {
+      "text": " would be extremely slow. If you",
+      "start": 2628.423,
+      "duration": 4.071
+    },
+    {
+      "text": " initialize your weights with very small",
+      "start": 2631.56,
+      "duration": 3.571
+    },
+    {
+      "text": " values. Now let us discuss random",
+      "start": 2634.197,
+      "duration": 3.905
+    },
+    {
+      "text": " initialization but with large values.",
+      "start": 2637.166,
+      "duration": 3.373
+    },
+    {
+      "text": " Okay? Large values, I mean how large?",
+      "start": 2639.799,
+      "duration": 3.46
+    },
+    {
+      "text": " Suppose the setup is the same. We have",
+      "start": 2642.359,
+      "duration": 4.105
+    },
+    {
+      "text": " 500 inputs and there are three hidden",
+      "start": 2645.545,
+      "duration": 3.987
+    },
+    {
+      "text": " layers. All of them have 500 neurons",
+      "start": 2648.613,
+      "duration": 3.841
+    },
+    {
+      "text": " each. It is the exact same previous",
+      "start": 2651.508,
+      "duration": 2.821
+    },
+    {
+      "text": " setup. So this time, our weight",
+      "start": 2653.379,
+      "duration": 3.031
+    },
+    {
+      "text": " initialization will be large, as in,",
+      "start": 2655.477,
+      "duration": 3.417
+    },
+    {
+      "text": " they will be big numbers. So the",
+      "start": 2657.961,
+      "duration": 3.305
+    },
+    {
+      "text": " numbers could be in the range of zero",
+      "start": 2660.321,
+      "duration": 3.021
+    },
+    {
+      "text": " to one. And yes. This is what is called",
+      "start": 2662.397,
+      "duration": 8.912
+    },
+    {
+      "text": " large in deep learning. If you are",
+      "start": 2670.4,
+      "duration": 3.987
+    },
+    {
+      "text": " initializing in the zero to one range,",
+      "start": 2673.442,
+      "duration": 3.08
+    },
+    {
+      "text": " then this is a big number. Why? Here",
+      "start": 2675.576,
+      "duration": 4.48
+    },
+    {
+      "text": " you can see that if you calculate the",
+      "start": 2679.13,
+      "duration": 3.741
+    },
+    {
+      "text": " activation of any particular neuron,",
+      "start": 2681.945,
+      "duration": 3.666
+    },
+    {
+      "text": " that will be σwi, xi right? Now if",
+      "start": 2684.685,
+      "duration": 5.45
+    },
+    {
+      "text": " every x and every w is in the range of",
+      "start": 2689.215,
+      "duration": 4.014
+    },
+    {
+      "text": " zero to one and you are adding 500 such",
+      "start": 2692.308,
+      "duration": 4.094
+    },
+    {
+      "text": " values, then the sum can become any",
+      "start": 2695.481,
+      "duration": 3.776
+    },
+    {
+      "text": " number in the range of 100 to 500,",
+      "start": 2698.336,
+      "duration": 3.697
+    },
+    {
+      "text": " which is quite big. Okay? So suppose if",
+      "start": 2701.112,
+      "duration": 6.351
+    },
+    {
+      "text": " we talk about tanh or sigmoid, and",
+      "start": 2706.548,
+      "duration": 3.889
+    },
+    {
+      "text": " suppose we randomly initialized numbers",
+      "start": 2709.522,
+      "duration": 4.314
+    },
+    {
+      "text": " in this zero to one range, then what",
+      "start": 2712.921,
+      "duration": 4.059
+    },
+    {
+      "text": " will happen is that saturation will",
+      "start": 2716.065,
+      "duration": 3.974
+    },
+    {
+      "text": " start to occur. Saturation means that",
+      "start": 2719.124,
+      "duration": 6.039
+    },
+    {
+      "text": " σwi xi for every node will be quite",
+      "start": 2724.246,
+      "duration": 3.991
+    },
+    {
+      "text": " large. Like, it could be in the range",
+      "start": 2727.32,
+      "duration": 4.235
+    },
+    {
+      "text": " of up to 100. Just think yourself, if",
+      "start": 2730.6,
+      "duration": 3.085
+    },
+    {
+      "text": " you put 100 into sigmoid or put 100",
+      "start": 2732.74,
+      "duration": 2.925
+    },
+    {
+      "text": " into tanh, it will saturate. Saturate",
+      "start": 2734.72,
+      "duration": 3.105
+    },
+    {
+      "text": " means it will either take its highest",
+      "start": 2736.881,
+      "duration": 3.096
+    },
+    {
+      "text": " value or, if negative, the highest",
+      "start": 2739.034,
+      "duration": 2.925
+    },
+    {
+      "text": " negative value. So you can see, when I",
+      "start": 2741.016,
+      "duration": 4.763
+    },
+    {
+      "text": " plotted the same histogram, the input",
+      "start": 2744.867,
+      "duration": 4.263
+    },
+    {
+      "text": " is normal again, but when I plotted the",
+      "start": 2748.218,
+      "duration": 4.439
+    },
+    {
+      "text": " histogram of activations for tanh, your",
+      "start": 2751.745,
+      "duration": 4.439
+    },
+    {
+      "text": " largest values are appearing more, the",
+      "start": 2755.272,
+      "duration": 4.351
+    },
+    {
+      "text": " -1 and 1 ones, you can see in all the",
+      "start": 2758.711,
+      "duration": 4.262
+    },
+    {
+      "text": " layers. Okay? Similarly, when you do",
+      "start": 2762.061,
+      "duration": 5.518
+    },
+    {
+      "text": " the same thing for sigmoid, the same",
+      "start": 2766.649,
+      "duration": 3.52
+    },
+    {
+      "text": " thing happens again. Saturating values",
+      "start": 2769.239,
+      "duration": 4.697
+    },
+    {
+      "text": " are appearing. In the case of sigmoid,",
+      "start": 2772.994,
+      "duration": 3.083
+    },
+    {
+      "text": " the input is 0 to 1 because the output",
+      "start": 2775.123,
+      "duration": 2.749
+    },
+    {
+      "text": " of sigmoid is between 0 and 1. The",
+      "start": 2776.918,
+      "duration": 2.776
+    },
+    {
+      "text": " output of tan h is between -1 and 1. So",
+      "start": 2778.759,
+      "duration": 3.598
+    },
+    {
+      "text": " basically, because of this saturation,",
+      "start": 2781.416,
+      "duration": 3.232
+    },
+    {
+      "text": " two things can happen. Either there",
+      "start": 2783.707,
+      "duration": 3.641
+    },
+    {
+      "text": " will be slow training. Meaning",
+      "start": 2786.452,
+      "duration": 4.098
+    },
+    {
+      "text": " convergence would be slow, or in the",
+      "start": 2789.614,
+      "duration": 3.317
+    },
+    {
+      "text": " worst-case scenario, the vanishing",
+      "start": 2791.995,
+      "duration": 3.188
+    },
+    {
+      "text": " gradient problem could occur again. We",
+      "start": 2794.247,
+      "duration": 3.776
+    },
+    {
+      "text": " read about this. When we made the video",
+      "start": 2797.094,
+      "duration": 4.509
+    },
+    {
+      "text": " on the vanishing gradient problem. Okay",
+      "start": 2800.657,
+      "duration": 4.47
+    },
+    {
+      "text": "? So, if someone asks you that if the",
+      "start": 2804.127,
+      "duration": 4.648
+    },
+    {
+      "text": " weights are a bit large and your",
+      "start": 2807.843,
+      "duration": 3.154
+    },
+    {
+      "text": " activation function is tan h or sigmoid",
+      "start": 2810.065,
+      "duration": 3.626
+    },
+    {
+      "text": ", you should say that saturation will",
+      "start": 2812.691,
+      "duration": 3.491
+    },
+    {
+      "text": " occur because of these big values. This",
+      "start": 2815.249,
+      "duration": 5.27
+    },
+    {
+      "text": " term will be very large, and when you",
+      "start": 2819.585,
+      "duration": 3.414
+    },
+    {
+      "text": " send it into your activation function,",
+      "start": 2822.064,
+      "duration": 3.479
+    },
+    {
+      "text": " saturating values like this will appear",
+      "start": 2824.609,
+      "duration": 3.544
+    },
+    {
+      "text": ". And because of that, there will",
+      "start": 2827.153,
+      "duration": 3.703
+    },
+    {
+      "text": " either be slow convergence or, in the",
+      "start": 2829.901,
+      "duration": 2.668
+    },
+    {
+      "text": " worst-case scenario, the vanishing",
+      "start": 2831.614,
+      "duration": 2.532
+    },
+    {
+      "text": " gradient problem might occur. The case",
+      "start": 2833.191,
+      "duration": 3.912
+    },
+    {
+      "text": " for ReLU is a bit different because",
+      "start": 2836.151,
+      "duration": 2.68
+    },
+    {
+      "text": " ReLU is a non-saturating function in",
+      "start": 2837.879,
+      "duration": 2.728
+    },
+    {
+      "text": " the positive direction. This is the",
+      "start": 2839.655,
+      "duration": 3.668
+    },
+    {
+      "text": " graph. So, there are no restrictions",
+      "start": 2842.405,
+      "duration": 3.599
+    },
+    {
+      "text": " here. Therefore, the larger the WI XI",
+      "start": 2845.06,
+      "duration": 3.423
+    },
+    {
+      "text": " is in the positive direction, the",
+      "start": 2847.545,
+      "duration": 3.047
+    },
+    {
+      "text": " larger the output value will be.",
+      "start": 2849.654,
+      "duration": 2.986
+    },
+    {
+      "text": " Suppose its output was 250, then the",
+      "start": 2851.819,
+      "duration": 2.985
+    },
+    {
+      "text": " ReLU output will also be 250. And if",
+      "start": 2853.859,
+      "duration": 3.525
+    },
+    {
+      "text": " these numbers are large, then your",
+      "start": 2856.448,
+      "duration": 3.183
+    },
+    {
+      "text": " gradients will also be very large. If",
+      "start": 2858.695,
+      "duration": 3.793
+    },
+    {
+      "text": " the gradients are large, when you go to",
+      "start": 2861.542,
+      "duration": 3.127
+    },
+    {
+      "text": " update them, you will make very large",
+      "start": 2863.724,
+      "duration": 6.558
+    },
+    {
+      "text": " changes to your weights, which will",
+      "start": 2869.353,
+      "duration": 3.513
+    },
+    {
+      "text": " cause your gradient descent to take big",
+      "start": 2871.938,
+      "duration": 3.8
+    },
+    {
+      "text": " jumps like this. And basically, you",
+      "start": 2874.81,
+      "duration": 4.519
+    },
+    {
+      "text": " will get an unstable gradient, and",
+      "start": 2878.407,
+      "duration": 3.665
+    },
+    {
+      "text": " again, you won't reach the correct",
+      "start": 2881.15,
+      "duration": 3.665
+    },
+    {
+      "text": " solution. You won't be able to reach it",
+      "start": 2883.893,
+      "duration": 3.13
+    },
+    {
+      "text": ". Okay? So, I hope you are",
+      "start": 2886.023,
+      "duration": 2.871
+    },
+    {
+      "text": " understanding this entire discussion.",
+      "start": 2887.941,
+      "duration": 2.718
+    },
+    {
+      "text": " In summary, you cannot initialize with",
+      "start": 2890.639,
+      "duration": 7.218
+    },
+    {
+      "text": " zero. You cannot initialize with the",
+      "start": 2897.02,
+      "duration": 6.238
+    },
+    {
+      "text": " same non-zero value either. You cannot",
+      "start": 2902.357,
+      "duration": 5.537
+    },
+    {
+      "text": " initialize with small random values.",
+      "start": 2906.999,
+      "duration": 4.8
+    },
+    {
+      "text": " And you cannot initialize with large",
+      "start": 2911.56,
+      "duration": 4.425
+    },
+    {
+      "text": " random values either. You cannot do any",
+      "start": 2915.08,
+      "duration": 4.333
+    },
+    {
+      "text": " of these four things. This is what we",
+      "start": 2918.471,
+      "duration": 3.148
+    },
+    {
+      "text": " have learned so far. We just discussed",
+      "start": 2920.664,
+      "duration": 3.133
+    },
+    {
+      "text": " that your training would be very",
+      "start": 2922.865,
+      "duration": 3.154
+    },
+    {
+      "text": " unstable. Right? You can see that this",
+      "start": 2925.087,
+      "duration": 3.272
+    },
+    {
+      "text": " is what is happening here. Some weights",
+      "start": 2927.399,
+      "duration": 2.881
+    },
+    {
+      "text": " are becoming very large, and there will",
+      "start": 2929.326,
+      "duration": 2.761
+    },
+    {
+      "text": " be a lot of fluctuation in them as well",
+      "start": 2931.132,
+      "duration": 2.761
+    },
+    {
+      "text": ". Because your gradients will take on",
+      "start": 2932.893,
+      "duration": 3.466
+    },
+    {
+      "text": " very large values. Due to which",
+      "start": 2935.419,
+      "duration": 3.008
+    },
+    {
+      "text": " training will be unstable and you will",
+      "start": 2937.471,
+      "duration": 2.672
+    },
+    {
+      "text": " not be able to reach the right result.",
+      "start": 2939.187,
+      "duration": 2.673
+    },
+    {
+      "text": " Okay? You can see here it is trying",
+      "start": 2941.199,
+      "duration": 3.188
+    },
+    {
+      "text": " hard, but it is not able to reach the",
+      "start": 2943.447,
+      "duration": 3.229
+    },
+    {
+      "text": " right result. So that was the video,",
+      "start": 2945.736,
+      "duration": 3.972
+    },
+    {
+      "text": " guys. I know it was quite long and had",
+      "start": 2948.757,
+      "duration": 3.242
+    },
+    {
+      "text": " a lot of concepts hidden in it. I hope",
+      "start": 2951.048,
+      "duration": 3.333
+    },
+    {
+      "text": " you liked it and understood the things.",
+      "start": 2953.432,
+      "duration": 2.967
+    },
+    {
+      "text": " If you liked the video then please like",
+      "start": 2956.32,
+      "duration": 2.699
+    },
+    {
+      "text": " it and if you haven't subscribed to my",
+      "start": 2958.062,
+      "duration": 2.656
+    },
+    {
+      "text": " channel then please do subscribe.",
+      "start": 2959.762,
+      "duration": 2.438
+    },
+    {
+      "text": " Thanks for watching. Bye.",
+      "start": 2962.179,
+      "duration": 2.381
+    }
+  ]
+}

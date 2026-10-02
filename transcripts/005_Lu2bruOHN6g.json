@@ -1,0 +1,5505 @@
+{
+  "id": "Lu2bruOHN6g",
+  "index": 5,
+  "title": "Perceptron Trick | How to train a Perceptron | Perceptron Part 2 |  Deep Learning Full Course",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitesh and welcome  to my YouTube channel. In today's video , we will cover lecture five of our 100  Days of Deep Learning course. So, in  the last video, we studied about the  perceptron. What is a perceptron? What  are its differences with a neuron? And  how does prediction happen in it? We  covered all these topics. But we didn't  cover one very important topic: how are  the weights and biases of a perceptron  trained? How are their values  discovered? So, in today's video, we  will cover exactly that. Our goal in  today's video would be to learn how to  train a perceptron. Okay? And the  method we are going to learn is called  the Perceptron Trick. Okay? So, I will  teach you the best method in the next  video. But before learning that best  method, you should know a clever  workaround, and that workaround is  called the Perceptron Trick. Okay? It  is very interesting, very simple, and  very elegant. I will show you how to do  things right from scratch. First, we  will develop a mathematical intuition.  After that, we will convert it into  code. Lastly, I have also made an  animation for you so that you can see  step-by-step how the whole thing is  happening. Okay? So that's it for the  introduction. Let's start the video. So  let's understand what the Perceptron  Trick is and how it works. Again, let's  take the same example. We have CGPA on  the x-axis and IQ on the y-axis, and  these colors, blue and green, represent  whether the students got placed or not.  The green ones are the students who got  placed. The blue ones are the students  who did not get placed. Now, we need to  build a model that can take any new  student's CGPA and IQ and predict  whether they will get placed or not.  Okay? Now, think about it guys, I mean,  if you were given this dataset and  asked to build a model, how would you  do it? The first observation you would  make is that this data is linearly  separable. Meaning, you can draw a line  to classify this data into two classes.  Right? Meaning, I just need to find the  equation of this line. Okay? Now,  always remember one thing: while  studying logistic regression, the  equation of the line you take here is  not in that form. Here, your equation  is in this form. ax + by + c = 0 is the  general equation. Okay? You never use  this equation in logistic regression.  You use this in linear regression. In  logistic regression, you use the  general form. In fact, you can write it  even better this way. ax1 where CGPA is  X1 + bx2 where IQ is X2 + C = 0. What  is C? C is your Y-intercept. Okay? Now,  if this were in 3D, this equation would  change. Meaning if there was an extra  column, say, 10 th-grade marks, you  would write it as ax1 + bx2 + cx3 + d =  0, and you can see that in higher  dimensions, you would keep adding terms  like this. Okay? So anyway, what I need  to do is, I can see that this data is  linearly separable. Meaning, I need to  find a line that can cut through this  data. To properly classify both labels.  And if I need to find a line, it means  I need to find the values of A, B, and  C. So my end objective is to find  values for A, B, and C such that you  can perfectly classify the two classes  in this data. That's my objective at  this point. Okay? Now here we will  study how the perceptron trick works.  So, the perceptron trick is a very  simple idea. Let me explain it to you  once. You will laugh at its simplicity,  thinking about how simply someone found  a solution. So the solution is very  simple. What do you do? You start with  random values for a, b, and c. a = 1, b  = 1, c = 0; you start with random  values. Meaning you start with a random  line. Suppose this is your line.  Initially, this is your line. Now,  obviously, this line means that on this  side of the line, you are saying  everything is green, as in everyone  will get placed, and on this side, no  one will get placed. So you can see  that your initial line is saying that  all students will get placed. And  obviously, this line is performing  terribly. Right? This is wrong. So now  what do I need to do? Somehow, I need  to get from this line to this line.  Right? How will we get there? It's very  simple. What the perceptron trick says  is that you have to run a loop. You run  a loop. Generally, you run this loop  1000 times, but you can do more or less  as well. Suppose you are running the  loop 1000 times. Every time inside the  loop, what do you do? You select a  random point. You select a random  student. You select a random student.  Okay? Let's say this is the random  student. You selected this randomly.  Now we will ask this point to tell us  if, according to you, this line is in  the right place or the wrong place. Now  think about it, my line is saying that  all points on this side are green.  Meaning, all these points are green.  And when we asked this point, it also  turned out to be green, so don't you  think this green point is on the  correct side of this line? Right?  Meaning, the green point is towards the  green region itself. So it will say, \" No, no brother, I am in the right place .\"\"I don't have any problem with this  line.\"\"Let the line stay as it is.\" So  you won't do anything. You will ask  this point, and if it says everything  is fine, then you will make no changes  to these A, B, and C. Meaning, you will  leave this line exactly as it is. Then  the loop will run again. Now you  randomly picked this point, this point  here. So what does this point say? It  says, \"Brother, I have a problem.\"\"I am  being told that I am green, but I am  actually blue.\" Because this whole  region, this entire region is the green  region, and this blue point is in the  green region. Meaning, there was a  misclassification. My line is  misidentifying this point. So this  point will say, \"No, no, I have a  problem.\"\"I am being called green, but  I am blue.\" So we will ask it, \"So what  should we do?\"\"How do we solve this  problem?\" So this line, this blue point  will tell this line, \"Come a little  towards me.\"\"Come a little towards me.\"  So what will you do? You will take a  transformation. You will make changes  to A, B, and C in such a way that this  line becomes something like this.  Something like this. Now look, this  blue point has come to the right place.  This blue point is now in the right  place. Okay? Now we will go to the next  cycle again. Now we picked this one. It  says, \"No, no, I am fine.\"\"I don't have  any issue.\" Then you asked this point  here. This point here. Okay? So it said , \"No, no, I have an issue.\"\"Bring the  line towards me.\"\"Take me into the blue  region.\" So you will change the line in  such a way. You will change A, B, and C  in such a way that your new line will  be something like this. Like this. Okay ? You moved it. Now, how are these  transformations happening? What changes  are you making to A, B, and C? We will  study this after a while. First, get  the core idea. Then we asked from this  point again. Naturally, it will also  say there is no need to change. Then I  asked from this point. It says, \" Brother, I have a problem with this  line.\" Rotate it and bring it towards  me. You then brought it near this and  reached this line. Right? So that is  what you do in perceptron. You run a  loop. You pick points randomly. You ask  it if it is classified correctly or not . If you are classified correctly, I  will do nothing. If you are classified  incorrectly, I will move the line  towards you. Okay? Okay? Now, we will  understand how to move this line  towards you. But that is the core idea.  And how long does this loop run? There  are two ways. The first way is to run  it a thousand times. Generally, you get  the right result in 1000 times. Or if  you don't get it in 1000, make it  10,000. You will get the right result.  Or the second option is. You run this  loop until convergence. You check,  after every loop cycle, you check how  many points are misclassified. In every  loop, every cycle, check once how many  points are misclassified. Keep doing  this until the number of misclassified  points becomes zero. As soon as it  becomes zero, you have converged and  your loop will stop. So both approaches  are used by people. Either they use  convergence or they use the number of  epochs. By the way, this is called  epochs. How many times this loop runs,  we call that an epoch. Okay? So that is  the core idea. I am summarizing it once . You start with a random line.  Obviously, that line's performance will  be poor. You run a loop. Okay? Every  time in the loop, you randomly ask a  point if it's classified correctly or  not? If it is classified correctly, you  do nothing. If it is classified  incorrectly, you move the line towards  that point. Now, how does this  transformation of moving happen? We  will discuss this after a while. But  you move the line towards the point.  And you keep doing this until  convergence is reached. How is  convergence defined? That none of your  points are misclassified. That is  convergence. And once convergence is  reached, you stop your loop and your  job is done. And that is how this  entire thing works. Like, it is that  simple. Okay? So, next we will discuss  how these transformations are happening . Meaning, if I have to move my line  towards a point, how can I move it?  Before we discuss those transformations , guys, I want to discuss another  important point with you. So, if you  remember a little while ago, I told you  that this is our line, and without much  discussion, I said that the entire  region above it is the positive region,  or the green region, and the entire  region below it is the blue region.  Okay? But how did I know that? I mean,  if tomorrow this line is not like this  but instead like this, then how will  you know which region is green and  which region is blue? So, we will first  learn how to identify the positive  region and the negative region. Okay?  So, for this, I am using a tool. Desmos , it's a very good website. It is  basically a calculator. So, here I have  drawn a line. 2x + 3y + 5 = 0, now I  need to find out which is its positive  region. See, clearly, you will  understand by looking that whatever is  above this line will be the positive  region, and how will that be found? If  you write 2x + 3y + 5 > 0, now see,  this entire region which is displayed  in blue is the positive region. So, how  do we find out? What do you need to do?  Suppose you have any point and you need  to find out. Let's say you have any  point, any point at all, and you need  to know if this point falls on the  positive side or the negative side of  this line, then what do you have to do?  You know the equation of the line is ax  + by + c = 0, and suppose this point  you have has coordinates x1 and y1,  then you will simply plug these points  into the line equation. So your value  will be ax1 + b1 + c, and if this value  is greater than 0, it means that the  point is in the positive region. If its  value is less than 0, it means it is in  the negative region. And if its value  equals 0, it means the point lies on  the line. Basic geometry. Right? So let  me show you quickly. Similarly, if you  do 2x + 3y + 5 < 0, then this green  region is the negative region. Any  point here is falling into the negative  region. Right? Let's look at another  line which is like this. This is the  line. If you want to find out which is  the positive region here? Then you will  do the same thing again. You will write  -2 x + 3y-5 > 0, so the region above is  again the positive region. And if you  want to see the negative region, again  you will write -2 x + 3y-5 < 0 and this  red region is your positive, I am sorry , negative region. Any point in this  region will fall on the negative side.  Right? So I hope you understood this  entire concept. Now we will study how  to move or transform the line. So now  guys, let's discuss how we can move a  line in this two-dimensional space.  Obviously, this movement comes from  making changes to A, B, and C. And by  making changes to all three, you can  perform three different types of  transformations. Let me show you. So if  you make changes to C, if you increase  or decrease C, your line moves  parallelly up or down. Like, if you  increase C, you will get this line. If  you decrease C, you will get this line  parallelly. Meaning, changes in C cause  this transformation. If you make  changes in A, changing A causes  rotation on this axis. Meaning, your  line can either go like this or it can  go like this. Right? And similarly, by  transforming B, you rotate around this  point. Either your line will become  like this or it will become like this.  Right? So, these three coefficients A,  B, and C all have an impact on your  line. I want to show this to you  practically. So again I will go to  Desmos. This is my line. First, let me  show you what happens if you make  changes to C. We will make two changes.  We will increase C and decrease C. So  the first change, increasing C. So 2X +  3Y, increasing it plus. We are  increasing C to 10. = 0, your line  moved down. Maybe I said that a bit  backward. So ignore it. This one here  is correct. And after that, if you  decrease it, if you do this 2x + 3y + 0  = 0, then the purple line moved upwards . So when you decrease C, you move up,  and when you increase it, you move down . Right? You need to remember this  transformation. This is the first one.  Now let's see what happens to the  coefficient A. The coefficient with x.  So we are taking an example where we  increase a. So let's say 4x + 3y + 5 =  0, and you can see on this axis, the  y-axis, where the line intersects, it  rotated there. Right? If you decrease  it, let's say instead of 2x you use  just x, and keep everything else the  same. So look guys, this red line, this  is the red line. This red line is what  happens when you decrease it. So  decreasing caused a downward rotation,  and increasing caused an upward  rotation. Right? Let's quickly look at  the y term. So if we go to the y term,  I'm keeping everything the same with x.  I am increasing y. 6y + 5 = 0, see this  transformation happened. This rotation  occurred. Right? And if I decrease y,  so if I write 2x + y + 5 = 0, then this  rotation happens. So if you apply these  three things individually, three  different types of effects occur. If  you use all three together, there is a  transformation in combination. So I was  telling you that when your point is  wrongly classified, when I said it will  pull the line towards itself, that is  exactly what I meant—that we will  make changes in A, B, and C such that  the line moves toward the point. What  those specific changes will be, we will  see in a little while. So now guys, we  know what the transformations do to our  line. Now let's see exactly what  transformation needs to be applied. All  right? So I have taken a small dataset  that has only four points. Two green,  two blue, and this is my red line; on  this side is the green region and on  this side is the blue region. So you  can see there are two points here that  are misclassified. The first point is  this one, because it is a blue point.  It is misclassified in the green region , and the second one is this green  point in the blue region. All right? So  this is also misclassified. Now see  what will happen? If you talk with  respect to this point, since this point  is in the correct place. It will not  ask us to apply any transformation. And  the same goes with this point. Since it  is also in the correct region. No  transformation will need to be applied  here either. We will have to apply  transformations in the case of these  two points. So first, let's look at  this case. So in this case, I need to  move this line in this direction. In  this direction. All right? Suppose the  equation of this line is 2x + 3y + 5 =  0 and let's assume the coordinates of  this point are 4, 5. Now, if you want  to move this line in this direction,  the perceptron trick says you add a one  to the end of these coordinates, like  this. And then what you do is write the  three coordinates of this line: 2, 3, 5  and subtract these numbers from them: 4 , 5, 1 and when you subtract these, you  will get -2, -2, and 4, all right? I  guess I am correct. Yes, and you put x  in front of it, y here, and add a plus  sign here, equal to 0. This is your new  line. So if you plot it and see, most  likely this line will transform in such  a way that it moves this point into the  negative. As it is currently in the  positive region. For this line, this  point will automatically come into the  negative region. All right? Now let's  talk about this point. Let's assume the  coordinates of this point are 1, 3, I  am not entirely sure. Now when you need  to move the line in this direction, you  do the same thing. First, you transform  this coordinate to 1, 3, 1 and then  again you write the coordinates 2, 3, 5 , these are the coordinates of our line  that I wrote down. I didn't write  coordinates, I wrote coefficients, and  then I wrote 1 3 1 here, but this time  you add them. Always remember, when you  want to move the line in a negative  direction, towards the negative region,  you add, and when you want to move  towards the positive region, you  subtract. Right? Adding them gives 3x +  6y + 6 = 0; this will be my new line.  And if you plot this line, you would  see that now this point will be in the  positive region of this line. Right? I  will show you this whole demonstration  on Desmos. So, look here, I have this  line 2x + 3y + 5, and I have these two  points. 5 2 and -3 2. Now, suppose this  was actually a negative point and it's  in the positive region. Now, what do I  need to do? I need to change this line  so that this negative point moves into  the negative region. So, what will I do ? I will subtract 5 2 and 1 from here.  So, that is exactly what I did. First,  I subtracted 5 from 2x, so it became -3 . Then I did...I did -3 y, so it became  1 here. And 1-5 became 4. This was my  line. And look here, guys. If you take  the first line. If you take this line,  then for this line, this point was in  the positive region. But if you take  this line. I am turning this line off.  Then for this line, this point is in  the negative region. I can actually  show you this. I will just copy this.  And I will write less than zero. And  you can see this point has now moved  into the negative region. Right? Now,  let's see this same demonstration on  this point. Suppose this was our  original line and this was our point.  Now, suppose this point is a positive  point but it is stuck in the negative  region. So, I need to perform a  transformation on this line so that it  goes into the positive region. Right?  What is the transformation? We need to  add a one in front of it. Right? So  when you add -3 to 2, you get -1. When  you add -2 to 3y, you get +1, and when  you add 1 to 5, you get 6. And when I  ran this, look guys, this is the line,  and if I remove it, then this point  with respect to this line is now in the  positive region. Again, I can show this . So I will just copy, I will paste,  and here I will write \"greater than\"  and show it. And you can see it is now  in the positive region. So that is how  transformation happens in the  perceptron trick. You apply this simple  transformation. I am summarizing it  once. If a negative point is in the  positive region, you add a one to the  end of its coordinates and subtract it  from the line's coefficients. Okay? And  if your positive point is in the  negative region, you again add a one to  the coordinates and this time you add  it, then this transformation happens.  Now one last thing, in machine learning , you never apply such large  transformations in a single step. Like  my line was this before, and after that , it directly became this. Meaning, a  very large transformation happened. You  never apply such a large transformation . Instead, what do you do? You take a  small number which we call the learning  rate. Learning rate, and this learning  rate is generally 0.1 or sometimes one,  depending on the data. Now, what do you  do? So, when you are doing this  subtraction, instead of directly  subtracting from 1, 3, and 1, you take  1, 0, 3 And multiply it by 0.1. So  basically, you took the coordinates and  multiplied them by the learning rate  and then subtracted. So, if I write the  formula for you, the formula will look  something like this, that your new  coefficients will be calculated how?  Old coefficients minus learning rate  times whatever your coordinates are.  Okay? So, first you have to multiply  all the coordinates by the learning  rate and then subtract from the old  coefficients. Then you get the new  coefficients. Okay? You have to apply  this whole trick in the perceptron  trick. Okay? Now we understand the  transformation. Now I will write an  algorithm for you, by seeing which you  will understand exactly what to do  step-by-step. So that we can convert it  into code. Come on guys, then we are  writing an algorithm, and basically, we  are writing an algorithm for how to  code the perceptron trick, and then we  will code it. Okay? So before writing  the algorithm, I will have to introduce  some notation, etc. Because of that,  coding will then become easy. So the  first notation is that until now, I was  writing my line in this way. ax + by +  c = 0. Now, suppose if this is our data , then I would actually write this line  rather than writing it like this. I  would write it like this. w 0 + w1x1 +  w2 x2 = 0. So here, w naught is c, w1  is a, and w2 is b, okay? And if we  catch the logic here, this becomes your  x1, this becomes your x2, and this  becomes your y, okay? Basically, the  prediction. So why did I write it in  this form? Because I will do a little  more simplification in this. Okay? What  is the simplification? Suppose I am  adding another column here. Okay? And  what am I doing in that column? I am  adding a one in front of every row. I  am adding a one in front of every row.  And I am calling this column x naught.  So what can I do? I can then write it  in this way. This equation. I can write  it like this. w0 x0 + w1 x1 + w2 x2 = 0 , where what is x naught? It is  basically this column where the value  will always be one. So, if you replace  x naught with one, it is the same thing . As soon as you replace x naught with  one, you will get this equation. Okay?  Why did I write it this way? Because I  want to simplify it further and write  it like this. Sum from i = 0 to 2 of WI  XI = 0. Now, this has become the  general equation for our line, and you  can add as many columns as you want,  this equation will keep working. So  this is the equation. Okay? Now let's  answer a question. This is my model.  Okay? When I applied linear regression,  sorry, logistic regression, this was  the model I got. This is the model, sum  of wi xi = 0, here i = 0 to 2, so we  have the values of w0, w1, and w2. Okay ? Now the question arises that how will  this make a prediction here? How will  this model make a prediction? It is  very simple. What will you do? If you  want to make a prediction on any point,  for instance, let's say you want to  make a prediction for this point, you  want to make a prediction about this  student for this point, then what will  you do? You will simply write this. You  will write W naught, in fact I'll  change the pen, you would write W  naught multiplied by this student's X  naught value of one plus W1 times this  student's CGPA value of 7.5 plus W2  multiplied by this student's IQ value.  Right? Now we have the value of W  naught. The value of W1. And the value  of W2 as well because our model is  built. So this will result in a certain  number. Right? Now if that number is  greater than or equal to zero, my model  will predict that the placement will  happen. But if it comes out to be less  than zero, my model will predict that  the placement won't happen. Right? So  that means I don't have to do anything.  I basically just need to take any  student's CGPA and IQ, put a one in  front of it, and take the dot product  with my coefficients. If you understand  this carefully, it's just a dot product . Meaning, if you want, you can  represent it in the form of a matrix.  w0 w1 w2 and you can write it as x0 x1  x2, when you perform this dot product,  you will get exactly the same thing:  w0x0 + w1x1 + w2x2. Now if this number  is positive, the prediction will be one , and if negative, the prediction will  be zero. That is how the entire  prediction thing is working. Right? So  I explained all of this because it will  be easier for you to understand the  algorithm we are about to write. Watch  carefully. The algorithm is very simple . The algorithm is that you will decide  an epoch value. You will decide an  epoch value. Generally, it's 1000, and  we will decide a learning rate, eta 0.1 . Then we will run a loop, for i in  range of. Epochs, meaning this loop  will run a thousand times. Right? Now  inside this loop, I will randomly  select a point. Randomly select a point  or student. I will randomly pick anyone  from all the students in my training  data. And then I will check if—and  one more thing, I'm going back up to  the algorithm. What will happen in the  end is that. This is my model, and  there will be points on both sides like  this. These are the students who didn't  get placed, and these are the students  who did get placed. Right? So according  to this model, this entire region, this  entire region, this entire region is  the positive region. Right? This is the  positive region. Right? And this entire  region, this entire region, is the  negative region. According to my model.  This is the negative region. Okay? So,  if we take any point, for instance, if  we talk about this point, this student  actually got placed, so this is a point  xi that belongs to the positive region.  Okay? Whereas if I wrote this, like  this student, then this is actually a  student who belongs to the negative  region. Okay? Now watch carefully what  I am doing. I am going down and I am  writing this. I ran a loop. I randomly  picked a student and checked a  condition on them. The condition is: if  the student I selected, the row I  selected, belongs to the negative  region. Listen carefully. If this  person is someone who actually didn't  get placed. And when I put their data  into the model and calculated this. And  it came out greater than or equal to 0.  It means according to my model, this is  positive. Meaning they should get  placed. Try to understand this, guys.  We randomly picked a student whose y in  the data is actually zero. But when we  applied this expression, the sum of wi  xi, and the number came out greater  than zero, then according to my model,  this student should get placed. But in  reality, they didn't get placed.  Meaning, this is a student or a point  that, if I can draw it here, is a point  that is in the positive region but is a  negative point. Meaning, this is a  student who didn't get placed, but  according to my model, they should have . So, this is a negative point stuck in  the positive region. So now, what will  I do for this kind of point? I will  update my ws, meaning I will update my  coefficients. With what formula? I will  write w new, and this is a matrix. w  naught, w1, w2, this is the matrix.  Will be equal to w old, the same matrix  of old values, minus learning rate  times the x matrix, x naught, x1, x2,  okay? Now obviously, there is no need  to write everything here. I can simply  write xi, meaning basically that  specific row. Okay? Now another case:  if the point belongs to the positive  region, meaning this is a student who  actually got placed. And when you  calculated the sum from i = 1 to 2 of  wi xi, it came out to be less than 0.  Meaning, according to my model, they  should not get placed. So, this is  basically a student who got placed, but  my model is saying they shouldn't be.  So again, a positive point is in the  negative region. So, in this case, what  will we do? We will update our W matrix . We will update our W matrix and we  will write W old minus...actually, it  will become plus. I told you a while  ago during the transformation that if  you want to bring the line down, you  add learning rate times xi. And this is  the algorithm, guys, this is the  algorithm! You just need to detect what  type of error it is—a positive point  in a negative region or a negative  point in a positive region—and apply  the formula accordingly. And obviously,  if it's the other two cases, where xi  belongs to the negative region and its  wi xi is also less than 0. Meaning, if  this negative point is classified into  the negative region, then it is correct . Similarly, if xi belongs to positive  and wi xi is greater than or equal to 0 , then this positive point is in the  positive region, so we don't need to do  anything in these two cases. We only  need to make changes to our weights in  these two cases. Okay? So, this is our  algorithm, guys. Now, what will we do?  Since we have to check two conditions  here. This first condition and this  second condition, it will be a bit  difficult to write this code. So, after  a while, I will show you how to  simplify this entire algorithm. Okay?  So, let's see that next. So guys, now  if you see, this is the algorithm we  created. And it looks a bit scary. I  mean, in this algorithm, first you have  to run a loop. Inside the loop,  randomly select a row each time and  then check these two conditions on that  row. Right? This is the first condition  and this is the second condition. Now,  what am I doing? I will simplify this  algorithm. What will I do? Rather than  writing two conditions, I will write  just one condition. And what will that  condition be? That condition will be  that the update you make to your  coefficients will be calculated in this  way. See, rather than checking these  two conditions, I will simply run a  loop for i in 1000, randomly select a  student every time, and without  checking anything, I will apply this  logic. I will not put any if-condition.  There is no \"if\" here. There is no \"if\"  here. I will directly apply this update  rule. Now, why will this update rule  work? I will tell you. Let's take a  case. Let's take four cases. yi, yi hat , and this is yi-yi hat. Suppose there  is a student who got placed. Our model  also predicted that they got placed.  There is a student who did not get  placed. Our model also said they did  not get placed. There is a student who  got placed, but my model said they  didn't. And there is a student who  didn't get placed, but my model said  they did. Right? These are the four  cases. Right? Only these four  combinations exist. If I calculate  yi-yi hat, in the first case, it will  be zero. In the second case, it will be  zero. In the second to last case, it  would be one. And in the very last case , it would be -1. Right? Now let's see,  guys. Now assume we take the first case , where a student got placed and my  model also said they got placed.  Meaning, the student we randomly chose  was one who got placed, and according  to my model, they should have been  placed. So this entire term will become  zero. And as soon as this term becomes  zero, wn will be equal to W old. This  means the new values of the  coefficients will remain the same as  the old values. Meaning there will be  no change. Right? Now let's take  another case. Now you randomly picked a  student who didn't get placed and your  model also says they didn't get placed.  Okay? In that case also, your yi-yi hat  will be zero. This entire term will  become zero. And still, wn = Wo,  meaning the new value of all  coefficients will remain the same as  the old value. Right? So that means  whenever the points are correctly  classified, we aren't making any  changes to the rate. Okay? Now let's  take a case where a student got placed.  But my model said they didn't get  placed. If you see, what kind of  student would this be? They had gotten  placed. Meaning this is a positive  person in the negative region. Meaning  this student, this student. Okay? Or  you could say this student. This one,  okay? This person is actually in the  positive region in the data, but their  y is less than 0. Meaning my model is  misclassifying. So now if we go here,  what happens? This whole term will be  replaced with one. Okay? And how will  this equation convert? It will become  wn = wo + learning rate times xi, which  is exactly this. Okay? Now one last  case: a student who didn't get placed,  but my model says they will be placed.  Meaning this person is a negative point  in the positive region. Now, what  happened in this case? What will be the  value of yi minus yi hat? -1. Because  of that, what will this equation become ? It will become: wn = w old-learning  rate times xi. See, we were talking  about this student who was already  negative, but according to my model, is  positive. So this is their update rule.  So what have we done very smartly here?  Rather than handling two different  cases. I have simplified my entire  model like this. Okay? Now I don't need  to do this big calculation. We will  just apply this single rule. So our  updated algorithm is this. I will write  down here what we will code. We will  write for i in range of epochs, with  epochs value 1000, select a random  student i, and each time we will update  the coefficients using this rule. And  that's my code. I just need to write  this much code, guys. We will write  exactly this code and our job will be  done. Okay? Now what do we do? Let's go  to Jupyter and code this. So I have  already written the code because it is  a bit long and typing it would take  time. So I will just give you a  walk-through. So first of all, what  have I done? I have generated a dataset . Okay? Just like there is make  regression in Scikit-Learn, there is  make classification which you can use  to create classification datasets. Okay ? So I created this dataset and I  plotted it. So after plotting, this is  the dataset. So in this dataset, you  can see that it's a two-dimensional  dataset. Meaning in the input, there  are two columns. One is on the x-axis  and one is on the y-axis. And the  target column is either one or zero.  Meaning it's a classification problem.  And all the ones I have encoded in  green. And all the zeros I have encoded  in blue. Okay? So here, the output  column is representing the color. Okay?  Now, I have created a function here  called perceptron, to which if you pass  your data, x and y, it will return to  you your weights and your intercept.  Okay? Let's discuss its logic once. So  first of all, what did I do? The x I  received, I added a one in front of  that x. So if I show you right now at  this point after running this code,  your x is something like this. x is  something like this. So this is the  first input column. This is the second  input column. And this 'y' is an output  column containing values of one and  zero. Alright? I ran this code first.  Running this code resulted in my 'x',  which looked like this, now starting to  look like this. A one was added in  front of every row. We did this for the  bias term. Right? If you have watched  the theory properly, you will  understand. Now I will go down. What  did we do next? We created an array  called weights. Whose shape is equal to  the columns of x. Meaning, how many  columns did your x have earlier? Two,  when you provided the input. Then, as  soon as you inserted one, an extra  column was added. So now, what is the  shape of x? Three. So now, if I execute  this line and show you, it would look  like this. Instead of x.shape, if I put  three here, I have basically created a  weights array where all three items are  initially one. Okay? So the first item  here is the intercept term, as in w  naught. This is W1 and this is W2.  Alright? Then what did I do?  Initialized a learning rate at point  one. Okay? No problem up to here. Then  I ran the loop 1000 times, our epoch.  Right? Inside the loop each time, I  selected a random value between zero  and 100. By the way, if you look at the  shape of my x, it is 100, 2; 100 rows,  two columns. So I did exactly that.  Inside the loop each time, I selected a  random integer between zero and 100.  Three, like this. And whatever number  is coming, I am storing it in J. Okay?  Then what did I do? It's basically that  we—I mean, what does this value of J  signify? This value of J signifies  which student we are picking among  those 100 students. If 41 came up, we  are picking the 41st student. Right?  After that, what did I do? I predicted  y-hat. Meaning, I had to predict  whether that particular student, the  41st student, will get placed or not.  Right? So how did I do this task? I  calculated np.dot product of this. So  if I show you by doing this, it will  look something like this. First, I  extracted the 41st element in x and my  weights array is 1, 1, okay? And here  in x41, at this point, there are  actually only two items. I mean, there  are only two items. If we want to add a  one at the beginning of x41, we have to  write this code separately. np dot  insert x 41 comma 0, 1, axis = 1 Uh,  there is no axis because it's  single-dimensional, so basically rather  than x41 if I input this, then what's  happening? A dot product is taking  place and I am getting the answer 29.  So for my 41st student, when I perform  this dot product, the dot product comes  out positive. Okay? Now I need to find  out whether they will get placed or not . Now, if you know the logic, what was  our logic? If this dot product value is  greater than or equal to 0, then  placement will happen, and if it is  less than zero, placement won't happen.  So I created a step function. You give  a number as input to the step function,  it returns one if that number is  greater than zero, otherwise it returns  zero, so if I run this cell once and  write step 0.294, then it returns one.  Okay? And if I input a negative number,  it returns zero. So what happened was  this was the 41st student. We made a  prediction whether they would get  placed or not. Okay? Then we wrote the  code to update weights. What was the  code to update weights? Weights equals  weights plus learning rate times yj; in  the actual data, did the 41st student  get placed or not? Actually, they  didn't. So zero replaced this term here . Here, one replaced y-hat. So this  entire term became -1. And then you  multiplied it again by xj. So basically , the logic we wrote there, we applied  the exact same logic here, and we did  this 1000 times, and after doing it  1000 times, I returned the zero index  of weights as the intercept term and  all the subsequent terms as  coefficients. And that's my code. This  is my logic. Okay? I am removing this.  Removing this too. And here I called  this function. Passed x and y. It  returned the intercept value and  coefficient values to me. And here are  those intercept and coefficient values.  So this is my W1. This is my W2 and  this is my W naught. Okay? This is my  intercept. Okay? Now, what did I do? I  wanted to plot it and show it to you.  So, I derived m and b from these. How  did I calculate m and b? It is very  simple. Let me show you. So,  calculating m and b is very simple. If  you have the a, b, and c values for ax  + by + c = 0, you can easily bring this  line into the y = mx + c form. Where  the value of m will be--a/b And the  value of c will be-c/b, okay? So, what  did I do? I did exactly this to  calculate m. What is a? a is your first  coefficient. Meaning, inside the  coefficients, there are two terms. So,  what is A? The first term, and what is  B? The second term. And inside the  intercept, there is a single term. So,  what is C? This term right here. And  what is B? Again, this second term. So,  I did exactly this work here. I  calculated coefficient 0 divided by  coefficient 1. And for B, I did the  same thing. Intercept divided by  coefficient 1. And after getting M and  B, I plotted that line. And look here  guys, this is that line. So, this was  my data, and this is the line we just  created using the perceptron trick.  Okay? Now, I did one more thing. I drew  an animation of this same thing. So,  this is the animation. Okay? Let's see  it from the start. Look, see the first  epoch; in many epochs, your line won't  move. Why won't it move? Because the  point selected in that epoch agrees  with the line. It says, \"I have no  problem.\" So that is why the line is  not moving. See, right now the line is  not moving. But as soon as it finds a  point that is misclassified, it will  pull it towards itself, and then the  line will move. So, I have only taken  200 epochs here. I didn't take 1000  epochs. My work was done in 200. But it  depends, it depends on your data. So  you can see, sometimes in between, the  line doesn't move. Because all the  points being selected now are correctly  classified. So, they are not telling  the line to move. Okay? But sometimes  it finds a point that tells it to move.  Okay? So that is how this entire thing  works. You are starting with a random  line. Then you are randomly selecting a  point. If that point is misclassified,  then it is changing the line. If that  point is correctly classified, then it  is not changing the line. And that is  why in some epochs, your line stays  exactly as it is. Right? You can see  this is very important. I will share  the notebook for this animation with  you in the description. Take some time  to sit and watch this animation  carefully. Right? Then the concept you  studied in the last video will be  completely clear. Right? So that was  the video, guys. I know I have taken  some clips from my previous playlist.  Because the perceptron trick I taught  in 100 Days of Machine Learning was  quite similar. There isn't much  difference. So whatever differences  there are, you will see in the next  video when we look at how loss  functions are implemented in  perceptrons. Right? So if you liked the  video, then like it, guys. That's it  from my side. Thanks for watching. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitesh and welcome",
+      "start": 0.68,
+      "duration": 3.241
+    },
+    {
+      "text": " to my YouTube channel. In today's video",
+      "start": 2.98,
+      "duration": 4.324
+    },
+    {
+      "text": ", we will cover lecture five of our 100",
+      "start": 6.304,
+      "duration": 3.377
+    },
+    {
+      "text": " Days of Deep Learning course. So, in",
+      "start": 8.742,
+      "duration": 3.679
+    },
+    {
+      "text": " the last video, we studied about the",
+      "start": 11.485,
+      "duration": 3.307
+    },
+    {
+      "text": " perceptron. What is a perceptron? What",
+      "start": 13.857,
+      "duration": 3.829
+    },
+    {
+      "text": " are its differences with a neuron? And",
+      "start": 16.732,
+      "duration": 3.193
+    },
+    {
+      "text": " how does prediction happen in it? We",
+      "start": 18.971,
+      "duration": 2.898
+    },
+    {
+      "text": " covered all these topics. But we didn't",
+      "start": 20.923,
+      "duration": 4.298
+    },
+    {
+      "text": " cover one very important topic: how are",
+      "start": 24.278,
+      "duration": 3.223
+    },
+    {
+      "text": " the weights and biases of a perceptron",
+      "start": 26.558,
+      "duration": 3.166
+    },
+    {
+      "text": " trained? How are their values",
+      "start": 28.781,
+      "duration": 3.501
+    },
+    {
+      "text": " discovered? So, in today's video, we",
+      "start": 31.332,
+      "duration": 3.151
+    },
+    {
+      "text": " will cover exactly that. Our goal in",
+      "start": 33.545,
+      "duration": 3.486
+    },
+    {
+      "text": " today's video would be to learn how to",
+      "start": 36.083,
+      "duration": 2.976
+    },
+    {
+      "text": " train a perceptron. Okay? And the",
+      "start": 38.111,
+      "duration": 4.814
+    },
+    {
+      "text": " method we are going to learn is called",
+      "start": 41.971,
+      "duration": 2.736
+    },
+    {
+      "text": " the Perceptron Trick. Okay? So, I will",
+      "start": 43.753,
+      "duration": 4.097
+    },
+    {
+      "text": " teach you the best method in the next",
+      "start": 46.907,
+      "duration": 3.089
+    },
+    {
+      "text": " video. But before learning that best",
+      "start": 49.053,
+      "duration": 3.646
+    },
+    {
+      "text": " method, you should know a clever",
+      "start": 51.751,
+      "duration": 2.637
+    },
+    {
+      "text": " workaround, and that workaround is",
+      "start": 53.439,
+      "duration": 2.74
+    },
+    {
+      "text": " called the Perceptron Trick. Okay? It",
+      "start": 55.23,
+      "duration": 3.286
+    },
+    {
+      "text": " is very interesting, very simple, and",
+      "start": 57.577,
+      "duration": 3.276
+    },
+    {
+      "text": " very elegant. I will show you how to do",
+      "start": 59.914,
+      "duration": 3.103
+    },
+    {
+      "text": " things right from scratch. First, we",
+      "start": 62.065,
+      "duration": 3.16
+    },
+    {
+      "text": " will develop a mathematical intuition.",
+      "start": 64.288,
+      "duration": 3.364
+    },
+    {
+      "text": " After that, we will convert it into",
+      "start": 66.896,
+      "duration": 2.951
+    },
+    {
+      "text": " code. Lastly, I have also made an",
+      "start": 68.903,
+      "duration": 3.52
+    },
+    {
+      "text": " animation for you so that you can see",
+      "start": 71.478,
+      "duration": 3.01
+    },
+    {
+      "text": " step-by-step how the whole thing is",
+      "start": 73.542,
+      "duration": 2.902
+    },
+    {
+      "text": " happening. Okay? So that's it for the",
+      "start": 75.498,
+      "duration": 3.754
+    },
+    {
+      "text": " introduction. Let's start the video. So",
+      "start": 78.299,
+      "duration": 3.761
+    },
+    {
+      "text": " let's understand what the Perceptron",
+      "start": 81.113,
+      "duration": 2.927
+    },
+    {
+      "text": " Trick is and how it works. Again, let's",
+      "start": 83.093,
+      "duration": 3.63
+    },
+    {
+      "text": " take the same example. We have CGPA on",
+      "start": 85.781,
+      "duration": 4.831
+    },
+    {
+      "text": " the x-axis and IQ on the y-axis, and",
+      "start": 89.677,
+      "duration": 3.363
+    },
+    {
+      "text": " these colors, blue and green, represent",
+      "start": 92.105,
+      "duration": 3.56
+    },
+    {
+      "text": " whether the students got placed or not.",
+      "start": 94.73,
+      "duration": 3.56
+    },
+    {
+      "text": " The green ones are the students who got",
+      "start": 98.419,
+      "duration": 2.748
+    },
+    {
+      "text": " placed. The blue ones are the students",
+      "start": 100.212,
+      "duration": 2.724
+    },
+    {
+      "text": " who did not get placed. Now, we need to",
+      "start": 101.98,
+      "duration": 3.185
+    },
+    {
+      "text": " build a model that can take any new",
+      "start": 104.222,
+      "duration": 3.004
+    },
+    {
+      "text": " student's CGPA and IQ and predict",
+      "start": 106.283,
+      "duration": 2.889
+    },
+    {
+      "text": " whether they will get placed or not.",
+      "start": 108.23,
+      "duration": 3.061
+    },
+    {
+      "text": " Okay? Now, think about it guys, I mean,",
+      "start": 111.342,
+      "duration": 4.824
+    },
+    {
+      "text": " if you were given this dataset and",
+      "start": 115.222,
+      "duration": 2.899
+    },
+    {
+      "text": " asked to build a model, how would you",
+      "start": 117.177,
+      "duration": 3.067
+    },
+    {
+      "text": " do it? The first observation you would",
+      "start": 119.3,
+      "duration": 5.042
+    },
+    {
+      "text": " make is that this data is linearly",
+      "start": 123.392,
+      "duration": 2.706
+    },
+    {
+      "text": " separable. Meaning, you can draw a line",
+      "start": 125.148,
+      "duration": 4.967
+    },
+    {
+      "text": " to classify this data into two classes.",
+      "start": 129.176,
+      "duration": 3.366
+    },
+    {
+      "text": " Right? Meaning, I just need to find the",
+      "start": 133.041,
+      "duration": 3.15
+    },
+    {
+      "text": " equation of this line. Okay? Now,",
+      "start": 135.244,
+      "duration": 3.029
+    },
+    {
+      "text": " always remember one thing: while",
+      "start": 137.334,
+      "duration": 2.928
+    },
+    {
+      "text": " studying logistic regression, the",
+      "start": 139.322,
+      "duration": 2.988
+    },
+    {
+      "text": " equation of the line you take here is",
+      "start": 141.37,
+      "duration": 3.229
+    },
+    {
+      "text": " not in that form. Here, your equation",
+      "start": 143.659,
+      "duration": 3.799
+    },
+    {
+      "text": " is in this form. ax + by + c = 0 is the",
+      "start": 146.517,
+      "duration": 5.179
+    },
+    {
+      "text": " general equation. Okay? You never use",
+      "start": 150.784,
+      "duration": 5.196
+    },
+    {
+      "text": " this equation in logistic regression.",
+      "start": 155.036,
+      "duration": 3.069
+    },
+    {
+      "text": " You use this in linear regression. In",
+      "start": 157.548,
+      "duration": 3.114
+    },
+    {
+      "text": " logistic regression, you use the",
+      "start": 159.721,
+      "duration": 2.881
+    },
+    {
+      "text": " general form. In fact, you can write it",
+      "start": 161.661,
+      "duration": 3.171
+    },
+    {
+      "text": " even better this way. ax1 where CGPA is",
+      "start": 163.884,
+      "duration": 6.644
+    },
+    {
+      "text": " X1 + bx2 where IQ is X2 + C = 0. What",
+      "start": 169.657,
+      "duration": 7.745
+    },
+    {
+      "text": " is C? C is your Y-intercept. Okay? Now,",
+      "start": 176.468,
+      "duration": 4.827
+    },
+    {
+      "text": " if this were in 3D, this equation would",
+      "start": 180.363,
+      "duration": 3.666
+    },
+    {
+      "text": " change. Meaning if there was an extra",
+      "start": 183.097,
+      "duration": 8.184
+    },
+    {
+      "text": " column, say, 10 th-grade marks, you",
+      "start": 190.349,
+      "duration": 3.396
+    },
+    {
+      "text": " would write it as ax1 + bx2 + cx3 + d =",
+      "start": 192.813,
+      "duration": 3.67
+    },
+    {
+      "text": " 0, and you can see that in higher",
+      "start": 195.551,
+      "duration": 3.259
+    },
+    {
+      "text": " dimensions, you would keep adding terms",
+      "start": 197.879,
+      "duration": 3.67
+    },
+    {
+      "text": " like this. Okay? So anyway, what I need",
+      "start": 200.617,
+      "duration": 8.071
+    },
+    {
+      "text": " to do is, I can see that this data is",
+      "start": 207.75,
+      "duration": 3.283
+    },
+    {
+      "text": " linearly separable. Meaning, I need to",
+      "start": 210.094,
+      "duration": 5.11
+    },
+    {
+      "text": " find a line that can cut through this",
+      "start": 214.253,
+      "duration": 2.806
+    },
+    {
+      "text": " data. To properly classify both labels.",
+      "start": 216.107,
+      "duration": 5.357
+    },
+    {
+      "text": " And if I need to find a line, it means",
+      "start": 224.154,
+      "duration": 3.285
+    },
+    {
+      "text": " I need to find the values of A, B, and",
+      "start": 226.499,
+      "duration": 3.286
+    },
+    {
+      "text": " C. So my end objective is to find",
+      "start": 228.845,
+      "duration": 2.985
+    },
+    {
+      "text": " values for A, B, and C such that you",
+      "start": 230.89,
+      "duration": 3.166
+    },
+    {
+      "text": " can perfectly classify the two classes",
+      "start": 233.116,
+      "duration": 3.285
+    },
+    {
+      "text": " in this data. That's my objective at",
+      "start": 235.462,
+      "duration": 6.219
+    },
+    {
+      "text": " this point. Okay? Now here we will",
+      "start": 240.73,
+      "duration": 3.53
+    },
+    {
+      "text": " study how the perceptron trick works.",
+      "start": 243.315,
+      "duration": 3.009
+    },
+    {
+      "text": " So, the perceptron trick is a very",
+      "start": 245.424,
+      "duration": 3.166
+    },
+    {
+      "text": " simple idea. Let me explain it to you",
+      "start": 247.654,
+      "duration": 3.111
+    },
+    {
+      "text": " once. You will laugh at its simplicity,",
+      "start": 249.817,
+      "duration": 3.45
+    },
+    {
+      "text": " thinking about how simply someone found",
+      "start": 252.318,
+      "duration": 3.02
+    },
+    {
+      "text": " a solution. So the solution is very",
+      "start": 254.39,
+      "duration": 3.699
+    },
+    {
+      "text": " simple. What do you do? You start with",
+      "start": 257.147,
+      "duration": 3.386
+    },
+    {
+      "text": " random values for a, b, and c. a = 1, b",
+      "start": 259.607,
+      "duration": 4.565
+    },
+    {
+      "text": " = 1, c = 0; you start with random",
+      "start": 263.285,
+      "duration": 4.7
+    },
+    {
+      "text": " values. Meaning you start with a random",
+      "start": 267.097,
+      "duration": 3.924
+    },
+    {
+      "text": " line. Suppose this is your line.",
+      "start": 270.071,
+      "duration": 3.098
+    },
+    {
+      "text": " Initially, this is your line. Now,",
+      "start": 272.269,
+      "duration": 3.341
+    },
+    {
+      "text": " obviously, this line means that on this",
+      "start": 274.669,
+      "duration": 3.316
+    },
+    {
+      "text": " side of the line, you are saying",
+      "start": 277.045,
+      "duration": 2.9
+    },
+    {
+      "text": " everything is green, as in everyone",
+      "start": 279.004,
+      "duration": 3.078
+    },
+    {
+      "text": " will get placed, and on this side, no",
+      "start": 281.142,
+      "duration": 3.197
+    },
+    {
+      "text": " one will get placed. So you can see",
+      "start": 283.398,
+      "duration": 3.139
+    },
+    {
+      "text": " that your initial line is saying that",
+      "start": 285.586,
+      "duration": 2.783
+    },
+    {
+      "text": " all students will get placed. And",
+      "start": 287.417,
+      "duration": 2.743
+    },
+    {
+      "text": " obviously, this line is performing",
+      "start": 289.222,
+      "duration": 3.119
+    },
+    {
+      "text": " terribly. Right? This is wrong. So now",
+      "start": 291.404,
+      "duration": 3.351
+    },
+    {
+      "text": " what do I need to do? Somehow, I need",
+      "start": 293.807,
+      "duration": 3.453
+    },
+    {
+      "text": " to get from this line to this line.",
+      "start": 296.315,
+      "duration": 2.93
+    },
+    {
+      "text": " Right? How will we get there? It's very",
+      "start": 299.535,
+      "duration": 3.294
+    },
+    {
+      "text": " simple. What the perceptron trick says",
+      "start": 301.888,
+      "duration": 2.983
+    },
+    {
+      "text": " is that you have to run a loop. You run",
+      "start": 303.919,
+      "duration": 3.571
+    },
+    {
+      "text": " a loop. Generally, you run this loop",
+      "start": 306.547,
+      "duration": 3.31
+    },
+    {
+      "text": " 1000 times, but you can do more or less",
+      "start": 308.917,
+      "duration": 3.327
+    },
+    {
+      "text": " as well. Suppose you are running the",
+      "start": 311.304,
+      "duration": 3.118
+    },
+    {
+      "text": " loop 1000 times. Every time inside the",
+      "start": 313.479,
+      "duration": 3.15
+    },
+    {
+      "text": " loop, what do you do? You select a",
+      "start": 315.683,
+      "duration": 3.458
+    },
+    {
+      "text": " random point. You select a random",
+      "start": 318.199,
+      "duration": 4.2
+    },
+    {
+      "text": " student. You select a random student.",
+      "start": 321.455,
+      "duration": 4.088
+    },
+    {
+      "text": " Okay? Let's say this is the random",
+      "start": 324.782,
+      "duration": 3.362
+    },
+    {
+      "text": " student. You selected this randomly.",
+      "start": 327.193,
+      "duration": 3.64
+    },
+    {
+      "text": " Now we will ask this point to tell us",
+      "start": 331.365,
+      "duration": 2.97
+    },
+    {
+      "text": " if, according to you, this line is in",
+      "start": 333.388,
+      "duration": 2.97
+    },
+    {
+      "text": " the right place or the wrong place. Now",
+      "start": 335.411,
+      "duration": 4.028
+    },
+    {
+      "text": " think about it, my line is saying that",
+      "start": 338.491,
+      "duration": 2.961
+    },
+    {
+      "text": " all points on this side are green.",
+      "start": 340.503,
+      "duration": 2.755
+    },
+    {
+      "text": " Meaning, all these points are green.",
+      "start": 342.358,
+      "duration": 2.94
+    },
+    {
+      "text": " And when we asked this point, it also",
+      "start": 344.398,
+      "duration": 2.776
+    },
+    {
+      "text": " turned out to be green, so don't you",
+      "start": 346.222,
+      "duration": 2.728
+    },
+    {
+      "text": " think this green point is on the",
+      "start": 347.998,
+      "duration": 2.536
+    },
+    {
+      "text": " correct side of this line? Right?",
+      "start": 349.582,
+      "duration": 2.699
+    },
+    {
+      "text": " Meaning, the green point is towards the",
+      "start": 351.381,
+      "duration": 2.699
+    },
+    {
+      "text": " green region itself. So it will say, \"",
+      "start": 353.123,
+      "duration": 2.844
+    },
+    {
+      "text": "No, no brother, I am in the right place",
+      "start": 354.967,
+      "duration": 3.001
+    },
+    {
+      "text": ".\"\"I don't have any problem with this",
+      "start": 356.968,
+      "duration": 2.581
+    },
+    {
+      "text": " line.\"\"Let the line stay as it is.\" So",
+      "start": 358.588,
+      "duration": 3.201
+    },
+    {
+      "text": " you won't do anything. You will ask",
+      "start": 360.84,
+      "duration": 3.191
+    },
+    {
+      "text": " this point, and if it says everything",
+      "start": 363.089,
+      "duration": 3.111
+    },
+    {
+      "text": " is fine, then you will make no changes",
+      "start": 365.258,
+      "duration": 3.169
+    },
+    {
+      "text": " to these A, B, and C. Meaning, you will",
+      "start": 367.484,
+      "duration": 3.226
+    },
+    {
+      "text": " leave this line exactly as it is. Then",
+      "start": 369.767,
+      "duration": 3.309
+    },
+    {
+      "text": " the loop will run again. Now you",
+      "start": 372.122,
+      "duration": 3.231
+    },
+    {
+      "text": " randomly picked this point, this point",
+      "start": 374.406,
+      "duration": 3.011
+    },
+    {
+      "text": " here. So what does this point say? It",
+      "start": 376.47,
+      "duration": 3.954
+    },
+    {
+      "text": " says, \"Brother, I have a problem.\"\"I am",
+      "start": 379.483,
+      "duration": 3.374
+    },
+    {
+      "text": " being told that I am green, but I am",
+      "start": 381.908,
+      "duration": 2.858
+    },
+    {
+      "text": " actually blue.\" Because this whole",
+      "start": 383.817,
+      "duration": 2.701
+    },
+    {
+      "text": " region, this entire region is the green",
+      "start": 385.564,
+      "duration": 2.791
+    },
+    {
+      "text": " region, and this blue point is in the",
+      "start": 387.401,
+      "duration": 2.7
+    },
+    {
+      "text": " green region. Meaning, there was a",
+      "start": 389.146,
+      "duration": 2.665
+    },
+    {
+      "text": " misclassification. My line is",
+      "start": 390.86,
+      "duration": 2.443
+    },
+    {
+      "text": " misidentifying this point. So this",
+      "start": 392.35,
+      "duration": 2.679
+    },
+    {
+      "text": " point will say, \"No, no, I have a",
+      "start": 394.078,
+      "duration": 2.646
+    },
+    {
+      "text": " problem.\"\"I am being called green, but",
+      "start": 395.774,
+      "duration": 2.966
+    },
+    {
+      "text": " I am blue.\" So we will ask it, \"So what",
+      "start": 397.789,
+      "duration": 2.979
+    },
+    {
+      "text": " should we do?\"\"How do we solve this",
+      "start": 399.818,
+      "duration": 2.717
+    },
+    {
+      "text": " problem?\" So this line, this blue point",
+      "start": 401.579,
+      "duration": 3.223
+    },
+    {
+      "text": " will tell this line, \"Come a little",
+      "start": 403.858,
+      "duration": 2.948
+    },
+    {
+      "text": " towards me.\"\"Come a little towards me.\"",
+      "start": 405.862,
+      "duration": 3.066
+    },
+    {
+      "text": " So what will you do? You will take a",
+      "start": 408.028,
+      "duration": 2.857
+    },
+    {
+      "text": " transformation. You will make changes",
+      "start": 409.934,
+      "duration": 2.987
+    },
+    {
+      "text": " to A, B, and C in such a way that this",
+      "start": 411.976,
+      "duration": 3.092
+    },
+    {
+      "text": " line becomes something like this.",
+      "start": 414.123,
+      "duration": 2.817
+    },
+    {
+      "text": " Something like this. Now look, this",
+      "start": 416.072,
+      "duration": 3.444
+    },
+    {
+      "text": " blue point has come to the right place.",
+      "start": 418.571,
+      "duration": 3.169
+    },
+    {
+      "text": " This blue point is now in the right",
+      "start": 421.126,
+      "duration": 2.839
+    },
+    {
+      "text": " place. Okay? Now we will go to the next",
+      "start": 423.017,
+      "duration": 3.326
+    },
+    {
+      "text": " cycle again. Now we picked this one. It",
+      "start": 425.396,
+      "duration": 3.595
+    },
+    {
+      "text": " says, \"No, no, I am fine.\"\"I don't have",
+      "start": 428.08,
+      "duration": 3.963
+    },
+    {
+      "text": " any issue.\" Then you asked this point",
+      "start": 431.087,
+      "duration": 3.347
+    },
+    {
+      "text": " here. This point here. Okay? So it said",
+      "start": 433.48,
+      "duration": 4.266
+    },
+    {
+      "text": ", \"No, no, I have an issue.\"\"Bring the",
+      "start": 436.746,
+      "duration": 3.458
+    },
+    {
+      "text": " line towards me.\"\"Take me into the blue",
+      "start": 439.246,
+      "duration": 2.786
+    },
+    {
+      "text": " region.\" So you will change the line in",
+      "start": 441.076,
+      "duration": 2.962
+    },
+    {
+      "text": " such a way. You will change A, B, and C",
+      "start": 443.088,
+      "duration": 3.725
+    },
+    {
+      "text": " in such a way that your new line will",
+      "start": 445.869,
+      "duration": 3.084
+    },
+    {
+      "text": " be something like this. Like this. Okay",
+      "start": 448.01,
+      "duration": 4.678
+    },
+    {
+      "text": "? You moved it. Now, how are these",
+      "start": 451.688,
+      "duration": 2.979
+    },
+    {
+      "text": " transformations happening? What changes",
+      "start": 453.711,
+      "duration": 2.837
+    },
+    {
+      "text": " are you making to A, B, and C? We will",
+      "start": 455.596,
+      "duration": 2.838
+    },
+    {
+      "text": " study this after a while. First, get",
+      "start": 457.476,
+      "duration": 2.814
+    },
+    {
+      "text": " the core idea. Then we asked from this",
+      "start": 459.356,
+      "duration": 3.1
+    },
+    {
+      "text": " point again. Naturally, it will also",
+      "start": 461.503,
+      "duration": 3.318
+    },
+    {
+      "text": " say there is no need to change. Then I",
+      "start": 463.878,
+      "duration": 3.165
+    },
+    {
+      "text": " asked from this point. It says, \"",
+      "start": 466.089,
+      "duration": 3.226
+    },
+    {
+      "text": "Brother, I have a problem with this",
+      "start": 468.315,
+      "duration": 2.932
+    },
+    {
+      "text": " line.\" Rotate it and bring it towards",
+      "start": 470.302,
+      "duration": 3.081
+    },
+    {
+      "text": " me. You then brought it near this and",
+      "start": 472.434,
+      "duration": 3.318
+    },
+    {
+      "text": " reached this line. Right? So that is",
+      "start": 474.797,
+      "duration": 5.893
+    },
+    {
+      "text": " what you do in perceptron. You run a",
+      "start": 479.745,
+      "duration": 4.02
+    },
+    {
+      "text": " loop. You pick points randomly. You ask",
+      "start": 482.823,
+      "duration": 4.166
+    },
+    {
+      "text": " it if it is classified correctly or not",
+      "start": 486.044,
+      "duration": 3.133
+    },
+    {
+      "text": ". If you are classified correctly, I",
+      "start": 488.177,
+      "duration": 3.577
+    },
+    {
+      "text": " will do nothing. If you are classified",
+      "start": 490.81,
+      "duration": 3.176
+    },
+    {
+      "text": " incorrectly, I will move the line",
+      "start": 493.036,
+      "duration": 2.671
+    },
+    {
+      "text": " towards you. Okay? Okay? Now, we will",
+      "start": 494.758,
+      "duration": 3.367
+    },
+    {
+      "text": " understand how to move this line",
+      "start": 497.175,
+      "duration": 2.622
+    },
+    {
+      "text": " towards you. But that is the core idea.",
+      "start": 498.847,
+      "duration": 3.078
+    },
+    {
+      "text": " And how long does this loop run? There",
+      "start": 501.26,
+      "duration": 3.33
+    },
+    {
+      "text": " are two ways. The first way is to run",
+      "start": 503.642,
+      "duration": 2.938
+    },
+    {
+      "text": " it a thousand times. Generally, you get",
+      "start": 505.63,
+      "duration": 3.161
+    },
+    {
+      "text": " the right result in 1000 times. Or if",
+      "start": 507.85,
+      "duration": 3.195
+    },
+    {
+      "text": " you don't get it in 1000, make it",
+      "start": 510.104,
+      "duration": 2.932
+    },
+    {
+      "text": " 10,000. You will get the right result.",
+      "start": 512.095,
+      "duration": 2.772
+    },
+    {
+      "text": " Or the second option is. You run this",
+      "start": 513.967,
+      "duration": 3.532
+    },
+    {
+      "text": " loop until convergence. You check,",
+      "start": 516.555,
+      "duration": 4.924
+    },
+    {
+      "text": " after every loop cycle, you check how",
+      "start": 520.537,
+      "duration": 3.158
+    },
+    {
+      "text": " many points are misclassified. In every",
+      "start": 522.753,
+      "duration": 4.261
+    },
+    {
+      "text": " loop, every cycle, check once how many",
+      "start": 526.076,
+      "duration": 3.381
+    },
+    {
+      "text": " points are misclassified. Keep doing",
+      "start": 528.519,
+      "duration": 4.193
+    },
+    {
+      "text": " this until the number of misclassified",
+      "start": 531.766,
+      "duration": 3.08
+    },
+    {
+      "text": " points becomes zero. As soon as it",
+      "start": 533.9,
+      "duration": 4.312
+    },
+    {
+      "text": " becomes zero, you have converged and",
+      "start": 537.266,
+      "duration": 2.964
+    },
+    {
+      "text": " your loop will stop. So both approaches",
+      "start": 539.285,
+      "duration": 3.299
+    },
+    {
+      "text": " are used by people. Either they use",
+      "start": 541.639,
+      "duration": 3.311
+    },
+    {
+      "text": " convergence or they use the number of",
+      "start": 544.0,
+      "duration": 2.834
+    },
+    {
+      "text": " epochs. By the way, this is called",
+      "start": 545.883,
+      "duration": 3.084
+    },
+    {
+      "text": " epochs. How many times this loop runs,",
+      "start": 548.023,
+      "duration": 3.102
+    },
+    {
+      "text": " we call that an epoch. Okay? So that is",
+      "start": 550.179,
+      "duration": 3.383
+    },
+    {
+      "text": " the core idea. I am summarizing it once",
+      "start": 552.619,
+      "duration": 3.357
+    },
+    {
+      "text": ". You start with a random line.",
+      "start": 554.976,
+      "duration": 2.583
+    },
+    {
+      "text": " Obviously, that line's performance will",
+      "start": 556.659,
+      "duration": 3.061
+    },
+    {
+      "text": " be poor. You run a loop. Okay? Every",
+      "start": 558.773,
+      "duration": 3.54
+    },
+    {
+      "text": " time in the loop, you randomly ask a",
+      "start": 561.368,
+      "duration": 3.003
+    },
+    {
+      "text": " point if it's classified correctly or",
+      "start": 563.427,
+      "duration": 3.058
+    },
+    {
+      "text": " not? If it is classified correctly, you",
+      "start": 565.541,
+      "duration": 3.513
+    },
+    {
+      "text": " do nothing. If it is classified",
+      "start": 568.114,
+      "duration": 2.761
+    },
+    {
+      "text": " incorrectly, you move the line towards",
+      "start": 569.928,
+      "duration": 3.008
+    },
+    {
+      "text": " that point. Now, how does this",
+      "start": 571.989,
+      "duration": 2.786
+    },
+    {
+      "text": " transformation of moving happen? We",
+      "start": 573.832,
+      "duration": 3.139
+    },
+    {
+      "text": " will discuss this after a while. But",
+      "start": 576.022,
+      "duration": 3.256
+    },
+    {
+      "text": " you move the line towards the point.",
+      "start": 578.323,
+      "duration": 2.611
+    },
+    {
+      "text": " And you keep doing this until",
+      "start": 580.266,
+      "duration": 2.421
+    },
+    {
+      "text": " convergence is reached. How is",
+      "start": 581.736,
+      "duration": 2.578
+    },
+    {
+      "text": " convergence defined? That none of your",
+      "start": 583.373,
+      "duration": 3.487
+    },
+    {
+      "text": " points are misclassified. That is",
+      "start": 585.909,
+      "duration": 2.999
+    },
+    {
+      "text": " convergence. And once convergence is",
+      "start": 587.966,
+      "duration": 3.0
+    },
+    {
+      "text": " reached, you stop your loop and your",
+      "start": 590.019,
+      "duration": 2.894
+    },
+    {
+      "text": " job is done. And that is how this",
+      "start": 591.965,
+      "duration": 2.754
+    },
+    {
+      "text": " entire thing works. Like, it is that",
+      "start": 593.77,
+      "duration": 2.995
+    },
+    {
+      "text": " simple. Okay? So, next we will discuss",
+      "start": 595.823,
+      "duration": 3.502
+    },
+    {
+      "text": " how these transformations are happening",
+      "start": 598.381,
+      "duration": 3.173
+    },
+    {
+      "text": ". Meaning, if I have to move my line",
+      "start": 600.554,
+      "duration": 3.636
+    },
+    {
+      "text": " towards a point, how can I move it?",
+      "start": 603.245,
+      "duration": 2.929
+    },
+    {
+      "text": " Before we discuss those transformations",
+      "start": 606.163,
+      "duration": 3.097
+    },
+    {
+      "text": ", guys, I want to discuss another",
+      "start": 608.26,
+      "duration": 2.775
+    },
+    {
+      "text": " important point with you. So, if you",
+      "start": 610.089,
+      "duration": 5.746
+    },
+    {
+      "text": " remember a little while ago, I told you",
+      "start": 614.891,
+      "duration": 3.202
+    },
+    {
+      "text": " that this is our line, and without much",
+      "start": 617.149,
+      "duration": 3.201
+    },
+    {
+      "text": " discussion, I said that the entire",
+      "start": 619.407,
+      "duration": 2.919
+    },
+    {
+      "text": " region above it is the positive region,",
+      "start": 621.382,
+      "duration": 3.202
+    },
+    {
+      "text": " or the green region, and the entire",
+      "start": 623.64,
+      "duration": 2.976
+    },
+    {
+      "text": " region below it is the blue region.",
+      "start": 625.672,
+      "duration": 2.976
+    },
+    {
+      "text": " Okay? But how did I know that? I mean,",
+      "start": 630.223,
+      "duration": 5.819
+    },
+    {
+      "text": " if tomorrow this line is not like this",
+      "start": 635.097,
+      "duration": 3.097
+    },
+    {
+      "text": " but instead like this, then how will",
+      "start": 637.249,
+      "duration": 2.987
+    },
+    {
+      "text": " you know which region is green and",
+      "start": 639.291,
+      "duration": 2.876
+    },
+    {
+      "text": " which region is blue? So, we will first",
+      "start": 641.223,
+      "duration": 5.729
+    },
+    {
+      "text": " learn how to identify the positive",
+      "start": 646.007,
+      "duration": 2.858
+    },
+    {
+      "text": " region and the negative region. Okay?",
+      "start": 647.92,
+      "duration": 3.657
+    },
+    {
+      "text": " So, for this, I am using a tool. Desmos",
+      "start": 650.677,
+      "duration": 3.963
+    },
+    {
+      "text": ", it's a very good website. It is",
+      "start": 653.64,
+      "duration": 3.311
+    },
+    {
+      "text": " basically a calculator. So, here I have",
+      "start": 656.006,
+      "duration": 3.742
+    },
+    {
+      "text": " drawn a line. 2x + 3y + 5 = 0, now I",
+      "start": 658.808,
+      "duration": 4.737
+    },
+    {
+      "text": " need to find out which is its positive",
+      "start": 662.626,
+      "duration": 4.081
+    },
+    {
+      "text": " region. See, clearly, you will",
+      "start": 665.788,
+      "duration": 3.185
+    },
+    {
+      "text": " understand by looking that whatever is",
+      "start": 668.026,
+      "duration": 3.014
+    },
+    {
+      "text": " above this line will be the positive",
+      "start": 670.093,
+      "duration": 2.909
+    },
+    {
+      "text": " region, and how will that be found? If",
+      "start": 672.055,
+      "duration": 3.445
+    },
+    {
+      "text": " you write 2x + 3y + 5 > 0, now see,",
+      "start": 674.589,
+      "duration": 8.175
+    },
+    {
+      "text": " this entire region which is displayed",
+      "start": 681.842,
+      "duration": 3.893
+    },
+    {
+      "text": " in blue is the positive region. So, how",
+      "start": 684.813,
+      "duration": 6.153
+    },
+    {
+      "text": " do we find out? What do you need to do?",
+      "start": 690.033,
+      "duration": 3.047
+    },
+    {
+      "text": " Suppose you have any point and you need",
+      "start": 693.306,
+      "duration": 2.819
+    },
+    {
+      "text": " to find out. Let's say you have any",
+      "start": 695.172,
+      "duration": 5.247
+    },
+    {
+      "text": " point, any point at all, and you need",
+      "start": 699.471,
+      "duration": 2.916
+    },
+    {
+      "text": " to know if this point falls on the",
+      "start": 701.439,
+      "duration": 2.761
+    },
+    {
+      "text": " positive side or the negative side of",
+      "start": 703.252,
+      "duration": 2.916
+    },
+    {
+      "text": " this line, then what do you have to do?",
+      "start": 705.22,
+      "duration": 3.02
+    },
+    {
+      "text": " You know the equation of the line is ax",
+      "start": 710.172,
+      "duration": 3.383
+    },
+    {
+      "text": " + by + c = 0, and suppose this point",
+      "start": 712.616,
+      "duration": 3.2
+    },
+    {
+      "text": " you have has coordinates x1 and y1,",
+      "start": 714.877,
+      "duration": 3.139
+    },
+    {
+      "text": " then you will simply plug these points",
+      "start": 717.077,
+      "duration": 3.323
+    },
+    {
+      "text": " into the line equation. So your value",
+      "start": 719.461,
+      "duration": 7.027
+    },
+    {
+      "text": " will be ax1 + b1 + c, and if this value",
+      "start": 725.552,
+      "duration": 3.501
+    },
+    {
+      "text": " is greater than 0, it means that the",
+      "start": 728.118,
+      "duration": 3.308
+    },
+    {
+      "text": " point is in the positive region. If its",
+      "start": 730.49,
+      "duration": 5.866
+    },
+    {
+      "text": " value is less than 0, it means it is in",
+      "start": 735.413,
+      "duration": 3.216
+    },
+    {
+      "text": " the negative region. And if its value",
+      "start": 737.685,
+      "duration": 3.651
+    },
+    {
+      "text": " equals 0, it means the point lies on",
+      "start": 740.397,
+      "duration": 3.189
+    },
+    {
+      "text": " the line. Basic geometry. Right? So let",
+      "start": 742.646,
+      "duration": 4.171
+    },
+    {
+      "text": " me show you quickly. Similarly, if you",
+      "start": 745.868,
+      "duration": 5.506
+    },
+    {
+      "text": " do 2x + 3y + 5 < 0, then this green",
+      "start": 750.455,
+      "duration": 3.835
+    },
+    {
+      "text": " region is the negative region. Any",
+      "start": 753.371,
+      "duration": 5.2
+    },
+    {
+      "text": " point here is falling into the negative",
+      "start": 757.62,
+      "duration": 2.91
+    },
+    {
+      "text": " region. Right? Let's look at another",
+      "start": 759.579,
+      "duration": 3.487
+    },
+    {
+      "text": " line which is like this. This is the",
+      "start": 762.113,
+      "duration": 3.391
+    },
+    {
+      "text": " line. If you want to find out which is",
+      "start": 764.556,
+      "duration": 2.739
+    },
+    {
+      "text": " the positive region here? Then you will",
+      "start": 766.338,
+      "duration": 2.736
+    },
+    {
+      "text": " do the same thing again. You will write",
+      "start": 768.117,
+      "duration": 3.302
+    },
+    {
+      "text": " -2 x + 3y-5 > 0, so the region above is",
+      "start": 770.502,
+      "duration": 6.505
+    },
+    {
+      "text": " again the positive region. And if you",
+      "start": 776.089,
+      "duration": 7.65
+    },
+    {
+      "text": " want to see the negative region, again",
+      "start": 782.808,
+      "duration": 3.646
+    },
+    {
+      "text": " you will write -2 x + 3y-5 < 0 and this",
+      "start": 785.523,
+      "duration": 3.716
+    },
+    {
+      "text": " red region is your positive, I am sorry",
+      "start": 788.308,
+      "duration": 3.715
+    },
+    {
+      "text": ", negative region. Any point in this",
+      "start": 791.023,
+      "duration": 5.43
+    },
+    {
+      "text": " region will fall on the negative side.",
+      "start": 795.503,
+      "duration": 2.886
+    },
+    {
+      "text": " Right? So I hope you understood this",
+      "start": 797.895,
+      "duration": 3.445
+    },
+    {
+      "text": " entire concept. Now we will study how",
+      "start": 800.399,
+      "duration": 3.698
+    },
+    {
+      "text": " to move or transform the line. So now",
+      "start": 803.15,
+      "duration": 4.363
+    },
+    {
+      "text": " guys, let's discuss how we can move a",
+      "start": 806.572,
+      "duration": 3.184
+    },
+    {
+      "text": " line in this two-dimensional space.",
+      "start": 808.815,
+      "duration": 3.066
+    },
+    {
+      "text": " Obviously, this movement comes from",
+      "start": 813.013,
+      "duration": 3.076
+    },
+    {
+      "text": " making changes to A, B, and C. And by",
+      "start": 815.148,
+      "duration": 3.195
+    },
+    {
+      "text": " making changes to all three, you can",
+      "start": 817.403,
+      "duration": 3.135
+    },
+    {
+      "text": " perform three different types of",
+      "start": 819.598,
+      "duration": 2.898
+    },
+    {
+      "text": " transformations. Let me show you. So if",
+      "start": 821.555,
+      "duration": 5.793
+    },
+    {
+      "text": " you make changes to C, if you increase",
+      "start": 826.41,
+      "duration": 3.359
+    },
+    {
+      "text": " or decrease C, your line moves",
+      "start": 828.831,
+      "duration": 2.863
+    },
+    {
+      "text": " parallelly up or down. Like, if you",
+      "start": 830.756,
+      "duration": 4.009
+    },
+    {
+      "text": " increase C, you will get this line. If",
+      "start": 833.824,
+      "duration": 3.632
+    },
+    {
+      "text": " you decrease C, you will get this line",
+      "start": 836.514,
+      "duration": 3.207
+    },
+    {
+      "text": " parallelly. Meaning, changes in C cause",
+      "start": 838.779,
+      "duration": 4.171
+    },
+    {
+      "text": " this transformation. If you make",
+      "start": 842.014,
+      "duration": 4.777
+    },
+    {
+      "text": " changes in A, changing A causes",
+      "start": 845.853,
+      "duration": 2.928
+    },
+    {
+      "text": " rotation on this axis. Meaning, your",
+      "start": 847.843,
+      "duration": 5.734
+    },
+    {
+      "text": " line can either go like this or it can",
+      "start": 852.63,
+      "duration": 3.017
+    },
+    {
+      "text": " go like this. Right? And similarly, by",
+      "start": 854.7,
+      "duration": 4.862
+    },
+    {
+      "text": " transforming B, you rotate around this",
+      "start": 858.626,
+      "duration": 3.4
+    },
+    {
+      "text": " point. Either your line will become",
+      "start": 861.089,
+      "duration": 4.332
+    },
+    {
+      "text": " like this or it will become like this.",
+      "start": 864.468,
+      "duration": 2.78
+    },
+    {
+      "text": " Right? So, these three coefficients A,",
+      "start": 867.255,
+      "duration": 3.779
+    },
+    {
+      "text": " B, and C all have an impact on your",
+      "start": 870.1,
+      "duration": 3.32
+    },
+    {
+      "text": " line. I want to show this to you",
+      "start": 872.486,
+      "duration": 3.174
+    },
+    {
+      "text": " practically. So again I will go to",
+      "start": 874.706,
+      "duration": 3.223
+    },
+    {
+      "text": " Desmos. This is my line. First, let me",
+      "start": 876.992,
+      "duration": 3.362
+    },
+    {
+      "text": " show you what happens if you make",
+      "start": 879.411,
+      "duration": 2.879
+    },
+    {
+      "text": " changes to C. We will make two changes.",
+      "start": 881.347,
+      "duration": 3.221
+    },
+    {
+      "text": " We will increase C and decrease C. So",
+      "start": 884.189,
+      "duration": 3.674
+    },
+    {
+      "text": " the first change, increasing C. So 2X +",
+      "start": 886.935,
+      "duration": 3.819
+    },
+    {
+      "text": " 3Y, increasing it plus. We are",
+      "start": 889.826,
+      "duration": 5.186
+    },
+    {
+      "text": " increasing C to 10. = 0, your line",
+      "start": 894.079,
+      "duration": 4.967
+    },
+    {
+      "text": " moved down. Maybe I said that a bit",
+      "start": 898.133,
+      "duration": 3.458
+    },
+    {
+      "text": " backward. So ignore it. This one here",
+      "start": 900.641,
+      "duration": 3.303
+    },
+    {
+      "text": " is correct. And after that, if you",
+      "start": 902.994,
+      "duration": 3.508
+    },
+    {
+      "text": " decrease it, if you do this 2x + 3y + 0",
+      "start": 905.568,
+      "duration": 9.3
+    },
+    {
+      "text": " = 0, then the purple line moved upwards",
+      "start": 913.953,
+      "duration": 4.323
+    },
+    {
+      "text": ". So when you decrease C, you move up,",
+      "start": 917.276,
+      "duration": 5.35
+    },
+    {
+      "text": " and when you increase it, you move down",
+      "start": 921.684,
+      "duration": 3.291
+    },
+    {
+      "text": ". Right? You need to remember this",
+      "start": 923.975,
+      "duration": 2.754
+    },
+    {
+      "text": " transformation. This is the first one.",
+      "start": 925.774,
+      "duration": 2.875
+    },
+    {
+      "text": " Now let's see what happens to the",
+      "start": 927.937,
+      "duration": 2.817
+    },
+    {
+      "text": " coefficient A. The coefficient with x.",
+      "start": 929.809,
+      "duration": 3.093
+    },
+    {
+      "text": " So we are taking an example where we",
+      "start": 933.026,
+      "duration": 2.88
+    },
+    {
+      "text": " increase a. So let's say 4x + 3y + 5 =",
+      "start": 934.958,
+      "duration": 7.624
+    },
+    {
+      "text": " 0, and you can see on this axis, the",
+      "start": 941.66,
+      "duration": 3.809
+    },
+    {
+      "text": " y-axis, where the line intersects, it",
+      "start": 944.547,
+      "duration": 3.886
+    },
+    {
+      "text": " rotated there. Right? If you decrease",
+      "start": 947.511,
+      "duration": 7.587
+    },
+    {
+      "text": " it, let's say instead of 2x you use",
+      "start": 954.157,
+      "duration": 3.034
+    },
+    {
+      "text": " just x, and keep everything else the",
+      "start": 956.249,
+      "duration": 3.093
+    },
+    {
+      "text": " same. So look guys, this red line, this",
+      "start": 958.4,
+      "duration": 7.638
+    },
+    {
+      "text": " is the red line. This red line is what",
+      "start": 965.103,
+      "duration": 4.437
+    },
+    {
+      "text": " happens when you decrease it. So",
+      "start": 968.588,
+      "duration": 2.969
+    },
+    {
+      "text": " decreasing caused a downward rotation,",
+      "start": 970.615,
+      "duration": 3.195
+    },
+    {
+      "text": " and increasing caused an upward",
+      "start": 972.867,
+      "duration": 2.791
+    },
+    {
+      "text": " rotation. Right? Let's quickly look at",
+      "start": 974.716,
+      "duration": 3.864
+    },
+    {
+      "text": " the y term. So if we go to the y term,",
+      "start": 977.629,
+      "duration": 4.181
+    },
+    {
+      "text": " I'm keeping everything the same with x.",
+      "start": 980.865,
+      "duration": 3.167
+    },
+    {
+      "text": " I am increasing y. 6y + 5 = 0, see this",
+      "start": 983.817,
+      "duration": 5.676
+    },
+    {
+      "text": " transformation happened. This rotation",
+      "start": 988.583,
+      "duration": 4.928
+    },
+    {
+      "text": " occurred. Right? And if I decrease y,",
+      "start": 992.564,
+      "duration": 6.294
+    },
+    {
+      "text": " so if I write 2x + y + 5 = 0, then this",
+      "start": 997.941,
+      "duration": 4.244
+    },
+    {
+      "text": " rotation happens. So if you apply these",
+      "start": 1001.268,
+      "duration": 6.286
+    },
+    {
+      "text": " three things individually, three",
+      "start": 1006.607,
+      "duration": 2.675
+    },
+    {
+      "text": " different types of effects occur. If",
+      "start": 1008.335,
+      "duration": 3.275
+    },
+    {
+      "text": " you use all three together, there is a",
+      "start": 1010.664,
+      "duration": 3.043
+    },
+    {
+      "text": " transformation in combination. So I was",
+      "start": 1012.761,
+      "duration": 4.673
+    },
+    {
+      "text": " telling you that when your point is",
+      "start": 1016.488,
+      "duration": 2.894
+    },
+    {
+      "text": " wrongly classified, when I said it will",
+      "start": 1018.436,
+      "duration": 3.112
+    },
+    {
+      "text": " pull the line towards itself, that is",
+      "start": 1020.602,
+      "duration": 3.002
+    },
+    {
+      "text": " exactly what I meant—that we will",
+      "start": 1022.659,
+      "duration": 2.894
+    },
+    {
+      "text": " make changes in A, B, and C such that",
+      "start": 1024.607,
+      "duration": 3.003
+    },
+    {
+      "text": " the line moves toward the point. What",
+      "start": 1026.664,
+      "duration": 4.496
+    },
+    {
+      "text": " those specific changes will be, we will",
+      "start": 1030.212,
+      "duration": 3.008
+    },
+    {
+      "text": " see in a little while. So now guys, we",
+      "start": 1032.271,
+      "duration": 4.319
+    },
+    {
+      "text": " know what the transformations do to our",
+      "start": 1035.647,
+      "duration": 3.237
+    },
+    {
+      "text": " line. Now let's see exactly what",
+      "start": 1037.942,
+      "duration": 3.835
+    },
+    {
+      "text": " transformation needs to be applied. All",
+      "start": 1040.83,
+      "duration": 3.24
+    },
+    {
+      "text": " right? So I have taken a small dataset",
+      "start": 1043.114,
+      "duration": 4.079
+    },
+    {
+      "text": " that has only four points. Two green,",
+      "start": 1046.249,
+      "duration": 6.617
+    },
+    {
+      "text": " two blue, and this is my red line; on",
+      "start": 1051.928,
+      "duration": 3.316
+    },
+    {
+      "text": " this side is the green region and on",
+      "start": 1054.307,
+      "duration": 3.254
+    },
+    {
+      "text": " this side is the blue region. So you",
+      "start": 1056.623,
+      "duration": 6.845
+    },
+    {
+      "text": " can see there are two points here that",
+      "start": 1062.516,
+      "duration": 2.828
+    },
+    {
+      "text": " are misclassified. The first point is",
+      "start": 1064.392,
+      "duration": 3.979
+    },
+    {
+      "text": " this one, because it is a blue point.",
+      "start": 1067.422,
+      "duration": 2.88
+    },
+    {
+      "text": " It is misclassified in the green region",
+      "start": 1070.117,
+      "duration": 3.081
+    },
+    {
+      "text": ", and the second one is this green",
+      "start": 1072.198,
+      "duration": 2.816
+    },
+    {
+      "text": " point in the blue region. All right? So",
+      "start": 1074.067,
+      "duration": 3.826
+    },
+    {
+      "text": " this is also misclassified. Now see",
+      "start": 1076.956,
+      "duration": 3.502
+    },
+    {
+      "text": " what will happen? If you talk with",
+      "start": 1079.505,
+      "duration": 3.473
+    },
+    {
+      "text": " respect to this point, since this point",
+      "start": 1082.026,
+      "duration": 2.879
+    },
+    {
+      "text": " is in the correct place. It will not",
+      "start": 1083.953,
+      "duration": 3.297
+    },
+    {
+      "text": " ask us to apply any transformation. And",
+      "start": 1086.303,
+      "duration": 3.157
+    },
+    {
+      "text": " the same goes with this point. Since it",
+      "start": 1088.504,
+      "duration": 2.782
+    },
+    {
+      "text": " is also in the correct region. No",
+      "start": 1090.331,
+      "duration": 2.543
+    },
+    {
+      "text": " transformation will need to be applied",
+      "start": 1091.919,
+      "duration": 2.705
+    },
+    {
+      "text": " here either. We will have to apply",
+      "start": 1093.669,
+      "duration": 2.543
+    },
+    {
+      "text": " transformations in the case of these",
+      "start": 1095.255,
+      "duration": 2.55
+    },
+    {
+      "text": " two points. So first, let's look at",
+      "start": 1096.848,
+      "duration": 2.876
+    },
+    {
+      "text": " this case. So in this case, I need to",
+      "start": 1098.78,
+      "duration": 3.085
+    },
+    {
+      "text": " move this line in this direction. In",
+      "start": 1100.918,
+      "duration": 3.769
+    },
+    {
+      "text": " this direction. All right? Suppose the",
+      "start": 1103.737,
+      "duration": 6.45
+    },
+    {
+      "text": " equation of this line is 2x + 3y + 5 =",
+      "start": 1109.26,
+      "duration": 3.771
+    },
+    {
+      "text": " 0 and let's assume the coordinates of",
+      "start": 1112.104,
+      "duration": 3.697
+    },
+    {
+      "text": " this point are 4, 5. Now, if you want",
+      "start": 1114.874,
+      "duration": 10.745
+    },
+    {
+      "text": " to move this line in this direction,",
+      "start": 1124.672,
+      "duration": 2.906
+    },
+    {
+      "text": " the perceptron trick says you add a one",
+      "start": 1126.631,
+      "duration": 3.064
+    },
+    {
+      "text": " to the end of these coordinates, like",
+      "start": 1128.748,
+      "duration": 2.959
+    },
+    {
+      "text": " this. And then what you do is write the",
+      "start": 1130.76,
+      "duration": 9.662
+    },
+    {
+      "text": " three coordinates of this line: 2, 3, 5",
+      "start": 1139.498,
+      "duration": 3.976
+    },
+    {
+      "text": " and subtract these numbers from them: 4",
+      "start": 1142.55,
+      "duration": 3.977
+    },
+    {
+      "text": ", 5, 1 and when you subtract these, you",
+      "start": 1145.527,
+      "duration": 3.976
+    },
+    {
+      "text": " will get -2, -2, and 4, all right? I",
+      "start": 1148.579,
+      "duration": 6.367
+    },
+    {
+      "text": " guess I am correct. Yes, and you put x",
+      "start": 1153.998,
+      "duration": 3.443
+    },
+    {
+      "text": " in front of it, y here, and add a plus",
+      "start": 1156.512,
+      "duration": 3.69
+    },
+    {
+      "text": " sign here, equal to 0. This is your new",
+      "start": 1159.272,
+      "duration": 4.22
+    },
+    {
+      "text": " line. So if you plot it and see, most",
+      "start": 1162.542,
+      "duration": 4.377
+    },
+    {
+      "text": " likely this line will transform in such",
+      "start": 1165.973,
+      "duration": 3.115
+    },
+    {
+      "text": " a way that it moves this point into the",
+      "start": 1168.142,
+      "duration": 3.114
+    },
+    {
+      "text": " negative. As it is currently in the",
+      "start": 1170.311,
+      "duration": 3.443
+    },
+    {
+      "text": " positive region. For this line, this",
+      "start": 1172.803,
+      "duration": 3.138
+    },
+    {
+      "text": " point will automatically come into the",
+      "start": 1174.992,
+      "duration": 2.926
+    },
+    {
+      "text": " negative region. All right? Now let's",
+      "start": 1176.969,
+      "duration": 3.713
+    },
+    {
+      "text": " talk about this point. Let's assume the",
+      "start": 1179.727,
+      "duration": 4.926
+    },
+    {
+      "text": " coordinates of this point are 1, 3, I",
+      "start": 1183.716,
+      "duration": 3.331
+    },
+    {
+      "text": " am not entirely sure. Now when you need",
+      "start": 1186.11,
+      "duration": 4.742
+    },
+    {
+      "text": " to move the line in this direction, you",
+      "start": 1189.902,
+      "duration": 2.983
+    },
+    {
+      "text": " do the same thing. First, you transform",
+      "start": 1191.936,
+      "duration": 3.437
+    },
+    {
+      "text": " this coordinate to 1, 3, 1 and then",
+      "start": 1194.442,
+      "duration": 3.423
+    },
+    {
+      "text": " again you write the coordinates 2, 3, 5",
+      "start": 1196.934,
+      "duration": 3.7
+    },
+    {
+      "text": ", these are the coordinates of our line",
+      "start": 1199.634,
+      "duration": 3.699
+    },
+    {
+      "text": " that I wrote down. I didn't write",
+      "start": 1202.403,
+      "duration": 4.068
+    },
+    {
+      "text": " coordinates, I wrote coefficients, and",
+      "start": 1205.531,
+      "duration": 3.268
+    },
+    {
+      "text": " then I wrote 1 3 1 here, but this time",
+      "start": 1207.859,
+      "duration": 3.268
+    },
+    {
+      "text": " you add them. Always remember, when you",
+      "start": 1210.187,
+      "duration": 4.397
+    },
+    {
+      "text": " want to move the line in a negative",
+      "start": 1213.637,
+      "duration": 2.875
+    },
+    {
+      "text": " direction, towards the negative region,",
+      "start": 1215.565,
+      "duration": 3.089
+    },
+    {
+      "text": " you add, and when you want to move",
+      "start": 1217.708,
+      "duration": 2.821
+    },
+    {
+      "text": " towards the positive region, you",
+      "start": 1219.583,
+      "duration": 2.714
+    },
+    {
+      "text": " subtract. Right? Adding them gives 3x +",
+      "start": 1221.35,
+      "duration": 5.397
+    },
+    {
+      "text": " 6y + 6 = 0; this will be my new line.",
+      "start": 1225.834,
+      "duration": 4.197
+    },
+    {
+      "text": " And if you plot this line, you would",
+      "start": 1231.258,
+      "duration": 2.769
+    },
+    {
+      "text": " see that now this point will be in the",
+      "start": 1233.076,
+      "duration": 2.869
+    },
+    {
+      "text": " positive region of this line. Right? I",
+      "start": 1234.994,
+      "duration": 4.252
+    },
+    {
+      "text": " will show you this whole demonstration",
+      "start": 1238.301,
+      "duration": 3.099
+    },
+    {
+      "text": " on Desmos. So, look here, I have this",
+      "start": 1240.455,
+      "duration": 4.367
+    },
+    {
+      "text": " line 2x + 3y + 5, and I have these two",
+      "start": 1243.903,
+      "duration": 4.103
+    },
+    {
+      "text": " points. 5 2 and -3 2. Now, suppose this",
+      "start": 1247.088,
+      "duration": 4.817
+    },
+    {
+      "text": " was actually a negative point and it's",
+      "start": 1250.974,
+      "duration": 3.596
+    },
+    {
+      "text": " in the positive region. Now, what do I",
+      "start": 1253.638,
+      "duration": 3.9
+    },
+    {
+      "text": " need to do? I need to change this line",
+      "start": 1256.598,
+      "duration": 3.406
+    },
+    {
+      "text": " so that this negative point moves into",
+      "start": 1259.053,
+      "duration": 2.866
+    },
+    {
+      "text": " the negative region. So, what will I do",
+      "start": 1260.968,
+      "duration": 4.128
+    },
+    {
+      "text": "? I will subtract 5 2 and 1 from here.",
+      "start": 1264.096,
+      "duration": 5.124
+    },
+    {
+      "text": " So, that is exactly what I did. First,",
+      "start": 1269.032,
+      "duration": 3.648
+    },
+    {
+      "text": " I subtracted 5 from 2x, so it became -3",
+      "start": 1271.77,
+      "duration": 4.518
+    },
+    {
+      "text": ". Then I did...I did -3 y, so it became",
+      "start": 1275.288,
+      "duration": 5.903
+    },
+    {
+      "text": " 1 here. And 1-5 became 4. This was my",
+      "start": 1280.28,
+      "duration": 4.589
+    },
+    {
+      "text": " line. And look here, guys. If you take",
+      "start": 1283.929,
+      "duration": 4.911
+    },
+    {
+      "text": " the first line. If you take this line,",
+      "start": 1287.887,
+      "duration": 3.955
+    },
+    {
+      "text": " then for this line, this point was in",
+      "start": 1290.896,
+      "duration": 2.993
+    },
+    {
+      "text": " the positive region. But if you take",
+      "start": 1292.942,
+      "duration": 3.669
+    },
+    {
+      "text": " this line. I am turning this line off.",
+      "start": 1295.657,
+      "duration": 3.253
+    },
+    {
+      "text": " Then for this line, this point is in",
+      "start": 1298.139,
+      "duration": 2.844
+    },
+    {
+      "text": " the negative region. I can actually",
+      "start": 1300.035,
+      "duration": 2.977
+    },
+    {
+      "text": " show you this. I will just copy this.",
+      "start": 1302.066,
+      "duration": 3.212
+    },
+    {
+      "text": " And I will write less than zero. And",
+      "start": 1307.145,
+      "duration": 3.394
+    },
+    {
+      "text": " you can see this point has now moved",
+      "start": 1309.587,
+      "duration": 2.752
+    },
+    {
+      "text": " into the negative region. Right? Now,",
+      "start": 1311.388,
+      "duration": 3.859
+    },
+    {
+      "text": " let's see this same demonstration on",
+      "start": 1314.303,
+      "duration": 3.035
+    },
+    {
+      "text": " this point. Suppose this was our",
+      "start": 1316.395,
+      "duration": 3.906
+    },
+    {
+      "text": " original line and this was our point.",
+      "start": 1319.352,
+      "duration": 2.887
+    },
+    {
+      "text": " Now, suppose this point is a positive",
+      "start": 1321.631,
+      "duration": 3.04
+    },
+    {
+      "text": " point but it is stuck in the negative",
+      "start": 1323.726,
+      "duration": 3.04
+    },
+    {
+      "text": " region. So, I need to perform a",
+      "start": 1325.821,
+      "duration": 2.994
+    },
+    {
+      "text": " transformation on this line so that it",
+      "start": 1327.869,
+      "duration": 3.043
+    },
+    {
+      "text": " goes into the positive region. Right?",
+      "start": 1329.966,
+      "duration": 3.378
+    },
+    {
+      "text": " What is the transformation? We need to",
+      "start": 1332.476,
+      "duration": 3.865
+    },
+    {
+      "text": " add a one in front of it. Right? So",
+      "start": 1335.383,
+      "duration": 4.716
+    },
+    {
+      "text": " when you add -3 to 2, you get -1. When",
+      "start": 1339.19,
+      "duration": 5.653
+    },
+    {
+      "text": " you add -2 to 3y, you get +1, and when",
+      "start": 1343.928,
+      "duration": 4.231
+    },
+    {
+      "text": " you add 1 to 5, you get 6. And when I",
+      "start": 1347.244,
+      "duration": 5.399
+    },
+    {
+      "text": " ran this, look guys, this is the line,",
+      "start": 1351.699,
+      "duration": 3.141
+    },
+    {
+      "text": " and if I remove it, then this point",
+      "start": 1353.896,
+      "duration": 2.972
+    },
+    {
+      "text": " with respect to this line is now in the",
+      "start": 1355.924,
+      "duration": 3.197
+    },
+    {
+      "text": " positive region. Again, I can show this",
+      "start": 1358.177,
+      "duration": 4.295
+    },
+    {
+      "text": ". So I will just copy, I will paste,",
+      "start": 1361.472,
+      "duration": 5.091
+    },
+    {
+      "text": " and here I will write \"greater than\"",
+      "start": 1365.622,
+      "duration": 3.146
+    },
+    {
+      "text": " and show it. And you can see it is now",
+      "start": 1367.828,
+      "duration": 5.076
+    },
+    {
+      "text": " in the positive region. So that is how",
+      "start": 1371.953,
+      "duration": 3.819
+    },
+    {
+      "text": " transformation happens in the",
+      "start": 1374.825,
+      "duration": 2.547
+    },
+    {
+      "text": " perceptron trick. You apply this simple",
+      "start": 1376.425,
+      "duration": 4.115
+    },
+    {
+      "text": " transformation. I am summarizing it",
+      "start": 1379.596,
+      "duration": 3.244
+    },
+    {
+      "text": " once. If a negative point is in the",
+      "start": 1381.902,
+      "duration": 4.551
+    },
+    {
+      "text": " positive region, you add a one to the",
+      "start": 1385.504,
+      "duration": 2.884
+    },
+    {
+      "text": " end of its coordinates and subtract it",
+      "start": 1387.439,
+      "duration": 2.935
+    },
+    {
+      "text": " from the line's coefficients. Okay? And",
+      "start": 1389.425,
+      "duration": 6.564
+    },
+    {
+      "text": " if your positive point is in the",
+      "start": 1395.041,
+      "duration": 2.67
+    },
+    {
+      "text": " negative region, you again add a one to",
+      "start": 1396.763,
+      "duration": 3.036
+    },
+    {
+      "text": " the coordinates and this time you add",
+      "start": 1398.851,
+      "duration": 2.931
+    },
+    {
+      "text": " it, then this transformation happens.",
+      "start": 1400.834,
+      "duration": 2.931
+    },
+    {
+      "text": " Now one last thing, in machine learning",
+      "start": 1405.858,
+      "duration": 3.302
+    },
+    {
+      "text": ", you never apply such large",
+      "start": 1408.16,
+      "duration": 2.653
+    },
+    {
+      "text": " transformations in a single step. Like",
+      "start": 1409.872,
+      "duration": 5.086
+    },
+    {
+      "text": " my line was this before, and after that",
+      "start": 1414.019,
+      "duration": 3.383
+    },
+    {
+      "text": ", it directly became this. Meaning, a",
+      "start": 1416.402,
+      "duration": 3.287
+    },
+    {
+      "text": " very large transformation happened. You",
+      "start": 1418.749,
+      "duration": 3.398
+    },
+    {
+      "text": " never apply such a large transformation",
+      "start": 1421.204,
+      "duration": 3.242
+    },
+    {
+      "text": ". Instead, what do you do? You take a",
+      "start": 1423.446,
+      "duration": 4.681
+    },
+    {
+      "text": " small number which we call the learning",
+      "start": 1427.173,
+      "duration": 2.802
+    },
+    {
+      "text": " rate. Learning rate, and this learning",
+      "start": 1429.021,
+      "duration": 5.516
+    },
+    {
+      "text": " rate is generally 0.1 or sometimes one,",
+      "start": 1433.598,
+      "duration": 3.369
+    },
+    {
+      "text": " depending on the data. Now, what do you",
+      "start": 1436.027,
+      "duration": 3.467
+    },
+    {
+      "text": " do? So, when you are doing this",
+      "start": 1438.555,
+      "duration": 3.296
+    },
+    {
+      "text": " subtraction, instead of directly",
+      "start": 1440.926,
+      "duration": 3.386
+    },
+    {
+      "text": " subtracting from 1, 3, and 1, you take",
+      "start": 1443.387,
+      "duration": 3.834
+    },
+    {
+      "text": " 1, 0, 3 And multiply it by 0.1. So",
+      "start": 1446.295,
+      "duration": 6.302
+    },
+    {
+      "text": " basically, you took the coordinates and",
+      "start": 1451.648,
+      "duration": 2.984
+    },
+    {
+      "text": " multiplied them by the learning rate",
+      "start": 1453.683,
+      "duration": 2.831
+    },
+    {
+      "text": " and then subtracted. So, if I write the",
+      "start": 1455.565,
+      "duration": 4.48
+    },
+    {
+      "text": " formula for you, the formula will look",
+      "start": 1459.099,
+      "duration": 3.054
+    },
+    {
+      "text": " something like this, that your new",
+      "start": 1461.208,
+      "duration": 2.838
+    },
+    {
+      "text": " coefficients will be calculated how?",
+      "start": 1463.1,
+      "duration": 2.947
+    },
+    {
+      "text": " Old coefficients minus learning rate",
+      "start": 1467.174,
+      "duration": 2.839
+    },
+    {
+      "text": " times whatever your coordinates are.",
+      "start": 1469.064,
+      "duration": 2.84
+    },
+    {
+      "text": " Okay? So, first you have to multiply",
+      "start": 1472.942,
+      "duration": 3.388
+    },
+    {
+      "text": " all the coordinates by the learning",
+      "start": 1475.381,
+      "duration": 2.786
+    },
+    {
+      "text": " rate and then subtract from the old",
+      "start": 1477.218,
+      "duration": 2.786
+    },
+    {
+      "text": " coefficients. Then you get the new",
+      "start": 1479.055,
+      "duration": 3.37
+    },
+    {
+      "text": " coefficients. Okay? You have to apply",
+      "start": 1481.474,
+      "duration": 4.786
+    },
+    {
+      "text": " this whole trick in the perceptron",
+      "start": 1485.31,
+      "duration": 2.683
+    },
+    {
+      "text": " trick. Okay? Now we understand the",
+      "start": 1487.042,
+      "duration": 4.608
+    },
+    {
+      "text": " transformation. Now I will write an",
+      "start": 1490.703,
+      "duration": 4.002
+    },
+    {
+      "text": " algorithm for you, by seeing which you",
+      "start": 1493.757,
+      "duration": 2.998
+    },
+    {
+      "text": " will understand exactly what to do",
+      "start": 1495.808,
+      "duration": 2.787
+    },
+    {
+      "text": " step-by-step. So that we can convert it",
+      "start": 1497.648,
+      "duration": 3.808
+    },
+    {
+      "text": " into code. Come on guys, then we are",
+      "start": 1500.504,
+      "duration": 3.531
+    },
+    {
+      "text": " writing an algorithm, and basically, we",
+      "start": 1503.089,
+      "duration": 3.133
+    },
+    {
+      "text": " are writing an algorithm for how to",
+      "start": 1505.277,
+      "duration": 2.914
+    },
+    {
+      "text": " code the perceptron trick, and then we",
+      "start": 1507.246,
+      "duration": 3.078
+    },
+    {
+      "text": " will code it. Okay? So before writing",
+      "start": 1509.379,
+      "duration": 4.47
+    },
+    {
+      "text": " the algorithm, I will have to introduce",
+      "start": 1512.912,
+      "duration": 3.452
+    },
+    {
+      "text": " some notation, etc. Because of that,",
+      "start": 1515.427,
+      "duration": 3.263
+    },
+    {
+      "text": " coding will then become easy. So the",
+      "start": 1517.753,
+      "duration": 3.892
+    },
+    {
+      "text": " first notation is that until now, I was",
+      "start": 1520.7,
+      "duration": 3.172
+    },
+    {
+      "text": " writing my line in this way. ax + by +",
+      "start": 1522.927,
+      "duration": 4.41
+    },
+    {
+      "text": " c = 0. Now, suppose if this is our data",
+      "start": 1526.405,
+      "duration": 3.656
+    },
+    {
+      "text": ", then I would actually write this line",
+      "start": 1529.061,
+      "duration": 3.657
+    },
+    {
+      "text": " rather than writing it like this. I",
+      "start": 1531.786,
+      "duration": 4.572
+    },
+    {
+      "text": " would write it like this. w 0 + w1x1 +",
+      "start": 1535.403,
+      "duration": 8.487
+    },
+    {
+      "text": " w2 x2 = 0. So here, w naught is c, w1",
+      "start": 1543.159,
+      "duration": 8.607
+    },
+    {
+      "text": " is a, and w2 is b, okay? And if we",
+      "start": 1550.879,
+      "duration": 7.652
+    },
+    {
+      "text": " catch the logic here, this becomes your",
+      "start": 1557.596,
+      "duration": 3.553
+    },
+    {
+      "text": " x1, this becomes your x2, and this",
+      "start": 1560.215,
+      "duration": 3.225
+    },
+    {
+      "text": " becomes your y, okay? Basically, the",
+      "start": 1562.506,
+      "duration": 6.474
+    },
+    {
+      "text": " prediction. So why did I write it in",
+      "start": 1568.042,
+      "duration": 3.442
+    },
+    {
+      "text": " this form? Because I will do a little",
+      "start": 1570.534,
+      "duration": 2.984
+    },
+    {
+      "text": " more simplification in this. Okay? What",
+      "start": 1572.568,
+      "duration": 3.23
+    },
+    {
+      "text": " is the simplification? Suppose I am",
+      "start": 1574.85,
+      "duration": 3.775
+    },
+    {
+      "text": " adding another column here. Okay? And",
+      "start": 1577.677,
+      "duration": 3.924
+    },
+    {
+      "text": " what am I doing in that column? I am",
+      "start": 1580.645,
+      "duration": 2.643
+    },
+    {
+      "text": " adding a one in front of every row. I",
+      "start": 1582.334,
+      "duration": 2.777
+    },
+    {
+      "text": " am adding a one in front of every row.",
+      "start": 1584.157,
+      "duration": 2.748
+    },
+    {
+      "text": " And I am calling this column x naught.",
+      "start": 1586.005,
+      "duration": 2.962
+    },
+    {
+      "text": " So what can I do? I can then write it",
+      "start": 1588.144,
+      "duration": 3.067
+    },
+    {
+      "text": " in this way. This equation. I can write",
+      "start": 1590.255,
+      "duration": 3.272
+    },
+    {
+      "text": " it like this. w0 x0 + w1 x1 + w2 x2 = 0",
+      "start": 1592.575,
+      "duration": 8.064
+    },
+    {
+      "text": ", where what is x naught? It is",
+      "start": 1599.639,
+      "duration": 7.369
+    },
+    {
+      "text": " basically this column where the value",
+      "start": 1606.057,
+      "duration": 2.816
+    },
+    {
+      "text": " will always be one. So, if you replace",
+      "start": 1607.922,
+      "duration": 3.033
+    },
+    {
+      "text": " x naught with one, it is the same thing",
+      "start": 1610.01,
+      "duration": 3.167
+    },
+    {
+      "text": ". As soon as you replace x naught with",
+      "start": 1612.177,
+      "duration": 2.825
+    },
+    {
+      "text": " one, you will get this equation. Okay?",
+      "start": 1614.048,
+      "duration": 3.007
+    },
+    {
+      "text": " Why did I write it this way? Because I",
+      "start": 1616.155,
+      "duration": 2.939
+    },
+    {
+      "text": " want to simplify it further and write",
+      "start": 1618.144,
+      "duration": 2.832
+    },
+    {
+      "text": " it like this. Sum from i = 0 to 2 of WI",
+      "start": 1620.026,
+      "duration": 5.342
+    },
+    {
+      "text": " XI = 0. Now, this has become the",
+      "start": 1624.44,
+      "duration": 3.314
+    },
+    {
+      "text": " general equation for our line, and you",
+      "start": 1626.827,
+      "duration": 3.748
+    },
+    {
+      "text": " can add as many columns as you want,",
+      "start": 1629.647,
+      "duration": 3.604
+    },
+    {
+      "text": " this equation will keep working. So",
+      "start": 1632.323,
+      "duration": 4.55
+    },
+    {
+      "text": " this is the equation. Okay? Now let's",
+      "start": 1635.929,
+      "duration": 3.987
+    },
+    {
+      "text": " answer a question. This is my model.",
+      "start": 1638.965,
+      "duration": 3.643
+    },
+    {
+      "text": " Okay? When I applied linear regression,",
+      "start": 1641.708,
+      "duration": 3.599
+    },
+    {
+      "text": " sorry, logistic regression, this was",
+      "start": 1644.369,
+      "duration": 3.236
+    },
+    {
+      "text": " the model I got. This is the model, sum",
+      "start": 1646.667,
+      "duration": 7.782
+    },
+    {
+      "text": " of wi xi = 0, here i = 0 to 2, so we",
+      "start": 1653.551,
+      "duration": 4.672
+    },
+    {
+      "text": " have the values of w0, w1, and w2. Okay",
+      "start": 1657.325,
+      "duration": 8.085
+    },
+    {
+      "text": "? Now the question arises that how will",
+      "start": 1664.41,
+      "duration": 6.187
+    },
+    {
+      "text": " this make a prediction here? How will",
+      "start": 1669.643,
+      "duration": 3.187
+    },
+    {
+      "text": " this model make a prediction? It is",
+      "start": 1671.878,
+      "duration": 2.816
+    },
+    {
+      "text": " very simple. What will you do? If you",
+      "start": 1673.755,
+      "duration": 3.034
+    },
+    {
+      "text": " want to make a prediction on any point,",
+      "start": 1675.838,
+      "duration": 2.938
+    },
+    {
+      "text": " for instance, let's say you want to",
+      "start": 1677.826,
+      "duration": 2.739
+    },
+    {
+      "text": " make a prediction for this point, you",
+      "start": 1679.614,
+      "duration": 2.839
+    },
+    {
+      "text": " want to make a prediction about this",
+      "start": 1681.503,
+      "duration": 2.788
+    },
+    {
+      "text": " student for this point, then what will",
+      "start": 1683.341,
+      "duration": 2.888
+    },
+    {
+      "text": " you do? You will simply write this. You",
+      "start": 1685.279,
+      "duration": 7.325
+    },
+    {
+      "text": " will write W naught, in fact I'll",
+      "start": 1691.671,
+      "duration": 3.225
+    },
+    {
+      "text": " change the pen, you would write W",
+      "start": 1693.964,
+      "duration": 3.224
+    },
+    {
+      "text": " naught multiplied by this student's X",
+      "start": 1696.256,
+      "duration": 3.494
+    },
+    {
+      "text": " naught value of one plus W1 times this",
+      "start": 1698.818,
+      "duration": 3.562
+    },
+    {
+      "text": " student's CGPA value of 7.5 plus W2",
+      "start": 1701.447,
+      "duration": 3.36
+    },
+    {
+      "text": " multiplied by this student's IQ value.",
+      "start": 1703.874,
+      "duration": 3.563
+    },
+    {
+      "text": " Right? Now we have the value of W",
+      "start": 1710.86,
+      "duration": 2.944
+    },
+    {
+      "text": " naught. The value of W1. And the value",
+      "start": 1712.861,
+      "duration": 3.549
+    },
+    {
+      "text": " of W2 as well because our model is",
+      "start": 1715.464,
+      "duration": 2.844
+    },
+    {
+      "text": " built. So this will result in a certain",
+      "start": 1717.362,
+      "duration": 3.317
+    },
+    {
+      "text": " number. Right? Now if that number is",
+      "start": 1719.729,
+      "duration": 4.376
+    },
+    {
+      "text": " greater than or equal to zero, my model",
+      "start": 1723.156,
+      "duration": 3.016
+    },
+    {
+      "text": " will predict that the placement will",
+      "start": 1725.224,
+      "duration": 2.86
+    },
+    {
+      "text": " happen. But if it comes out to be less",
+      "start": 1727.136,
+      "duration": 3.594
+    },
+    {
+      "text": " than zero, my model will predict that",
+      "start": 1729.78,
+      "duration": 2.869
+    },
+    {
+      "text": " the placement won't happen. Right? So",
+      "start": 1731.699,
+      "duration": 3.266
+    },
+    {
+      "text": " that means I don't have to do anything.",
+      "start": 1734.011,
+      "duration": 2.818
+    },
+    {
+      "text": " I basically just need to take any",
+      "start": 1736.752,
+      "duration": 2.866
+    },
+    {
+      "text": " student's CGPA and IQ, put a one in",
+      "start": 1738.674,
+      "duration": 2.979
+    },
+    {
+      "text": " front of it, and take the dot product",
+      "start": 1740.71,
+      "duration": 3.092
+    },
+    {
+      "text": " with my coefficients. If you understand",
+      "start": 1742.859,
+      "duration": 4.019
+    },
+    {
+      "text": " this carefully, it's just a dot product",
+      "start": 1745.93,
+      "duration": 3.018
+    },
+    {
+      "text": ". Meaning, if you want, you can",
+      "start": 1747.948,
+      "duration": 2.742
+    },
+    {
+      "text": " represent it in the form of a matrix.",
+      "start": 1749.745,
+      "duration": 3.029
+    },
+    {
+      "text": " w0 w1 w2 and you can write it as x0 x1",
+      "start": 1751.874,
+      "duration": 4.829
+    },
+    {
+      "text": " x2, when you perform this dot product,",
+      "start": 1755.804,
+      "duration": 4.83
+    },
+    {
+      "text": " you will get exactly the same thing:",
+      "start": 1759.735,
+      "duration": 4.628
+    },
+    {
+      "text": " w0x0 + w1x1 + w2x2. Now if this number",
+      "start": 1763.464,
+      "duration": 6.659
+    },
+    {
+      "text": " is positive, the prediction will be one",
+      "start": 1769.181,
+      "duration": 3.253
+    },
+    {
+      "text": ", and if negative, the prediction will",
+      "start": 1771.434,
+      "duration": 3.195
+    },
+    {
+      "text": " be zero. That is how the entire",
+      "start": 1773.686,
+      "duration": 5.122
+    },
+    {
+      "text": " prediction thing is working. Right? So",
+      "start": 1777.86,
+      "duration": 3.112
+    },
+    {
+      "text": " I explained all of this because it will",
+      "start": 1780.017,
+      "duration": 2.763
+    },
+    {
+      "text": " be easier for you to understand the",
+      "start": 1781.825,
+      "duration": 2.582
+    },
+    {
+      "text": " algorithm we are about to write. Watch",
+      "start": 1783.452,
+      "duration": 2.828
+    },
+    {
+      "text": " carefully. The algorithm is very simple",
+      "start": 1785.336,
+      "duration": 3.219
+    },
+    {
+      "text": ". The algorithm is that you will decide",
+      "start": 1787.555,
+      "duration": 3.277
+    },
+    {
+      "text": " an epoch value. You will decide an",
+      "start": 1789.88,
+      "duration": 3.453
+    },
+    {
+      "text": " epoch value. Generally, it's 1000, and",
+      "start": 1792.387,
+      "duration": 3.825
+    },
+    {
+      "text": " we will decide a learning rate, eta 0.1",
+      "start": 1795.29,
+      "duration": 4.056
+    },
+    {
+      "text": ". Then we will run a loop, for i in",
+      "start": 1798.346,
+      "duration": 6.868
+    },
+    {
+      "text": " range of. Epochs, meaning this loop",
+      "start": 1804.267,
+      "duration": 7.873
+    },
+    {
+      "text": " will run a thousand times. Right? Now",
+      "start": 1811.199,
+      "duration": 4.63
+    },
+    {
+      "text": " inside this loop, I will randomly",
+      "start": 1814.888,
+      "duration": 2.922
+    },
+    {
+      "text": " select a point. Randomly select a point",
+      "start": 1816.869,
+      "duration": 6.756
+    },
+    {
+      "text": " or student. I will randomly pick anyone",
+      "start": 1822.681,
+      "duration": 6.011
+    },
+    {
+      "text": " from all the students in my training",
+      "start": 1827.74,
+      "duration": 2.741
+    },
+    {
+      "text": " data. And then I will check if—and",
+      "start": 1829.53,
+      "duration": 6.74
+    },
+    {
+      "text": " one more thing, I'm going back up to",
+      "start": 1835.322,
+      "duration": 2.86
+    },
+    {
+      "text": " the algorithm. What will happen in the",
+      "start": 1837.233,
+      "duration": 7.221
+    },
+    {
+      "text": " end is that. This is my model, and",
+      "start": 1843.497,
+      "duration": 6.445
+    },
+    {
+      "text": " there will be points on both sides like",
+      "start": 1848.995,
+      "duration": 3.047
+    },
+    {
+      "text": " this. These are the students who didn't",
+      "start": 1851.095,
+      "duration": 4.722
+    },
+    {
+      "text": " get placed, and these are the students",
+      "start": 1854.865,
+      "duration": 2.817
+    },
+    {
+      "text": " who did get placed. Right? So according",
+      "start": 1856.73,
+      "duration": 6.074
+    },
+    {
+      "text": " to this model, this entire region, this",
+      "start": 1861.867,
+      "duration": 3.462
+    },
+    {
+      "text": " entire region, this entire region is",
+      "start": 1864.392,
+      "duration": 3.273
+    },
+    {
+      "text": " the positive region. Right? This is the",
+      "start": 1866.728,
+      "duration": 5.356
+    },
+    {
+      "text": " positive region. Right? And this entire",
+      "start": 1871.135,
+      "duration": 7.646
+    },
+    {
+      "text": " region, this entire region, is the",
+      "start": 1877.842,
+      "duration": 3.092
+    },
+    {
+      "text": " negative region. According to my model.",
+      "start": 1879.996,
+      "duration": 5.398
+    },
+    {
+      "text": " This is the negative region. Okay? So,",
+      "start": 1884.801,
+      "duration": 5.414
+    },
+    {
+      "text": " if we take any point, for instance, if",
+      "start": 1889.275,
+      "duration": 3.267
+    },
+    {
+      "text": " we talk about this point, this student",
+      "start": 1891.602,
+      "duration": 3.267
+    },
+    {
+      "text": " actually got placed, so this is a point",
+      "start": 1893.928,
+      "duration": 3.327
+    },
+    {
+      "text": " xi that belongs to the positive region.",
+      "start": 1896.315,
+      "duration": 3.327
+    },
+    {
+      "text": " Okay? Whereas if I wrote this, like",
+      "start": 1901.022,
+      "duration": 3.76
+    },
+    {
+      "text": " this student, then this is actually a",
+      "start": 1903.834,
+      "duration": 2.923
+    },
+    {
+      "text": " student who belongs to the negative",
+      "start": 1905.809,
+      "duration": 2.819
+    },
+    {
+      "text": " region. Okay? Now watch carefully what",
+      "start": 1907.68,
+      "duration": 3.881
+    },
+    {
+      "text": " I am doing. I am going down and I am",
+      "start": 1910.612,
+      "duration": 3.009
+    },
+    {
+      "text": " writing this. I ran a loop. I randomly",
+      "start": 1912.674,
+      "duration": 4.675
+    },
+    {
+      "text": " picked a student and checked a",
+      "start": 1916.395,
+      "duration": 2.395
+    },
+    {
+      "text": " condition on them. The condition is: if",
+      "start": 1917.837,
+      "duration": 6.412
+    },
+    {
+      "text": " the student I selected, the row I",
+      "start": 1923.309,
+      "duration": 2.967
+    },
+    {
+      "text": " selected, belongs to the negative",
+      "start": 1925.336,
+      "duration": 2.968
+    },
+    {
+      "text": " region. Listen carefully. If this",
+      "start": 1927.363,
+      "duration": 6.439
+    },
+    {
+      "text": " person is someone who actually didn't",
+      "start": 1932.852,
+      "duration": 2.853
+    },
+    {
+      "text": " get placed. And when I put their data",
+      "start": 1934.755,
+      "duration": 6.557
+    },
+    {
+      "text": " into the model and calculated this. And",
+      "start": 1940.364,
+      "duration": 10.069
+    },
+    {
+      "text": " it came out greater than or equal to 0.",
+      "start": 1949.488,
+      "duration": 3.119
+    },
+    {
+      "text": " It means according to my model, this is",
+      "start": 1952.668,
+      "duration": 3.182
+    },
+    {
+      "text": " positive. Meaning they should get",
+      "start": 1954.906,
+      "duration": 3.358
+    },
+    {
+      "text": " placed. Try to understand this, guys.",
+      "start": 1957.31,
+      "duration": 3.114
+    },
+    {
+      "text": " We randomly picked a student whose y in",
+      "start": 1961.445,
+      "duration": 3.167
+    },
+    {
+      "text": " the data is actually zero. But when we",
+      "start": 1963.668,
+      "duration": 6.181
+    },
+    {
+      "text": " applied this expression, the sum of wi",
+      "start": 1968.907,
+      "duration": 3.201
+    },
+    {
+      "text": " xi, and the number came out greater",
+      "start": 1971.166,
+      "duration": 3.027
+    },
+    {
+      "text": " than zero, then according to my model,",
+      "start": 1973.251,
+      "duration": 3.201
+    },
+    {
+      "text": " this student should get placed. But in",
+      "start": 1975.51,
+      "duration": 4.015
+    },
+    {
+      "text": " reality, they didn't get placed.",
+      "start": 1978.58,
+      "duration": 2.788
+    },
+    {
+      "text": " Meaning, this is a student or a point",
+      "start": 1983.55,
+      "duration": 3.03
+    },
+    {
+      "text": " that, if I can draw it here, is a point",
+      "start": 1985.635,
+      "duration": 3.14
+    },
+    {
+      "text": " that is in the positive region but is a",
+      "start": 1987.83,
+      "duration": 3.14
+    },
+    {
+      "text": " negative point. Meaning, this is a",
+      "start": 1990.024,
+      "duration": 6.315
+    },
+    {
+      "text": " student who didn't get placed, but",
+      "start": 1995.394,
+      "duration": 2.852
+    },
+    {
+      "text": " according to my model, they should have",
+      "start": 1997.301,
+      "duration": 3.125
+    },
+    {
+      "text": ". So, this is a negative point stuck in",
+      "start": 1999.426,
+      "duration": 3.555
+    },
+    {
+      "text": " the positive region. So now, what will",
+      "start": 2002.039,
+      "duration": 3.623
+    },
+    {
+      "text": " I do for this kind of point? I will",
+      "start": 2004.718,
+      "duration": 3.987
+    },
+    {
+      "text": " update my ws, meaning I will update my",
+      "start": 2007.767,
+      "duration": 3.35
+    },
+    {
+      "text": " coefficients. With what formula? I will",
+      "start": 2010.179,
+      "duration": 4.65
+    },
+    {
+      "text": " write w new, and this is a matrix. w",
+      "start": 2013.893,
+      "duration": 4.203
+    },
+    {
+      "text": " naught, w1, w2, this is the matrix.",
+      "start": 2017.207,
+      "duration": 4.885
+    },
+    {
+      "text": " Will be equal to w old, the same matrix",
+      "start": 2022.662,
+      "duration": 4.263
+    },
+    {
+      "text": " of old values, minus learning rate",
+      "start": 2026.009,
+      "duration": 3.845
+    },
+    {
+      "text": " times the x matrix, x naught, x1, x2,",
+      "start": 2028.937,
+      "duration": 4.096
+    },
+    {
+      "text": " okay? Now obviously, there is no need",
+      "start": 2032.117,
+      "duration": 4.492
+    },
+    {
+      "text": " to write everything here. I can simply",
+      "start": 2035.662,
+      "duration": 3.237
+    },
+    {
+      "text": " write xi, meaning basically that",
+      "start": 2037.96,
+      "duration": 2.938
+    },
+    {
+      "text": " specific row. Okay? Now another case:",
+      "start": 2039.959,
+      "duration": 5.786
+    },
+    {
+      "text": " if the point belongs to the positive",
+      "start": 2044.802,
+      "duration": 3.054
+    },
+    {
+      "text": " region, meaning this is a student who",
+      "start": 2046.913,
+      "duration": 3.111
+    },
+    {
+      "text": " actually got placed. And when you",
+      "start": 2049.081,
+      "duration": 6.494
+    },
+    {
+      "text": " calculated the sum from i = 1 to 2 of",
+      "start": 2054.643,
+      "duration": 3.526
+    },
+    {
+      "text": " wi xi, it came out to be less than 0.",
+      "start": 2057.237,
+      "duration": 3.526
+    },
+    {
+      "text": " Meaning, according to my model, they",
+      "start": 2061.481,
+      "duration": 2.999
+    },
+    {
+      "text": " should not get placed. So, this is",
+      "start": 2063.536,
+      "duration": 3.599
+    },
+    {
+      "text": " basically a student who got placed, but",
+      "start": 2066.191,
+      "duration": 3.17
+    },
+    {
+      "text": " my model is saying they shouldn't be.",
+      "start": 2068.416,
+      "duration": 3.059
+    },
+    {
+      "text": " So again, a positive point is in the",
+      "start": 2071.135,
+      "duration": 3.064
+    },
+    {
+      "text": " negative region. So, in this case, what",
+      "start": 2073.256,
+      "duration": 3.506
+    },
+    {
+      "text": " will we do? We will update our W matrix",
+      "start": 2075.829,
+      "duration": 3.967
+    },
+    {
+      "text": ". We will update our W matrix and we",
+      "start": 2078.796,
+      "duration": 6.012
+    },
+    {
+      "text": " will write W old minus...actually, it",
+      "start": 2083.873,
+      "duration": 3.393
+    },
+    {
+      "text": " will become plus. I told you a while",
+      "start": 2086.33,
+      "duration": 6.198
+    },
+    {
+      "text": " ago during the transformation that if",
+      "start": 2091.578,
+      "duration": 2.873
+    },
+    {
+      "text": " you want to bring the line down, you",
+      "start": 2093.501,
+      "duration": 2.822
+    },
+    {
+      "text": " add learning rate times xi. And this is",
+      "start": 2095.374,
+      "duration": 5.436
+    },
+    {
+      "text": " the algorithm, guys, this is the",
+      "start": 2099.867,
+      "duration": 2.842
+    },
+    {
+      "text": " algorithm! You just need to detect what",
+      "start": 2101.766,
+      "duration": 4.886
+    },
+    {
+      "text": " type of error it is—a positive point",
+      "start": 2105.708,
+      "duration": 3.118
+    },
+    {
+      "text": " in a negative region or a negative",
+      "start": 2107.882,
+      "duration": 2.896
+    },
+    {
+      "text": " point in a positive region—and apply",
+      "start": 2109.834,
+      "duration": 3.119
+    },
+    {
+      "text": " the formula accordingly. And obviously,",
+      "start": 2112.008,
+      "duration": 5.479
+    },
+    {
+      "text": " if it's the other two cases, where xi",
+      "start": 2116.549,
+      "duration": 3.329
+    },
+    {
+      "text": " belongs to the negative region and its",
+      "start": 2118.941,
+      "duration": 3.391
+    },
+    {
+      "text": " wi xi is also less than 0. Meaning, if",
+      "start": 2121.395,
+      "duration": 3.252
+    },
+    {
+      "text": " this negative point is classified into",
+      "start": 2123.693,
+      "duration": 2.769
+    },
+    {
+      "text": " the negative region, then it is correct",
+      "start": 2125.509,
+      "duration": 2.815
+    },
+    {
+      "text": ". Similarly, if xi belongs to positive",
+      "start": 2127.324,
+      "duration": 2.99
+    },
+    {
+      "text": " and wi xi is greater than or equal to 0",
+      "start": 2129.365,
+      "duration": 2.997
+    },
+    {
+      "text": ", then this positive point is in the",
+      "start": 2131.362,
+      "duration": 2.843
+    },
+    {
+      "text": " positive region, so we don't need to do",
+      "start": 2133.257,
+      "duration": 2.997
+    },
+    {
+      "text": " anything in these two cases. We only",
+      "start": 2135.305,
+      "duration": 3.366
+    },
+    {
+      "text": " need to make changes to our weights in",
+      "start": 2137.72,
+      "duration": 2.873
+    },
+    {
+      "text": " these two cases. Okay? So, this is our",
+      "start": 2139.643,
+      "duration": 4.308
+    },
+    {
+      "text": " algorithm, guys. Now, what will we do?",
+      "start": 2143.021,
+      "duration": 3.552
+    },
+    {
+      "text": " Since we have to check two conditions",
+      "start": 2146.235,
+      "duration": 2.728
+    },
+    {
+      "text": " here. This first condition and this",
+      "start": 2148.01,
+      "duration": 3.308
+    },
+    {
+      "text": " second condition, it will be a bit",
+      "start": 2150.367,
+      "duration": 2.663
+    },
+    {
+      "text": " difficult to write this code. So, after",
+      "start": 2152.079,
+      "duration": 3.103
+    },
+    {
+      "text": " a while, I will show you how to",
+      "start": 2154.245,
+      "duration": 2.958
+    },
+    {
+      "text": " simplify this entire algorithm. Okay?",
+      "start": 2156.266,
+      "duration": 3.615
+    },
+    {
+      "text": " So, let's see that next. So guys, now",
+      "start": 2158.981,
+      "duration": 3.522
+    },
+    {
+      "text": " if you see, this is the algorithm we",
+      "start": 2161.567,
+      "duration": 3.322
+    },
+    {
+      "text": " created. And it looks a bit scary. I",
+      "start": 2163.954,
+      "duration": 4.698
+    },
+    {
+      "text": " mean, in this algorithm, first you have",
+      "start": 2167.708,
+      "duration": 3.177
+    },
+    {
+      "text": " to run a loop. Inside the loop,",
+      "start": 2169.941,
+      "duration": 4.466
+    },
+    {
+      "text": " randomly select a row each time and",
+      "start": 2173.463,
+      "duration": 2.929
+    },
+    {
+      "text": " then check these two conditions on that",
+      "start": 2175.447,
+      "duration": 3.15
+    },
+    {
+      "text": " row. Right? This is the first condition",
+      "start": 2177.652,
+      "duration": 4.622
+    },
+    {
+      "text": " and this is the second condition. Now,",
+      "start": 2181.321,
+      "duration": 2.905
+    },
+    {
+      "text": " what am I doing? I will simplify this",
+      "start": 2183.289,
+      "duration": 3.211
+    },
+    {
+      "text": " algorithm. What will I do? Rather than",
+      "start": 2185.555,
+      "duration": 3.225
+    },
+    {
+      "text": " writing two conditions, I will write",
+      "start": 2187.833,
+      "duration": 2.907
+    },
+    {
+      "text": " just one condition. And what will that",
+      "start": 2189.793,
+      "duration": 3.013
+    },
+    {
+      "text": " condition be? That condition will be",
+      "start": 2191.85,
+      "duration": 4.967
+    },
+    {
+      "text": " that the update you make to your",
+      "start": 2195.864,
+      "duration": 2.487
+    },
+    {
+      "text": " coefficients will be calculated in this",
+      "start": 2197.397,
+      "duration": 2.813
+    },
+    {
+      "text": " way. See, rather than checking these",
+      "start": 2199.257,
+      "duration": 16.283
+    },
+    {
+      "text": " two conditions, I will simply run a",
+      "start": 2214.601,
+      "duration": 3.128
+    },
+    {
+      "text": " loop for i in 1000, randomly select a",
+      "start": 2216.79,
+      "duration": 3.25
+    },
+    {
+      "text": " student every time, and without",
+      "start": 2219.101,
+      "duration": 2.886
+    },
+    {
+      "text": " checking anything, I will apply this",
+      "start": 2221.047,
+      "duration": 3.19
+    },
+    {
+      "text": " logic. I will not put any if-condition.",
+      "start": 2223.298,
+      "duration": 5.42
+    },
+    {
+      "text": " There is no \"if\" here. There is no \"if\"",
+      "start": 2227.818,
+      "duration": 3.6
+    },
+    {
+      "text": " here. I will directly apply this update",
+      "start": 2230.484,
+      "duration": 3.084
+    },
+    {
+      "text": " rule. Now, why will this update rule",
+      "start": 2232.619,
+      "duration": 3.093
+    },
+    {
+      "text": " work? I will tell you. Let's take a",
+      "start": 2234.77,
+      "duration": 3.375
+    },
+    {
+      "text": " case. Let's take four cases. yi, yi hat",
+      "start": 2237.197,
+      "duration": 4.786
+    },
+    {
+      "text": ", and this is yi-yi hat. Suppose there",
+      "start": 2240.983,
+      "duration": 4.961
+    },
+    {
+      "text": " is a student who got placed. Our model",
+      "start": 2244.996,
+      "duration": 3.127
+    },
+    {
+      "text": " also predicted that they got placed.",
+      "start": 2247.175,
+      "duration": 2.84
+    },
+    {
+      "text": " There is a student who did not get",
+      "start": 2249.27,
+      "duration": 2.657
+    },
+    {
+      "text": " placed. Our model also said they did",
+      "start": 2250.976,
+      "duration": 2.926
+    },
+    {
+      "text": " not get placed. There is a student who",
+      "start": 2252.955,
+      "duration": 3.394
+    },
+    {
+      "text": " got placed, but my model said they",
+      "start": 2255.399,
+      "duration": 2.715
+    },
+    {
+      "text": " didn't. And there is a student who",
+      "start": 2257.164,
+      "duration": 3.389
+    },
+    {
+      "text": " didn't get placed, but my model said",
+      "start": 2259.602,
+      "duration": 2.753
+    },
+    {
+      "text": " they did. Right? These are the four",
+      "start": 2261.403,
+      "duration": 2.95
+    },
+    {
+      "text": " cases. Right? Only these four",
+      "start": 2263.405,
+      "duration": 2.737
+    },
+    {
+      "text": " combinations exist. If I calculate",
+      "start": 2265.2,
+      "duration": 3.049
+    },
+    {
+      "text": " yi-yi hat, in the first case, it will",
+      "start": 2267.31,
+      "duration": 3.266
+    },
+    {
+      "text": " be zero. In the second case, it will be",
+      "start": 2269.638,
+      "duration": 3.263
+    },
+    {
+      "text": " zero. In the second to last case, it",
+      "start": 2271.957,
+      "duration": 3.043
+    },
+    {
+      "text": " would be one. And in the very last case",
+      "start": 2274.053,
+      "duration": 3.388
+    },
+    {
+      "text": ", it would be -1. Right? Now let's see,",
+      "start": 2276.441,
+      "duration": 4.661
+    },
+    {
+      "text": " guys. Now assume we take the first case",
+      "start": 2280.168,
+      "duration": 4.119
+    },
+    {
+      "text": ", where a student got placed and my",
+      "start": 2283.287,
+      "duration": 2.904
+    },
+    {
+      "text": " model also said they got placed.",
+      "start": 2285.245,
+      "duration": 2.741
+    },
+    {
+      "text": " Meaning, the student we randomly chose",
+      "start": 2288.418,
+      "duration": 3.057
+    },
+    {
+      "text": " was one who got placed, and according",
+      "start": 2290.529,
+      "duration": 3.004
+    },
+    {
+      "text": " to my model, they should have been",
+      "start": 2292.587,
+      "duration": 2.841
+    },
+    {
+      "text": " placed. So this entire term will become",
+      "start": 2294.482,
+      "duration": 4.3
+    },
+    {
+      "text": " zero. And as soon as this term becomes",
+      "start": 2297.844,
+      "duration": 3.881
+    },
+    {
+      "text": " zero, wn will be equal to W old. This",
+      "start": 2300.793,
+      "duration": 3.89
+    },
+    {
+      "text": " means the new values of the",
+      "start": 2303.735,
+      "duration": 2.399
+    },
+    {
+      "text": " coefficients will remain the same as",
+      "start": 2305.186,
+      "duration": 2.866
+    },
+    {
+      "text": " the old values. Meaning there will be",
+      "start": 2307.104,
+      "duration": 2.961
+    },
+    {
+      "text": " no change. Right? Now let's take",
+      "start": 2309.115,
+      "duration": 2.771
+    },
+    {
+      "text": " another case. Now you randomly picked a",
+      "start": 2310.937,
+      "duration": 3.602
+    },
+    {
+      "text": " student who didn't get placed and your",
+      "start": 2313.589,
+      "duration": 2.886
+    },
+    {
+      "text": " model also says they didn't get placed.",
+      "start": 2315.524,
+      "duration": 2.936
+    },
+    {
+      "text": " Okay? In that case also, your yi-yi hat",
+      "start": 2318.623,
+      "duration": 3.848
+    },
+    {
+      "text": " will be zero. This entire term will",
+      "start": 2321.535,
+      "duration": 3.207
+    },
+    {
+      "text": " become zero. And still, wn = Wo,",
+      "start": 2323.802,
+      "duration": 3.097
+    },
+    {
+      "text": " meaning the new value of all",
+      "start": 2325.964,
+      "duration": 2.824
+    },
+    {
+      "text": " coefficients will remain the same as",
+      "start": 2327.853,
+      "duration": 3.345
+    },
+    {
+      "text": " the old value. Right? So that means",
+      "start": 2330.264,
+      "duration": 4.606
+    },
+    {
+      "text": " whenever the points are correctly",
+      "start": 2333.921,
+      "duration": 2.662
+    },
+    {
+      "text": " classified, we aren't making any",
+      "start": 2335.634,
+      "duration": 2.612
+    },
+    {
+      "text": " changes to the rate. Okay? Now let's",
+      "start": 2337.296,
+      "duration": 4.688
+    },
+    {
+      "text": " take a case where a student got placed.",
+      "start": 2341.034,
+      "duration": 2.949
+    },
+    {
+      "text": " But my model said they didn't get",
+      "start": 2344.016,
+      "duration": 2.646
+    },
+    {
+      "text": " placed. If you see, what kind of",
+      "start": 2345.712,
+      "duration": 2.835
+    },
+    {
+      "text": " student would this be? They had gotten",
+      "start": 2347.598,
+      "duration": 2.975
+    },
+    {
+      "text": " placed. Meaning this is a positive",
+      "start": 2349.624,
+      "duration": 2.731
+    },
+    {
+      "text": " person in the negative region. Meaning",
+      "start": 2351.404,
+      "duration": 4.091
+    },
+    {
+      "text": " this student, this student. Okay? Or",
+      "start": 2354.547,
+      "duration": 4.964
+    },
+    {
+      "text": " you could say this student. This one,",
+      "start": 2358.555,
+      "duration": 3.717
+    },
+    {
+      "text": " okay? This person is actually in the",
+      "start": 2361.348,
+      "duration": 3.775
+    },
+    {
+      "text": " positive region in the data, but their",
+      "start": 2364.179,
+      "duration": 3.126
+    },
+    {
+      "text": " y is less than 0. Meaning my model is",
+      "start": 2366.361,
+      "duration": 3.53
+    },
+    {
+      "text": " misclassifying. So now if we go here,",
+      "start": 2368.953,
+      "duration": 3.834
+    },
+    {
+      "text": " what happens? This whole term will be",
+      "start": 2371.852,
+      "duration": 4.201
+    },
+    {
+      "text": " replaced with one. Okay? And how will",
+      "start": 2375.1,
+      "duration": 3.337
+    },
+    {
+      "text": " this equation convert? It will become",
+      "start": 2377.486,
+      "duration": 4.732
+    },
+    {
+      "text": " wn = wo + learning rate times xi, which",
+      "start": 2381.29,
+      "duration": 3.794
+    },
+    {
+      "text": " is exactly this. Okay? Now one last",
+      "start": 2384.155,
+      "duration": 5.167
+    },
+    {
+      "text": " case: a student who didn't get placed,",
+      "start": 2388.381,
+      "duration": 3.206
+    },
+    {
+      "text": " but my model says they will be placed.",
+      "start": 2390.646,
+      "duration": 3.207
+    },
+    {
+      "text": " Meaning this person is a negative point",
+      "start": 2393.396,
+      "duration": 2.958
+    },
+    {
+      "text": " in the positive region. Now, what",
+      "start": 2395.404,
+      "duration": 2.742
+    },
+    {
+      "text": " happened in this case? What will be the",
+      "start": 2397.2,
+      "duration": 3.136
+    },
+    {
+      "text": " value of yi minus yi hat? -1. Because",
+      "start": 2399.389,
+      "duration": 3.64
+    },
+    {
+      "text": " of that, what will this equation become",
+      "start": 2402.08,
+      "duration": 3.001
+    },
+    {
+      "text": "? It will become: wn = w old-learning",
+      "start": 2404.081,
+      "duration": 4.46
+    },
+    {
+      "text": " rate times xi. See, we were talking",
+      "start": 2407.623,
+      "duration": 4.642
+    },
+    {
+      "text": " about this student who was already",
+      "start": 2411.32,
+      "duration": 2.842
+    },
+    {
+      "text": " negative, but according to my model, is",
+      "start": 2413.216,
+      "duration": 3.114
+    },
+    {
+      "text": " positive. So this is their update rule.",
+      "start": 2415.384,
+      "duration": 3.108
+    },
+    {
+      "text": " So what have we done very smartly here?",
+      "start": 2417.601,
+      "duration": 3.078
+    },
+    {
+      "text": " Rather than handling two different",
+      "start": 2420.027,
+      "duration": 2.811
+    },
+    {
+      "text": " cases. I have simplified my entire",
+      "start": 2421.892,
+      "duration": 4.24
+    },
+    {
+      "text": " model like this. Okay? Now I don't need",
+      "start": 2425.19,
+      "duration": 4.281
+    },
+    {
+      "text": " to do this big calculation. We will",
+      "start": 2428.521,
+      "duration": 3.459
+    },
+    {
+      "text": " just apply this single rule. So our",
+      "start": 2431.032,
+      "duration": 4.645
+    },
+    {
+      "text": " updated algorithm is this. I will write",
+      "start": 2434.738,
+      "duration": 4.163
+    },
+    {
+      "text": " down here what we will code. We will",
+      "start": 2437.946,
+      "duration": 3.441
+    },
+    {
+      "text": " write for i in range of epochs, with",
+      "start": 2440.44,
+      "duration": 10.622
+    },
+    {
+      "text": " epochs value 1000, select a random",
+      "start": 2450.131,
+      "duration": 3.349
+    },
+    {
+      "text": " student i, and each time we will update",
+      "start": 2452.549,
+      "duration": 12.604
+    },
+    {
+      "text": " the coefficients using this rule. And",
+      "start": 2464.21,
+      "duration": 8.515
+    },
+    {
+      "text": " that's my code. I just need to write",
+      "start": 2471.774,
+      "duration": 2.843
+    },
+    {
+      "text": " this much code, guys. We will write",
+      "start": 2473.668,
+      "duration": 2.779
+    },
+    {
+      "text": " exactly this code and our job will be",
+      "start": 2475.494,
+      "duration": 2.765
+    },
+    {
+      "text": " done. Okay? Now what do we do? Let's go",
+      "start": 2477.307,
+      "duration": 4.051
+    },
+    {
+      "text": " to Jupyter and code this. So I have",
+      "start": 2480.411,
+      "duration": 3.552
+    },
+    {
+      "text": " already written the code because it is",
+      "start": 2483.011,
+      "duration": 2.811
+    },
+    {
+      "text": " a bit long and typing it would take",
+      "start": 2484.87,
+      "duration": 2.668
+    },
+    {
+      "text": " time. So I will just give you a",
+      "start": 2486.585,
+      "duration": 2.994
+    },
+    {
+      "text": " walk-through. So first of all, what",
+      "start": 2488.625,
+      "duration": 2.869
+    },
+    {
+      "text": " have I done? I have generated a dataset",
+      "start": 2490.55,
+      "duration": 3.464
+    },
+    {
+      "text": ". Okay? Just like there is make",
+      "start": 2493.014,
+      "duration": 3.746
+    },
+    {
+      "text": " regression in Scikit-Learn, there is",
+      "start": 2495.815,
+      "duration": 2.951
+    },
+    {
+      "text": " make classification which you can use",
+      "start": 2497.82,
+      "duration": 3.006
+    },
+    {
+      "text": " to create classification datasets. Okay",
+      "start": 2499.88,
+      "duration": 3.689
+    },
+    {
+      "text": "? So I created this dataset and I",
+      "start": 2502.569,
+      "duration": 3.995
+    },
+    {
+      "text": " plotted it. So after plotting, this is",
+      "start": 2505.62,
+      "duration": 5.213
+    },
+    {
+      "text": " the dataset. So in this dataset, you",
+      "start": 2509.894,
+      "duration": 4.966
+    },
+    {
+      "text": " can see that it's a two-dimensional",
+      "start": 2513.916,
+      "duration": 2.97
+    },
+    {
+      "text": " dataset. Meaning in the input, there",
+      "start": 2515.942,
+      "duration": 3.508
+    },
+    {
+      "text": " are two columns. One is on the x-axis",
+      "start": 2518.502,
+      "duration": 3.165
+    },
+    {
+      "text": " and one is on the y-axis. And the",
+      "start": 2520.728,
+      "duration": 3.29
+    },
+    {
+      "text": " target column is either one or zero.",
+      "start": 2523.07,
+      "duration": 2.874
+    },
+    {
+      "text": " Meaning it's a classification problem.",
+      "start": 2525.676,
+      "duration": 3.006
+    },
+    {
+      "text": " And all the ones I have encoded in",
+      "start": 2528.343,
+      "duration": 2.685
+    },
+    {
+      "text": " green. And all the zeros I have encoded",
+      "start": 2530.078,
+      "duration": 3.964
+    },
+    {
+      "text": " in blue. Okay? So here, the output",
+      "start": 2533.095,
+      "duration": 3.526
+    },
+    {
+      "text": " column is representing the color. Okay?",
+      "start": 2535.677,
+      "duration": 3.659
+    },
+    {
+      "text": " Now, I have created a function here",
+      "start": 2541.457,
+      "duration": 2.97
+    },
+    {
+      "text": " called perceptron, to which if you pass",
+      "start": 2543.484,
+      "duration": 3.196
+    },
+    {
+      "text": " your data, x and y, it will return to",
+      "start": 2545.736,
+      "duration": 3.083
+    },
+    {
+      "text": " you your weights and your intercept.",
+      "start": 2547.875,
+      "duration": 3.028
+    },
+    {
+      "text": " Okay? Let's discuss its logic once. So",
+      "start": 2552.942,
+      "duration": 3.827
+    },
+    {
+      "text": " first of all, what did I do? The x I",
+      "start": 2555.83,
+      "duration": 3.525
+    },
+    {
+      "text": " received, I added a one in front of",
+      "start": 2558.416,
+      "duration": 3.126
+    },
+    {
+      "text": " that x. So if I show you right now at",
+      "start": 2560.603,
+      "duration": 5.688
+    },
+    {
+      "text": " this point after running this code,",
+      "start": 2565.343,
+      "duration": 2.82
+    },
+    {
+      "text": " your x is something like this. x is",
+      "start": 2567.215,
+      "duration": 5.537
+    },
+    {
+      "text": " something like this. So this is the",
+      "start": 2571.81,
+      "duration": 3.068
+    },
+    {
+      "text": " first input column. This is the second",
+      "start": 2573.932,
+      "duration": 3.127
+    },
+    {
+      "text": " input column. And this 'y' is an output",
+      "start": 2576.109,
+      "duration": 3.683
+    },
+    {
+      "text": " column containing values of one and",
+      "start": 2578.854,
+      "duration": 3.17
+    },
+    {
+      "text": " zero. Alright? I ran this code first.",
+      "start": 2581.086,
+      "duration": 4.366
+    },
+    {
+      "text": " Running this code resulted in my 'x',",
+      "start": 2586.583,
+      "duration": 3.105
+    },
+    {
+      "text": " which looked like this, now starting to",
+      "start": 2588.745,
+      "duration": 6.35
+    },
+    {
+      "text": " look like this. A one was added in",
+      "start": 2594.143,
+      "duration": 4.764
+    },
+    {
+      "text": " front of every row. We did this for the",
+      "start": 2597.959,
+      "duration": 3.519
+    },
+    {
+      "text": " bias term. Right? If you have watched",
+      "start": 2600.532,
+      "duration": 3.042
+    },
+    {
+      "text": " the theory properly, you will",
+      "start": 2602.624,
+      "duration": 2.439
+    },
+    {
+      "text": " understand. Now I will go down. What",
+      "start": 2604.113,
+      "duration": 4.603
+    },
+    {
+      "text": " did we do next? We created an array",
+      "start": 2607.77,
+      "duration": 3.707
+    },
+    {
+      "text": " called weights. Whose shape is equal to",
+      "start": 2610.53,
+      "duration": 6.127
+    },
+    {
+      "text": " the columns of x. Meaning, how many",
+      "start": 2615.713,
+      "duration": 5.749
+    },
+    {
+      "text": " columns did your x have earlier? Two,",
+      "start": 2620.519,
+      "duration": 3.6
+    },
+    {
+      "text": " when you provided the input. Then, as",
+      "start": 2623.175,
+      "duration": 3.079
+    },
+    {
+      "text": " soon as you inserted one, an extra",
+      "start": 2625.308,
+      "duration": 2.841
+    },
+    {
+      "text": " column was added. So now, what is the",
+      "start": 2627.203,
+      "duration": 3.194
+    },
+    {
+      "text": " shape of x? Three. So now, if I execute",
+      "start": 2629.458,
+      "duration": 4.566
+    },
+    {
+      "text": " this line and show you, it would look",
+      "start": 2633.083,
+      "duration": 3.181
+    },
+    {
+      "text": " like this. Instead of x.shape, if I put",
+      "start": 2635.323,
+      "duration": 6.371
+    },
+    {
+      "text": " three here, I have basically created a",
+      "start": 2640.752,
+      "duration": 3.193
+    },
+    {
+      "text": " weights array where all three items are",
+      "start": 2643.003,
+      "duration": 3.252
+    },
+    {
+      "text": " initially one. Okay? So the first item",
+      "start": 2645.312,
+      "duration": 4.848
+    },
+    {
+      "text": " here is the intercept term, as in w",
+      "start": 2649.219,
+      "duration": 3.071
+    },
+    {
+      "text": " naught. This is W1 and this is W2.",
+      "start": 2651.349,
+      "duration": 4.038
+    },
+    {
+      "text": " Alright? Then what did I do?",
+      "start": 2654.552,
+      "duration": 2.509
+    },
+    {
+      "text": " Initialized a learning rate at point",
+      "start": 2656.401,
+      "duration": 2.893
+    },
+    {
+      "text": " one. Okay? No problem up to here. Then",
+      "start": 2658.346,
+      "duration": 4.566
+    },
+    {
+      "text": " I ran the loop 1000 times, our epoch.",
+      "start": 2661.981,
+      "duration": 3.539
+    },
+    {
+      "text": " Right? Inside the loop each time, I",
+      "start": 2665.575,
+      "duration": 4.106
+    },
+    {
+      "text": " selected a random value between zero",
+      "start": 2668.747,
+      "duration": 3.392
+    },
+    {
+      "text": " and 100. By the way, if you look at the",
+      "start": 2671.205,
+      "duration": 6.224
+    },
+    {
+      "text": " shape of my x, it is 100, 2; 100 rows,",
+      "start": 2676.51,
+      "duration": 4.072
+    },
+    {
+      "text": " two columns. So I did exactly that.",
+      "start": 2679.663,
+      "duration": 4.85
+    },
+    {
+      "text": " Inside the loop each time, I selected a",
+      "start": 2684.007,
+      "duration": 3.538
+    },
+    {
+      "text": " random integer between zero and 100.",
+      "start": 2686.61,
+      "duration": 3.343
+    },
+    {
+      "text": " Three, like this. And whatever number",
+      "start": 2691.73,
+      "duration": 4.941
+    },
+    {
+      "text": " is coming, I am storing it in J. Okay?",
+      "start": 2695.727,
+      "duration": 3.161
+    },
+    {
+      "text": " Then what did I do? It's basically that",
+      "start": 2699.417,
+      "duration": 3.231
+    },
+    {
+      "text": " we—I mean, what does this value of J",
+      "start": 2701.708,
+      "duration": 3.281
+    },
+    {
+      "text": " signify? This value of J signifies",
+      "start": 2704.049,
+      "duration": 3.737
+    },
+    {
+      "text": " which student we are picking among",
+      "start": 2706.846,
+      "duration": 3.023
+    },
+    {
+      "text": " those 100 students. If 41 came up, we",
+      "start": 2708.929,
+      "duration": 4.581
+    },
+    {
+      "text": " are picking the 41st student. Right?",
+      "start": 2712.579,
+      "duration": 3.9
+    },
+    {
+      "text": " After that, what did I do? I predicted",
+      "start": 2715.579,
+      "duration": 3.673
+    },
+    {
+      "text": " y-hat. Meaning, I had to predict",
+      "start": 2718.319,
+      "duration": 4.086
+    },
+    {
+      "text": " whether that particular student, the",
+      "start": 2721.462,
+      "duration": 3.065
+    },
+    {
+      "text": " 41st student, will get placed or not.",
+      "start": 2723.584,
+      "duration": 3.123
+    },
+    {
+      "text": " Right? So how did I do this task? I",
+      "start": 2726.432,
+      "duration": 3.167
+    },
+    {
+      "text": " calculated np.dot product of this. So",
+      "start": 2728.668,
+      "duration": 3.548
+    },
+    {
+      "text": " if I show you by doing this, it will",
+      "start": 2731.268,
+      "duration": 2.849
+    },
+    {
+      "text": " look something like this. First, I",
+      "start": 2733.168,
+      "duration": 5.539
+    },
+    {
+      "text": " extracted the 41st element in x and my",
+      "start": 2737.782,
+      "duration": 3.852
+    },
+    {
+      "text": " weights array is 1, 1, okay? And here",
+      "start": 2740.709,
+      "duration": 7.527
+    },
+    {
+      "text": " in x41, at this point, there are",
+      "start": 2747.303,
+      "duration": 3.154
+    },
+    {
+      "text": " actually only two items. I mean, there",
+      "start": 2749.524,
+      "duration": 4.826
+    },
+    {
+      "text": " are only two items. If we want to add a",
+      "start": 2753.41,
+      "duration": 4.938
+    },
+    {
+      "text": " one at the beginning of x41, we have to",
+      "start": 2757.402,
+      "duration": 3.119
+    },
+    {
+      "text": " write this code separately. np dot",
+      "start": 2759.576,
+      "duration": 5.617
+    },
+    {
+      "text": " insert x 41 comma 0, 1, axis = 1 Uh,",
+      "start": 2764.302,
+      "duration": 13.043
+    },
+    {
+      "text": " there is no axis because it's",
+      "start": 2776.407,
+      "duration": 2.787
+    },
+    {
+      "text": " single-dimensional, so basically rather",
+      "start": 2778.255,
+      "duration": 3.403
+    },
+    {
+      "text": " than x41 if I input this, then what's",
+      "start": 2780.719,
+      "duration": 3.28
+    },
+    {
+      "text": " happening? A dot product is taking",
+      "start": 2783.06,
+      "duration": 5.033
+    },
+    {
+      "text": " place and I am getting the answer 29.",
+      "start": 2787.15,
+      "duration": 3.1
+    },
+    {
+      "text": " So for my 41st student, when I perform",
+      "start": 2790.144,
+      "duration": 3.259
+    },
+    {
+      "text": " this dot product, the dot product comes",
+      "start": 2792.462,
+      "duration": 3.319
+    },
+    {
+      "text": " out positive. Okay? Now I need to find",
+      "start": 2794.841,
+      "duration": 3.726
+    },
+    {
+      "text": " out whether they will get placed or not",
+      "start": 2797.611,
+      "duration": 2.707
+    },
+    {
+      "text": ". Now, if you know the logic, what was",
+      "start": 2799.318,
+      "duration": 3.307
+    },
+    {
+      "text": " our logic? If this dot product value is",
+      "start": 2801.685,
+      "duration": 3.239
+    },
+    {
+      "text": " greater than or equal to 0, then",
+      "start": 2803.979,
+      "duration": 2.757
+    },
+    {
+      "text": " placement will happen, and if it is",
+      "start": 2805.791,
+      "duration": 2.922
+    },
+    {
+      "text": " less than zero, placement won't happen.",
+      "start": 2807.768,
+      "duration": 3.142
+    },
+    {
+      "text": " So I created a step function. You give",
+      "start": 2810.01,
+      "duration": 6.425
+    },
+    {
+      "text": " a number as input to the step function,",
+      "start": 2815.5,
+      "duration": 3.5
+    },
+    {
+      "text": " it returns one if that number is",
+      "start": 2818.064,
+      "duration": 3.052
+    },
+    {
+      "text": " greater than zero, otherwise it returns",
+      "start": 2820.18,
+      "duration": 3.501
+    },
+    {
+      "text": " zero, so if I run this cell once and",
+      "start": 2822.745,
+      "duration": 3.309
+    },
+    {
+      "text": " write step 0.294, then it returns one.",
+      "start": 2825.118,
+      "duration": 3.437
+    },
+    {
+      "text": " Okay? And if I input a negative number,",
+      "start": 2830.585,
+      "duration": 3.488
+    },
+    {
+      "text": " it returns zero. So what happened was",
+      "start": 2833.132,
+      "duration": 3.47
+    },
+    {
+      "text": " this was the 41st student. We made a",
+      "start": 2835.658,
+      "duration": 4.472
+    },
+    {
+      "text": " prediction whether they would get",
+      "start": 2839.175,
+      "duration": 2.5
+    },
+    {
+      "text": " placed or not. Okay? Then we wrote the",
+      "start": 2840.72,
+      "duration": 4.547
+    },
+    {
+      "text": " code to update weights. What was the",
+      "start": 2844.316,
+      "duration": 3.036
+    },
+    {
+      "text": " code to update weights? Weights equals",
+      "start": 2846.399,
+      "duration": 4.994
+    },
+    {
+      "text": " weights plus learning rate times yj; in",
+      "start": 2850.456,
+      "duration": 3.449
+    },
+    {
+      "text": " the actual data, did the 41st student",
+      "start": 2852.968,
+      "duration": 3.323
+    },
+    {
+      "text": " get placed or not? Actually, they",
+      "start": 2855.354,
+      "duration": 5.062
+    },
+    {
+      "text": " didn't. So zero replaced this term here",
+      "start": 2859.475,
+      "duration": 3.891
+    },
+    {
+      "text": ". Here, one replaced y-hat. So this",
+      "start": 2862.366,
+      "duration": 3.896
+    },
+    {
+      "text": " entire term became -1. And then you",
+      "start": 2865.337,
+      "duration": 3.43
+    },
+    {
+      "text": " multiplied it again by xj. So basically",
+      "start": 2867.824,
+      "duration": 3.319
+    },
+    {
+      "text": ", the logic we wrote there, we applied",
+      "start": 2870.143,
+      "duration": 3.351
+    },
+    {
+      "text": " the exact same logic here, and we did",
+      "start": 2872.556,
+      "duration": 3.29
+    },
+    {
+      "text": " this 1000 times, and after doing it",
+      "start": 2874.907,
+      "duration": 3.166
+    },
+    {
+      "text": " 1000 times, I returned the zero index",
+      "start": 2877.135,
+      "duration": 3.289
+    },
+    {
+      "text": " of weights as the intercept term and",
+      "start": 2879.486,
+      "duration": 3.228
+    },
+    {
+      "text": " all the subsequent terms as",
+      "start": 2881.776,
+      "duration": 2.67
+    },
+    {
+      "text": " coefficients. And that's my code. This",
+      "start": 2883.508,
+      "duration": 3.718
+    },
+    {
+      "text": " is my logic. Okay? I am removing this.",
+      "start": 2886.291,
+      "duration": 3.749
+    },
+    {
+      "text": " Removing this too. And here I called",
+      "start": 2889.14,
+      "duration": 3.384
+    },
+    {
+      "text": " this function. Passed x and y. It",
+      "start": 2891.57,
+      "duration": 4.161
+    },
+    {
+      "text": " returned the intercept value and",
+      "start": 2894.785,
+      "duration": 2.738
+    },
+    {
+      "text": " coefficient values to me. And here are",
+      "start": 2896.577,
+      "duration": 3.572
+    },
+    {
+      "text": " those intercept and coefficient values.",
+      "start": 2899.201,
+      "duration": 3.035
+    },
+    {
+      "text": " So this is my W1. This is my W2 and",
+      "start": 2901.671,
+      "duration": 4.346
+    },
+    {
+      "text": " this is my W naught. Okay? This is my",
+      "start": 2905.088,
+      "duration": 3.598
+    },
+    {
+      "text": " intercept. Okay? Now, what did I do? I",
+      "start": 2907.743,
+      "duration": 3.555
+    },
+    {
+      "text": " wanted to plot it and show it to you.",
+      "start": 2910.344,
+      "duration": 2.717
+    },
+    {
+      "text": " So, I derived m and b from these. How",
+      "start": 2912.369,
+      "duration": 3.562
+    },
+    {
+      "text": " did I calculate m and b? It is very",
+      "start": 2914.986,
+      "duration": 2.998
+    },
+    {
+      "text": " simple. Let me show you. So,",
+      "start": 2917.042,
+      "duration": 2.55
+    },
+    {
+      "text": " calculating m and b is very simple. If",
+      "start": 2918.661,
+      "duration": 5.273
+    },
+    {
+      "text": " you have the a, b, and c values for ax",
+      "start": 2923.015,
+      "duration": 4.086
+    },
+    {
+      "text": " + by + c = 0, you can easily bring this",
+      "start": 2926.182,
+      "duration": 4.166
+    },
+    {
+      "text": " line into the y = mx + c form. Where",
+      "start": 2929.43,
+      "duration": 6.244
+    },
+    {
+      "text": " the value of m will be--a/b And the",
+      "start": 2934.725,
+      "duration": 9.113
+    },
+    {
+      "text": " value of c will be-c/b, okay? So, what",
+      "start": 2942.911,
+      "duration": 4.774
+    },
+    {
+      "text": " did I do? I did exactly this to",
+      "start": 2946.759,
+      "duration": 3.164
+    },
+    {
+      "text": " calculate m. What is a? a is your first",
+      "start": 2948.984,
+      "duration": 4.63
+    },
+    {
+      "text": " coefficient. Meaning, inside the",
+      "start": 2952.669,
+      "duration": 4.406
+    },
+    {
+      "text": " coefficients, there are two terms. So,",
+      "start": 2956.136,
+      "duration": 3.54
+    },
+    {
+      "text": " what is A? The first term, and what is",
+      "start": 2958.758,
+      "duration": 3.457
+    },
+    {
+      "text": " B? The second term. And inside the",
+      "start": 2961.272,
+      "duration": 2.756
+    },
+    {
+      "text": " intercept, there is a single term. So,",
+      "start": 2963.074,
+      "duration": 2.906
+    },
+    {
+      "text": " what is C? This term right here. And",
+      "start": 2965.058,
+      "duration": 3.11
+    },
+    {
+      "text": " what is B? Again, this second term. So,",
+      "start": 2967.22,
+      "duration": 3.299
+    },
+    {
+      "text": " I did exactly this work here. I",
+      "start": 2969.58,
+      "duration": 2.935
+    },
+    {
+      "text": " calculated coefficient 0 divided by",
+      "start": 2971.579,
+      "duration": 3.233
+    },
+    {
+      "text": " coefficient 1. And for B, I did the",
+      "start": 2973.875,
+      "duration": 3.207
+    },
+    {
+      "text": " same thing. Intercept divided by",
+      "start": 2976.142,
+      "duration": 3.025
+    },
+    {
+      "text": " coefficient 1. And after getting M and",
+      "start": 2978.23,
+      "duration": 3.741
+    },
+    {
+      "text": " B, I plotted that line. And look here",
+      "start": 2981.027,
+      "duration": 3.791
+    },
+    {
+      "text": " guys, this is that line. So, this was",
+      "start": 2983.875,
+      "duration": 4.019
+    },
+    {
+      "text": " my data, and this is the line we just",
+      "start": 2986.954,
+      "duration": 3.226
+    },
+    {
+      "text": " created using the perceptron trick.",
+      "start": 2989.24,
+      "duration": 3.107
+    },
+    {
+      "text": " Okay? Now, I did one more thing. I drew",
+      "start": 2992.302,
+      "duration": 4.235
+    },
+    {
+      "text": " an animation of this same thing. So,",
+      "start": 2995.589,
+      "duration": 3.579
+    },
+    {
+      "text": " this is the animation. Okay? Let's see",
+      "start": 2998.234,
+      "duration": 3.471
+    },
+    {
+      "text": " it from the start. Look, see the first",
+      "start": 3000.747,
+      "duration": 3.805
+    },
+    {
+      "text": " epoch; in many epochs, your line won't",
+      "start": 3003.618,
+      "duration": 3.476
+    },
+    {
+      "text": " move. Why won't it move? Because the",
+      "start": 3006.159,
+      "duration": 5.209
+    },
+    {
+      "text": " point selected in that epoch agrees",
+      "start": 3010.415,
+      "duration": 2.664
+    },
+    {
+      "text": " with the line. It says, \"I have no",
+      "start": 3012.127,
+      "duration": 3.374
+    },
+    {
+      "text": " problem.\" So that is why the line is",
+      "start": 3014.559,
+      "duration": 2.788
+    },
+    {
+      "text": " not moving. See, right now the line is",
+      "start": 3016.391,
+      "duration": 2.888
+    },
+    {
+      "text": " not moving. But as soon as it finds a",
+      "start": 3018.329,
+      "duration": 2.714
+    },
+    {
+      "text": " point that is misclassified, it will",
+      "start": 3020.086,
+      "duration": 2.535
+    },
+    {
+      "text": " pull it towards itself, and then the",
+      "start": 3021.664,
+      "duration": 2.536
+    },
+    {
+      "text": " line will move. So, I have only taken",
+      "start": 3023.243,
+      "duration": 2.969
+    },
+    {
+      "text": " 200 epochs here. I didn't take 1000",
+      "start": 3025.27,
+      "duration": 3.066
+    },
+    {
+      "text": " epochs. My work was done in 200. But it",
+      "start": 3027.393,
+      "duration": 3.383
+    },
+    {
+      "text": " depends, it depends on your data. So",
+      "start": 3029.826,
+      "duration": 2.819
+    },
+    {
+      "text": " you can see, sometimes in between, the",
+      "start": 3031.694,
+      "duration": 2.862
+    },
+    {
+      "text": " line doesn't move. Because all the",
+      "start": 3033.605,
+      "duration": 2.642
+    },
+    {
+      "text": " points being selected now are correctly",
+      "start": 3035.291,
+      "duration": 2.717
+    },
+    {
+      "text": " classified. So, they are not telling",
+      "start": 3037.052,
+      "duration": 2.819
+    },
+    {
+      "text": " the line to move. Okay? But sometimes",
+      "start": 3038.922,
+      "duration": 3.222
+    },
+    {
+      "text": " it finds a point that tells it to move.",
+      "start": 3041.193,
+      "duration": 2.89
+    },
+    {
+      "text": " Okay? So that is how this entire thing",
+      "start": 3043.313,
+      "duration": 3.312
+    },
+    {
+      "text": " works. You are starting with a random",
+      "start": 3045.681,
+      "duration": 2.875
+    },
+    {
+      "text": " line. Then you are randomly selecting a",
+      "start": 3047.604,
+      "duration": 3.07
+    },
+    {
+      "text": " point. If that point is misclassified,",
+      "start": 3049.724,
+      "duration": 3.063
+    },
+    {
+      "text": " then it is changing the line. If that",
+      "start": 3051.84,
+      "duration": 3.007
+    },
+    {
+      "text": " point is correctly classified, then it",
+      "start": 3053.898,
+      "duration": 2.916
+    },
+    {
+      "text": " is not changing the line. And that is",
+      "start": 3055.864,
+      "duration": 2.997
+    },
+    {
+      "text": " why in some epochs, your line stays",
+      "start": 3057.919,
+      "duration": 3.026
+    },
+    {
+      "text": " exactly as it is. Right? You can see",
+      "start": 3060.003,
+      "duration": 3.345
+    },
+    {
+      "text": " this is very important. I will share",
+      "start": 3062.401,
+      "duration": 2.851
+    },
+    {
+      "text": " the notebook for this animation with",
+      "start": 3064.297,
+      "duration": 2.601
+    },
+    {
+      "text": " you in the description. Take some time",
+      "start": 3065.942,
+      "duration": 3.477
+    },
+    {
+      "text": " to sit and watch this animation",
+      "start": 3068.47,
+      "duration": 2.583
+    },
+    {
+      "text": " carefully. Right? Then the concept you",
+      "start": 3070.104,
+      "duration": 3.441
+    },
+    {
+      "text": " studied in the last video will be",
+      "start": 3072.597,
+      "duration": 2.724
+    },
+    {
+      "text": " completely clear. Right? So that was",
+      "start": 3074.373,
+      "duration": 3.361
+    },
+    {
+      "text": " the video, guys. I know I have taken",
+      "start": 3076.796,
+      "duration": 4.593
+    },
+    {
+      "text": " some clips from my previous playlist.",
+      "start": 3080.44,
+      "duration": 2.913
+    },
+    {
+      "text": " Because the perceptron trick I taught",
+      "start": 3083.7,
+      "duration": 3.0
+    },
+    {
+      "text": " in 100 Days of Machine Learning was",
+      "start": 3085.755,
+      "duration": 2.892
+    },
+    {
+      "text": " quite similar. There isn't much",
+      "start": 3087.701,
+      "duration": 2.584
+    },
+    {
+      "text": " difference. So whatever differences",
+      "start": 3089.329,
+      "duration": 3.401
+    },
+    {
+      "text": " there are, you will see in the next",
+      "start": 3091.782,
+      "duration": 2.848
+    },
+    {
+      "text": " video when we look at how loss",
+      "start": 3093.683,
+      "duration": 2.583
+    },
+    {
+      "text": " functions are implemented in",
+      "start": 3095.319,
+      "duration": 2.478
+    },
+    {
+      "text": " perceptrons. Right? So if you liked the",
+      "start": 3096.85,
+      "duration": 3.84
+    },
+    {
+      "text": " video, then like it, guys. That's it",
+      "start": 3099.75,
+      "duration": 3.279
+    },
+    {
+      "text": " from my side. Thanks for watching. Bye.",
+      "start": 3102.081,
+      "duration": 3.423
+    }
+  ]
+}

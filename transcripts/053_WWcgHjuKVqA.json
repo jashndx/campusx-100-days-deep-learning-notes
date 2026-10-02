@@ -1,0 +1,3645 @@
+{
+  "id": "WWcgHjuKVqA",
+  "index": 53,
+  "title": "What is Transfer Learning? Transfer Learning in Keras | Fine Tuning Vs Feature Extraction",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitesh and you are  welcome to CampusX. In this video, we  will continue our deep learning  playlist. And today's video topic is  very important and very interesting. In  today's video, you are going to learn  Transfer Learning, which is basically a  technique used in machine learning  where you train your model on one  dataset and then run it on another. And  this is a method that has become very  famous in the last five or six years.  And today, the biggest personalities in  deep learning say that transfer  learning will be the next big thing. So  that is why it is very important for  you to learn this. So in the video, I  will first try to explain everything  conceptually and theoretically, and  then in the second half of the video, I  will show you how to do transfer  learning in Keras. Okay? So, let's  start the video. Before starting  transfer learning, let's discuss what  the problem is if you go to train a  deep learning model from scratch. I  have told you multiple times in this  playlist that deep learning models are  data hungry. Which basically means that  if you want to train your own deep  learning model, you need a lot of  labeled data, which is costly. If you  want to build a cat-dog classifier, you  need lots of images, let's say 10,000  images. Now, you can scrape these  images from Google. But with every  image, you will also have to provide  the information about which image has a  cat and which has a dog. Now, this  labeling is difficult and you need  manual labor. Right? And this is costly . Companies have to pay money for this.  So the biggest problem that comes with  training your own deep learning model  is that you need a lot of data. If that  data is not publicly available, it will  take time and effort to create it. Okay ? Problem number two: Deep learning  models, especially if you are training  your model on a big dataset, take a lot  of time to get trained. It takes a lot  of time for a model to train. It could  be days or weeks, and in certain cases,  it could even take months. If your  dataset is very large. So this is the  second disadvantage. Because of these  two reasons, generally, people do not  prefer training their own deep learning  model that much. Okay? So if training  your own deep learning model is  difficult, then what is the solution?  The solution is using pretrained models . If you remember, a few days ago I  uploaded a video on my channel about  Pretrained Models in CNN. Where I told  you about the ImageNet dataset, which  is a very large dataset of images, a  dataset about daily objects and animals . This dataset has around 1.4 million  images of about 1000 classes, classes  like chairs, bread, and different dog  breeds. ImageNet is a dataset of this  kind, and a competition started being  organized on it named ILSVRC, okay,  ImageNet Large Scale Visual Recognition  Challenge, which began around 2010. And  in this video, I explained how, from  2012 onwards, some deep learning model  wins this competition every year. So in  this video, I explained to you that  these models that came and won this  competition, like VGG and ResNet and  InceptionNet, all these models are so  good and so well-trained on this data  that you can take them and use them in  your own projects too. And that is the  whole concept behind pretrained models.  So, a pretrained model is a CNN model  that has been trained on some other  data. Okay? And that dataset is large  enough to have all the categories. Now  what you can do is you can apply that  dataset to your own data. You can use  that same model in your project.  Because it has already learned from a  previous large dataset. Okay? So I  covered this entire thing in that video . This is the summary of that video. If  you haven't watched that video, I would  recommend it to you. You should  definitely go and watch it once. I am  putting its link in the description.  Please watch it once. Then it will be a  bit clearer to you what pretrained  models are and what their job is. Okay?  Now, in the code we wrote in the last  video, we had created a generic  classifier that was able to classify  any kind of object. If I remember  correctly, there I classified a chair,  classified bread, classified a dog, and  classified a tomato. So these are like  general objects. So, there can be a  problem with pretrained models as well,  and that problem is: what if the  project you are working on, your  pretrained model doesn't even know that  class? I will try to explain. Let's say  you are working specifically on phone  versus tablet classification. Okay?  Your task is to look at an image and  determine whether it contains a phone  or a tablet. And you decided to use VGG  Net as a pretrained model, which is  trained on the ImageNet dataset. Now,  what if neither phones nor tablets are  among these 1,000 classes in the  ImageNet dataset? Now that is an issue.  Everything we were classifying so far  fell within these 1,000 classes. And  that is why we were getting results.  But it is not necessary that whenever  you work on a project, you will always  have the same classes that are inside  these 1,000 classes. Now, this is the  problem that we are trying to solve.  And to solve this problem, we use  transfer learning, which is the topic  of today's video. Okay? So going  forward, what we will do is first learn  what transfer learning is, and then we  will implement it in code using Keras.  So first, I will try to explain to you  in very simple words what transfer  learning is. I have taken this  definition from Wikipedia. Let's read  it once. Transfer learning is a  research problem in machine learning  that focuses on storing knowledge  gained while solving one problem and  applying it to a different but related  problem. Okay? This is a simple  definition. But I will explain it a  little more. So, as I just told you,  what do you do? In pretrained models,  you try out a CNN trained on another  dataset on your own dataset, and you do  this because there are two benefits.  First, you don't need your own large  dataset, which is costly, and second,  it saves time. So, transfer learning  does exactly that for us. Okay? And  since 2015-16, transfer learning has  actually become a big deal in the  machine learning space. In fact, you  can see this chart. Here, Andrew Ng  said that if you remove supervised  learning, then in second place,  transfer learning is the thing that  will take machine learning forward in  the industry. Okay? You can see the  chart, even better than unsupervised  learning and reinforcement learning.  Okay? Now, such a sentiment is building  in the industry because transfer  learning solves your problem very  easily. Okay? So, if you think about it , what are you doing in transfer  learning? You are applying what you  have learned from another dataset to  your own dataset. Honestly speaking, we  do the same thing in real life as well.  This means that I want to say transfer  learning is actually inspired by real  life. I will give you some examples. So , why are you told that before riding a  motorcycle, you should know how to ride  a bicycle? Because what you are  effectively doing, what your brain is  doing, is that when you learn to ride a  bicycle, some learning happens in your  brain. Right? Some knowledge is formed.  Now, riding a motorcycle is a separate  task. But it is a related task. You  need balancing in both. So, if you have  learned to ride a bicycle, riding a  motorcycle will become a bit easier.  Because your brain will use the  knowledge it gained from riding the  bicycle to ride the motorcycle.  Similarly, let's say you know how to  play a musical instrument. Let's say a  violin or something. Then you will be  able to play a related instrument well  too. Let's say a guitar. Why? Because  you have an understanding of musical  notes. So you do this all the time:  applying knowledge from one domain to  another domain. Computer scientists  integrated this simple idea into deep  learning and machine learning, and this  is what is called transfer learning.  Right? Next, I will teach you exactly  how transfer learning works. What is  working under the hood. So, to  understand how transfer learning works,  let's take a small example. Suppose we  want to do cat-dog classification, and  to do this classification, we will use  a pre-trained model. VGG16, which is a  very famous pre-trained model. Now, you  can see the architecture of this model  in this diagram. You can clearly see  that there are two parts in this model.  So one part is this, which we call the  convolutional layer part, or sometimes  it is also called the convolutional  base. And then there is a second part  where you have your fully connected  layers and your output layer. We call  this the FC layers or the FC part. So  this part, the convolutional base, its  job is to—and obviously we are doing  an image classification task—From  within the image, extract spatial  information. Right? So an image is  basically a 2D matrix of pixels. Right?  So what is the relationship between  these pixels in 2D is what our  convolutional base captures. And this  fully connected part, its job is to  perform classification. So this model,  VGG16, is trained on the ImageNet  dataset, which has 1000 classes. So  basically, it has learned on a  multi-class classification problem. And  you can see here that in the output,  there are 1000 nodes with Softmax  applied. Okay? Now, for a moment, let's  assume that these cat and dog classes  are not among those 1000. So let's  discuss how we apply transfer learning.  So what you will do is break this CNN  from this point. Okay? You keep this  part. The convolutional base, and you  remove this part. Okay? Then what you  do is, here is your convolutional base.  Now, you add your own dense layers or  FC layers on top of it as per your  needs. Like there were three dense  layers here. You can add as many as you  want, and you also decide how many  neurons each dense layer will have. And  finally, you put an output layer with  one neuron. Because what we are doing  now is a binary classification problem,  and you apply Sigmoid there. Also, what  you do is you freeze this convolutional  layer, this convolutional base.  Freezing means that when you retrain  this entire network, only this part  will be trained. This part will not be  trained. And then you train the model  on whatever data you have. Suppose you  have even a little bit of data, even  100 images each. Then what do you do?  You train this model on your small  amount of data. This part does not get  trained. This part gets trained. And  that's it. That is what transfer  learning is. So what you are  essentially doing is using the  knowledge that was already learned in  this part on ImageNet and applying it  to your task. Okay? So this is the main  idea. This is how transfer learning  works. Okay? Now I will explain to you  next why the thing you just learned  works. So let me explain why transfer  learning works. For that, let's revise  it once again. What we just studied  about how transfer learning works. So  what you do is, you are working on a  problem. Let's say you want to do  cat-dog classification and for that,  you choose the VGG16 model which is  already trained on the ImageNet dataset . So what you do is, you remove this  dense part, the dense layer part. Okay?  And you replace it with your own dense  layers where you can add any number of  layers. You can add any number of  neurons. And in the end, there is a  single neuron which is your output  layer because you are going to do  binary classification. And you attach  them in this way. Also, what you do is  you freeze this convolutional base  layer. So that the weight values here  do not change. Because the true  knowledge is hidden in the weight  values. Which this VGG16 had learned.  While getting trained on ImageNet. Okay ? And you train this entire  architecture again on your small  dataset. Nothing changes in this part.  And here, you learn the weights. And  that is how transfer learning works.  Okay? Now let's try to understand why  this technique is working. Why is it  able to give results? The answer is  very simple. If you remember, we  discussed at the very beginning of CNN  that when you add so many convolution  layers, the job of these convolution  layers is to decode the image and, in a  way, extract features to see what is in  the image. And then the layers that  follow have the job of doing the  classification. Now, we also discussed  that your early layers, the initial  layers, have the job of extracting  primitive features like edges. As you  go to deeper layers, you extract more  complex patterns and features. Like  shapes. Okay? And then gradually, you  eventually create features and pass  them on. So the concept is very simple.  The concept is that your ImageNet  dataset contains data related to around  1000 classes. Now take anything that  exists in the real world. Its primitive  features will be similar. They are  general. Okay? They will definitely  have edges. They will definitely have  shapes. That is why we decided that the  things learned at the beginning are  kind of common for all tasks, for all  image classification tasks, so there is  no need to learn them again. So that is  why we used this entire convolutional  base exactly as it is. And then for the  specific classification task ahead, we  added our own layers and retrained the  entire model. So that is why transfer  learning works. Because when you train  this model for the first time, it has  already learned the primitive and  general features during the training  process. There is no need to do that  work again. Okay? So basically, the  whole principle behind this entire  thing is: do not reinvent the wheel.  Don't build the wheel over and over. If  the wheel is already made, use it to  build a car. Okay? I hope you  understood the idea. So next, we will  learn about the different ways to apply  transfer learning. There are precisely  two ways. Okay? I will tell you the  names of both. The first method is  called feature extraction. And the  second one is fine-tuning. Now, this  feature extraction is exactly what we  just discussed, where you replace the  last dense layers with your own dense  layers, freeze the convolutional base,  and retrain the model on your data.  This is what is called feature  extraction. Okay? Feature extraction is  generally done when the labels in the  image classification task you are  working on are somewhat similar to the  data on which your model is already  trained. For example, if you are doing  dog vs. cat classification, you should  use feature extraction. Why? Because  training on animals has already been  done in ImageNet. So you know that the  layers up to this point have already  learned to recognize animals or their  features. Okay? So you only need to  make changes to the last layers.  Whereas in fine-tuning, you also  retrain some of the last convolutional  layers. You don't freeze them. So you  freeze the layers from here to here.  But you unfreeze the last layers. And  you add your own dense layers. And then  you retrain this entire part. You  retrain this entire part. When should  you apply fine-tuning? It is very  simple. If you are working on a problem  that is very different from your  dataset's classification labels. Let's  say, all of a sudden, I am trying to do  a classification between phones versus  tablets. And for a moment, let's assume  that ImageNet did not have any data  even remotely like this. So, even then,  I can reuse the initial layers. Because  these contain very primitive features.  But as you move forward, the knowledge  in those layers is slightly different  from my requirements. So that is why  what I would like to do is, I will... unfreeze the last few layers and  retrain the model entirely. Obviously,  it will take a little more time in this  case, but you would see you get better  results. Okay? So moving forward in  this video, I will show you how to do  both of these things, and you will  understand how the whole thing works in  Keras. So guys, using transfer learning  in Keras is actually a very, very easy  task because you get all the pretrained  models prebuilt, including VGG16. So,  what am I going to do? I am going to  build the same dog-cat classifier that  I built a few videos ago. But this time , instead of using our own CNN  architecture, we will be using the  VGG16 module. Okay? So, this is the  dataset we are going to use. I will  provide its link in the description.  And I have already written the code. So , I will give you a walkthrough. So,  these first four cells of code, in fact , the first three cells of code, the  only job of this entire code is to  import this dataset from Kaggle and  bring it here for us. Okay? You can see  two folders will be created here for me . I will just run this cell. We have  received the dataset. But it is in zip  format. Once I run this code, it will  extract this zip and our data will be  ready. And you can see train and test.  Inside train, there are two folders.  Cats and Dogs. Inside test, there are  also two folders. Cats and Dogs. And  inside these are our images. Okay? So  now, I will explain the whole thing  from here. So, these are the libraries  you need to import. You have already  done many things in this. This is kind  of new. Here, you are going into  Keras.applications and importing the  VGG16 class from VGG16. Now what you  are doing is, you are creating an  object of the VGG16 class. Where you  have specified the weights as ImageNet.  So, you want the same weight values  that VGG16 had. When it was trained on  the ImageNet dataset. Also, an  interesting thing here is that you are  saying include_top = False. So this  means, think of it like this, that this  is the top side. This side is the top  side. So you are saying that this  entire dense layer, three dense layers  and one output layer. You do not want  these. You are removing this and you  are only importing the convolutional  base, just up to here. You are not  importing this part, which is what you  also do in transfer learning. Okay? And  lastly, you are specifying the input  shape as 150, 150, 3, or you can  specify anything. And here, you can see  when I run the summary of the conv_base , you would see the last layer is  actually the pooling layer and the  second to last layer is block5_conv3,  this one. Okay? We did not even import  this part. You can do it if you want.  If you set it to True here. I hope you  get the idea. Now, what are we doing?  We are building our own sequential  model from scratch, and in that model,  we are first adding this convolutional  base; basically, we are adding  everything up to this point into our  new model. After that, we are  flattening it. And after that, we are  adding our dense layers. We are adding  two dense layers, one with 256 neurons  and the second one with one neuron,  which is our output layer because the  activation is sigmoid. And after that,  as soon as I ran the summary, this is  the summary. At the beginning, you have  all the VGG16 layers with this many  parameters. Then we have flatten, then  we have dense, and then we have the  output layer. Okay? And you can see at  this point, there are 16, 16 million  parameters, I guess. Now look, this is  where the interesting part starts. I  told you that when you retrain on your  own data, you first freeze the entire  convolutional base part. Freezing means  you do not retrain their weights. So I  have done exactly that. You can see I  have set the value of  conv_base.trainable to False. Okay? And  after doing this, let me quickly show  it to you from here. So I have done  this. This is the summary. This is my  new model. The summary after the model.  Okay? At this point, you can see these  are the trainable parameters. Now I  have set trainable to false. And if I  run the summary again, you would see  that now the trainable parameters are  only these, which actually belong to  these dense layers. Okay? We have set  the whole thing to false. Meaning these  have now become non-trainable  parameters. They will not be trained  during training. Okay? Moving on, it's  a very simple code. We have used this  before as well. Basically, we are  applying a generator to these folders  to pick up all the data and send it to  the model. Okay? So, I am not  explaining all this code. It's actually  quite simple. You are using a utility  called image_dataset_from_directory.  You are using that. You are providing  the path to the directory. The labels  are being inferred automatically. The  label mode is int. Zero for cat. One  for dog. We kept the batch size at 32.  We kept the image size at 150 by 150,  which we defined above. This much is  for our training, and this is for our  validation and testing. As soon as you  run this code, you can see found 20,000  files belonging to two classes. This  refers to the training data, and found  5,000 files belonging to two classes.  This refers to your testing data. Okay?  Now, one last thing, before sending  images to our model, you will do one  small task. All the pixel values that  are from 0 to 255, you will bring them  between 0 and 1. Training becomes a bit  faster. Okay? So I did the same thing.  I applied this process function on  train_ds, whose job is to rescale, and  I applied the same thing on  validation_ds as well. Okay? You know  the next step: model.compile, optimizer : Adam, loss: binary crossentropy, and  our metric is accuracy. And Lastly, we  just did model.fit on our train dataset , for 10 epochs, we sent the validation  data here, and logged everything to the  history parameter. And when I ran this  model for 10 epochs, you can see I was  able to reach an accuracy of 90%. If  you remember, three or four videos ago,  when I built a dog and cat classifier  on my own CNN architecture, the highest  accuracy that I was able to reach was  81%. Now I am already at 90%, okay?  After this, I plotted graphs for  training and validation data, and  clearly, you can see there is a  difference; you know, the training  accuracy is constantly increasing. The  validation accuracy is not increasing.  This gap shows overfitting, and  actually, here you can see that after  the last epoch, the accuracy on the  training data is 98.3, whereas the  accuracy on the validation is 90.8, so  this is overfitting. You can see the  same thing in the loss curve as well.  So, what did I do then? I made a small  change to the entire flow. We studied  data augmentation in the video before  the last one, I guess. Where you create  new data by transforming an input image  in different ways. Generally, you use  data augmentation to reduce overfitting . So I thought, why not use data  augmentation to reduce the overfitting?  Okay? So, I created another notebook in  which, if you notice, the entire flow  is the same. You can see the entire  flow is exactly the same. Except here,  rather than using this flow, which is  the one with generators. I have used  data augmentation. Okay? So, here I  created a train data gen using Image  Data Generator in which I applied all  these transformations. This is my test  data gen, in which I applied only one  transformation, and here is my train  generator. Here is my validation  generator. Everything is similar. I  just applied data augmentation  throughout the flow. Okay? The  subsequent things are also exactly the  same. Here, instead of model.fit,  model.fit_generator is used. I told you  about this in the data augmentation  video. And here, too, I trained for 10  epochs with a batch size of 32. Um,  yeah, batch size of 32, I kept  everything similar. Okay? And you would  see that as soon as I trained this  model, after the last epoch, my  training accuracy was 92.8. But my test  accuracy increased. It went up to 91.4.  Okay? You can use some other techniques  here as well. You can. Like dropouts,  or you can also use different types of  weight initialization techniques. You  can also try out batch normalization.  You can try out different things, but  you can see that using data  augmentation has been somewhat  beneficial. Our accuracy has moved  upwards, and you can see this in the  graph as well. You can see there is  very little difference between the blue  curve and the red curve. Okay? And the  same with the loss graph. Okay? Now  finally, I thought that we have already  tried using feature extraction. What if  we use the second approach? If you  remember, the second approach was  fine-tuning. Where you don't just train  the dense layers. In fact, you even  retrain the last or second-to-last  layers of your convolution base. Okay?  So this is called fine-tuning. So in  this last notebook, I have applied  fine-tuning without data augmentation.  Okay? So, the code is already written.  I will just go through the code. The  initial code is exactly the same. Again , we imported the convolution base. The  main thing here is that I have set the  convolution base trainable to true. Not  false. And then I ran a loop and  detected. Wherever there are layers  from block five onwards. I have set the  trainable property to true for all  layers from block five onwards, and  false for the rest. Okay? After doing  this, you can see that all these layers , which are the initial layers. The  layers from here to this point, I have  set their trainable to false. Meaning  they are frozen. But these last four  layers, three convolutions and one  pooling. Pooling doesn't make much of a  difference because there's nothing  trainable there. But these three layers , you can train them while training.  Okay? So that is the only difference.  After that, when checking the summary  of the conv base, this was the summary.  Half of it is trained. Half is  non-trainable. The subsequent code is  also exactly the same. You can see it  is exactly the same, everything is  exactly the same. This code is exactly  the same as the one I used here. And  then I just normalized it further, just  like I did in the first one. After that , in model.compile, I did one thing:  instead of using Adam, I used RMSprop  with a very low learning rate. Okay? So  it is said that when you are  fine-tuning, you should keep the  learning rate a bit lower. Okay? It's  something that people have understood  experimentally, and the metrics are the  same, the loss is the same. Here too, I  ran model.fit for 10 epochs and I was  pleasantly surprised to see that my  validation accuracy reached 95.2%. Okay ? Which is actually a big deal. When we  built our CNN architecture. The  accuracy was around 81%, and from there , you reached 95%. On the whole, if you  talk about training, the accuracy is  99.8. Again, you can say there is a bit  of overfitting happening. But you can  try out different things. In this flow  as well, you can use data augmentation,  maybe you will see an improvement.  Alright? But here are the graphs. And  yeah, here are those two techniques,  fine-tuning and feature extraction,  using which you can apply transfer  learning in Keras. I will share all  three of these notebooks with you. Your  job is to run all these notebooks once  and write your learnings in a notebook  about what you have learned. Alright?  And if possible, try to apply the same  thing to some other dataset. It would  do wonders for your learning. Alright?  So that's it from my side. I hope I was  able to explain transfer learning to  you. If you liked the video, please  like it, and if you haven't subscribed  to the channel yet, then please  subscribe. See you in the next video.  Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitesh and you are",
+      "start": 0.1,
+      "duration": 3.245
+    },
+    {
+      "text": " welcome to CampusX. In this video, we",
+      "start": 2.404,
+      "duration": 3.12
+    },
+    {
+      "text": " will continue our deep learning",
+      "start": 4.577,
+      "duration": 2.637
+    },
+    {
+      "text": " playlist. And today's video topic is",
+      "start": 6.267,
+      "duration": 3.012
+    },
+    {
+      "text": " very important and very interesting. In",
+      "start": 8.334,
+      "duration": 4.174
+    },
+    {
+      "text": " today's video, you are going to learn",
+      "start": 11.56,
+      "duration": 2.918
+    },
+    {
+      "text": " Transfer Learning, which is basically a",
+      "start": 13.529,
+      "duration": 3.022
+    },
+    {
+      "text": " technique used in machine learning",
+      "start": 15.602,
+      "duration": 2.763
+    },
+    {
+      "text": " where you train your model on one",
+      "start": 17.416,
+      "duration": 2.711
+    },
+    {
+      "text": " dataset and then run it on another. And",
+      "start": 19.179,
+      "duration": 5.141
+    },
+    {
+      "text": " this is a method that has become very",
+      "start": 23.374,
+      "duration": 2.985
+    },
+    {
+      "text": " famous in the last five or six years.",
+      "start": 25.413,
+      "duration": 2.985
+    },
+    {
+      "text": " And today, the biggest personalities in",
+      "start": 28.777,
+      "duration": 3.095
+    },
+    {
+      "text": " deep learning say that transfer",
+      "start": 30.926,
+      "duration": 2.666
+    },
+    {
+      "text": " learning will be the next big thing. So",
+      "start": 32.646,
+      "duration": 3.565
+    },
+    {
+      "text": " that is why it is very important for",
+      "start": 35.262,
+      "duration": 2.83
+    },
+    {
+      "text": " you to learn this. So in the video, I",
+      "start": 37.143,
+      "duration": 2.96
+    },
+    {
+      "text": " will first try to explain everything",
+      "start": 39.155,
+      "duration": 2.889
+    },
+    {
+      "text": " conceptually and theoretically, and",
+      "start": 41.097,
+      "duration": 2.836
+    },
+    {
+      "text": " then in the second half of the video, I",
+      "start": 42.985,
+      "duration": 3.046
+    },
+    {
+      "text": " will show you how to do transfer",
+      "start": 45.084,
+      "duration": 2.679
+    },
+    {
+      "text": " learning in Keras. Okay? So, let's",
+      "start": 46.815,
+      "duration": 3.12
+    },
+    {
+      "text": " start the video. Before starting",
+      "start": 48.996,
+      "duration": 3.972
+    },
+    {
+      "text": " transfer learning, let's discuss what",
+      "start": 52.019,
+      "duration": 2.903
+    },
+    {
+      "text": " the problem is if you go to train a",
+      "start": 53.973,
+      "duration": 2.8
+    },
+    {
+      "text": " deep learning model from scratch. I",
+      "start": 55.825,
+      "duration": 5.222
+    },
+    {
+      "text": " have told you multiple times in this",
+      "start": 60.098,
+      "duration": 2.826
+    },
+    {
+      "text": " playlist that deep learning models are",
+      "start": 61.975,
+      "duration": 2.927
+    },
+    {
+      "text": " data hungry. Which basically means that",
+      "start": 63.953,
+      "duration": 6.598
+    },
+    {
+      "text": " if you want to train your own deep",
+      "start": 69.602,
+      "duration": 2.735
+    },
+    {
+      "text": " learning model, you need a lot of",
+      "start": 71.388,
+      "duration": 2.684
+    },
+    {
+      "text": " labeled data, which is costly. If you",
+      "start": 73.123,
+      "duration": 5.918
+    },
+    {
+      "text": " want to build a cat-dog classifier, you",
+      "start": 78.105,
+      "duration": 3.494
+    },
+    {
+      "text": " need lots of images, let's say 10,000",
+      "start": 80.662,
+      "duration": 3.366
+    },
+    {
+      "text": " images. Now, you can scrape these",
+      "start": 83.092,
+      "duration": 3.649
+    },
+    {
+      "text": " images from Google. But with every",
+      "start": 85.798,
+      "duration": 3.565
+    },
+    {
+      "text": " image, you will also have to provide",
+      "start": 88.414,
+      "duration": 2.829
+    },
+    {
+      "text": " the information about which image has a",
+      "start": 90.294,
+      "duration": 2.981
+    },
+    {
+      "text": " cat and which has a dog. Now, this",
+      "start": 92.326,
+      "duration": 4.421
+    },
+    {
+      "text": " labeling is difficult and you need",
+      "start": 95.808,
+      "duration": 3.059
+    },
+    {
+      "text": " manual labor. Right? And this is costly",
+      "start": 97.927,
+      "duration": 6.082
+    },
+    {
+      "text": ". Companies have to pay money for this.",
+      "start": 103.009,
+      "duration": 3.417
+    },
+    {
+      "text": " So the biggest problem that comes with",
+      "start": 107.232,
+      "duration": 2.75
+    },
+    {
+      "text": " training your own deep learning model",
+      "start": 109.028,
+      "duration": 2.704
+    },
+    {
+      "text": " is that you need a lot of data. If that",
+      "start": 110.778,
+      "duration": 4.866
+    },
+    {
+      "text": " data is not publicly available, it will",
+      "start": 114.698,
+      "duration": 3.106
+    },
+    {
+      "text": " take time and effort to create it. Okay",
+      "start": 116.858,
+      "duration": 3.871
+    },
+    {
+      "text": "? Problem number two: Deep learning",
+      "start": 119.729,
+      "duration": 5.945
+    },
+    {
+      "text": " models, especially if you are training",
+      "start": 124.731,
+      "duration": 3.177
+    },
+    {
+      "text": " your model on a big dataset, take a lot",
+      "start": 126.965,
+      "duration": 3.235
+    },
+    {
+      "text": " of time to get trained. It takes a lot",
+      "start": 129.257,
+      "duration": 6.052
+    },
+    {
+      "text": " of time for a model to train. It could",
+      "start": 134.361,
+      "duration": 3.855
+    },
+    {
+      "text": " be days or weeks, and in certain cases,",
+      "start": 137.273,
+      "duration": 3.198
+    },
+    {
+      "text": " it could even take months. If your",
+      "start": 139.527,
+      "duration": 3.742
+    },
+    {
+      "text": " dataset is very large. So this is the",
+      "start": 142.33,
+      "duration": 3.315
+    },
+    {
+      "text": " second disadvantage. Because of these",
+      "start": 144.701,
+      "duration": 4.465
+    },
+    {
+      "text": " two reasons, generally, people do not",
+      "start": 148.221,
+      "duration": 3.016
+    },
+    {
+      "text": " prefer training their own deep learning",
+      "start": 150.292,
+      "duration": 3.125
+    },
+    {
+      "text": " model that much. Okay? So if training",
+      "start": 152.472,
+      "duration": 5.166
+    },
+    {
+      "text": " your own deep learning model is",
+      "start": 156.688,
+      "duration": 2.552
+    },
+    {
+      "text": " difficult, then what is the solution?",
+      "start": 158.29,
+      "duration": 2.852
+    },
+    {
+      "text": " The solution is using pretrained models",
+      "start": 161.454,
+      "duration": 3.233
+    },
+    {
+      "text": ". If you remember, a few days ago I",
+      "start": 163.687,
+      "duration": 4.11
+    },
+    {
+      "text": " uploaded a video on my channel about",
+      "start": 166.859,
+      "duration": 3.212
+    },
+    {
+      "text": " Pretrained Models in CNN. Where I told",
+      "start": 169.132,
+      "duration": 7.306
+    },
+    {
+      "text": " you about the ImageNet dataset, which",
+      "start": 175.497,
+      "duration": 3.192
+    },
+    {
+      "text": " is a very large dataset of images, a",
+      "start": 177.748,
+      "duration": 3.133
+    },
+    {
+      "text": " dataset about daily objects and animals",
+      "start": 179.941,
+      "duration": 3.31
+    },
+    {
+      "text": ". This dataset has around 1.4 million",
+      "start": 182.251,
+      "duration": 11.429
+    },
+    {
+      "text": " images of about 1000 classes, classes",
+      "start": 192.749,
+      "duration": 3.535
+    },
+    {
+      "text": " like chairs, bread, and different dog",
+      "start": 195.353,
+      "duration": 3.535
+    },
+    {
+      "text": " breeds. ImageNet is a dataset of this",
+      "start": 197.957,
+      "duration": 10.599
+    },
+    {
+      "text": " kind, and a competition started being",
+      "start": 207.625,
+      "duration": 3.545
+    },
+    {
+      "text": " organized on it named ILSVRC, okay,",
+      "start": 210.239,
+      "duration": 3.408
+    },
+    {
+      "text": " ImageNet Large Scale Visual Recognition",
+      "start": 212.716,
+      "duration": 3.684
+    },
+    {
+      "text": " Challenge, which began around 2010. And",
+      "start": 215.468,
+      "duration": 8.049
+    },
+    {
+      "text": " in this video, I explained how, from",
+      "start": 222.579,
+      "duration": 3.235
+    },
+    {
+      "text": " 2012 onwards, some deep learning model",
+      "start": 224.876,
+      "duration": 3.36
+    },
+    {
+      "text": " wins this competition every year. So in",
+      "start": 227.298,
+      "duration": 10.432
+    },
+    {
+      "text": " this video, I explained to you that",
+      "start": 236.788,
+      "duration": 3.022
+    },
+    {
+      "text": " these models that came and won this",
+      "start": 238.867,
+      "duration": 3.022
+    },
+    {
+      "text": " competition, like VGG and ResNet and",
+      "start": 240.947,
+      "duration": 3.079
+    },
+    {
+      "text": " InceptionNet, all these models are so",
+      "start": 243.084,
+      "duration": 3.137
+    },
+    {
+      "text": " good and so well-trained on this data",
+      "start": 245.278,
+      "duration": 3.138
+    },
+    {
+      "text": " that you can take them and use them in",
+      "start": 247.473,
+      "duration": 3.195
+    },
+    {
+      "text": " your own projects too. And that is the",
+      "start": 249.726,
+      "duration": 7.537
+    },
+    {
+      "text": " whole concept behind pretrained models.",
+      "start": 256.315,
+      "duration": 3.046
+    },
+    {
+      "text": " So, a pretrained model is a CNN model",
+      "start": 259.35,
+      "duration": 3.181
+    },
+    {
+      "text": " that has been trained on some other",
+      "start": 261.59,
+      "duration": 3.064
+    },
+    {
+      "text": " data. Okay? And that dataset is large",
+      "start": 263.713,
+      "duration": 5.527
+    },
+    {
+      "text": " enough to have all the categories. Now",
+      "start": 268.287,
+      "duration": 5.74
+    },
+    {
+      "text": " what you can do is you can apply that",
+      "start": 273.077,
+      "duration": 2.859
+    },
+    {
+      "text": " dataset to your own data. You can use",
+      "start": 274.986,
+      "duration": 5.197
+    },
+    {
+      "text": " that same model in your project.",
+      "start": 279.235,
+      "duration": 2.677
+    },
+    {
+      "text": " Because it has already learned from a",
+      "start": 282.114,
+      "duration": 2.947
+    },
+    {
+      "text": " previous large dataset. Okay? So I",
+      "start": 284.113,
+      "duration": 3.731
+    },
+    {
+      "text": " covered this entire thing in that video",
+      "start": 286.899,
+      "duration": 3.142
+    },
+    {
+      "text": ". This is the summary of that video. If",
+      "start": 289.041,
+      "duration": 3.036
+    },
+    {
+      "text": " you haven't watched that video, I would",
+      "start": 291.123,
+      "duration": 2.8
+    },
+    {
+      "text": " recommend it to you. You should",
+      "start": 292.969,
+      "duration": 2.504
+    },
+    {
+      "text": " definitely go and watch it once. I am",
+      "start": 294.522,
+      "duration": 2.84
+    },
+    {
+      "text": " putting its link in the description.",
+      "start": 296.408,
+      "duration": 2.652
+    },
+    {
+      "text": " Please watch it once. Then it will be a",
+      "start": 298.569,
+      "duration": 3.641
+    },
+    {
+      "text": " bit clearer to you what pretrained",
+      "start": 301.259,
+      "duration": 2.659
+    },
+    {
+      "text": " models are and what their job is. Okay?",
+      "start": 302.967,
+      "duration": 3.569
+    },
+    {
+      "text": " Now, in the code we wrote in the last",
+      "start": 308.388,
+      "duration": 3.191
+    },
+    {
+      "text": " video, we had created a generic",
+      "start": 310.638,
+      "duration": 2.836
+    },
+    {
+      "text": " classifier that was able to classify",
+      "start": 312.533,
+      "duration": 3.132
+    },
+    {
+      "text": " any kind of object. If I remember",
+      "start": 314.724,
+      "duration": 6.604
+    },
+    {
+      "text": " correctly, there I classified a chair,",
+      "start": 320.392,
+      "duration": 3.402
+    },
+    {
+      "text": " classified bread, classified a dog, and",
+      "start": 322.857,
+      "duration": 3.466
+    },
+    {
+      "text": " classified a tomato. So these are like",
+      "start": 325.386,
+      "duration": 4.333
+    },
+    {
+      "text": " general objects. So, there can be a",
+      "start": 328.772,
+      "duration": 5.951
+    },
+    {
+      "text": " problem with pretrained models as well,",
+      "start": 333.777,
+      "duration": 3.124
+    },
+    {
+      "text": " and that problem is: what if the",
+      "start": 335.956,
+      "duration": 2.743
+    },
+    {
+      "text": " project you are working on, your",
+      "start": 337.753,
+      "duration": 2.743
+    },
+    {
+      "text": " pretrained model doesn't even know that",
+      "start": 339.55,
+      "duration": 3.124
+    },
+    {
+      "text": " class? I will try to explain. Let's say",
+      "start": 341.729,
+      "duration": 8.938
+    },
+    {
+      "text": " you are working specifically on phone",
+      "start": 349.72,
+      "duration": 2.971
+    },
+    {
+      "text": " versus tablet classification. Okay?",
+      "start": 351.745,
+      "duration": 5.791
+    },
+    {
+      "text": " Your task is to look at an image and",
+      "start": 357.491,
+      "duration": 2.778
+    },
+    {
+      "text": " determine whether it contains a phone",
+      "start": 359.318,
+      "duration": 2.827
+    },
+    {
+      "text": " or a tablet. And you decided to use VGG",
+      "start": 361.195,
+      "duration": 5.563
+    },
+    {
+      "text": " Net as a pretrained model, which is",
+      "start": 365.818,
+      "duration": 3.086
+    },
+    {
+      "text": " trained on the ImageNet dataset. Now,",
+      "start": 367.963,
+      "duration": 6.515
+    },
+    {
+      "text": " what if neither phones nor tablets are",
+      "start": 373.54,
+      "duration": 3.334
+    },
+    {
+      "text": " among these 1,000 classes in the",
+      "start": 375.935,
+      "duration": 2.966
+    },
+    {
+      "text": " ImageNet dataset? Now that is an issue.",
+      "start": 377.962,
+      "duration": 5.655
+    },
+    {
+      "text": " Everything we were classifying so far",
+      "start": 384.253,
+      "duration": 3.268
+    },
+    {
+      "text": " fell within these 1,000 classes. And",
+      "start": 386.582,
+      "duration": 4.475
+    },
+    {
+      "text": " that is why we were getting results.",
+      "start": 390.103,
+      "duration": 2.656
+    },
+    {
+      "text": " But it is not necessary that whenever",
+      "start": 392.953,
+      "duration": 3.02
+    },
+    {
+      "text": " you work on a project, you will always",
+      "start": 395.028,
+      "duration": 3.075
+    },
+    {
+      "text": " have the same classes that are inside",
+      "start": 397.158,
+      "duration": 3.021
+    },
+    {
+      "text": " these 1,000 classes. Now, this is the",
+      "start": 399.233,
+      "duration": 3.751
+    },
+    {
+      "text": " problem that we are trying to solve.",
+      "start": 402.035,
+      "duration": 2.833
+    },
+    {
+      "text": " And to solve this problem, we use",
+      "start": 404.729,
+      "duration": 2.831
+    },
+    {
+      "text": " transfer learning, which is the topic",
+      "start": 406.616,
+      "duration": 3.053
+    },
+    {
+      "text": " of today's video. Okay? So going",
+      "start": 408.725,
+      "duration": 5.4
+    },
+    {
+      "text": " forward, what we will do is first learn",
+      "start": 413.181,
+      "duration": 3.179
+    },
+    {
+      "text": " what transfer learning is, and then we",
+      "start": 415.416,
+      "duration": 3.123
+    },
+    {
+      "text": " will implement it in code using Keras.",
+      "start": 417.595,
+      "duration": 3.124
+    },
+    {
+      "text": " So first, I will try to explain to you",
+      "start": 421.558,
+      "duration": 3.227
+    },
+    {
+      "text": " in very simple words what transfer",
+      "start": 423.844,
+      "duration": 2.993
+    },
+    {
+      "text": " learning is. I have taken this",
+      "start": 425.896,
+      "duration": 3.447
+    },
+    {
+      "text": " definition from Wikipedia. Let's read",
+      "start": 428.394,
+      "duration": 2.991
+    },
+    {
+      "text": " it once. Transfer learning is a",
+      "start": 430.437,
+      "duration": 4.154
+    },
+    {
+      "text": " research problem in machine learning",
+      "start": 433.644,
+      "duration": 2.873
+    },
+    {
+      "text": " that focuses on storing knowledge",
+      "start": 435.569,
+      "duration": 2.718
+    },
+    {
+      "text": " gained while solving one problem and",
+      "start": 437.339,
+      "duration": 2.873
+    },
+    {
+      "text": " applying it to a different but related",
+      "start": 439.264,
+      "duration": 2.978
+    },
+    {
+      "text": " problem. Okay? This is a simple",
+      "start": 441.294,
+      "duration": 4.493
+    },
+    {
+      "text": " definition. But I will explain it a",
+      "start": 444.841,
+      "duration": 2.949
+    },
+    {
+      "text": " little more. So, as I just told you,",
+      "start": 446.836,
+      "duration": 3.959
+    },
+    {
+      "text": " what do you do? In pretrained models,",
+      "start": 449.863,
+      "duration": 5.71
+    },
+    {
+      "text": " you try out a CNN trained on another",
+      "start": 454.631,
+      "duration": 3.063
+    },
+    {
+      "text": " dataset on your own dataset, and you do",
+      "start": 456.751,
+      "duration": 3.236
+    },
+    {
+      "text": " this because there are two benefits.",
+      "start": 459.044,
+      "duration": 3.064
+    },
+    {
+      "text": " First, you don't need your own large",
+      "start": 462.644,
+      "duration": 3.095
+    },
+    {
+      "text": " dataset, which is costly, and second,",
+      "start": 464.797,
+      "duration": 3.154
+    },
+    {
+      "text": " it saves time. So, transfer learning",
+      "start": 467.01,
+      "duration": 3.189
+    },
+    {
+      "text": " does exactly that for us. Okay? And",
+      "start": 469.259,
+      "duration": 3.824
+    },
+    {
+      "text": " since 2015-16, transfer learning has",
+      "start": 472.146,
+      "duration": 3.282
+    },
+    {
+      "text": " actually become a big deal in the",
+      "start": 474.491,
+      "duration": 3.092
+    },
+    {
+      "text": " machine learning space. In fact, you",
+      "start": 476.647,
+      "duration": 4.077
+    },
+    {
+      "text": " can see this chart. Here, Andrew Ng",
+      "start": 479.783,
+      "duration": 5.359
+    },
+    {
+      "text": " said that if you remove supervised",
+      "start": 484.196,
+      "duration": 2.834
+    },
+    {
+      "text": " learning, then in second place,",
+      "start": 486.084,
+      "duration": 2.673
+    },
+    {
+      "text": " transfer learning is the thing that",
+      "start": 487.811,
+      "duration": 2.888
+    },
+    {
+      "text": " will take machine learning forward in",
+      "start": 489.753,
+      "duration": 2.996
+    },
+    {
+      "text": " the industry. Okay? You can see the",
+      "start": 491.803,
+      "duration": 5.085
+    },
+    {
+      "text": " chart, even better than unsupervised",
+      "start": 495.94,
+      "duration": 2.893
+    },
+    {
+      "text": " learning and reinforcement learning.",
+      "start": 497.885,
+      "duration": 2.893
+    },
+    {
+      "text": " Okay? Now, such a sentiment is building",
+      "start": 499.903,
+      "duration": 4.636
+    },
+    {
+      "text": " in the industry because transfer",
+      "start": 503.596,
+      "duration": 2.796
+    },
+    {
+      "text": " learning solves your problem very",
+      "start": 505.448,
+      "duration": 2.853
+    },
+    {
+      "text": " easily. Okay? So, if you think about it",
+      "start": 507.357,
+      "duration": 4.961
+    },
+    {
+      "text": ", what are you doing in transfer",
+      "start": 511.318,
+      "duration": 2.661
+    },
+    {
+      "text": " learning? You are applying what you",
+      "start": 513.03,
+      "duration": 3.899
+    },
+    {
+      "text": " have learned from another dataset to",
+      "start": 515.976,
+      "duration": 2.705
+    },
+    {
+      "text": " your own dataset. Honestly speaking, we",
+      "start": 517.728,
+      "duration": 4.099
+    },
+    {
+      "text": " do the same thing in real life as well.",
+      "start": 520.887,
+      "duration": 3.348
+    },
+    {
+      "text": " This means that I want to say transfer",
+      "start": 523.627,
+      "duration": 3.013
+    },
+    {
+      "text": " learning is actually inspired by real",
+      "start": 525.693,
+      "duration": 2.961
+    },
+    {
+      "text": " life. I will give you some examples. So",
+      "start": 527.707,
+      "duration": 4.444
+    },
+    {
+      "text": ", why are you told that before riding a",
+      "start": 531.151,
+      "duration": 3.134
+    },
+    {
+      "text": " motorcycle, you should know how to ride",
+      "start": 533.34,
+      "duration": 3.134
+    },
+    {
+      "text": " a bicycle? Because what you are",
+      "start": 535.529,
+      "duration": 3.527
+    },
+    {
+      "text": " effectively doing, what your brain is",
+      "start": 538.108,
+      "duration": 2.924
+    },
+    {
+      "text": " doing, is that when you learn to ride a",
+      "start": 540.084,
+      "duration": 3.028
+    },
+    {
+      "text": " bicycle, some learning happens in your",
+      "start": 542.164,
+      "duration": 2.976
+    },
+    {
+      "text": " brain. Right? Some knowledge is formed.",
+      "start": 544.192,
+      "duration": 3.356
+    },
+    {
+      "text": " Now, riding a motorcycle is a separate",
+      "start": 547.115,
+      "duration": 3.563
+    },
+    {
+      "text": " task. But it is a related task. You",
+      "start": 549.745,
+      "duration": 3.399
+    },
+    {
+      "text": " need balancing in both. So, if you have",
+      "start": 552.203,
+      "duration": 3.947
+    },
+    {
+      "text": " learned to ride a bicycle, riding a",
+      "start": 555.207,
+      "duration": 2.99
+    },
+    {
+      "text": " motorcycle will become a bit easier.",
+      "start": 557.254,
+      "duration": 3.047
+    },
+    {
+      "text": " Because your brain will use the",
+      "start": 560.401,
+      "duration": 2.476
+    },
+    {
+      "text": " knowledge it gained from riding the",
+      "start": 561.925,
+      "duration": 2.667
+    },
+    {
+      "text": " bicycle to ride the motorcycle.",
+      "start": 563.64,
+      "duration": 2.477
+    },
+    {
+      "text": " Similarly, let's say you know how to",
+      "start": 566.06,
+      "duration": 2.941
+    },
+    {
+      "text": " play a musical instrument. Let's say a",
+      "start": 568.055,
+      "duration": 3.412
+    },
+    {
+      "text": " violin or something. Then you will be",
+      "start": 570.517,
+      "duration": 3.45
+    },
+    {
+      "text": " able to play a related instrument well",
+      "start": 573.015,
+      "duration": 2.824
+    },
+    {
+      "text": " too. Let's say a guitar. Why? Because",
+      "start": 574.887,
+      "duration": 3.803
+    },
+    {
+      "text": " you have an understanding of musical",
+      "start": 577.741,
+      "duration": 2.847
+    },
+    {
+      "text": " notes. So you do this all the time:",
+      "start": 579.64,
+      "duration": 4.214
+    },
+    {
+      "text": " applying knowledge from one domain to",
+      "start": 582.911,
+      "duration": 3.123
+    },
+    {
+      "text": " another domain. Computer scientists",
+      "start": 585.091,
+      "duration": 4.856
+    },
+    {
+      "text": " integrated this simple idea into deep",
+      "start": 589.0,
+      "duration": 2.952
+    },
+    {
+      "text": " learning and machine learning, and this",
+      "start": 591.005,
+      "duration": 3.057
+    },
+    {
+      "text": " is what is called transfer learning.",
+      "start": 593.115,
+      "duration": 2.9
+    },
+    {
+      "text": " Right? Next, I will teach you exactly",
+      "start": 595.855,
+      "duration": 4.254
+    },
+    {
+      "text": " how transfer learning works. What is",
+      "start": 599.169,
+      "duration": 4.543
+    },
+    {
+      "text": " working under the hood. So, to",
+      "start": 602.755,
+      "duration": 3.043
+    },
+    {
+      "text": " understand how transfer learning works,",
+      "start": 604.857,
+      "duration": 3.317
+    },
+    {
+      "text": " let's take a small example. Suppose we",
+      "start": 607.234,
+      "duration": 4.872
+    },
+    {
+      "text": " want to do cat-dog classification, and",
+      "start": 611.165,
+      "duration": 3.266
+    },
+    {
+      "text": " to do this classification, we will use",
+      "start": 613.49,
+      "duration": 3.266
+    },
+    {
+      "text": " a pre-trained model. VGG16, which is a",
+      "start": 615.815,
+      "duration": 5.367
+    },
+    {
+      "text": " very famous pre-trained model. Now, you",
+      "start": 620.264,
+      "duration": 4.124
+    },
+    {
+      "text": " can see the architecture of this model",
+      "start": 623.443,
+      "duration": 3.107
+    },
+    {
+      "text": " in this diagram. You can clearly see",
+      "start": 625.606,
+      "duration": 2.902
+    },
+    {
+      "text": " that there are two parts in this model.",
+      "start": 627.555,
+      "duration": 2.823
+    },
+    {
+      "text": " So one part is this, which we call the",
+      "start": 630.6,
+      "duration": 3.171
+    },
+    {
+      "text": " convolutional layer part, or sometimes",
+      "start": 632.828,
+      "duration": 3.171
+    },
+    {
+      "text": " it is also called the convolutional",
+      "start": 635.056,
+      "duration": 3.0
+    },
+    {
+      "text": " base. And then there is a second part",
+      "start": 637.113,
+      "duration": 4.427
+    },
+    {
+      "text": " where you have your fully connected",
+      "start": 640.585,
+      "duration": 2.557
+    },
+    {
+      "text": " layers and your output layer. We call",
+      "start": 642.187,
+      "duration": 4.008
+    },
+    {
+      "text": " this the FC layers or the FC part. So",
+      "start": 645.258,
+      "duration": 5.923
+    },
+    {
+      "text": " this part, the convolutional base, its",
+      "start": 650.242,
+      "duration": 3.325
+    },
+    {
+      "text": " job is to—and obviously we are doing",
+      "start": 652.629,
+      "duration": 3.325
+    },
+    {
+      "text": " an image classification task—From",
+      "start": 655.015,
+      "duration": 3.142
+    },
+    {
+      "text": " within the image, extract spatial",
+      "start": 657.218,
+      "duration": 8.763
+    },
+    {
+      "text": " information. Right? So an image is",
+      "start": 665.042,
+      "duration": 6.028
+    },
+    {
+      "text": " basically a 2D matrix of pixels. Right?",
+      "start": 670.134,
+      "duration": 4.37
+    },
+    {
+      "text": " So what is the relationship between",
+      "start": 674.238,
+      "duration": 2.946
+    },
+    {
+      "text": " these pixels in 2D is what our",
+      "start": 676.239,
+      "duration": 2.668
+    },
+    {
+      "text": " convolutional base captures. And this",
+      "start": 677.963,
+      "duration": 4.131
+    },
+    {
+      "text": " fully connected part, its job is to",
+      "start": 681.151,
+      "duration": 3.026
+    },
+    {
+      "text": " perform classification. So this model,",
+      "start": 683.235,
+      "duration": 7.02
+    },
+    {
+      "text": " VGG16, is trained on the ImageNet",
+      "start": 689.336,
+      "duration": 3.67
+    },
+    {
+      "text": " dataset, which has 1000 classes. So",
+      "start": 692.087,
+      "duration": 5.618
+    },
+    {
+      "text": " basically, it has learned on a",
+      "start": 696.76,
+      "duration": 2.633
+    },
+    {
+      "text": " multi-class classification problem. And",
+      "start": 698.448,
+      "duration": 3.163
+    },
+    {
+      "text": " you can see here that in the output,",
+      "start": 700.664,
+      "duration": 2.89
+    },
+    {
+      "text": " there are 1000 nodes with Softmax",
+      "start": 702.607,
+      "duration": 2.733
+    },
+    {
+      "text": " applied. Okay? Now, for a moment, let's",
+      "start": 704.392,
+      "duration": 3.466
+    },
+    {
+      "text": " assume that these cat and dog classes",
+      "start": 706.917,
+      "duration": 3.193
+    },
+    {
+      "text": " are not among those 1000. So let's",
+      "start": 709.17,
+      "duration": 3.242
+    },
+    {
+      "text": " discuss how we apply transfer learning.",
+      "start": 711.466,
+      "duration": 3.114
+    },
+    {
+      "text": " So what you will do is break this CNN",
+      "start": 716.842,
+      "duration": 3.024
+    },
+    {
+      "text": " from this point. Okay? You keep this",
+      "start": 718.921,
+      "duration": 7.135
+    },
+    {
+      "text": " part. The convolutional base, and you",
+      "start": 725.107,
+      "duration": 5.347
+    },
+    {
+      "text": " remove this part. Okay? Then what you",
+      "start": 729.511,
+      "duration": 4.676
+    },
+    {
+      "text": " do is, here is your convolutional base.",
+      "start": 733.244,
+      "duration": 3.23
+    },
+    {
+      "text": " Now, you add your own dense layers or",
+      "start": 740.67,
+      "duration": 3.256
+    },
+    {
+      "text": " FC layers on top of it as per your",
+      "start": 742.987,
+      "duration": 3.074
+    },
+    {
+      "text": " needs. Like there were three dense",
+      "start": 745.122,
+      "duration": 4.033
+    },
+    {
+      "text": " layers here. You can add as many as you",
+      "start": 748.202,
+      "duration": 2.984
+    },
+    {
+      "text": " want, and you also decide how many",
+      "start": 750.237,
+      "duration": 2.73
+    },
+    {
+      "text": " neurons each dense layer will have. And",
+      "start": 752.018,
+      "duration": 3.616
+    },
+    {
+      "text": " finally, you put an output layer with",
+      "start": 754.692,
+      "duration": 3.149
+    },
+    {
+      "text": " one neuron. Because what we are doing",
+      "start": 756.899,
+      "duration": 5.945
+    },
+    {
+      "text": " now is a binary classification problem,",
+      "start": 761.9,
+      "duration": 3.188
+    },
+    {
+      "text": " and you apply Sigmoid there. Also, what",
+      "start": 764.145,
+      "duration": 5.87
+    },
+    {
+      "text": " you do is you freeze this convolutional",
+      "start": 769.078,
+      "duration": 3.445
+    },
+    {
+      "text": " layer, this convolutional base.",
+      "start": 771.585,
+      "duration": 2.944
+    },
+    {
+      "text": " Freezing means that when you retrain",
+      "start": 777.382,
+      "duration": 2.922
+    },
+    {
+      "text": " this entire network, only this part",
+      "start": 779.358,
+      "duration": 2.869
+    },
+    {
+      "text": " will be trained. This part will not be",
+      "start": 781.281,
+      "duration": 5.858
+    },
+    {
+      "text": " trained. And then you train the model",
+      "start": 786.189,
+      "duration": 5.595
+    },
+    {
+      "text": " on whatever data you have. Suppose you",
+      "start": 790.831,
+      "duration": 4.619
+    },
+    {
+      "text": " have even a little bit of data, even",
+      "start": 794.509,
+      "duration": 3.125
+    },
+    {
+      "text": " 100 images each. Then what do you do?",
+      "start": 796.693,
+      "duration": 3.067
+    },
+    {
+      "text": " You train this model on your small",
+      "start": 799.434,
+      "duration": 2.639
+    },
+    {
+      "text": " amount of data. This part does not get",
+      "start": 801.121,
+      "duration": 3.372
+    },
+    {
+      "text": " trained. This part gets trained. And",
+      "start": 803.544,
+      "duration": 3.569
+    },
+    {
+      "text": " that's it. That is what transfer",
+      "start": 806.155,
+      "duration": 2.885
+    },
+    {
+      "text": " learning is. So what you are",
+      "start": 808.09,
+      "duration": 5.343
+    },
+    {
+      "text": " essentially doing is using the",
+      "start": 812.482,
+      "duration": 2.476
+    },
+    {
+      "text": " knowledge that was already learned in",
+      "start": 814.007,
+      "duration": 2.819
+    },
+    {
+      "text": " this part on ImageNet and applying it",
+      "start": 815.876,
+      "duration": 2.819
+    },
+    {
+      "text": " to your task. Okay? So this is the main",
+      "start": 817.744,
+      "duration": 6.832
+    },
+    {
+      "text": " idea. This is how transfer learning",
+      "start": 823.634,
+      "duration": 4.387
+    },
+    {
+      "text": " works. Okay? Now I will explain to you",
+      "start": 827.074,
+      "duration": 4.958
+    },
+    {
+      "text": " next why the thing you just learned",
+      "start": 831.082,
+      "duration": 2.735
+    },
+    {
+      "text": " works. So let me explain why transfer",
+      "start": 832.867,
+      "duration": 4.329
+    },
+    {
+      "text": " learning works. For that, let's revise",
+      "start": 836.253,
+      "duration": 3.663
+    },
+    {
+      "text": " it once again. What we just studied",
+      "start": 838.972,
+      "duration": 3.093
+    },
+    {
+      "text": " about how transfer learning works. So",
+      "start": 841.115,
+      "duration": 3.538
+    },
+    {
+      "text": " what you do is, you are working on a",
+      "start": 843.709,
+      "duration": 3.005
+    },
+    {
+      "text": " problem. Let's say you want to do",
+      "start": 845.77,
+      "duration": 5.405
+    },
+    {
+      "text": " cat-dog classification and for that,",
+      "start": 850.235,
+      "duration": 3.163
+    },
+    {
+      "text": " you choose the VGG16 model which is",
+      "start": 852.458,
+      "duration": 3.103
+    },
+    {
+      "text": " already trained on the ImageNet dataset",
+      "start": 854.621,
+      "duration": 3.343
+    },
+    {
+      "text": ". So what you do is, you remove this",
+      "start": 856.964,
+      "duration": 7.475
+    },
+    {
+      "text": " dense part, the dense layer part. Okay?",
+      "start": 863.502,
+      "duration": 7.114
+    },
+    {
+      "text": " And you replace it with your own dense",
+      "start": 870.357,
+      "duration": 2.825
+    },
+    {
+      "text": " layers where you can add any number of",
+      "start": 872.23,
+      "duration": 2.826
+    },
+    {
+      "text": " layers. You can add any number of",
+      "start": 874.104,
+      "duration": 3.435
+    },
+    {
+      "text": " neurons. And in the end, there is a",
+      "start": 876.592,
+      "duration": 3.405
+    },
+    {
+      "text": " single neuron which is your output",
+      "start": 879.048,
+      "duration": 2.732
+    },
+    {
+      "text": " layer because you are going to do",
+      "start": 880.831,
+      "duration": 2.682
+    },
+    {
+      "text": " binary classification. And you attach",
+      "start": 882.564,
+      "duration": 4.7
+    },
+    {
+      "text": " them in this way. Also, what you do is",
+      "start": 886.311,
+      "duration": 4.986
+    },
+    {
+      "text": " you freeze this convolutional base",
+      "start": 890.358,
+      "duration": 3.043
+    },
+    {
+      "text": " layer. So that the weight values here",
+      "start": 892.461,
+      "duration": 4.525
+    },
+    {
+      "text": " do not change. Because the true",
+      "start": 896.037,
+      "duration": 4.078
+    },
+    {
+      "text": " knowledge is hidden in the weight",
+      "start": 899.162,
+      "duration": 2.531
+    },
+    {
+      "text": " values. Which this VGG16 had learned.",
+      "start": 900.74,
+      "duration": 4.63
+    },
+    {
+      "text": " While getting trained on ImageNet. Okay",
+      "start": 904.926,
+      "duration": 3.443
+    },
+    {
+      "text": "? And you train this entire",
+      "start": 907.369,
+      "duration": 4.415
+    },
+    {
+      "text": " architecture again on your small",
+      "start": 910.837,
+      "duration": 2.714
+    },
+    {
+      "text": " dataset. Nothing changes in this part.",
+      "start": 912.604,
+      "duration": 6.226
+    },
+    {
+      "text": " And here, you learn the weights. And",
+      "start": 919.023,
+      "duration": 3.429
+    },
+    {
+      "text": " that is how transfer learning works.",
+      "start": 921.5,
+      "duration": 2.753
+    },
+    {
+      "text": " Okay? Now let's try to understand why",
+      "start": 923.662,
+      "duration": 3.872
+    },
+    {
+      "text": " this technique is working. Why is it",
+      "start": 926.582,
+      "duration": 3.631
+    },
+    {
+      "text": " able to give results? The answer is",
+      "start": 929.266,
+      "duration": 3.013
+    },
+    {
+      "text": " very simple. If you remember, we",
+      "start": 931.335,
+      "duration": 5.663
+    },
+    {
+      "text": " discussed at the very beginning of CNN",
+      "start": 936.055,
+      "duration": 3.191
+    },
+    {
+      "text": " that when you add so many convolution",
+      "start": 938.303,
+      "duration": 3.133
+    },
+    {
+      "text": " layers, the job of these convolution",
+      "start": 940.494,
+      "duration": 3.075
+    },
+    {
+      "text": " layers is to decode the image and, in a",
+      "start": 942.627,
+      "duration": 3.248
+    },
+    {
+      "text": " way, extract features to see what is in",
+      "start": 944.932,
+      "duration": 3.248
+    },
+    {
+      "text": " the image. And then the layers that",
+      "start": 947.238,
+      "duration": 6.008
+    },
+    {
+      "text": " follow have the job of doing the",
+      "start": 952.294,
+      "duration": 2.517
+    },
+    {
+      "text": " classification. Now, we also discussed",
+      "start": 953.858,
+      "duration": 5.387
+    },
+    {
+      "text": " that your early layers, the initial",
+      "start": 958.303,
+      "duration": 3.024
+    },
+    {
+      "text": " layers, have the job of extracting",
+      "start": 960.385,
+      "duration": 2.967
+    },
+    {
+      "text": " primitive features like edges. As you",
+      "start": 962.409,
+      "duration": 6.072
+    },
+    {
+      "text": " go to deeper layers, you extract more",
+      "start": 967.541,
+      "duration": 3.205
+    },
+    {
+      "text": " complex patterns and features. Like",
+      "start": 969.806,
+      "duration": 4.859
+    },
+    {
+      "text": " shapes. Okay? And then gradually, you",
+      "start": 973.732,
+      "duration": 3.805
+    },
+    {
+      "text": " eventually create features and pass",
+      "start": 976.593,
+      "duration": 2.979
+    },
+    {
+      "text": " them on. So the concept is very simple.",
+      "start": 978.628,
+      "duration": 3.724
+    },
+    {
+      "text": " The concept is that your ImageNet",
+      "start": 982.74,
+      "duration": 3.017
+    },
+    {
+      "text": " dataset contains data related to around",
+      "start": 984.818,
+      "duration": 3.384
+    },
+    {
+      "text": " 1000 classes. Now take anything that",
+      "start": 987.263,
+      "duration": 5.478
+    },
+    {
+      "text": " exists in the real world. Its primitive",
+      "start": 991.79,
+      "duration": 4.521
+    },
+    {
+      "text": " features will be similar. They are",
+      "start": 995.361,
+      "duration": 3.18
+    },
+    {
+      "text": " general. Okay? They will definitely",
+      "start": 997.587,
+      "duration": 2.961
+    },
+    {
+      "text": " have edges. They will definitely have",
+      "start": 999.596,
+      "duration": 2.878
+    },
+    {
+      "text": " shapes. That is why we decided that the",
+      "start": 1001.524,
+      "duration": 4.477
+    },
+    {
+      "text": " things learned at the beginning are",
+      "start": 1005.053,
+      "duration": 2.824
+    },
+    {
+      "text": " kind of common for all tasks, for all",
+      "start": 1006.929,
+      "duration": 2.927
+    },
+    {
+      "text": " image classification tasks, so there is",
+      "start": 1008.908,
+      "duration": 3.032
+    },
+    {
+      "text": " no need to learn them again. So that is",
+      "start": 1010.992,
+      "duration": 5.736
+    },
+    {
+      "text": " why we used this entire convolutional",
+      "start": 1015.789,
+      "duration": 3.249
+    },
+    {
+      "text": " base exactly as it is. And then for the",
+      "start": 1018.099,
+      "duration": 6.243
+    },
+    {
+      "text": " specific classification task ahead, we",
+      "start": 1023.398,
+      "duration": 3.137
+    },
+    {
+      "text": " added our own layers and retrained the",
+      "start": 1025.591,
+      "duration": 3.136
+    },
+    {
+      "text": " entire model. So that is why transfer",
+      "start": 1027.784,
+      "duration": 5.522
+    },
+    {
+      "text": " learning works. Because when you train",
+      "start": 1032.36,
+      "duration": 4.886
+    },
+    {
+      "text": " this model for the first time, it has",
+      "start": 1036.294,
+      "duration": 2.783
+    },
+    {
+      "text": " already learned the primitive and",
+      "start": 1038.125,
+      "duration": 2.59
+    },
+    {
+      "text": " general features during the training",
+      "start": 1039.763,
+      "duration": 2.734
+    },
+    {
+      "text": " process. There is no need to do that",
+      "start": 1041.545,
+      "duration": 4.77
+    },
+    {
+      "text": " work again. Okay? So basically, the",
+      "start": 1045.362,
+      "duration": 5.206
+    },
+    {
+      "text": " whole principle behind this entire",
+      "start": 1049.629,
+      "duration": 3.065
+    },
+    {
+      "text": " thing is: do not reinvent the wheel.",
+      "start": 1051.755,
+      "duration": 3.187
+    },
+    {
+      "text": " Don't build the wheel over and over. If",
+      "start": 1055.495,
+      "duration": 2.791
+    },
+    {
+      "text": " the wheel is already made, use it to",
+      "start": 1057.334,
+      "duration": 2.723
+    },
+    {
+      "text": " build a car. Okay? I hope you",
+      "start": 1059.105,
+      "duration": 2.723
+    },
+    {
+      "text": " understood the idea. So next, we will",
+      "start": 1060.881,
+      "duration": 3.328
+    },
+    {
+      "text": " learn about the different ways to apply",
+      "start": 1063.26,
+      "duration": 3.014
+    },
+    {
+      "text": " transfer learning. There are precisely",
+      "start": 1065.325,
+      "duration": 3.311
+    },
+    {
+      "text": " two ways. Okay? I will tell you the",
+      "start": 1067.694,
+      "duration": 3.054
+    },
+    {
+      "text": " names of both. The first method is",
+      "start": 1069.795,
+      "duration": 2.908
+    },
+    {
+      "text": " called feature extraction. And the",
+      "start": 1071.755,
+      "duration": 9.462
+    },
+    {
+      "text": " second one is fine-tuning. Now, this",
+      "start": 1080.267,
+      "duration": 9.802
+    },
+    {
+      "text": " feature extraction is exactly what we",
+      "start": 1089.129,
+      "duration": 3.191
+    },
+    {
+      "text": " just discussed, where you replace the",
+      "start": 1091.379,
+      "duration": 3.191
+    },
+    {
+      "text": " last dense layers with your own dense",
+      "start": 1093.629,
+      "duration": 3.191
+    },
+    {
+      "text": " layers, freeze the convolutional base,",
+      "start": 1095.879,
+      "duration": 3.251
+    },
+    {
+      "text": " and retrain the model on your data.",
+      "start": 1098.189,
+      "duration": 3.073
+    },
+    {
+      "text": " This is what is called feature",
+      "start": 1102.965,
+      "duration": 2.477
+    },
+    {
+      "text": " extraction. Okay? Feature extraction is",
+      "start": 1104.492,
+      "duration": 8.614
+    },
+    {
+      "text": " generally done when the labels in the",
+      "start": 1112.157,
+      "duration": 2.87
+    },
+    {
+      "text": " image classification task you are",
+      "start": 1114.078,
+      "duration": 2.668
+    },
+    {
+      "text": " working on are somewhat similar to the",
+      "start": 1115.797,
+      "duration": 2.921
+    },
+    {
+      "text": " data on which your model is already",
+      "start": 1117.768,
+      "duration": 2.77
+    },
+    {
+      "text": " trained. For example, if you are doing",
+      "start": 1119.588,
+      "duration": 8.22
+    },
+    {
+      "text": " dog vs. cat classification, you should",
+      "start": 1126.869,
+      "duration": 3.291
+    },
+    {
+      "text": " use feature extraction. Why? Because",
+      "start": 1129.221,
+      "duration": 4.516
+    },
+    {
+      "text": " training on animals has already been",
+      "start": 1132.788,
+      "duration": 2.834
+    },
+    {
+      "text": " done in ImageNet. So you know that the",
+      "start": 1134.673,
+      "duration": 6.211
+    },
+    {
+      "text": " layers up to this point have already",
+      "start": 1139.932,
+      "duration": 2.722
+    },
+    {
+      "text": " learned to recognize animals or their",
+      "start": 1141.702,
+      "duration": 2.77
+    },
+    {
+      "text": " features. Okay? So you only need to",
+      "start": 1143.52,
+      "duration": 6.675
+    },
+    {
+      "text": " make changes to the last layers.",
+      "start": 1149.247,
+      "duration": 2.665
+    },
+    {
+      "text": " Whereas in fine-tuning, you also",
+      "start": 1154.352,
+      "duration": 2.852
+    },
+    {
+      "text": " retrain some of the last convolutional",
+      "start": 1156.262,
+      "duration": 3.2
+    },
+    {
+      "text": " layers. You don't freeze them. So you",
+      "start": 1158.52,
+      "duration": 6.33
+    },
+    {
+      "text": " freeze the layers from here to here.",
+      "start": 1163.899,
+      "duration": 2.739
+    },
+    {
+      "text": " But you unfreeze the last layers. And",
+      "start": 1168.772,
+      "duration": 4.989
+    },
+    {
+      "text": " you add your own dense layers. And then",
+      "start": 1172.815,
+      "duration": 4.593
+    },
+    {
+      "text": " you retrain this entire part. You",
+      "start": 1176.461,
+      "duration": 5.058
+    },
+    {
+      "text": " retrain this entire part. When should",
+      "start": 1180.582,
+      "duration": 4.112
+    },
+    {
+      "text": " you apply fine-tuning? It is very",
+      "start": 1183.745,
+      "duration": 3.036
+    },
+    {
+      "text": " simple. If you are working on a problem",
+      "start": 1185.842,
+      "duration": 3.665
+    },
+    {
+      "text": " that is very different from your",
+      "start": 1188.556,
+      "duration": 2.558
+    },
+    {
+      "text": " dataset's classification labels. Let's",
+      "start": 1190.162,
+      "duration": 5.056
+    },
+    {
+      "text": " say, all of a sudden, I am trying to do",
+      "start": 1194.278,
+      "duration": 3.351
+    },
+    {
+      "text": " a classification between phones versus",
+      "start": 1196.689,
+      "duration": 3.29
+    },
+    {
+      "text": " tablets. And for a moment, let's assume",
+      "start": 1199.039,
+      "duration": 4.963
+    },
+    {
+      "text": " that ImageNet did not have any data",
+      "start": 1203.056,
+      "duration": 2.89
+    },
+    {
+      "text": " even remotely like this. So, even then,",
+      "start": 1205.0,
+      "duration": 5.925
+    },
+    {
+      "text": " I can reuse the initial layers. Because",
+      "start": 1209.995,
+      "duration": 4.707
+    },
+    {
+      "text": " these contain very primitive features.",
+      "start": 1213.756,
+      "duration": 3.035
+    },
+    {
+      "text": " But as you move forward, the knowledge",
+      "start": 1217.366,
+      "duration": 2.887
+    },
+    {
+      "text": " in those layers is slightly different",
+      "start": 1219.302,
+      "duration": 2.838
+    },
+    {
+      "text": " from my requirements. So that is why",
+      "start": 1221.19,
+      "duration": 5.602
+    },
+    {
+      "text": " what I would like to do is, I will...",
+      "start": 1225.846,
+      "duration": 2.998
+    },
+    {
+      "text": "unfreeze the last few layers and",
+      "start": 1231.574,
+      "duration": 2.861
+    },
+    {
+      "text": " retrain the model entirely. Obviously,",
+      "start": 1233.494,
+      "duration": 5.208
+    },
+    {
+      "text": " it will take a little more time in this",
+      "start": 1237.753,
+      "duration": 2.976
+    },
+    {
+      "text": " case, but you would see you get better",
+      "start": 1239.78,
+      "duration": 2.925
+    },
+    {
+      "text": " results. Okay? So moving forward in",
+      "start": 1241.756,
+      "duration": 5.221
+    },
+    {
+      "text": " this video, I will show you how to do",
+      "start": 1246.03,
+      "duration": 2.97
+    },
+    {
+      "text": " both of these things, and you will",
+      "start": 1248.053,
+      "duration": 2.81
+    },
+    {
+      "text": " understand how the whole thing works in",
+      "start": 1249.916,
+      "duration": 3.076
+    },
+    {
+      "text": " Keras. So guys, using transfer learning",
+      "start": 1252.045,
+      "duration": 4.519
+    },
+    {
+      "text": " in Keras is actually a very, very easy",
+      "start": 1255.633,
+      "duration": 3.622
+    },
+    {
+      "text": " task because you get all the pretrained",
+      "start": 1258.324,
+      "duration": 3.691
+    },
+    {
+      "text": " models prebuilt, including VGG16. So,",
+      "start": 1261.084,
+      "duration": 4.418
+    },
+    {
+      "text": " what am I going to do? I am going to",
+      "start": 1264.564,
+      "duration": 3.893
+    },
+    {
+      "text": " build the same dog-cat classifier that",
+      "start": 1267.512,
+      "duration": 3.077
+    },
+    {
+      "text": " I built a few videos ago. But this time",
+      "start": 1269.644,
+      "duration": 4.906
+    },
+    {
+      "text": ", instead of using our own CNN",
+      "start": 1273.55,
+      "duration": 3.081
+    },
+    {
+      "text": " architecture, we will be using the",
+      "start": 1275.701,
+      "duration": 3.359
+    },
+    {
+      "text": " VGG16 module. Okay? So, this is the",
+      "start": 1278.129,
+      "duration": 4.49
+    },
+    {
+      "text": " dataset we are going to use. I will",
+      "start": 1281.679,
+      "duration": 3.433
+    },
+    {
+      "text": " provide its link in the description.",
+      "start": 1284.159,
+      "duration": 2.689
+    },
+    {
+      "text": " And I have already written the code. So",
+      "start": 1286.43,
+      "duration": 2.826
+    },
+    {
+      "text": ", I will give you a walkthrough. So,",
+      "start": 1288.256,
+      "duration": 3.96
+    },
+    {
+      "text": " these first four cells of code, in fact",
+      "start": 1291.277,
+      "duration": 3.379
+    },
+    {
+      "text": ", the first three cells of code, the",
+      "start": 1293.656,
+      "duration": 3.196
+    },
+    {
+      "text": " only job of this entire code is to",
+      "start": 1295.913,
+      "duration": 3.074
+    },
+    {
+      "text": " import this dataset from Kaggle and",
+      "start": 1298.048,
+      "duration": 3.135
+    },
+    {
+      "text": " bring it here for us. Okay? You can see",
+      "start": 1300.244,
+      "duration": 5.729
+    },
+    {
+      "text": " two folders will be created here for me",
+      "start": 1305.022,
+      "duration": 2.94
+    },
+    {
+      "text": ". I will just run this cell. We have",
+      "start": 1306.962,
+      "duration": 6.5
+    },
+    {
+      "text": " received the dataset. But it is in zip",
+      "start": 1312.51,
+      "duration": 3.008
+    },
+    {
+      "text": " format. Once I run this code, it will",
+      "start": 1314.574,
+      "duration": 4.349
+    },
+    {
+      "text": " extract this zip and our data will be",
+      "start": 1317.978,
+      "duration": 3.016
+    },
+    {
+      "text": " ready. And you can see train and test.",
+      "start": 1320.049,
+      "duration": 5.028
+    },
+    {
+      "text": " Inside train, there are two folders.",
+      "start": 1324.177,
+      "duration": 3.139
+    },
+    {
+      "text": " Cats and Dogs. Inside test, there are",
+      "start": 1326.416,
+      "duration": 3.365
+    },
+    {
+      "text": " also two folders. Cats and Dogs. And",
+      "start": 1328.837,
+      "duration": 3.355
+    },
+    {
+      "text": " inside these are our images. Okay? So",
+      "start": 1331.246,
+      "duration": 3.236
+    },
+    {
+      "text": " now, I will explain the whole thing",
+      "start": 1333.536,
+      "duration": 2.867
+    },
+    {
+      "text": " from here. So, these are the libraries",
+      "start": 1335.457,
+      "duration": 3.104
+    },
+    {
+      "text": " you need to import. You have already",
+      "start": 1337.615,
+      "duration": 2.897
+    },
+    {
+      "text": " done many things in this. This is kind",
+      "start": 1339.56,
+      "duration": 3.148
+    },
+    {
+      "text": " of new. Here, you are going into",
+      "start": 1341.763,
+      "duration": 3.547
+    },
+    {
+      "text": " Keras.applications and importing the",
+      "start": 1344.391,
+      "duration": 3.896
+    },
+    {
+      "text": " VGG16 class from VGG16. Now what you",
+      "start": 1347.367,
+      "duration": 6.559
+    },
+    {
+      "text": " are doing is, you are creating an",
+      "start": 1352.989,
+      "duration": 3.092
+    },
+    {
+      "text": " object of the VGG16 class. Where you",
+      "start": 1355.144,
+      "duration": 3.204
+    },
+    {
+      "text": " have specified the weights as ImageNet.",
+      "start": 1357.396,
+      "duration": 2.837
+    },
+    {
+      "text": " So, you want the same weight values",
+      "start": 1359.402,
+      "duration": 3.66
+    },
+    {
+      "text": " that VGG16 had. When it was trained on",
+      "start": 1362.138,
+      "duration": 3.32
+    },
+    {
+      "text": " the ImageNet dataset. Also, an",
+      "start": 1364.507,
+      "duration": 2.95
+    },
+    {
+      "text": " interesting thing here is that you are",
+      "start": 1366.522,
+      "duration": 3.436
+    },
+    {
+      "text": " saying include_top = False. So this",
+      "start": 1369.022,
+      "duration": 3.216
+    },
+    {
+      "text": " means, think of it like this, that this",
+      "start": 1371.293,
+      "duration": 3.142
+    },
+    {
+      "text": " is the top side. This side is the top",
+      "start": 1373.49,
+      "duration": 3.109
+    },
+    {
+      "text": " side. So you are saying that this",
+      "start": 1375.656,
+      "duration": 2.946
+    },
+    {
+      "text": " entire dense layer, three dense layers",
+      "start": 1377.66,
+      "duration": 3.2
+    },
+    {
+      "text": " and one output layer. You do not want",
+      "start": 1379.918,
+      "duration": 3.147
+    },
+    {
+      "text": " these. You are removing this and you",
+      "start": 1382.12,
+      "duration": 3.742
+    },
+    {
+      "text": " are only importing the convolutional",
+      "start": 1384.915,
+      "duration": 2.897
+    },
+    {
+      "text": " base, just up to here. You are not",
+      "start": 1386.864,
+      "duration": 3.364
+    },
+    {
+      "text": " importing this part, which is what you",
+      "start": 1389.277,
+      "duration": 2.851
+    },
+    {
+      "text": " also do in transfer learning. Okay? And",
+      "start": 1391.176,
+      "duration": 3.238
+    },
+    {
+      "text": " lastly, you are specifying the input",
+      "start": 1393.483,
+      "duration": 3.488
+    },
+    {
+      "text": " shape as 150, 150, 3, or you can",
+      "start": 1396.04,
+      "duration": 3.212
+    },
+    {
+      "text": " specify anything. And here, you can see",
+      "start": 1398.321,
+      "duration": 3.667
+    },
+    {
+      "text": " when I run the summary of the conv_base",
+      "start": 1401.055,
+      "duration": 3.586
+    },
+    {
+      "text": ", you would see the last layer is",
+      "start": 1403.641,
+      "duration": 3.189
+    },
+    {
+      "text": " actually the pooling layer and the",
+      "start": 1405.897,
+      "duration": 3.255
+    },
+    {
+      "text": " second to last layer is block5_conv3,",
+      "start": 1408.218,
+      "duration": 3.454
+    },
+    {
+      "text": " this one. Okay? We did not even import",
+      "start": 1410.739,
+      "duration": 3.908
+    },
+    {
+      "text": " this part. You can do it if you want.",
+      "start": 1413.7,
+      "duration": 3.519
+    },
+    {
+      "text": " If you set it to True here. I hope you",
+      "start": 1417.094,
+      "duration": 3.601
+    },
+    {
+      "text": " get the idea. Now, what are we doing?",
+      "start": 1419.747,
+      "duration": 3.371
+    },
+    {
+      "text": " We are building our own sequential",
+      "start": 1424.71,
+      "duration": 2.897
+    },
+    {
+      "text": " model from scratch, and in that model,",
+      "start": 1426.663,
+      "duration": 3.12
+    },
+    {
+      "text": " we are first adding this convolutional",
+      "start": 1428.839,
+      "duration": 3.121
+    },
+    {
+      "text": " base; basically, we are adding",
+      "start": 1431.016,
+      "duration": 2.674
+    },
+    {
+      "text": " everything up to this point into our",
+      "start": 1432.746,
+      "duration": 3.009
+    },
+    {
+      "text": " new model. After that, we are",
+      "start": 1434.81,
+      "duration": 4.991
+    },
+    {
+      "text": " flattening it. And after that, we are",
+      "start": 1438.856,
+      "duration": 3.176
+    },
+    {
+      "text": " adding our dense layers. We are adding",
+      "start": 1441.09,
+      "duration": 3.365
+    },
+    {
+      "text": " two dense layers, one with 256 neurons",
+      "start": 1443.516,
+      "duration": 3.348
+    },
+    {
+      "text": " and the second one with one neuron,",
+      "start": 1445.926,
+      "duration": 3.162
+    },
+    {
+      "text": " which is our output layer because the",
+      "start": 1448.15,
+      "duration": 3.286
+    },
+    {
+      "text": " activation is sigmoid. And after that,",
+      "start": 1450.497,
+      "duration": 3.291
+    },
+    {
+      "text": " as soon as I ran the summary, this is",
+      "start": 1452.844,
+      "duration": 3.052
+    },
+    {
+      "text": " the summary. At the beginning, you have",
+      "start": 1454.951,
+      "duration": 3.344
+    },
+    {
+      "text": " all the VGG16 layers with this many",
+      "start": 1457.356,
+      "duration": 3.125
+    },
+    {
+      "text": " parameters. Then we have flatten, then",
+      "start": 1459.542,
+      "duration": 3.076
+    },
+    {
+      "text": " we have dense, and then we have the",
+      "start": 1461.668,
+      "duration": 2.761
+    },
+    {
+      "text": " output layer. Okay? And you can see at",
+      "start": 1463.479,
+      "duration": 3.58
+    },
+    {
+      "text": " this point, there are 16, 16 million",
+      "start": 1466.127,
+      "duration": 3.452
+    },
+    {
+      "text": " parameters, I guess. Now look, this is",
+      "start": 1468.647,
+      "duration": 3.369
+    },
+    {
+      "text": " where the interesting part starts. I",
+      "start": 1471.07,
+      "duration": 3.365
+    },
+    {
+      "text": " told you that when you retrain on your",
+      "start": 1473.491,
+      "duration": 3.14
+    },
+    {
+      "text": " own data, you first freeze the entire",
+      "start": 1475.687,
+      "duration": 3.084
+    },
+    {
+      "text": " convolutional base part. Freezing means",
+      "start": 1477.827,
+      "duration": 4.765
+    },
+    {
+      "text": " you do not retrain their weights. So I",
+      "start": 1481.645,
+      "duration": 3.585
+    },
+    {
+      "text": " have done exactly that. You can see I",
+      "start": 1484.283,
+      "duration": 3.492
+    },
+    {
+      "text": " have set the value of",
+      "start": 1486.848,
+      "duration": 2.534
+    },
+    {
+      "text": " conv_base.trainable to False. Okay? And",
+      "start": 1488.455,
+      "duration": 5.936
+    },
+    {
+      "text": " after doing this, let me quickly show",
+      "start": 1493.442,
+      "duration": 2.859
+    },
+    {
+      "text": " it to you from here. So I have done",
+      "start": 1495.351,
+      "duration": 5.705
+    },
+    {
+      "text": " this. This is the summary. This is my",
+      "start": 1500.11,
+      "duration": 11.101
+    },
+    {
+      "text": " new model. The summary after the model.",
+      "start": 1510.267,
+      "duration": 4.9
+    },
+    {
+      "text": " Okay? At this point, you can see these",
+      "start": 1515.204,
+      "duration": 3.062
+    },
+    {
+      "text": " are the trainable parameters. Now I",
+      "start": 1517.314,
+      "duration": 2.773
+    },
+    {
+      "text": " have set trainable to false. And if I",
+      "start": 1519.144,
+      "duration": 5.146
+    },
+    {
+      "text": " run the summary again, you would see",
+      "start": 1523.343,
+      "duration": 2.922
+    },
+    {
+      "text": " that now the trainable parameters are",
+      "start": 1525.318,
+      "duration": 2.975
+    },
+    {
+      "text": " only these, which actually belong to",
+      "start": 1527.346,
+      "duration": 2.922
+    },
+    {
+      "text": " these dense layers. Okay? We have set",
+      "start": 1529.321,
+      "duration": 4.98
+    },
+    {
+      "text": " the whole thing to false. Meaning these",
+      "start": 1533.351,
+      "duration": 3.158
+    },
+    {
+      "text": " have now become non-trainable",
+      "start": 1535.562,
+      "duration": 2.54
+    },
+    {
+      "text": " parameters. They will not be trained",
+      "start": 1537.155,
+      "duration": 2.798
+    },
+    {
+      "text": " during training. Okay? Moving on, it's",
+      "start": 1538.997,
+      "duration": 4.101
+    },
+    {
+      "text": " a very simple code. We have used this",
+      "start": 1542.163,
+      "duration": 3.157
+    },
+    {
+      "text": " before as well. Basically, we are",
+      "start": 1544.368,
+      "duration": 3.798
+    },
+    {
+      "text": " applying a generator to these folders",
+      "start": 1547.218,
+      "duration": 2.953
+    },
+    {
+      "text": " to pick up all the data and send it to",
+      "start": 1549.224,
+      "duration": 3.005
+    },
+    {
+      "text": " the model. Okay? So, I am not",
+      "start": 1551.282,
+      "duration": 3.687
+    },
+    {
+      "text": " explaining all this code. It's actually",
+      "start": 1554.024,
+      "duration": 3.052
+    },
+    {
+      "text": " quite simple. You are using a utility",
+      "start": 1556.12,
+      "duration": 3.069
+    },
+    {
+      "text": " called image_dataset_from_directory.",
+      "start": 1558.249,
+      "duration": 3.178
+    },
+    {
+      "text": " You are using that. You are providing",
+      "start": 1560.527,
+      "duration": 2.712
+    },
+    {
+      "text": " the path to the directory. The labels",
+      "start": 1562.283,
+      "duration": 2.71
+    },
+    {
+      "text": " are being inferred automatically. The",
+      "start": 1564.039,
+      "duration": 2.79
+    },
+    {
+      "text": " label mode is int. Zero for cat. One",
+      "start": 1565.883,
+      "duration": 3.318
+    },
+    {
+      "text": " for dog. We kept the batch size at 32.",
+      "start": 1568.268,
+      "duration": 3.489
+    },
+    {
+      "text": " We kept the image size at 150 by 150,",
+      "start": 1570.857,
+      "duration": 3.694
+    },
+    {
+      "text": " which we defined above. This much is",
+      "start": 1573.624,
+      "duration": 4.357
+    },
+    {
+      "text": " for our training, and this is for our",
+      "start": 1577.033,
+      "duration": 2.921
+    },
+    {
+      "text": " validation and testing. As soon as you",
+      "start": 1579.006,
+      "duration": 5.153
+    },
+    {
+      "text": " run this code, you can see found 20,000",
+      "start": 1583.221,
+      "duration": 3.421
+    },
+    {
+      "text": " files belonging to two classes. This",
+      "start": 1585.704,
+      "duration": 3.741
+    },
+    {
+      "text": " refers to the training data, and found",
+      "start": 1588.507,
+      "duration": 3.367
+    },
+    {
+      "text": " 5,000 files belonging to two classes.",
+      "start": 1590.937,
+      "duration": 3.305
+    },
+    {
+      "text": " This refers to your testing data. Okay?",
+      "start": 1593.484,
+      "duration": 3.452
+    },
+    {
+      "text": " Now, one last thing, before sending",
+      "start": 1596.486,
+      "duration": 3.294
+    },
+    {
+      "text": " images to our model, you will do one",
+      "start": 1598.845,
+      "duration": 3.36
+    },
+    {
+      "text": " small task. All the pixel values that",
+      "start": 1601.27,
+      "duration": 3.938
+    },
+    {
+      "text": " are from 0 to 255, you will bring them",
+      "start": 1604.277,
+      "duration": 3.624
+    },
+    {
+      "text": " between 0 and 1. Training becomes a bit",
+      "start": 1606.971,
+      "duration": 3.662
+    },
+    {
+      "text": " faster. Okay? So I did the same thing.",
+      "start": 1609.689,
+      "duration": 3.368
+    },
+    {
+      "text": " I applied this process function on",
+      "start": 1612.438,
+      "duration": 3.457
+    },
+    {
+      "text": " train_ds, whose job is to rescale, and",
+      "start": 1614.967,
+      "duration": 3.747
+    },
+    {
+      "text": " I applied the same thing on",
+      "start": 1617.786,
+      "duration": 2.951
+    },
+    {
+      "text": " validation_ds as well. Okay? You know",
+      "start": 1619.809,
+      "duration": 4.857
+    },
+    {
+      "text": " the next step: model.compile, optimizer",
+      "start": 1623.748,
+      "duration": 4.198
+    },
+    {
+      "text": ": Adam, loss: binary crossentropy, and",
+      "start": 1626.946,
+      "duration": 4.115
+    },
+    {
+      "text": " our metric is accuracy. And Lastly, we",
+      "start": 1630.143,
+      "duration": 8.086
+    },
+    {
+      "text": " just did model.fit on our train dataset",
+      "start": 1637.29,
+      "duration": 3.37
+    },
+    {
+      "text": ", for 10 epochs, we sent the validation",
+      "start": 1639.66,
+      "duration": 3.371
+    },
+    {
+      "text": " data here, and logged everything to the",
+      "start": 1642.091,
+      "duration": 3.371
+    },
+    {
+      "text": " history parameter. And when I ran this",
+      "start": 1644.523,
+      "duration": 6.02
+    },
+    {
+      "text": " model for 10 epochs, you can see I was",
+      "start": 1649.602,
+      "duration": 3.275
+    },
+    {
+      "text": " able to reach an accuracy of 90%. If",
+      "start": 1651.937,
+      "duration": 5.541
+    },
+    {
+      "text": " you remember, three or four videos ago,",
+      "start": 1656.541,
+      "duration": 3.433
+    },
+    {
+      "text": " when I built a dog and cat classifier",
+      "start": 1659.037,
+      "duration": 3.308
+    },
+    {
+      "text": " on my own CNN architecture, the highest",
+      "start": 1661.408,
+      "duration": 3.433
+    },
+    {
+      "text": " accuracy that I was able to reach was",
+      "start": 1663.904,
+      "duration": 3.309
+    },
+    {
+      "text": " 81%. Now I am already at 90%, okay?",
+      "start": 1666.275,
+      "duration": 5.04
+    },
+    {
+      "text": " After this, I plotted graphs for",
+      "start": 1670.875,
+      "duration": 2.79
+    },
+    {
+      "text": " training and validation data, and",
+      "start": 1672.721,
+      "duration": 2.847
+    },
+    {
+      "text": " clearly, you can see there is a",
+      "start": 1674.624,
+      "duration": 2.734
+    },
+    {
+      "text": " difference; you know, the training",
+      "start": 1676.414,
+      "duration": 2.903
+    },
+    {
+      "text": " accuracy is constantly increasing. The",
+      "start": 1678.373,
+      "duration": 3.173
+    },
+    {
+      "text": " validation accuracy is not increasing.",
+      "start": 1680.603,
+      "duration": 3.162
+    },
+    {
+      "text": " This gap shows overfitting, and",
+      "start": 1682.865,
+      "duration": 3.029
+    },
+    {
+      "text": " actually, here you can see that after",
+      "start": 1684.959,
+      "duration": 3.422
+    },
+    {
+      "text": " the last epoch, the accuracy on the",
+      "start": 1687.447,
+      "duration": 3.291
+    },
+    {
+      "text": " training data is 98.3, whereas the",
+      "start": 1689.803,
+      "duration": 3.226
+    },
+    {
+      "text": " accuracy on the validation is 90.8, so",
+      "start": 1692.094,
+      "duration": 3.488
+    },
+    {
+      "text": " this is overfitting. You can see the",
+      "start": 1694.647,
+      "duration": 3.268
+    },
+    {
+      "text": " same thing in the loss curve as well.",
+      "start": 1696.962,
+      "duration": 2.741
+    },
+    {
+      "text": " So, what did I do then? I made a small",
+      "start": 1698.803,
+      "duration": 3.329
+    },
+    {
+      "text": " change to the entire flow. We studied",
+      "start": 1701.19,
+      "duration": 3.437
+    },
+    {
+      "text": " data augmentation in the video before",
+      "start": 1703.685,
+      "duration": 3.165
+    },
+    {
+      "text": " the last one, I guess. Where you create",
+      "start": 1705.908,
+      "duration": 4.52
+    },
+    {
+      "text": " new data by transforming an input image",
+      "start": 1709.48,
+      "duration": 3.051
+    },
+    {
+      "text": " in different ways. Generally, you use",
+      "start": 1711.584,
+      "duration": 5.101
+    },
+    {
+      "text": " data augmentation to reduce overfitting",
+      "start": 1715.747,
+      "duration": 3.42
+    },
+    {
+      "text": ". So I thought, why not use data",
+      "start": 1718.167,
+      "duration": 3.657
+    },
+    {
+      "text": " augmentation to reduce the overfitting?",
+      "start": 1720.883,
+      "duration": 3.304
+    },
+    {
+      "text": " Okay? So, I created another notebook in",
+      "start": 1723.302,
+      "duration": 4.077
+    },
+    {
+      "text": " which, if you notice, the entire flow",
+      "start": 1726.443,
+      "duration": 3.386
+    },
+    {
+      "text": " is the same. You can see the entire",
+      "start": 1728.894,
+      "duration": 4.388
+    },
+    {
+      "text": " flow is exactly the same. Except here,",
+      "start": 1732.34,
+      "duration": 5.748
+    },
+    {
+      "text": " rather than using this flow, which is",
+      "start": 1737.144,
+      "duration": 3.076
+    },
+    {
+      "text": " the one with generators. I have used",
+      "start": 1739.276,
+      "duration": 5.332
+    },
+    {
+      "text": " data augmentation. Okay? So, here I",
+      "start": 1743.666,
+      "duration": 3.815
+    },
+    {
+      "text": " created a train data gen using Image",
+      "start": 1746.54,
+      "duration": 3.153
+    },
+    {
+      "text": " Data Generator in which I applied all",
+      "start": 1748.753,
+      "duration": 3.213
+    },
+    {
+      "text": " these transformations. This is my test",
+      "start": 1751.026,
+      "duration": 3.313
+    },
+    {
+      "text": " data gen, in which I applied only one",
+      "start": 1753.396,
+      "duration": 3.118
+    },
+    {
+      "text": " transformation, and here is my train",
+      "start": 1755.571,
+      "duration": 3.06
+    },
+    {
+      "text": " generator. Here is my validation",
+      "start": 1757.688,
+      "duration": 2.843
+    },
+    {
+      "text": " generator. Everything is similar. I",
+      "start": 1759.587,
+      "duration": 2.959
+    },
+    {
+      "text": " just applied data augmentation",
+      "start": 1761.598,
+      "duration": 2.569
+    },
+    {
+      "text": " throughout the flow. Okay? The",
+      "start": 1763.219,
+      "duration": 2.874
+    },
+    {
+      "text": " subsequent things are also exactly the",
+      "start": 1765.141,
+      "duration": 2.818
+    },
+    {
+      "text": " same. Here, instead of model.fit,",
+      "start": 1767.007,
+      "duration": 3.14
+    },
+    {
+      "text": " model.fit_generator is used. I told you",
+      "start": 1769.214,
+      "duration": 3.445
+    },
+    {
+      "text": " about this in the data augmentation",
+      "start": 1771.707,
+      "duration": 2.676
+    },
+    {
+      "text": " video. And here, too, I trained for 10",
+      "start": 1773.431,
+      "duration": 3.406
+    },
+    {
+      "text": " epochs with a batch size of 32. Um,",
+      "start": 1775.902,
+      "duration": 3.334
+    },
+    {
+      "text": " yeah, batch size of 32, I kept",
+      "start": 1778.307,
+      "duration": 3.151
+    },
+    {
+      "text": " everything similar. Okay? And you would",
+      "start": 1780.529,
+      "duration": 3.818
+    },
+    {
+      "text": " see that as soon as I trained this",
+      "start": 1783.407,
+      "duration": 3.067
+    },
+    {
+      "text": " model, after the last epoch, my",
+      "start": 1785.535,
+      "duration": 2.884
+    },
+    {
+      "text": " training accuracy was 92.8. But my test",
+      "start": 1787.48,
+      "duration": 5.354
+    },
+    {
+      "text": " accuracy increased. It went up to 91.4.",
+      "start": 1791.896,
+      "duration": 4.138
+    },
+    {
+      "text": " Okay? You can use some other techniques",
+      "start": 1795.134,
+      "duration": 2.979
+    },
+    {
+      "text": " here as well. You can. Like dropouts,",
+      "start": 1797.157,
+      "duration": 3.43
+    },
+    {
+      "text": " or you can also use different types of",
+      "start": 1799.639,
+      "duration": 2.973
+    },
+    {
+      "text": " weight initialization techniques. You",
+      "start": 1801.664,
+      "duration": 3.351
+    },
+    {
+      "text": " can also try out batch normalization.",
+      "start": 1804.069,
+      "duration": 3.026
+    },
+    {
+      "text": " You can try out different things, but",
+      "start": 1806.195,
+      "duration": 2.896
+    },
+    {
+      "text": " you can see that using data",
+      "start": 1808.142,
+      "duration": 2.384
+    },
+    {
+      "text": " augmentation has been somewhat",
+      "start": 1809.577,
+      "duration": 2.538
+    },
+    {
+      "text": " beneficial. Our accuracy has moved",
+      "start": 1811.166,
+      "duration": 2.847
+    },
+    {
+      "text": " upwards, and you can see this in the",
+      "start": 1813.067,
+      "duration": 2.937
+    },
+    {
+      "text": " graph as well. You can see there is",
+      "start": 1815.058,
+      "duration": 3.136
+    },
+    {
+      "text": " very little difference between the blue",
+      "start": 1817.239,
+      "duration": 2.741
+    },
+    {
+      "text": " curve and the red curve. Okay? And the",
+      "start": 1819.025,
+      "duration": 3.498
+    },
+    {
+      "text": " same with the loss graph. Okay? Now",
+      "start": 1821.569,
+      "duration": 4.89
+    },
+    {
+      "text": " finally, I thought that we have already",
+      "start": 1825.513,
+      "duration": 3.102
+    },
+    {
+      "text": " tried using feature extraction. What if",
+      "start": 1827.669,
+      "duration": 4.332
+    },
+    {
+      "text": " we use the second approach? If you",
+      "start": 1831.05,
+      "duration": 3.082
+    },
+    {
+      "text": " remember, the second approach was",
+      "start": 1833.186,
+      "duration": 2.782
+    },
+    {
+      "text": " fine-tuning. Where you don't just train",
+      "start": 1835.022,
+      "duration": 4.127
+    },
+    {
+      "text": " the dense layers. In fact, you even",
+      "start": 1838.197,
+      "duration": 5.357
+    },
+    {
+      "text": " retrain the last or second-to-last",
+      "start": 1842.614,
+      "duration": 3.032
+    },
+    {
+      "text": " layers of your convolution base. Okay?",
+      "start": 1844.706,
+      "duration": 4.89
+    },
+    {
+      "text": " So this is called fine-tuning. So in",
+      "start": 1848.696,
+      "duration": 4.629
+    },
+    {
+      "text": " this last notebook, I have applied",
+      "start": 1852.383,
+      "duration": 2.964
+    },
+    {
+      "text": " fine-tuning without data augmentation.",
+      "start": 1854.405,
+      "duration": 3.196
+    },
+    {
+      "text": " Okay? So, the code is already written.",
+      "start": 1857.818,
+      "duration": 3.185
+    },
+    {
+      "text": " I will just go through the code. The",
+      "start": 1860.103,
+      "duration": 2.504
+    },
+    {
+      "text": " initial code is exactly the same. Again",
+      "start": 1861.66,
+      "duration": 3.185
+    },
+    {
+      "text": ", we imported the convolution base. The",
+      "start": 1863.845,
+      "duration": 3.502
+    },
+    {
+      "text": " main thing here is that I have set the",
+      "start": 1866.394,
+      "duration": 2.805
+    },
+    {
+      "text": " convolution base trainable to true. Not",
+      "start": 1868.246,
+      "duration": 2.998
+    },
+    {
+      "text": " false. And then I ran a loop and",
+      "start": 1870.323,
+      "duration": 2.922
+    },
+    {
+      "text": " detected. Wherever there are layers",
+      "start": 1872.293,
+      "duration": 2.906
+    },
+    {
+      "text": " from block five onwards. I have set the",
+      "start": 1874.251,
+      "duration": 3.745
+    },
+    {
+      "text": " trainable property to true for all",
+      "start": 1877.051,
+      "duration": 2.875
+    },
+    {
+      "text": " layers from block five onwards, and",
+      "start": 1878.981,
+      "duration": 2.929
+    },
+    {
+      "text": " false for the rest. Okay? After doing",
+      "start": 1880.965,
+      "duration": 5.091
+    },
+    {
+      "text": " this, you can see that all these layers",
+      "start": 1885.11,
+      "duration": 3.109
+    },
+    {
+      "text": ", which are the initial layers. The",
+      "start": 1887.219,
+      "duration": 6.626
+    },
+    {
+      "text": " layers from here to this point, I have",
+      "start": 1892.897,
+      "duration": 2.973
+    },
+    {
+      "text": " set their trainable to false. Meaning",
+      "start": 1894.922,
+      "duration": 4.361
+    },
+    {
+      "text": " they are frozen. But these last four",
+      "start": 1898.333,
+      "duration": 3.012
+    },
+    {
+      "text": " layers, three convolutions and one",
+      "start": 1900.403,
+      "duration": 2.988
+    },
+    {
+      "text": " pooling. Pooling doesn't make much of a",
+      "start": 1902.449,
+      "duration": 2.804
+    },
+    {
+      "text": " difference because there's nothing",
+      "start": 1904.295,
+      "duration": 2.402
+    },
+    {
+      "text": " trainable there. But these three layers",
+      "start": 1905.738,
+      "duration": 3.355
+    },
+    {
+      "text": ", you can train them while training.",
+      "start": 1908.093,
+      "duration": 2.777
+    },
+    {
+      "text": " Okay? So that is the only difference.",
+      "start": 1910.969,
+      "duration": 3.02
+    },
+    {
+      "text": " After that, when checking the summary",
+      "start": 1913.089,
+      "duration": 2.921
+    },
+    {
+      "text": " of the conv base, this was the summary.",
+      "start": 1915.062,
+      "duration": 3.025
+    },
+    {
+      "text": " Half of it is trained. Half is",
+      "start": 1918.088,
+      "duration": 3.541
+    },
+    {
+      "text": " non-trainable. The subsequent code is",
+      "start": 1920.687,
+      "duration": 3.075
+    },
+    {
+      "text": " also exactly the same. You can see it",
+      "start": 1922.816,
+      "duration": 2.982
+    },
+    {
+      "text": " is exactly the same, everything is",
+      "start": 1924.849,
+      "duration": 2.736
+    },
+    {
+      "text": " exactly the same. This code is exactly",
+      "start": 1926.636,
+      "duration": 3.047
+    },
+    {
+      "text": " the same as the one I used here. And",
+      "start": 1928.737,
+      "duration": 4.244
+    },
+    {
+      "text": " then I just normalized it further, just",
+      "start": 1932.032,
+      "duration": 3.007
+    },
+    {
+      "text": " like I did in the first one. After that",
+      "start": 1934.091,
+      "duration": 4.432
+    },
+    {
+      "text": ", in model.compile, I did one thing:",
+      "start": 1937.523,
+      "duration": 3.574
+    },
+    {
+      "text": " instead of using Adam, I used RMSprop",
+      "start": 1940.168,
+      "duration": 3.645
+    },
+    {
+      "text": " with a very low learning rate. Okay? So",
+      "start": 1942.885,
+      "duration": 4.836
+    },
+    {
+      "text": " it is said that when you are",
+      "start": 1946.769,
+      "duration": 2.337
+    },
+    {
+      "text": " fine-tuning, you should keep the",
+      "start": 1948.154,
+      "duration": 2.528
+    },
+    {
+      "text": " learning rate a bit lower. Okay? It's",
+      "start": 1949.73,
+      "duration": 3.42
+    },
+    {
+      "text": " something that people have understood",
+      "start": 1952.202,
+      "duration": 2.922
+    },
+    {
+      "text": " experimentally, and the metrics are the",
+      "start": 1954.176,
+      "duration": 3.025
+    },
+    {
+      "text": " same, the loss is the same. Here too, I",
+      "start": 1956.253,
+      "duration": 4.418
+    },
+    {
+      "text": " ran model.fit for 10 epochs and I was",
+      "start": 1959.741,
+      "duration": 3.603
+    },
+    {
+      "text": " pleasantly surprised to see that my",
+      "start": 1962.415,
+      "duration": 3.463
+    },
+    {
+      "text": " validation accuracy reached 95.2%. Okay",
+      "start": 1964.948,
+      "duration": 5.694
+    },
+    {
+      "text": "? Which is actually a big deal. When we",
+      "start": 1969.642,
+      "duration": 3.184
+    },
+    {
+      "text": " built our CNN architecture. The",
+      "start": 1971.884,
+      "duration": 2.885
+    },
+    {
+      "text": " accuracy was around 81%, and from there",
+      "start": 1973.844,
+      "duration": 3.91
+    },
+    {
+      "text": ", you reached 95%. On the whole, if you",
+      "start": 1976.754,
+      "duration": 3.785
+    },
+    {
+      "text": " talk about training, the accuracy is",
+      "start": 1979.606,
+      "duration": 3.415
+    },
+    {
+      "text": " 99.8. Again, you can say there is a bit",
+      "start": 1982.088,
+      "duration": 3.121
+    },
+    {
+      "text": " of overfitting happening. But you can",
+      "start": 1984.26,
+      "duration": 3.27
+    },
+    {
+      "text": " try out different things. In this flow",
+      "start": 1986.577,
+      "duration": 3.135
+    },
+    {
+      "text": " as well, you can use data augmentation,",
+      "start": 1988.766,
+      "duration": 3.104
+    },
+    {
+      "text": " maybe you will see an improvement.",
+      "start": 1990.924,
+      "duration": 2.835
+    },
+    {
+      "text": " Alright? But here are the graphs. And",
+      "start": 1992.859,
+      "duration": 4.214
+    },
+    {
+      "text": " yeah, here are those two techniques,",
+      "start": 1996.13,
+      "duration": 3.047
+    },
+    {
+      "text": " fine-tuning and feature extraction,",
+      "start": 1998.234,
+      "duration": 2.99
+    },
+    {
+      "text": " using which you can apply transfer",
+      "start": 2000.281,
+      "duration": 2.933
+    },
+    {
+      "text": " learning in Keras. I will share all",
+      "start": 2002.271,
+      "duration": 3.724
+    },
+    {
+      "text": " three of these notebooks with you. Your",
+      "start": 2005.038,
+      "duration": 3.547
+    },
+    {
+      "text": " job is to run all these notebooks once",
+      "start": 2007.629,
+      "duration": 2.693
+    },
+    {
+      "text": " and write your learnings in a notebook",
+      "start": 2009.367,
+      "duration": 2.693
+    },
+    {
+      "text": " about what you have learned. Alright?",
+      "start": 2011.104,
+      "duration": 3.543
+    },
+    {
+      "text": " And if possible, try to apply the same",
+      "start": 2014.428,
+      "duration": 3.1
+    },
+    {
+      "text": " thing to some other dataset. It would",
+      "start": 2016.583,
+      "duration": 3.781
+    },
+    {
+      "text": " do wonders for your learning. Alright?",
+      "start": 2019.406,
+      "duration": 2.746
+    },
+    {
+      "text": " So that's it from my side. I hope I was",
+      "start": 2021.252,
+      "duration": 2.993
+    },
+    {
+      "text": " able to explain transfer learning to",
+      "start": 2023.291,
+      "duration": 2.634
+    },
+    {
+      "text": " you. If you liked the video, please",
+      "start": 2024.97,
+      "duration": 2.748
+    },
+    {
+      "text": " like it, and if you haven't subscribed",
+      "start": 2026.767,
+      "duration": 2.858
+    },
+    {
+      "text": " to the channel yet, then please",
+      "start": 2028.674,
+      "duration": 2.516
+    },
+    {
+      "text": " subscribe. See you in the next video.",
+      "start": 2030.239,
+      "duration": 2.865
+    },
+    {
+      "text": " Bye.",
+      "start": 2032.204,
+      "duration": 1.369
+    }
+  ]
+}

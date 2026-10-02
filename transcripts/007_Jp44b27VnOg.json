@@ -1,0 +1,860 @@
+{
+  "id": "Jp44b27VnOg",
+  "index": 7,
+  "title": "Problem with Perceptron",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hello guys, my name is Nitesh and you  are welcome to my YouTube channel. So,  in this video, we will continue our  deep learning course. We have studied  about the perceptron so far. We saw  what a perceptron is. Then we looked at  the way to train it. First, we saw the  perceptron trick. Then we looked at  loss functions. So at this point, we  have clarity on what a perceptron is  and how it works. But the perceptron  could not become that famous for deep  learning. There was a reason for that.  The reason was that the perceptron can  only work on linear data. It cannot  work on non-linear data. So in today's  video, I will show you through some  codes and examples practically that the  perceptron really cannot work on  non-linear data. Okay? So this is a  short video. I didn't want to combine  this with any other video because I  felt it should be treated as an  independent topic. That is why this is  a 10-minute video. But in this video,  you will learn, and I will show you,  that if you give it non-linear data— no matter how small or large—no  matter how much time you give your  perceptron to train on that data, the  perceptron will never converge because  essentially, a perceptron is a linear  model. Okay? So that is what we have to  see in this video. So now, let's start  the video. So guys, to show you what  the problem with the perceptron is, I  have written some code and this code is  on your screen. So what have I done? I  have created three different datasets.  Among them, one is OR data, one is AND  data, and one is XOR data. I will run  the perceptron algorithm on all three  datasets and I will plot graphs to show  you what the output is. Okay? So let's  run the code. Here we have just  imported some libraries. In this cell,  we have created three new pandas data  frames and after that, I have basically  created the dataset here. Here I have  created my OR data. Here I have created  my AND data. And here I have created my  XOR data. So I will quickly run all  these cells and show you the output. So  you can see this is my AND data. Okay?  In AND, you know that the output is one  only when both are one. In all other  cases, the output is zero. Okay? Each  of the three datasets has four rows.  And if you plot this, this is your AND  data. Okay? And in OR data, if any one  is one, the output will be one. Only  when both are zero will the output be  zero. I plotted this one as well. This  is our OR dataset, and after that is  XOR. When both are the same, the output  is zero, and when both are different,  the output is one. And here is its  output. This is the graph. Now, what  did I do? I called the Perceptron class  from Scikit-Learn and created three  separate objects. Classifier one,  classifier two, classifier three. All  three are perceptrons. Then I gave a  different dataset to each of them. I  gave the AND data to classifier one. I  gave the OR data to classifier two. And  I gave the XOR data to classifier three . And after that, here are my outputs:  coefficients of classifier one and  intercept of classifier one. And when I  plotted it, you can see that my  perceptron ran on the AND data and it  easily divided both classes clearly.  Okay? Similarly, when I ran classifier  two on the OR data, again you can see  that a single line, a perceptron,  classified the dataset into both  classes. But when I ran classifier  three on our XOR data, I didn't find  any clear-cut boundary, and that is the  problem with the perceptron. Okay? I  have mentioned this to you many times  that it can only work on linear  relationships. But I wanted to show you  practically that if there is a  non-linear relationship, it really  cannot be captured. Because if you look  at the XOR data, you cannot separate  both classes by drawing a single line.  Okay? Now I have another great tool  with which I will show you how to run  this same thing on the OR data. So  there is a thing called a playground.  It's called the TensorFlow Playground.  This is a GUI tool. In this GUI tool,  you can create and run neural networks  on different datasets. Okay? So here, I  will show you how to run a perceptron.  So first of all, I will select this  dataset. This dataset is linearly  separable because both classes are  separate. Here is where you build your  neural network. Okay? So right now,  this is a proper neural network. But I  don't want a neural network. I only  want a single perceptron. So I am  removing these hidden layers. Uh, this  is the perceptron. Okay? And these two  are my inputs, x1 and x2. Okay? Here,  for now, I'm keeping sigmoid and  setting the learning rate to 0.1. And  here we can add a little bit of noise,  like this. Okay? And now if I run this  code, you can see we got our line very  quickly, and our XOR is giving us  results. Okay? Now, what if I take this  dataset? Now, if you look at this  dataset, this is our XOR dataset. Okay?  Orange in the cross, blue in the cross.  Okay? This is XOR data. Now watch when  I run my code on this. No matter how  much time you give it, no matter how  many epochs you run this code for, we  won't get our output. We won't be able  to separate both classes. Okay? And the  error will be very high. Okay? So, if  you go to this website, you can  practically check what the problem with  the perceptron is without writing a  single line of code. Okay? So, we will  use this tool a lot later. So, I just  wanted to show you that such a tool is  available. It's a very cool tool. We  have to use it many times in the future . Okay? So, this was a short video. I  guess you visually understood what the  problem with the perceptron is. So that  was the video, guys. I know there  wasn't much to it. But seeing things  with your own eyes helps them stick in  your mind. So, I felt that I've only  said repeatedly that the perceptron can  only capture linearity. I felt I should  show you everything running once. So  that at the back of your mind, the idea  is established as to what the real  problem with the perceptron was. Which  is why multilayer perceptrons were  needed. Okay? Now, from the next video,  we will start multilayer perceptrons  and things will get more interesting.  Okay? So, if you haven't subscribed to  my channel, we are creating our 100  Days of Deep Learning course here, and  I think it's shaping up to be a good  course. So please do subscribe. You  will keep getting this kind of content  in the future. And those who have  already subscribed, please guys, like  this video. Okay? Alright, bye.",
+  "snippets": [
+    {
+      "text": "Hello guys, my name is Nitesh and you",
+      "start": 0.534,
+      "duration": 2.835
+    },
+    {
+      "text": " are welcome to my YouTube channel. So,",
+      "start": 2.418,
+      "duration": 3.936
+    },
+    {
+      "text": " in this video, we will continue our",
+      "start": 5.408,
+      "duration": 2.89
+    },
+    {
+      "text": " deep learning course. We have studied",
+      "start": 7.352,
+      "duration": 4.132
+    },
+    {
+      "text": " about the perceptron so far. We saw",
+      "start": 10.534,
+      "duration": 3.701
+    },
+    {
+      "text": " what a perceptron is. Then we looked at",
+      "start": 13.296,
+      "duration": 3.816
+    },
+    {
+      "text": " the way to train it. First, we saw the",
+      "start": 16.15,
+      "duration": 2.851
+    },
+    {
+      "text": " perceptron trick. Then we looked at",
+      "start": 18.059,
+      "duration": 2.903
+    },
+    {
+      "text": " loss functions. So at this point, we",
+      "start": 20.009,
+      "duration": 4.02
+    },
+    {
+      "text": " have clarity on what a perceptron is",
+      "start": 23.082,
+      "duration": 2.912
+    },
+    {
+      "text": " and how it works. But the perceptron",
+      "start": 25.047,
+      "duration": 4.651
+    },
+    {
+      "text": " could not become that famous for deep",
+      "start": 28.742,
+      "duration": 2.63
+    },
+    {
+      "text": " learning. There was a reason for that.",
+      "start": 30.416,
+      "duration": 3.184
+    },
+    {
+      "text": " The reason was that the perceptron can",
+      "start": 33.384,
+      "duration": 2.775
+    },
+    {
+      "text": " only work on linear data. It cannot",
+      "start": 35.206,
+      "duration": 3.949
+    },
+    {
+      "text": " work on non-linear data. So in today's",
+      "start": 38.206,
+      "duration": 6.744
+    },
+    {
+      "text": " video, I will show you through some",
+      "start": 43.998,
+      "duration": 2.665
+    },
+    {
+      "text": " codes and examples practically that the",
+      "start": 45.711,
+      "duration": 2.855
+    },
+    {
+      "text": " perceptron really cannot work on",
+      "start": 47.614,
+      "duration": 2.523
+    },
+    {
+      "text": " non-linear data. Okay? So this is a",
+      "start": 49.184,
+      "duration": 6.211
+    },
+    {
+      "text": " short video. I didn't want to combine",
+      "start": 54.449,
+      "duration": 3.526
+    },
+    {
+      "text": " this with any other video because I",
+      "start": 57.017,
+      "duration": 2.494
+    },
+    {
+      "text": " felt it should be treated as an",
+      "start": 58.553,
+      "duration": 2.323
+    },
+    {
+      "text": " independent topic. That is why this is",
+      "start": 59.919,
+      "duration": 3.4
+    },
+    {
+      "text": " a 10-minute video. But in this video,",
+      "start": 62.367,
+      "duration": 4.493
+    },
+    {
+      "text": " you will learn, and I will show you,",
+      "start": 65.909,
+      "duration": 2.782
+    },
+    {
+      "text": " that if you give it non-linear data—",
+      "start": 67.741,
+      "duration": 2.881
+    },
+    {
+      "text": "no matter how small or large—no",
+      "start": 69.622,
+      "duration": 2.634
+    },
+    {
+      "text": " matter how much time you give your",
+      "start": 71.305,
+      "duration": 2.684
+    },
+    {
+      "text": " perceptron to train on that data, the",
+      "start": 73.038,
+      "duration": 2.832
+    },
+    {
+      "text": " perceptron will never converge because",
+      "start": 74.919,
+      "duration": 2.882
+    },
+    {
+      "text": " essentially, a perceptron is a linear",
+      "start": 76.85,
+      "duration": 2.832
+    },
+    {
+      "text": " model. Okay? So that is what we have to",
+      "start": 78.731,
+      "duration": 4.681
+    },
+    {
+      "text": " see in this video. So now, let's start",
+      "start": 82.455,
+      "duration": 2.948
+    },
+    {
+      "text": " the video. So guys, to show you what",
+      "start": 84.46,
+      "duration": 3.577
+    },
+    {
+      "text": " the problem with the perceptron is, I",
+      "start": 87.085,
+      "duration": 2.761
+    },
+    {
+      "text": " have written some code and this code is",
+      "start": 88.893,
+      "duration": 2.856
+    },
+    {
+      "text": " on your screen. So what have I done? I",
+      "start": 90.797,
+      "duration": 4.264
+    },
+    {
+      "text": " have created three different datasets.",
+      "start": 94.11,
+      "duration": 2.877
+    },
+    {
+      "text": " Among them, one is OR data, one is AND",
+      "start": 96.971,
+      "duration": 3.606
+    },
+    {
+      "text": " data, and one is XOR data. I will run",
+      "start": 99.645,
+      "duration": 5.195
+    },
+    {
+      "text": " the perceptron algorithm on all three",
+      "start": 103.887,
+      "duration": 2.737
+    },
+    {
+      "text": " datasets and I will plot graphs to show",
+      "start": 105.671,
+      "duration": 2.831
+    },
+    {
+      "text": " you what the output is. Okay? So let's",
+      "start": 107.549,
+      "duration": 5.264
+    },
+    {
+      "text": " run the code. Here we have just",
+      "start": 111.861,
+      "duration": 4.101
+    },
+    {
+      "text": " imported some libraries. In this cell,",
+      "start": 115.011,
+      "duration": 6.137
+    },
+    {
+      "text": " we have created three new pandas data",
+      "start": 120.198,
+      "duration": 2.863
+    },
+    {
+      "text": " frames and after that, I have basically",
+      "start": 122.111,
+      "duration": 2.964
+    },
+    {
+      "text": " created the dataset here. Here I have",
+      "start": 124.125,
+      "duration": 5.805
+    },
+    {
+      "text": " created my OR data. Here I have created",
+      "start": 128.981,
+      "duration": 4.296
+    },
+    {
+      "text": " my AND data. And here I have created my",
+      "start": 132.329,
+      "duration": 3.489
+    },
+    {
+      "text": " XOR data. So I will quickly run all",
+      "start": 134.871,
+      "duration": 3.618
+    },
+    {
+      "text": " these cells and show you the output. So",
+      "start": 137.534,
+      "duration": 7.003
+    },
+    {
+      "text": " you can see this is my AND data. Okay?",
+      "start": 143.592,
+      "duration": 4.507
+    },
+    {
+      "text": " In AND, you know that the output is one",
+      "start": 147.451,
+      "duration": 2.966
+    },
+    {
+      "text": " only when both are one. In all other",
+      "start": 149.467,
+      "duration": 3.045
+    },
+    {
+      "text": " cases, the output is zero. Okay? Each",
+      "start": 151.569,
+      "duration": 3.508
+    },
+    {
+      "text": " of the three datasets has four rows.",
+      "start": 154.131,
+      "duration": 2.923
+    },
+    {
+      "text": " And if you plot this, this is your AND",
+      "start": 157.143,
+      "duration": 3.1
+    },
+    {
+      "text": " data. Okay? And in OR data, if any one",
+      "start": 159.298,
+      "duration": 5.484
+    },
+    {
+      "text": " is one, the output will be one. Only",
+      "start": 163.841,
+      "duration": 3.244
+    },
+    {
+      "text": " when both are zero will the output be",
+      "start": 166.136,
+      "duration": 2.888
+    },
+    {
+      "text": " zero. I plotted this one as well. This",
+      "start": 168.075,
+      "duration": 4.61
+    },
+    {
+      "text": " is our OR dataset, and after that is",
+      "start": 171.746,
+      "duration": 3.186
+    },
+    {
+      "text": " XOR. When both are the same, the output",
+      "start": 173.993,
+      "duration": 5.342
+    },
+    {
+      "text": " is zero, and when both are different,",
+      "start": 178.386,
+      "duration": 2.877
+    },
+    {
+      "text": " the output is one. And here is its",
+      "start": 180.313,
+      "duration": 4.086
+    },
+    {
+      "text": " output. This is the graph. Now, what",
+      "start": 183.444,
+      "duration": 4.523
+    },
+    {
+      "text": " did I do? I called the Perceptron class",
+      "start": 187.031,
+      "duration": 3.093
+    },
+    {
+      "text": " from Scikit-Learn and created three",
+      "start": 189.173,
+      "duration": 2.713
+    },
+    {
+      "text": " separate objects. Classifier one,",
+      "start": 190.935,
+      "duration": 2.937
+    },
+    {
+      "text": " classifier two, classifier three. All",
+      "start": 192.939,
+      "duration": 3.484
+    },
+    {
+      "text": " three are perceptrons. Then I gave a",
+      "start": 195.48,
+      "duration": 3.459
+    },
+    {
+      "text": " different dataset to each of them. I",
+      "start": 197.981,
+      "duration": 3.028
+    },
+    {
+      "text": " gave the AND data to classifier one. I",
+      "start": 200.068,
+      "duration": 3.324
+    },
+    {
+      "text": " gave the OR data to classifier two. And",
+      "start": 202.452,
+      "duration": 4.449
+    },
+    {
+      "text": " I gave the XOR data to classifier three",
+      "start": 205.959,
+      "duration": 3.254
+    },
+    {
+      "text": ". And after that, here are my outputs:",
+      "start": 208.213,
+      "duration": 5.018
+    },
+    {
+      "text": " coefficients of classifier one and",
+      "start": 212.285,
+      "duration": 2.867
+    },
+    {
+      "text": " intercept of classifier one. And when I",
+      "start": 214.207,
+      "duration": 7.216
+    },
+    {
+      "text": " plotted it, you can see that my",
+      "start": 220.476,
+      "duration": 2.62
+    },
+    {
+      "text": " perceptron ran on the AND data and it",
+      "start": 222.148,
+      "duration": 2.934
+    },
+    {
+      "text": " easily divided both classes clearly.",
+      "start": 224.135,
+      "duration": 2.882
+    },
+    {
+      "text": " Okay? Similarly, when I ran classifier",
+      "start": 228.939,
+      "duration": 4.466
+    },
+    {
+      "text": " two on the OR data, again you can see",
+      "start": 232.463,
+      "duration": 3.123
+    },
+    {
+      "text": " that a single line, a perceptron,",
+      "start": 234.644,
+      "duration": 2.894
+    },
+    {
+      "text": " classified the dataset into both",
+      "start": 236.595,
+      "duration": 2.837
+    },
+    {
+      "text": " classes. But when I ran classifier",
+      "start": 238.489,
+      "duration": 5.889
+    },
+    {
+      "text": " three on our XOR data, I didn't find",
+      "start": 243.428,
+      "duration": 2.796
+    },
+    {
+      "text": " any clear-cut boundary, and that is the",
+      "start": 245.274,
+      "duration": 2.946
+    },
+    {
+      "text": " problem with the perceptron. Okay? I",
+      "start": 247.269,
+      "duration": 5.774
+    },
+    {
+      "text": " have mentioned this to you many times",
+      "start": 252.087,
+      "duration": 2.617
+    },
+    {
+      "text": " that it can only work on linear",
+      "start": 253.747,
+      "duration": 2.355
+    },
+    {
+      "text": " relationships. But I wanted to show you",
+      "start": 255.146,
+      "duration": 3.892
+    },
+    {
+      "text": " practically that if there is a",
+      "start": 258.084,
+      "duration": 2.355
+    },
+    {
+      "text": " non-linear relationship, it really",
+      "start": 259.484,
+      "duration": 2.535
+    },
+    {
+      "text": " cannot be captured. Because if you look",
+      "start": 261.064,
+      "duration": 4.511
+    },
+    {
+      "text": " at the XOR data, you cannot separate",
+      "start": 264.626,
+      "duration": 2.85
+    },
+    {
+      "text": " both classes by drawing a single line.",
+      "start": 266.527,
+      "duration": 2.953
+    },
+    {
+      "text": " Okay? Now I have another great tool",
+      "start": 269.899,
+      "duration": 3.95
+    },
+    {
+      "text": " with which I will show you how to run",
+      "start": 272.894,
+      "duration": 2.642
+    },
+    {
+      "text": " this same thing on the OR data. So",
+      "start": 274.58,
+      "duration": 4.222
+    },
+    {
+      "text": " there is a thing called a playground.",
+      "start": 277.846,
+      "duration": 2.641
+    },
+    {
+      "text": " It's called the TensorFlow Playground.",
+      "start": 280.158,
+      "duration": 2.842
+    },
+    {
+      "text": " This is a GUI tool. In this GUI tool,",
+      "start": 282.258,
+      "duration": 4.376
+    },
+    {
+      "text": " you can create and run neural networks",
+      "start": 285.684,
+      "duration": 2.9
+    },
+    {
+      "text": " on different datasets. Okay? So here, I",
+      "start": 287.634,
+      "duration": 5.231
+    },
+    {
+      "text": " will show you how to run a perceptron.",
+      "start": 291.919,
+      "duration": 3.028
+    },
+    {
+      "text": " So first of all, I will select this",
+      "start": 294.666,
+      "duration": 2.929
+    },
+    {
+      "text": " dataset. This dataset is linearly",
+      "start": 296.65,
+      "duration": 3.912
+    },
+    {
+      "text": " separable because both classes are",
+      "start": 299.611,
+      "duration": 2.673
+    },
+    {
+      "text": " separate. Here is where you build your",
+      "start": 301.334,
+      "duration": 4.022
+    },
+    {
+      "text": " neural network. Okay? So right now,",
+      "start": 304.395,
+      "duration": 3.009
+    },
+    {
+      "text": " this is a proper neural network. But I",
+      "start": 306.459,
+      "duration": 3.045
+    },
+    {
+      "text": " don't want a neural network. I only",
+      "start": 308.544,
+      "duration": 2.637
+    },
+    {
+      "text": " want a single perceptron. So I am",
+      "start": 310.235,
+      "duration": 3.085
+    },
+    {
+      "text": " removing these hidden layers. Uh, this",
+      "start": 312.369,
+      "duration": 3.168
+    },
+    {
+      "text": " is the perceptron. Okay? And these two",
+      "start": 314.599,
+      "duration": 3.601
+    },
+    {
+      "text": " are my inputs, x1 and x2. Okay? Here,",
+      "start": 317.265,
+      "duration": 5.504
+    },
+    {
+      "text": " for now, I'm keeping sigmoid and",
+      "start": 321.828,
+      "duration": 2.889
+    },
+    {
+      "text": " setting the learning rate to 0.1. And",
+      "start": 323.776,
+      "duration": 6.172
+    },
+    {
+      "text": " here we can add a little bit of noise,",
+      "start": 328.996,
+      "duration": 2.828
+    },
+    {
+      "text": " like this. Okay? And now if I run this",
+      "start": 330.872,
+      "duration": 7.245
+    },
+    {
+      "text": " code, you can see we got our line very",
+      "start": 337.17,
+      "duration": 2.995
+    },
+    {
+      "text": " quickly, and our XOR is giving us",
+      "start": 339.217,
+      "duration": 2.733
+    },
+    {
+      "text": " results. Okay? Now, what if I take this",
+      "start": 341.002,
+      "duration": 7.224
+    },
+    {
+      "text": " dataset? Now, if you look at this",
+      "start": 347.283,
+      "duration": 4.708
+    },
+    {
+      "text": " dataset, this is our XOR dataset. Okay?",
+      "start": 351.049,
+      "duration": 3.931
+    },
+    {
+      "text": " Orange in the cross, blue in the cross.",
+      "start": 354.726,
+      "duration": 3.147
+    },
+    {
+      "text": " Okay? This is XOR data. Now watch when",
+      "start": 357.5,
+      "duration": 5.559
+    },
+    {
+      "text": " I run my code on this. No matter how",
+      "start": 362.108,
+      "duration": 6.221
+    },
+    {
+      "text": " much time you give it, no matter how",
+      "start": 367.376,
+      "duration": 2.706
+    },
+    {
+      "text": " many epochs you run this code for, we",
+      "start": 369.129,
+      "duration": 2.754
+    },
+    {
+      "text": " won't get our output. We won't be able",
+      "start": 370.93,
+      "duration": 4.541
+    },
+    {
+      "text": " to separate both classes. Okay? And the",
+      "start": 374.521,
+      "duration": 4.294
+    },
+    {
+      "text": " error will be very high. Okay? So, if",
+      "start": 377.857,
+      "duration": 5.267
+    },
+    {
+      "text": " you go to this website, you can",
+      "start": 382.17,
+      "duration": 2.429
+    },
+    {
+      "text": " practically check what the problem with",
+      "start": 383.645,
+      "duration": 2.797
+    },
+    {
+      "text": " the perceptron is without writing a",
+      "start": 385.489,
+      "duration": 2.613
+    },
+    {
+      "text": " single line of code. Okay? So, we will",
+      "start": 387.148,
+      "duration": 4.875
+    },
+    {
+      "text": " use this tool a lot later. So, I just",
+      "start": 391.081,
+      "duration": 3.074
+    },
+    {
+      "text": " wanted to show you that such a tool is",
+      "start": 393.203,
+      "duration": 2.838
+    },
+    {
+      "text": " available. It's a very cool tool. We",
+      "start": 395.089,
+      "duration": 3.933
+    },
+    {
+      "text": " have to use it many times in the future",
+      "start": 398.068,
+      "duration": 2.794
+    },
+    {
+      "text": ". Okay? So, this was a short video. I",
+      "start": 399.862,
+      "duration": 5.326
+    },
+    {
+      "text": " guess you visually understood what the",
+      "start": 404.235,
+      "duration": 2.793
+    },
+    {
+      "text": " problem with the perceptron is. So that",
+      "start": 406.075,
+      "duration": 4.126
+    },
+    {
+      "text": " was the video, guys. I know there",
+      "start": 409.258,
+      "duration": 2.952
+    },
+    {
+      "text": " wasn't much to it. But seeing things",
+      "start": 411.253,
+      "duration": 3.513
+    },
+    {
+      "text": " with your own eyes helps them stick in",
+      "start": 413.807,
+      "duration": 2.548
+    },
+    {
+      "text": " your mind. So, I felt that I've only",
+      "start": 415.396,
+      "duration": 3.564
+    },
+    {
+      "text": " said repeatedly that the perceptron can",
+      "start": 418.011,
+      "duration": 2.997
+    },
+    {
+      "text": " only capture linearity. I felt I should",
+      "start": 420.059,
+      "duration": 3.651
+    },
+    {
+      "text": " show you everything running once. So",
+      "start": 422.753,
+      "duration": 3.294
+    },
+    {
+      "text": " that at the back of your mind, the idea",
+      "start": 425.095,
+      "duration": 2.848
+    },
+    {
+      "text": " is established as to what the real",
+      "start": 426.99,
+      "duration": 2.611
+    },
+    {
+      "text": " problem with the perceptron was. Which",
+      "start": 428.648,
+      "duration": 3.29
+    },
+    {
+      "text": " is why multilayer perceptrons were",
+      "start": 430.988,
+      "duration": 2.683
+    },
+    {
+      "text": " needed. Okay? Now, from the next video,",
+      "start": 432.72,
+      "duration": 3.432
+    },
+    {
+      "text": " we will start multilayer perceptrons",
+      "start": 435.2,
+      "duration": 2.759
+    },
+    {
+      "text": " and things will get more interesting.",
+      "start": 437.007,
+      "duration": 2.808
+    },
+    {
+      "text": " Okay? So, if you haven't subscribed to",
+      "start": 438.915,
+      "duration": 3.643
+    },
+    {
+      "text": " my channel, we are creating our 100",
+      "start": 441.607,
+      "duration": 2.719
+    },
+    {
+      "text": " Days of Deep Learning course here, and",
+      "start": 443.375,
+      "duration": 2.866
+    },
+    {
+      "text": " I think it's shaping up to be a good",
+      "start": 445.291,
+      "duration": 2.768
+    },
+    {
+      "text": " course. So please do subscribe. You",
+      "start": 447.108,
+      "duration": 4.077
+    },
+    {
+      "text": " will keep getting this kind of content",
+      "start": 450.226,
+      "duration": 2.571
+    },
+    {
+      "text": " in the future. And those who have",
+      "start": 451.838,
+      "duration": 2.756
+    },
+    {
+      "text": " already subscribed, please guys, like",
+      "start": 453.644,
+      "duration": 2.862
+    },
+    {
+      "text": " this video. Okay? Alright, bye.",
+      "start": 455.557,
+      "duration": 3.366
+    }
+  ]
+}

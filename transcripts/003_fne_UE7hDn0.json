@@ -1,0 +1,4470 @@
+{
+  "id": "fne_UE7hDn0",
+  "index": 3,
+  "title": "Types of Neural Networks | History of Deep Learning | Applications of Deep Learning",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hello guys, my name is Nitish and you  are welcome to my YouTube channel. So,  we have started our 100 Days of Deep  Learning course and I had also uploaded  the first video in which we covered two  or three things. What is deep learning?  What is the difference between deep  learning and machine learning? And why  has deep learning suddenly become so  famous? What are the factors behind  that? Right? Today is the second video  of this course and in this too, we will  cover some theoretical things. Right?  Doing this theory is important because  I feel that when you move forward to  the more technical side, this  perspective you are gaining now will be  useful to you. Right? So in today's  video, we will also cover three topics.  The first topic will be types of neural  networks. Right? So, there are many  different types of neural networks  available. We will take an overview of  them. Then we will discuss the history  of deep learning. Right? Again, a topic  that will show you the big picture of  deep learning. Right? And you will have  some perspective on things going  forward. And third, we will cover  applications of deep learning. Where I  will tell you how deep learning has  penetrated into different fields and  how it is changing things. Right? So  this is the last theoretical video.  After this, we will start all the  practical things. We will start with  perceptron in the next video. So,  watching today's video is kind of  important. Also, I am telling you one  thing in advance. In today's video, I  am reusing some of my old video content . Right? So, I had started a deep  learning course once before, around a  year ago. But unfortunately, I couldn't  continue it. So, I had made some videos  on the initial topics back then. So  today, I will reuse that same content.  Right? So, I am not making new content  because when I watched those old videos , I felt that at this point, I don't  have anything new to add to them. Those  videos were already good. Right? So, I  have merged two or three videos to make  this one, and I hope it helps you.  Right? So, let's start the video. So  now, let's discuss about types of  Artificial Neural Networks. To be  honest, as a beginner, if you Google it , you will be blown away because there  are tens of artificial neural networks.  Meaning you can arrange layers and  neurons in different ways, and you can  create different sorts of architectures . So, there are many types of neural  networks. But in this video, just  because we are starting out. We will  discuss only five main types. And that  too will be very clear. If you want to  read more, I will share links to some  blogs in the description where you will  get an idea. But to be honest, if you  go to study these five types, they are  courses in themselves. Right? So let's  start with the first one. The first one  is what you just saw, MLP, Multi-Layer  Perceptron. Right? The simplest type of  artificial neural network. In fact,  until the others came along, these were  synonymous. Artificial neural network  and MLPs were synonymous. So, MLPs are  basically Multi-Layer Perceptrons where  you have multiple perceptrons organized  in layers. So there is an input layer,  there is an output layer, and then  there are hidden layers. Okay? So,  where is MLP used? You can apply it to  any machine learning problem.  Especially in supervised machine  learning problems. In regression or  classification scenarios, MLPs perform  very well. Especially if you want to  capture non-linear relationships. MLPs  are great for that. You add hidden  layers, and you will be able to capture  non-linear relationships even better.  Why will you be able to? We will  discuss that. Okay? The second type of  artificial neural network which is very  famous these days is CNN, which stands  for Convolutional Neural Network. So, a  Convolutional Neural Network is a  special neural network where at least  one layer is a convolutional layer.  Alright? Now, what is a convolutional  layer? You will have to read about it a  little when you study in more depth.  But I will just let you know that CNNs  are used a lot. In image processing and  video processing applications. In fact,  today, all major image processing  applications, like self-driving cars or , I don't know, healthcare, scanning  chest images to tell if there is cancer  or not. In these types of applications,  CNNs are used a lot. Right? So CNN is  actually a great type of artificial  neural network. There was this guy Yann  LeCun, he is considered to be the  father of CNN. So you can read a little  bit about him too. I will again share  the links. The third type of neural  network that we are going to discuss is  RNN. So the full form of RNN is  Recurrent Neural Network. And the  specialty of this neural network is  that all the neural networks we have  discussed so far, MLPs and CNNs, are  all feed-forward neural networks.  Meaning the information goes linearly  from the first layer to the last layer.  Right? But in RNNs, what happens is  that somewhere in the middle, the  output of a hidden layer is fed back  into one of the previous layers. So  that the prediction can be improved.  Okay? And there is a very good  variation of this called LSTM, which  stands for Long Short-Term Memory. And  both these things, RNNs and LSTMs, are  used heavily in Natural Language  Processing-based applications. So if  you have interacted with any chatbot  like Google Now, Siri, or Cortana,  internally they are using RNNs. Okay,  so again, it is a very famous type of  artificial neural network. The next one  is known as autoencoders. So, to be  honest, autoencoders are not as famous  as CNNs and RNNs. But they have a very  different application. So here, what  happens is that the job of autoencoders  is that you have some input data. You  want to compress it without losing the  quality. Right? If you have an image,  you want to make it smaller without  losing the quality. The same goes for  any kind of operation. You want to  compress a file or compress a video. So  the whole idea is that you want to  perform compression without losing  quality. So what happens here? Your  input layers and your output layers  have an equal number of nodes. But your  hidden layers have fewer nodes. So that  you can perform this task. Okay? So  that was autoencoders. The last one is  my personal favorite, and I have  studied a lot about this. It is known  as GAN. GAN stands for Generative  Adversarial Network. So what is a GAN?  GAN is this great concept. So there is  this guy called Ian Goodfellow, and he  is actually pretty young. He came up  with this concept that we can make  artificial neural networks imagine  things. And that guy created an  architecture where two neural networks  compete with each other, you know. They  play a game. So there is one neural  network that is called the generator.  Right? And there is one more neural  network that is called the  discriminator. Now, let's say what we  want to do with our GAN? We want to  generate images of completely new  people, meaning those who never existed  before. So what will we do? We will  have the generator produce photos of  many people, and the discriminator's  task will be to determine if those  photos are fake or real. As soon as the  generator can fool the discriminator,  you call that specific image an  auto-generated, imagined image. It  didn't exist before either. And guess  what guys, it is such a wonderful  concept. In fact, look at this photo.  In this photo, if you can see, it looks  like they are real human beings, but  actually, none of them ever existed.  These are all imagined faces. And this  all happened because of GANs. With GANs , you can also generate music or you  can also generate stories. So it's a  beautiful concept in which you are  enabling imagination through your  program. Right? So again, it's a  beautiful concept. You should watch  some videos on it. Okay? I will share  some links again. So these are the top  five kinds of neural networks; there  are others too. But we are not  discussing those at this point. So I  will just summarize. The first one we  discussed was MLP, then we discussed  CNN, then RNN, then Autoencoders, and  finally GANs. Okay? Now we are going to  discuss the history of deep learning.  Now we might say, \"Hey, I want to learn  deep learning.\"\"Teach me deep learning. \"\"I mean, teach me the concepts.\"\"Let's  write programs.\"\"Why study history?\" So  I will give you two reasons. Okay? So  the first reason is that deep learning  is a new technology. Right? I mean,  it's a new technology, which means its  history is also from very recent times.  In fact, many of the people involved in  that history are still alive today. So  you can learn a lot from them. You can  get a lot of perspective. That's reason  one. Reason two is very interesting. I  mean, if you listen, you will realize  that yes, there are many twists and  turns in it. There are ups and downs,  and it feels just like a Bollywood  movie. So watch this video once, and I  promise you that you will gain a lot of  perspective about deep learning. Okay?  So it all started in the 1960s. At that  time, the World War had ended, and  countries were investing a lot of money  in research to establish their  supremacy. And the US was obviously the  main contender for that. So at that  time, a lot of research was happening  there in computer science. In computer  science and space. So there was this  guy called Frank Rosenblatt. Okay. So  this guy conceptualized the thing, the  perceptron. Okay? And he said that I  have invented something that can learn.  And it is very, very close to a human  neuron. Okay? So, its learning  mechanism and how it works. It is very,  very similar to an actual neuron. And  this was a big thing back then, it was  a big thing. Because the media promoted  it a lot and said that, hey, this is  the true beginning of, you know,  artificial intelligence. From here on,  we will start building artificially  intelligent machines. In fact,  Rosenblatt was so very convinced that  he had achieved something huge that he  said this. Read this once. So he was  totally convinced. Right? This was 1960 . For a few years, research continued  on this and people worked a lot on it.  Small projects were done. In 1969,  there was this researcher called Marvin  Minsky. He said that, hey, there is  some issue with the perceptron.  Everything is not right. There is some  big problem. And then he realized and  he published a paper. In it, he wrote  that the perceptron can do many things.  It can learn many things. But there is  a major, major problem. The major  problem is the perceptron cannot learn  an XOR function. That was his  conclusion. In fact, he even said that  no matter how much you train the  perceptron, you will never be able to  ensure that it learns the XOR function.  It can never happen. And he was  actually right. Because we have also  learned that the perceptron works on  linear models. So, it is easy for it to  converge on linear functions. But if  you give it a non-linear function, it  can never converge. And XOR is a  non-linear function. Okay? And that  really hit hard. Meaning, all the  success that the perceptron had  received suddenly got diffused  completely. And this is also known as  the first AI winter. Meaning, all the  funding and such decreased and people  in the media started talking less about  it. Fewer researchers started taking it  as a project and the entire interest  just dipped. Right? So the initial  success dipped. This is 1970. Around  1980, there was this guy, he was a  student back then, Geoff Hinton. So  this guy is actually known as the  father of deep learning and currently  he is working at Google and he was a  student back then and by the way, his  great-great-grandfather was George  Boole, a great mathematician. So  basically, it was in the guy's genes to  crack something big. So he researched  perceptrons and neural networks for  about eight years, from 1978 to 1986.  Right? And in 1986, this guy published  a paper. He published a paper titled \" Learning Representations by  Back-Propagating Errors.\" Okay? And  this was a landmark paper. In this,  what Hinton said is that while a single  perceptron can obviously converge on  linear functions, it won't be able to  converge on non-linear ones. But if you  use a bunch of perceptrons together.  Basically, you create a neural system,  a neural network, and if you add more  hidden layers to it, then it can  actually converge to any non-linear  function. In fact, given enough hidden  layers, you can converge to any  mathematical function. I mean, this is  what we call the Universal  Approximation Theorem. Okay? And this  was great. I mean, suddenly, the  biggest flaw of the perceptron, that  you couldn't work on non-linear  functions. You were able to overcome it . And how were you able to do that? By  adding more perceptrons in different  layers. Okay? And how was learning  happening here? There was this  algorithm called backpropagation. So,  by calculating the differentiation of  whatever your error function was, you  were calculating these weights. We will  study this in detail. We will have a  whole video on backpropagation. But the  whole idea was that because of this  backpropagation algorithm, you were  able to train these large neural  networks, which in turn could  approximate any function. And that was  the best part. And as soon as this  happened, suddenly the whole popularity  started picking up again. Suddenly  everyone was enthusiastic about neural  networks, and people were like, \"Okay,  now we are back on track, we'll do  something big.\" In fact, in 1989, Geoff  Hinton's student Yann LeCun, who is  basically the AI head of Facebook right  now and the father of convolutional  neural networks. Is known as the father  of convolutional neural networks. What  he did in 1989, he recognized  handwritten zip codes by taking images,  and he also used neural networks and  this technique known as backpropagation , and that was in fact the first kind  of landmark achievement in computer  vision. Okay? So this was 1989. So  things kept going like that until 1991,  going up and up. But suddenly, people  realized that, boss, there is still  some problem. And the problem was that  neural networks were still not  performing well on very large-scale  problems. After doing some research, it  was found that, first of all, there  wasn't that much labeled data. Second,  there wasn't enough computational power  to calculate all the weights using  backpropagation and add many layers.  That was the second reason. The third  reason was that there was no technique  to initialize the weights at the start  of the network. It was totally random.  Errors were occurring because of that  as well. And the fourth reason was that  some other algorithms arrived. Like SVM , it was a breakthrough algorithm in  machine learning. Similarly, Random  Forest arrived. And algorithms like  these came along that converged much  better even on less data. I mean, in  comparison to neural networks. So again , this was the second AI winter.  Meaning, there was a dip in neural  networks again, and things went quiet  for a while—almost 15 years until  2006. In 2006, Geoff Hinton again  published a paper on this thing called  unsupervised pre-training and deep  belief networks. Okay? So his idea was  this, that now in 2006, our  computational power has improved. We  have good labeled data. He invented  this technique using which you can  initialize weights. So his idea was  that instead of the random weight  initialization you were doing initially , what can you do? You can use a neural  network to initialize weights. And this  is known as unsupervised pre-training.  Okay? And I know these terms are a  little difficult. I will put their  descriptions in the description box.  You can go and check them out. But in  2006, he proved that using this  technique, you can actually add as many  layers as you want and create deep  neural networks with it. And because of  this paper, the entire field of neural  networks—the whole field of  artificial neural networks—was  rebranded to deep learning. Since then,  people started calling it deep learning . From 2006 to 2010, many papers were  published, and suddenly there was a  spark again in the entire journey. 2012  was the breakthrough year after which  deep learning never went down again.  What happened in 2012 was that Hinton  participated with his team in this  competition, the ImageNet competition.  Here, you classify images. There is a  very large ImageNet dataset. You have  to run classification on top of it. And  this competition started in 2010. So  the competition had taken place twice,  in 2010 and 2011. And at that time, the  error rate was around 26-28%. In 2012,  when Hinton participated in it, he used  deep learning on top of GPUs. He used  GPUs this time. He felt that GPUs would  perform better in terms of hardware.  And guess what? His error rate was 16% —he almost cut it in half. And  everyone was surprised. I mean, using  the best machine learning algorithms,  researchers couldn't even bring it down  to 25%. There, Geoff Hinton, using GPUs  and machine—sorry, deep learning  algorithms—brought it down to almost  half, like 16%. That was insane and  that was the point where it all tipped  off. After that, companies like Google  and Facebook started paying attention  to this technology, more research  started coming into this field, papers  started getting published, and you know , an entire ecosystem started to build.  Right? Around 2015, Google started  working on self-driving cars. In 2016,  there was this company, DeepMind. These  people created an artificial  intelligence Go player. Go is this  Chinese game. Which is a very complex  game, even more complex than chess. And  they defeated the world champion of  this game, a guy named Lee Sedol from  Korea. They beat him in five straight  games. I mean, they beat him four times . So that was insane. I mean, I will  add the link to that documentary. Just  go watch that. It's a beautiful  documentary. Okay. Then, a lot more  things started happening. Then there  was this guy called Ian Goodfellow. He  created a new thing called Generative  Adversarial Networks, with which you  can generate images, generate music,  and generate stories. And after that,  man, deep learning never stopped. And  now we are at a point where it's so  popular that even colleges are teaching  this technology. This technology is  embedded in almost every product and is  empowering those products. Okay? So if  you think about this, it's a beautiful  journey. I mean, there were ups and  downs throughout. So if someone asked  you what could be the reason why our  deep learning has finally reached its  peak now. The reason is that in the  last 5-10 years, first of all, data has  increased. A lot of data has come in.  Right? And what kind of data? Labeled  data. Through the social media and apps  that we use all the time, we are  generating a lot of labeled data for  those companies. Right? The complexity  of hardware kept on increasing. Like,  hardware is much more powerful now.  Right? Imagine, man, how little RAM  smartphones came with 10 years ago.  They had so little memory and the  processing speed was low. Now look, we  have phones in our pockets with 12 GB  of RAM. I mean, imagine that; 10 years  ago, no one could have even imagined  this. So, we are getting this much  computing power in our pockets. So,  data plus hardware has powered deep  learning. And one more reason is these  algorithms; so much research has been  done in this field that it has produced  many algorithms. Many techniques have  emerged. Now, many frameworks have also  arrived. TensorFlow, Keras, PyTorch,  Theano—so many frameworks have  emerged. Because of which, even  beginners like us can do projects in  deep learning. And then, this entire  community is being built. An ecosystem  is being built. And that ecosystem is  actually pushing us forward. And there  is a great chance that, I don't know,  where we will be in 10 years in terms  of being able to create actual  intelligent, I don't know, human-like  intelligent systems. You never know,  because whatever happens from here on  will be exponential. Okay? So I guess I  was able to not bore you. I hope this  was interesting. So now that we are  done with history. Let's move on to the  last introductory video where we will  discuss the application areas where we  use deep learning and what is the  future of deep learning. Okay? So now  that we know the history of deep  learning. Let's also discuss the  application areas of deep learning. And  to be honest, deep learning is  everywhere. I mean, in the last 10  years, from 2012 until now, these 8-9  years, deep learning has penetrated  every area and impacted those fields.  Right? And there are so many typical  use cases, man. I mean, Netflix's  recommendation engine, chatbots, or I  don't know, there are so many fields.  But what we will discuss here are some  curated applications that I find very  interesting. Okay? So let's talk about  the first one. So the first one is  probably the most famous application  area of deep learning. It's  self-driving cars. So, what is a  self-driving car? You can understand  from the name, right? It's a car with a  brain. It can drive on its own. It  doesn't need a driver. I mean, there's  a Google subsidiary called Waymo. Take  Tesla Motors or Uber. Such companies  are into self-driving car research.  Okay? So, what exactly is a  self-driving car? To be honest, it's a  normal car that has a few sensors. So,  there are front, back, right, and left  cameras. There is a sensor called LiDAR . It stays on top and measures the  proximity of objects around it. By  combining many other sensors, you take  in a lot of input from your  surroundings. Okay? GPS is there. So,  all the input coming from the sensors  is fed into a computer. Behind the car,  there is a computer where all that  input is fed, and deep learning  algorithms run there, which eventually  control the car's mechanical system,  causing it to drive itself. In fact, if  you go on YouTube and type \" self-driving car,\" you will find  countless videos where people are  sitting in the car, and they aren't  driving it. The car is running on its  own and it's running really smoothly.  That's the best part. I mean, seeing it  feels like we have already arrived in  the future. Right? You never know; five  years from now, you might go downstairs  and book an Uber. A car arrives, and  there is no driver inside. Right? So, I  don't know, given how things are racing  ahead. This could be our future. Okay?  And that is totally interesting. Right?  Now, let's move on to the second  application area, which, again, I find  very interesting. So, this is  game-playing agents. Here, what happens  is that you teach your computer program  to play a game. Okay? Now, this idea  has existed for a long time. But  recently, because of deep learning and  reinforcement learning—in fact,  merged together, it's called deep  reinforcement learning. Because of this  field, suddenly, the intelligence level  of these game-playing agents has  increased significantly. In fact, I  don't know if you know about AlphaGo or  not. So, AlphaGo is this algorithm  built by DeepMind. This company was  acquired by Google. So, these people  created a game-playing agent for the  game of Go. It's an ancient Chinese  game that is even more difficult than  chess. I mean, this game has as many  possibilities as there are atoms in the  universe. Imagine that. So, people used  to console themselves saying that AI  isn't powerful enough yet to beat  humans in Go. But guess what? In 2016,  'AlphaGo', the AI algorithm created by  Google DeepMind, was able to beat Lee  Sedol, the world champion of that time  in the game. Five games were played and  it defeated him four times. And I will  put the link to its documentary in the  description, you should check it out  once. Insane documentary, right? In  fact, that guy got so frustrated that  in 2018 he just stopped playing the  game, saying, \"Boss, it's not possible  to beat this AI, so what's the point of  me playing?\" And that is insane, guys.  You never know, in the future we might  be watching an IPL of robots or people  playing crazy cricket or football.  That's the next level. Right? The third  one is virtual assistants. So if you  have used Google Now or Siri or Cortana , they are brilliant, right? I mean,  sometimes they even reply in a  sarcastic way. So they are actually  able to understand what you are talking  to them about. They retain context.  Sometimes they talk about things  mentioned earlier. And that is totally  possible because of RNNs and some deep  learning algorithms. Okay? So before  2015, the performance of all these  wasn't that good. But as soon as deep  learning became a bit mainstream and  applications arrived and more  researchers started working on it. The  performance of all these, you know, has  increased significantly. And now, I  mean, so many chatbots have arrived.  And almost every company is utilizing  chatbots. And those chatbots are  powered by deep learning. Okay? So  virtual assistants and chatbots is the  third application that I really like.  Okay? So these were some of the  mainstream applications. Now I will  discuss some, you know, off-track  applications that aren't as famous  because their use case isn't as high,  but they are damn interesting. Okay? We  are discussing those. So one of them is  image colorization. So imagine you have  a black and white photo and you want to  see it in color. Deep learning, deep  learning can do this. When you  automatically put that photo into a  deep learning algorithm, that algorithm  will calculate or predict what the  color of each pixel should be, add that  pixel color, and give you the output,  and this thing is being used a lot now.  You know the old films that are black  and white? Attempts are now being made  to add color to those films using this  technique. So, I don't know, if there's  a film you really like and it's in  black and white. Just be ready. It  might be released in color on Amazon or  Netflix. Right? Similar to this, there  is one more technique where researchers  are trying to add audio automatically  to silent videos and movies that don't  have sound. Meaning, audio is being  generated by watching the scene. I will  share a link to this video where  researchers have generated audio for a  mute video. Okay? That is insane. Right ? Similar to this, there is one more  thing called image caption generation.  Okay? So, you are giving an image to  your algorithm and it is generating  text. What is written in that text?  Whatever is happening in that photo.  Right? I will share some pictures you  can see on the screen, where there are  some pictures showing something  happening. And below, my algorithm is  able to tell exactly what it is seeing.  Right? And that is great. Right?  Similarly, by showing movie posters,  you can generate, you know, a tag,  right, a tag for the movie. Okay? So,  many applications like this are coming  up, and okay, they aren't that  applicable in many areas, but these are  very interesting use cases, and I find  it very interesting. Next is text  translation. So, some apps are starting  to appear that you can point directly  at a language. And at text written in a  language you don't understand, and it  can translate it in real-time. In fact,  a lot of the code inside Google  Translate is written in deep learning.  Deep learning algorithms are being used  for this real-time translation. Okay?  Not only that. Now, even when you point  it at images. You can convert the text  there into a language that you  understand in real-time. Like English  or Hindi or some other language. Right?  And this is really, really helpful for  travelers across the world. For those  who can't understand signboards or read  bus numbers, it's very easy for them.  You point your camera and you get the  translation, like, oh, this is what it  says. Okay? The next one is very  interesting. I still remember some  photos from my childhood; when I try to  look at them now, they are so blurry  that I can't even tell what's in them.  And this new technique that I'm telling  you about. So, in 2016, some  researchers from the Google Brain team  started a project called Pixel  Restoration. Where they took a  low-pixel photo and converted it into  HD to, you know, get an output. So,  this algorithm automatically calculates  the value of the surrounding pixels and  converts your low-quality photos into  high-quality ones. So, if you have old  photos at home or very old albums of  yours. You take a photo of them, put it  in this application, and in turn, it  will return a brand-new kind of photo  that looks really, you know, good.  Right? And this, again, is a great  application. Then there is object  detection and identification. If you  have used Google Photos, you would know  what Google Photos does. It  automatically arranges all your photos  into folders. So, a folder for your  name, a folder for your parents, a  folder for your pet, a folder for your  friends, a folder for your college trip . And you are not doing this. It's  happening automatically. Right? So, the  Google Photos algorithm is able to  identify that object. And first, it is  able to detect that object, and then it  is able to identify it. And then it  clusters them into one group. Okay? And  what is a very solid example of this? A  few days ago, a baby was born at a  relative's house, and they used to take  a lot of photos of the baby. Right? So,  for the first year or two, while the  baby was growing up, they would take so  many photos. One fine day, the mother  got a notification from Google Photos  saying, \"We have a surprise for you.\"  When she clicked it, a two-minute video  started playing. Where all the photos  of that baby were chronologically  arranged by Google Photos, and below it  was written, \"They grow up so fast,\"  with a smile. And all of this work,  guys, was automatic; it wasn't like  people at Google were sitting there  doing this. No, it was the algorithm  that automatically thought, \"Let's make  our user feel special,\" and it did it  perfectly, and that is insane, right? I  mean, it made the user feel so personal  that, well, then I will always use  Google Photos. Right? Then there are  GANs (Generative Adversarial Networks).  Using these, you can generate new  things. Like, you can generate an image , like this. I mean, none of these  human beings actually exist. This is  the magic of a neural network, which  automatically saw tons of photos and  then started generating photos of new  people. I don't know if you have ever  used these kinds of apps or not. If you  give a photo of a boy and a girl,  basically a couple, then that app will  be able to predict what their baby will  look like, right? So, you must have  seen many such applications. So, they  use GANs as Generative Adversarial  Networks. Okay? The best part about  GANs is that they can even generate  music on their own. Right? So you never  know, in the future, people might own  AI production houses and AI might  generate compositions, and people in  the future might not be fans of Badshah  or Honey Singh. They might be fans of  AI. Right? Similarly, it can also  generate handwriting. So if you show it  a lot of handwriting, it can generate  that same handwriting. Right? It can  also generate stories. I mean, a few  days ago, I got news that an AI wrote a  story and then people made a movie, a  small short movie, based on it. Right?  So guys, I mean I can talk and talk and  talk, there are so many things. If you  just Google it once, you will find  pages full of application areas of deep  learning and you will just keep reading . And things are so interesting over  there. Right? There is a concept called  Deep Dreaming. In Deep Dreaming, a  computer is being made to dream. You  should read this concept; I will put it  in the description. Again, a stunning  idea, right? And apart from this, there  are many very normal applications of  things that are very useful. Like in  medical, work is going on in drug  research. Work is going on in genetics,  or you know, work is going on in  creating vaccines. Right? In finance,  work is going on in fraud detection.  Work is going on in calculating  customer churn. In education, work is  going on in measuring student  performance. So there are so many  things in which deep learning is being  used. Technical people from every  company are stepping up. They are  learning deep learning and using it in  their companies. And that is why today  it is becoming so famous. Right? It has  become this hottest technology that  learning it is kind of mandatory. And  that is why I am so excited to teach  you this technology. Right? So that was  the video guys. I hope you understood  things. I talked about giving you a lot  of links. So do check the description.  I have provided all the links and some  of those links are very interesting. I  would recommend you go check them out,  you will have a lot of fun. Okay? So,  we have covered all the theory we  needed to in these two videos. And now  I feel we are truly prepared to move on  to practical topics. So, in the next  video, we will start with the  perceptron, which is the building block  of MLP or ANN. Okay? So that’s it  from my side. Before leaving, just one  request: please like the video, as I  keep saying. Your likes make YouTube  think this content is good and it  reaches more people. And trust me, this  is very important for me. And this is a  favor I am asking from your side. Okay?  I hope you will press that button. Okay ? So that’s it from my side.",
+  "snippets": [
+    {
+      "text": "Hello guys, my name is Nitish and you",
+      "start": 0.488,
+      "duration": 2.8
+    },
+    {
+      "text": " are welcome to my YouTube channel. So,",
+      "start": 2.336,
+      "duration": 4.585
+    },
+    {
+      "text": " we have started our 100 Days of Deep",
+      "start": 5.971,
+      "duration": 2.802
+    },
+    {
+      "text": " Learning course and I had also uploaded",
+      "start": 7.823,
+      "duration": 2.952
+    },
+    {
+      "text": " the first video in which we covered two",
+      "start": 9.825,
+      "duration": 2.953
+    },
+    {
+      "text": " or three things. What is deep learning?",
+      "start": 11.828,
+      "duration": 4.424
+    },
+    {
+      "text": " What is the difference between deep",
+      "start": 15.352,
+      "duration": 2.345
+    },
+    {
+      "text": " learning and machine learning? And why",
+      "start": 16.736,
+      "duration": 2.622
+    },
+    {
+      "text": " has deep learning suddenly become so",
+      "start": 18.41,
+      "duration": 2.894
+    },
+    {
+      "text": " famous? What are the factors behind",
+      "start": 20.356,
+      "duration": 2.603
+    },
+    {
+      "text": " that? Right? Today is the second video",
+      "start": 22.001,
+      "duration": 3.581
+    },
+    {
+      "text": " of this course and in this too, we will",
+      "start": 24.631,
+      "duration": 2.928
+    },
+    {
+      "text": " cover some theoretical things. Right?",
+      "start": 26.608,
+      "duration": 3.283
+    },
+    {
+      "text": " Doing this theory is important because",
+      "start": 30.067,
+      "duration": 2.696
+    },
+    {
+      "text": " I feel that when you move forward to",
+      "start": 31.808,
+      "duration": 2.607
+    },
+    {
+      "text": " the more technical side, this",
+      "start": 33.46,
+      "duration": 2.295
+    },
+    {
+      "text": " perspective you are gaining now will be",
+      "start": 34.799,
+      "duration": 2.742
+    },
+    {
+      "text": " useful to you. Right? So in today's",
+      "start": 36.585,
+      "duration": 3.915
+    },
+    {
+      "text": " video, we will also cover three topics.",
+      "start": 39.557,
+      "duration": 3.219
+    },
+    {
+      "text": " The first topic will be types of neural",
+      "start": 42.02,
+      "duration": 2.877
+    },
+    {
+      "text": " networks. Right? So, there are many",
+      "start": 43.945,
+      "duration": 3.02
+    },
+    {
+      "text": " different types of neural networks",
+      "start": 46.01,
+      "duration": 2.534
+    },
+    {
+      "text": " available. We will take an overview of",
+      "start": 47.589,
+      "duration": 2.684
+    },
+    {
+      "text": " them. Then we will discuss the history",
+      "start": 49.314,
+      "duration": 3.148
+    },
+    {
+      "text": " of deep learning. Right? Again, a topic",
+      "start": 51.505,
+      "duration": 3.535
+    },
+    {
+      "text": " that will show you the big picture of",
+      "start": 54.087,
+      "duration": 2.743
+    },
+    {
+      "text": " deep learning. Right? And you will have",
+      "start": 55.877,
+      "duration": 3.177
+    },
+    {
+      "text": " some perspective on things going",
+      "start": 58.094,
+      "duration": 2.294
+    },
+    {
+      "text": " forward. And third, we will cover",
+      "start": 59.428,
+      "duration": 2.992
+    },
+    {
+      "text": " applications of deep learning. Where I",
+      "start": 61.471,
+      "duration": 4.059
+    },
+    {
+      "text": " will tell you how deep learning has",
+      "start": 64.574,
+      "duration": 2.558
+    },
+    {
+      "text": " penetrated into different fields and",
+      "start": 66.176,
+      "duration": 2.602
+    },
+    {
+      "text": " how it is changing things. Right? So",
+      "start": 67.823,
+      "duration": 4.396
+    },
+    {
+      "text": " this is the last theoretical video.",
+      "start": 71.272,
+      "duration": 2.853
+    },
+    {
+      "text": " After this, we will start all the",
+      "start": 73.959,
+      "duration": 2.656
+    },
+    {
+      "text": " practical things. We will start with",
+      "start": 75.665,
+      "duration": 3.441
+    },
+    {
+      "text": " perceptron in the next video. So,",
+      "start": 78.155,
+      "duration": 3.259
+    },
+    {
+      "text": " watching today's video is kind of",
+      "start": 80.47,
+      "duration": 2.863
+    },
+    {
+      "text": " important. Also, I am telling you one",
+      "start": 82.39,
+      "duration": 3.31
+    },
+    {
+      "text": " thing in advance. In today's video, I",
+      "start": 84.755,
+      "duration": 3.583
+    },
+    {
+      "text": " am reusing some of my old video content",
+      "start": 87.394,
+      "duration": 3.201
+    },
+    {
+      "text": ". Right? So, I had started a deep",
+      "start": 89.595,
+      "duration": 4.687
+    },
+    {
+      "text": " learning course once before, around a",
+      "start": 93.335,
+      "duration": 2.962
+    },
+    {
+      "text": " year ago. But unfortunately, I couldn't",
+      "start": 95.35,
+      "duration": 4.445
+    },
+    {
+      "text": " continue it. So, I had made some videos",
+      "start": 98.844,
+      "duration": 3.648
+    },
+    {
+      "text": " on the initial topics back then. So",
+      "start": 101.546,
+      "duration": 3.064
+    },
+    {
+      "text": " today, I will reuse that same content.",
+      "start": 103.67,
+      "duration": 3.277
+    },
+    {
+      "text": " Right? So, I am not making new content",
+      "start": 106.067,
+      "duration": 4.034
+    },
+    {
+      "text": " because when I watched those old videos",
+      "start": 109.149,
+      "duration": 2.874
+    },
+    {
+      "text": ", I felt that at this point, I don't",
+      "start": 111.023,
+      "duration": 2.729
+    },
+    {
+      "text": " have anything new to add to them. Those",
+      "start": 112.8,
+      "duration": 4.004
+    },
+    {
+      "text": " videos were already good. Right? So, I",
+      "start": 115.853,
+      "duration": 3.683
+    },
+    {
+      "text": " have merged two or three videos to make",
+      "start": 118.587,
+      "duration": 2.986
+    },
+    {
+      "text": " this one, and I hope it helps you.",
+      "start": 120.624,
+      "duration": 2.732
+    },
+    {
+      "text": " Right? So, let's start the video. So",
+      "start": 122.848,
+      "duration": 3.281
+    },
+    {
+      "text": " now, let's discuss about types of",
+      "start": 125.183,
+      "duration": 2.793
+    },
+    {
+      "text": " Artificial Neural Networks. To be",
+      "start": 127.03,
+      "duration": 4.465
+    },
+    {
+      "text": " honest, as a beginner, if you Google it",
+      "start": 130.544,
+      "duration": 2.894
+    },
+    {
+      "text": ", you will be blown away because there",
+      "start": 132.438,
+      "duration": 2.845
+    },
+    {
+      "text": " are tens of artificial neural networks.",
+      "start": 134.332,
+      "duration": 2.894
+    },
+    {
+      "text": " Meaning you can arrange layers and",
+      "start": 138.754,
+      "duration": 2.554
+    },
+    {
+      "text": " neurons in different ways, and you can",
+      "start": 140.354,
+      "duration": 2.737
+    },
+    {
+      "text": " create different sorts of architectures",
+      "start": 142.137,
+      "duration": 2.783
+    },
+    {
+      "text": ". So, there are many types of neural",
+      "start": 143.92,
+      "duration": 4.462
+    },
+    {
+      "text": " networks. But in this video, just",
+      "start": 147.434,
+      "duration": 3.346
+    },
+    {
+      "text": " because we are starting out. We will",
+      "start": 149.826,
+      "duration": 3.907
+    },
+    {
+      "text": " discuss only five main types. And that",
+      "start": 152.787,
+      "duration": 3.481
+    },
+    {
+      "text": " too will be very clear. If you want to",
+      "start": 155.314,
+      "duration": 3.717
+    },
+    {
+      "text": " read more, I will share links to some",
+      "start": 158.074,
+      "duration": 2.583
+    },
+    {
+      "text": " blogs in the description where you will",
+      "start": 159.7,
+      "duration": 2.668
+    },
+    {
+      "text": " get an idea. But to be honest, if you",
+      "start": 161.411,
+      "duration": 3.685
+    },
+    {
+      "text": " go to study these five types, they are",
+      "start": 164.145,
+      "duration": 2.886
+    },
+    {
+      "text": " courses in themselves. Right? So let's",
+      "start": 166.081,
+      "duration": 3.648
+    },
+    {
+      "text": " start with the first one. The first one",
+      "start": 168.772,
+      "duration": 3.614
+    },
+    {
+      "text": " is what you just saw, MLP, Multi-Layer",
+      "start": 171.45,
+      "duration": 3.426
+    },
+    {
+      "text": " Perceptron. Right? The simplest type of",
+      "start": 173.94,
+      "duration": 3.489
+    },
+    {
+      "text": " artificial neural network. In fact,",
+      "start": 176.478,
+      "duration": 3.029
+    },
+    {
+      "text": " until the others came along, these were",
+      "start": 178.562,
+      "duration": 3.149
+    },
+    {
+      "text": " synonymous. Artificial neural network",
+      "start": 180.766,
+      "duration": 3.924
+    },
+    {
+      "text": " and MLPs were synonymous. So, MLPs are",
+      "start": 183.747,
+      "duration": 4.804
+    },
+    {
+      "text": " basically Multi-Layer Perceptrons where",
+      "start": 187.608,
+      "duration": 3.259
+    },
+    {
+      "text": " you have multiple perceptrons organized",
+      "start": 189.925,
+      "duration": 3.259
+    },
+    {
+      "text": " in layers. So there is an input layer,",
+      "start": 192.242,
+      "duration": 3.931
+    },
+    {
+      "text": " there is an output layer, and then",
+      "start": 195.218,
+      "duration": 2.537
+    },
+    {
+      "text": " there are hidden layers. Okay? So,",
+      "start": 196.801,
+      "duration": 3.377
+    },
+    {
+      "text": " where is MLP used? You can apply it to",
+      "start": 199.261,
+      "duration": 4.057
+    },
+    {
+      "text": " any machine learning problem.",
+      "start": 202.361,
+      "duration": 2.274
+    },
+    {
+      "text": " Especially in supervised machine",
+      "start": 204.006,
+      "duration": 2.645
+    },
+    {
+      "text": " learning problems. In regression or",
+      "start": 205.702,
+      "duration": 3.011
+    },
+    {
+      "text": " classification scenarios, MLPs perform",
+      "start": 207.775,
+      "duration": 3.341
+    },
+    {
+      "text": " very well. Especially if you want to",
+      "start": 210.177,
+      "duration": 3.204
+    },
+    {
+      "text": " capture non-linear relationships. MLPs",
+      "start": 212.429,
+      "duration": 3.27
+    },
+    {
+      "text": " are great for that. You add hidden",
+      "start": 214.756,
+      "duration": 3.259
+    },
+    {
+      "text": " layers, and you will be able to capture",
+      "start": 217.063,
+      "duration": 2.882
+    },
+    {
+      "text": " non-linear relationships even better.",
+      "start": 218.993,
+      "duration": 2.786
+    },
+    {
+      "text": " Why will you be able to? We will",
+      "start": 220.964,
+      "duration": 2.515
+    },
+    {
+      "text": " discuss that. Okay? The second type of",
+      "start": 222.525,
+      "duration": 3.617
+    },
+    {
+      "text": " artificial neural network which is very",
+      "start": 225.192,
+      "duration": 2.952
+    },
+    {
+      "text": " famous these days is CNN, which stands",
+      "start": 227.194,
+      "duration": 2.902
+    },
+    {
+      "text": " for Convolutional Neural Network. So, a",
+      "start": 229.146,
+      "duration": 4.805
+    },
+    {
+      "text": " Convolutional Neural Network is a",
+      "start": 233.002,
+      "duration": 2.697
+    },
+    {
+      "text": " special neural network where at least",
+      "start": 234.75,
+      "duration": 2.903
+    },
+    {
+      "text": " one layer is a convolutional layer.",
+      "start": 236.705,
+      "duration": 2.8
+    },
+    {
+      "text": " Alright? Now, what is a convolutional",
+      "start": 239.615,
+      "duration": 3.084
+    },
+    {
+      "text": " layer? You will have to read about it a",
+      "start": 241.756,
+      "duration": 2.863
+    },
+    {
+      "text": " little when you study in more depth.",
+      "start": 243.659,
+      "duration": 2.433
+    },
+    {
+      "text": " But I will just let you know that CNNs",
+      "start": 246.826,
+      "duration": 2.763
+    },
+    {
+      "text": " are used a lot. In image processing and",
+      "start": 248.635,
+      "duration": 3.919
+    },
+    {
+      "text": " video processing applications. In fact,",
+      "start": 251.605,
+      "duration": 3.613
+    },
+    {
+      "text": " today, all major image processing",
+      "start": 254.273,
+      "duration": 2.84
+    },
+    {
+      "text": " applications, like self-driving cars or",
+      "start": 256.169,
+      "duration": 3.174
+    },
+    {
+      "text": ", I don't know, healthcare, scanning",
+      "start": 258.343,
+      "duration": 3.007
+    },
+    {
+      "text": " chest images to tell if there is cancer",
+      "start": 260.406,
+      "duration": 3.174
+    },
+    {
+      "text": " or not. In these types of applications,",
+      "start": 262.636,
+      "duration": 3.275
+    },
+    {
+      "text": " CNNs are used a lot. Right? So CNN is",
+      "start": 264.965,
+      "duration": 4.889
+    },
+    {
+      "text": " actually a great type of artificial",
+      "start": 268.909,
+      "duration": 2.929
+    },
+    {
+      "text": " neural network. There was this guy Yann",
+      "start": 270.893,
+      "duration": 6.084
+    },
+    {
+      "text": " LeCun, he is considered to be the",
+      "start": 276.031,
+      "duration": 2.781
+    },
+    {
+      "text": " father of CNN. So you can read a little",
+      "start": 277.866,
+      "duration": 3.588
+    },
+    {
+      "text": " bit about him too. I will again share",
+      "start": 280.496,
+      "duration": 2.719
+    },
+    {
+      "text": " the links. The third type of neural",
+      "start": 282.263,
+      "duration": 3.042
+    },
+    {
+      "text": " network that we are going to discuss is",
+      "start": 284.352,
+      "duration": 2.833
+    },
+    {
+      "text": " RNN. So the full form of RNN is",
+      "start": 286.232,
+      "duration": 3.927
+    },
+    {
+      "text": " Recurrent Neural Network. And the",
+      "start": 289.213,
+      "duration": 4.465
+    },
+    {
+      "text": " specialty of this neural network is",
+      "start": 292.73,
+      "duration": 2.799
+    },
+    {
+      "text": " that all the neural networks we have",
+      "start": 294.58,
+      "duration": 2.85
+    },
+    {
+      "text": " discussed so far, MLPs and CNNs, are",
+      "start": 296.482,
+      "duration": 2.85
+    },
+    {
+      "text": " all feed-forward neural networks.",
+      "start": 298.383,
+      "duration": 2.697
+    },
+    {
+      "text": " Meaning the information goes linearly",
+      "start": 301.645,
+      "duration": 2.725
+    },
+    {
+      "text": " from the first layer to the last layer.",
+      "start": 303.417,
+      "duration": 2.819
+    },
+    {
+      "text": " Right? But in RNNs, what happens is",
+      "start": 305.988,
+      "duration": 4.163
+    },
+    {
+      "text": " that somewhere in the middle, the",
+      "start": 309.2,
+      "duration": 2.604
+    },
+    {
+      "text": " output of a hidden layer is fed back",
+      "start": 310.853,
+      "duration": 2.75
+    },
+    {
+      "text": " into one of the previous layers. So",
+      "start": 312.651,
+      "duration": 3.924
+    },
+    {
+      "text": " that the prediction can be improved.",
+      "start": 315.62,
+      "duration": 2.612
+    },
+    {
+      "text": " Okay? And there is a very good",
+      "start": 317.353,
+      "duration": 2.775
+    },
+    {
+      "text": " variation of this called LSTM, which",
+      "start": 319.18,
+      "duration": 2.857
+    },
+    {
+      "text": " stands for Long Short-Term Memory. And",
+      "start": 321.089,
+      "duration": 3.022
+    },
+    {
+      "text": " both these things, RNNs and LSTMs, are",
+      "start": 323.167,
+      "duration": 3.118
+    },
+    {
+      "text": " used heavily in Natural Language",
+      "start": 325.341,
+      "duration": 2.784
+    },
+    {
+      "text": " Processing-based applications. So if",
+      "start": 327.181,
+      "duration": 4.07
+    },
+    {
+      "text": " you have interacted with any chatbot",
+      "start": 330.308,
+      "duration": 3.057
+    },
+    {
+      "text": " like Google Now, Siri, or Cortana,",
+      "start": 332.422,
+      "duration": 2.943
+    },
+    {
+      "text": " internally they are using RNNs. Okay,",
+      "start": 334.422,
+      "duration": 4.662
+    },
+    {
+      "text": " so again, it is a very famous type of",
+      "start": 338.141,
+      "duration": 3.105
+    },
+    {
+      "text": " artificial neural network. The next one",
+      "start": 340.302,
+      "duration": 4.195
+    },
+    {
+      "text": " is known as autoencoders. So, to be",
+      "start": 343.55,
+      "duration": 3.171
+    },
+    {
+      "text": " honest, autoencoders are not as famous",
+      "start": 345.786,
+      "duration": 3.466
+    },
+    {
+      "text": " as CNNs and RNNs. But they have a very",
+      "start": 348.317,
+      "duration": 3.297
+    },
+    {
+      "text": " different application. So here, what",
+      "start": 350.657,
+      "duration": 3.906
+    },
+    {
+      "text": " happens is that the job of autoencoders",
+      "start": 353.612,
+      "duration": 2.887
+    },
+    {
+      "text": " is that you have some input data. You",
+      "start": 355.547,
+      "duration": 4.486
+    },
+    {
+      "text": " want to compress it without losing the",
+      "start": 359.076,
+      "duration": 2.63
+    },
+    {
+      "text": " quality. Right? If you have an image,",
+      "start": 360.749,
+      "duration": 4.148
+    },
+    {
+      "text": " you want to make it smaller without",
+      "start": 363.941,
+      "duration": 2.565
+    },
+    {
+      "text": " losing the quality. The same goes for",
+      "start": 365.551,
+      "duration": 3.42
+    },
+    {
+      "text": " any kind of operation. You want to",
+      "start": 368.02,
+      "duration": 3.713
+    },
+    {
+      "text": " compress a file or compress a video. So",
+      "start": 370.781,
+      "duration": 4.517
+    },
+    {
+      "text": " the whole idea is that you want to",
+      "start": 374.343,
+      "duration": 2.538
+    },
+    {
+      "text": " perform compression without losing",
+      "start": 375.926,
+      "duration": 2.538
+    },
+    {
+      "text": " quality. So what happens here? Your",
+      "start": 377.509,
+      "duration": 3.162
+    },
+    {
+      "text": " input layers and your output layers",
+      "start": 379.713,
+      "duration": 2.466
+    },
+    {
+      "text": " have an equal number of nodes. But your",
+      "start": 381.221,
+      "duration": 2.729
+    },
+    {
+      "text": " hidden layers have fewer nodes. So that",
+      "start": 382.996,
+      "duration": 2.873
+    },
+    {
+      "text": " you can perform this task. Okay? So",
+      "start": 384.916,
+      "duration": 3.068
+    },
+    {
+      "text": " that was autoencoders. The last one is",
+      "start": 387.042,
+      "duration": 3.779
+    },
+    {
+      "text": " my personal favorite, and I have",
+      "start": 389.869,
+      "duration": 2.538
+    },
+    {
+      "text": " studied a lot about this. It is known",
+      "start": 391.455,
+      "duration": 3.714
+    },
+    {
+      "text": " as GAN. GAN stands for Generative",
+      "start": 394.225,
+      "duration": 4.095
+    },
+    {
+      "text": " Adversarial Network. So what is a GAN?",
+      "start": 397.374,
+      "duration": 4.113
+    },
+    {
+      "text": " GAN is this great concept. So there is",
+      "start": 401.049,
+      "duration": 4.26
+    },
+    {
+      "text": " this guy called Ian Goodfellow, and he",
+      "start": 404.357,
+      "duration": 2.814
+    },
+    {
+      "text": " is actually pretty young. He came up",
+      "start": 406.218,
+      "duration": 5.899
+    },
+    {
+      "text": " with this concept that we can make",
+      "start": 411.165,
+      "duration": 2.601
+    },
+    {
+      "text": " artificial neural networks imagine",
+      "start": 412.813,
+      "duration": 2.601
+    },
+    {
+      "text": " things. And that guy created an",
+      "start": 414.461,
+      "duration": 5.673
+    },
+    {
+      "text": " architecture where two neural networks",
+      "start": 419.179,
+      "duration": 2.706
+    },
+    {
+      "text": " compete with each other, you know. They",
+      "start": 420.93,
+      "duration": 3.591
+    },
+    {
+      "text": " play a game. So there is one neural",
+      "start": 423.574,
+      "duration": 2.913
+    },
+    {
+      "text": " network that is called the generator.",
+      "start": 425.531,
+      "duration": 2.626
+    },
+    {
+      "text": " Right? And there is one more neural",
+      "start": 427.667,
+      "duration": 3.127
+    },
+    {
+      "text": " network that is called the",
+      "start": 429.834,
+      "duration": 2.059
+    },
+    {
+      "text": " discriminator. Now, let's say what we",
+      "start": 430.934,
+      "duration": 3.393
+    },
+    {
+      "text": " want to do with our GAN? We want to",
+      "start": 433.375,
+      "duration": 3.41
+    },
+    {
+      "text": " generate images of completely new",
+      "start": 435.835,
+      "duration": 2.663
+    },
+    {
+      "text": " people, meaning those who never existed",
+      "start": 437.549,
+      "duration": 2.965
+    },
+    {
+      "text": " before. So what will we do? We will",
+      "start": 439.565,
+      "duration": 3.006
+    },
+    {
+      "text": " have the generator produce photos of",
+      "start": 441.618,
+      "duration": 2.69
+    },
+    {
+      "text": " many people, and the discriminator's",
+      "start": 443.355,
+      "duration": 2.69
+    },
+    {
+      "text": " task will be to determine if those",
+      "start": 445.092,
+      "duration": 2.597
+    },
+    {
+      "text": " photos are fake or real. As soon as the",
+      "start": 446.736,
+      "duration": 4.441
+    },
+    {
+      "text": " generator can fool the discriminator,",
+      "start": 450.229,
+      "duration": 2.902
+    },
+    {
+      "text": " you call that specific image an",
+      "start": 452.182,
+      "duration": 2.594
+    },
+    {
+      "text": " auto-generated, imagined image. It",
+      "start": 453.828,
+      "duration": 4.004
+    },
+    {
+      "text": " didn't exist before either. And guess",
+      "start": 456.878,
+      "duration": 2.836
+    },
+    {
+      "text": " what guys, it is such a wonderful",
+      "start": 458.769,
+      "duration": 2.815
+    },
+    {
+      "text": " concept. In fact, look at this photo.",
+      "start": 460.639,
+      "duration": 3.312
+    },
+    {
+      "text": " In this photo, if you can see, it looks",
+      "start": 463.802,
+      "duration": 2.986
+    },
+    {
+      "text": " like they are real human beings, but",
+      "start": 465.839,
+      "duration": 2.833
+    },
+    {
+      "text": " actually, none of them ever existed.",
+      "start": 467.723,
+      "duration": 2.834
+    },
+    {
+      "text": " These are all imagined faces. And this",
+      "start": 470.589,
+      "duration": 3.061
+    },
+    {
+      "text": " all happened because of GANs. With GANs",
+      "start": 472.696,
+      "duration": 3.121
+    },
+    {
+      "text": ", you can also generate music or you",
+      "start": 474.817,
+      "duration": 2.895
+    },
+    {
+      "text": " can also generate stories. So it's a",
+      "start": 476.765,
+      "duration": 3.559
+    },
+    {
+      "text": " beautiful concept in which you are",
+      "start": 479.37,
+      "duration": 2.572
+    },
+    {
+      "text": " enabling imagination through your",
+      "start": 480.988,
+      "duration": 2.526
+    },
+    {
+      "text": " program. Right? So again, it's a",
+      "start": 482.561,
+      "duration": 3.213
+    },
+    {
+      "text": " beautiful concept. You should watch",
+      "start": 484.834,
+      "duration": 3.023
+    },
+    {
+      "text": " some videos on it. Okay? I will share",
+      "start": 486.898,
+      "duration": 3.117
+    },
+    {
+      "text": " some links again. So these are the top",
+      "start": 489.059,
+      "duration": 2.988
+    },
+    {
+      "text": " five kinds of neural networks; there",
+      "start": 491.095,
+      "duration": 2.728
+    },
+    {
+      "text": " are others too. But we are not",
+      "start": 492.871,
+      "duration": 2.866
+    },
+    {
+      "text": " discussing those at this point. So I",
+      "start": 494.779,
+      "duration": 2.961
+    },
+    {
+      "text": " will just summarize. The first one we",
+      "start": 496.794,
+      "duration": 3.436
+    },
+    {
+      "text": " discussed was MLP, then we discussed",
+      "start": 499.298,
+      "duration": 3.455
+    },
+    {
+      "text": " CNN, then RNN, then Autoencoders, and",
+      "start": 501.821,
+      "duration": 3.522
+    },
+    {
+      "text": " finally GANs. Okay? Now we are going to",
+      "start": 504.411,
+      "duration": 3.945
+    },
+    {
+      "text": " discuss the history of deep learning.",
+      "start": 507.398,
+      "duration": 2.571
+    },
+    {
+      "text": " Now we might say, \"Hey, I want to learn",
+      "start": 509.824,
+      "duration": 3.006
+    },
+    {
+      "text": " deep learning.\"\"Teach me deep learning.",
+      "start": 511.882,
+      "duration": 3.091
+    },
+    {
+      "text": "\"\"I mean, teach me the concepts.\"\"Let's",
+      "start": 513.973,
+      "duration": 3.217
+    },
+    {
+      "text": " write programs.\"\"Why study history?\" So",
+      "start": 516.239,
+      "duration": 3.351
+    },
+    {
+      "text": " I will give you two reasons. Okay? So",
+      "start": 518.641,
+      "duration": 3.429
+    },
+    {
+      "text": " the first reason is that deep learning",
+      "start": 521.117,
+      "duration": 2.81
+    },
+    {
+      "text": " is a new technology. Right? I mean,",
+      "start": 522.975,
+      "duration": 2.819
+    },
+    {
+      "text": " it's a new technology, which means its",
+      "start": 524.841,
+      "duration": 2.793
+    },
+    {
+      "text": " history is also from very recent times.",
+      "start": 526.681,
+      "duration": 2.84
+    },
+    {
+      "text": " In fact, many of the people involved in",
+      "start": 528.621,
+      "duration": 2.868
+    },
+    {
+      "text": " that history are still alive today. So",
+      "start": 530.537,
+      "duration": 3.168
+    },
+    {
+      "text": " you can learn a lot from them. You can",
+      "start": 532.747,
+      "duration": 2.654
+    },
+    {
+      "text": " get a lot of perspective. That's reason",
+      "start": 534.444,
+      "duration": 2.833
+    },
+    {
+      "text": " one. Reason two is very interesting. I",
+      "start": 536.326,
+      "duration": 3.857
+    },
+    {
+      "text": " mean, if you listen, you will realize",
+      "start": 539.234,
+      "duration": 2.872
+    },
+    {
+      "text": " that yes, there are many twists and",
+      "start": 541.156,
+      "duration": 2.771
+    },
+    {
+      "text": " turns in it. There are ups and downs,",
+      "start": 542.977,
+      "duration": 2.994
+    },
+    {
+      "text": " and it feels just like a Bollywood",
+      "start": 545.018,
+      "duration": 2.616
+    },
+    {
+      "text": " movie. So watch this video once, and I",
+      "start": 546.681,
+      "duration": 3.697
+    },
+    {
+      "text": " promise you that you will gain a lot of",
+      "start": 549.425,
+      "duration": 2.821
+    },
+    {
+      "text": " perspective about deep learning. Okay?",
+      "start": 551.292,
+      "duration": 3.885
+    },
+    {
+      "text": " So it all started in the 1960s. At that",
+      "start": 554.277,
+      "duration": 4.415
+    },
+    {
+      "text": " time, the World War had ended, and",
+      "start": 557.743,
+      "duration": 2.723
+    },
+    {
+      "text": " countries were investing a lot of money",
+      "start": 559.516,
+      "duration": 2.976
+    },
+    {
+      "text": " in research to establish their",
+      "start": 561.543,
+      "duration": 2.52
+    },
+    {
+      "text": " supremacy. And the US was obviously the",
+      "start": 563.114,
+      "duration": 4.799
+    },
+    {
+      "text": " main contender for that. So at that",
+      "start": 566.962,
+      "duration": 3.789
+    },
+    {
+      "text": " time, a lot of research was happening",
+      "start": 569.798,
+      "duration": 2.749
+    },
+    {
+      "text": " there in computer science. In computer",
+      "start": 571.594,
+      "duration": 2.933
+    },
+    {
+      "text": " science and space. So there was this",
+      "start": 573.582,
+      "duration": 2.926
+    },
+    {
+      "text": " guy called Frank Rosenblatt. Okay. So",
+      "start": 575.556,
+      "duration": 4.07
+    },
+    {
+      "text": " this guy conceptualized the thing, the",
+      "start": 578.683,
+      "duration": 3.192
+    },
+    {
+      "text": " perceptron. Okay? And he said that I",
+      "start": 580.932,
+      "duration": 5.358
+    },
+    {
+      "text": " have invented something that can learn.",
+      "start": 585.329,
+      "duration": 2.521
+    },
+    {
+      "text": " And it is very, very close to a human",
+      "start": 589.949,
+      "duration": 3.122
+    },
+    {
+      "text": " neuron. Okay? So, its learning",
+      "start": 592.129,
+      "duration": 4.176
+    },
+    {
+      "text": " mechanism and how it works. It is very,",
+      "start": 595.36,
+      "duration": 3.391
+    },
+    {
+      "text": " very similar to an actual neuron. And",
+      "start": 597.811,
+      "duration": 3.691
+    },
+    {
+      "text": " this was a big thing back then, it was",
+      "start": 600.548,
+      "duration": 2.765
+    },
+    {
+      "text": " a big thing. Because the media promoted",
+      "start": 602.359,
+      "duration": 5.233
+    },
+    {
+      "text": " it a lot and said that, hey, this is",
+      "start": 606.645,
+      "duration": 2.885
+    },
+    {
+      "text": " the true beginning of, you know,",
+      "start": 608.582,
+      "duration": 2.676
+    },
+    {
+      "text": " artificial intelligence. From here on,",
+      "start": 610.311,
+      "duration": 4.267
+    },
+    {
+      "text": " we will start building artificially",
+      "start": 613.628,
+      "duration": 2.738
+    },
+    {
+      "text": " intelligent machines. In fact,",
+      "start": 615.416,
+      "duration": 2.54
+    },
+    {
+      "text": " Rosenblatt was so very convinced that",
+      "start": 617.006,
+      "duration": 2.837
+    },
+    {
+      "text": " he had achieved something huge that he",
+      "start": 618.893,
+      "duration": 2.887
+    },
+    {
+      "text": " said this. Read this once. So he was",
+      "start": 620.83,
+      "duration": 5.464
+    },
+    {
+      "text": " totally convinced. Right? This was 1960",
+      "start": 625.347,
+      "duration": 3.706
+    },
+    {
+      "text": ". For a few years, research continued",
+      "start": 628.053,
+      "duration": 3.089
+    },
+    {
+      "text": " on this and people worked a lot on it.",
+      "start": 630.191,
+      "duration": 2.838
+    },
+    {
+      "text": " Small projects were done. In 1969,",
+      "start": 632.259,
+      "duration": 3.94
+    },
+    {
+      "text": " there was this researcher called Marvin",
+      "start": 635.263,
+      "duration": 3.497
+    },
+    {
+      "text": " Minsky. He said that, hey, there is",
+      "start": 637.824,
+      "duration": 4.167
+    },
+    {
+      "text": " some issue with the perceptron.",
+      "start": 641.042,
+      "duration": 2.587
+    },
+    {
+      "text": " Everything is not right. There is some",
+      "start": 642.797,
+      "duration": 2.765
+    },
+    {
+      "text": " big problem. And then he realized and",
+      "start": 644.604,
+      "duration": 2.72
+    },
+    {
+      "text": " he published a paper. In it, he wrote",
+      "start": 646.37,
+      "duration": 3.275
+    },
+    {
+      "text": " that the perceptron can do many things.",
+      "start": 648.696,
+      "duration": 2.976
+    },
+    {
+      "text": " It can learn many things. But there is",
+      "start": 650.844,
+      "duration": 2.893
+    },
+    {
+      "text": " a major, major problem. The major",
+      "start": 652.789,
+      "duration": 3.327
+    },
+    {
+      "text": " problem is the perceptron cannot learn",
+      "start": 655.168,
+      "duration": 3.01
+    },
+    {
+      "text": " an XOR function. That was his",
+      "start": 657.231,
+      "duration": 3.328
+    },
+    {
+      "text": " conclusion. In fact, he even said that",
+      "start": 659.608,
+      "duration": 3.779
+    },
+    {
+      "text": " no matter how much you train the",
+      "start": 662.435,
+      "duration": 2.545
+    },
+    {
+      "text": " perceptron, you will never be able to",
+      "start": 664.028,
+      "duration": 2.786
+    },
+    {
+      "text": " ensure that it learns the XOR function.",
+      "start": 665.863,
+      "duration": 2.883
+    },
+    {
+      "text": " It can never happen. And he was",
+      "start": 668.667,
+      "duration": 2.522
+    },
+    {
+      "text": " actually right. Because we have also",
+      "start": 670.234,
+      "duration": 3.182
+    },
+    {
+      "text": " learned that the perceptron works on",
+      "start": 672.462,
+      "duration": 2.671
+    },
+    {
+      "text": " linear models. So, it is easy for it to",
+      "start": 674.18,
+      "duration": 3.202
+    },
+    {
+      "text": " converge on linear functions. But if",
+      "start": 676.436,
+      "duration": 2.943
+    },
+    {
+      "text": " you give it a non-linear function, it",
+      "start": 678.427,
+      "duration": 2.757
+    },
+    {
+      "text": " can never converge. And XOR is a",
+      "start": 680.231,
+      "duration": 2.836
+    },
+    {
+      "text": " non-linear function. Okay? And that",
+      "start": 682.123,
+      "duration": 3.794
+    },
+    {
+      "text": " really hit hard. Meaning, all the",
+      "start": 684.962,
+      "duration": 3.115
+    },
+    {
+      "text": " success that the perceptron had",
+      "start": 687.126,
+      "duration": 2.515
+    },
+    {
+      "text": " received suddenly got diffused",
+      "start": 688.69,
+      "duration": 2.465
+    },
+    {
+      "text": " completely. And this is also known as",
+      "start": 690.204,
+      "duration": 2.932
+    },
+    {
+      "text": " the first AI winter. Meaning, all the",
+      "start": 692.185,
+      "duration": 3.089
+    },
+    {
+      "text": " funding and such decreased and people",
+      "start": 694.321,
+      "duration": 2.755
+    },
+    {
+      "text": " in the media started talking less about",
+      "start": 696.123,
+      "duration": 2.849
+    },
+    {
+      "text": " it. Fewer researchers started taking it",
+      "start": 698.019,
+      "duration": 3.341
+    },
+    {
+      "text": " as a project and the entire interest",
+      "start": 700.408,
+      "duration": 2.72
+    },
+    {
+      "text": " just dipped. Right? So the initial",
+      "start": 702.176,
+      "duration": 3.426
+    },
+    {
+      "text": " success dipped. This is 1970. Around",
+      "start": 704.654,
+      "duration": 5.914
+    },
+    {
+      "text": " 1980, there was this guy, he was a",
+      "start": 709.626,
+      "duration": 2.964
+    },
+    {
+      "text": " student back then, Geoff Hinton. So",
+      "start": 711.647,
+      "duration": 7.399
+    },
+    {
+      "text": " this guy is actually known as the",
+      "start": 718.094,
+      "duration": 2.582
+    },
+    {
+      "text": " father of deep learning and currently",
+      "start": 719.724,
+      "duration": 2.773
+    },
+    {
+      "text": " he is working at Google and he was a",
+      "start": 721.545,
+      "duration": 2.725
+    },
+    {
+      "text": " student back then and by the way, his",
+      "start": 723.318,
+      "duration": 2.773
+    },
+    {
+      "text": " great-great-grandfather was George",
+      "start": 725.139,
+      "duration": 2.63
+    },
+    {
+      "text": " Boole, a great mathematician. So",
+      "start": 726.817,
+      "duration": 5.234
+    },
+    {
+      "text": " basically, it was in the guy's genes to",
+      "start": 731.101,
+      "duration": 2.941
+    },
+    {
+      "text": " crack something big. So he researched",
+      "start": 733.091,
+      "duration": 3.986
+    },
+    {
+      "text": " perceptrons and neural networks for",
+      "start": 736.142,
+      "duration": 3.271
+    },
+    {
+      "text": " about eight years, from 1978 to 1986.",
+      "start": 738.478,
+      "duration": 3.402
+    },
+    {
+      "text": " Right? And in 1986, this guy published",
+      "start": 741.907,
+      "duration": 4.231
+    },
+    {
+      "text": " a paper. He published a paper titled \"",
+      "start": 745.206,
+      "duration": 5.369
+    },
+    {
+      "text": "Learning Representations by",
+      "start": 749.575,
+      "duration": 2.403
+    },
+    {
+      "text": " Back-Propagating Errors.\" Okay? And",
+      "start": 751.03,
+      "duration": 4.851
+    },
+    {
+      "text": " this was a landmark paper. In this,",
+      "start": 754.931,
+      "duration": 4.127
+    },
+    {
+      "text": " what Hinton said is that while a single",
+      "start": 758.108,
+      "duration": 2.962
+    },
+    {
+      "text": " perceptron can obviously converge on",
+      "start": 760.12,
+      "duration": 2.811
+    },
+    {
+      "text": " linear functions, it won't be able to",
+      "start": 761.982,
+      "duration": 2.861
+    },
+    {
+      "text": " converge on non-linear ones. But if you",
+      "start": 763.893,
+      "duration": 4.38
+    },
+    {
+      "text": " use a bunch of perceptrons together.",
+      "start": 767.321,
+      "duration": 2.723
+    },
+    {
+      "text": " Basically, you create a neural system,",
+      "start": 770.123,
+      "duration": 2.861
+    },
+    {
+      "text": " a neural network, and if you add more",
+      "start": 772.033,
+      "duration": 2.812
+    },
+    {
+      "text": " hidden layers to it, then it can",
+      "start": 773.894,
+      "duration": 2.567
+    },
+    {
+      "text": " actually converge to any non-linear",
+      "start": 775.51,
+      "duration": 2.715
+    },
+    {
+      "text": " function. In fact, given enough hidden",
+      "start": 777.274,
+      "duration": 3.053
+    },
+    {
+      "text": " layers, you can converge to any",
+      "start": 779.376,
+      "duration": 2.512
+    },
+    {
+      "text": " mathematical function. I mean, this is",
+      "start": 780.937,
+      "duration": 2.873
+    },
+    {
+      "text": " what we call the Universal",
+      "start": 782.857,
+      "duration": 2.215
+    },
+    {
+      "text": " Approximation Theorem. Okay? And this",
+      "start": 784.119,
+      "duration": 3.291
+    },
+    {
+      "text": " was great. I mean, suddenly, the",
+      "start": 786.456,
+      "duration": 3.183
+    },
+    {
+      "text": " biggest flaw of the perceptron, that",
+      "start": 788.69,
+      "duration": 2.855
+    },
+    {
+      "text": " you couldn't work on non-linear",
+      "start": 790.596,
+      "duration": 2.598
+    },
+    {
+      "text": " functions. You were able to overcome it",
+      "start": 792.245,
+      "duration": 2.973
+    },
+    {
+      "text": ". And how were you able to do that? By",
+      "start": 794.218,
+      "duration": 2.913
+    },
+    {
+      "text": " adding more perceptrons in different",
+      "start": 796.18,
+      "duration": 2.788
+    },
+    {
+      "text": " layers. Okay? And how was learning",
+      "start": 798.018,
+      "duration": 2.841
+    },
+    {
+      "text": " happening here? There was this",
+      "start": 799.898,
+      "duration": 2.267
+    },
+    {
+      "text": " algorithm called backpropagation. So,",
+      "start": 801.207,
+      "duration": 2.607
+    },
+    {
+      "text": " by calculating the differentiation of",
+      "start": 802.852,
+      "duration": 2.42
+    },
+    {
+      "text": " whatever your error function was, you",
+      "start": 804.311,
+      "duration": 2.42
+    },
+    {
+      "text": " were calculating these weights. We will",
+      "start": 805.769,
+      "duration": 2.602
+    },
+    {
+      "text": " study this in detail. We will have a",
+      "start": 807.416,
+      "duration": 2.683
+    },
+    {
+      "text": " whole video on backpropagation. But the",
+      "start": 809.145,
+      "duration": 2.874
+    },
+    {
+      "text": " whole idea was that because of this",
+      "start": 811.065,
+      "duration": 2.609
+    },
+    {
+      "text": " backpropagation algorithm, you were",
+      "start": 812.72,
+      "duration": 2.609
+    },
+    {
+      "text": " able to train these large neural",
+      "start": 814.375,
+      "duration": 2.471
+    },
+    {
+      "text": " networks, which in turn could",
+      "start": 815.892,
+      "duration": 2.333
+    },
+    {
+      "text": " approximate any function. And that was",
+      "start": 817.271,
+      "duration": 4.183
+    },
+    {
+      "text": " the best part. And as soon as this",
+      "start": 820.497,
+      "duration": 3.369
+    },
+    {
+      "text": " happened, suddenly the whole popularity",
+      "start": 822.914,
+      "duration": 2.851
+    },
+    {
+      "text": " started picking up again. Suddenly",
+      "start": 824.812,
+      "duration": 2.688
+    },
+    {
+      "text": " everyone was enthusiastic about neural",
+      "start": 826.55,
+      "duration": 2.907
+    },
+    {
+      "text": " networks, and people were like, \"Okay,",
+      "start": 828.508,
+      "duration": 2.907
+    },
+    {
+      "text": " now we are back on track, we'll do",
+      "start": 830.465,
+      "duration": 2.706
+    },
+    {
+      "text": " something big.\" In fact, in 1989, Geoff",
+      "start": 832.222,
+      "duration": 4.045
+    },
+    {
+      "text": " Hinton's student Yann LeCun, who is",
+      "start": 835.323,
+      "duration": 2.963
+    },
+    {
+      "text": " basically the AI head of Facebook right",
+      "start": 837.342,
+      "duration": 3.187
+    },
+    {
+      "text": " now and the father of convolutional",
+      "start": 839.585,
+      "duration": 2.962
+    },
+    {
+      "text": " neural networks. Is known as the father",
+      "start": 841.603,
+      "duration": 3.872
+    },
+    {
+      "text": " of convolutional neural networks. What",
+      "start": 844.522,
+      "duration": 5.439
+    },
+    {
+      "text": " he did in 1989, he recognized",
+      "start": 849.012,
+      "duration": 2.502
+    },
+    {
+      "text": " handwritten zip codes by taking images,",
+      "start": 850.565,
+      "duration": 3.019
+    },
+    {
+      "text": " and he also used neural networks and",
+      "start": 852.636,
+      "duration": 2.864
+    },
+    {
+      "text": " this technique known as backpropagation",
+      "start": 854.551,
+      "duration": 3.019
+    },
+    {
+      "text": ", and that was in fact the first kind",
+      "start": 856.57,
+      "duration": 2.916
+    },
+    {
+      "text": " of landmark achievement in computer",
+      "start": 858.538,
+      "duration": 2.811
+    },
+    {
+      "text": " vision. Okay? So this was 1989. So",
+      "start": 860.401,
+      "duration": 6.339
+    },
+    {
+      "text": " things kept going like that until 1991,",
+      "start": 865.802,
+      "duration": 3.409
+    },
+    {
+      "text": " going up and up. But suddenly, people",
+      "start": 868.272,
+      "duration": 3.232
+    },
+    {
+      "text": " realized that, boss, there is still",
+      "start": 870.559,
+      "duration": 2.9
+    },
+    {
+      "text": " some problem. And the problem was that",
+      "start": 872.513,
+      "duration": 3.677
+    },
+    {
+      "text": " neural networks were still not",
+      "start": 875.235,
+      "duration": 2.369
+    },
+    {
+      "text": " performing well on very large-scale",
+      "start": 876.65,
+      "duration": 2.597
+    },
+    {
+      "text": " problems. After doing some research, it",
+      "start": 878.293,
+      "duration": 3.812
+    },
+    {
+      "text": " was found that, first of all, there",
+      "start": 881.154,
+      "duration": 2.691
+    },
+    {
+      "text": " wasn't that much labeled data. Second,",
+      "start": 882.894,
+      "duration": 2.891
+    },
+    {
+      "text": " there wasn't enough computational power",
+      "start": 884.834,
+      "duration": 2.902
+    },
+    {
+      "text": " to calculate all the weights using",
+      "start": 886.785,
+      "duration": 2.658
+    },
+    {
+      "text": " backpropagation and add many layers.",
+      "start": 888.492,
+      "duration": 2.756
+    },
+    {
+      "text": " That was the second reason. The third",
+      "start": 890.348,
+      "duration": 3.261
+    },
+    {
+      "text": " reason was that there was no technique",
+      "start": 892.649,
+      "duration": 2.529
+    },
+    {
+      "text": " to initialize the weights at the start",
+      "start": 894.218,
+      "duration": 2.53
+    },
+    {
+      "text": " of the network. It was totally random.",
+      "start": 895.788,
+      "duration": 3.348
+    },
+    {
+      "text": " Errors were occurring because of that",
+      "start": 898.236,
+      "duration": 2.54
+    },
+    {
+      "text": " as well. And the fourth reason was that",
+      "start": 899.817,
+      "duration": 2.681
+    },
+    {
+      "text": " some other algorithms arrived. Like SVM",
+      "start": 901.539,
+      "duration": 2.768
+    },
+    {
+      "text": ", it was a breakthrough algorithm in",
+      "start": 903.307,
+      "duration": 2.892
+    },
+    {
+      "text": " machine learning. Similarly, Random",
+      "start": 905.252,
+      "duration": 3.084
+    },
+    {
+      "text": " Forest arrived. And algorithms like",
+      "start": 907.4,
+      "duration": 2.956
+    },
+    {
+      "text": " these came along that converged much",
+      "start": 909.403,
+      "duration": 2.694
+    },
+    {
+      "text": " better even on less data. I mean, in",
+      "start": 911.144,
+      "duration": 2.802
+    },
+    {
+      "text": " comparison to neural networks. So again",
+      "start": 912.998,
+      "duration": 3.132
+    },
+    {
+      "text": ", this was the second AI winter.",
+      "start": 915.13,
+      "duration": 2.814
+    },
+    {
+      "text": " Meaning, there was a dip in neural",
+      "start": 919.892,
+      "duration": 3.05
+    },
+    {
+      "text": " networks again, and things went quiet",
+      "start": 922.003,
+      "duration": 3.232
+    },
+    {
+      "text": " for a while—almost 15 years until",
+      "start": 924.295,
+      "duration": 3.111
+    },
+    {
+      "text": " 2006. In 2006, Geoff Hinton again",
+      "start": 926.467,
+      "duration": 2.99
+    },
+    {
+      "text": " published a paper on this thing called",
+      "start": 928.518,
+      "duration": 3.292
+    },
+    {
+      "text": " unsupervised pre-training and deep",
+      "start": 930.87,
+      "duration": 3.051
+    },
+    {
+      "text": " belief networks. Okay? So his idea was",
+      "start": 932.981,
+      "duration": 6.374
+    },
+    {
+      "text": " this, that now in 2006, our",
+      "start": 938.42,
+      "duration": 2.731
+    },
+    {
+      "text": " computational power has improved. We",
+      "start": 940.215,
+      "duration": 3.313
+    },
+    {
+      "text": " have good labeled data. He invented",
+      "start": 942.576,
+      "duration": 3.379
+    },
+    {
+      "text": " this technique using which you can",
+      "start": 945.0,
+      "duration": 2.552
+    },
+    {
+      "text": " initialize weights. So his idea was",
+      "start": 946.598,
+      "duration": 3.368
+    },
+    {
+      "text": " that instead of the random weight",
+      "start": 949.013,
+      "duration": 2.536
+    },
+    {
+      "text": " initialization you were doing initially",
+      "start": 950.596,
+      "duration": 2.816
+    },
+    {
+      "text": ", what can you do? You can use a neural",
+      "start": 952.412,
+      "duration": 3.564
+    },
+    {
+      "text": " network to initialize weights. And this",
+      "start": 955.024,
+      "duration": 3.022
+    },
+    {
+      "text": " is known as unsupervised pre-training.",
+      "start": 957.094,
+      "duration": 2.825
+    },
+    {
+      "text": " Okay? And I know these terms are a",
+      "start": 959.019,
+      "duration": 2.692
+    },
+    {
+      "text": " little difficult. I will put their",
+      "start": 960.753,
+      "duration": 2.509
+    },
+    {
+      "text": " descriptions in the description box.",
+      "start": 962.307,
+      "duration": 2.593
+    },
+    {
+      "text": " You can go and check them out. But in",
+      "start": 964.0,
+      "duration": 3.685
+    },
+    {
+      "text": " 2006, he proved that using this",
+      "start": 966.736,
+      "duration": 2.591
+    },
+    {
+      "text": " technique, you can actually add as many",
+      "start": 968.379,
+      "duration": 3.002
+    },
+    {
+      "text": " layers as you want and create deep",
+      "start": 970.432,
+      "duration": 2.745
+    },
+    {
+      "text": " neural networks with it. And because of",
+      "start": 972.229,
+      "duration": 4.687
+    },
+    {
+      "text": " this paper, the entire field of neural",
+      "start": 975.965,
+      "duration": 2.863
+    },
+    {
+      "text": " networks—the whole field of",
+      "start": 977.877,
+      "duration": 2.421
+    },
+    {
+      "text": " artificial neural networks—was",
+      "start": 979.347,
+      "duration": 2.569
+    },
+    {
+      "text": " rebranded to deep learning. Since then,",
+      "start": 980.965,
+      "duration": 3.211
+    },
+    {
+      "text": " people started calling it deep learning",
+      "start": 983.223,
+      "duration": 2.826
+    },
+    {
+      "text": ". From 2006 to 2010, many papers were",
+      "start": 985.049,
+      "duration": 3.365
+    },
+    {
+      "text": " published, and suddenly there was a",
+      "start": 987.473,
+      "duration": 3.071
+    },
+    {
+      "text": " spark again in the entire journey. 2012",
+      "start": 989.603,
+      "duration": 4.314
+    },
+    {
+      "text": " was the breakthrough year after which",
+      "start": 992.965,
+      "duration": 2.795
+    },
+    {
+      "text": " deep learning never went down again.",
+      "start": 994.809,
+      "duration": 2.747
+    },
+    {
+      "text": " What happened in 2012 was that Hinton",
+      "start": 997.245,
+      "duration": 2.916
+    },
+    {
+      "text": " participated with his team in this",
+      "start": 999.212,
+      "duration": 2.761
+    },
+    {
+      "text": " competition, the ImageNet competition.",
+      "start": 1001.025,
+      "duration": 2.968
+    },
+    {
+      "text": " Here, you classify images. There is a",
+      "start": 1003.118,
+      "duration": 3.358
+    },
+    {
+      "text": " very large ImageNet dataset. You have",
+      "start": 1005.527,
+      "duration": 2.909
+    },
+    {
+      "text": " to run classification on top of it. And",
+      "start": 1007.484,
+      "duration": 2.928
+    },
+    {
+      "text": " this competition started in 2010. So",
+      "start": 1009.469,
+      "duration": 3.117
+    },
+    {
+      "text": " the competition had taken place twice,",
+      "start": 1011.65,
+      "duration": 3.42
+    },
+    {
+      "text": " in 2010 and 2011. And at that time, the",
+      "start": 1014.134,
+      "duration": 3.707
+    },
+    {
+      "text": " error rate was around 26-28%. In 2012,",
+      "start": 1016.914,
+      "duration": 4.225
+    },
+    {
+      "text": " when Hinton participated in it, he used",
+      "start": 1020.204,
+      "duration": 3.52
+    },
+    {
+      "text": " deep learning on top of GPUs. He used",
+      "start": 1022.789,
+      "duration": 3.746
+    },
+    {
+      "text": " GPUs this time. He felt that GPUs would",
+      "start": 1025.602,
+      "duration": 3.72
+    },
+    {
+      "text": " perform better in terms of hardware.",
+      "start": 1028.373,
+      "duration": 2.835
+    },
+    {
+      "text": " And guess what? His error rate was 16%",
+      "start": 1030.733,
+      "duration": 3.215
+    },
+    {
+      "text": "—he almost cut it in half. And",
+      "start": 1032.948,
+      "duration": 3.017
+    },
+    {
+      "text": " everyone was surprised. I mean, using",
+      "start": 1035.015,
+      "duration": 2.891
+    },
+    {
+      "text": " the best machine learning algorithms,",
+      "start": 1036.957,
+      "duration": 2.858
+    },
+    {
+      "text": " researchers couldn't even bring it down",
+      "start": 1038.865,
+      "duration": 2.959
+    },
+    {
+      "text": " to 25%. There, Geoff Hinton, using GPUs",
+      "start": 1040.874,
+      "duration": 3.322
+    },
+    {
+      "text": " and machine—sorry, deep learning",
+      "start": 1043.256,
+      "duration": 3.051
+    },
+    {
+      "text": " algorithms—brought it down to almost",
+      "start": 1045.368,
+      "duration": 3.292
+    },
+    {
+      "text": " half, like 16%. That was insane and",
+      "start": 1047.721,
+      "duration": 3.014
+    },
+    {
+      "text": " that was the point where it all tipped",
+      "start": 1049.779,
+      "duration": 2.655
+    },
+    {
+      "text": " off. After that, companies like Google",
+      "start": 1051.477,
+      "duration": 3.637
+    },
+    {
+      "text": " and Facebook started paying attention",
+      "start": 1054.165,
+      "duration": 2.888
+    },
+    {
+      "text": " to this technology, more research",
+      "start": 1056.104,
+      "duration": 2.683
+    },
+    {
+      "text": " started coming into this field, papers",
+      "start": 1057.838,
+      "duration": 2.939
+    },
+    {
+      "text": " started getting published, and you know",
+      "start": 1059.828,
+      "duration": 2.99
+    },
+    {
+      "text": ", an entire ecosystem started to build.",
+      "start": 1061.818,
+      "duration": 2.99
+    },
+    {
+      "text": " Right? Around 2015, Google started",
+      "start": 1064.187,
+      "duration": 3.514
+    },
+    {
+      "text": " working on self-driving cars. In 2016,",
+      "start": 1066.766,
+      "duration": 3.9
+    },
+    {
+      "text": " there was this company, DeepMind. These",
+      "start": 1069.737,
+      "duration": 4.574
+    },
+    {
+      "text": " people created an artificial",
+      "start": 1073.36,
+      "duration": 2.362
+    },
+    {
+      "text": " intelligence Go player. Go is this",
+      "start": 1074.771,
+      "duration": 3.679
+    },
+    {
+      "text": " Chinese game. Which is a very complex",
+      "start": 1077.505,
+      "duration": 3.358
+    },
+    {
+      "text": " game, even more complex than chess. And",
+      "start": 1079.921,
+      "duration": 4.453
+    },
+    {
+      "text": " they defeated the world champion of",
+      "start": 1083.423,
+      "duration": 2.709
+    },
+    {
+      "text": " this game, a guy named Lee Sedol from",
+      "start": 1085.181,
+      "duration": 2.807
+    },
+    {
+      "text": " Korea. They beat him in five straight",
+      "start": 1087.037,
+      "duration": 3.778
+    },
+    {
+      "text": " games. I mean, they beat him four times",
+      "start": 1089.865,
+      "duration": 3.052
+    },
+    {
+      "text": ". So that was insane. I mean, I will",
+      "start": 1091.917,
+      "duration": 2.927
+    },
+    {
+      "text": " add the link to that documentary. Just",
+      "start": 1093.888,
+      "duration": 2.751
+    },
+    {
+      "text": " go watch that. It's a beautiful",
+      "start": 1095.689,
+      "duration": 2.674
+    },
+    {
+      "text": " documentary. Okay. Then, a lot more",
+      "start": 1097.418,
+      "duration": 3.368
+    },
+    {
+      "text": " things started happening. Then there",
+      "start": 1099.837,
+      "duration": 3.386
+    },
+    {
+      "text": " was this guy called Ian Goodfellow. He",
+      "start": 1102.267,
+      "duration": 4.197
+    },
+    {
+      "text": " created a new thing called Generative",
+      "start": 1105.516,
+      "duration": 2.914
+    },
+    {
+      "text": " Adversarial Networks, with which you",
+      "start": 1107.482,
+      "duration": 2.863
+    },
+    {
+      "text": " can generate images, generate music,",
+      "start": 1109.396,
+      "duration": 2.863
+    },
+    {
+      "text": " and generate stories. And after that,",
+      "start": 1111.311,
+      "duration": 3.94
+    },
+    {
+      "text": " man, deep learning never stopped. And",
+      "start": 1114.309,
+      "duration": 4.61
+    },
+    {
+      "text": " now we are at a point where it's so",
+      "start": 1117.965,
+      "duration": 2.586
+    },
+    {
+      "text": " popular that even colleges are teaching",
+      "start": 1119.596,
+      "duration": 2.768
+    },
+    {
+      "text": " this technology. This technology is",
+      "start": 1121.409,
+      "duration": 5.211
+    },
+    {
+      "text": " embedded in almost every product and is",
+      "start": 1125.668,
+      "duration": 2.877
+    },
+    {
+      "text": " empowering those products. Okay? So if",
+      "start": 1127.593,
+      "duration": 3.958
+    },
+    {
+      "text": " you think about this, it's a beautiful",
+      "start": 1130.6,
+      "duration": 2.852
+    },
+    {
+      "text": " journey. I mean, there were ups and",
+      "start": 1132.501,
+      "duration": 2.694
+    },
+    {
+      "text": " downs throughout. So if someone asked",
+      "start": 1134.241,
+      "duration": 4.593
+    },
+    {
+      "text": " you what could be the reason why our",
+      "start": 1137.879,
+      "duration": 2.62
+    },
+    {
+      "text": " deep learning has finally reached its",
+      "start": 1139.544,
+      "duration": 2.665
+    },
+    {
+      "text": " peak now. The reason is that in the",
+      "start": 1141.254,
+      "duration": 5.906
+    },
+    {
+      "text": " last 5-10 years, first of all, data has",
+      "start": 1146.219,
+      "duration": 3.276
+    },
+    {
+      "text": " increased. A lot of data has come in.",
+      "start": 1148.553,
+      "duration": 4.105
+    },
+    {
+      "text": " Right? And what kind of data? Labeled",
+      "start": 1151.758,
+      "duration": 3.309
+    },
+    {
+      "text": " data. Through the social media and apps",
+      "start": 1154.124,
+      "duration": 3.154
+    },
+    {
+      "text": " that we use all the time, we are",
+      "start": 1156.324,
+      "duration": 2.472
+    },
+    {
+      "text": " generating a lot of labeled data for",
+      "start": 1157.842,
+      "duration": 2.656
+    },
+    {
+      "text": " those companies. Right? The complexity",
+      "start": 1159.544,
+      "duration": 4.4
+    },
+    {
+      "text": " of hardware kept on increasing. Like,",
+      "start": 1162.995,
+      "duration": 3.847
+    },
+    {
+      "text": " hardware is much more powerful now.",
+      "start": 1165.898,
+      "duration": 2.982
+    },
+    {
+      "text": " Right? Imagine, man, how little RAM",
+      "start": 1168.028,
+      "duration": 3.73
+    },
+    {
+      "text": " smartphones came with 10 years ago.",
+      "start": 1170.818,
+      "duration": 3.111
+    },
+    {
+      "text": " They had so little memory and the",
+      "start": 1173.991,
+      "duration": 2.575
+    },
+    {
+      "text": " processing speed was low. Now look, we",
+      "start": 1175.614,
+      "duration": 3.456
+    },
+    {
+      "text": " have phones in our pockets with 12 GB",
+      "start": 1178.128,
+      "duration": 3.169
+    },
+    {
+      "text": " of RAM. I mean, imagine that; 10 years",
+      "start": 1180.355,
+      "duration": 2.976
+    },
+    {
+      "text": " ago, no one could have even imagined",
+      "start": 1182.38,
+      "duration": 2.758
+    },
+    {
+      "text": " this. So, we are getting this much",
+      "start": 1184.187,
+      "duration": 2.756
+    },
+    {
+      "text": " computing power in our pockets. So,",
+      "start": 1185.993,
+      "duration": 3.33
+    },
+    {
+      "text": " data plus hardware has powered deep",
+      "start": 1188.381,
+      "duration": 3.012
+    },
+    {
+      "text": " learning. And one more reason is these",
+      "start": 1190.451,
+      "duration": 3.415
+    },
+    {
+      "text": " algorithms; so much research has been",
+      "start": 1192.913,
+      "duration": 2.737
+    },
+    {
+      "text": " done in this field that it has produced",
+      "start": 1194.697,
+      "duration": 2.832
+    },
+    {
+      "text": " many algorithms. Many techniques have",
+      "start": 1196.576,
+      "duration": 2.725
+    },
+    {
+      "text": " emerged. Now, many frameworks have also",
+      "start": 1198.345,
+      "duration": 2.896
+    },
+    {
+      "text": " arrived. TensorFlow, Keras, PyTorch,",
+      "start": 1200.289,
+      "duration": 3.007
+    },
+    {
+      "text": " Theano—so many frameworks have",
+      "start": 1202.352,
+      "duration": 2.803
+    },
+    {
+      "text": " emerged. Because of which, even",
+      "start": 1204.212,
+      "duration": 2.619
+    },
+    {
+      "text": " beginners like us can do projects in",
+      "start": 1205.879,
+      "duration": 2.748
+    },
+    {
+      "text": " deep learning. And then, this entire",
+      "start": 1207.676,
+      "duration": 3.03
+    },
+    {
+      "text": " community is being built. An ecosystem",
+      "start": 1209.755,
+      "duration": 2.94
+    },
+    {
+      "text": " is being built. And that ecosystem is",
+      "start": 1211.747,
+      "duration": 2.871
+    },
+    {
+      "text": " actually pushing us forward. And there",
+      "start": 1213.666,
+      "duration": 3.745
+    },
+    {
+      "text": " is a great chance that, I don't know,",
+      "start": 1216.46,
+      "duration": 2.823
+    },
+    {
+      "text": " where we will be in 10 years in terms",
+      "start": 1218.332,
+      "duration": 2.823
+    },
+    {
+      "text": " of being able to create actual",
+      "start": 1220.205,
+      "duration": 2.478
+    },
+    {
+      "text": " intelligent, I don't know, human-like",
+      "start": 1221.732,
+      "duration": 2.823
+    },
+    {
+      "text": " intelligent systems. You never know,",
+      "start": 1223.604,
+      "duration": 3.626
+    },
+    {
+      "text": " because whatever happens from here on",
+      "start": 1226.275,
+      "duration": 2.652
+    },
+    {
+      "text": " will be exponential. Okay? So I guess I",
+      "start": 1227.972,
+      "duration": 3.868
+    },
+    {
+      "text": " was able to not bore you. I hope this",
+      "start": 1230.885,
+      "duration": 3.863
+    },
+    {
+      "text": " was interesting. So now that we are",
+      "start": 1233.792,
+      "duration": 2.744
+    },
+    {
+      "text": " done with history. Let's move on to the",
+      "start": 1235.581,
+      "duration": 4.591
+    },
+    {
+      "text": " last introductory video where we will",
+      "start": 1239.217,
+      "duration": 2.65
+    },
+    {
+      "text": " discuss the application areas where we",
+      "start": 1240.911,
+      "duration": 2.695
+    },
+    {
+      "text": " use deep learning and what is the",
+      "start": 1242.65,
+      "duration": 2.472
+    },
+    {
+      "text": " future of deep learning. Okay? So now",
+      "start": 1244.166,
+      "duration": 4.892
+    },
+    {
+      "text": " that we know the history of deep",
+      "start": 1248.102,
+      "duration": 2.421
+    },
+    {
+      "text": " learning. Let's also discuss the",
+      "start": 1249.567,
+      "duration": 3.374
+    },
+    {
+      "text": " application areas of deep learning. And",
+      "start": 1251.99,
+      "duration": 3.59
+    },
+    {
+      "text": " to be honest, deep learning is",
+      "start": 1254.629,
+      "duration": 2.468
+    },
+    {
+      "text": " everywhere. I mean, in the last 10",
+      "start": 1256.145,
+      "duration": 3.564
+    },
+    {
+      "text": " years, from 2012 until now, these 8-9",
+      "start": 1258.77,
+      "duration": 3.244
+    },
+    {
+      "text": " years, deep learning has penetrated",
+      "start": 1261.075,
+      "duration": 3.123
+    },
+    {
+      "text": " every area and impacted those fields.",
+      "start": 1263.259,
+      "duration": 3.245
+    },
+    {
+      "text": " Right? And there are so many typical",
+      "start": 1266.027,
+      "duration": 3.202
+    },
+    {
+      "text": " use cases, man. I mean, Netflix's",
+      "start": 1268.283,
+      "duration": 3.495
+    },
+    {
+      "text": " recommendation engine, chatbots, or I",
+      "start": 1270.836,
+      "duration": 3.133
+    },
+    {
+      "text": " don't know, there are so many fields.",
+      "start": 1273.027,
+      "duration": 3.133
+    },
+    {
+      "text": " But what we will discuss here are some",
+      "start": 1276.302,
+      "duration": 2.756
+    },
+    {
+      "text": " curated applications that I find very",
+      "start": 1278.105,
+      "duration": 2.71
+    },
+    {
+      "text": " interesting. Okay? So let's talk about",
+      "start": 1279.862,
+      "duration": 3.826
+    },
+    {
+      "text": " the first one. So the first one is",
+      "start": 1282.732,
+      "duration": 3.027
+    },
+    {
+      "text": " probably the most famous application",
+      "start": 1284.807,
+      "duration": 2.738
+    },
+    {
+      "text": " area of deep learning. It's",
+      "start": 1286.593,
+      "duration": 2.387
+    },
+    {
+      "text": " self-driving cars. So, what is a",
+      "start": 1288.036,
+      "duration": 2.842
+    },
+    {
+      "text": " self-driving car? You can understand",
+      "start": 1289.935,
+      "duration": 2.816
+    },
+    {
+      "text": " from the name, right? It's a car with a",
+      "start": 1291.793,
+      "duration": 2.796
+    },
+    {
+      "text": " brain. It can drive on its own. It",
+      "start": 1293.637,
+      "duration": 4.816
+    },
+    {
+      "text": " doesn't need a driver. I mean, there's",
+      "start": 1297.498,
+      "duration": 3.105
+    },
+    {
+      "text": " a Google subsidiary called Waymo. Take",
+      "start": 1299.658,
+      "duration": 3.867
+    },
+    {
+      "text": " Tesla Motors or Uber. Such companies",
+      "start": 1302.582,
+      "duration": 3.568
+    },
+    {
+      "text": " are into self-driving car research.",
+      "start": 1305.2,
+      "duration": 2.76
+    },
+    {
+      "text": " Okay? So, what exactly is a",
+      "start": 1307.06,
+      "duration": 2.764
+    },
+    {
+      "text": " self-driving car? To be honest, it's a",
+      "start": 1308.883,
+      "duration": 3.134
+    },
+    {
+      "text": " normal car that has a few sensors. So,",
+      "start": 1311.069,
+      "duration": 3.043
+    },
+    {
+      "text": " there are front, back, right, and left",
+      "start": 1313.173,
+      "duration": 3.327
+    },
+    {
+      "text": " cameras. There is a sensor called LiDAR",
+      "start": 1315.562,
+      "duration": 2.966
+    },
+    {
+      "text": ". It stays on top and measures the",
+      "start": 1317.528,
+      "duration": 2.711
+    },
+    {
+      "text": " proximity of objects around it. By",
+      "start": 1319.286,
+      "duration": 3.349
+    },
+    {
+      "text": " combining many other sensors, you take",
+      "start": 1321.683,
+      "duration": 2.812
+    },
+    {
+      "text": " in a lot of input from your",
+      "start": 1323.542,
+      "duration": 2.288
+    },
+    {
+      "text": " surroundings. Okay? GPS is there. So,",
+      "start": 1324.878,
+      "duration": 4.201
+    },
+    {
+      "text": " all the input coming from the sensors",
+      "start": 1328.13,
+      "duration": 2.906
+    },
+    {
+      "text": " is fed into a computer. Behind the car,",
+      "start": 1330.087,
+      "duration": 6.205
+    },
+    {
+      "text": " there is a computer where all that",
+      "start": 1335.341,
+      "duration": 2.668
+    },
+    {
+      "text": " input is fed, and deep learning",
+      "start": 1337.058,
+      "duration": 2.521
+    },
+    {
+      "text": " algorithms run there, which eventually",
+      "start": 1338.628,
+      "duration": 2.864
+    },
+    {
+      "text": " control the car's mechanical system,",
+      "start": 1340.541,
+      "duration": 2.766
+    },
+    {
+      "text": " causing it to drive itself. In fact, if",
+      "start": 1342.356,
+      "duration": 6.204
+    },
+    {
+      "text": " you go on YouTube and type \"",
+      "start": 1347.607,
+      "duration": 2.323
+    },
+    {
+      "text": "self-driving car,\" you will find",
+      "start": 1348.93,
+      "duration": 2.512
+    },
+    {
+      "text": " countless videos where people are",
+      "start": 1350.49,
+      "duration": 2.559
+    },
+    {
+      "text": " sitting in the car, and they aren't",
+      "start": 1352.096,
+      "duration": 2.654
+    },
+    {
+      "text": " driving it. The car is running on its",
+      "start": 1353.797,
+      "duration": 2.979
+    },
+    {
+      "text": " own and it's running really smoothly.",
+      "start": 1355.818,
+      "duration": 2.552
+    },
+    {
+      "text": " That's the best part. I mean, seeing it",
+      "start": 1357.47,
+      "duration": 2.825
+    },
+    {
+      "text": " feels like we have already arrived in",
+      "start": 1359.34,
+      "duration": 2.659
+    },
+    {
+      "text": " the future. Right? You never know; five",
+      "start": 1361.044,
+      "duration": 3.009
+    },
+    {
+      "text": " years from now, you might go downstairs",
+      "start": 1363.102,
+      "duration": 2.912
+    },
+    {
+      "text": " and book an Uber. A car arrives, and",
+      "start": 1365.063,
+      "duration": 2.82
+    },
+    {
+      "text": " there is no driver inside. Right? So, I",
+      "start": 1366.932,
+      "duration": 3.079
+    },
+    {
+      "text": " don't know, given how things are racing",
+      "start": 1369.063,
+      "duration": 3.031
+    },
+    {
+      "text": " ahead. This could be our future. Okay?",
+      "start": 1371.146,
+      "duration": 3.042
+    },
+    {
+      "text": " And that is totally interesting. Right?",
+      "start": 1373.289,
+      "duration": 3.187
+    },
+    {
+      "text": " Now, let's move on to the second",
+      "start": 1375.576,
+      "duration": 2.665
+    },
+    {
+      "text": " application area, which, again, I find",
+      "start": 1377.293,
+      "duration": 2.978
+    },
+    {
+      "text": " very interesting. So, this is",
+      "start": 1379.324,
+      "duration": 2.651
+    },
+    {
+      "text": " game-playing agents. Here, what happens",
+      "start": 1381.035,
+      "duration": 5.044
+    },
+    {
+      "text": " is that you teach your computer program",
+      "start": 1385.128,
+      "duration": 2.886
+    },
+    {
+      "text": " to play a game. Okay? Now, this idea",
+      "start": 1387.063,
+      "duration": 4.649
+    },
+    {
+      "text": " has existed for a long time. But",
+      "start": 1390.77,
+      "duration": 2.895
+    },
+    {
+      "text": " recently, because of deep learning and",
+      "start": 1392.713,
+      "duration": 2.827
+    },
+    {
+      "text": " reinforcement learning—in fact,",
+      "start": 1394.588,
+      "duration": 2.587
+    },
+    {
+      "text": " merged together, it's called deep",
+      "start": 1396.223,
+      "duration": 2.587
+    },
+    {
+      "text": " reinforcement learning. Because of this",
+      "start": 1397.858,
+      "duration": 2.914
+    },
+    {
+      "text": " field, suddenly, the intelligence level",
+      "start": 1399.819,
+      "duration": 2.842
+    },
+    {
+      "text": " of these game-playing agents has",
+      "start": 1401.708,
+      "duration": 2.511
+    },
+    {
+      "text": " increased significantly. In fact, I",
+      "start": 1403.266,
+      "duration": 2.726
+    },
+    {
+      "text": " don't know if you know about AlphaGo or",
+      "start": 1405.041,
+      "duration": 2.921
+    },
+    {
+      "text": " not. So, AlphaGo is this algorithm",
+      "start": 1407.011,
+      "duration": 3.077
+    },
+    {
+      "text": " built by DeepMind. This company was",
+      "start": 1409.149,
+      "duration": 3.233
+    },
+    {
+      "text": " acquired by Google. So, these people",
+      "start": 1411.43,
+      "duration": 3.172
+    },
+    {
+      "text": " created a game-playing agent for the",
+      "start": 1413.653,
+      "duration": 2.827
+    },
+    {
+      "text": " game of Go. It's an ancient Chinese",
+      "start": 1415.53,
+      "duration": 2.7
+    },
+    {
+      "text": " game that is even more difficult than",
+      "start": 1417.275,
+      "duration": 2.644
+    },
+    {
+      "text": " chess. I mean, this game has as many",
+      "start": 1418.963,
+      "duration": 2.954
+    },
+    {
+      "text": " possibilities as there are atoms in the",
+      "start": 1420.967,
+      "duration": 2.938
+    },
+    {
+      "text": " universe. Imagine that. So, people used",
+      "start": 1422.954,
+      "duration": 4.296
+    },
+    {
+      "text": " to console themselves saying that AI",
+      "start": 1426.299,
+      "duration": 2.758
+    },
+    {
+      "text": " isn't powerful enough yet to beat",
+      "start": 1428.106,
+      "duration": 2.612
+    },
+    {
+      "text": " humans in Go. But guess what? In 2016,",
+      "start": 1429.767,
+      "duration": 5.871
+    },
+    {
+      "text": " 'AlphaGo', the AI algorithm created by",
+      "start": 1434.697,
+      "duration": 3.262
+    },
+    {
+      "text": " Google DeepMind, was able to beat Lee",
+      "start": 1437.019,
+      "duration": 3.202
+    },
+    {
+      "text": " Sedol, the world champion of that time",
+      "start": 1439.281,
+      "duration": 3.262
+    },
+    {
+      "text": " in the game. Five games were played and",
+      "start": 1441.602,
+      "duration": 4.627
+    },
+    {
+      "text": " it defeated him four times. And I will",
+      "start": 1445.278,
+      "duration": 2.8
+    },
+    {
+      "text": " put the link to its documentary in the",
+      "start": 1447.117,
+      "duration": 2.466
+    },
+    {
+      "text": " description, you should check it out",
+      "start": 1448.622,
+      "duration": 2.389
+    },
+    {
+      "text": " once. Insane documentary, right? In",
+      "start": 1450.05,
+      "duration": 3.065
+    },
+    {
+      "text": " fact, that guy got so frustrated that",
+      "start": 1452.166,
+      "duration": 2.878
+    },
+    {
+      "text": " in 2018 he just stopped playing the",
+      "start": 1454.094,
+      "duration": 2.777
+    },
+    {
+      "text": " game, saying, \"Boss, it's not possible",
+      "start": 1455.921,
+      "duration": 2.929
+    },
+    {
+      "text": " to beat this AI, so what's the point of",
+      "start": 1457.901,
+      "duration": 2.979
+    },
+    {
+      "text": " me playing?\" And that is insane, guys.",
+      "start": 1459.931,
+      "duration": 3.157
+    },
+    {
+      "text": " You never know, in the future we might",
+      "start": 1462.2,
+      "duration": 2.926
+    },
+    {
+      "text": " be watching an IPL of robots or people",
+      "start": 1464.177,
+      "duration": 2.926
+    },
+    {
+      "text": " playing crazy cricket or football.",
+      "start": 1466.154,
+      "duration": 2.724
+    },
+    {
+      "text": " That's the next level. Right? The third",
+      "start": 1468.304,
+      "duration": 2.993
+    },
+    {
+      "text": " one is virtual assistants. So if you",
+      "start": 1470.349,
+      "duration": 3.639
+    },
+    {
+      "text": " have used Google Now or Siri or Cortana",
+      "start": 1473.041,
+      "duration": 3.077
+    },
+    {
+      "text": ", they are brilliant, right? I mean,",
+      "start": 1475.118,
+      "duration": 3.859
+    },
+    {
+      "text": " sometimes they even reply in a",
+      "start": 1478.035,
+      "duration": 2.758
+    },
+    {
+      "text": " sarcastic way. So they are actually",
+      "start": 1479.851,
+      "duration": 2.779
+    },
+    {
+      "text": " able to understand what you are talking",
+      "start": 1481.669,
+      "duration": 2.535
+    },
+    {
+      "text": " to them about. They retain context.",
+      "start": 1483.243,
+      "duration": 2.886
+    },
+    {
+      "text": " Sometimes they talk about things",
+      "start": 1485.229,
+      "duration": 2.322
+    },
+    {
+      "text": " mentioned earlier. And that is totally",
+      "start": 1486.592,
+      "duration": 2.752
+    },
+    {
+      "text": " possible because of RNNs and some deep",
+      "start": 1488.391,
+      "duration": 2.817
+    },
+    {
+      "text": " learning algorithms. Okay? So before",
+      "start": 1490.256,
+      "duration": 3.561
+    },
+    {
+      "text": " 2015, the performance of all these",
+      "start": 1492.874,
+      "duration": 2.925
+    },
+    {
+      "text": " wasn't that good. But as soon as deep",
+      "start": 1494.856,
+      "duration": 2.87
+    },
+    {
+      "text": " learning became a bit mainstream and",
+      "start": 1496.768,
+      "duration": 2.53
+    },
+    {
+      "text": " applications arrived and more",
+      "start": 1498.341,
+      "duration": 2.232
+    },
+    {
+      "text": " researchers started working on it. The",
+      "start": 1499.616,
+      "duration": 2.674
+    },
+    {
+      "text": " performance of all these, you know, has",
+      "start": 1501.333,
+      "duration": 2.679
+    },
+    {
+      "text": " increased significantly. And now, I",
+      "start": 1503.055,
+      "duration": 2.656
+    },
+    {
+      "text": " mean, so many chatbots have arrived.",
+      "start": 1504.763,
+      "duration": 2.882
+    },
+    {
+      "text": " And almost every company is utilizing",
+      "start": 1506.745,
+      "duration": 2.895
+    },
+    {
+      "text": " chatbots. And those chatbots are",
+      "start": 1508.691,
+      "duration": 2.497
+    },
+    {
+      "text": " powered by deep learning. Okay? So",
+      "start": 1510.231,
+      "duration": 2.785
+    },
+    {
+      "text": " virtual assistants and chatbots is the",
+      "start": 1512.063,
+      "duration": 2.778
+    },
+    {
+      "text": " third application that I really like.",
+      "start": 1513.887,
+      "duration": 2.732
+    },
+    {
+      "text": " Okay? So these were some of the",
+      "start": 1515.719,
+      "duration": 2.619
+    },
+    {
+      "text": " mainstream applications. Now I will",
+      "start": 1517.382,
+      "duration": 2.79
+    },
+    {
+      "text": " discuss some, you know, off-track",
+      "start": 1519.22,
+      "duration": 2.581
+    },
+    {
+      "text": " applications that aren't as famous",
+      "start": 1520.849,
+      "duration": 2.63
+    },
+    {
+      "text": " because their use case isn't as high,",
+      "start": 1522.527,
+      "duration": 2.773
+    },
+    {
+      "text": " but they are damn interesting. Okay? We",
+      "start": 1524.348,
+      "duration": 3.533
+    },
+    {
+      "text": " are discussing those. So one of them is",
+      "start": 1526.93,
+      "duration": 3.434
+    },
+    {
+      "text": " image colorization. So imagine you have",
+      "start": 1529.414,
+      "duration": 4.084
+    },
+    {
+      "text": " a black and white photo and you want to",
+      "start": 1532.544,
+      "duration": 2.766
+    },
+    {
+      "text": " see it in color. Deep learning, deep",
+      "start": 1534.356,
+      "duration": 3.445
+    },
+    {
+      "text": " learning can do this. When you",
+      "start": 1536.853,
+      "duration": 4.559
+    },
+    {
+      "text": " automatically put that photo into a",
+      "start": 1540.46,
+      "duration": 2.668
+    },
+    {
+      "text": " deep learning algorithm, that algorithm",
+      "start": 1542.176,
+      "duration": 2.859
+    },
+    {
+      "text": " will calculate or predict what the",
+      "start": 1544.082,
+      "duration": 2.621
+    },
+    {
+      "text": " color of each pixel should be, add that",
+      "start": 1545.751,
+      "duration": 2.859
+    },
+    {
+      "text": " pixel color, and give you the output,",
+      "start": 1547.657,
+      "duration": 2.764
+    },
+    {
+      "text": " and this thing is being used a lot now.",
+      "start": 1549.469,
+      "duration": 2.859
+    },
+    {
+      "text": " You know the old films that are black",
+      "start": 1553.551,
+      "duration": 2.554
+    },
+    {
+      "text": " and white? Attempts are now being made",
+      "start": 1555.147,
+      "duration": 3.175
+    },
+    {
+      "text": " to add color to those films using this",
+      "start": 1557.367,
+      "duration": 2.708
+    },
+    {
+      "text": " technique. So, I don't know, if there's",
+      "start": 1559.12,
+      "duration": 3.073
+    },
+    {
+      "text": " a film you really like and it's in",
+      "start": 1561.24,
+      "duration": 2.598
+    },
+    {
+      "text": " black and white. Just be ready. It",
+      "start": 1562.885,
+      "duration": 3.036
+    },
+    {
+      "text": " might be released in color on Amazon or",
+      "start": 1564.974,
+      "duration": 3.054
+    },
+    {
+      "text": " Netflix. Right? Similar to this, there",
+      "start": 1567.081,
+      "duration": 4.728
+    },
+    {
+      "text": " is one more technique where researchers",
+      "start": 1570.856,
+      "duration": 2.829
+    },
+    {
+      "text": " are trying to add audio automatically",
+      "start": 1572.732,
+      "duration": 2.736
+    },
+    {
+      "text": " to silent videos and movies that don't",
+      "start": 1574.514,
+      "duration": 2.783
+    },
+    {
+      "text": " have sound. Meaning, audio is being",
+      "start": 1576.344,
+      "duration": 3.757
+    },
+    {
+      "text": " generated by watching the scene. I will",
+      "start": 1579.153,
+      "duration": 4.345
+    },
+    {
+      "text": " share a link to this video where",
+      "start": 1582.544,
+      "duration": 2.494
+    },
+    {
+      "text": " researchers have generated audio for a",
+      "start": 1584.085,
+      "duration": 2.774
+    },
+    {
+      "text": " mute video. Okay? That is insane. Right",
+      "start": 1585.906,
+      "duration": 4.939
+    },
+    {
+      "text": "? Similar to this, there is one more",
+      "start": 1589.845,
+      "duration": 3.99
+    },
+    {
+      "text": " thing called image caption generation.",
+      "start": 1592.885,
+      "duration": 2.87
+    },
+    {
+      "text": " Okay? So, you are giving an image to",
+      "start": 1595.46,
+      "duration": 3.082
+    },
+    {
+      "text": " your algorithm and it is generating",
+      "start": 1597.592,
+      "duration": 2.727
+    },
+    {
+      "text": " text. What is written in that text?",
+      "start": 1599.369,
+      "duration": 2.729
+    },
+    {
+      "text": " Whatever is happening in that photo.",
+      "start": 1601.198,
+      "duration": 2.632
+    },
+    {
+      "text": " Right? I will share some pictures you",
+      "start": 1602.93,
+      "duration": 3.108
+    },
+    {
+      "text": " can see on the screen, where there are",
+      "start": 1605.078,
+      "duration": 2.521
+    },
+    {
+      "text": " some pictures showing something",
+      "start": 1606.639,
+      "duration": 2.241
+    },
+    {
+      "text": " happening. And below, my algorithm is",
+      "start": 1607.92,
+      "duration": 4.278
+    },
+    {
+      "text": " able to tell exactly what it is seeing.",
+      "start": 1611.249,
+      "duration": 3.011
+    },
+    {
+      "text": " Right? And that is great. Right?",
+      "start": 1614.147,
+      "duration": 2.904
+    },
+    {
+      "text": " Similarly, by showing movie posters,",
+      "start": 1617.664,
+      "duration": 3.164
+    },
+    {
+      "text": " you can generate, you know, a tag,",
+      "start": 1619.888,
+      "duration": 3.044
+    },
+    {
+      "text": " right, a tag for the movie. Okay? So,",
+      "start": 1621.992,
+      "duration": 4.385
+    },
+    {
+      "text": " many applications like this are coming",
+      "start": 1625.426,
+      "duration": 2.889
+    },
+    {
+      "text": " up, and okay, they aren't that",
+      "start": 1627.365,
+      "duration": 2.491
+    },
+    {
+      "text": " applicable in many areas, but these are",
+      "start": 1628.906,
+      "duration": 2.938
+    },
+    {
+      "text": " very interesting use cases, and I find",
+      "start": 1630.894,
+      "duration": 2.889
+    },
+    {
+      "text": " it very interesting. Next is text",
+      "start": 1632.832,
+      "duration": 3.216
+    },
+    {
+      "text": " translation. So, some apps are starting",
+      "start": 1635.109,
+      "duration": 4.762
+    },
+    {
+      "text": " to appear that you can point directly",
+      "start": 1638.919,
+      "duration": 2.776
+    },
+    {
+      "text": " at a language. And at text written in a",
+      "start": 1640.743,
+      "duration": 4.139
+    },
+    {
+      "text": " language you don't understand, and it",
+      "start": 1643.928,
+      "duration": 2.706
+    },
+    {
+      "text": " can translate it in real-time. In fact,",
+      "start": 1645.68,
+      "duration": 3.32
+    },
+    {
+      "text": " a lot of the code inside Google",
+      "start": 1648.048,
+      "duration": 2.495
+    },
+    {
+      "text": " Translate is written in deep learning.",
+      "start": 1649.591,
+      "duration": 2.832
+    },
+    {
+      "text": " Deep learning algorithms are being used",
+      "start": 1651.938,
+      "duration": 2.736
+    },
+    {
+      "text": " for this real-time translation. Okay?",
+      "start": 1653.719,
+      "duration": 2.996
+    },
+    {
+      "text": " Not only that. Now, even when you point",
+      "start": 1655.815,
+      "duration": 3.292
+    },
+    {
+      "text": " it at images. You can convert the text",
+      "start": 1658.161,
+      "duration": 3.843
+    },
+    {
+      "text": " there into a language that you",
+      "start": 1661.048,
+      "duration": 2.341
+    },
+    {
+      "text": " understand in real-time. Like English",
+      "start": 1662.433,
+      "duration": 3.572
+    },
+    {
+      "text": " or Hindi or some other language. Right?",
+      "start": 1665.051,
+      "duration": 2.944
+    },
+    {
+      "text": " And this is really, really helpful for",
+      "start": 1667.325,
+      "duration": 2.881
+    },
+    {
+      "text": " travelers across the world. For those",
+      "start": 1669.256,
+      "duration": 3.131
+    },
+    {
+      "text": " who can't understand signboards or read",
+      "start": 1671.435,
+      "duration": 2.871
+    },
+    {
+      "text": " bus numbers, it's very easy for them.",
+      "start": 1673.354,
+      "duration": 2.776
+    },
+    {
+      "text": " You point your camera and you get the",
+      "start": 1675.23,
+      "duration": 2.893
+    },
+    {
+      "text": " translation, like, oh, this is what it",
+      "start": 1677.174,
+      "duration": 2.945
+    },
+    {
+      "text": " says. Okay? The next one is very",
+      "start": 1679.171,
+      "duration": 3.199
+    },
+    {
+      "text": " interesting. I still remember some",
+      "start": 1681.419,
+      "duration": 3.564
+    },
+    {
+      "text": " photos from my childhood; when I try to",
+      "start": 1684.03,
+      "duration": 2.819
+    },
+    {
+      "text": " look at them now, they are so blurry",
+      "start": 1685.896,
+      "duration": 2.679
+    },
+    {
+      "text": " that I can't even tell what's in them.",
+      "start": 1687.622,
+      "duration": 2.773
+    },
+    {
+      "text": " And this new technique that I'm telling",
+      "start": 1689.912,
+      "duration": 2.551
+    },
+    {
+      "text": " you about. So, in 2016, some",
+      "start": 1691.503,
+      "duration": 2.453
+    },
+    {
+      "text": " researchers from the Google Brain team",
+      "start": 1693.013,
+      "duration": 3.136
+    },
+    {
+      "text": " started a project called Pixel",
+      "start": 1695.206,
+      "duration": 2.687
+    },
+    {
+      "text": " Restoration. Where they took a",
+      "start": 1696.949,
+      "duration": 3.203
+    },
+    {
+      "text": " low-pixel photo and converted it into",
+      "start": 1699.205,
+      "duration": 2.965
+    },
+    {
+      "text": " HD to, you know, get an output. So,",
+      "start": 1701.223,
+      "duration": 3.665
+    },
+    {
+      "text": " this algorithm automatically calculates",
+      "start": 1703.939,
+      "duration": 2.998
+    },
+    {
+      "text": " the value of the surrounding pixels and",
+      "start": 1705.988,
+      "duration": 2.997
+    },
+    {
+      "text": " converts your low-quality photos into",
+      "start": 1708.037,
+      "duration": 2.894
+    },
+    {
+      "text": " high-quality ones. So, if you have old",
+      "start": 1709.983,
+      "duration": 3.339
+    },
+    {
+      "text": " photos at home or very old albums of",
+      "start": 1712.376,
+      "duration": 2.949
+    },
+    {
+      "text": " yours. You take a photo of them, put it",
+      "start": 1714.38,
+      "duration": 3.641
+    },
+    {
+      "text": " in this application, and in turn, it",
+      "start": 1717.073,
+      "duration": 2.862
+    },
+    {
+      "text": " will return a brand-new kind of photo",
+      "start": 1718.987,
+      "duration": 2.914
+    },
+    {
+      "text": " that looks really, you know, good.",
+      "start": 1720.953,
+      "duration": 2.759
+    },
+    {
+      "text": " Right? And this, again, is a great",
+      "start": 1722.987,
+      "duration": 3.235
+    },
+    {
+      "text": " application. Then there is object",
+      "start": 1725.283,
+      "duration": 3.72
+    },
+    {
+      "text": " detection and identification. If you",
+      "start": 1728.05,
+      "duration": 3.904
+    },
+    {
+      "text": " have used Google Photos, you would know",
+      "start": 1731.002,
+      "duration": 2.857
+    },
+    {
+      "text": " what Google Photos does. It",
+      "start": 1732.907,
+      "duration": 2.703
+    },
+    {
+      "text": " automatically arranges all your photos",
+      "start": 1734.656,
+      "duration": 2.769
+    },
+    {
+      "text": " into folders. So, a folder for your",
+      "start": 1736.471,
+      "duration": 2.573
+    },
+    {
+      "text": " name, a folder for your parents, a",
+      "start": 1738.085,
+      "duration": 2.404
+    },
+    {
+      "text": " folder for your pet, a folder for your",
+      "start": 1739.531,
+      "duration": 2.569
+    },
+    {
+      "text": " friends, a folder for your college trip",
+      "start": 1741.141,
+      "duration": 2.611
+    },
+    {
+      "text": ". And you are not doing this. It's",
+      "start": 1742.752,
+      "duration": 2.555
+    },
+    {
+      "text": " happening automatically. Right? So, the",
+      "start": 1744.351,
+      "duration": 2.966
+    },
+    {
+      "text": " Google Photos algorithm is able to",
+      "start": 1746.371,
+      "duration": 2.853
+    },
+    {
+      "text": " identify that object. And first, it is",
+      "start": 1748.278,
+      "duration": 3.399
+    },
+    {
+      "text": " able to detect that object, and then it",
+      "start": 1750.727,
+      "duration": 2.955
+    },
+    {
+      "text": " is able to identify it. And then it",
+      "start": 1752.732,
+      "duration": 2.894
+    },
+    {
+      "text": " clusters them into one group. Okay? And",
+      "start": 1754.674,
+      "duration": 3.341
+    },
+    {
+      "text": " what is a very solid example of this? A",
+      "start": 1757.067,
+      "duration": 4.124
+    },
+    {
+      "text": " few days ago, a baby was born at a",
+      "start": 1760.241,
+      "duration": 2.695
+    },
+    {
+      "text": " relative's house, and they used to take",
+      "start": 1761.986,
+      "duration": 2.944
+    },
+    {
+      "text": " a lot of photos of the baby. Right? So,",
+      "start": 1763.98,
+      "duration": 3.696
+    },
+    {
+      "text": " for the first year or two, while the",
+      "start": 1766.724,
+      "duration": 2.702
+    },
+    {
+      "text": " baby was growing up, they would take so",
+      "start": 1768.473,
+      "duration": 2.844
+    },
+    {
+      "text": " many photos. One fine day, the mother",
+      "start": 1770.364,
+      "duration": 3.126
+    },
+    {
+      "text": " got a notification from Google Photos",
+      "start": 1772.541,
+      "duration": 2.861
+    },
+    {
+      "text": " saying, \"We have a surprise for you.\"",
+      "start": 1774.453,
+      "duration": 2.862
+    },
+    {
+      "text": " When she clicked it, a two-minute video",
+      "start": 1777.455,
+      "duration": 2.816
+    },
+    {
+      "text": " started playing. Where all the photos",
+      "start": 1779.317,
+      "duration": 3.77
+    },
+    {
+      "text": " of that baby were chronologically",
+      "start": 1782.138,
+      "duration": 2.679
+    },
+    {
+      "text": " arranged by Google Photos, and below it",
+      "start": 1783.868,
+      "duration": 2.984
+    },
+    {
+      "text": " was written, \"They grow up so fast,\"",
+      "start": 1785.903,
+      "duration": 2.832
+    },
+    {
+      "text": " with a smile. And all of this work,",
+      "start": 1787.786,
+      "duration": 2.974
+    },
+    {
+      "text": " guys, was automatic; it wasn't like",
+      "start": 1789.805,
+      "duration": 2.585
+    },
+    {
+      "text": " people at Google were sitting there",
+      "start": 1791.435,
+      "duration": 2.584
+    },
+    {
+      "text": " doing this. No, it was the algorithm",
+      "start": 1793.065,
+      "duration": 2.821
+    },
+    {
+      "text": " that automatically thought, \"Let's make",
+      "start": 1794.937,
+      "duration": 2.989
+    },
+    {
+      "text": " our user feel special,\" and it did it",
+      "start": 1796.977,
+      "duration": 2.886
+    },
+    {
+      "text": " perfectly, and that is insane, right? I",
+      "start": 1798.914,
+      "duration": 3.039
+    },
+    {
+      "text": " mean, it made the user feel so personal",
+      "start": 1801.005,
+      "duration": 3.029
+    },
+    {
+      "text": " that, well, then I will always use",
+      "start": 1803.086,
+      "duration": 2.77
+    },
+    {
+      "text": " Google Photos. Right? Then there are",
+      "start": 1804.908,
+      "duration": 4.036
+    },
+    {
+      "text": " GANs (Generative Adversarial Networks).",
+      "start": 1807.997,
+      "duration": 3.085
+    },
+    {
+      "text": " Using these, you can generate new",
+      "start": 1810.406,
+      "duration": 2.756
+    },
+    {
+      "text": " things. Like, you can generate an image",
+      "start": 1812.215,
+      "duration": 3.104
+    },
+    {
+      "text": ", like this. I mean, none of these",
+      "start": 1814.319,
+      "duration": 2.866
+    },
+    {
+      "text": " human beings actually exist. This is",
+      "start": 1816.239,
+      "duration": 3.455
+    },
+    {
+      "text": " the magic of a neural network, which",
+      "start": 1818.742,
+      "duration": 2.723
+    },
+    {
+      "text": " automatically saw tons of photos and",
+      "start": 1820.513,
+      "duration": 2.724
+    },
+    {
+      "text": " then started generating photos of new",
+      "start": 1822.285,
+      "duration": 2.771
+    },
+    {
+      "text": " people. I don't know if you have ever",
+      "start": 1824.104,
+      "duration": 2.865
+    },
+    {
+      "text": " used these kinds of apps or not. If you",
+      "start": 1826.009,
+      "duration": 2.663
+    },
+    {
+      "text": " give a photo of a boy and a girl,",
+      "start": 1827.716,
+      "duration": 2.474
+    },
+    {
+      "text": " basically a couple, then that app will",
+      "start": 1829.235,
+      "duration": 2.698
+    },
+    {
+      "text": " be able to predict what their baby will",
+      "start": 1830.977,
+      "duration": 2.742
+    },
+    {
+      "text": " look like, right? So, you must have",
+      "start": 1832.764,
+      "duration": 2.762
+    },
+    {
+      "text": " seen many such applications. So, they",
+      "start": 1834.579,
+      "duration": 3.206
+    },
+    {
+      "text": " use GANs as Generative Adversarial",
+      "start": 1836.845,
+      "duration": 3.009
+    },
+    {
+      "text": " Networks. Okay? The best part about",
+      "start": 1838.913,
+      "duration": 3.228
+    },
+    {
+      "text": " GANs is that they can even generate",
+      "start": 1841.183,
+      "duration": 2.476
+    },
+    {
+      "text": " music on their own. Right? So you never",
+      "start": 1842.701,
+      "duration": 4.001
+    },
+    {
+      "text": " know, in the future, people might own",
+      "start": 1845.753,
+      "duration": 2.865
+    },
+    {
+      "text": " AI production houses and AI might",
+      "start": 1847.668,
+      "duration": 2.664
+    },
+    {
+      "text": " generate compositions, and people in",
+      "start": 1849.382,
+      "duration": 2.815
+    },
+    {
+      "text": " the future might not be fans of Badshah",
+      "start": 1851.247,
+      "duration": 2.966
+    },
+    {
+      "text": " or Honey Singh. They might be fans of",
+      "start": 1853.263,
+      "duration": 3.84
+    },
+    {
+      "text": " AI. Right? Similarly, it can also",
+      "start": 1856.156,
+      "duration": 3.195
+    },
+    {
+      "text": " generate handwriting. So if you show it",
+      "start": 1858.404,
+      "duration": 2.982
+    },
+    {
+      "text": " a lot of handwriting, it can generate",
+      "start": 1860.431,
+      "duration": 2.66
+    },
+    {
+      "text": " that same handwriting. Right? It can",
+      "start": 1862.136,
+      "duration": 2.845
+    },
+    {
+      "text": " also generate stories. I mean, a few",
+      "start": 1864.034,
+      "duration": 2.957
+    },
+    {
+      "text": " days ago, I got news that an AI wrote a",
+      "start": 1866.045,
+      "duration": 3.084
+    },
+    {
+      "text": " story and then people made a movie, a",
+      "start": 1868.182,
+      "duration": 2.977
+    },
+    {
+      "text": " small short movie, based on it. Right?",
+      "start": 1870.213,
+      "duration": 3.101
+    },
+    {
+      "text": " So guys, I mean I can talk and talk and",
+      "start": 1872.807,
+      "duration": 3.188
+    },
+    {
+      "text": " talk, there are so many things. If you",
+      "start": 1875.051,
+      "duration": 3.15
+    },
+    {
+      "text": " just Google it once, you will find",
+      "start": 1877.244,
+      "duration": 2.456
+    },
+    {
+      "text": " pages full of application areas of deep",
+      "start": 1878.743,
+      "duration": 2.67
+    },
+    {
+      "text": " learning and you will just keep reading",
+      "start": 1880.456,
+      "duration": 2.67
+    },
+    {
+      "text": ". And things are so interesting over",
+      "start": 1882.126,
+      "duration": 2.592
+    },
+    {
+      "text": " there. Right? There is a concept called",
+      "start": 1883.761,
+      "duration": 2.913
+    },
+    {
+      "text": " Deep Dreaming. In Deep Dreaming, a",
+      "start": 1885.719,
+      "duration": 2.62
+    },
+    {
+      "text": " computer is being made to dream. You",
+      "start": 1887.385,
+      "duration": 2.71
+    },
+    {
+      "text": " should read this concept; I will put it",
+      "start": 1889.132,
+      "duration": 2.433
+    },
+    {
+      "text": " in the description. Again, a stunning",
+      "start": 1890.602,
+      "duration": 2.853
+    },
+    {
+      "text": " idea, right? And apart from this, there",
+      "start": 1892.517,
+      "duration": 3.075
+    },
+    {
+      "text": " are many very normal applications of",
+      "start": 1894.639,
+      "duration": 2.704
+    },
+    {
+      "text": " things that are very useful. Like in",
+      "start": 1896.391,
+      "duration": 3.007
+    },
+    {
+      "text": " medical, work is going on in drug",
+      "start": 1898.452,
+      "duration": 2.786
+    },
+    {
+      "text": " research. Work is going on in genetics,",
+      "start": 1900.292,
+      "duration": 3.479
+    },
+    {
+      "text": " or you know, work is going on in",
+      "start": 1902.826,
+      "duration": 2.746
+    },
+    {
+      "text": " creating vaccines. Right? In finance,",
+      "start": 1904.627,
+      "duration": 3.341
+    },
+    {
+      "text": " work is going on in fraud detection.",
+      "start": 1907.023,
+      "duration": 2.974
+    },
+    {
+      "text": " Work is going on in calculating",
+      "start": 1909.097,
+      "duration": 2.493
+    },
+    {
+      "text": " customer churn. In education, work is",
+      "start": 1910.639,
+      "duration": 2.821
+    },
+    {
+      "text": " going on in measuring student",
+      "start": 1912.508,
+      "duration": 2.378
+    },
+    {
+      "text": " performance. So there are so many",
+      "start": 1913.934,
+      "duration": 2.506
+    },
+    {
+      "text": " things in which deep learning is being",
+      "start": 1915.482,
+      "duration": 2.588
+    },
+    {
+      "text": " used. Technical people from every",
+      "start": 1917.112,
+      "duration": 2.494
+    },
+    {
+      "text": " company are stepping up. They are",
+      "start": 1918.65,
+      "duration": 2.482
+    },
+    {
+      "text": " learning deep learning and using it in",
+      "start": 1920.173,
+      "duration": 2.56
+    },
+    {
+      "text": " their companies. And that is why today",
+      "start": 1921.774,
+      "duration": 3.058
+    },
+    {
+      "text": " it is becoming so famous. Right? It has",
+      "start": 1923.883,
+      "duration": 3.581
+    },
+    {
+      "text": " become this hottest technology that",
+      "start": 1926.512,
+      "duration": 2.678
+    },
+    {
+      "text": " learning it is kind of mandatory. And",
+      "start": 1928.238,
+      "duration": 3.094
+    },
+    {
+      "text": " that is why I am so excited to teach",
+      "start": 1930.381,
+      "duration": 2.755
+    },
+    {
+      "text": " you this technology. Right? So that was",
+      "start": 1932.185,
+      "duration": 3.095
+    },
+    {
+      "text": " the video guys. I hope you understood",
+      "start": 1934.333,
+      "duration": 3.649
+    },
+    {
+      "text": " things. I talked about giving you a lot",
+      "start": 1937.029,
+      "duration": 4.652
+    },
+    {
+      "text": " of links. So do check the description.",
+      "start": 1940.727,
+      "duration": 4.321
+    },
+    {
+      "text": " I have provided all the links and some",
+      "start": 1944.994,
+      "duration": 2.545
+    },
+    {
+      "text": " of those links are very interesting. I",
+      "start": 1946.58,
+      "duration": 3.185
+    },
+    {
+      "text": " would recommend you go check them out,",
+      "start": 1948.808,
+      "duration": 2.652
+    },
+    {
+      "text": " you will have a lot of fun. Okay? So,",
+      "start": 1950.504,
+      "duration": 3.445
+    },
+    {
+      "text": " we have covered all the theory we",
+      "start": 1952.999,
+      "duration": 2.627
+    },
+    {
+      "text": " needed to in these two videos. And now",
+      "start": 1954.676,
+      "duration": 4.438
+    },
+    {
+      "text": " I feel we are truly prepared to move on",
+      "start": 1958.165,
+      "duration": 2.971
+    },
+    {
+      "text": " to practical topics. So, in the next",
+      "start": 1960.187,
+      "duration": 4.676
+    },
+    {
+      "text": " video, we will start with the",
+      "start": 1963.916,
+      "duration": 2.538
+    },
+    {
+      "text": " perceptron, which is the building block",
+      "start": 1965.507,
+      "duration": 3.069
+    },
+    {
+      "text": " of MLP or ANN. Okay? So that’s it",
+      "start": 1967.629,
+      "duration": 3.81
+    },
+    {
+      "text": " from my side. Before leaving, just one",
+      "start": 1970.486,
+      "duration": 3.945
+    },
+    {
+      "text": " request: please like the video, as I",
+      "start": 1973.487,
+      "duration": 3.016
+    },
+    {
+      "text": " keep saying. Your likes make YouTube",
+      "start": 1975.559,
+      "duration": 4.763
+    },
+    {
+      "text": " think this content is good and it",
+      "start": 1979.367,
+      "duration": 2.48
+    },
+    {
+      "text": " reaches more people. And trust me, this",
+      "start": 1980.892,
+      "duration": 4.251
+    },
+    {
+      "text": " is very important for me. And this is a",
+      "start": 1984.197,
+      "duration": 3.521
+    },
+    {
+      "text": " favor I am asking from your side. Okay?",
+      "start": 1986.764,
+      "duration": 3.495
+    },
+    {
+      "text": " I hope you will press that button. Okay",
+      "start": 1989.53,
+      "duration": 3.161
+    },
+    {
+      "text": "? So that’s it from my side.",
+      "start": 1991.691,
+      "duration": 2.801
+    }
+  ]
+}

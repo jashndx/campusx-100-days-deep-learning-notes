@@ -1,0 +1,2775 @@
+{
+  "id": "AWHSZzp96kM",
+  "index": 60,
+  "title": "Problems with RNN | 100 Days of Deep Learning",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish, and you're  welcome to my YouTube channel. In this  video, we'll continue our deep learning  playlist. We were studying RNNs, and in  the last video, we covered how  backpropagation works in RNNs. Now,  today's video is interesting and also  interesting because in today's video,  we'll learn about the problem within  RNNs, which requires us to study some  more advanced architectures, like LSTMs . Okay? So, after watching today's  video, you'll understand why RNNs  aren't used as widely and why  architectures like LSTMs are needed.  I'll give you a slight mathematical  intuition of the problem, and I hope  you understand. Okay? So, let's start  the video. So, guys, we were studying  RNNs. And one thing we understood about  RNNs is that RNNs are neural networks.  Architectures that are specifically  suited for sequential data. Right?  Whenever data follows any kind of  sequence, RNSs are perfect for that  type of data. Examples of sequential  data include textual data or time  series data. Anything where subsequent  data points depend on the previous one.  Okay? But what if I tell you, honestly  speaking, RNSs aren't used that much.  They aren't used that much. And the  reason for this is that RNSs are far  from two major problems. That's why,  generally speaking, you don't use RNSs  that much for sequential data. But  there are other architectures you can  use, like LSTMs, which we'll explore  later. So, in today's video, I just  want to tell you and explain which two  problems RNSs struggle with and why  architectures like LSTMs are needed.  Okay? Going forward, we'll study LSTM  in detail, and there you won't need to  understand at least what the need for  LSTM is. Because LSTMs came into  existence because RNS aren't well  suited. They have certain problems.  Okay? So, let me first tell you what  those two problems are. And then we'll  discuss them in some detail. So,  problem number one is called the  problem of long-term dependency. Okay?  Long-term dependency, and problem  number two is the problem of unstable  gradients. These are the two problems  due to which RNS aren't used as much.  Okay? Now, both of these problems stem  from a single factor: unstable  gradients. Right? Now, I know, you  probably haven't understood things yet.  Let me explain what these two problems  are. And what is this problem of  unstable gradients? Okay? Let's talk  about problem number one. The problem  of long-term dependency. Okay? So, what  happens in RNS is that you have  sequential data, right? Where the next  data depends on the previous data.  Right? Now, the problem noticed in RNS  () is that if this sequence gets too  long, if the number of time steps in it  increases too much, then the next thing  can't remember things that were very  old. It's like Aamir Khan from Ghajini,  who has short-term memory loss; he  forgets things. Similarly, once you  reach this point, you'll forget the  thing that was there. This is the  problem of long-term dependency. Okay?  Let me give you an example. Suppose  we're building an application with  Let's, and in that application, we need  to predict the next word. You might  have used keypads like this on Android  phones. So let's say you are giving a  sentence that Marathi is spoken in  Maharashtra. Right? So, this word  Maharashtra is dependent on Marathi.  But this is short term dependency. Why?  Because this sentence is very small. It  just consists of five words. So, this  will be called short term dependency.  Because this word is not dependent on  any distant word. It is just dependent  on the word three words behind. Where  as there could be one more sentence and  then that sentence could be Maharashtra  is a beautiful place. Right? I went  there last year. But I could not enjoy  properly because I don't understand  fill in the blank obviously Marathi  will come here. Right? But if you  notice, this Marathi is dependent on  this word. And now this is an example  of long-term dependency because in  between you can see there are several  time steps. There are so many time  steps. Right? So RNN will fail in such  a situation. If you use RNA to build a  keyboard for Android, it won't perform  well in such long sentences. It will  perform well in such sentences. So this  is called the long-term dependency  problem. If something at a particular  time step depends on something at a  much earlier time step, then the RNN  doesn't have the memory capacity to  remember such an old thing. And this  problem arises from a concept called  vanishing. The gradient problem, and  we've covered this before, and in this  video, we'll discuss it in some detail:  how RNNs struggle with the vanishing  gradient problem, which leads to  long-term dependency. Okay? So, this  was the first problem. We discussed it.  This was the first problem. Now, let me  tell you what the second problem is.  The second problem: I shouldn't have  written \"unstable gradient\" here. I  should have written \"stagnated training .\" Okay? Stagnated training means that  sometimes you can't train your RNN  properly. Okay? That means your RNN  won't give you accurate results. The  loss function won't improve, and  basically, training won't be accurate.  Another reason for this is the  exploding gradient problem. We've  discussed this in the past, and we'll  also discuss today how RNNs struggle  with the exploding gradient problem,  which prevents them from training  properly. Okay? And not only that,  we'll also discuss the possible  solutions that can remove these  problems. Okay? So today's session will  be all about this. So guys, now we'll  talk about both problems in a little  more detail. I'll give you a slight  mathematical intuition as to why both  of these problems exist. Okay? And I  won't go too deep because again, I  think that might confuse you. So, I'll  just give you enough mathematical  intuition to understand why the problem  of long-term dependency arises because  of the vanishing gradient problem. Okay ? So let's start. Okay? So, you should  remember the last video a little bit  here. If you haven't seen it, I'd  recommend watching the last video in  this playlist where I explained  backpropagation through time and how  RNNS train. Okay? I'll just give you a  slight summary of the entire process.  Let's assume for a moment that we have  a data set in which we have data like  this: 1 0 1 0 0 1 0 0 1 1 and we have 1  0 0 1 something like this: Okay? So  this is the data. Now, I know, this  doesn't mean anything. But this is the  data. Here, you can assume that every  digit will act as one time stamp. So,  in total, there are three time steps in  this data. Okay? And what did we do? We  created an RNA architecture for this  problem, which looks like this. So, the  input is going from here. You're  getting output from here. This is your  hidden unit, and it has only one node  inside. This means that if you were to  draw this architecture properly, it  would look like this. So, this is the  unit. Here you'll receive input. So,  the first time, you'll enter a one here . Then you'll enter a zero here. Then  you'll enter a one here. Three times,  input will go from here. This is your  weight, this is the weight input. Okay?  This is your weight, this is the weight  output. And then there's a single  weight, which you can call the hidden  weight. Okay? So, this is your  architecture. I've deliberately kept it  simple. There's a single weight here,  and there's a single weight here.  Generally, this is a matrix. But you  get the idea. Okay? Now what do we do?  We need to train this RNN on this data.  So, what happens? Basically, your RNN  unfolds as many times as there are time  steps. So, these are three time steps  in an RNN. The first time it receives  an O, which is basically an input of  zero. From here, you receive XI1,  meaning this input. Then you proceed.  In the next time step, you go to time  step two. Here, you receive XI2, this  input. From here, you calculate O1 and  send it. From here, you calculate O2  and send it. From here, you send X, I3,  which is this output, this input. This  gives you O3, and you use O3 to  calculate Y out. Now, if you talk about  weights, here's your W in, here's your  W in, here's your W out, and here's W h . This is also W h, and this is also W  a. Okay? This is your entire neural  network architecture. From this loss,  you calculate the loss function. Now,  we discussed the basics in the last  video, and we've discussed this many  times before, about what you do in  backpropagation. You try to find weight  values that minimize the loss function.  So, basically, you need values for WH,  Win, and Wout for which the loss is  minimal. Right? And the way to find  this is gradient descent. Right?  Gradient descent. What do you do in  gradient descent? You have three  equations. The first equation is Winput  equal to Winput minus the learning rate  times the delay by a Winput, Woutput =  Woutput minus the learning rate of the  delay by a Winput, right? And finally,  Whidden = Whidden minus the learning  rate of the delay of Whidden, right.  Now you take the initial values of W in , W out, and W out. What you do then is , you first calculate Y out, find the  loss, and with respect to the loss, you  calculate these derivatives, and with  these derivatives, you repeatedly  update these values. Okay? For a  certain number of elapsed boxes. You  know all this. Now, the main problem  arises when you try to calculate these  derivatives. Okay? That's where the  main point is. Okay? So, I explained to  you very well in the last video that  when you try to calculate derivatives,  especially with respect to wn and wh,  it gets a little confusing and  difficult. As I told you in the last  video, if you try to calculate dl/dw in , then actually this loss depends on  winn. It depends on winn. And it also  depends on W in. And because of this,  the entire formula looks like this: Del  L/Det Det By Det This is the output and  Del O3/Det Del WN. Okay? Basically, you  just considered this one. Then you'll  consider the entire path as well. So in  this case, it becomes Del by Dell Y Hut , Del Y Hut by Dell O3, Det by Dell O2,  and then Det O2 by Dell WN. And now  this last one, if you consider this  path as well, it becomes Del by Dell  Hut, Det by Det, Det 3 Del O2, Det O2  Del O1, and Del O1 Del WN. Now, look  here, guys, this is where the main  discussion starts. We covered all this  in the last video. Now, if you notice,  we're going to calculate this  derivative. Or you can say, what  changes occur in the loss due to WN?  You're going to calculate this. So,  there are three terms here. There are  three terms, right? One for this wn,  one for this wn, one for this wn. Now,  if I were to show you, this term is for  this wn. This term is for this wn, and  this term is for this wn. Now, what if  I tell you that you would call this a  short-term dependency and this, at  least comparatively, a long-term  dependency? Think about it. So, this  term, or this input, is the furthest  from the output. So, the contribution  to this loss function due to this or  this weight is this term. So, this is  actually a long-term dependency. A  distant dependency. Where as this one  is a way to calculate what changes will  occur in your output due to this  particular last input. So, this is a  short-term dependency. Now, I want you  to imagine that these are just three  time steps. In a normal problem, there  might be 100 time steps. There would be  100 time steps. In that case, I hope  you're able to imagine what your last  term, the long-term dependency, would  look like. Let me show you once. Your  long-term dependency would look like  this: del by del hut, dat by del output  100, del output 100 by del output 99,  dot dot dot, del output two, del output  one, del output one, del w in. This  becomes your last term. Similarly,  you'd start with the 99 output in the  second-last term, and the 98 output in  the third-last term. You get the idea.  The long-term dependency looks like  this, okay. Now, I just want to show  you that when you calculate this  gradient, what actually happens is that  your long-term dependencies become very  small, and because of this, the biggest  contribution to the solution comes from  the short-term ones. The long-term ones  don't contribute much at all. So, now I  want to prove this to you: the larger  your term becomes, the more time steps  there are, the smaller your long-term  dependencies become. And because of  this, the entire responsibility of  finding the derivative falls on the  short-term ones, and you will only be  able to calculate the short-term ones;  your RNN will not be able to understand  the long-term ones. Okay? So, watch  carefully. This is where things get  interesting. So, what I'm going to do  is generalize this equation a little.  Look carefully at what I'm doing. I'm  writing del by del h t de h t by del o  100. And look what I'm doing here. I'm  using this notation: Day OT = Day OT-1  Day O1 Day n So, basically, what did I  do? I compressed this entire term and  wrote it like this where t = 2 200. Try  to understand. What did I just do? I  compressed this entire term and wrote  it like this. And I can do this if you  think carefully. For example, if you  expand this term, what do you get? You  get Del O2 Day multiplied by Del O3 Day  2 Day Del O 3 dot dot dot Del O Dello  O9 So, basically, what we wrote here  was just written in reverse. Right? It  doesn't make any difference. It's  multiplication, you can do it. Now, the  advantage of writing it this way is  that we got this term, and this term is  very important. What is this term? It's  the derivative of OT with respect to OT -1. So, how much difference does making  changes to OT-1 make to OT? Right? Now  look here we have O0, O1, O2, O3. So if  these were very large time steps then  how would the generic OT be calculated?  For example, look here how do you  calculate O1? How do you calculate O1?  This is how you calculate O1. If you  remember the first video of RN, then  the method to calculate O1 is this. If  we want to calculate tan H of O1 then  multiply this input by WN X I1*WN + O0* By WH, this is the method, right? So  similarly, if I want to generalize this  then the formula will look like this.  OT = tanh of XI1 or for now let's write  XI or XT. wn + OT-1 WH Right, but what  do I want to calculate? I want to find  dot/d-1, so basically I need to  differentiate this whole term with  respect to o-1 and this becomes the  derivative of this tan h function, the  derivative of this tan h function x wn  + ot-1 wh, and then you differentiate  this term with respect to ot-1 and you  get wh, right? Now you probably know  that the derivative of tan h is between  zero and one, and the value of wh  depends on us because we're  initializing it. So what we'll do is  we'll replace this term in. And you'll  see that your long-term dependency  becomes del by del h d...This term  inside is multiplied by wh and  multiplied by den by del w input. Now  think about it, suppose for a moment  that you took this wh as a number that  lies between zero and one. Suppose for  a moment. Okay? So it means your number  is between zero and one. This number is  between zero and one. Right? And now  this time step is very large, like 100  or more. In that case, if you multiply  these numbers by more than 100, then  this entire thing will be a very small  number almost close to zero. Right? And  because of that, the impact of the  other terms will be minimal. And this  entire term, this entire term, will be  close to zero. And as soon as your  long-term dependency is very close to  zero. This means that when calculating  your derivative, all the contribution  will come from short-term dependencies.  And once all the contribution of  short-term dependencies comes in, it  means that the most contribution to  your output comes from recent inputs,  not from distant inputs. And this is  what we discussed above: this is the  long-term dependency problem: to derive  the word here, the contribution of the  words near here is greater, while the  contribution of the words farther away  is less. Okay? So I hope you understand  that this is a vanishing gradient  problem. Right? If you think carefully,  this is an example of a vanishing  gradient problem. Where the larger your  time steps or the larger your neural  network, the smaller the values of your  distant gradients. Right? This is a  vanishing gradient problem. Right? So  this problem of long-term dependency  arises because of the vanishing  gradient problem. Okay? Now, let me  tell you how you can reduce this  problem. So, let me give you two three  possible solutions that you can use to  reduce this problem. The first one is  to use a different activation function.  Right? So, you see, this value of the  differentiation of tan h was coming  from 0 to 1. What if we use something  like value and the value of lik, their  derivative is not in the range of zero  to one. Right? So, you can use that,  that would be one solution. The second  solution is better weight  initialization. This problem still  occurs even if you were taking the  weights from zero to one. What if you  take it to only one? Okay? You have a  weight matrix. You can create an  identity matrix. Because anything  multiplied by the identity matrix  results in the same result. At least it  won't spoil it. So you can have better  weights in initialization techniques.  Third, you can use slightly different  architectures like Skip RNs. Now, what  are these Skip RNs? Honestly, I'm not  teaching you in this video. Just Google  it once. You'll find some good articles . But people have also tried Skip RNs  to solve this problem. And the fourth  one is, let's abandon RNA. Let's move  to LSTM-type architectures. And people  do that right. Meaning, ever since  LSDMs were discovered, they have  consistently performed better than RNA.  So people said, let's move away from  RNA and focus on LSDMs. Okay? So I hope  these are some of the solutions that  you can implement to eradicate this  problem a little. Let's discuss the  second problem, which is unstable  training caused by exploding gradients.  So, the exact opposite happens. Right?  So, what if your long-term dependency  becomes so large that it starts to kind  of dominate the short-term one. In fact , it becomes so large that it becomes  infinite? Because of this, your  gradient update will become infinite,  and then your weights will become  infinite, and your model will basically  not train. This can also happen. When?  I'll tell you a couple of cases. So,  let's take this case. Suppose you used  value instead of tanh. Now, your  derivative of value could be any  positive number. Right? If it's  positive and you take its derivative,  you'll get something positive. And  let's say you initialized the weights  to one. So, every time you multiply,  this number will become a very, very  large number. Right? And because of  that, this entire term will blow up.  And because of this blow up, when  calculating the gradient, you'll only  see its dominance. This will cause W in  and W a to become very large, and your  training will stop. The second reason  could be that if your learning rate is  too high, it can also lead to the  exploding gradient problem. In both  these situations, your training will  become unstable, and your model will  not train properly. Right? And this is  what's called the exploding gradient  problem. And it's equally risky. Right?  Right? This is one of the reasons  you'll notice in RNA by default. People  don't keep the rails, they keep the  tens. Right? So, what's the way to  solve this? First, there's a thing  called gradient clipping. So gradient  clipping means you clip your gradients  to a maximum value. You say you  shouldn't increase it beyond that. It  shouldn't exceed that. So it helps,  right? It helps in a lot of situations.  Second, it's to have a controlled  learning rate. If you increase the  learning rate too much, it can blow up  the entire gradient, making your  training unstable. And third again,  abandon RNs. Let's move to LSDMs. And  you won't have this problem there. Okay ? So, in summary, let me summarize the  whole thing. RNs can work with  sequential data, but they have some  problems. There are two problems. First , they can't capture long-term  dependencies because of the vanishing  gradient problem. And in certain  scenarios, the training is unstable.  Training doesn't happen at all because  of the exploding gradient problem. So,  basically, unstable gradients are a  problem with RNs. Okay? I gave you a  brief, yet understandable mathematical  intuition for it. And on the whole,  basically, I tried to explain to you  that RNs leave. Let's move on to LSTMs,  because that's an architecture that  solves these problems and is actually  used a lot in the real world. Okay? So,  I really hope you understood this video . If you liked it, please like it. See  you in the next video.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish, and you're",
+      "start": 0.297,
+      "duration": 2.918
+    },
+    {
+      "text": " welcome to my YouTube channel. In this",
+      "start": 2.266,
+      "duration": 3.208
+    },
+    {
+      "text": " video, we'll continue our deep learning",
+      "start": 4.525,
+      "duration": 2.966
+    },
+    {
+      "text": " playlist. We were studying RNNs, and in",
+      "start": 6.542,
+      "duration": 4.055
+    },
+    {
+      "text": " the last video, we covered how",
+      "start": 9.657,
+      "duration": 2.804
+    },
+    {
+      "text": " backpropagation works in RNNs. Now,",
+      "start": 11.521,
+      "duration": 5.768
+    },
+    {
+      "text": " today's video is interesting and also",
+      "start": 16.342,
+      "duration": 2.956
+    },
+    {
+      "text": " interesting because in today's video,",
+      "start": 18.351,
+      "duration": 2.956
+    },
+    {
+      "text": " we'll learn about the problem within",
+      "start": 20.36,
+      "duration": 2.904
+    },
+    {
+      "text": " RNNs, which requires us to study some",
+      "start": 22.316,
+      "duration": 2.957
+    },
+    {
+      "text": " more advanced architectures, like LSTMs",
+      "start": 24.326,
+      "duration": 3.062
+    },
+    {
+      "text": ". Okay? So, after watching today's",
+      "start": 26.388,
+      "duration": 6.544
+    },
+    {
+      "text": " video, you'll understand why RNNs",
+      "start": 31.985,
+      "duration": 2.766
+    },
+    {
+      "text": " aren't used as widely and why",
+      "start": 33.805,
+      "duration": 2.552
+    },
+    {
+      "text": " architectures like LSTMs are needed.",
+      "start": 35.41,
+      "duration": 2.927
+    },
+    {
+      "text": " I'll give you a slight mathematical",
+      "start": 39.973,
+      "duration": 2.627
+    },
+    {
+      "text": " intuition of the problem, and I hope",
+      "start": 41.647,
+      "duration": 2.674
+    },
+    {
+      "text": " you understand. Okay? So, let's start",
+      "start": 43.367,
+      "duration": 4.914
+    },
+    {
+      "text": " the video. So, guys, we were studying",
+      "start": 47.338,
+      "duration": 3.74
+    },
+    {
+      "text": " RNNs. And one thing we understood about",
+      "start": 50.152,
+      "duration": 5.346
+    },
+    {
+      "text": " RNNs is that RNNs are neural networks.",
+      "start": 54.552,
+      "duration": 3.033
+    },
+    {
+      "text": " Architectures that are specifically",
+      "start": 60.007,
+      "duration": 2.657
+    },
+    {
+      "text": " suited for sequential data. Right?",
+      "start": 61.712,
+      "duration": 6.099
+    },
+    {
+      "text": " Whenever data follows any kind of",
+      "start": 68.939,
+      "duration": 2.765
+    },
+    {
+      "text": " sequence, RNSs are perfect for that",
+      "start": 70.758,
+      "duration": 2.872
+    },
+    {
+      "text": " type of data. Examples of sequential",
+      "start": 72.684,
+      "duration": 6.486
+    },
+    {
+      "text": " data include textual data or time",
+      "start": 78.226,
+      "duration": 2.816
+    },
+    {
+      "text": " series data. Anything where subsequent",
+      "start": 80.097,
+      "duration": 7.745
+    },
+    {
+      "text": " data points depend on the previous one.",
+      "start": 86.89,
+      "duration": 2.852
+    },
+    {
+      "text": " Okay? But what if I tell you, honestly",
+      "start": 92.059,
+      "duration": 4.758
+    },
+    {
+      "text": " speaking, RNSs aren't used that much.",
+      "start": 95.871,
+      "duration": 3.004
+    },
+    {
+      "text": " They aren't used that much. And the",
+      "start": 99.95,
+      "duration": 5.955
+    },
+    {
+      "text": " reason for this is that RNSs are far",
+      "start": 104.956,
+      "duration": 2.868
+    },
+    {
+      "text": " from two major problems. That's why,",
+      "start": 106.876,
+      "duration": 7.305
+    },
+    {
+      "text": " generally speaking, you don't use RNSs",
+      "start": 113.234,
+      "duration": 3.033
+    },
+    {
+      "text": " that much for sequential data. But",
+      "start": 115.32,
+      "duration": 6.316
+    },
+    {
+      "text": " there are other architectures you can",
+      "start": 120.688,
+      "duration": 2.927
+    },
+    {
+      "text": " use, like LSTMs, which we'll explore",
+      "start": 122.667,
+      "duration": 2.876
+    },
+    {
+      "text": " later. So, in today's video, I just",
+      "start": 124.595,
+      "duration": 8.939
+    },
+    {
+      "text": " want to tell you and explain which two",
+      "start": 132.587,
+      "duration": 3.013
+    },
+    {
+      "text": " problems RNSs struggle with and why",
+      "start": 134.653,
+      "duration": 2.853
+    },
+    {
+      "text": " architectures like LSTMs are needed.",
+      "start": 136.559,
+      "duration": 2.907
+    },
+    {
+      "text": " Okay? Going forward, we'll study LSTM",
+      "start": 143.06,
+      "duration": 5.425
+    },
+    {
+      "text": " in detail, and there you won't need to",
+      "start": 147.538,
+      "duration": 3.033
+    },
+    {
+      "text": " understand at least what the need for",
+      "start": 149.625,
+      "duration": 2.979
+    },
+    {
+      "text": " LSTM is. Because LSTMs came into",
+      "start": 151.658,
+      "duration": 5.708
+    },
+    {
+      "text": " existence because RNS aren't well",
+      "start": 156.422,
+      "duration": 2.851
+    },
+    {
+      "text": " suited. They have certain problems.",
+      "start": 158.329,
+      "duration": 3.564
+    },
+    {
+      "text": " Okay? So, let me first tell you what",
+      "start": 161.339,
+      "duration": 3.517
+    },
+    {
+      "text": " those two problems are. And then we'll",
+      "start": 163.907,
+      "duration": 3.877
+    },
+    {
+      "text": " discuss them in some detail. So,",
+      "start": 166.826,
+      "duration": 4.658
+    },
+    {
+      "text": " problem number one is called the",
+      "start": 170.54,
+      "duration": 2.78
+    },
+    {
+      "text": " problem of long-term dependency. Okay?",
+      "start": 178.343,
+      "duration": 9.476
+    },
+    {
+      "text": " Long-term dependency, and problem",
+      "start": 190.637,
+      "duration": 2.692
+    },
+    {
+      "text": " number two is the problem of unstable",
+      "start": 192.38,
+      "duration": 2.897
+    },
+    {
+      "text": " gradients. These are the two problems",
+      "start": 194.329,
+      "duration": 7.679
+    },
+    {
+      "text": " due to which RNS aren't used as much.",
+      "start": 201.056,
+      "duration": 2.763
+    },
+    {
+      "text": " Okay? Now, both of these problems stem",
+      "start": 204.499,
+      "duration": 6.309
+    },
+    {
+      "text": " from a single factor: unstable",
+      "start": 209.866,
+      "duration": 2.747
+    },
+    {
+      "text": " gradients. Right? Now, I know, you",
+      "start": 211.671,
+      "duration": 8.119
+    },
+    {
+      "text": " probably haven't understood things yet.",
+      "start": 218.844,
+      "duration": 3.108
+    },
+    {
+      "text": " Let me explain what these two problems",
+      "start": 222.476,
+      "duration": 2.761
+    },
+    {
+      "text": " are. And what is this problem of",
+      "start": 224.283,
+      "duration": 3.185
+    },
+    {
+      "text": " unstable gradients? Okay? Let's talk",
+      "start": 226.516,
+      "duration": 3.795
+    },
+    {
+      "text": " about problem number one. The problem",
+      "start": 229.356,
+      "duration": 3.236
+    },
+    {
+      "text": " of long-term dependency. Okay? So, what",
+      "start": 231.642,
+      "duration": 4.95
+    },
+    {
+      "text": " happens in RNS is that you have",
+      "start": 235.65,
+      "duration": 2.805
+    },
+    {
+      "text": " sequential data, right? Where the next",
+      "start": 237.513,
+      "duration": 5.439
+    },
+    {
+      "text": " data depends on the previous data.",
+      "start": 241.998,
+      "duration": 2.576
+    },
+    {
+      "text": " Right? Now, the problem noticed in RNS",
+      "start": 244.987,
+      "duration": 7.674
+    },
+    {
+      "text": " () is that if this sequence gets too",
+      "start": 251.709,
+      "duration": 2.754
+    },
+    {
+      "text": " long, if the number of time steps in it",
+      "start": 253.512,
+      "duration": 2.9
+    },
+    {
+      "text": " increases too much, then the next thing",
+      "start": 255.461,
+      "duration": 2.899
+    },
+    {
+      "text": " can't remember things that were very",
+      "start": 257.409,
+      "duration": 2.754
+    },
+    {
+      "text": " old. It's like Aamir Khan from Ghajini,",
+      "start": 259.212,
+      "duration": 9.522
+    },
+    {
+      "text": " who has short-term memory loss; he",
+      "start": 267.791,
+      "duration": 2.937
+    },
+    {
+      "text": " forgets things. Similarly, once you",
+      "start": 269.785,
+      "duration": 4.824
+    },
+    {
+      "text": " reach this point, you'll forget the",
+      "start": 273.655,
+      "duration": 2.596
+    },
+    {
+      "text": " thing that was there. This is the",
+      "start": 275.297,
+      "duration": 3.796
+    },
+    {
+      "text": " problem of long-term dependency. Okay?",
+      "start": 278.14,
+      "duration": 3.399
+    },
+    {
+      "text": " Let me give you an example. Suppose",
+      "start": 280.661,
+      "duration": 5.466
+    },
+    {
+      "text": " we're building an application with",
+      "start": 285.174,
+      "duration": 2.6
+    },
+    {
+      "text": " Let's, and in that application, we need",
+      "start": 286.821,
+      "duration": 2.835
+    },
+    {
+      "text": " to predict the next word. You might",
+      "start": 288.703,
+      "duration": 6.324
+    },
+    {
+      "text": " have used keypads like this on Android",
+      "start": 294.076,
+      "duration": 2.875
+    },
+    {
+      "text": " phones. So let's say you are giving a",
+      "start": 296.0,
+      "duration": 4.892
+    },
+    {
+      "text": " sentence that Marathi is spoken in",
+      "start": 299.937,
+      "duration": 14.592
+    },
+    {
+      "text": " Maharashtra. Right? So, this word",
+      "start": 313.588,
+      "duration": 5.687
+    },
+    {
+      "text": " Maharashtra is dependent on Marathi.",
+      "start": 318.332,
+      "duration": 3.05
+    },
+    {
+      "text": " But this is short term dependency. Why?",
+      "start": 322.553,
+      "duration": 4.13
+    },
+    {
+      "text": " Because this sentence is very small. It",
+      "start": 325.783,
+      "duration": 3.288
+    },
+    {
+      "text": " just consists of five words. So, this",
+      "start": 328.129,
+      "duration": 3.422
+    },
+    {
+      "text": " will be called short term dependency.",
+      "start": 330.605,
+      "duration": 2.993
+    },
+    {
+      "text": " Because this word is not dependent on",
+      "start": 332.896,
+      "duration": 2.814
+    },
+    {
+      "text": " any distant word. It is just dependent",
+      "start": 334.759,
+      "duration": 3.839
+    },
+    {
+      "text": " on the word three words behind. Where",
+      "start": 337.645,
+      "duration": 7.244
+    },
+    {
+      "text": " as there could be one more sentence and",
+      "start": 343.932,
+      "duration": 2.68
+    },
+    {
+      "text": " then that sentence could be Maharashtra",
+      "start": 345.655,
+      "duration": 2.681
+    },
+    {
+      "text": " is a beautiful place. Right? I went",
+      "start": 347.379,
+      "duration": 9.425
+    },
+    {
+      "text": " there last year. But I could not enjoy",
+      "start": 355.861,
+      "duration": 10.544
+    },
+    {
+      "text": " properly because I don't understand",
+      "start": 365.455,
+      "duration": 10.266
+    },
+    {
+      "text": " fill in the blank obviously Marathi",
+      "start": 379.082,
+      "duration": 2.671
+    },
+    {
+      "text": " will come here. Right? But if you",
+      "start": 380.8,
+      "duration": 6.209
+    },
+    {
+      "text": " notice, this Marathi is dependent on",
+      "start": 386.059,
+      "duration": 2.799
+    },
+    {
+      "text": " this word. And now this is an example",
+      "start": 387.908,
+      "duration": 5.902
+    },
+    {
+      "text": " of long-term dependency because in",
+      "start": 392.856,
+      "duration": 2.568
+    },
+    {
+      "text": " between you can see there are several",
+      "start": 394.47,
+      "duration": 2.706
+    },
+    {
+      "text": " time steps. There are so many time",
+      "start": 396.222,
+      "duration": 4.408
+    },
+    {
+      "text": " steps. Right? So RNN will fail in such",
+      "start": 399.683,
+      "duration": 4.018
+    },
+    {
+      "text": " a situation. If you use RNA to build a",
+      "start": 402.763,
+      "duration": 5.746
+    },
+    {
+      "text": " keyboard for Android, it won't perform",
+      "start": 407.562,
+      "duration": 3.017
+    },
+    {
+      "text": " well in such long sentences. It will",
+      "start": 409.632,
+      "duration": 5.4
+    },
+    {
+      "text": " perform well in such sentences. So this",
+      "start": 414.082,
+      "duration": 4.852
+    },
+    {
+      "text": " is called the long-term dependency",
+      "start": 417.982,
+      "duration": 2.629
+    },
+    {
+      "text": " problem. If something at a particular",
+      "start": 419.659,
+      "duration": 7.428
+    },
+    {
+      "text": " time step depends on something at a",
+      "start": 426.135,
+      "duration": 2.651
+    },
+    {
+      "text": " much earlier time step, then the RNN",
+      "start": 427.833,
+      "duration": 2.698
+    },
+    {
+      "text": " doesn't have the memory capacity to",
+      "start": 429.578,
+      "duration": 2.652
+    },
+    {
+      "text": " remember such an old thing. And this",
+      "start": 431.277,
+      "duration": 8.085
+    },
+    {
+      "text": " problem arises from a concept called",
+      "start": 438.413,
+      "duration": 2.845
+    },
+    {
+      "text": " vanishing. The gradient problem, and",
+      "start": 440.309,
+      "duration": 10.612
+    },
+    {
+      "text": " we've covered this before, and in this",
+      "start": 449.972,
+      "duration": 2.946
+    },
+    {
+      "text": " video, we'll discuss it in some detail:",
+      "start": 451.969,
+      "duration": 2.997
+    },
+    {
+      "text": " how RNNs struggle with the vanishing",
+      "start": 454.017,
+      "duration": 2.843
+    },
+    {
+      "text": " gradient problem, which leads to",
+      "start": 455.911,
+      "duration": 2.639
+    },
+    {
+      "text": " long-term dependency. Okay? So, this",
+      "start": 457.601,
+      "duration": 8.084
+    },
+    {
+      "text": " was the first problem. We discussed it.",
+      "start": 464.741,
+      "duration": 3.214
+    },
+    {
+      "text": " This was the first problem. Now, let me",
+      "start": 467.827,
+      "duration": 3.231
+    },
+    {
+      "text": " tell you what the second problem is.",
+      "start": 470.108,
+      "duration": 2.824
+    },
+    {
+      "text": " The second problem: I shouldn't have",
+      "start": 472.82,
+      "duration": 2.916
+    },
+    {
+      "text": " written \"unstable gradient\" here. I",
+      "start": 474.789,
+      "duration": 3.641
+    },
+    {
+      "text": " should have written \"stagnated training",
+      "start": 477.469,
+      "duration": 7.173
+    },
+    {
+      "text": ".\" Okay? Stagnated training means that",
+      "start": 483.642,
+      "duration": 7.958
+    },
+    {
+      "text": " sometimes you can't train your RNN",
+      "start": 490.65,
+      "duration": 2.692
+    },
+    {
+      "text": " properly. Okay? That means your RNN",
+      "start": 492.392,
+      "duration": 6.474
+    },
+    {
+      "text": " won't give you accurate results. The",
+      "start": 497.915,
+      "duration": 4.957
+    },
+    {
+      "text": " loss function won't improve, and",
+      "start": 501.923,
+      "duration": 2.62
+    },
+    {
+      "text": " basically, training won't be accurate.",
+      "start": 503.593,
+      "duration": 2.924
+    },
+    {
+      "text": " Another reason for this is the",
+      "start": 511.435,
+      "duration": 2.433
+    },
+    {
+      "text": " exploding gradient problem. We've",
+      "start": 512.916,
+      "duration": 7.757
+    },
+    {
+      "text": " discussed this in the past, and we'll",
+      "start": 519.721,
+      "duration": 2.767
+    },
+    {
+      "text": " also discuss today how RNNs struggle",
+      "start": 521.536,
+      "duration": 2.719
+    },
+    {
+      "text": " with the exploding gradient problem,",
+      "start": 523.302,
+      "duration": 2.719
+    },
+    {
+      "text": " which prevents them from training",
+      "start": 525.069,
+      "duration": 2.576
+    },
+    {
+      "text": " properly. Okay? And not only that,",
+      "start": 526.693,
+      "duration": 6.715
+    },
+    {
+      "text": " we'll also discuss the possible",
+      "start": 532.457,
+      "duration": 2.494
+    },
+    {
+      "text": " solutions that can remove these",
+      "start": 534.0,
+      "duration": 2.494
+    },
+    {
+      "text": " problems. Okay? So today's session will",
+      "start": 535.543,
+      "duration": 6.186
+    },
+    {
+      "text": " be all about this. So guys, now we'll",
+      "start": 540.776,
+      "duration": 3.464
+    },
+    {
+      "text": " talk about both problems in a little",
+      "start": 543.292,
+      "duration": 2.855
+    },
+    {
+      "text": " more detail. I'll give you a slight",
+      "start": 545.199,
+      "duration": 4.35
+    },
+    {
+      "text": " mathematical intuition as to why both",
+      "start": 548.597,
+      "duration": 2.773
+    },
+    {
+      "text": " of these problems exist. Okay? And I",
+      "start": 550.418,
+      "duration": 5.854
+    },
+    {
+      "text": " won't go too deep because again, I",
+      "start": 555.32,
+      "duration": 2.617
+    },
+    {
+      "text": " think that might confuse you. So, I'll",
+      "start": 556.984,
+      "duration": 6.704
+    },
+    {
+      "text": " just give you enough mathematical",
+      "start": 562.737,
+      "duration": 2.621
+    },
+    {
+      "text": " intuition to understand why the problem",
+      "start": 564.408,
+      "duration": 2.916
+    },
+    {
+      "text": " of long-term dependency arises because",
+      "start": 566.373,
+      "duration": 2.868
+    },
+    {
+      "text": " of the vanishing gradient problem. Okay",
+      "start": 568.29,
+      "duration": 5.442
+    },
+    {
+      "text": "? So let's start. Okay? So, you should",
+      "start": 572.732,
+      "duration": 5.581
+    },
+    {
+      "text": " remember the last video a little bit",
+      "start": 577.362,
+      "duration": 2.752
+    },
+    {
+      "text": " here. If you haven't seen it, I'd",
+      "start": 579.162,
+      "duration": 6.232
+    },
+    {
+      "text": " recommend watching the last video in",
+      "start": 584.443,
+      "duration": 2.76
+    },
+    {
+      "text": " this playlist where I explained",
+      "start": 586.252,
+      "duration": 2.516
+    },
+    {
+      "text": " backpropagation through time and how",
+      "start": 587.817,
+      "duration": 2.761
+    },
+    {
+      "text": " RNNS train. Okay? I'll just give you a",
+      "start": 589.627,
+      "duration": 6.183
+    },
+    {
+      "text": " slight summary of the entire process.",
+      "start": 594.858,
+      "duration": 2.785
+    },
+    {
+      "text": " Let's assume for a moment that we have",
+      "start": 598.346,
+      "duration": 2.754
+    },
+    {
+      "text": " a data set in which we have data like",
+      "start": 600.146,
+      "duration": 7.73
+    },
+    {
+      "text": " this: 1 0 1 0 0 1 0 0 1 1 and we have 1",
+      "start": 607.027,
+      "duration": 9.423
+    },
+    {
+      "text": " 0 0 1 something like this: Okay? So",
+      "start": 615.523,
+      "duration": 6.643
+    },
+    {
+      "text": " this is the data. Now, I know, this",
+      "start": 621.215,
+      "duration": 3.062
+    },
+    {
+      "text": " doesn't mean anything. But this is the",
+      "start": 623.333,
+      "duration": 3.29
+    },
+    {
+      "text": " data. Here, you can assume that every",
+      "start": 625.666,
+      "duration": 6.099
+    },
+    {
+      "text": " digit will act as one time stamp. So,",
+      "start": 630.816,
+      "duration": 6.211
+    },
+    {
+      "text": " in total, there are three time steps in",
+      "start": 636.081,
+      "duration": 3.132
+    },
+    {
+      "text": " this data. Okay? And what did we do? We",
+      "start": 638.268,
+      "duration": 9.881
+    },
+    {
+      "text": " created an RNA architecture for this",
+      "start": 647.199,
+      "duration": 2.812
+    },
+    {
+      "text": " problem, which looks like this. So, the",
+      "start": 649.061,
+      "duration": 5.521
+    },
+    {
+      "text": " input is going from here. You're",
+      "start": 653.636,
+      "duration": 2.896
+    },
+    {
+      "text": " getting output from here. This is your",
+      "start": 655.573,
+      "duration": 3.377
+    },
+    {
+      "text": " hidden unit, and it has only one node",
+      "start": 658.001,
+      "duration": 2.891
+    },
+    {
+      "text": " inside. This means that if you were to",
+      "start": 659.943,
+      "duration": 4.765
+    },
+    {
+      "text": " draw this architecture properly, it",
+      "start": 663.752,
+      "duration": 2.533
+    },
+    {
+      "text": " would look like this. So, this is the",
+      "start": 665.329,
+      "duration": 4.111
+    },
+    {
+      "text": " unit. Here you'll receive input. So,",
+      "start": 668.501,
+      "duration": 3.405
+    },
+    {
+      "text": " the first time, you'll enter a one here",
+      "start": 670.958,
+      "duration": 3.011
+    },
+    {
+      "text": ". Then you'll enter a zero here. Then",
+      "start": 672.969,
+      "duration": 2.72
+    },
+    {
+      "text": " you'll enter a one here. Three times,",
+      "start": 674.728,
+      "duration": 2.666
+    },
+    {
+      "text": " input will go from here. This is your",
+      "start": 676.447,
+      "duration": 3.759
+    },
+    {
+      "text": " weight, this is the weight input. Okay?",
+      "start": 679.251,
+      "duration": 4.408
+    },
+    {
+      "text": " This is your weight, this is the weight",
+      "start": 683.484,
+      "duration": 2.774
+    },
+    {
+      "text": " output. And then there's a single",
+      "start": 685.304,
+      "duration": 4.763
+    },
+    {
+      "text": " weight, which you can call the hidden",
+      "start": 689.106,
+      "duration": 2.45
+    },
+    {
+      "text": " weight. Okay? So, this is your",
+      "start": 690.595,
+      "duration": 4.381
+    },
+    {
+      "text": " architecture. I've deliberately kept it",
+      "start": 694.031,
+      "duration": 3.913
+    },
+    {
+      "text": " simple. There's a single weight here,",
+      "start": 696.987,
+      "duration": 2.959
+    },
+    {
+      "text": " and there's a single weight here.",
+      "start": 698.984,
+      "duration": 2.239
+    },
+    {
+      "text": " Generally, this is a matrix. But you",
+      "start": 700.398,
+      "duration": 3.304
+    },
+    {
+      "text": " get the idea. Okay? Now what do we do?",
+      "start": 702.748,
+      "duration": 3.136
+    },
+    {
+      "text": " We need to train this RNN on this data.",
+      "start": 705.463,
+      "duration": 2.993
+    },
+    {
+      "text": " So, what happens? Basically, your RNN",
+      "start": 708.874,
+      "duration": 4.213
+    },
+    {
+      "text": " unfolds as many times as there are time",
+      "start": 712.142,
+      "duration": 3.151
+    },
+    {
+      "text": " steps. So, these are three time steps",
+      "start": 714.349,
+      "duration": 4.112
+    },
+    {
+      "text": " in an RNN. The first time it receives",
+      "start": 717.522,
+      "duration": 4.377
+    },
+    {
+      "text": " an O, which is basically an input of",
+      "start": 720.947,
+      "duration": 2.737
+    },
+    {
+      "text": " zero. From here, you receive XI1,",
+      "start": 722.732,
+      "duration": 3.395
+    },
+    {
+      "text": " meaning this input. Then you proceed.",
+      "start": 725.187,
+      "duration": 5.818
+    },
+    {
+      "text": " In the next time step, you go to time",
+      "start": 730.145,
+      "duration": 2.997
+    },
+    {
+      "text": " step two. Here, you receive XI2, this",
+      "start": 732.196,
+      "duration": 3.469
+    },
+    {
+      "text": " input. From here, you calculate O1 and",
+      "start": 734.735,
+      "duration": 4.283
+    },
+    {
+      "text": " send it. From here, you calculate O2",
+      "start": 738.075,
+      "duration": 5.228
+    },
+    {
+      "text": " and send it. From here, you send X, I3,",
+      "start": 742.361,
+      "duration": 4.625
+    },
+    {
+      "text": " which is this output, this input. This",
+      "start": 746.047,
+      "duration": 4.424
+    },
+    {
+      "text": " gives you O3, and you use O3 to",
+      "start": 749.534,
+      "duration": 2.959
+    },
+    {
+      "text": " calculate Y out. Now, if you talk about",
+      "start": 751.556,
+      "duration": 6.863
+    },
+    {
+      "text": " weights, here's your W in, here's your",
+      "start": 757.484,
+      "duration": 3.48
+    },
+    {
+      "text": " W in, here's your W out, and here's W h",
+      "start": 760.03,
+      "duration": 3.545
+    },
+    {
+      "text": ". This is also W h, and this is also W",
+      "start": 762.575,
+      "duration": 8.861
+    },
+    {
+      "text": " a. Okay? This is your entire neural",
+      "start": 770.511,
+      "duration": 3.805
+    },
+    {
+      "text": " network architecture. From this loss,",
+      "start": 773.364,
+      "duration": 5.138
+    },
+    {
+      "text": " you calculate the loss function. Now,",
+      "start": 777.555,
+      "duration": 4.328
+    },
+    {
+      "text": " we discussed the basics in the last",
+      "start": 780.932,
+      "duration": 2.722
+    },
+    {
+      "text": " video, and we've discussed this many",
+      "start": 782.703,
+      "duration": 2.771
+    },
+    {
+      "text": " times before, about what you do in",
+      "start": 784.523,
+      "duration": 2.672
+    },
+    {
+      "text": " backpropagation. You try to find weight",
+      "start": 786.245,
+      "duration": 5.056
+    },
+    {
+      "text": " values that minimize the loss function.",
+      "start": 790.348,
+      "duration": 2.808
+    },
+    {
+      "text": " So, basically, you need values for WH,",
+      "start": 796.357,
+      "duration": 3.419
+    },
+    {
+      "text": " Win, and Wout for which the loss is",
+      "start": 798.839,
+      "duration": 3.229
+    },
+    {
+      "text": " minimal. Right? And the way to find",
+      "start": 801.131,
+      "duration": 6.209
+    },
+    {
+      "text": " this is gradient descent. Right?",
+      "start": 806.385,
+      "duration": 4.026
+    },
+    {
+      "text": " Gradient descent. What do you do in",
+      "start": 809.65,
+      "duration": 3.126
+    },
+    {
+      "text": " gradient descent? You have three",
+      "start": 811.822,
+      "duration": 2.715
+    },
+    {
+      "text": " equations. The first equation is Winput",
+      "start": 813.59,
+      "duration": 6.457
+    },
+    {
+      "text": " equal to Winput minus the learning rate",
+      "start": 819.097,
+      "duration": 2.946
+    },
+    {
+      "text": " times the delay by a Winput, Woutput =",
+      "start": 821.093,
+      "duration": 8.808
+    },
+    {
+      "text": " Woutput minus the learning rate of the",
+      "start": 829.009,
+      "duration": 5.928
+    },
+    {
+      "text": " delay by a Winput, right? And finally,",
+      "start": 833.986,
+      "duration": 6.377
+    },
+    {
+      "text": " Whidden = Whidden minus the learning",
+      "start": 839.414,
+      "duration": 2.854
+    },
+    {
+      "text": " rate of the delay of Whidden, right.",
+      "start": 841.32,
+      "duration": 2.854
+    },
+    {
+      "text": " Now you take the initial values of W in",
+      "start": 845.546,
+      "duration": 3.67
+    },
+    {
+      "text": ", W out, and W out. What you do then is",
+      "start": 848.216,
+      "duration": 5.199
+    },
+    {
+      "text": ", you first calculate Y out, find the",
+      "start": 852.415,
+      "duration": 2.933
+    },
+    {
+      "text": " loss, and with respect to the loss, you",
+      "start": 854.4,
+      "duration": 3.037
+    },
+    {
+      "text": " calculate these derivatives, and with",
+      "start": 856.489,
+      "duration": 2.933
+    },
+    {
+      "text": " these derivatives, you repeatedly",
+      "start": 858.474,
+      "duration": 2.724
+    },
+    {
+      "text": " update these values. Okay? For a",
+      "start": 860.25,
+      "duration": 4.714
+    },
+    {
+      "text": " certain number of elapsed boxes. You",
+      "start": 864.014,
+      "duration": 2.923
+    },
+    {
+      "text": " know all this. Now, the main problem",
+      "start": 865.986,
+      "duration": 3.469
+    },
+    {
+      "text": " arises when you try to calculate these",
+      "start": 868.507,
+      "duration": 2.969
+    },
+    {
+      "text": " derivatives. Okay? That's where the",
+      "start": 870.528,
+      "duration": 3.973
+    },
+    {
+      "text": " main point is. Okay? So, I explained to",
+      "start": 873.546,
+      "duration": 5.664
+    },
+    {
+      "text": " you very well in the last video that",
+      "start": 878.263,
+      "duration": 2.925
+    },
+    {
+      "text": " when you try to calculate derivatives,",
+      "start": 880.242,
+      "duration": 3.031
+    },
+    {
+      "text": " especially with respect to wn and wh,",
+      "start": 882.327,
+      "duration": 2.978
+    },
+    {
+      "text": " it gets a little confusing and",
+      "start": 884.358,
+      "duration": 2.604
+    },
+    {
+      "text": " difficult. As I told you in the last",
+      "start": 886.016,
+      "duration": 7.507
+    },
+    {
+      "text": " video, if you try to calculate dl/dw in",
+      "start": 892.585,
+      "duration": 3.41
+    },
+    {
+      "text": ", then actually this loss depends on",
+      "start": 894.995,
+      "duration": 7.249
+    },
+    {
+      "text": " winn. It depends on winn. And it also",
+      "start": 901.3,
+      "duration": 4.498
+    },
+    {
+      "text": " depends on W in. And because of this,",
+      "start": 904.859,
+      "duration": 8.117
+    },
+    {
+      "text": " the entire formula looks like this: Del",
+      "start": 912.035,
+      "duration": 3.321
+    },
+    {
+      "text": " L/Det Det By Det This is the output and",
+      "start": 914.416,
+      "duration": 3.32
+    },
+    {
+      "text": " Del O3/Det Del WN. Okay? Basically, you",
+      "start": 916.796,
+      "duration": 16.859
+    },
+    {
+      "text": " just considered this one. Then you'll",
+      "start": 932.705,
+      "duration": 4.236
+    },
+    {
+      "text": " consider the entire path as well. So in",
+      "start": 935.988,
+      "duration": 7.545
+    },
+    {
+      "text": " this case, it becomes Del by Dell Y Hut",
+      "start": 942.606,
+      "duration": 3.846
+    },
+    {
+      "text": ", Del Y Hut by Dell O3, Det by Dell O2,",
+      "start": 945.452,
+      "duration": 3.846
+    },
+    {
+      "text": " and then Det O2 by Dell WN. And now",
+      "start": 948.37,
+      "duration": 14.321
+    },
+    {
+      "text": " this last one, if you consider this",
+      "start": 961.76,
+      "duration": 3.436
+    },
+    {
+      "text": " path as well, it becomes Del by Dell",
+      "start": 964.265,
+      "duration": 3.505
+    },
+    {
+      "text": " Hut, Det by Det, Det 3 Del O2, Det O2",
+      "start": 966.84,
+      "duration": 3.575
+    },
+    {
+      "text": " Del O1, and Del O1 Del WN. Now, look",
+      "start": 969.484,
+      "duration": 10.884
+    },
+    {
+      "text": " here, guys, this is where the main",
+      "start": 979.423,
+      "duration": 2.89
+    },
+    {
+      "text": " discussion starts. We covered all this",
+      "start": 981.369,
+      "duration": 3.03
+    },
+    {
+      "text": " in the last video. Now, if you notice,",
+      "start": 983.446,
+      "duration": 3.696
+    },
+    {
+      "text": " we're going to calculate this",
+      "start": 986.192,
+      "duration": 2.455
+    },
+    {
+      "text": " derivative. Or you can say, what",
+      "start": 987.697,
+      "duration": 4.948
+    },
+    {
+      "text": " changes occur in the loss due to WN?",
+      "start": 991.701,
+      "duration": 3.004
+    },
+    {
+      "text": " You're going to calculate this. So,",
+      "start": 995.073,
+      "duration": 3.158
+    },
+    {
+      "text": " there are three terms here. There are",
+      "start": 997.286,
+      "duration": 4.778
+    },
+    {
+      "text": " three terms, right? One for this wn,",
+      "start": 1001.112,
+      "duration": 6.98
+    },
+    {
+      "text": " one for this wn, one for this wn. Now,",
+      "start": 1007.168,
+      "duration": 5.937
+    },
+    {
+      "text": " if I were to show you, this term is for",
+      "start": 1012.165,
+      "duration": 3.346
+    },
+    {
+      "text": " this wn. This term is for this wn, and",
+      "start": 1014.571,
+      "duration": 7.202
+    },
+    {
+      "text": " this term is for this wn. Now, what if",
+      "start": 1020.837,
+      "duration": 7.224
+    },
+    {
+      "text": " I tell you that you would call this a",
+      "start": 1027.108,
+      "duration": 2.761
+    },
+    {
+      "text": " short-term dependency and this, at",
+      "start": 1028.917,
+      "duration": 8.784
+    },
+    {
+      "text": " least comparatively, a long-term",
+      "start": 1036.759,
+      "duration": 2.855
+    },
+    {
+      "text": " dependency? Think about it. So, this",
+      "start": 1038.672,
+      "duration": 6.258
+    },
+    {
+      "text": " term, or this input, is the furthest",
+      "start": 1043.985,
+      "duration": 2.986
+    },
+    {
+      "text": " from the output. So, the contribution",
+      "start": 1046.026,
+      "duration": 5.496
+    },
+    {
+      "text": " to this loss function due to this or",
+      "start": 1050.571,
+      "duration": 2.769
+    },
+    {
+      "text": " this weight is this term. So, this is",
+      "start": 1052.389,
+      "duration": 4.514
+    },
+    {
+      "text": " actually a long-term dependency. A",
+      "start": 1055.958,
+      "duration": 2.921
+    },
+    {
+      "text": " distant dependency. Where as this one",
+      "start": 1057.935,
+      "duration": 5.02
+    },
+    {
+      "text": " is a way to calculate what changes will",
+      "start": 1062.0,
+      "duration": 2.762
+    },
+    {
+      "text": " occur in your output due to this",
+      "start": 1063.807,
+      "duration": 2.445
+    },
+    {
+      "text": " particular last input. So, this is a",
+      "start": 1065.297,
+      "duration": 5.623
+    },
+    {
+      "text": " short-term dependency. Now, I want you",
+      "start": 1069.978,
+      "duration": 4.774
+    },
+    {
+      "text": " to imagine that these are just three",
+      "start": 1073.802,
+      "duration": 2.793
+    },
+    {
+      "text": " time steps. In a normal problem, there",
+      "start": 1075.645,
+      "duration": 6.414
+    },
+    {
+      "text": " might be 100 time steps. There would be",
+      "start": 1081.117,
+      "duration": 4.926
+    },
+    {
+      "text": " 100 time steps. In that case, I hope",
+      "start": 1085.101,
+      "duration": 4.231
+    },
+    {
+      "text": " you're able to imagine what your last",
+      "start": 1088.38,
+      "duration": 2.779
+    },
+    {
+      "text": " term, the long-term dependency, would",
+      "start": 1090.208,
+      "duration": 2.779
+    },
+    {
+      "text": " look like. Let me show you once. Your",
+      "start": 1092.035,
+      "duration": 10.687
+    },
+    {
+      "text": " long-term dependency would look like",
+      "start": 1101.791,
+      "duration": 3.484
+    },
+    {
+      "text": " this: del by del hut, dat by del output",
+      "start": 1104.344,
+      "duration": 3.691
+    },
+    {
+      "text": " 100, del output 100 by del output 99,",
+      "start": 1107.104,
+      "duration": 3.553
+    },
+    {
+      "text": " dot dot dot, del output two, del output",
+      "start": 1109.726,
+      "duration": 3.691
+    },
+    {
+      "text": " one, del output one, del w in. This",
+      "start": 1112.486,
+      "duration": 9.05
+    },
+    {
+      "text": " becomes your last term. Similarly,",
+      "start": 1120.587,
+      "duration": 6.045
+    },
+    {
+      "text": " you'd start with the 99 output in the",
+      "start": 1125.691,
+      "duration": 3.198
+    },
+    {
+      "text": " second-last term, and the 98 output in",
+      "start": 1127.948,
+      "duration": 3.258
+    },
+    {
+      "text": " the third-last term. You get the idea.",
+      "start": 1130.265,
+      "duration": 3.258
+    },
+    {
+      "text": " The long-term dependency looks like",
+      "start": 1132.623,
+      "duration": 2.898
+    },
+    {
+      "text": " this, okay. Now, I just want to show",
+      "start": 1134.575,
+      "duration": 5.125
+    },
+    {
+      "text": " you that when you calculate this",
+      "start": 1138.747,
+      "duration": 2.527
+    },
+    {
+      "text": " gradient, what actually happens is that",
+      "start": 1140.322,
+      "duration": 2.861
+    },
+    {
+      "text": " your long-term dependencies become very",
+      "start": 1142.23,
+      "duration": 8.384
+    },
+    {
+      "text": " small, and because of this, the biggest",
+      "start": 1149.664,
+      "duration": 2.961
+    },
+    {
+      "text": " contribution to the solution comes from",
+      "start": 1151.675,
+      "duration": 2.962
+    },
+    {
+      "text": " the short-term ones. The long-term ones",
+      "start": 1153.687,
+      "duration": 6.929
+    },
+    {
+      "text": " don't contribute much at all. So, now I",
+      "start": 1159.662,
+      "duration": 5.54
+    },
+    {
+      "text": " want to prove this to you: the larger",
+      "start": 1164.254,
+      "duration": 2.898
+    },
+    {
+      "text": " your term becomes, the more time steps",
+      "start": 1166.203,
+      "duration": 2.95
+    },
+    {
+      "text": " there are, the smaller your long-term",
+      "start": 1168.205,
+      "duration": 2.898
+    },
+    {
+      "text": " dependencies become. And because of",
+      "start": 1170.154,
+      "duration": 5.264
+    },
+    {
+      "text": " this, the entire responsibility of",
+      "start": 1174.466,
+      "duration": 2.641
+    },
+    {
+      "text": " finding the derivative falls on the",
+      "start": 1176.155,
+      "duration": 2.689
+    },
+    {
+      "text": " short-term ones, and you will only be",
+      "start": 1177.893,
+      "duration": 2.785
+    },
+    {
+      "text": " able to calculate the short-term ones;",
+      "start": 1179.726,
+      "duration": 2.834
+    },
+    {
+      "text": " your RNN will not be able to understand",
+      "start": 1181.608,
+      "duration": 2.882
+    },
+    {
+      "text": " the long-term ones. Okay? So, watch",
+      "start": 1183.539,
+      "duration": 3.28
+    },
+    {
+      "text": " carefully. This is where things get",
+      "start": 1185.886,
+      "duration": 2.75
+    },
+    {
+      "text": " interesting. So, what I'm going to do",
+      "start": 1187.676,
+      "duration": 4.336
+    },
+    {
+      "text": " is generalize this equation a little.",
+      "start": 1191.062,
+      "duration": 2.833
+    },
+    {
+      "text": " Look carefully at what I'm doing. I'm",
+      "start": 1194.444,
+      "duration": 5.41
+    },
+    {
+      "text": " writing del by del h t de h t by del o",
+      "start": 1198.923,
+      "duration": 3.641
+    },
+    {
+      "text": " 100. And look what I'm doing here. I'm",
+      "start": 1201.634,
+      "duration": 11.176
+    },
+    {
+      "text": " using this notation: Day OT = Day OT-1",
+      "start": 1211.892,
+      "duration": 4.101
+    },
+    {
+      "text": " Day O1 Day n So, basically, what did I",
+      "start": 1219.268,
+      "duration": 6.623
+    },
+    {
+      "text": " do? I compressed this entire term and",
+      "start": 1224.96,
+      "duration": 6.142
+    },
+    {
+      "text": " wrote it like this where t = 2 200. Try",
+      "start": 1230.167,
+      "duration": 7.792
+    },
+    {
+      "text": " to understand. What did I just do? I",
+      "start": 1237.012,
+      "duration": 3.658
+    },
+    {
+      "text": " compressed this entire term and wrote",
+      "start": 1239.72,
+      "duration": 2.846
+    },
+    {
+      "text": " it like this. And I can do this if you",
+      "start": 1241.616,
+      "duration": 2.876
+    },
+    {
+      "text": " think carefully. For example, if you",
+      "start": 1243.536,
+      "duration": 3.134
+    },
+    {
+      "text": " expand this term, what do you get? You",
+      "start": 1245.726,
+      "duration": 4.03
+    },
+    {
+      "text": " get Del O2 Day multiplied by Del O3 Day",
+      "start": 1248.836,
+      "duration": 12.663
+    },
+    {
+      "text": " 2 Day Del O 3 dot dot dot Del O Dello",
+      "start": 1260.62,
+      "duration": 10.865
+    },
+    {
+      "text": " O9 So, basically, what we wrote here",
+      "start": 1270.544,
+      "duration": 3.132
+    },
+    {
+      "text": " was just written in reverse. Right? It",
+      "start": 1272.735,
+      "duration": 5.827
+    },
+    {
+      "text": " doesn't make any difference. It's",
+      "start": 1277.602,
+      "duration": 2.44
+    },
+    {
+      "text": " multiplication, you can do it. Now, the",
+      "start": 1279.097,
+      "duration": 4.966
+    },
+    {
+      "text": " advantage of writing it this way is",
+      "start": 1283.112,
+      "duration": 2.73
+    },
+    {
+      "text": " that we got this term, and this term is",
+      "start": 1284.891,
+      "duration": 2.928
+    },
+    {
+      "text": " very important. What is this term? It's",
+      "start": 1286.868,
+      "duration": 6.28
+    },
+    {
+      "text": " the derivative of OT with respect to OT",
+      "start": 1292.203,
+      "duration": 3.141
+    },
+    {
+      "text": "-1. So, how much difference does making",
+      "start": 1294.344,
+      "duration": 4.583
+    },
+    {
+      "text": " changes to OT-1 make to OT? Right? Now",
+      "start": 1297.987,
+      "duration": 5.031
+    },
+    {
+      "text": " look here we have O0, O1, O2, O3. So if",
+      "start": 1302.115,
+      "duration": 6.884
+    },
+    {
+      "text": " these were very large time steps then",
+      "start": 1308.05,
+      "duration": 2.865
+    },
+    {
+      "text": " how would the generic OT be calculated?",
+      "start": 1309.965,
+      "duration": 2.966
+    },
+    {
+      "text": " For example, look here how do you",
+      "start": 1313.48,
+      "duration": 2.796
+    },
+    {
+      "text": " calculate O1? How do you calculate O1?",
+      "start": 1315.33,
+      "duration": 3.658
+    },
+    {
+      "text": " This is how you calculate O1. If you",
+      "start": 1318.088,
+      "duration": 3.191
+    },
+    {
+      "text": " remember the first video of RN, then",
+      "start": 1320.332,
+      "duration": 2.923
+    },
+    {
+      "text": " the method to calculate O1 is this. If",
+      "start": 1322.309,
+      "duration": 4.727
+    },
+    {
+      "text": " we want to calculate tan H of O1 then",
+      "start": 1326.087,
+      "duration": 5.72
+    },
+    {
+      "text": " multiply this input by WN X I1*WN + O0*",
+      "start": 1330.881,
+      "duration": 10.1
+    },
+    {
+      "text": "By WH, this is the method, right? So",
+      "start": 1339.981,
+      "duration": 8.25
+    },
+    {
+      "text": " similarly, if I want to generalize this",
+      "start": 1347.28,
+      "duration": 2.924
+    },
+    {
+      "text": " then the formula will look like this.",
+      "start": 1349.253,
+      "duration": 2.826
+    },
+    {
+      "text": " OT = tanh of XI1 or for now let's write",
+      "start": 1355.311,
+      "duration": 4.037
+    },
+    {
+      "text": " XI or XT. wn + OT-1 WH Right, but what",
+      "start": 1358.426,
+      "duration": 11.601
+    },
+    {
+      "text": " do I want to calculate? I want to find",
+      "start": 1369.101,
+      "duration": 6.631
+    },
+    {
+      "text": " dot/d-1, so basically I need to",
+      "start": 1374.795,
+      "duration": 11.199
+    },
+    {
+      "text": " differentiate this whole term with",
+      "start": 1385.053,
+      "duration": 3.026
+    },
+    {
+      "text": " respect to o-1 and this becomes the",
+      "start": 1387.138,
+      "duration": 3.086
+    },
+    {
+      "text": " derivative of this tan h function, the",
+      "start": 1389.283,
+      "duration": 3.264
+    },
+    {
+      "text": " derivative of this tan h function x wn",
+      "start": 1391.607,
+      "duration": 3.264
+    },
+    {
+      "text": " + ot-1 wh, and then you differentiate",
+      "start": 1393.931,
+      "duration": 3.204
+    },
+    {
+      "text": " this term with respect to ot-1 and you",
+      "start": 1396.195,
+      "duration": 3.264
+    },
+    {
+      "text": " get wh, right? Now you probably know",
+      "start": 1398.518,
+      "duration": 11.022
+    },
+    {
+      "text": " that the derivative of tan h is between",
+      "start": 1408.594,
+      "duration": 3.104
+    },
+    {
+      "text": " zero and one, and the value of wh",
+      "start": 1410.752,
+      "duration": 2.78
+    },
+    {
+      "text": " depends on us because we're",
+      "start": 1412.586,
+      "duration": 2.457
+    },
+    {
+      "text": " initializing it. So what we'll do is",
+      "start": 1414.097,
+      "duration": 2.942
+    },
+    {
+      "text": " we'll replace this term in. And you'll",
+      "start": 1416.093,
+      "duration": 6.596
+    },
+    {
+      "text": " see that your long-term dependency",
+      "start": 1421.735,
+      "duration": 2.546
+    },
+    {
+      "text": " becomes del by del h d...This term",
+      "start": 1423.326,
+      "duration": 31.358
+    },
+    {
+      "text": " inside is multiplied by wh and",
+      "start": 1453.747,
+      "duration": 2.902
+    },
+    {
+      "text": " multiplied by den by del w input. Now",
+      "start": 1455.712,
+      "duration": 7.551
+    },
+    {
+      "text": " think about it, suppose for a moment",
+      "start": 1465.59,
+      "duration": 2.855
+    },
+    {
+      "text": " that you took this wh as a number that",
+      "start": 1467.497,
+      "duration": 2.959
+    },
+    {
+      "text": " lies between zero and one. Suppose for",
+      "start": 1469.507,
+      "duration": 4.698
+    },
+    {
+      "text": " a moment. Okay? So it means your number",
+      "start": 1473.257,
+      "duration": 4.768
+    },
+    {
+      "text": " is between zero and one. This number is",
+      "start": 1477.075,
+      "duration": 4.356
+    },
+    {
+      "text": " between zero and one. Right? And now",
+      "start": 1480.483,
+      "duration": 4.014
+    },
+    {
+      "text": " this time step is very large, like 100",
+      "start": 1483.559,
+      "duration": 3.361
+    },
+    {
+      "text": " or more. In that case, if you multiply",
+      "start": 1485.982,
+      "duration": 8.847
+    },
+    {
+      "text": " these numbers by more than 100, then",
+      "start": 1493.881,
+      "duration": 2.889
+    },
+    {
+      "text": " this entire thing will be a very small",
+      "start": 1495.823,
+      "duration": 2.993
+    },
+    {
+      "text": " number almost close to zero. Right? And",
+      "start": 1497.869,
+      "duration": 8.641
+    },
+    {
+      "text": " because of that, the impact of the",
+      "start": 1505.555,
+      "duration": 2.525
+    },
+    {
+      "text": " other terms will be minimal. And this",
+      "start": 1507.125,
+      "duration": 5.675
+    },
+    {
+      "text": " entire term, this entire term, will be",
+      "start": 1511.857,
+      "duration": 3.166
+    },
+    {
+      "text": " close to zero. And as soon as your",
+      "start": 1514.08,
+      "duration": 5.82
+    },
+    {
+      "text": " long-term dependency is very close to",
+      "start": 1518.948,
+      "duration": 2.758
+    },
+    {
+      "text": " zero. This means that when calculating",
+      "start": 1520.754,
+      "duration": 4.138
+    },
+    {
+      "text": " your derivative, all the contribution",
+      "start": 1523.938,
+      "duration": 2.717
+    },
+    {
+      "text": " will come from short-term dependencies.",
+      "start": 1525.701,
+      "duration": 2.81
+    },
+    {
+      "text": " And once all the contribution of",
+      "start": 1529.968,
+      "duration": 2.56
+    },
+    {
+      "text": " short-term dependencies comes in, it",
+      "start": 1531.577,
+      "duration": 2.755
+    },
+    {
+      "text": " means that the most contribution to",
+      "start": 1533.381,
+      "duration": 6.604
+    },
+    {
+      "text": " your output comes from recent inputs,",
+      "start": 1539.038,
+      "duration": 2.937
+    },
+    {
+      "text": " not from distant inputs. And this is",
+      "start": 1541.027,
+      "duration": 7.472
+    },
+    {
+      "text": " what we discussed above: this is the",
+      "start": 1547.549,
+      "duration": 2.786
+    },
+    {
+      "text": " long-term dependency problem: to derive",
+      "start": 1549.385,
+      "duration": 2.935
+    },
+    {
+      "text": " the word here, the contribution of the",
+      "start": 1551.37,
+      "duration": 2.886
+    },
+    {
+      "text": " words near here is greater, while the",
+      "start": 1553.305,
+      "duration": 2.837
+    },
+    {
+      "text": " contribution of the words farther away",
+      "start": 1555.191,
+      "duration": 2.886
+    },
+    {
+      "text": " is less. Okay? So I hope you understand",
+      "start": 1557.127,
+      "duration": 6.583
+    },
+    {
+      "text": " that this is a vanishing gradient",
+      "start": 1562.756,
+      "duration": 2.52
+    },
+    {
+      "text": " problem. Right? If you think carefully,",
+      "start": 1564.322,
+      "duration": 4.308
+    },
+    {
+      "text": " this is an example of a vanishing",
+      "start": 1567.68,
+      "duration": 2.632
+    },
+    {
+      "text": " gradient problem. Where the larger your",
+      "start": 1569.362,
+      "duration": 6.308
+    },
+    {
+      "text": " time steps or the larger your neural",
+      "start": 1574.716,
+      "duration": 2.64
+    },
+    {
+      "text": " network, the smaller the values of your",
+      "start": 1576.402,
+      "duration": 2.777
+    },
+    {
+      "text": " distant gradients. Right? This is a",
+      "start": 1578.224,
+      "duration": 6.817
+    },
+    {
+      "text": " vanishing gradient problem. Right? So",
+      "start": 1584.09,
+      "duration": 3.242
+    },
+    {
+      "text": " this problem of long-term dependency",
+      "start": 1586.386,
+      "duration": 2.948
+    },
+    {
+      "text": " arises because of the vanishing",
+      "start": 1590.381,
+      "duration": 2.566
+    },
+    {
+      "text": " gradient problem. Okay? Now, let me",
+      "start": 1591.997,
+      "duration": 4.497
+    },
+    {
+      "text": " tell you how you can reduce this",
+      "start": 1595.542,
+      "duration": 2.539
+    },
+    {
+      "text": " problem. So, let me give you two three",
+      "start": 1597.129,
+      "duration": 5.659
+    },
+    {
+      "text": " possible solutions that you can use to",
+      "start": 1601.838,
+      "duration": 2.889
+    },
+    {
+      "text": " reduce this problem. The first one is",
+      "start": 1603.777,
+      "duration": 6.035
+    },
+    {
+      "text": " to use a different activation function.",
+      "start": 1608.858,
+      "duration": 2.788
+    },
+    {
+      "text": " Right? So, you see, this value of the",
+      "start": 1613.468,
+      "duration": 6.489
+    },
+    {
+      "text": " differentiation of tan h was coming",
+      "start": 1619.014,
+      "duration": 2.986
+    },
+    {
+      "text": " from 0 to 1. What if we use something",
+      "start": 1621.057,
+      "duration": 3.099
+    },
+    {
+      "text": " like value and the value of lik, their",
+      "start": 1623.213,
+      "duration": 3.156
+    },
+    {
+      "text": " derivative is not in the range of zero",
+      "start": 1625.426,
+      "duration": 3.157
+    },
+    {
+      "text": " to one. Right? So, you can use that,",
+      "start": 1627.639,
+      "duration": 6.943
+    },
+    {
+      "text": " that would be one solution. The second",
+      "start": 1633.637,
+      "duration": 6.783
+    },
+    {
+      "text": " solution is better weight",
+      "start": 1639.466,
+      "duration": 2.154
+    },
+    {
+      "text": " initialization. This problem still",
+      "start": 1640.666,
+      "duration": 5.49
+    },
+    {
+      "text": " occurs even if you were taking the",
+      "start": 1645.199,
+      "duration": 2.459
+    },
+    {
+      "text": " weights from zero to one. What if you",
+      "start": 1646.701,
+      "duration": 3.183
+    },
+    {
+      "text": " take it to only one? Okay? You have a",
+      "start": 1648.927,
+      "duration": 4.063
+    },
+    {
+      "text": " weight matrix. You can create an",
+      "start": 1652.038,
+      "duration": 3.887
+    },
+    {
+      "text": " identity matrix. Because anything",
+      "start": 1654.977,
+      "duration": 3.391
+    },
+    {
+      "text": " multiplied by the identity matrix",
+      "start": 1657.415,
+      "duration": 2.54
+    },
+    {
+      "text": " results in the same result. At least it",
+      "start": 1659.002,
+      "duration": 2.879
+    },
+    {
+      "text": " won't spoil it. So you can have better",
+      "start": 1660.928,
+      "duration": 3.374
+    },
+    {
+      "text": " weights in initialization techniques.",
+      "start": 1663.347,
+      "duration": 2.672
+    },
+    {
+      "text": " Third, you can use slightly different",
+      "start": 1667.088,
+      "duration": 3.001
+    },
+    {
+      "text": " architectures like Skip RNs. Now, what",
+      "start": 1669.144,
+      "duration": 4.191
+    },
+    {
+      "text": " are these Skip RNs? Honestly, I'm not",
+      "start": 1672.397,
+      "duration": 3.13
+    },
+    {
+      "text": " teaching you in this video. Just Google",
+      "start": 1674.577,
+      "duration": 3.399
+    },
+    {
+      "text": " it once. You'll find some good articles",
+      "start": 1677.033,
+      "duration": 3.097
+    },
+    {
+      "text": ". But people have also tried Skip RNs",
+      "start": 1679.13,
+      "duration": 3.664
+    },
+    {
+      "text": " to solve this problem. And the fourth",
+      "start": 1681.843,
+      "duration": 4.223
+    },
+    {
+      "text": " one is, let's abandon RNA. Let's move",
+      "start": 1685.123,
+      "duration": 4.855
+    },
+    {
+      "text": " to LSTM-type architectures. And people",
+      "start": 1689.039,
+      "duration": 4.314
+    },
+    {
+      "text": " do that right. Meaning, ever since",
+      "start": 1692.397,
+      "duration": 3.383
+    },
+    {
+      "text": " LSDMs were discovered, they have",
+      "start": 1694.833,
+      "duration": 2.693
+    },
+    {
+      "text": " consistently performed better than RNA.",
+      "start": 1696.579,
+      "duration": 3.063
+    },
+    {
+      "text": " So people said, let's move away from",
+      "start": 1699.537,
+      "duration": 3.352
+    },
+    {
+      "text": " RNA and focus on LSDMs. Okay? So I hope",
+      "start": 1701.954,
+      "duration": 5.475
+    },
+    {
+      "text": " these are some of the solutions that",
+      "start": 1706.471,
+      "duration": 2.501
+    },
+    {
+      "text": " you can implement to eradicate this",
+      "start": 1708.013,
+      "duration": 2.46
+    },
+    {
+      "text": " problem a little. Let's discuss the",
+      "start": 1709.515,
+      "duration": 7.27
+    },
+    {
+      "text": " second problem, which is unstable",
+      "start": 1715.835,
+      "duration": 2.66
+    },
+    {
+      "text": " training caused by exploding gradients.",
+      "start": 1717.546,
+      "duration": 2.962
+    },
+    {
+      "text": " So, the exact opposite happens. Right?",
+      "start": 1721.543,
+      "duration": 3.948
+    },
+    {
+      "text": " So, what if your long-term dependency",
+      "start": 1729.111,
+      "duration": 2.823
+    },
+    {
+      "text": " becomes so large that it starts to kind",
+      "start": 1730.983,
+      "duration": 2.922
+    },
+    {
+      "text": " of dominate the short-term one. In fact",
+      "start": 1732.954,
+      "duration": 7.086
+    },
+    {
+      "text": ", it becomes so large that it becomes",
+      "start": 1739.04,
+      "duration": 2.921
+    },
+    {
+      "text": " infinite? Because of this, your",
+      "start": 1741.013,
+      "duration": 3.882
+    },
+    {
+      "text": " gradient update will become infinite,",
+      "start": 1743.941,
+      "duration": 2.682
+    },
+    {
+      "text": " and then your weights will become",
+      "start": 1745.669,
+      "duration": 2.5
+    },
+    {
+      "text": " infinite, and your model will basically",
+      "start": 1747.215,
+      "duration": 2.773
+    },
+    {
+      "text": " not train. This can also happen. When?",
+      "start": 1749.034,
+      "duration": 3.495
+    },
+    {
+      "text": " I'll tell you a couple of cases. So,",
+      "start": 1752.096,
+      "duration": 3.102
+    },
+    {
+      "text": " let's take this case. Suppose you used",
+      "start": 1754.259,
+      "duration": 3.836
+    },
+    {
+      "text": " value instead of tanh. Now, your",
+      "start": 1757.153,
+      "duration": 4.711
+    },
+    {
+      "text": " derivative of value could be any",
+      "start": 1760.916,
+      "duration": 2.653
+    },
+    {
+      "text": " positive number. Right? If it's",
+      "start": 1762.62,
+      "duration": 4.13
+    },
+    {
+      "text": " positive and you take its derivative,",
+      "start": 1765.795,
+      "duration": 2.654
+    },
+    {
+      "text": " you'll get something positive. And",
+      "start": 1767.494,
+      "duration": 4.427
+    },
+    {
+      "text": " let's say you initialized the weights",
+      "start": 1770.965,
+      "duration": 2.614
+    },
+    {
+      "text": " to one. So, every time you multiply,",
+      "start": 1772.622,
+      "duration": 4.828
+    },
+    {
+      "text": " this number will become a very, very",
+      "start": 1776.508,
+      "duration": 3.079
+    },
+    {
+      "text": " large number. Right? And because of",
+      "start": 1778.645,
+      "duration": 4.515
+    },
+    {
+      "text": " that, this entire term will blow up.",
+      "start": 1782.21,
+      "duration": 2.814
+    },
+    {
+      "text": " And because of this blow up, when",
+      "start": 1787.24,
+      "duration": 2.585
+    },
+    {
+      "text": " calculating the gradient, you'll only",
+      "start": 1788.873,
+      "duration": 2.778
+    },
+    {
+      "text": " see its dominance. This will cause W in",
+      "start": 1790.7,
+      "duration": 6.031
+    },
+    {
+      "text": " and W a to become very large, and your",
+      "start": 1795.788,
+      "duration": 3.146
+    },
+    {
+      "text": " training will stop. The second reason",
+      "start": 1797.99,
+      "duration": 4.202
+    },
+    {
+      "text": " could be that if your learning rate is",
+      "start": 1801.236,
+      "duration": 2.672
+    },
+    {
+      "text": " too high, it can also lead to the",
+      "start": 1802.952,
+      "duration": 2.452
+    },
+    {
+      "text": " exploding gradient problem. In both",
+      "start": 1804.448,
+      "duration": 4.774
+    },
+    {
+      "text": " these situations, your training will",
+      "start": 1808.271,
+      "duration": 2.775
+    },
+    {
+      "text": " become unstable, and your model will",
+      "start": 1810.096,
+      "duration": 2.775
+    },
+    {
+      "text": " not train properly. Right? And this is",
+      "start": 1811.92,
+      "duration": 5.069
+    },
+    {
+      "text": " what's called the exploding gradient",
+      "start": 1816.034,
+      "duration": 2.628
+    },
+    {
+      "text": " problem. And it's equally risky. Right?",
+      "start": 1817.708,
+      "duration": 3.601
+    },
+    {
+      "text": " Right? This is one of the reasons",
+      "start": 1820.409,
+      "duration": 3.191
+    },
+    {
+      "text": " you'll notice in RNA by default. People",
+      "start": 1822.647,
+      "duration": 4.399
+    },
+    {
+      "text": " don't keep the rails, they keep the",
+      "start": 1826.095,
+      "duration": 2.696
+    },
+    {
+      "text": " tens. Right? So, what's the way to",
+      "start": 1827.839,
+      "duration": 4.409
+    },
+    {
+      "text": " solve this? First, there's a thing",
+      "start": 1831.304,
+      "duration": 5.497
+    },
+    {
+      "text": " called gradient clipping. So gradient",
+      "start": 1835.85,
+      "duration": 7.063
+    },
+    {
+      "text": " clipping means you clip your gradients",
+      "start": 1841.963,
+      "duration": 2.909
+    },
+    {
+      "text": " to a maximum value. You say you",
+      "start": 1843.922,
+      "duration": 4.063
+    },
+    {
+      "text": " shouldn't increase it beyond that. It",
+      "start": 1847.025,
+      "duration": 2.624
+    },
+    {
+      "text": " shouldn't exceed that. So it helps,",
+      "start": 1848.69,
+      "duration": 3.825
+    },
+    {
+      "text": " right? It helps in a lot of situations.",
+      "start": 1851.577,
+      "duration": 4.834
+    },
+    {
+      "text": " Second, it's to have a controlled",
+      "start": 1858.746,
+      "duration": 2.544
+    },
+    {
+      "text": " learning rate. If you increase the",
+      "start": 1860.336,
+      "duration": 6.018
+    },
+    {
+      "text": " learning rate too much, it can blow up",
+      "start": 1865.401,
+      "duration": 2.778
+    },
+    {
+      "text": " the entire gradient, making your",
+      "start": 1867.226,
+      "duration": 2.497
+    },
+    {
+      "text": " training unstable. And third again,",
+      "start": 1868.769,
+      "duration": 5.431
+    },
+    {
+      "text": " abandon RNs. Let's move to LSDMs. And",
+      "start": 1873.268,
+      "duration": 5.977
+    },
+    {
+      "text": " you won't have this problem there. Okay",
+      "start": 1878.285,
+      "duration": 4.166
+    },
+    {
+      "text": "? So, in summary, let me summarize the",
+      "start": 1881.451,
+      "duration": 4.395
+    },
+    {
+      "text": " whole thing. RNs can work with",
+      "start": 1884.903,
+      "duration": 5.136
+    },
+    {
+      "text": " sequential data, but they have some",
+      "start": 1889.089,
+      "duration": 2.76
+    },
+    {
+      "text": " problems. There are two problems. First",
+      "start": 1890.9,
+      "duration": 5.02
+    },
+    {
+      "text": ", they can't capture long-term",
+      "start": 1894.92,
+      "duration": 2.434
+    },
+    {
+      "text": " dependencies because of the vanishing",
+      "start": 1896.402,
+      "duration": 2.77
+    },
+    {
+      "text": " gradient problem. And in certain",
+      "start": 1898.219,
+      "duration": 3.097
+    },
+    {
+      "text": " scenarios, the training is unstable.",
+      "start": 1900.366,
+      "duration": 2.799
+    },
+    {
+      "text": " Training doesn't happen at all because",
+      "start": 1902.265,
+      "duration": 2.583
+    },
+    {
+      "text": " of the exploding gradient problem. So,",
+      "start": 1903.89,
+      "duration": 2.7
+    },
+    {
+      "text": " basically, unstable gradients are a",
+      "start": 1905.651,
+      "duration": 3.141
+    },
+    {
+      "text": " problem with RNs. Okay? I gave you a",
+      "start": 1907.854,
+      "duration": 4.604
+    },
+    {
+      "text": " brief, yet understandable mathematical",
+      "start": 1911.511,
+      "duration": 3.044
+    },
+    {
+      "text": " intuition for it. And on the whole,",
+      "start": 1913.608,
+      "duration": 5.405
+    },
+    {
+      "text": " basically, I tried to explain to you",
+      "start": 1918.065,
+      "duration": 2.872
+    },
+    {
+      "text": " that RNs leave. Let's move on to LSTMs,",
+      "start": 1919.989,
+      "duration": 5.007
+    },
+    {
+      "text": " because that's an architecture that",
+      "start": 1924.044,
+      "duration": 2.661
+    },
+    {
+      "text": " solves these problems and is actually",
+      "start": 1925.752,
+      "duration": 2.757
+    },
+    {
+      "text": " used a lot in the real world. Okay? So,",
+      "start": 1927.556,
+      "duration": 3.552
+    },
+    {
+      "text": " I really hope you understood this video",
+      "start": 1930.16,
+      "duration": 3.047
+    },
+    {
+      "text": ". If you liked it, please like it. See",
+      "start": 1932.207,
+      "duration": 3.805
+    },
+    {
+      "text": " you in the next video.",
+      "start": 1935.058,
+      "duration": 2.028
+    }
+  ]
+}

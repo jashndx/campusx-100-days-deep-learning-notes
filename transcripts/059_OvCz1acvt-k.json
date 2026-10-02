@@ -1,0 +1,2785 @@
+{
+  "id": "OvCz1acvt-k",
+  "index": 59,
+  "title": "How Backpropagation works in RNN | Backpropagation Through Time",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and you are  welcome to CampusX. In this video, we  will continue our deep learning  playlist. We were studying RNNs and in  the last video, we discussed what the  different types of RNNs are. Today's  video is very important because today  we will study a very important concept:  how backpropagation works inside an RNN . Okay? So let's start the video. So  guys, what have we studied in RNN so  far? Let's summarize it once. So, first  of all, we did an introduction video on  RNN. Where we discussed what an RNN is.  What its applications are. Why RNN  should be used for sequential data.  Things like that. Okay? After that, in  the second video, we discussed in  detail the architecture of a simple RNN . Okay? After that, we did a practical  video where we ran code in Keras for  sentiment analysis. And then we did a  video on types of RNNs. Okay? Now, in  this video, we are going to learn how  backpropagation works in an RNN. Okay?  This is the goal of this video because  after all, an RNN is a neural network,  and neural networks learn, and learning  happens through backpropagation. Okay?  Now, one thing I would like to tell you  here is that backpropagation in RNNs is  called backpropagation through time.  Okay? And it is a very, very  interesting concept. And it is not very  difficult to understand either. So, you  will be able to understand it. Okay? So , in this entire video, first of all, I  will create a setup. We will take some  data. We will use it as an example and  try to understand exactly how  backpropagation works on it. Now, to  understand backpropagation, the example  we will take is that of a many-to-one  RNN. Okay? We are going to take an  example where sentiment analysis is  being done. I have already told you  before what sentiment analysis is. So,  sentiment analysis is a problem where  you are given text as input and in the  output, you state what the sentiment of  that text is. One means positive, zero  means negative sentiment. Okay? So,  let's discuss the whole setup in detail . Because I feel that if you understand  the setup well, then you will be able  to understand well how backpropagation  works. Okay? So, we take a small toy  dataset. Let's assume our text  currently has three reviews, or you  could call it any piece of text. And it  just consists of three words for all of  those. So, let's assume our first  review is \"cat, mat, and rat.\" Our  second review is \"rat, rat, and mat.\"  And our third review is \"mat, mat, and  cat.\" Okay? This is our input and this  is our output. The first review has a  positive sentiment. The second review  has a negative sentiment, and the third  review has a negative sentiment. Okay?  Now, as I have told you in previous  videos, what is the first thing you  have to do? You have to convert your  text into vectors. You have to convert  it into numbers. So, what do you do?  You first calculate how many unique  words are in your vocabulary. So, there  are three unique words. So, there is \" cat,\" there is \"mat,\" and there is \"rat .\" Right? So, you can represent any  word with three numbers. For example,  you can represent \"cat\" like this. You  can represent \"mat\" like this, and \"rat \" like this. So, going by this logic,  your dataset will transform and look  like this. So, wherever there is \"cat,\"  you convert it to 1 0 0. And you can  see this is the vector representation  of our dataset. This is our x. This is  our y. You can call this x1. You can  call this x2. You can call this x3.  Similarly, if you have more reviews, it  can go up to xn. Okay? So, you can see  this is the format of our data. Okay?  Now, what will we do? We will draw an  RNN. Okay? We will draw an RNN  architecture and feed this data into  that RNN architecture. So, for a moment , let's assume our RNN architecture has  one hidden layer, and it consists of  three units. It has three cells inside,  and obviously, the input received is  three-dimensional. Because you can see  every word here can be represented  using three numbers. So, these will be  your connections. Right? And then, in  your output, there is also one node  because this is a binary classification  problem. And from here, you will get  your y-hat. Okay? This is your output  layer. Also, since it is a recurrent  layer, you send a weight back from here . Okay? You call this weight \"W input.\"  Okay? Its shape will be 3 by 3, as you  can see. This weight here will be W_in  and this will also be 3x3 because, as I  have told you in previous videos, since  there are three nodes here. These are  the three nodes. Their output goes to  themselves as well as to the other two.  Like this. Then from this one, it goes  to this, to itself, and to this one as  well. It goes from this, from this, and  to itself as well. So basically, there  is a 3x3 connection here. Okay? And  then there is this weight which is  W_out and this is a—I am sorry. Then  there is this weight. This will be  W_out and this is your 3x1. Okay? So  basically, in this entire RNN, these  are the parameters. Right? You can also  count the biases. Like, there will be  three biases here and one bias in this.  But for now, to simplify, we are  ignoring the bias. If you want, you can  include them too. But for now, we are  proceeding by ignoring them. So, this  is the RNN. Okay? Now what will happen?  If we want to study backpropagation,  you first need to know how forward  propagation works. So, how it will work  is that we will take the reviews one by  one and send them into this system.  Okay? And I have already told you that  your reviews will be inserted word by  word. So, first of all, we will talk  about this review. We will talk about  this review. Okay? Now, what will  happen in this review too? It will work  in three steps. So, in the first step,  you will send the first word. In the  second step, the second word, in the  third step, the third word, and then  you will get your Y-hat calculated.  Okay? So basically, what will happen?  First of all, you will take this. Okay?  So, you will send 1 here. You will send  0 here. You will send 0 here. And this  will enter this system. And at this  spot, at this place, you will get O1.  Okay? Now, what will you do again? You  will take the next word and then send  it. Then this will be calculated  entirely, and you will get O2. Then you  will take the third word. You will send  it inside, and here you will get O3.  Now, since no other words are left, you  will move in this direction, and then  finally you will get your Y-hat. This  is forward propagation. So, basically,  you are unfolding your recurrent neural  network in time. Okay? I showed you a  simplified diagram of this, where you  represent this entire complex cell as a  single box. So, in this box, you first  send in your first word, x1. If this is  x1, then its first word is x1. You are  sending x11. From here, you get o0. o0  is basically the zeroth time step. This  is basically a set of zeros because  initially, you need an input. From here , you will get O1. Which you send back  into this same layer. You send it back  into this layer with X12, then O2 is  calculated, which you send back to the  same layer for the third word, and now  in this step O3 is calculated, which is  the output of the final word, and then  you send it to this neuron and from  here you get y hat. Now, in this entire  system, if you look, this is your Wi.  Wi, and this is your W hidden. W hidden . And this is basically your W output.  Right? So this is the scene. Now, if  you want to write the forward  propagation equations, the forward  propagation equation will be such that  you first calculate O1. What is O1? O1  is the dot product of X1 with WI plus  the dot product of O0 with WH, and you  are sending this into an activation  function, which is tan H by default.  This is O1. Then what are you doing?  You are calculating O2. And what is O2?  O2 is the dot product of X12. WI + O1.  WH. F—here too you have an activation  function. Then you will calculate O3,  which will be X13 WI + O2. WH. F, and  now finally when you get O3, you would  use O3 to calculate y hat. And y hat  will be equal to—this is a different  activation function (it will generally  be sigmoid, because it is binary cross  entropy): sigmoid of O3 dot product W  naught. Right, and now you have your y  hat, you will also have your y; so  using y and y hat, you can calculate  your loss and the loss will be: yi log  yi. Minus-(1-yi) log (1-yi hat). Right?  This is your loss function. So what is  the whole flow? You entered from here.  Taking X1 and O0, you gave X2. Combined  with O1, you calculated O2. You gave X3 . Combined with O2, you calculated O3,  and from O3, you calculated Y hat.  Using which you calculated your loss.  Now, once you have calculated your loss , what do you need to do? You need to  minimize your loss, and the way to  minimize it is gradient descent. So,  basically, what you need to do is to  consider all the parameters in your  system. What are the parameters? WI  matrix, WH matrix, and WO matrix. You  need to find values for these three  such that L becomes minimum. And you  know what you have to do for this?  Apply gradient descent, and the  gradient descent equation will be  learning rate times del by del. WH = WH -learning rate times del L/del WH and  WO would be equal to WO minus learning  rate times del L/del WO. Now you have  the initial values for all of these.  You also have the value for the  learning rate. So, basically, your task  now is to calculate these three  derivatives. If you calculate these  three derivatives, then you can apply  backpropagation. So, our next target is  to calculate these three derivatives. I  hope you are understanding things so  far. So guys, now we first need to find  these three derivatives. We will start  first with this derivative. This output  matrix, this specific matrix, we will  calculate the derivative of this one  first. Because this is the easiest to  calculate as it is close to the output.  Okay? So, I told you earlier that while  calculating or deriving backpropagation , you move from the back to the front.  Okay? In forward propagation, you move  in this direction. In backpropagation,  you move in this direction. Okay? So,  we need to find W naught. Look, let's  make it simple. If someone tells you  that you need to calculate this, then  you are basically being asked how much  the loss will change if you make  changes to W naught. That is exactly  what a derivative tells you. Right? So  now, if you come from the back to the  front, you will realize that the loss  depends only on one thing, and that is  y-hat. On your prediction, because y is  constant in the data. You cannot change  it. So it depends on y-hat. Now, how is  y-hat calculated? If you look at the  forward propagation equations. Here is  your y-hat. So, you are calculating  y-hat using two quantities. O3, meaning  it depends on O3 and it depends on W  naught. Okay? So you can see that  changing W naught will change Y hat,  and changing Y hat will change L. So  you can actually write this very simply  by applying the chain rule of  differentiation, as del L/del hat and  del hat/del W naught. This is the  formula, you can calculate it very  easily. What do you need to do? You  just have to take this loss equation,  and from this loss equation, you can  very easily calculate del L/del hat,  okay? I have shown you this many times  in the past, and from this equation,  you can calculate del hat/del w0,  alright, and you just multiply both of  them together, that will be your del L/ W naught. Okay? I have done this many  times in the past while teaching ANN,  so I hope you can do at least this much , okay? If you are not understanding,  then go back in this playlist where I  have taught you backpropagation on ANN.  Watch those videos once, and you will  understand what I am saying. You just  need to do simple differentiation. Okay ? Now, things get interesting here.  When you have to find this. Suppose you  have to find this. This weight, this  weight, this is basically the entire  weight matrix. Calculating its  differentiation is a bit of a tricky  task. Why? Let's try to understand.  Look carefully. If you are asked to  calculate del by del WI, it means you  are being asked to calculate how much L  will be affected by changes in WI.  Right? So you have to build the chain  again in such a way that L depends on y  hat. Y hat depends on O3 and W naught.  Okay? Now, this quantity O3, how many  things does it depend on? It depends on  four things. Right? Wh, I am sorry. O3  depends on X I3 On this W I, this  weight Also, I have written something  wrong here. This will be O1 and this  will be O2. It is also depending on O2.  Right? And lastly, it depends on W H.  It depends on this weight. Okay? So if  you look, if you track a path, you have  to catch this path. You have to catch  this path. But a difference arises  right here. The difference is that your  O3 depends on O2. Now, if you look at  this equation, O2 itself depends on  four things. Which four things? O2  depends on your X i2. On WI again. On  O1 and WH. Now, if you look again, this  O1, this O1 also depends on four things . If you focus on this equation. Which  four things? Let's take a look. X i1. W  i, O0, and W. So basically, if you pay  attention, there is a relationship  between L and WI via three separate  paths. One is what I have drawn in  green. Then there is this path that  goes this way. This is the second path,  and then there is a third path. I'm  sorry if I am confusing you with this  diagram, but you get the idea. There  are three paths, okay? There are three  paths, so you will have to calculate  the differentiation accordingly. So  what will the differentiation be? First  of all, if you want to find dL/dWi,  First you have to calculate this green  path, which is del l by del y-hat; del  y-hat depends on del 3, and O3 depends  on WI. This is our green path. I will  remove this for a while. Okay? Now we  will focus on the pink path. So you  will add to it. You will add del l by  del y-hat. Del y-hat by del O3. Del O3  by del O2 and del O2/del WI; this is  our pink path. Now I am removing this  as well. Now only the blue path is left , and you will have to add this too. So  it will be: del l by del y-hat, del  y-hat by del O3, del O3 by del O2, del  O2/del O1 and finally del O1/del WI.  This is the formula for your del l/del  WI. Now think, there are three terms  here because this RNN of ours, when it  unfolded in time, it did so three times . And it happened three times because  in our dataset, there are three words.  Now imagine if you had 10 words in  every review of your dataset, then you  would have 10 terms here in this  equation. Right? So obviously, writing  it this way is not feasible at all.  Okay? So what will you have to do? You  will have to summarize this somehow. So , the way to summarize it is that you  can write it like this. dl/dwi is equal  to σ of j = 1 up to p = 3, meaning  because there are three words. So the  value of j will be one, two, and three.  And here you will write del l by del y  hat, del y hat by del o j, and del o j  by del w input; this is the correct  form. Now, if you have three words,  then three will come here. If there are  10 words, then 10 will come here, and  let me expand it for you. So, suppose  when you are writing for the first one,  when the time step is one, when you  expand this, it becomes del l by del y  hat, del y hat by del o1, and del o1 by  del wi. Now, look closely at what this  is. If you look at this chain, you are  asking what the relationship is between  y hat and o1? Here is y hat and here is  o1. So, to get from y hat to o1, what  will you do? If you want to calculate  this, how would you write it? You will  write that y hat depends on o3. o3  depends on o2, and o2 depends on o1. So  basically, you will expand it and write  it like this. Del l by del y hat, del y  hat by del o3, del o3 by del o2, del o2  by del o1, and finally del o1 by del wi . Now, if you notice, this term and  this term, which was your third term  when you calculated this, are both  exactly the same. Right? Now, think  about what happens if you expand for j  = 2. For j = 2, del l by del y hat, del  y hat by del o2, and del o2 by del w  input. Now look again, this term of  yours, which term is this? You are  asking what is between this and this?  So what will you do again? You will  calculate del y hat by del o3 and del  o3 by del o2, right? And I guess you  can understand, upon expanding this,  you would get del l by del y hat, del y  hat by del o3, I am sorry, del o3 by  del o2, del o2 by del w input. Now,  this term and this term are both the  same. Now look, in this term, when you  put j = 3, it becomes del l by del y  hat, del y hat by del o3, and del o3 by  del w input. Now, this term here and  this term here are exactly the same. So , basically, I am proving to you that  you can write del L/del Wi in a very  compact way. j = 1 to n, where n = time  steps. Okay? And here you can write:  del L/del y-hat, del y-hat/del Oj, and  del Oj/del Wi. Here is your formula.  For the second one. We have calculated  this one too, and we have calculated  this one as well. Now, only this one is  left, guys. Now we will go to calculate  the last derivative, which is this one.  So, basically, you have to calculate  the derivative of L with respect to WH,  the hidden weight, this weight, uh,  this weight. Okay? The spiral drawn  here. So, I guess you are understanding  again that there is some complexity  involved because WH is in every time  step. Right? WH is in every time step.  And so, if you want to find the  relationship between L and WH, then you  would be able to find this: that L  depends on y-hat, and y-hat depends on  two things, which is O3. And in fact,  let's write it like this. Uh, y-hat  depends on W-output and O3, and O3  depends on four things. So, it depends  on Xi3, Wi, O2, And WH. Okay? Now, uh,  this O2 depends on four things. It's  Xi2, Wi, O1, And WH. Now, this O1  depends on four things: Xi1, Wi, O0,  and WH, so you can see there is a  non-linear relationship. So, the first  one is this. Right. Then your second  one is this. I am drawing from the top.  This, and then the third one is through  the O1 path. WH is present here as well . Okay? So, I will try to write it down . I hope you will understand it. So,  del L/del W-hidden will be, del L/del  y-hat, del y-hat/del O3, and del O3  depends on del WH, this is the first  one. Okay? I am removing this. And for  now, we will focus on this blue one. So , this is del L/del y-hat. You are  going from here to here, del y-hat/del  O3, you are going here, del O3/del O2,  del O2 depends on WH, Okay? And now you  are heading towards the last path,  towards this one, towards this one, so  this will become del L by del Y hat,  del Y hat by del O3, O3 by O2, O2 by O1 , O2 to O1 and O1 to del. So basically,  you did it exactly like last time, and  you can simplify and write this too as  something like this: i = 1 to n, where  n is the time steps or how many words  are in your review, del by del Y hat,  del Y hat by del, let's call this j,  del Oj and del Oj by del WH. This is  the formula guys, This is the formula,  okay? And with this, we have calculated  all three of these derivatives. All  three of these derivatives. Now, if  these three derivatives are calculated,  we can apply this gradient descent step . So basically, I am summarizing it for  you once. So what will happen? First of  all, you will work with some initial  weights. WI will have some initial  weight. WH will have some. WO will have  some. Now what will you do? You will  take your first review. You will  calculate O1 by sending its first word.  You will calculate O2 by sending the  second weight. You will calculate O3 by  sending the third weight. And using the  third one, you will calculate Y hat. By  calculating Y hat, you will get the  loss. Now, to minimize this loss, you  will apply gradient descent. Which is  basically these three equations. So now  what will you do? You have decided on a  learning rate. You will calculate this,  this, and this, and as soon as you put  them in these equations, you will get  the new value for these three. Now, you  will calculate the forward propagation  of the second word using those new  values, from which you will get Y hat  and you will get the loss. Then you  will apply gradient descent to minimize  that loss, and you will keep doing this  constantly. And eventually, you will  reach the minimum value of all these  parameters. Okay? So I hope you  understood, to be honest, we are  studying backpropagation for the third  time. The only different thing here is  that you have to unfold the whole  concept in time. Because of which, this  non-linear computation chart is being  formed. Right? But if your concepts are  clear, then it's not that difficult to  be honest. Okay? So I hope you  understood this whole thing. So that  was the video guys. I hope I was able  to explain to you how backpropagation  works inside an RNN. And now we will  move forward and discuss what is the  problem with simple RNNs, and then we  will move towards LSTM and GRU  architectures. Okay? So if you liked  the video, please like it, and if you  haven't subscribed to the channel,  please subscribe. Okay? See you in the  next video. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and you are",
+      "start": 0.1,
+      "duration": 3.169
+    },
+    {
+      "text": " welcome to CampusX. In this video, we",
+      "start": 2.327,
+      "duration": 3.067
+    },
+    {
+      "text": " will continue our deep learning",
+      "start": 4.446,
+      "duration": 2.61
+    },
+    {
+      "text": " playlist. We were studying RNNs and in",
+      "start": 6.108,
+      "duration": 3.084
+    },
+    {
+      "text": " the last video, we discussed what the",
+      "start": 8.246,
+      "duration": 3.005
+    },
+    {
+      "text": " different types of RNNs are. Today's",
+      "start": 10.305,
+      "duration": 3.141
+    },
+    {
+      "text": " video is very important because today",
+      "start": 12.508,
+      "duration": 3.322
+    },
+    {
+      "text": " we will study a very important concept:",
+      "start": 14.892,
+      "duration": 3.447
+    },
+    {
+      "text": " how backpropagation works inside an RNN",
+      "start": 17.402,
+      "duration": 3.447
+    },
+    {
+      "text": ". Okay? So let's start the video. So",
+      "start": 19.849,
+      "duration": 3.865
+    },
+    {
+      "text": " guys, what have we studied in RNN so",
+      "start": 22.779,
+      "duration": 3.318
+    },
+    {
+      "text": " far? Let's summarize it once. So, first",
+      "start": 25.161,
+      "duration": 3.383
+    },
+    {
+      "text": " of all, we did an introduction video on",
+      "start": 27.613,
+      "duration": 3.681
+    },
+    {
+      "text": " RNN. Where we discussed what an RNN is.",
+      "start": 30.363,
+      "duration": 4.003
+    },
+    {
+      "text": " What its applications are. Why RNN",
+      "start": 34.572,
+      "duration": 3.266
+    },
+    {
+      "text": " should be used for sequential data.",
+      "start": 36.898,
+      "duration": 3.127
+    },
+    {
+      "text": " Things like that. Okay? After that, in",
+      "start": 39.42,
+      "duration": 4.078
+    },
+    {
+      "text": " the second video, we discussed in",
+      "start": 42.559,
+      "duration": 3.013
+    },
+    {
+      "text": " detail the architecture of a simple RNN",
+      "start": 44.633,
+      "duration": 3.379
+    },
+    {
+      "text": ". Okay? After that, we did a practical",
+      "start": 47.012,
+      "duration": 6.934
+    },
+    {
+      "text": " video where we ran code in Keras for",
+      "start": 53.006,
+      "duration": 3.167
+    },
+    {
+      "text": " sentiment analysis. And then we did a",
+      "start": 55.234,
+      "duration": 7.357
+    },
+    {
+      "text": " video on types of RNNs. Okay? Now, in",
+      "start": 61.65,
+      "duration": 8.749
+    },
+    {
+      "text": " this video, we are going to learn how",
+      "start": 69.462,
+      "duration": 3.312
+    },
+    {
+      "text": " backpropagation works in an RNN. Okay?",
+      "start": 71.837,
+      "duration": 6.419
+    },
+    {
+      "text": " This is the goal of this video because",
+      "start": 77.736,
+      "duration": 3.139
+    },
+    {
+      "text": " after all, an RNN is a neural network,",
+      "start": 79.931,
+      "duration": 3.14
+    },
+    {
+      "text": " and neural networks learn, and learning",
+      "start": 82.127,
+      "duration": 3.196
+    },
+    {
+      "text": " happens through backpropagation. Okay?",
+      "start": 84.38,
+      "duration": 3.797
+    },
+    {
+      "text": " Now, one thing I would like to tell you",
+      "start": 88.781,
+      "duration": 3.19
+    },
+    {
+      "text": " here is that backpropagation in RNNs is",
+      "start": 91.027,
+      "duration": 3.191
+    },
+    {
+      "text": " called backpropagation through time.",
+      "start": 93.274,
+      "duration": 3.023
+    },
+    {
+      "text": " Okay? And it is a very, very",
+      "start": 97.0,
+      "duration": 2.835
+    },
+    {
+      "text": " interesting concept. And it is not very",
+      "start": 98.895,
+      "duration": 3.109
+    },
+    {
+      "text": " difficult to understand either. So, you",
+      "start": 101.049,
+      "duration": 2.871
+    },
+    {
+      "text": " will be able to understand it. Okay? So",
+      "start": 102.97,
+      "duration": 3.272
+    },
+    {
+      "text": ", in this entire video, first of all, I",
+      "start": 105.242,
+      "duration": 3.471
+    },
+    {
+      "text": " will create a setup. We will take some",
+      "start": 107.776,
+      "duration": 3.151
+    },
+    {
+      "text": " data. We will use it as an example and",
+      "start": 109.973,
+      "duration": 4.808
+    },
+    {
+      "text": " try to understand exactly how",
+      "start": 113.836,
+      "duration": 2.583
+    },
+    {
+      "text": " backpropagation works on it. Now, to",
+      "start": 115.474,
+      "duration": 6.013
+    },
+    {
+      "text": " understand backpropagation, the example",
+      "start": 120.551,
+      "duration": 3.495
+    },
+    {
+      "text": " we will take is that of a many-to-one",
+      "start": 123.11,
+      "duration": 3.368
+    },
+    {
+      "text": " RNN. Okay? We are going to take an",
+      "start": 125.542,
+      "duration": 6.269
+    },
+    {
+      "text": " example where sentiment analysis is",
+      "start": 130.862,
+      "duration": 2.758
+    },
+    {
+      "text": " being done. I have already told you",
+      "start": 132.671,
+      "duration": 4.285
+    },
+    {
+      "text": " before what sentiment analysis is. So,",
+      "start": 136.01,
+      "duration": 3.587
+    },
+    {
+      "text": " sentiment analysis is a problem where",
+      "start": 138.655,
+      "duration": 3.128
+    },
+    {
+      "text": " you are given text as input and in the",
+      "start": 140.841,
+      "duration": 3.186
+    },
+    {
+      "text": " output, you state what the sentiment of",
+      "start": 143.084,
+      "duration": 3.244
+    },
+    {
+      "text": " that text is. One means positive, zero",
+      "start": 145.386,
+      "duration": 3.627
+    },
+    {
+      "text": " means negative sentiment. Okay? So,",
+      "start": 148.079,
+      "duration": 3.478
+    },
+    {
+      "text": " let's discuss the whole setup in detail",
+      "start": 150.617,
+      "duration": 3.337
+    },
+    {
+      "text": ". Because I feel that if you understand",
+      "start": 152.954,
+      "duration": 3.123
+    },
+    {
+      "text": " the setup well, then you will be able",
+      "start": 155.128,
+      "duration": 2.892
+    },
+    {
+      "text": " to understand well how backpropagation",
+      "start": 157.071,
+      "duration": 2.943
+    },
+    {
+      "text": " works. Okay? So, we take a small toy",
+      "start": 159.065,
+      "duration": 5.563
+    },
+    {
+      "text": " dataset. Let's assume our text",
+      "start": 163.7,
+      "duration": 6.356
+    },
+    {
+      "text": " currently has three reviews, or you",
+      "start": 169.109,
+      "duration": 2.841
+    },
+    {
+      "text": " could call it any piece of text. And it",
+      "start": 171.002,
+      "duration": 5.588
+    },
+    {
+      "text": " just consists of three words for all of",
+      "start": 175.641,
+      "duration": 2.996
+    },
+    {
+      "text": " those. So, let's assume our first",
+      "start": 177.688,
+      "duration": 3.885
+    },
+    {
+      "text": " review is \"cat, mat, and rat.\" Our",
+      "start": 180.647,
+      "duration": 5.397
+    },
+    {
+      "text": " second review is \"rat, rat, and mat.\"",
+      "start": 185.117,
+      "duration": 3.695
+    },
+    {
+      "text": " And our third review is \"mat, mat, and",
+      "start": 190.361,
+      "duration": 3.761
+    },
+    {
+      "text": " cat.\" Okay? This is our input and this",
+      "start": 193.194,
+      "duration": 4.513
+    },
+    {
+      "text": " is our output. The first review has a",
+      "start": 196.756,
+      "duration": 3.336
+    },
+    {
+      "text": " positive sentiment. The second review",
+      "start": 199.145,
+      "duration": 3.281
+    },
+    {
+      "text": " has a negative sentiment, and the third",
+      "start": 201.478,
+      "duration": 3.023
+    },
+    {
+      "text": " review has a negative sentiment. Okay?",
+      "start": 203.553,
+      "duration": 3.583
+    },
+    {
+      "text": " Now, as I have told you in previous",
+      "start": 206.433,
+      "duration": 2.894
+    },
+    {
+      "text": " videos, what is the first thing you",
+      "start": 208.381,
+      "duration": 2.894
+    },
+    {
+      "text": " have to do? You have to convert your",
+      "start": 210.329,
+      "duration": 3.794
+    },
+    {
+      "text": " text into vectors. You have to convert",
+      "start": 213.173,
+      "duration": 3.457
+    },
+    {
+      "text": " it into numbers. So, what do you do?",
+      "start": 215.678,
+      "duration": 3.135
+    },
+    {
+      "text": " You first calculate how many unique",
+      "start": 218.219,
+      "duration": 2.916
+    },
+    {
+      "text": " words are in your vocabulary. So, there",
+      "start": 220.19,
+      "duration": 3.489
+    },
+    {
+      "text": " are three unique words. So, there is \"",
+      "start": 222.743,
+      "duration": 3.84
+    },
+    {
+      "text": "cat,\" there is \"mat,\" and there is \"rat",
+      "start": 225.583,
+      "duration": 3.936
+    },
+    {
+      "text": ".\" Right? So, you can represent any",
+      "start": 228.519,
+      "duration": 4.4
+    },
+    {
+      "text": " word with three numbers. For example,",
+      "start": 231.98,
+      "duration": 4.258
+    },
+    {
+      "text": " you can represent \"cat\" like this. You",
+      "start": 235.304,
+      "duration": 4.479
+    },
+    {
+      "text": " can represent \"mat\" like this, and \"rat",
+      "start": 238.854,
+      "duration": 3.762
+    },
+    {
+      "text": "\" like this. So, going by this logic,",
+      "start": 241.616,
+      "duration": 4.693
+    },
+    {
+      "text": " your dataset will transform and look",
+      "start": 245.373,
+      "duration": 3.311
+    },
+    {
+      "text": " like this. So, wherever there is \"cat,\"",
+      "start": 247.748,
+      "duration": 4.604
+    },
+    {
+      "text": " you convert it to 1 0 0. And you can",
+      "start": 251.427,
+      "duration": 4.137
+    },
+    {
+      "text": " see this is the vector representation",
+      "start": 254.614,
+      "duration": 2.85
+    },
+    {
+      "text": " of our dataset. This is our x. This is",
+      "start": 256.514,
+      "duration": 4.445
+    },
+    {
+      "text": " our y. You can call this x1. You can",
+      "start": 260.023,
+      "duration": 4.153
+    },
+    {
+      "text": " call this x2. You can call this x3.",
+      "start": 263.239,
+      "duration": 3.328
+    },
+    {
+      "text": " Similarly, if you have more reviews, it",
+      "start": 266.278,
+      "duration": 3.508
+    },
+    {
+      "text": " can go up to xn. Okay? So, you can see",
+      "start": 268.85,
+      "duration": 5.58
+    },
+    {
+      "text": " this is the format of our data. Okay?",
+      "start": 273.487,
+      "duration": 4.489
+    },
+    {
+      "text": " Now, what will we do? We will draw an",
+      "start": 277.472,
+      "duration": 3.965
+    },
+    {
+      "text": " RNN. Okay? We will draw an RNN",
+      "start": 280.501,
+      "duration": 4.378
+    },
+    {
+      "text": " architecture and feed this data into",
+      "start": 283.935,
+      "duration": 3.037
+    },
+    {
+      "text": " that RNN architecture. So, for a moment",
+      "start": 286.029,
+      "duration": 6.962
+    },
+    {
+      "text": ", let's assume our RNN architecture has",
+      "start": 291.991,
+      "duration": 3.487
+    },
+    {
+      "text": " one hidden layer, and it consists of",
+      "start": 294.542,
+      "duration": 3.295
+    },
+    {
+      "text": " three units. It has three cells inside,",
+      "start": 296.901,
+      "duration": 6.776
+    },
+    {
+      "text": " and obviously, the input received is",
+      "start": 302.738,
+      "duration": 3.212
+    },
+    {
+      "text": " three-dimensional. Because you can see",
+      "start": 305.012,
+      "duration": 3.921
+    },
+    {
+      "text": " every word here can be represented",
+      "start": 307.986,
+      "duration": 2.812
+    },
+    {
+      "text": " using three numbers. So, these will be",
+      "start": 309.851,
+      "duration": 4.399
+    },
+    {
+      "text": " your connections. Right? And then, in",
+      "start": 313.307,
+      "duration": 5.562
+    },
+    {
+      "text": " your output, there is also one node",
+      "start": 317.927,
+      "duration": 3.003
+    },
+    {
+      "text": " because this is a binary classification",
+      "start": 319.988,
+      "duration": 3.232
+    },
+    {
+      "text": " problem. And from here, you will get",
+      "start": 322.278,
+      "duration": 9.517
+    },
+    {
+      "text": " your y-hat. Okay? This is your output",
+      "start": 330.848,
+      "duration": 4.852
+    },
+    {
+      "text": " layer. Also, since it is a recurrent",
+      "start": 334.75,
+      "duration": 5.598
+    },
+    {
+      "text": " layer, you send a weight back from here",
+      "start": 339.403,
+      "duration": 3.153
+    },
+    {
+      "text": ". Okay? You call this weight \"W input.\"",
+      "start": 341.556,
+      "duration": 7.563
+    },
+    {
+      "text": " Okay? Its shape will be 3 by 3, as you",
+      "start": 349.887,
+      "duration": 3.648
+    },
+    {
+      "text": " can see. This weight here will be W_in",
+      "start": 352.601,
+      "duration": 5.351
+    },
+    {
+      "text": " and this will also be 3x3 because, as I",
+      "start": 357.015,
+      "duration": 3.455
+    },
+    {
+      "text": " have told you in previous videos, since",
+      "start": 359.533,
+      "duration": 3.455
+    },
+    {
+      "text": " there are three nodes here. These are",
+      "start": 362.051,
+      "duration": 4.744
+    },
+    {
+      "text": " the three nodes. Their output goes to",
+      "start": 365.846,
+      "duration": 4.391
+    },
+    {
+      "text": " themselves as well as to the other two.",
+      "start": 369.285,
+      "duration": 2.88
+    },
+    {
+      "text": " Like this. Then from this one, it goes",
+      "start": 372.622,
+      "duration": 3.507
+    },
+    {
+      "text": " to this, to itself, and to this one as",
+      "start": 375.188,
+      "duration": 3.265
+    },
+    {
+      "text": " well. It goes from this, from this, and",
+      "start": 377.513,
+      "duration": 3.062
+    },
+    {
+      "text": " to itself as well. So basically, there",
+      "start": 379.626,
+      "duration": 3.103
+    },
+    {
+      "text": " is a 3x3 connection here. Okay? And",
+      "start": 381.786,
+      "duration": 3.864
+    },
+    {
+      "text": " then there is this weight which is",
+      "start": 384.714,
+      "duration": 3.172
+    },
+    {
+      "text": " W_out and this is a—I am sorry. Then",
+      "start": 386.95,
+      "duration": 5.656
+    },
+    {
+      "text": " there is this weight. This will be",
+      "start": 391.65,
+      "duration": 5.068
+    },
+    {
+      "text": " W_out and this is your 3x1. Okay? So",
+      "start": 395.798,
+      "duration": 8.091
+    },
+    {
+      "text": " basically, in this entire RNN, these",
+      "start": 402.959,
+      "duration": 3.499
+    },
+    {
+      "text": " are the parameters. Right? You can also",
+      "start": 405.527,
+      "duration": 6.187
+    },
+    {
+      "text": " count the biases. Like, there will be",
+      "start": 410.769,
+      "duration": 3.342
+    },
+    {
+      "text": " three biases here and one bias in this.",
+      "start": 413.169,
+      "duration": 3.257
+    },
+    {
+      "text": " But for now, to simplify, we are",
+      "start": 415.803,
+      "duration": 3.103
+    },
+    {
+      "text": " ignoring the bias. If you want, you can",
+      "start": 417.971,
+      "duration": 3.681
+    },
+    {
+      "text": " include them too. But for now, we are",
+      "start": 420.705,
+      "duration": 3.148
+    },
+    {
+      "text": " proceeding by ignoring them. So, this",
+      "start": 422.907,
+      "duration": 3.247
+    },
+    {
+      "text": " is the RNN. Okay? Now what will happen?",
+      "start": 425.236,
+      "duration": 3.595
+    },
+    {
+      "text": " If we want to study backpropagation,",
+      "start": 429.666,
+      "duration": 2.994
+    },
+    {
+      "text": " you first need to know how forward",
+      "start": 431.716,
+      "duration": 2.884
+    },
+    {
+      "text": " propagation works. So, how it will work",
+      "start": 433.655,
+      "duration": 5.913
+    },
+    {
+      "text": " is that we will take the reviews one by",
+      "start": 438.619,
+      "duration": 2.993
+    },
+    {
+      "text": " one and send them into this system.",
+      "start": 440.663,
+      "duration": 2.789
+    },
+    {
+      "text": " Okay? And I have already told you that",
+      "start": 443.742,
+      "duration": 3.726
+    },
+    {
+      "text": " your reviews will be inserted word by",
+      "start": 446.516,
+      "duration": 2.796
+    },
+    {
+      "text": " word. So, first of all, we will talk",
+      "start": 448.361,
+      "duration": 3.925
+    },
+    {
+      "text": " about this review. We will talk about",
+      "start": 451.346,
+      "duration": 4.611
+    },
+    {
+      "text": " this review. Okay? Now, what will",
+      "start": 455.005,
+      "duration": 2.969
+    },
+    {
+      "text": " happen in this review too? It will work",
+      "start": 457.027,
+      "duration": 3.098
+    },
+    {
+      "text": " in three steps. So, in the first step,",
+      "start": 459.177,
+      "duration": 3.016
+    },
+    {
+      "text": " you will send the first word. In the",
+      "start": 461.244,
+      "duration": 2.898
+    },
+    {
+      "text": " second step, the second word, in the",
+      "start": 463.191,
+      "duration": 2.784
+    },
+    {
+      "text": " third step, the third word, and then",
+      "start": 465.025,
+      "duration": 2.784
+    },
+    {
+      "text": " you will get your Y-hat calculated.",
+      "start": 466.858,
+      "duration": 2.735
+    },
+    {
+      "text": " Okay? So basically, what will happen?",
+      "start": 468.693,
+      "duration": 3.293
+    },
+    {
+      "text": " First of all, you will take this. Okay?",
+      "start": 471.086,
+      "duration": 4.295
+    },
+    {
+      "text": " So, you will send 1 here. You will send",
+      "start": 474.481,
+      "duration": 3.543
+    },
+    {
+      "text": " 0 here. You will send 0 here. And this",
+      "start": 477.088,
+      "duration": 4.0
+    },
+    {
+      "text": " will enter this system. And at this",
+      "start": 480.131,
+      "duration": 4.747
+    },
+    {
+      "text": " spot, at this place, you will get O1.",
+      "start": 483.937,
+      "duration": 3.195
+    },
+    {
+      "text": " Okay? Now, what will you do again? You",
+      "start": 487.543,
+      "duration": 6.223
+    },
+    {
+      "text": " will take the next word and then send",
+      "start": 492.811,
+      "duration": 2.655
+    },
+    {
+      "text": " it. Then this will be calculated",
+      "start": 494.511,
+      "duration": 5.803
+    },
+    {
+      "text": " entirely, and you will get O2. Then you",
+      "start": 499.37,
+      "duration": 4.549
+    },
+    {
+      "text": " will take the third word. You will send",
+      "start": 502.963,
+      "duration": 5.249
+    },
+    {
+      "text": " it inside, and here you will get O3.",
+      "start": 507.268,
+      "duration": 2.999
+    },
+    {
+      "text": " Now, since no other words are left, you",
+      "start": 510.58,
+      "duration": 3.112
+    },
+    {
+      "text": " will move in this direction, and then",
+      "start": 512.746,
+      "duration": 3.004
+    },
+    {
+      "text": " finally you will get your Y-hat. This",
+      "start": 514.804,
+      "duration": 4.317
+    },
+    {
+      "text": " is forward propagation. So, basically,",
+      "start": 518.177,
+      "duration": 3.712
+    },
+    {
+      "text": " you are unfolding your recurrent neural",
+      "start": 520.95,
+      "duration": 3.377
+    },
+    {
+      "text": " network in time. Okay? I showed you a",
+      "start": 523.388,
+      "duration": 4.81
+    },
+    {
+      "text": " simplified diagram of this, where you",
+      "start": 527.257,
+      "duration": 3.182
+    },
+    {
+      "text": " represent this entire complex cell as a",
+      "start": 529.497,
+      "duration": 3.3
+    },
+    {
+      "text": " single box. So, in this box, you first",
+      "start": 531.856,
+      "duration": 4.914
+    },
+    {
+      "text": " send in your first word, x1. If this is",
+      "start": 535.843,
+      "duration": 4.734
+    },
+    {
+      "text": " x1, then its first word is x1. You are",
+      "start": 539.648,
+      "duration": 4.22
+    },
+    {
+      "text": " sending x11. From here, you get o0. o0",
+      "start": 542.938,
+      "duration": 5.437
+    },
+    {
+      "text": " is basically the zeroth time step. This",
+      "start": 547.444,
+      "duration": 5.603
+    },
+    {
+      "text": " is basically a set of zeros because",
+      "start": 552.101,
+      "duration": 2.888
+    },
+    {
+      "text": " initially, you need an input. From here",
+      "start": 554.043,
+      "duration": 4.765
+    },
+    {
+      "text": ", you will get O1. Which you send back",
+      "start": 557.808,
+      "duration": 5.155
+    },
+    {
+      "text": " into this same layer. You send it back",
+      "start": 562.013,
+      "duration": 8.128
+    },
+    {
+      "text": " into this layer with X12, then O2 is",
+      "start": 569.199,
+      "duration": 3.06
+    },
+    {
+      "text": " calculated, which you send back to the",
+      "start": 571.316,
+      "duration": 3.176
+    },
+    {
+      "text": " same layer for the third word, and now",
+      "start": 573.549,
+      "duration": 3.175
+    },
+    {
+      "text": " in this step O3 is calculated, which is",
+      "start": 575.781,
+      "duration": 3.233
+    },
+    {
+      "text": " the output of the final word, and then",
+      "start": 578.071,
+      "duration": 3.175
+    },
+    {
+      "text": " you send it to this neuron and from",
+      "start": 580.303,
+      "duration": 3.004
+    },
+    {
+      "text": " here you get y hat. Now, in this entire",
+      "start": 582.364,
+      "duration": 8.427
+    },
+    {
+      "text": " system, if you look, this is your Wi.",
+      "start": 589.859,
+      "duration": 3.522
+    },
+    {
+      "text": " Wi, and this is your W hidden. W hidden",
+      "start": 597.895,
+      "duration": 7.711
+    },
+    {
+      "text": ". And this is basically your W output.",
+      "start": 604.606,
+      "duration": 5.003
+    },
+    {
+      "text": " Right? So this is the scene. Now, if",
+      "start": 610.615,
+      "duration": 3.893
+    },
+    {
+      "text": " you want to write the forward",
+      "start": 613.563,
+      "duration": 2.577
+    },
+    {
+      "text": " propagation equations, the forward",
+      "start": 615.194,
+      "duration": 2.849
+    },
+    {
+      "text": " propagation equation will be such that",
+      "start": 617.098,
+      "duration": 3.066
+    },
+    {
+      "text": " you first calculate O1. What is O1? O1",
+      "start": 619.219,
+      "duration": 8.076
+    },
+    {
+      "text": " is the dot product of X1 with WI plus",
+      "start": 626.364,
+      "duration": 3.531
+    },
+    {
+      "text": " the dot product of O0 with WH, and you",
+      "start": 628.964,
+      "duration": 3.6
+    },
+    {
+      "text": " are sending this into an activation",
+      "start": 631.632,
+      "duration": 3.395
+    },
+    {
+      "text": " function, which is tan H by default.",
+      "start": 634.095,
+      "duration": 3.464
+    },
+    {
+      "text": " This is O1. Then what are you doing?",
+      "start": 639.933,
+      "duration": 3.328
+    },
+    {
+      "text": " You are calculating O2. And what is O2?",
+      "start": 642.979,
+      "duration": 3.856
+    },
+    {
+      "text": " O2 is the dot product of X12. WI + O1.",
+      "start": 646.356,
+      "duration": 7.135
+    },
+    {
+      "text": " WH. F—here too you have an activation",
+      "start": 654.558,
+      "duration": 6.109
+    },
+    {
+      "text": " function. Then you will calculate O3,",
+      "start": 659.73,
+      "duration": 6.229
+    },
+    {
+      "text": " which will be X13 WI + O2. WH. F, and",
+      "start": 665.042,
+      "duration": 9.463
+    },
+    {
+      "text": " now finally when you get O3, you would",
+      "start": 673.576,
+      "duration": 3.703
+    },
+    {
+      "text": " use O3 to calculate y hat. And y hat",
+      "start": 676.35,
+      "duration": 6.371
+    },
+    {
+      "text": " will be equal to—this is a different",
+      "start": 681.784,
+      "duration": 3.407
+    },
+    {
+      "text": " activation function (it will generally",
+      "start": 684.255,
+      "duration": 3.407
+    },
+    {
+      "text": " be sigmoid, because it is binary cross",
+      "start": 686.725,
+      "duration": 3.407
+    },
+    {
+      "text": " entropy): sigmoid of O3 dot product W",
+      "start": 689.196,
+      "duration": 3.344
+    },
+    {
+      "text": " naught. Right, and now you have your y",
+      "start": 691.603,
+      "duration": 9.344
+    },
+    {
+      "text": " hat, you will also have your y; so",
+      "start": 700.013,
+      "duration": 3.249
+    },
+    {
+      "text": " using y and y hat, you can calculate",
+      "start": 702.329,
+      "duration": 3.381
+    },
+    {
+      "text": " your loss and the loss will be: yi log",
+      "start": 704.776,
+      "duration": 3.514
+    },
+    {
+      "text": " yi. Minus-(1-yi) log (1-yi hat). Right?",
+      "start": 707.356,
+      "duration": 14.987
+    },
+    {
+      "text": " This is your loss function. So what is",
+      "start": 721.578,
+      "duration": 3.262
+    },
+    {
+      "text": " the whole flow? You entered from here.",
+      "start": 723.893,
+      "duration": 3.062
+    },
+    {
+      "text": " Taking X1 and O0, you gave X2. Combined",
+      "start": 726.882,
+      "duration": 4.58
+    },
+    {
+      "text": " with O1, you calculated O2. You gave X3",
+      "start": 730.533,
+      "duration": 3.923
+    },
+    {
+      "text": ". Combined with O2, you calculated O3,",
+      "start": 733.456,
+      "duration": 3.637
+    },
+    {
+      "text": " and from O3, you calculated Y hat.",
+      "start": 736.161,
+      "duration": 3.319
+    },
+    {
+      "text": " Using which you calculated your loss.",
+      "start": 739.29,
+      "duration": 3.139
+    },
+    {
+      "text": " Now, once you have calculated your loss",
+      "start": 744.527,
+      "duration": 3.185
+    },
+    {
+      "text": ", what do you need to do? You need to",
+      "start": 746.712,
+      "duration": 6.501
+    },
+    {
+      "text": " minimize your loss, and the way to",
+      "start": 752.266,
+      "duration": 2.792
+    },
+    {
+      "text": " minimize it is gradient descent. So,",
+      "start": 754.111,
+      "duration": 8.612
+    },
+    {
+      "text": " basically, what you need to do is to",
+      "start": 761.78,
+      "duration": 3.043
+    },
+    {
+      "text": " consider all the parameters in your",
+      "start": 763.879,
+      "duration": 2.987
+    },
+    {
+      "text": " system. What are the parameters? WI",
+      "start": 765.922,
+      "duration": 4.457
+    },
+    {
+      "text": " matrix, WH matrix, and WO matrix. You",
+      "start": 769.485,
+      "duration": 6.425
+    },
+    {
+      "text": " need to find values for these three",
+      "start": 774.961,
+      "duration": 2.77
+    },
+    {
+      "text": " such that L becomes minimum. And you",
+      "start": 776.782,
+      "duration": 3.645
+    },
+    {
+      "text": " know what you have to do for this?",
+      "start": 779.468,
+      "duration": 2.389
+    },
+    {
+      "text": " Apply gradient descent, and the",
+      "start": 782.811,
+      "duration": 2.782
+    },
+    {
+      "text": " gradient descent equation will be",
+      "start": 784.65,
+      "duration": 2.897
+    },
+    {
+      "text": " learning rate times del by del. WH = WH",
+      "start": 786.604,
+      "duration": 9.804
+    },
+    {
+      "text": "-learning rate times del L/del WH and",
+      "start": 795.408,
+      "duration": 3.944
+    },
+    {
+      "text": " WO would be equal to WO minus learning",
+      "start": 798.431,
+      "duration": 4.024
+    },
+    {
+      "text": " rate times del L/del WO. Now you have",
+      "start": 801.535,
+      "duration": 8.431
+    },
+    {
+      "text": " the initial values for all of these.",
+      "start": 809.017,
+      "duration": 2.859
+    },
+    {
+      "text": " You also have the value for the",
+      "start": 812.809,
+      "duration": 2.388
+    },
+    {
+      "text": " learning rate. So, basically, your task",
+      "start": 814.242,
+      "duration": 3.565
+    },
+    {
+      "text": " now is to calculate these three",
+      "start": 816.871,
+      "duration": 2.983
+    },
+    {
+      "text": " derivatives. If you calculate these",
+      "start": 818.918,
+      "duration": 4.767
+    },
+    {
+      "text": " three derivatives, then you can apply",
+      "start": 822.738,
+      "duration": 2.961
+    },
+    {
+      "text": " backpropagation. So, our next target is",
+      "start": 824.752,
+      "duration": 5.814
+    },
+    {
+      "text": " to calculate these three derivatives. I",
+      "start": 829.625,
+      "duration": 4.77
+    },
+    {
+      "text": " hope you are understanding things so",
+      "start": 833.448,
+      "duration": 2.902
+    },
+    {
+      "text": " far. So guys, now we first need to find",
+      "start": 835.403,
+      "duration": 3.62
+    },
+    {
+      "text": " these three derivatives. We will start",
+      "start": 838.082,
+      "duration": 4.287
+    },
+    {
+      "text": " first with this derivative. This output",
+      "start": 841.415,
+      "duration": 5.916
+    },
+    {
+      "text": " matrix, this specific matrix, we will",
+      "start": 846.391,
+      "duration": 3.196
+    },
+    {
+      "text": " calculate the derivative of this one",
+      "start": 848.646,
+      "duration": 3.137
+    },
+    {
+      "text": " first. Because this is the easiest to",
+      "start": 850.842,
+      "duration": 4.627
+    },
+    {
+      "text": " calculate as it is close to the output.",
+      "start": 854.519,
+      "duration": 2.944
+    },
+    {
+      "text": " Okay? So, I told you earlier that while",
+      "start": 856.823,
+      "duration": 3.431
+    },
+    {
+      "text": " calculating or deriving backpropagation",
+      "start": 859.31,
+      "duration": 3.159
+    },
+    {
+      "text": ", you move from the back to the front.",
+      "start": 861.469,
+      "duration": 3.104
+    },
+    {
+      "text": " Okay? In forward propagation, you move",
+      "start": 863.673,
+      "duration": 3.28
+    },
+    {
+      "text": " in this direction. In backpropagation,",
+      "start": 866.008,
+      "duration": 3.182
+    },
+    {
+      "text": " you move in this direction. Okay? So,",
+      "start": 868.248,
+      "duration": 4.264
+    },
+    {
+      "text": " we need to find W naught. Look, let's",
+      "start": 871.584,
+      "duration": 5.475
+    },
+    {
+      "text": " make it simple. If someone tells you",
+      "start": 876.115,
+      "duration": 4.918
+    },
+    {
+      "text": " that you need to calculate this, then",
+      "start": 880.083,
+      "duration": 2.871
+    },
+    {
+      "text": " you are basically being asked how much",
+      "start": 882.004,
+      "duration": 2.921
+    },
+    {
+      "text": " the loss will change if you make",
+      "start": 883.976,
+      "duration": 2.618
+    },
+    {
+      "text": " changes to W naught. That is exactly",
+      "start": 885.644,
+      "duration": 2.996
+    },
+    {
+      "text": " what a derivative tells you. Right? So",
+      "start": 887.69,
+      "duration": 3.757
+    },
+    {
+      "text": " now, if you come from the back to the",
+      "start": 890.502,
+      "duration": 3.042
+    },
+    {
+      "text": " front, you will realize that the loss",
+      "start": 892.599,
+      "duration": 3.043
+    },
+    {
+      "text": " depends only on one thing, and that is",
+      "start": 894.697,
+      "duration": 3.097
+    },
+    {
+      "text": " y-hat. On your prediction, because y is",
+      "start": 896.849,
+      "duration": 4.865
+    },
+    {
+      "text": " constant in the data. You cannot change",
+      "start": 900.769,
+      "duration": 4.166
+    },
+    {
+      "text": " it. So it depends on y-hat. Now, how is",
+      "start": 903.986,
+      "duration": 4.266
+    },
+    {
+      "text": " y-hat calculated? If you look at the",
+      "start": 907.328,
+      "duration": 3.427
+    },
+    {
+      "text": " forward propagation equations. Here is",
+      "start": 909.805,
+      "duration": 3.016
+    },
+    {
+      "text": " your y-hat. So, you are calculating",
+      "start": 911.876,
+      "duration": 3.791
+    },
+    {
+      "text": " y-hat using two quantities. O3, meaning",
+      "start": 914.736,
+      "duration": 5.794
+    },
+    {
+      "text": " it depends on O3 and it depends on W",
+      "start": 919.602,
+      "duration": 3.602
+    },
+    {
+      "text": " naught. Okay? So you can see that",
+      "start": 922.277,
+      "duration": 6.59
+    },
+    {
+      "text": " changing W naught will change Y hat,",
+      "start": 927.926,
+      "duration": 3.131
+    },
+    {
+      "text": " and changing Y hat will change L. So",
+      "start": 930.116,
+      "duration": 3.131
+    },
+    {
+      "text": " you can actually write this very simply",
+      "start": 932.306,
+      "duration": 3.309
+    },
+    {
+      "text": " by applying the chain rule of",
+      "start": 939.335,
+      "duration": 2.997
+    },
+    {
+      "text": " differentiation, as del L/del hat and",
+      "start": 941.4,
+      "duration": 3.548
+    },
+    {
+      "text": " del hat/del W naught. This is the",
+      "start": 944.017,
+      "duration": 6.389
+    },
+    {
+      "text": " formula, you can calculate it very",
+      "start": 949.466,
+      "duration": 3.023
+    },
+    {
+      "text": " easily. What do you need to do? You",
+      "start": 951.549,
+      "duration": 5.83
+    },
+    {
+      "text": " just have to take this loss equation,",
+      "start": 956.439,
+      "duration": 3.226
+    },
+    {
+      "text": " and from this loss equation, you can",
+      "start": 958.725,
+      "duration": 3.166
+    },
+    {
+      "text": " very easily calculate del L/del hat,",
+      "start": 960.952,
+      "duration": 3.166
+    },
+    {
+      "text": " okay? I have shown you this many times",
+      "start": 963.178,
+      "duration": 6.24
+    },
+    {
+      "text": " in the past, and from this equation,",
+      "start": 968.482,
+      "duration": 3.328
+    },
+    {
+      "text": " you can calculate del hat/del w0,",
+      "start": 970.875,
+      "duration": 3.134
+    },
+    {
+      "text": " alright, and you just multiply both of",
+      "start": 977.744,
+      "duration": 3.179
+    },
+    {
+      "text": " them together, that will be your del L/",
+      "start": 979.98,
+      "duration": 3.237
+    },
+    {
+      "text": "W naught. Okay? I have done this many",
+      "start": 982.217,
+      "duration": 5.36
+    },
+    {
+      "text": " times in the past while teaching ANN,",
+      "start": 986.631,
+      "duration": 2.966
+    },
+    {
+      "text": " so I hope you can do at least this much",
+      "start": 988.65,
+      "duration": 3.073
+    },
+    {
+      "text": ", okay? If you are not understanding,",
+      "start": 990.723,
+      "duration": 4.073
+    },
+    {
+      "text": " then go back in this playlist where I",
+      "start": 993.847,
+      "duration": 2.877
+    },
+    {
+      "text": " have taught you backpropagation on ANN.",
+      "start": 995.774,
+      "duration": 2.979
+    },
+    {
+      "text": " Watch those videos once, and you will",
+      "start": 997.878,
+      "duration": 2.81
+    },
+    {
+      "text": " understand what I am saying. You just",
+      "start": 999.737,
+      "duration": 2.854
+    },
+    {
+      "text": " need to do simple differentiation. Okay",
+      "start": 1001.639,
+      "duration": 3.074
+    },
+    {
+      "text": "? Now, things get interesting here.",
+      "start": 1003.713,
+      "duration": 3.057
+    },
+    {
+      "text": " When you have to find this. Suppose you",
+      "start": 1006.599,
+      "duration": 4.308
+    },
+    {
+      "text": " have to find this. This weight, this",
+      "start": 1009.96,
+      "duration": 6.804
+    },
+    {
+      "text": " weight, this is basically the entire",
+      "start": 1015.823,
+      "duration": 3.129
+    },
+    {
+      "text": " weight matrix. Calculating its",
+      "start": 1018.011,
+      "duration": 4.724
+    },
+    {
+      "text": " differentiation is a bit of a tricky",
+      "start": 1021.794,
+      "duration": 3.102
+    },
+    {
+      "text": " task. Why? Let's try to understand.",
+      "start": 1023.955,
+      "duration": 3.405
+    },
+    {
+      "text": " Look carefully. If you are asked to",
+      "start": 1027.133,
+      "duration": 6.163
+    },
+    {
+      "text": " calculate del by del WI, it means you",
+      "start": 1032.356,
+      "duration": 3.222
+    },
+    {
+      "text": " are being asked to calculate how much L",
+      "start": 1034.638,
+      "duration": 3.342
+    },
+    {
+      "text": " will be affected by changes in WI.",
+      "start": 1037.04,
+      "duration": 3.043
+    },
+    {
+      "text": " Right? So you have to build the chain",
+      "start": 1041.894,
+      "duration": 3.961
+    },
+    {
+      "text": " again in such a way that L depends on y",
+      "start": 1044.906,
+      "duration": 2.996
+    },
+    {
+      "text": " hat. Y hat depends on O3 and W naught.",
+      "start": 1046.953,
+      "duration": 7.004
+    },
+    {
+      "text": " Okay? Now, this quantity O3, how many",
+      "start": 1054.822,
+      "duration": 4.86
+    },
+    {
+      "text": " things does it depend on? It depends on",
+      "start": 1058.748,
+      "duration": 5.091
+    },
+    {
+      "text": " four things. Right? Wh, I am sorry. O3",
+      "start": 1062.9,
+      "duration": 7.543
+    },
+    {
+      "text": " depends on X I3 On this W I, this",
+      "start": 1069.551,
+      "duration": 10.512
+    },
+    {
+      "text": " weight Also, I have written something",
+      "start": 1079.166,
+      "duration": 6.456
+    },
+    {
+      "text": " wrong here. This will be O1 and this",
+      "start": 1084.673,
+      "duration": 3.394
+    },
+    {
+      "text": " will be O2. It is also depending on O2.",
+      "start": 1087.124,
+      "duration": 4.178
+    },
+    {
+      "text": " Right? And lastly, it depends on W H.",
+      "start": 1091.455,
+      "duration": 4.639
+    },
+    {
+      "text": " It depends on this weight. Okay? So if",
+      "start": 1095.157,
+      "duration": 5.725
+    },
+    {
+      "text": " you look, if you track a path, you have",
+      "start": 1099.938,
+      "duration": 3.209
+    },
+    {
+      "text": " to catch this path. You have to catch",
+      "start": 1102.204,
+      "duration": 7.98
+    },
+    {
+      "text": " this path. But a difference arises",
+      "start": 1109.232,
+      "duration": 5.491
+    },
+    {
+      "text": " right here. The difference is that your",
+      "start": 1113.774,
+      "duration": 5.606
+    },
+    {
+      "text": " O3 depends on O2. Now, if you look at",
+      "start": 1118.438,
+      "duration": 4.822
+    },
+    {
+      "text": " this equation, O2 itself depends on",
+      "start": 1122.325,
+      "duration": 3.285
+    },
+    {
+      "text": " four things. Which four things? O2",
+      "start": 1124.675,
+      "duration": 5.568
+    },
+    {
+      "text": " depends on your X i2. On WI again. On",
+      "start": 1129.322,
+      "duration": 12.749
+    },
+    {
+      "text": " O1 and WH. Now, if you look again, this",
+      "start": 1141.18,
+      "duration": 7.95
+    },
+    {
+      "text": " O1, this O1 also depends on four things",
+      "start": 1148.202,
+      "duration": 3.813
+    },
+    {
+      "text": ". If you focus on this equation. Which",
+      "start": 1151.015,
+      "duration": 4.84
+    },
+    {
+      "text": " four things? Let's take a look. X i1. W",
+      "start": 1154.911,
+      "duration": 12.572
+    },
+    {
+      "text": " i, O0, and W. So basically, if you pay",
+      "start": 1166.558,
+      "duration": 3.854
+    },
+    {
+      "text": " attention, there is a relationship",
+      "start": 1169.487,
+      "duration": 3.553
+    },
+    {
+      "text": " between L and WI via three separate",
+      "start": 1172.115,
+      "duration": 3.629
+    },
+    {
+      "text": " paths. One is what I have drawn in",
+      "start": 1174.819,
+      "duration": 6.677
+    },
+    {
+      "text": " green. Then there is this path that",
+      "start": 1180.546,
+      "duration": 4.6
+    },
+    {
+      "text": " goes this way. This is the second path,",
+      "start": 1184.193,
+      "duration": 5.08
+    },
+    {
+      "text": " and then there is a third path. I'm",
+      "start": 1188.324,
+      "duration": 5.718
+    },
+    {
+      "text": " sorry if I am confusing you with this",
+      "start": 1193.097,
+      "duration": 3.061
+    },
+    {
+      "text": " diagram, but you get the idea. There",
+      "start": 1195.214,
+      "duration": 5.275
+    },
+    {
+      "text": " are three paths, okay? There are three",
+      "start": 1199.55,
+      "duration": 4.735
+    },
+    {
+      "text": " paths, so you will have to calculate",
+      "start": 1203.337,
+      "duration": 2.877
+    },
+    {
+      "text": " the differentiation accordingly. So",
+      "start": 1205.266,
+      "duration": 3.835
+    },
+    {
+      "text": " what will the differentiation be? First",
+      "start": 1208.152,
+      "duration": 3.3
+    },
+    {
+      "text": " of all, if you want to find dL/dWi,",
+      "start": 1210.526,
+      "duration": 3.59
+    },
+    {
+      "text": " First you have to calculate this green",
+      "start": 1218.354,
+      "duration": 3.711
+    },
+    {
+      "text": " path, which is del l by del y-hat; del",
+      "start": 1221.136,
+      "duration": 3.711
+    },
+    {
+      "text": " y-hat depends on del 3, and O3 depends",
+      "start": 1223.918,
+      "duration": 3.711
+    },
+    {
+      "text": " on WI. This is our green path. I will",
+      "start": 1226.701,
+      "duration": 10.92
+    },
+    {
+      "text": " remove this for a while. Okay? Now we",
+      "start": 1236.669,
+      "duration": 4.515
+    },
+    {
+      "text": " will focus on the pink path. So you",
+      "start": 1240.237,
+      "duration": 3.775
+    },
+    {
+      "text": " will add to it. You will add del l by",
+      "start": 1243.057,
+      "duration": 5.989
+    },
+    {
+      "text": " del y-hat. Del y-hat by del O3. Del O3",
+      "start": 1248.112,
+      "duration": 14.115
+    },
+    {
+      "text": " by del O2 and del O2/del WI; this is",
+      "start": 1261.314,
+      "duration": 4.15
+    },
+    {
+      "text": " our pink path. Now I am removing this",
+      "start": 1264.552,
+      "duration": 6.281
+    },
+    {
+      "text": " as well. Now only the blue path is left",
+      "start": 1269.887,
+      "duration": 3.834
+    },
+    {
+      "text": ", and you will have to add this too. So",
+      "start": 1272.721,
+      "duration": 6.88
+    },
+    {
+      "text": " it will be: del l by del y-hat, del",
+      "start": 1278.698,
+      "duration": 4.406
+    },
+    {
+      "text": " y-hat by del O3, del O3 by del O2, del",
+      "start": 1282.202,
+      "duration": 11.237
+    },
+    {
+      "text": " O2/del O1 and finally del O1/del WI.",
+      "start": 1292.543,
+      "duration": 4.728
+    },
+    {
+      "text": " This is the formula for your del l/del",
+      "start": 1300.971,
+      "duration": 3.439
+    },
+    {
+      "text": " WI. Now think, there are three terms",
+      "start": 1303.474,
+      "duration": 7.872
+    },
+    {
+      "text": " here because this RNN of ours, when it",
+      "start": 1310.406,
+      "duration": 3.302
+    },
+    {
+      "text": " unfolded in time, it did so three times",
+      "start": 1312.769,
+      "duration": 3.362
+    },
+    {
+      "text": ". And it happened three times because",
+      "start": 1315.131,
+      "duration": 7.321
+    },
+    {
+      "text": " in our dataset, there are three words.",
+      "start": 1321.505,
+      "duration": 3.04
+    },
+    {
+      "text": " Now imagine if you had 10 words in",
+      "start": 1327.393,
+      "duration": 2.809
+    },
+    {
+      "text": " every review of your dataset, then you",
+      "start": 1329.255,
+      "duration": 3.022
+    },
+    {
+      "text": " would have 10 terms here in this",
+      "start": 1331.33,
+      "duration": 2.703
+    },
+    {
+      "text": " equation. Right? So obviously, writing",
+      "start": 1333.087,
+      "duration": 6.492
+    },
+    {
+      "text": " it this way is not feasible at all.",
+      "start": 1338.64,
+      "duration": 3.145
+    },
+    {
+      "text": " Okay? So what will you have to do? You",
+      "start": 1341.222,
+      "duration": 4.19
+    },
+    {
+      "text": " will have to summarize this somehow. So",
+      "start": 1344.461,
+      "duration": 3.76
+    },
+    {
+      "text": ", the way to summarize it is that you",
+      "start": 1347.221,
+      "duration": 2.929
+    },
+    {
+      "text": " can write it like this. dl/dwi is equal",
+      "start": 1349.202,
+      "duration": 10.596
+    },
+    {
+      "text": " to σ of j = 1 up to p = 3, meaning",
+      "start": 1358.871,
+      "duration": 3.564
+    },
+    {
+      "text": " because there are three words. So the",
+      "start": 1361.509,
+      "duration": 7.235
+    },
+    {
+      "text": " value of j will be one, two, and three.",
+      "start": 1367.817,
+      "duration": 3.881
+    },
+    {
+      "text": " And here you will write del l by del y",
+      "start": 1374.28,
+      "duration": 3.633
+    },
+    {
+      "text": " hat, del y hat by del o j, and del o j",
+      "start": 1376.982,
+      "duration": 11.331
+    },
+    {
+      "text": " by del w input; this is the correct",
+      "start": 1387.387,
+      "duration": 3.602
+    },
+    {
+      "text": " form. Now, if you have three words,",
+      "start": 1390.063,
+      "duration": 5.953
+    },
+    {
+      "text": " then three will come here. If there are",
+      "start": 1395.073,
+      "duration": 3.939
+    },
+    {
+      "text": " 10 words, then 10 will come here, and",
+      "start": 1398.069,
+      "duration": 3.086
+    },
+    {
+      "text": " let me expand it for you. So, suppose",
+      "start": 1400.212,
+      "duration": 8.438
+    },
+    {
+      "text": " when you are writing for the first one,",
+      "start": 1407.72,
+      "duration": 3.715
+    },
+    {
+      "text": " when the time step is one, when you",
+      "start": 1410.504,
+      "duration": 3.437
+    },
+    {
+      "text": " expand this, it becomes del l by del y",
+      "start": 1413.011,
+      "duration": 3.645
+    },
+    {
+      "text": " hat, del y hat by del o1, and del o1 by",
+      "start": 1415.726,
+      "duration": 3.715
+    },
+    {
+      "text": " del wi. Now, look closely at what this",
+      "start": 1418.51,
+      "duration": 9.566
+    },
+    {
+      "text": " is. If you look at this chain, you are",
+      "start": 1427.14,
+      "duration": 5.234
+    },
+    {
+      "text": " asking what the relationship is between",
+      "start": 1431.429,
+      "duration": 3.124
+    },
+    {
+      "text": " y hat and o1? Here is y hat and here is",
+      "start": 1433.607,
+      "duration": 3.731
+    },
+    {
+      "text": " o1. So, to get from y hat to o1, what",
+      "start": 1436.401,
+      "duration": 4.554
+    },
+    {
+      "text": " will you do? If you want to calculate",
+      "start": 1440.026,
+      "duration": 3.554
+    },
+    {
+      "text": " this, how would you write it? You will",
+      "start": 1442.626,
+      "duration": 5.431
+    },
+    {
+      "text": " write that y hat depends on o3. o3",
+      "start": 1447.116,
+      "duration": 6.523
+    },
+    {
+      "text": " depends on o2, and o2 depends on o1. So",
+      "start": 1452.731,
+      "duration": 6.727
+    },
+    {
+      "text": " basically, you will expand it and write",
+      "start": 1458.514,
+      "duration": 3.191
+    },
+    {
+      "text": " it like this. Del l by del y hat, del y",
+      "start": 1460.761,
+      "duration": 9.39
+    },
+    {
+      "text": " hat by del o3, del o3 by del o2, del o2",
+      "start": 1469.25,
+      "duration": 4.842
+    },
+    {
+      "text": " by del o1, and finally del o1 by del wi",
+      "start": 1473.191,
+      "duration": 4.842
+    },
+    {
+      "text": ". Now, if you notice, this term and",
+      "start": 1477.033,
+      "duration": 12.842
+    },
+    {
+      "text": " this term, which was your third term",
+      "start": 1488.929,
+      "duration": 2.957
+    },
+    {
+      "text": " when you calculated this, are both",
+      "start": 1490.94,
+      "duration": 2.848
+    },
+    {
+      "text": " exactly the same. Right? Now, think",
+      "start": 1492.842,
+      "duration": 5.537
+    },
+    {
+      "text": " about what happens if you expand for j",
+      "start": 1497.448,
+      "duration": 3.637
+    },
+    {
+      "text": " = 2. For j = 2, del l by del y hat, del",
+      "start": 1500.155,
+      "duration": 8.768
+    },
+    {
+      "text": " y hat by del o2, and del o2 by del w",
+      "start": 1508.027,
+      "duration": 4.763
+    },
+    {
+      "text": " input. Now look again, this term of",
+      "start": 1516.497,
+      "duration": 3.782
+    },
+    {
+      "text": " yours, which term is this? You are",
+      "start": 1519.34,
+      "duration": 6.259
+    },
+    {
+      "text": " asking what is between this and this?",
+      "start": 1524.648,
+      "duration": 2.815
+    },
+    {
+      "text": " So what will you do again? You will",
+      "start": 1527.168,
+      "duration": 3.954
+    },
+    {
+      "text": " calculate del y hat by del o3 and del",
+      "start": 1530.195,
+      "duration": 3.724
+    },
+    {
+      "text": " o3 by del o2, right? And I guess you",
+      "start": 1532.993,
+      "duration": 6.851
+    },
+    {
+      "text": " can understand, upon expanding this,",
+      "start": 1538.919,
+      "duration": 3.709
+    },
+    {
+      "text": " you would get del l by del y hat, del y",
+      "start": 1541.703,
+      "duration": 3.934
+    },
+    {
+      "text": " hat by del o3, I am sorry, del o3 by",
+      "start": 1544.712,
+      "duration": 3.709
+    },
+    {
+      "text": " del o2, del o2 by del w input. Now,",
+      "start": 1547.496,
+      "duration": 16.503
+    },
+    {
+      "text": " this term and this term are both the",
+      "start": 1563.059,
+      "duration": 3.141
+    },
+    {
+      "text": " same. Now look, in this term, when you",
+      "start": 1565.259,
+      "duration": 9.547
+    },
+    {
+      "text": " put j = 3, it becomes del l by del y",
+      "start": 1573.89,
+      "duration": 4.02
+    },
+    {
+      "text": " hat, del y hat by del o3, and del o3 by",
+      "start": 1576.994,
+      "duration": 4.273
+    },
+    {
+      "text": " del w input. Now, this term here and",
+      "start": 1580.351,
+      "duration": 7.754
+    },
+    {
+      "text": " this term here are exactly the same. So",
+      "start": 1587.164,
+      "duration": 5.244
+    },
+    {
+      "text": ", basically, I am proving to you that",
+      "start": 1591.408,
+      "duration": 3.395
+    },
+    {
+      "text": " you can write del L/del Wi in a very",
+      "start": 1593.867,
+      "duration": 3.33
+    },
+    {
+      "text": " compact way. j = 1 to n, where n = time",
+      "start": 1596.262,
+      "duration": 8.525
+    },
+    {
+      "text": " steps. Okay? And here you can write:",
+      "start": 1603.887,
+      "duration": 9.284
+    },
+    {
+      "text": " del L/del y-hat, del y-hat/del Oj, and",
+      "start": 1612.265,
+      "duration": 4.599
+    },
+    {
+      "text": " del Oj/del Wi. Here is your formula.",
+      "start": 1615.959,
+      "duration": 6.937
+    },
+    {
+      "text": " For the second one. We have calculated",
+      "start": 1625.84,
+      "duration": 3.422
+    },
+    {
+      "text": " this one too, and we have calculated",
+      "start": 1628.313,
+      "duration": 2.824
+    },
+    {
+      "text": " this one as well. Now, only this one is",
+      "start": 1630.187,
+      "duration": 3.45
+    },
+    {
+      "text": " left, guys. Now we will go to calculate",
+      "start": 1632.708,
+      "duration": 4.07
+    },
+    {
+      "text": " the last derivative, which is this one.",
+      "start": 1635.83,
+      "duration": 3.049
+    },
+    {
+      "text": " So, basically, you have to calculate",
+      "start": 1640.861,
+      "duration": 3.383
+    },
+    {
+      "text": " the derivative of L with respect to WH,",
+      "start": 1643.31,
+      "duration": 3.583
+    },
+    {
+      "text": " the hidden weight, this weight, uh,",
+      "start": 1645.959,
+      "duration": 3.318
+    },
+    {
+      "text": " this weight. Okay? The spiral drawn",
+      "start": 1648.343,
+      "duration": 6.349
+    },
+    {
+      "text": " here. So, I guess you are understanding",
+      "start": 1653.75,
+      "duration": 5.311
+    },
+    {
+      "text": " again that there is some complexity",
+      "start": 1658.118,
+      "duration": 2.974
+    },
+    {
+      "text": " involved because WH is in every time",
+      "start": 1660.149,
+      "duration": 3.031
+    },
+    {
+      "text": " step. Right? WH is in every time step.",
+      "start": 1662.236,
+      "duration": 5.66
+    },
+    {
+      "text": " And so, if you want to find the",
+      "start": 1669.575,
+      "duration": 2.992
+    },
+    {
+      "text": " relationship between L and WH, then you",
+      "start": 1671.632,
+      "duration": 3.507
+    },
+    {
+      "text": " would be able to find this: that L",
+      "start": 1674.203,
+      "duration": 3.186
+    },
+    {
+      "text": " depends on y-hat, and y-hat depends on",
+      "start": 1676.453,
+      "duration": 3.443
+    },
+    {
+      "text": " two things, which is O3. And in fact,",
+      "start": 1678.961,
+      "duration": 7.794
+    },
+    {
+      "text": " let's write it like this. Uh, y-hat",
+      "start": 1685.807,
+      "duration": 5.413
+    },
+    {
+      "text": " depends on W-output and O3, and O3",
+      "start": 1690.3,
+      "duration": 3.747
+    },
+    {
+      "text": " depends on four things. So, it depends",
+      "start": 1693.128,
+      "duration": 8.598
+    },
+    {
+      "text": " on Xi3, Wi, O2, And WH. Okay? Now, uh,",
+      "start": 1700.84,
+      "duration": 14.417
+    },
+    {
+      "text": " this O2 depends on four things. It's",
+      "start": 1714.336,
+      "duration": 6.857
+    },
+    {
+      "text": " Xi2, Wi, O1, And WH. Now, this O1",
+      "start": 1720.285,
+      "duration": 15.543
+    },
+    {
+      "text": " depends on four things: Xi1, Wi, O0,",
+      "start": 1734.913,
+      "duration": 4.06
+    },
+    {
+      "text": " and WH, so you can see there is a",
+      "start": 1738.058,
+      "duration": 3.806
+    },
+    {
+      "text": " non-linear relationship. So, the first",
+      "start": 1740.949,
+      "duration": 7.25
+    },
+    {
+      "text": " one is this. Right. Then your second",
+      "start": 1747.266,
+      "duration": 10.168
+    },
+    {
+      "text": " one is this. I am drawing from the top.",
+      "start": 1756.485,
+      "duration": 5.748
+    },
+    {
+      "text": " This, and then the third one is through",
+      "start": 1767.292,
+      "duration": 3.14
+    },
+    {
+      "text": " the O1 path. WH is present here as well",
+      "start": 1769.487,
+      "duration": 5.198
+    },
+    {
+      "text": ". Okay? So, I will try to write it down",
+      "start": 1773.685,
+      "duration": 4.282
+    },
+    {
+      "text": ". I hope you will understand it. So,",
+      "start": 1776.967,
+      "duration": 5.26
+    },
+    {
+      "text": " del L/del W-hidden will be, del L/del",
+      "start": 1781.324,
+      "duration": 4.616
+    },
+    {
+      "text": " y-hat, del y-hat/del O3, and del O3",
+      "start": 1785.037,
+      "duration": 9.581
+    },
+    {
+      "text": " depends on del WH, this is the first",
+      "start": 1793.701,
+      "duration": 3.985
+    },
+    {
+      "text": " one. Okay? I am removing this. And for",
+      "start": 1796.769,
+      "duration": 9.326
+    },
+    {
+      "text": " now, we will focus on this blue one. So",
+      "start": 1805.152,
+      "duration": 4.843
+    },
+    {
+      "text": ", this is del L/del y-hat. You are",
+      "start": 1808.995,
+      "duration": 6.007
+    },
+    {
+      "text": " going from here to here, del y-hat/del",
+      "start": 1814.077,
+      "duration": 3.821
+    },
+    {
+      "text": " O3, you are going here, del O3/del O2,",
+      "start": 1816.973,
+      "duration": 3.822
+    },
+    {
+      "text": " del O2 depends on WH, Okay? And now you",
+      "start": 1822.667,
+      "duration": 10.967
+    },
+    {
+      "text": " are heading towards the last path,",
+      "start": 1832.711,
+      "duration": 3.606
+    },
+    {
+      "text": " towards this one, towards this one, so",
+      "start": 1835.394,
+      "duration": 3.913
+    },
+    {
+      "text": " this will become del L by del Y hat,",
+      "start": 1838.384,
+      "duration": 3.76
+    },
+    {
+      "text": " del Y hat by del O3, O3 by O2, O2 by O1",
+      "start": 1841.221,
+      "duration": 3.99
+    },
+    {
+      "text": ", O2 to O1 and O1 to del. So basically,",
+      "start": 1844.211,
+      "duration": 20.047
+    },
+    {
+      "text": " you did it exactly like last time, and",
+      "start": 1863.329,
+      "duration": 3.701
+    },
+    {
+      "text": " you can simplify and write this too as",
+      "start": 1866.101,
+      "duration": 3.7
+    },
+    {
+      "text": " something like this: i = 1 to n, where",
+      "start": 1868.872,
+      "duration": 3.701
+    },
+    {
+      "text": " n is the time steps or how many words",
+      "start": 1871.644,
+      "duration": 3.629
+    },
+    {
+      "text": " are in your review, del by del Y hat,",
+      "start": 1874.344,
+      "duration": 3.629
+    },
+    {
+      "text": " del Y hat by del, let's call this j,",
+      "start": 1877.044,
+      "duration": 3.559
+    },
+    {
+      "text": " del Oj and del Oj by del WH. This is",
+      "start": 1879.674,
+      "duration": 11.088
+    },
+    {
+      "text": " the formula guys, This is the formula,",
+      "start": 1889.82,
+      "duration": 6.107
+    },
+    {
+      "text": " okay? And with this, we have calculated",
+      "start": 1894.991,
+      "duration": 5.033
+    },
+    {
+      "text": " all three of these derivatives. All",
+      "start": 1899.076,
+      "duration": 4.551
+    },
+    {
+      "text": " three of these derivatives. Now, if",
+      "start": 1902.676,
+      "duration": 3.388
+    },
+    {
+      "text": " these three derivatives are calculated,",
+      "start": 1905.123,
+      "duration": 3.292
+    },
+    {
+      "text": " we can apply this gradient descent step",
+      "start": 1907.474,
+      "duration": 3.292
+    },
+    {
+      "text": ". So basically, I am summarizing it for",
+      "start": 1909.766,
+      "duration": 3.964
+    },
+    {
+      "text": " you once. So what will happen? First of",
+      "start": 1912.794,
+      "duration": 4.21
+    },
+    {
+      "text": " all, you will work with some initial",
+      "start": 1916.055,
+      "duration": 2.808
+    },
+    {
+      "text": " weights. WI will have some initial",
+      "start": 1917.913,
+      "duration": 3.195
+    },
+    {
+      "text": " weight. WH will have some. WO will have",
+      "start": 1920.164,
+      "duration": 3.65
+    },
+    {
+      "text": " some. Now what will you do? You will",
+      "start": 1922.869,
+      "duration": 3.646
+    },
+    {
+      "text": " take your first review. You will",
+      "start": 1925.56,
+      "duration": 3.719
+    },
+    {
+      "text": " calculate O1 by sending its first word.",
+      "start": 1928.336,
+      "duration": 3.243
+    },
+    {
+      "text": " You will calculate O2 by sending the",
+      "start": 1931.675,
+      "duration": 2.925
+    },
+    {
+      "text": " second weight. You will calculate O3 by",
+      "start": 1933.654,
+      "duration": 3.57
+    },
+    {
+      "text": " sending the third weight. And using the",
+      "start": 1936.279,
+      "duration": 3.508
+    },
+    {
+      "text": " third one, you will calculate Y hat. By",
+      "start": 1938.844,
+      "duration": 3.796
+    },
+    {
+      "text": " calculating Y hat, you will get the",
+      "start": 1941.702,
+      "duration": 3.167
+    },
+    {
+      "text": " loss. Now, to minimize this loss, you",
+      "start": 1943.931,
+      "duration": 3.771
+    },
+    {
+      "text": " will apply gradient descent. Which is",
+      "start": 1946.766,
+      "duration": 3.286
+    },
+    {
+      "text": " basically these three equations. So now",
+      "start": 1949.102,
+      "duration": 3.011
+    },
+    {
+      "text": " what will you do? You have decided on a",
+      "start": 1951.164,
+      "duration": 2.913
+    },
+    {
+      "text": " learning rate. You will calculate this,",
+      "start": 1953.123,
+      "duration": 4.378
+    },
+    {
+      "text": " this, and this, and as soon as you put",
+      "start": 1956.554,
+      "duration": 3.043
+    },
+    {
+      "text": " them in these equations, you will get",
+      "start": 1958.651,
+      "duration": 2.989
+    },
+    {
+      "text": " the new value for these three. Now, you",
+      "start": 1960.694,
+      "duration": 5.062
+    },
+    {
+      "text": " will calculate the forward propagation",
+      "start": 1964.81,
+      "duration": 3.043
+    },
+    {
+      "text": " of the second word using those new",
+      "start": 1966.907,
+      "duration": 2.829
+    },
+    {
+      "text": " values, from which you will get Y hat",
+      "start": 1968.789,
+      "duration": 2.99
+    },
+    {
+      "text": " and you will get the loss. Then you",
+      "start": 1970.833,
+      "duration": 4.097
+    },
+    {
+      "text": " will apply gradient descent to minimize",
+      "start": 1973.982,
+      "duration": 3.032
+    },
+    {
+      "text": " that loss, and you will keep doing this",
+      "start": 1976.066,
+      "duration": 3.032
+    },
+    {
+      "text": " constantly. And eventually, you will",
+      "start": 1978.15,
+      "duration": 5.059
+    },
+    {
+      "text": " reach the minimum value of all these",
+      "start": 1982.263,
+      "duration": 2.929
+    },
+    {
+      "text": " parameters. Okay? So I hope you",
+      "start": 1984.246,
+      "duration": 4.675
+    },
+    {
+      "text": " understood, to be honest, we are",
+      "start": 1987.979,
+      "duration": 2.849
+    },
+    {
+      "text": " studying backpropagation for the third",
+      "start": 1989.886,
+      "duration": 3.196
+    },
+    {
+      "text": " time. The only different thing here is",
+      "start": 1992.14,
+      "duration": 3.838
+    },
+    {
+      "text": " that you have to unfold the whole",
+      "start": 1995.027,
+      "duration": 2.599
+    },
+    {
+      "text": " concept in time. Because of which, this",
+      "start": 1996.674,
+      "duration": 4.231
+    },
+    {
+      "text": " non-linear computation chart is being",
+      "start": 1999.963,
+      "duration": 3.137
+    },
+    {
+      "text": " formed. Right? But if your concepts are",
+      "start": 2002.158,
+      "duration": 4.319
+    },
+    {
+      "text": " clear, then it's not that difficult to",
+      "start": 2005.527,
+      "duration": 2.875
+    },
+    {
+      "text": " be honest. Okay? So I hope you",
+      "start": 2007.452,
+      "duration": 3.667
+    },
+    {
+      "text": " understood this whole thing. So that",
+      "start": 2010.169,
+      "duration": 3.105
+    },
+    {
+      "text": " was the video guys. I hope I was able",
+      "start": 2012.33,
+      "duration": 3.424
+    },
+    {
+      "text": " to explain to you how backpropagation",
+      "start": 2014.811,
+      "duration": 3.123
+    },
+    {
+      "text": " works inside an RNN. And now we will",
+      "start": 2016.991,
+      "duration": 5.051
+    },
+    {
+      "text": " move forward and discuss what is the",
+      "start": 2021.098,
+      "duration": 3.008
+    },
+    {
+      "text": " problem with simple RNNs, and then we",
+      "start": 2023.162,
+      "duration": 3.064
+    },
+    {
+      "text": " will move towards LSTM and GRU",
+      "start": 2025.281,
+      "duration": 2.674
+    },
+    {
+      "text": " architectures. Okay? So if you liked",
+      "start": 2027.011,
+      "duration": 4.625
+    },
+    {
+      "text": " the video, please like it, and if you",
+      "start": 2030.686,
+      "duration": 2.875
+    },
+    {
+      "text": " haven't subscribed to the channel,",
+      "start": 2032.612,
+      "duration": 2.722
+    },
+    {
+      "text": " please subscribe. Okay? See you in the",
+      "start": 2034.385,
+      "duration": 3.178
+    },
+    {
+      "text": " next video. Bye.",
+      "start": 2036.612,
+      "duration": 2.009
+    }
+  ]
+}

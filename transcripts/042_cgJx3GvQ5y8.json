@@ -1,0 +1,2950 @@
+{
+  "id": "cgJx3GvQ5y8",
+  "index": 42,
+  "title": "CNN Part 3 | Convolution Operation",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitesh and welcome  to my YouTube channel. In this video,  we will continue our deep learning  playlist. In deep learning, we are  studying Convolutional Neural Networks,  and we have covered two videos so far  where I explained the basics of CNN and  its biological connection to our visual  cortex. Now, starting from today's  video, we will begin to study CNN in  great detail. We will study the  components within it one by one. And in  today's video, we are going to study  its most important component. What is a  convolution operation? If you  understand this operation, you won't  have much trouble understanding CNNs.  Right? So, let's start the video. We  will start this video from our current  understanding of CNN. So, we know so  far that a CNN is just a neural network . It's a neural network. It's a special  neural network whose architecture is  slightly different from ANN. Right?  Because here you will see some  different types of layers. One of these  is the convolution layer, which we are  going to look at in this video. Apart  from this, there is a pooling layer,  and then there is a fully connected  layer, which you also call a dense  layer in ANN terms. So, our CNN is made  up of these three types of layers. Now,  we have learned about CNN that it works  very well with images. And this is  because the architecture and working  principle of CNN are based on our own  visual cortex. So, I will summarize for  you exactly how a CNN works. Let's take  a high-level overview. So, you can  roughly understand that this is a CNN  where the initial layers are your  convolution layers, and from here, this  part is the fully connected layer. So,  what happens is that as soon as you  feed an image into a CNN, the initial  layers perform edge detection. They  find the edges in the given image.  Because if you think about it, any  image is made up of edges. So, you can  call them primitive features. So, the  job of our initial layers is to detect  edges within our given image. And then,  as you go deeper into this network, the  job of the subsequent convolution  layers is to combine those edges to  generate slightly more complex features , and then gradually you move forward  to perform tasks like classification.  Right? So the idea is very simple: the  initial layers will find primitive  features, like edges. The following  layers will find slightly more complex  features, and by continuing to add  these up, we reach the end and identify  things completely. Right? If you take  the example of face detection, your  face is made up of edges. From edges,  you are gradually creating complex  patterns. Such as eyes, nose, and ears.  And then, by putting these together,  you start forming a complete face. And  then, using that complete face, you  identify whether the user is the one we  are looking for or not. So, this is the  overall idea of CNN. And clearly, the  most important component here is this  convolution layer, these layers, right?  We will see their main usage in this  video. The target of our video today is  to understand the convolution operation  inside and out. As soon as you  understand this, you will have grasped  the very first thing required for CNN.  Now, to understand this video, you need  to be well-versed in one concept, and  that is: what images are and how they  are stored in computer memory. Right?  So we will talk about two types of  images. The first type is a grayscale  image. Which you call a black and white  image. And the second is an RGB image,  which you call a colored image. We  mostly work with these two types of  images. So first, let me show you an  example of how a grayscale image is  stored in memory. For instance, this is  an image of a zero from the MNIST  dataset, and this is a very  low-resolution image. Meaning 28x28  pixels. So an image is basically made  up of pixels. You can imagine a grid  like this. You can imagine a grid of  28x28 like this, and each grid  represents a number between 0 to 255; 0  means black, 255 means white. Right,  sometimes you normalize this to a range  of 0 to 1, where 0 means black and 1  means white. So you can see, this is  exactly what I have shown here. If you  zoom out, you would see that this image  is basically a collection of 28x28  pixels. Right? And here you can see the  value of every pixel. All these pixels  have a value of zero. It should have  been one because it is white. But you  can understand it is slightly flipped.  It is inverted. Okay? Then when you  come here, these pixels have a value of  one. Moving here, it is a slight gray  shade. That is why it is point two. But  you get the idea. Whenever you look at  pixels, uh, whenever you look at any  image, you can imagine it in such a way  that it is basically a collection of  pixels. You can store this in a 2D  array. And that is what our computers  do. When you tell them to process  images, what they are actually  processing is 2D NumPy arrays. Okay? So , this was about grayscale images or  black and white images. Now I will show  you what happens with colored images.  So, a colored image actually has three  channels. Okay? And those three  channels are red, green, and blue.  Basically our primary colors, using  which you can create any other color.  Okay? So whenever you see any RGB image  or a colored image, it is actually made  up of three channels. Uh, this is the  top red channel, behind it is the green , and behind that is the blue channel.  Okay? And each of these sheets, every  sheet will act like a single grayscale  image. Okay? Here, there will be values  only from zero to 255. This one will  also have values from zero to 255. And  here too, there will be values only  from zero to 255. And generally, their  shape will be something like 228 by 228  by 3. Because there are three channels,  so if someone asks you what is the  difference between black and white and  RGB? Then the difference is the number  of channels. Here, there is one channel . There is only one channel. In RGB,  there are three channels. Now, if these  basics are clear to you, you won't have  any trouble in the rest of the video.  So now let's discuss the most  fundamental building block of a CNN,  which is the convolution operation. So,  the job of the convolution operation is  to extract features from an image. And  I told you that the initial layers  detect edges. So now I will show you  the convolution operation using edge  detection. We will see how the  convolution operation works in edge  detection. Okay? So, let me first show  you what the output of edge detection  looks like. Let's assume this is an  image. This is a grayscale image, black  and white. And we performed two types  of edge detection on it. First, we did  an edge detection which was vertical  edge detection. And you can see clearly  here that all the vertical edges in  this image are visible in the first one . And then we did another edge  detection for horizontal edges. So you  can see that we have all the horizontal  edges in this picture. Similarly, you  can also perform slant edge detection.  You can detect any kind of edge. Okay?  So the output will look like this. Now  I am going to show you. How you achieve  this mathematically. Also, if someone  asks you what edges are. It's a very  simple thing. Edges are basically a  change in intensity. Like, look here,  this whole area is black. But when you  come here, the pixels are turning white . So this is your edge. Because the  intensity is changing here. Similarly,  you can say the intensity is changing  here too. The intensity is changing  here as well. So having edges means  intensity change. So now we have to  mathematically detect the edges somehow . We need to detect the intensity  change. Because with the human eye, you  can easily understand that yes, there  is an edge. But how will an algorithm  detect this? We are about to see the  beauty of that. That is where the  convolution operation is used. So I am  going to show you a very small example.  Where we have a 6x6, very  low-resolution image. And we will  perform edge detection on it. You can  see all the pixels at the top are zero.  Which means they are black, and all the  bottom pixels are white. So this image  will look something like this. This  image will look something like this.  Okay? So we have to perform edge  detection on this. We need to find out  where the intensity is changing and  obviously the output should be like  this. This should be the output. This  is our input. This should be the output . Okay? So how will we do it? So to  perform a convolution operation, you  need something called a filter. In some  places, it is also called a kernel.  This is basically a matrix and  generally its size is 3x3, but it can  be larger. Like this is a 3x3 filter.  Okay? It is basically a matrix of  numbers. Here, the filter we are using  will act as a horizontal edge detector.  Meaning, it can detect all the  horizontal edges present in your  picture. Now, what will we do? We will  take this filter and convolve it over  this image. Now, this sign here is for  the convolution operator. Okay? How  does the convolution operation work? I  will explain in a while. But as soon as  you convolve, you get a result, and  this result is called a feature map.  Okay? So image, filter, feature map— there are three things here. Okay? Now,  let's start our discussion on how the  convolution operation works. So for the  convolution operation, you first pick  up this filter, and place it on top of  this image at the top-left like this.  You picked it up and placed it on top.  And now what will you do? You perform  element-wise multiplication. Meaning,  you multiply this number with this one.  This one with this one. This one with  this one. This one with this one. This  one with this one. And so on. And then  you add up all these multiplications.  So basically, it would look like this.  -1*0 + -1*0 + -1*0, then second row,  then third row; the number obtained  after adding will go into this cell. As  you can see here, all the numbers are  zero, so zero will go into this cell.  This was step one. Now, what will you  do? Now you will move your filter  slightly to the right and bring it here  to this spot. And you will do the same  thing. Again, the result was zero. Then  you move further to this spot. Again,  the result was zero. And in the end,  you move one more step forward and  again the result was zero. Okay? So we  have run the convolution over our first  row. Now, what will we do? We will move  one row down. So we will come here to  this spot. Okay? Now, look at what  happens here; this first row will  become zero. The second row will also  become zero. But in the third one, 255* 1 + 255*1 + 255*1, so a large number  will appear. But we know that the  largest number possible is 255. So 255  will come here. Okay? Then we will move  forward a bit. We'll grab this. Again,  255 will come here. Then we will move  ahead. 255. You can pause the video and  check the calculation. 255 and this row  is done too. Okay? I'll clear  everything once. And now I'll show you  what's next. Now we will start from  here next. Okay? This time this row is  all zero. This is also all zero and  this one is 255 again. Then we will  move here. This is also 255. This is  255 and this is 255 too. Okay? Then  this one is also finished. Now we will  come to the last three rows. Okay? In  this case, look, these -1 s make all  these negative 255. The middle one all  becomes zero and these all become  positive 255. So you can easily do the  calculation, it will be zero. So it  moved as zero here, zero here, zero  here, zero here. Okay? And now look  guys, how our feature map looks. Zero  on top, zero on bottom. In the middle,  you have 255 values. So basically it  would look something like this. Right,  you can see this is what we wanted and  we got it. So this is called edge  detection. This is an example of  horizontal edge detection. But if you  change the filters, like this filter.  If you change its values, then you can  get different types of edge detectors.  Like if you have these values. If you  have these values, then this will act  as a vertical edge detector. You can  pause the video and try it out if you  want. This filter will work as a  vertical edge detector. In the same way , what will happen? You can use other  values to detect slanted edges. You can  detect edges of this kind. So computer  scientists have created many types of  filters. Right filter, left filter, top  filter, bottom filter. So you can use  any filter. But the good part is, the  best thing is that in deep learning,  you don't need to worry about what the  filter value will be. Okay? What  happens in deep learning is that you  train these filters. You initialize it  with a random value, and then your CNN  automatically decides through  backpropagation what the values should  be. So in short, these filter values  behave exactly like weights in an ANN.  In an ANN, the values of the weights  are determined during training.  Similarly, what these values in the  filters will be is also determined  after we train. Depending on the image  and depending on the training data. So  in short, we don't need to worry. We  just need to define these matrices. The  rest of the work is handled by  backpropagation. We don't need to  create the filters ourselves. And this  is one of the main reasons why CNNs  have been so successful. Because it  doesn't rely on pre-made filters. It  can create filters on the go according  to its requirements. Okay? So I hope  you have understood up to this point.  Now I will show you a good demo that  will make your learning more concrete.  So guys, now let me show you a very  good demo of convolution. This is a  site. com. They have created a very  good demo. I will use this to try and  explain how convolution works. So there  are some settings here. For instance,  they have kept two datasets. One is  MNIST and the other is Fashion MNIST.  You can try both. For now, I will show  you on MNIST. Since it's MNIST, there  are 10 types of digits here. Let's work  on zero. There are different types of  filters here. And these are predefined  filters. Okay? So these are four types  of filters. Top, bottom, right, left,  and their variants are given here.  Let's start with the left edge filter.  There are two modes. You can see the  operations step-by-step or you can play  it in one go. See what happens if you  do it step-by-step; your operator will  move one by one. Okay? So this is the  filter, by the way—the left edge  filter is right here—and currently,  we are operating on this window, and  the convolution operation is clearly  shown here, how item-wise  multiplication is happening and then  adding up to give you the output. Okay?  So this is the feature map. So let's  start. When I clicked step, the first  area's convolution result is zero. I am  clicking step again. We moved to the  right once, and the result is here.  Look, this is how we move and get the  results. You can see, as soon as we  moved to the next, we came down. And  you can see all these calculations are  happening. See, look at this. Now as we  reached here, the result is 4, because  when you convolve this square and this  filter, you are getting 4. Okay? It is  not possible to show it one by one.  Because this image is a bit large. So I  am clicking on play. And you can see  how this convolution operation is  happening. See. See, I would recommend  you go and try it out on this page once . Now let's discuss the results. So  here you can see two colors will be  visible: red and blue. Red is actually  a positive activation. Meaning, where a  left edge is actually detected, you  will see it in red. The more red it is,  the more confidently our filter is  saying that there is a left edge here.  Okay? Now it might be occurring to you  what blue represents then? So blue is  telling you the exact opposite of red,  which is a right edge. Okay? So in this  image, right edges are also being  detected, and those are negative  numbers. Okay? So, it's a simple thing.  Red is a left edge, blue is a right  edge. And obviously, we want the left  edge. Meaning, we only need the red  values. So in CNN, what happens is that  as soon as your feature map is created,  you run another operation on it where  you apply ReLU on all these numbers.  What does ReLU do? Zero and max. Okay?  If it is negative, it becomes zero, and  if it is positive, it remains the same  value. So all these red values will  remain the same. But all these blue  values, since they are negative, will  be replaced by zero. So you can imagine  that the remaining image, the feature  map we have, will only have the left  edge. Okay? And that is how this entire  convolution operation works. Okay? Now  I would recommend that you go and try  out different digits, or you can pick  the Fashion MNIST dataset and try out  its different types. You can also try  out top filter, bottom filter. All  right? So this will give you a lot of  perspective. Visualizing things helps  them stick in the mind better. So go  ahead and try out this demo. So guys,  now a small question for you if you  have understood everything so far. The  question is that in the example we just  discussed, we had a 6x6 image. A 3x3  filter. And from this, the feature map  created was 4x4. So the question is,  when you apply a 3x3 filter on a 28x28  image, what will be the size of the  feature map? This is the question.  Pause the video and try to answer it.  The answer is 26. So, how will the  output shape be determined? It depends  on a formula. Suppose your image shape  is n x n and your filter shape is m x m , then your resultant feature map shape  will be n-m + 1 x n-m + 1. This is the  output. Okay? You always have to  remember this. So in this case, the  output would be 26x26. If it is 64x64  and you apply a 3x3 filter, you would  be getting a 62x62 image feature map.  Okay? So you have to keep this in mind.  We will discuss this more ahead. So  until now, we were talking about  grayscale images where there is only  one channel. What if we have to perform  convolution on a colored image that has  three channels? So here you just need  to understand one small thing: that  your filter, we saw until now that its  size was 3x3. In the case of RGB, its  size is automatically assumed to be  3x3x3, which means that our filter also  becomes three-channeled, one channel  for each R, G, and B channel. Okay? So  how is the entire convolution operation  performed? You can imagine this image  in the form of a cuboid like this. Okay ? And this is its depth, which is three . And you can also imagine this filter  in the form of a small cuboid. Whose  depth is the same as the image's depth.  And then what can you do? You can place  this box here and slide it. Okay? I  will show you a GIF image. You can see  this is the image. So here, this box  will move in this way. And you can see.  I hope you get the idea. Now comes the  important question. Pause the video for  a moment and think, when this  convolution operation is performed  between this image and this filter,  then this feature map that is created,  what will its shape be? I guess you are  understanding. It is also written here  that the resultant will be 4 cross 4.  Single channel, why will it be a single  channel? It is very simple. If you are  able to imagine it, you will understand . So this filter of ours has 3 cross 3  cross 3, which means 27 values. So when  we start convolving it over this volume , we will first take the 27 values here . Okay? So basically, 27 values are  being element-wise multiplied with 27  values and then added. So basically,  when you place this filter here for the  first time, you are getting one number  which will come for this box. Then you  move this way, then another number,  another number, and another number.  Then you come down, and you start  getting its corresponding numbers. That  is why when you convolve a  three-channel image with a  three-channel filter, you get a  single-channel feature map. So you must  always remember that when you convolve  an m cross m cross channel with an n  cross n cross channel filter, you get  an m-n + 1 cross m-n + 1 single-channel  feature map. This is the biggest  learning here. I hope you have  understood this whole thing. So now, in  this video, we will discuss one last  thing: what happens if you apply  multiple filters to the same image. So  honestly, this happens very rarely. In  fact, it never happens that you only  apply a single filter to your image.  Generally, you apply more filters, more  than one filter. Okay? So for example,  suppose you can imagine that you have  applied two filters and the first  filter will perform vertical edge  detection. The second one will perform  horizontal edge detection. There could  be a third filter that performs slant  edge detection. Meaning, it depends.  Okay? So you have to understand what  will happen in this case. So, by now  you must have understood that when you  perform a 3x3 convolution on a 6x6x3  input, you will get this 4x4 feature  map, so with one filter you will be  getting one feature map. If you have  two filters, then you will get another  feature map of the same dimension. If  there were three filters, one more  feature map would be obtained. If there  were 10 filters, 10 feature maps would  be obtained. And now, if you have two  feature maps, you can treat them like a  volume, like this. So here, your  resultant shape is 4x4x2, and you can  imagine it as a volume that will act as  input for further convolution layers.  Okay? I hope you are understanding this  point. Okay? If you had 10 filters,  then your resultant would be 4x4x10. So , basically, this number here is the  number of filters used. The number of  filters you use is the number of  channels you will have in your output.  Okay? I hope things are clear up to  this point. So that's it for the video,  guys. I hope I was able to explain to  you easily how the convolution  operation works. In the upcoming videos , we will cover some more important  topics. Such as, what are strides? What  is padding? What is pooling? And once  we study all these components, we will  combine them to build a CNN  architecture, and then we will do the  further work in subsequent videos. So  if you liked the video, please like it,  and if you haven't subscribed to the  channel, please subscribe to the  channel. That's it from my side.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitesh and welcome",
+      "start": 0.118,
+      "duration": 3.241
+    },
+    {
+      "text": " to my YouTube channel. In this video,",
+      "start": 2.418,
+      "duration": 3.188
+    },
+    {
+      "text": " we will continue our deep learning",
+      "start": 4.662,
+      "duration": 2.919
+    },
+    {
+      "text": " playlist. In deep learning, we are",
+      "start": 6.638,
+      "duration": 3.198
+    },
+    {
+      "text": " studying Convolutional Neural Networks,",
+      "start": 8.894,
+      "duration": 3.258
+    },
+    {
+      "text": " and we have covered two videos so far",
+      "start": 11.21,
+      "duration": 3.143
+    },
+    {
+      "text": " where I explained the basics of CNN and",
+      "start": 13.411,
+      "duration": 3.258
+    },
+    {
+      "text": " its biological connection to our visual",
+      "start": 15.727,
+      "duration": 3.258
+    },
+    {
+      "text": " cortex. Now, starting from today's",
+      "start": 18.043,
+      "duration": 3.14
+    },
+    {
+      "text": " video, we will begin to study CNN in",
+      "start": 20.246,
+      "duration": 3.263
+    },
+    {
+      "text": " great detail. We will study the",
+      "start": 22.572,
+      "duration": 2.859
+    },
+    {
+      "text": " components within it one by one. And in",
+      "start": 24.482,
+      "duration": 3.614
+    },
+    {
+      "text": " today's video, we are going to study",
+      "start": 27.149,
+      "duration": 2.915
+    },
+    {
+      "text": " its most important component. What is a",
+      "start": 29.118,
+      "duration": 3.368
+    },
+    {
+      "text": " convolution operation? If you",
+      "start": 31.542,
+      "duration": 2.698
+    },
+    {
+      "text": " understand this operation, you won't",
+      "start": 33.297,
+      "duration": 3.027
+    },
+    {
+      "text": " have much trouble understanding CNNs.",
+      "start": 35.38,
+      "duration": 3.084
+    },
+    {
+      "text": " Right? So, let's start the video. We",
+      "start": 37.564,
+      "duration": 3.997
+    },
+    {
+      "text": " will start this video from our current",
+      "start": 40.616,
+      "duration": 3.111
+    },
+    {
+      "text": " understanding of CNN. So, we know so",
+      "start": 42.782,
+      "duration": 5.864
+    },
+    {
+      "text": " far that a CNN is just a neural network",
+      "start": 47.714,
+      "duration": 3.635
+    },
+    {
+      "text": ". It's a neural network. It's a special",
+      "start": 50.349,
+      "duration": 5.572
+    },
+    {
+      "text": " neural network whose architecture is",
+      "start": 54.97,
+      "duration": 2.769
+    },
+    {
+      "text": " slightly different from ANN. Right?",
+      "start": 56.788,
+      "duration": 4.115
+    },
+    {
+      "text": " Because here you will see some",
+      "start": 60.585,
+      "duration": 2.362
+    },
+    {
+      "text": " different types of layers. One of these",
+      "start": 61.992,
+      "duration": 4.237
+    },
+    {
+      "text": " is the convolution layer, which we are",
+      "start": 65.277,
+      "duration": 2.816
+    },
+    {
+      "text": " going to look at in this video. Apart",
+      "start": 67.141,
+      "duration": 3.809
+    },
+    {
+      "text": " from this, there is a pooling layer,",
+      "start": 70.005,
+      "duration": 2.996
+    },
+    {
+      "text": " and then there is a fully connected",
+      "start": 72.057,
+      "duration": 2.94
+    },
+    {
+      "text": " layer, which you also call a dense",
+      "start": 74.053,
+      "duration": 2.885
+    },
+    {
+      "text": " layer in ANN terms. So, our CNN is made",
+      "start": 75.993,
+      "duration": 3.958
+    },
+    {
+      "text": " up of these three types of layers. Now,",
+      "start": 79.017,
+      "duration": 4.635
+    },
+    {
+      "text": " we have learned about CNN that it works",
+      "start": 82.711,
+      "duration": 3.309
+    },
+    {
+      "text": " very well with images. And this is",
+      "start": 85.079,
+      "duration": 5.147
+    },
+    {
+      "text": " because the architecture and working",
+      "start": 89.281,
+      "duration": 2.98
+    },
+    {
+      "text": " principle of CNN are based on our own",
+      "start": 91.316,
+      "duration": 3.036
+    },
+    {
+      "text": " visual cortex. So, I will summarize for",
+      "start": 93.407,
+      "duration": 6.58
+    },
+    {
+      "text": " you exactly how a CNN works. Let's take",
+      "start": 99.056,
+      "duration": 3.982
+    },
+    {
+      "text": " a high-level overview. So, you can",
+      "start": 102.087,
+      "duration": 4.712
+    },
+    {
+      "text": " roughly understand that this is a CNN",
+      "start": 105.856,
+      "duration": 3.112
+    },
+    {
+      "text": " where the initial layers are your",
+      "start": 108.025,
+      "duration": 2.883
+    },
+    {
+      "text": " convolution layers, and from here, this",
+      "start": 109.965,
+      "duration": 3.226
+    },
+    {
+      "text": " part is the fully connected layer. So,",
+      "start": 112.248,
+      "duration": 8.184
+    },
+    {
+      "text": " what happens is that as soon as you",
+      "start": 119.494,
+      "duration": 3.173
+    },
+    {
+      "text": " feed an image into a CNN, the initial",
+      "start": 121.73,
+      "duration": 3.297
+    },
+    {
+      "text": " layers perform edge detection. They",
+      "start": 124.089,
+      "duration": 6.824
+    },
+    {
+      "text": " find the edges in the given image.",
+      "start": 129.963,
+      "duration": 2.681
+    },
+    {
+      "text": " Because if you think about it, any",
+      "start": 133.099,
+      "duration": 2.806
+    },
+    {
+      "text": " image is made up of edges. So, you can",
+      "start": 134.958,
+      "duration": 4.453
+    },
+    {
+      "text": " call them primitive features. So, the",
+      "start": 138.468,
+      "duration": 4.469
+    },
+    {
+      "text": " job of our initial layers is to detect",
+      "start": 141.994,
+      "duration": 3.185
+    },
+    {
+      "text": " edges within our given image. And then,",
+      "start": 144.236,
+      "duration": 5.974
+    },
+    {
+      "text": " as you go deeper into this network, the",
+      "start": 149.265,
+      "duration": 3.148
+    },
+    {
+      "text": " job of the subsequent convolution",
+      "start": 151.468,
+      "duration": 2.818
+    },
+    {
+      "text": " layers is to combine those edges to",
+      "start": 153.341,
+      "duration": 2.928
+    },
+    {
+      "text": " generate slightly more complex features",
+      "start": 155.324,
+      "duration": 3.148
+    },
+    {
+      "text": ", and then gradually you move forward",
+      "start": 157.472,
+      "duration": 3.038
+    },
+    {
+      "text": " to perform tasks like classification.",
+      "start": 159.565,
+      "duration": 3.038
+    },
+    {
+      "text": " Right? So the idea is very simple: the",
+      "start": 163.536,
+      "duration": 3.709
+    },
+    {
+      "text": " initial layers will find primitive",
+      "start": 166.31,
+      "duration": 3.181
+    },
+    {
+      "text": " features, like edges. The following",
+      "start": 168.555,
+      "duration": 3.442
+    },
+    {
+      "text": " layers will find slightly more complex",
+      "start": 171.052,
+      "duration": 3.095
+    },
+    {
+      "text": " features, and by continuing to add",
+      "start": 173.202,
+      "duration": 2.874
+    },
+    {
+      "text": " these up, we reach the end and identify",
+      "start": 175.131,
+      "duration": 3.15
+    },
+    {
+      "text": " things completely. Right? If you take",
+      "start": 177.336,
+      "duration": 3.763
+    },
+    {
+      "text": " the example of face detection, your",
+      "start": 180.153,
+      "duration": 2.894
+    },
+    {
+      "text": " face is made up of edges. From edges,",
+      "start": 182.101,
+      "duration": 3.155
+    },
+    {
+      "text": " you are gradually creating complex",
+      "start": 184.313,
+      "duration": 2.948
+    },
+    {
+      "text": " patterns. Such as eyes, nose, and ears.",
+      "start": 186.319,
+      "duration": 3.85
+    },
+    {
+      "text": " And then, by putting these together,",
+      "start": 189.269,
+      "duration": 2.872
+    },
+    {
+      "text": " you start forming a complete face. And",
+      "start": 191.193,
+      "duration": 3.035
+    },
+    {
+      "text": " then, using that complete face, you",
+      "start": 193.283,
+      "duration": 2.942
+    },
+    {
+      "text": " identify whether the user is the one we",
+      "start": 195.28,
+      "duration": 3.163
+    },
+    {
+      "text": " are looking for or not. So, this is the",
+      "start": 197.499,
+      "duration": 3.786
+    },
+    {
+      "text": " overall idea of CNN. And clearly, the",
+      "start": 200.363,
+      "duration": 5.233
+    },
+    {
+      "text": " most important component here is this",
+      "start": 204.654,
+      "duration": 3.152
+    },
+    {
+      "text": " convolution layer, these layers, right?",
+      "start": 206.864,
+      "duration": 3.269
+    },
+    {
+      "text": " We will see their main usage in this",
+      "start": 211.506,
+      "duration": 2.897
+    },
+    {
+      "text": " video. The target of our video today is",
+      "start": 213.455,
+      "duration": 3.621
+    },
+    {
+      "text": " to understand the convolution operation",
+      "start": 216.13,
+      "duration": 3.088
+    },
+    {
+      "text": " inside and out. As soon as you",
+      "start": 218.271,
+      "duration": 3.36
+    },
+    {
+      "text": " understand this, you will have grasped",
+      "start": 220.686,
+      "duration": 3.099
+    },
+    {
+      "text": " the very first thing required for CNN.",
+      "start": 222.84,
+      "duration": 3.1
+    },
+    {
+      "text": " Now, to understand this video, you need",
+      "start": 226.063,
+      "duration": 3.316
+    },
+    {
+      "text": " to be well-versed in one concept, and",
+      "start": 228.438,
+      "duration": 3.198
+    },
+    {
+      "text": " that is: what images are and how they",
+      "start": 230.695,
+      "duration": 3.198
+    },
+    {
+      "text": " are stored in computer memory. Right?",
+      "start": 232.953,
+      "duration": 3.671
+    },
+    {
+      "text": " So we will talk about two types of",
+      "start": 235.732,
+      "duration": 2.857
+    },
+    {
+      "text": " images. The first type is a grayscale",
+      "start": 237.644,
+      "duration": 3.613
+    },
+    {
+      "text": " image. Which you call a black and white",
+      "start": 240.313,
+      "duration": 9.254
+    },
+    {
+      "text": " image. And the second is an RGB image,",
+      "start": 248.616,
+      "duration": 5.475
+    },
+    {
+      "text": " which you call a colored image. We",
+      "start": 253.147,
+      "duration": 5.051
+    },
+    {
+      "text": " mostly work with these two types of",
+      "start": 257.252,
+      "duration": 2.867
+    },
+    {
+      "text": " images. So first, let me show you an",
+      "start": 259.172,
+      "duration": 4.514
+    },
+    {
+      "text": " example of how a grayscale image is",
+      "start": 262.744,
+      "duration": 3.026
+    },
+    {
+      "text": " stored in memory. For instance, this is",
+      "start": 264.828,
+      "duration": 5.727
+    },
+    {
+      "text": " an image of a zero from the MNIST",
+      "start": 269.613,
+      "duration": 2.932
+    },
+    {
+      "text": " dataset, and this is a very",
+      "start": 271.604,
+      "duration": 2.581
+    },
+    {
+      "text": " low-resolution image. Meaning 28x28",
+      "start": 273.243,
+      "duration": 5.766
+    },
+    {
+      "text": " pixels. So an image is basically made",
+      "start": 278.126,
+      "duration": 3.901
+    },
+    {
+      "text": " up of pixels. You can imagine a grid",
+      "start": 281.084,
+      "duration": 3.452
+    },
+    {
+      "text": " like this. You can imagine a grid of",
+      "start": 283.59,
+      "duration": 7.268
+    },
+    {
+      "text": " 28x28 like this, and each grid",
+      "start": 289.945,
+      "duration": 3.606
+    },
+    {
+      "text": " represents a number between 0 to 255; 0",
+      "start": 292.637,
+      "duration": 4.388
+    },
+    {
+      "text": " means black, 255 means white. Right,",
+      "start": 296.112,
+      "duration": 6.104
+    },
+    {
+      "text": " sometimes you normalize this to a range",
+      "start": 301.283,
+      "duration": 3.61
+    },
+    {
+      "text": " of 0 to 1, where 0 means black and 1",
+      "start": 303.96,
+      "duration": 3.409
+    },
+    {
+      "text": " means white. So you can see, this is",
+      "start": 306.436,
+      "duration": 3.134
+    },
+    {
+      "text": " exactly what I have shown here. If you",
+      "start": 308.624,
+      "duration": 5.344
+    },
+    {
+      "text": " zoom out, you would see that this image",
+      "start": 313.031,
+      "duration": 3.462
+    },
+    {
+      "text": " is basically a collection of 28x28",
+      "start": 315.556,
+      "duration": 3.147
+    },
+    {
+      "text": " pixels. Right? And here you can see the",
+      "start": 317.766,
+      "duration": 6.284
+    },
+    {
+      "text": " value of every pixel. All these pixels",
+      "start": 323.1,
+      "duration": 3.641
+    },
+    {
+      "text": " have a value of zero. It should have",
+      "start": 325.8,
+      "duration": 3.176
+    },
+    {
+      "text": " been one because it is white. But you",
+      "start": 328.019,
+      "duration": 2.662
+    },
+    {
+      "text": " can understand it is slightly flipped.",
+      "start": 329.727,
+      "duration": 2.73
+    },
+    {
+      "text": " It is inverted. Okay? Then when you",
+      "start": 331.557,
+      "duration": 3.355
+    },
+    {
+      "text": " come here, these pixels have a value of",
+      "start": 333.965,
+      "duration": 3.064
+    },
+    {
+      "text": " one. Moving here, it is a slight gray",
+      "start": 336.082,
+      "duration": 4.266
+    },
+    {
+      "text": " shade. That is why it is point two. But",
+      "start": 339.409,
+      "duration": 3.199
+    },
+    {
+      "text": " you get the idea. Whenever you look at",
+      "start": 341.66,
+      "duration": 3.316
+    },
+    {
+      "text": " pixels, uh, whenever you look at any",
+      "start": 344.03,
+      "duration": 2.965
+    },
+    {
+      "text": " image, you can imagine it in such a way",
+      "start": 346.049,
+      "duration": 3.128
+    },
+    {
+      "text": " that it is basically a collection of",
+      "start": 348.232,
+      "duration": 2.964
+    },
+    {
+      "text": " pixels. You can store this in a 2D",
+      "start": 350.251,
+      "duration": 3.863
+    },
+    {
+      "text": " array. And that is what our computers",
+      "start": 353.172,
+      "duration": 3.478
+    },
+    {
+      "text": " do. When you tell them to process",
+      "start": 355.697,
+      "duration": 4.36
+    },
+    {
+      "text": " images, what they are actually",
+      "start": 359.114,
+      "duration": 2.712
+    },
+    {
+      "text": " processing is 2D NumPy arrays. Okay? So",
+      "start": 360.883,
+      "duration": 6.502
+    },
+    {
+      "text": ", this was about grayscale images or",
+      "start": 366.385,
+      "duration": 3.203
+    },
+    {
+      "text": " black and white images. Now I will show",
+      "start": 368.65,
+      "duration": 3.623
+    },
+    {
+      "text": " you what happens with colored images.",
+      "start": 371.322,
+      "duration": 2.821
+    },
+    {
+      "text": " So, a colored image actually has three",
+      "start": 373.924,
+      "duration": 3.4
+    },
+    {
+      "text": " channels. Okay? And those three",
+      "start": 376.387,
+      "duration": 8.161
+    },
+    {
+      "text": " channels are red, green, and blue.",
+      "start": 383.609,
+      "duration": 3.074
+    },
+    {
+      "text": " Basically our primary colors, using",
+      "start": 389.288,
+      "duration": 2.985
+    },
+    {
+      "text": " which you can create any other color.",
+      "start": 391.33,
+      "duration": 3.099
+    },
+    {
+      "text": " Okay? So whenever you see any RGB image",
+      "start": 395.102,
+      "duration": 4.542
+    },
+    {
+      "text": " or a colored image, it is actually made",
+      "start": 398.702,
+      "duration": 3.244
+    },
+    {
+      "text": " up of three channels. Uh, this is the",
+      "start": 401.003,
+      "duration": 4.236
+    },
+    {
+      "text": " top red channel, behind it is the green",
+      "start": 404.298,
+      "duration": 3.277
+    },
+    {
+      "text": ", and behind that is the blue channel.",
+      "start": 406.575,
+      "duration": 3.22
+    },
+    {
+      "text": " Okay? And each of these sheets, every",
+      "start": 408.942,
+      "duration": 4.14
+    },
+    {
+      "text": " sheet will act like a single grayscale",
+      "start": 412.135,
+      "duration": 3.014
+    },
+    {
+      "text": " image. Okay? Here, there will be values",
+      "start": 414.202,
+      "duration": 3.849
+    },
+    {
+      "text": " only from zero to 255. This one will",
+      "start": 417.107,
+      "duration": 2.999
+    },
+    {
+      "text": " also have values from zero to 255. And",
+      "start": 419.158,
+      "duration": 3.042
+    },
+    {
+      "text": " here too, there will be values only",
+      "start": 421.258,
+      "duration": 3.042
+    },
+    {
+      "text": " from zero to 255. And generally, their",
+      "start": 423.358,
+      "duration": 4.641
+    },
+    {
+      "text": " shape will be something like 228 by 228",
+      "start": 427.082,
+      "duration": 4.239
+    },
+    {
+      "text": " by 3. Because there are three channels,",
+      "start": 430.404,
+      "duration": 7.714
+    },
+    {
+      "text": " so if someone asks you what is the",
+      "start": 437.17,
+      "duration": 2.775
+    },
+    {
+      "text": " difference between black and white and",
+      "start": 438.997,
+      "duration": 2.984
+    },
+    {
+      "text": " RGB? Then the difference is the number",
+      "start": 441.034,
+      "duration": 3.088
+    },
+    {
+      "text": " of channels. Here, there is one channel",
+      "start": 443.165,
+      "duration": 3.053
+    },
+    {
+      "text": ". There is only one channel. In RGB,",
+      "start": 445.218,
+      "duration": 3.279
+    },
+    {
+      "text": " there are three channels. Now, if these",
+      "start": 447.565,
+      "duration": 3.465
+    },
+    {
+      "text": " basics are clear to you, you won't have",
+      "start": 450.081,
+      "duration": 2.998
+    },
+    {
+      "text": " any trouble in the rest of the video.",
+      "start": 452.13,
+      "duration": 2.895
+    },
+    {
+      "text": " So now let's discuss the most",
+      "start": 455.495,
+      "duration": 2.696
+    },
+    {
+      "text": " fundamental building block of a CNN,",
+      "start": 457.25,
+      "duration": 3.106
+    },
+    {
+      "text": " which is the convolution operation. So,",
+      "start": 459.415,
+      "duration": 5.036
+    },
+    {
+      "text": " the job of the convolution operation is",
+      "start": 463.508,
+      "duration": 3.24
+    },
+    {
+      "text": " to extract features from an image. And",
+      "start": 465.806,
+      "duration": 5.009
+    },
+    {
+      "text": " I told you that the initial layers",
+      "start": 469.87,
+      "duration": 2.868
+    },
+    {
+      "text": " detect edges. So now I will show you",
+      "start": 471.793,
+      "duration": 4.334
+    },
+    {
+      "text": " the convolution operation using edge",
+      "start": 475.182,
+      "duration": 2.972
+    },
+    {
+      "text": " detection. We will see how the",
+      "start": 477.209,
+      "duration": 3.212
+    },
+    {
+      "text": " convolution operation works in edge",
+      "start": 479.474,
+      "duration": 2.846
+    },
+    {
+      "text": " detection. Okay? So, let me first show",
+      "start": 481.372,
+      "duration": 3.742
+    },
+    {
+      "text": " you what the output of edge detection",
+      "start": 484.167,
+      "duration": 2.95
+    },
+    {
+      "text": " looks like. Let's assume this is an",
+      "start": 486.17,
+      "duration": 3.514
+    },
+    {
+      "text": " image. This is a grayscale image, black",
+      "start": 488.735,
+      "duration": 4.014
+    },
+    {
+      "text": " and white. And we performed two types",
+      "start": 491.809,
+      "duration": 3.455
+    },
+    {
+      "text": " of edge detection on it. First, we did",
+      "start": 494.314,
+      "duration": 4.091
+    },
+    {
+      "text": " an edge detection which was vertical",
+      "start": 497.46,
+      "duration": 3.005
+    },
+    {
+      "text": " edge detection. And you can see clearly",
+      "start": 499.521,
+      "duration": 5.574
+    },
+    {
+      "text": " here that all the vertical edges in",
+      "start": 504.143,
+      "duration": 2.69
+    },
+    {
+      "text": " this image are visible in the first one",
+      "start": 505.881,
+      "duration": 2.883
+    },
+    {
+      "text": ". And then we did another edge",
+      "start": 507.764,
+      "duration": 5.373
+    },
+    {
+      "text": " detection for horizontal edges. So you",
+      "start": 512.188,
+      "duration": 5.03
+    },
+    {
+      "text": " can see that we have all the horizontal",
+      "start": 516.265,
+      "duration": 2.835
+    },
+    {
+      "text": " edges in this picture. Similarly, you",
+      "start": 518.147,
+      "duration": 3.867
+    },
+    {
+      "text": " can also perform slant edge detection.",
+      "start": 521.074,
+      "duration": 3.266
+    },
+    {
+      "text": " You can detect any kind of edge. Okay?",
+      "start": 523.6,
+      "duration": 3.576
+    },
+    {
+      "text": " So the output will look like this. Now",
+      "start": 526.578,
+      "duration": 3.473
+    },
+    {
+      "text": " I am going to show you. How you achieve",
+      "start": 529.099,
+      "duration": 4.581
+    },
+    {
+      "text": " this mathematically. Also, if someone",
+      "start": 532.733,
+      "duration": 4.752
+    },
+    {
+      "text": " asks you what edges are. It's a very",
+      "start": 536.546,
+      "duration": 3.767
+    },
+    {
+      "text": " simple thing. Edges are basically a",
+      "start": 539.37,
+      "duration": 3.829
+    },
+    {
+      "text": " change in intensity. Like, look here,",
+      "start": 542.254,
+      "duration": 5.255
+    },
+    {
+      "text": " this whole area is black. But when you",
+      "start": 546.575,
+      "duration": 4.952
+    },
+    {
+      "text": " come here, the pixels are turning white",
+      "start": 550.576,
+      "duration": 2.914
+    },
+    {
+      "text": ". So this is your edge. Because the",
+      "start": 552.49,
+      "duration": 4.22
+    },
+    {
+      "text": " intensity is changing here. Similarly,",
+      "start": 555.762,
+      "duration": 3.066
+    },
+    {
+      "text": " you can say the intensity is changing",
+      "start": 557.885,
+      "duration": 3.096
+    },
+    {
+      "text": " here too. The intensity is changing",
+      "start": 560.038,
+      "duration": 2.908
+    },
+    {
+      "text": " here as well. So having edges means",
+      "start": 561.998,
+      "duration": 3.617
+    },
+    {
+      "text": " intensity change. So now we have to",
+      "start": 564.679,
+      "duration": 5.542
+    },
+    {
+      "text": " mathematically detect the edges somehow",
+      "start": 569.276,
+      "duration": 3.14
+    },
+    {
+      "text": ". We need to detect the intensity",
+      "start": 571.416,
+      "duration": 3.956
+    },
+    {
+      "text": " change. Because with the human eye, you",
+      "start": 574.425,
+      "duration": 3.137
+    },
+    {
+      "text": " can easily understand that yes, there",
+      "start": 576.616,
+      "duration": 2.991
+    },
+    {
+      "text": " is an edge. But how will an algorithm",
+      "start": 578.661,
+      "duration": 4.208
+    },
+    {
+      "text": " detect this? We are about to see the",
+      "start": 581.921,
+      "duration": 3.636
+    },
+    {
+      "text": " beauty of that. That is where the",
+      "start": 584.602,
+      "duration": 2.935
+    },
+    {
+      "text": " convolution operation is used. So I am",
+      "start": 586.592,
+      "duration": 3.195
+    },
+    {
+      "text": " going to show you a very small example.",
+      "start": 588.841,
+      "duration": 3.108
+    },
+    {
+      "text": " Where we have a 6x6, very",
+      "start": 592.661,
+      "duration": 2.891
+    },
+    {
+      "text": " low-resolution image. And we will",
+      "start": 594.628,
+      "duration": 5.151
+    },
+    {
+      "text": " perform edge detection on it. You can",
+      "start": 598.827,
+      "duration": 3.733
+    },
+    {
+      "text": " see all the pixels at the top are zero.",
+      "start": 601.611,
+      "duration": 2.985
+    },
+    {
+      "text": " Which means they are black, and all the",
+      "start": 604.329,
+      "duration": 2.939
+    },
+    {
+      "text": " bottom pixels are white. So this image",
+      "start": 606.317,
+      "duration": 3.564
+    },
+    {
+      "text": " will look something like this. This",
+      "start": 608.93,
+      "duration": 4.656
+    },
+    {
+      "text": " image will look something like this.",
+      "start": 612.633,
+      "duration": 2.688
+    },
+    {
+      "text": " Okay? So we have to perform edge",
+      "start": 616.102,
+      "duration": 3.444
+    },
+    {
+      "text": " detection on this. We need to find out",
+      "start": 618.6,
+      "duration": 4.108
+    },
+    {
+      "text": " where the intensity is changing and",
+      "start": 621.758,
+      "duration": 2.769
+    },
+    {
+      "text": " obviously the output should be like",
+      "start": 623.578,
+      "duration": 2.768
+    },
+    {
+      "text": " this. This should be the output. This",
+      "start": 625.397,
+      "duration": 4.75
+    },
+    {
+      "text": " is our input. This should be the output",
+      "start": 629.197,
+      "duration": 3.081
+    },
+    {
+      "text": ". Okay? So how will we do it? So to",
+      "start": 631.278,
+      "duration": 5.464
+    },
+    {
+      "text": " perform a convolution operation, you",
+      "start": 635.796,
+      "duration": 2.954
+    },
+    {
+      "text": " need something called a filter. In some",
+      "start": 637.805,
+      "duration": 4.428
+    },
+    {
+      "text": " places, it is also called a kernel.",
+      "start": 641.291,
+      "duration": 3.043
+    },
+    {
+      "text": " This is basically a matrix and",
+      "start": 645.002,
+      "duration": 2.912
+    },
+    {
+      "text": " generally its size is 3x3, but it can",
+      "start": 646.977,
+      "duration": 3.358
+    },
+    {
+      "text": " be larger. Like this is a 3x3 filter.",
+      "start": 649.399,
+      "duration": 4.636
+    },
+    {
+      "text": " Okay? It is basically a matrix of",
+      "start": 653.263,
+      "duration": 3.396
+    },
+    {
+      "text": " numbers. Here, the filter we are using",
+      "start": 655.714,
+      "duration": 4.496
+    },
+    {
+      "text": " will act as a horizontal edge detector.",
+      "start": 659.266,
+      "duration": 3.193
+    },
+    {
+      "text": " Meaning, it can detect all the",
+      "start": 664.668,
+      "duration": 2.575
+    },
+    {
+      "text": " horizontal edges present in your",
+      "start": 666.296,
+      "duration": 2.681
+    },
+    {
+      "text": " picture. Now, what will we do? We will",
+      "start": 668.029,
+      "duration": 6.37
+    },
+    {
+      "text": " take this filter and convolve it over",
+      "start": 673.448,
+      "duration": 2.79
+    },
+    {
+      "text": " this image. Now, this sign here is for",
+      "start": 675.286,
+      "duration": 3.842
+    },
+    {
+      "text": " the convolution operator. Okay? How",
+      "start": 678.185,
+      "duration": 3.189
+    },
+    {
+      "text": " does the convolution operation work? I",
+      "start": 680.423,
+      "duration": 2.902
+    },
+    {
+      "text": " will explain in a while. But as soon as",
+      "start": 682.377,
+      "duration": 4.205
+    },
+    {
+      "text": " you convolve, you get a result, and",
+      "start": 685.635,
+      "duration": 2.871
+    },
+    {
+      "text": " this result is called a feature map.",
+      "start": 687.559,
+      "duration": 2.925
+    },
+    {
+      "text": " Okay? So image, filter, feature map—",
+      "start": 693.342,
+      "duration": 6.796
+    },
+    {
+      "text": "there are three things here. Okay? Now,",
+      "start": 699.138,
+      "duration": 4.212
+    },
+    {
+      "text": " let's start our discussion on how the",
+      "start": 702.408,
+      "duration": 3.125
+    },
+    {
+      "text": " convolution operation works. So for the",
+      "start": 704.59,
+      "duration": 3.746
+    },
+    {
+      "text": " convolution operation, you first pick",
+      "start": 707.391,
+      "duration": 3.058
+    },
+    {
+      "text": " up this filter, and place it on top of",
+      "start": 709.504,
+      "duration": 6.336
+    },
+    {
+      "text": " this image at the top-left like this.",
+      "start": 714.89,
+      "duration": 2.845
+    },
+    {
+      "text": " You picked it up and placed it on top.",
+      "start": 719.364,
+      "duration": 2.912
+    },
+    {
+      "text": " And now what will you do? You perform",
+      "start": 722.097,
+      "duration": 3.076
+    },
+    {
+      "text": " element-wise multiplication. Meaning,",
+      "start": 724.233,
+      "duration": 4.595
+    },
+    {
+      "text": " you multiply this number with this one.",
+      "start": 727.884,
+      "duration": 3.171
+    },
+    {
+      "text": " This one with this one. This one with",
+      "start": 732.031,
+      "duration": 3.837
+    },
+    {
+      "text": " this one. This one with this one. This",
+      "start": 734.914,
+      "duration": 4.3
+    },
+    {
+      "text": " one with this one. And so on. And then",
+      "start": 738.26,
+      "duration": 4.728
+    },
+    {
+      "text": " you add up all these multiplications.",
+      "start": 742.037,
+      "duration": 2.803
+    },
+    {
+      "text": " So basically, it would look like this.",
+      "start": 744.453,
+      "duration": 3.132
+    },
+    {
+      "text": " -1*0 + -1*0 + -1*0, then second row,",
+      "start": 746.805,
+      "duration": 4.43
+    },
+    {
+      "text": " then third row; the number obtained",
+      "start": 750.331,
+      "duration": 4.335
+    },
+    {
+      "text": " after adding will go into this cell. As",
+      "start": 753.762,
+      "duration": 4.757
+    },
+    {
+      "text": " you can see here, all the numbers are",
+      "start": 757.579,
+      "duration": 3.199
+    },
+    {
+      "text": " zero, so zero will go into this cell.",
+      "start": 759.837,
+      "duration": 3.2
+    },
+    {
+      "text": " This was step one. Now, what will you",
+      "start": 762.327,
+      "duration": 3.339
+    },
+    {
+      "text": " do? Now you will move your filter",
+      "start": 764.727,
+      "duration": 4.428
+    },
+    {
+      "text": " slightly to the right and bring it here",
+      "start": 768.2,
+      "duration": 2.758
+    },
+    {
+      "text": " to this spot. And you will do the same",
+      "start": 770.003,
+      "duration": 5.115
+    },
+    {
+      "text": " thing. Again, the result was zero. Then",
+      "start": 774.165,
+      "duration": 5.17
+    },
+    {
+      "text": " you move further to this spot. Again,",
+      "start": 778.388,
+      "duration": 6.541
+    },
+    {
+      "text": " the result was zero. And in the end,",
+      "start": 783.997,
+      "duration": 4.566
+    },
+    {
+      "text": " you move one more step forward and",
+      "start": 787.619,
+      "duration": 2.904
+    },
+    {
+      "text": " again the result was zero. Okay? So we",
+      "start": 789.579,
+      "duration": 4.787
+    },
+    {
+      "text": " have run the convolution over our first",
+      "start": 793.419,
+      "duration": 3.083
+    },
+    {
+      "text": " row. Now, what will we do? We will move",
+      "start": 795.556,
+      "duration": 3.448
+    },
+    {
+      "text": " one row down. So we will come here to",
+      "start": 798.062,
+      "duration": 4.668
+    },
+    {
+      "text": " this spot. Okay? Now, look at what",
+      "start": 801.778,
+      "duration": 8.163
+    },
+    {
+      "text": " happens here; this first row will",
+      "start": 809.003,
+      "duration": 3.064
+    },
+    {
+      "text": " become zero. The second row will also",
+      "start": 811.13,
+      "duration": 4.419
+    },
+    {
+      "text": " become zero. But in the third one, 255*",
+      "start": 814.605,
+      "duration": 6.922
+    },
+    {
+      "text": "1 + 255*1 + 255*1, so a large number",
+      "start": 820.527,
+      "duration": 5.86
+    },
+    {
+      "text": " will appear. But we know that the",
+      "start": 825.522,
+      "duration": 5.925
+    },
+    {
+      "text": " largest number possible is 255. So 255",
+      "start": 830.515,
+      "duration": 3.794
+    },
+    {
+      "text": " will come here. Okay? Then we will move",
+      "start": 833.403,
+      "duration": 4.201
+    },
+    {
+      "text": " forward a bit. We'll grab this. Again,",
+      "start": 836.649,
+      "duration": 4.98
+    },
+    {
+      "text": " 255 will come here. Then we will move",
+      "start": 840.722,
+      "duration": 4.379
+    },
+    {
+      "text": " ahead. 255. You can pause the video and",
+      "start": 844.146,
+      "duration": 5.47
+    },
+    {
+      "text": " check the calculation. 255 and this row",
+      "start": 848.665,
+      "duration": 4.143
+    },
+    {
+      "text": " is done too. Okay? I'll clear",
+      "start": 851.895,
+      "duration": 4.086
+    },
+    {
+      "text": " everything once. And now I'll show you",
+      "start": 855.031,
+      "duration": 3.359
+    },
+    {
+      "text": " what's next. Now we will start from",
+      "start": 857.437,
+      "duration": 3.81
+    },
+    {
+      "text": " here next. Okay? This time this row is",
+      "start": 860.299,
+      "duration": 5.83
+    },
+    {
+      "text": " all zero. This is also all zero and",
+      "start": 865.189,
+      "duration": 3.441
+    },
+    {
+      "text": " this one is 255 again. Then we will",
+      "start": 867.701,
+      "duration": 5.28
+    },
+    {
+      "text": " move here. This is also 255. This is",
+      "start": 872.026,
+      "duration": 5.877
+    },
+    {
+      "text": " 255 and this is 255 too. Okay? Then",
+      "start": 877.011,
+      "duration": 4.994
+    },
+    {
+      "text": " this one is also finished. Now we will",
+      "start": 881.057,
+      "duration": 4.185
+    },
+    {
+      "text": " come to the last three rows. Okay? In",
+      "start": 884.295,
+      "duration": 4.463
+    },
+    {
+      "text": " this case, look, these -1 s make all",
+      "start": 887.835,
+      "duration": 3.75
+    },
+    {
+      "text": " these negative 255. The middle one all",
+      "start": 890.662,
+      "duration": 3.681
+    },
+    {
+      "text": " becomes zero and these all become",
+      "start": 893.406,
+      "duration": 3.071
+    },
+    {
+      "text": " positive 255. So you can easily do the",
+      "start": 895.54,
+      "duration": 3.26
+    },
+    {
+      "text": " calculation, it will be zero. So it",
+      "start": 897.856,
+      "duration": 3.113
+    },
+    {
+      "text": " moved as zero here, zero here, zero",
+      "start": 900.046,
+      "duration": 3.71
+    },
+    {
+      "text": " here, zero here. Okay? And now look",
+      "start": 902.834,
+      "duration": 3.843
+    },
+    {
+      "text": " guys, how our feature map looks. Zero",
+      "start": 905.737,
+      "duration": 3.307
+    },
+    {
+      "text": " on top, zero on bottom. In the middle,",
+      "start": 908.119,
+      "duration": 4.036
+    },
+    {
+      "text": " you have 255 values. So basically it",
+      "start": 911.24,
+      "duration": 3.912
+    },
+    {
+      "text": " would look something like this. Right,",
+      "start": 914.199,
+      "duration": 9.481
+    },
+    {
+      "text": " you can see this is what we wanted and",
+      "start": 922.733,
+      "duration": 3.001
+    },
+    {
+      "text": " we got it. So this is called edge",
+      "start": 924.787,
+      "duration": 4.182
+    },
+    {
+      "text": " detection. This is an example of",
+      "start": 928.022,
+      "duration": 3.695
+    },
+    {
+      "text": " horizontal edge detection. But if you",
+      "start": 930.771,
+      "duration": 3.559
+    },
+    {
+      "text": " change the filters, like this filter.",
+      "start": 933.381,
+      "duration": 2.872
+    },
+    {
+      "text": " If you change its values, then you can",
+      "start": 936.182,
+      "duration": 2.911
+    },
+    {
+      "text": " get different types of edge detectors.",
+      "start": 938.143,
+      "duration": 2.912
+    },
+    {
+      "text": " Like if you have these values. If you",
+      "start": 941.389,
+      "duration": 7.489
+    },
+    {
+      "text": " have these values, then this will act",
+      "start": 947.931,
+      "duration": 2.941
+    },
+    {
+      "text": " as a vertical edge detector. You can",
+      "start": 949.924,
+      "duration": 3.839
+    },
+    {
+      "text": " pause the video and try it out if you",
+      "start": 952.81,
+      "duration": 2.752
+    },
+    {
+      "text": " want. This filter will work as a",
+      "start": 954.609,
+      "duration": 4.442
+    },
+    {
+      "text": " vertical edge detector. In the same way",
+      "start": 958.103,
+      "duration": 4.147
+    },
+    {
+      "text": ", what will happen? You can use other",
+      "start": 961.25,
+      "duration": 3.24
+    },
+    {
+      "text": " values to detect slanted edges. You can",
+      "start": 963.547,
+      "duration": 3.379
+    },
+    {
+      "text": " detect edges of this kind. So computer",
+      "start": 965.978,
+      "duration": 3.047
+    },
+    {
+      "text": " scientists have created many types of",
+      "start": 968.08,
+      "duration": 3.033
+    },
+    {
+      "text": " filters. Right filter, left filter, top",
+      "start": 970.168,
+      "duration": 3.521
+    },
+    {
+      "text": " filter, bottom filter. So you can use",
+      "start": 972.755,
+      "duration": 3.697
+    },
+    {
+      "text": " any filter. But the good part is, the",
+      "start": 975.506,
+      "duration": 5.898
+    },
+    {
+      "text": " best thing is that in deep learning,",
+      "start": 980.454,
+      "duration": 2.769
+    },
+    {
+      "text": " you don't need to worry about what the",
+      "start": 982.272,
+      "duration": 2.868
+    },
+    {
+      "text": " filter value will be. Okay? What",
+      "start": 984.189,
+      "duration": 5.573
+    },
+    {
+      "text": " happens in deep learning is that you",
+      "start": 988.81,
+      "duration": 2.7
+    },
+    {
+      "text": " train these filters. You initialize it",
+      "start": 990.558,
+      "duration": 6.832
+    },
+    {
+      "text": " with a random value, and then your CNN",
+      "start": 996.445,
+      "duration": 3.087
+    },
+    {
+      "text": " automatically decides through",
+      "start": 998.587,
+      "duration": 2.593
+    },
+    {
+      "text": " backpropagation what the values should",
+      "start": 1000.235,
+      "duration": 3.087
+    },
+    {
+      "text": " be. So in short, these filter values",
+      "start": 1002.377,
+      "duration": 5.365
+    },
+    {
+      "text": " behave exactly like weights in an ANN.",
+      "start": 1006.804,
+      "duration": 3.347
+    },
+    {
+      "text": " In an ANN, the values of the weights",
+      "start": 1012.728,
+      "duration": 2.939
+    },
+    {
+      "text": " are determined during training.",
+      "start": 1014.721,
+      "duration": 2.67
+    },
+    {
+      "text": " Similarly, what these values in the",
+      "start": 1019.371,
+      "duration": 2.943
+    },
+    {
+      "text": " filters will be is also determined",
+      "start": 1021.37,
+      "duration": 2.888
+    },
+    {
+      "text": " after we train. Depending on the image",
+      "start": 1023.313,
+      "duration": 4.685
+    },
+    {
+      "text": " and depending on the training data. So",
+      "start": 1027.044,
+      "duration": 3.843
+    },
+    {
+      "text": " in short, we don't need to worry. We",
+      "start": 1029.944,
+      "duration": 4.419
+    },
+    {
+      "text": " just need to define these matrices. The",
+      "start": 1033.417,
+      "duration": 4.084
+    },
+    {
+      "text": " rest of the work is handled by",
+      "start": 1036.553,
+      "duration": 2.571
+    },
+    {
+      "text": " backpropagation. We don't need to",
+      "start": 1038.176,
+      "duration": 3.533
+    },
+    {
+      "text": " create the filters ourselves. And this",
+      "start": 1040.756,
+      "duration": 4.027
+    },
+    {
+      "text": " is one of the main reasons why CNNs",
+      "start": 1043.838,
+      "duration": 2.924
+    },
+    {
+      "text": " have been so successful. Because it",
+      "start": 1045.817,
+      "duration": 4.039
+    },
+    {
+      "text": " doesn't rely on pre-made filters. It",
+      "start": 1048.912,
+      "duration": 4.695
+    },
+    {
+      "text": " can create filters on the go according",
+      "start": 1052.657,
+      "duration": 2.875
+    },
+    {
+      "text": " to its requirements. Okay? So I hope",
+      "start": 1054.581,
+      "duration": 4.35
+    },
+    {
+      "text": " you have understood up to this point.",
+      "start": 1057.977,
+      "duration": 2.705
+    },
+    {
+      "text": " Now I will show you a good demo that",
+      "start": 1061.116,
+      "duration": 2.654
+    },
+    {
+      "text": " will make your learning more concrete.",
+      "start": 1062.816,
+      "duration": 2.747
+    },
+    {
+      "text": " So guys, now let me show you a very",
+      "start": 1066.202,
+      "duration": 3.155
+    },
+    {
+      "text": " good demo of convolution. This is a",
+      "start": 1068.418,
+      "duration": 3.708
+    },
+    {
+      "text": " site. com. They have created a very",
+      "start": 1071.184,
+      "duration": 3.72
+    },
+    {
+      "text": " good demo. I will use this to try and",
+      "start": 1073.957,
+      "duration": 3.659
+    },
+    {
+      "text": " explain how convolution works. So there",
+      "start": 1076.673,
+      "duration": 3.682
+    },
+    {
+      "text": " are some settings here. For instance,",
+      "start": 1079.398,
+      "duration": 2.781
+    },
+    {
+      "text": " they have kept two datasets. One is",
+      "start": 1081.233,
+      "duration": 2.931
+    },
+    {
+      "text": " MNIST and the other is Fashion MNIST.",
+      "start": 1083.218,
+      "duration": 3.006
+    },
+    {
+      "text": " You can try both. For now, I will show",
+      "start": 1085.324,
+      "duration": 3.396
+    },
+    {
+      "text": " you on MNIST. Since it's MNIST, there",
+      "start": 1087.782,
+      "duration": 3.494
+    },
+    {
+      "text": " are 10 types of digits here. Let's work",
+      "start": 1090.33,
+      "duration": 3.899
+    },
+    {
+      "text": " on zero. There are different types of",
+      "start": 1093.29,
+      "duration": 2.908
+    },
+    {
+      "text": " filters here. And these are predefined",
+      "start": 1095.24,
+      "duration": 2.852
+    },
+    {
+      "text": " filters. Okay? So these are four types",
+      "start": 1097.142,
+      "duration": 3.205
+    },
+    {
+      "text": " of filters. Top, bottom, right, left,",
+      "start": 1099.399,
+      "duration": 3.215
+    },
+    {
+      "text": " and their variants are given here.",
+      "start": 1101.676,
+      "duration": 3.107
+    },
+    {
+      "text": " Let's start with the left edge filter.",
+      "start": 1103.883,
+      "duration": 2.699
+    },
+    {
+      "text": " There are two modes. You can see the",
+      "start": 1105.851,
+      "duration": 3.097
+    },
+    {
+      "text": " operations step-by-step or you can play",
+      "start": 1108.002,
+      "duration": 3.101
+    },
+    {
+      "text": " it in one go. See what happens if you",
+      "start": 1110.156,
+      "duration": 4.523
+    },
+    {
+      "text": " do it step-by-step; your operator will",
+      "start": 1113.737,
+      "duration": 3.21
+    },
+    {
+      "text": " move one by one. Okay? So this is the",
+      "start": 1116.005,
+      "duration": 5.765
+    },
+    {
+      "text": " filter, by the way—the left edge",
+      "start": 1120.826,
+      "duration": 2.877
+    },
+    {
+      "text": " filter is right here—and currently,",
+      "start": 1122.758,
+      "duration": 3.042
+    },
+    {
+      "text": " we are operating on this window, and",
+      "start": 1124.856,
+      "duration": 2.987
+    },
+    {
+      "text": " the convolution operation is clearly",
+      "start": 1126.898,
+      "duration": 2.988
+    },
+    {
+      "text": " shown here, how item-wise",
+      "start": 1128.941,
+      "duration": 2.38
+    },
+    {
+      "text": " multiplication is happening and then",
+      "start": 1130.376,
+      "duration": 2.988
+    },
+    {
+      "text": " adding up to give you the output. Okay?",
+      "start": 1132.419,
+      "duration": 4.556
+    },
+    {
+      "text": " So this is the feature map. So let's",
+      "start": 1136.075,
+      "duration": 2.915
+    },
+    {
+      "text": " start. When I clicked step, the first",
+      "start": 1138.047,
+      "duration": 5.162
+    },
+    {
+      "text": " area's convolution result is zero. I am",
+      "start": 1142.269,
+      "duration": 4.806
+    },
+    {
+      "text": " clicking step again. We moved to the",
+      "start": 1146.132,
+      "duration": 4.038
+    },
+    {
+      "text": " right once, and the result is here.",
+      "start": 1149.222,
+      "duration": 2.829
+    },
+    {
+      "text": " Look, this is how we move and get the",
+      "start": 1153.347,
+      "duration": 3.142
+    },
+    {
+      "text": " results. You can see, as soon as we",
+      "start": 1155.547,
+      "duration": 4.925
+    },
+    {
+      "text": " moved to the next, we came down. And",
+      "start": 1159.531,
+      "duration": 4.258
+    },
+    {
+      "text": " you can see all these calculations are",
+      "start": 1162.835,
+      "duration": 2.763
+    },
+    {
+      "text": " happening. See, look at this. Now as we",
+      "start": 1164.645,
+      "duration": 9.564
+    },
+    {
+      "text": " reached here, the result is 4, because",
+      "start": 1173.265,
+      "duration": 3.146
+    },
+    {
+      "text": " when you convolve this square and this",
+      "start": 1175.467,
+      "duration": 3.146
+    },
+    {
+      "text": " filter, you are getting 4. Okay? It is",
+      "start": 1177.669,
+      "duration": 6.258
+    },
+    {
+      "text": " not possible to show it one by one.",
+      "start": 1182.98,
+      "duration": 2.852
+    },
+    {
+      "text": " Because this image is a bit large. So I",
+      "start": 1184.932,
+      "duration": 3.099
+    },
+    {
+      "text": " am clicking on play. And you can see",
+      "start": 1187.087,
+      "duration": 2.969
+    },
+    {
+      "text": " how this convolution operation is",
+      "start": 1189.107,
+      "duration": 2.675
+    },
+    {
+      "text": " happening. See. See, I would recommend",
+      "start": 1190.833,
+      "duration": 9.898
+    },
+    {
+      "text": " you go and try it out on this page once",
+      "start": 1199.789,
+      "duration": 3.249
+    },
+    {
+      "text": ". Now let's discuss the results. So",
+      "start": 1202.038,
+      "duration": 4.925
+    },
+    {
+      "text": " here you can see two colors will be",
+      "start": 1206.022,
+      "duration": 3.059
+    },
+    {
+      "text": " visible: red and blue. Red is actually",
+      "start": 1208.139,
+      "duration": 4.429
+    },
+    {
+      "text": " a positive activation. Meaning, where a",
+      "start": 1211.626,
+      "duration": 4.023
+    },
+    {
+      "text": " left edge is actually detected, you",
+      "start": 1214.706,
+      "duration": 3.014
+    },
+    {
+      "text": " will see it in red. The more red it is,",
+      "start": 1216.777,
+      "duration": 4.119
+    },
+    {
+      "text": " the more confidently our filter is",
+      "start": 1219.948,
+      "duration": 2.759
+    },
+    {
+      "text": " saying that there is a left edge here.",
+      "start": 1221.759,
+      "duration": 2.967
+    },
+    {
+      "text": " Okay? Now it might be occurring to you",
+      "start": 1224.382,
+      "duration": 3.375
+    },
+    {
+      "text": " what blue represents then? So blue is",
+      "start": 1226.803,
+      "duration": 4.038
+    },
+    {
+      "text": " telling you the exact opposite of red,",
+      "start": 1229.897,
+      "duration": 3.101
+    },
+    {
+      "text": " which is a right edge. Okay? So in this",
+      "start": 1232.053,
+      "duration": 3.614
+    },
+    {
+      "text": " image, right edges are also being",
+      "start": 1234.714,
+      "duration": 2.531
+    },
+    {
+      "text": " detected, and those are negative",
+      "start": 1236.291,
+      "duration": 2.485
+    },
+    {
+      "text": " numbers. Okay? So, it's a simple thing.",
+      "start": 1237.822,
+      "duration": 3.931
+    },
+    {
+      "text": " Red is a left edge, blue is a right",
+      "start": 1242.601,
+      "duration": 3.32
+    },
+    {
+      "text": " edge. And obviously, we want the left",
+      "start": 1244.987,
+      "duration": 4.786
+    },
+    {
+      "text": " edge. Meaning, we only need the red",
+      "start": 1248.832,
+      "duration": 3.501
+    },
+    {
+      "text": " values. So in CNN, what happens is that",
+      "start": 1251.395,
+      "duration": 3.841
+    },
+    {
+      "text": " as soon as your feature map is created,",
+      "start": 1254.295,
+      "duration": 3.268
+    },
+    {
+      "text": " you run another operation on it where",
+      "start": 1256.621,
+      "duration": 3.152
+    },
+    {
+      "text": " you apply ReLU on all these numbers.",
+      "start": 1258.831,
+      "duration": 3.094
+    },
+    {
+      "text": " What does ReLU do? Zero and max. Okay?",
+      "start": 1261.761,
+      "duration": 3.696
+    },
+    {
+      "text": " If it is negative, it becomes zero, and",
+      "start": 1264.557,
+      "duration": 3.128
+    },
+    {
+      "text": " if it is positive, it remains the same",
+      "start": 1266.739,
+      "duration": 3.074
+    },
+    {
+      "text": " value. So all these red values will",
+      "start": 1268.867,
+      "duration": 2.941
+    },
+    {
+      "text": " remain the same. But all these blue",
+      "start": 1270.862,
+      "duration": 3.39
+    },
+    {
+      "text": " values, since they are negative, will",
+      "start": 1273.308,
+      "duration": 3.07
+    },
+    {
+      "text": " be replaced by zero. So you can imagine",
+      "start": 1275.434,
+      "duration": 4.164
+    },
+    {
+      "text": " that the remaining image, the feature",
+      "start": 1278.65,
+      "duration": 2.928
+    },
+    {
+      "text": " map we have, will only have the left",
+      "start": 1280.63,
+      "duration": 2.876
+    },
+    {
+      "text": " edge. Okay? And that is how this entire",
+      "start": 1282.558,
+      "duration": 4.745
+    },
+    {
+      "text": " convolution operation works. Okay? Now",
+      "start": 1286.36,
+      "duration": 6.024
+    },
+    {
+      "text": " I would recommend that you go and try",
+      "start": 1291.434,
+      "duration": 2.848
+    },
+    {
+      "text": " out different digits, or you can pick",
+      "start": 1293.331,
+      "duration": 2.848
+    },
+    {
+      "text": " the Fashion MNIST dataset and try out",
+      "start": 1295.229,
+      "duration": 2.847
+    },
+    {
+      "text": " its different types. You can also try",
+      "start": 1297.126,
+      "duration": 6.16
+    },
+    {
+      "text": " out top filter, bottom filter. All",
+      "start": 1302.343,
+      "duration": 3.768
+    },
+    {
+      "text": " right? So this will give you a lot of",
+      "start": 1305.156,
+      "duration": 3.032
+    },
+    {
+      "text": " perspective. Visualizing things helps",
+      "start": 1307.234,
+      "duration": 3.505
+    },
+    {
+      "text": " them stick in the mind better. So go",
+      "start": 1309.79,
+      "duration": 3.44
+    },
+    {
+      "text": " ahead and try out this demo. So guys,",
+      "start": 1312.288,
+      "duration": 3.269
+    },
+    {
+      "text": " now a small question for you if you",
+      "start": 1314.613,
+      "duration": 2.958
+    },
+    {
+      "text": " have understood everything so far. The",
+      "start": 1316.627,
+      "duration": 4.169
+    },
+    {
+      "text": " question is that in the example we just",
+      "start": 1319.86,
+      "duration": 3.481
+    },
+    {
+      "text": " discussed, we had a 6x6 image. A 3x3",
+      "start": 1322.404,
+      "duration": 5.349
+    },
+    {
+      "text": " filter. And from this, the feature map",
+      "start": 1326.863,
+      "duration": 5.002
+    },
+    {
+      "text": " created was 4x4. So the question is,",
+      "start": 1330.937,
+      "duration": 5.786
+    },
+    {
+      "text": " when you apply a 3x3 filter on a 28x28",
+      "start": 1335.792,
+      "duration": 3.64
+    },
+    {
+      "text": " image, what will be the size of the",
+      "start": 1338.501,
+      "duration": 3.431
+    },
+    {
+      "text": " feature map? This is the question.",
+      "start": 1341.001,
+      "duration": 4.584
+    },
+    {
+      "text": " Pause the video and try to answer it.",
+      "start": 1345.283,
+      "duration": 2.832
+    },
+    {
+      "text": " The answer is 26. So, how will the",
+      "start": 1348.735,
+      "duration": 6.849
+    },
+    {
+      "text": " output shape be determined? It depends",
+      "start": 1354.64,
+      "duration": 3.772
+    },
+    {
+      "text": " on a formula. Suppose your image shape",
+      "start": 1357.466,
+      "duration": 4.549
+    },
+    {
+      "text": " is n x n and your filter shape is m x m",
+      "start": 1361.074,
+      "duration": 10.038
+    },
+    {
+      "text": ", then your resultant feature map shape",
+      "start": 1370.112,
+      "duration": 3.784
+    },
+    {
+      "text": " will be n-m + 1 x n-m + 1. This is the",
+      "start": 1372.968,
+      "duration": 9.585
+    },
+    {
+      "text": " output. Okay? You always have to",
+      "start": 1381.603,
+      "duration": 3.788
+    },
+    {
+      "text": " remember this. So in this case, the",
+      "start": 1384.439,
+      "duration": 4.357
+    },
+    {
+      "text": " output would be 26x26. If it is 64x64",
+      "start": 1387.884,
+      "duration": 6.162
+    },
+    {
+      "text": " and you apply a 3x3 filter, you would",
+      "start": 1393.133,
+      "duration": 4.223
+    },
+    {
+      "text": " be getting a 62x62 image feature map.",
+      "start": 1396.443,
+      "duration": 4.224
+    },
+    {
+      "text": " Okay? So you have to keep this in mind.",
+      "start": 1400.985,
+      "duration": 3.13
+    },
+    {
+      "text": " We will discuss this more ahead. So",
+      "start": 1403.374,
+      "duration": 4.018
+    },
+    {
+      "text": " until now, we were talking about",
+      "start": 1406.446,
+      "duration": 2.744
+    },
+    {
+      "text": " grayscale images where there is only",
+      "start": 1408.245,
+      "duration": 2.962
+    },
+    {
+      "text": " one channel. What if we have to perform",
+      "start": 1410.261,
+      "duration": 4.73
+    },
+    {
+      "text": " convolution on a colored image that has",
+      "start": 1414.042,
+      "duration": 2.996
+    },
+    {
+      "text": " three channels? So here you just need",
+      "start": 1416.09,
+      "duration": 5.54
+    },
+    {
+      "text": " to understand one small thing: that",
+      "start": 1420.695,
+      "duration": 3.273
+    },
+    {
+      "text": " your filter, we saw until now that its",
+      "start": 1423.033,
+      "duration": 3.469
+    },
+    {
+      "text": " size was 3x3. In the case of RGB, its",
+      "start": 1425.567,
+      "duration": 7.762
+    },
+    {
+      "text": " size is automatically assumed to be",
+      "start": 1432.398,
+      "duration": 3.421
+    },
+    {
+      "text": " 3x3x3, which means that our filter also",
+      "start": 1434.888,
+      "duration": 3.698
+    },
+    {
+      "text": " becomes three-channeled, one channel",
+      "start": 1437.655,
+      "duration": 3.49
+    },
+    {
+      "text": " for each R, G, and B channel. Okay? So",
+      "start": 1440.214,
+      "duration": 7.557
+    },
+    {
+      "text": " how is the entire convolution operation",
+      "start": 1446.831,
+      "duration": 3.34
+    },
+    {
+      "text": " performed? You can imagine this image",
+      "start": 1449.231,
+      "duration": 4.859
+    },
+    {
+      "text": " in the form of a cuboid like this. Okay",
+      "start": 1453.143,
+      "duration": 6.387
+    },
+    {
+      "text": "? And this is its depth, which is three",
+      "start": 1458.53,
+      "duration": 3.299
+    },
+    {
+      "text": ". And you can also imagine this filter",
+      "start": 1460.829,
+      "duration": 4.42
+    },
+    {
+      "text": " in the form of a small cuboid. Whose",
+      "start": 1464.302,
+      "duration": 4.939
+    },
+    {
+      "text": " depth is the same as the image's depth.",
+      "start": 1468.291,
+      "duration": 2.958
+    },
+    {
+      "text": " And then what can you do? You can place",
+      "start": 1471.312,
+      "duration": 5.267
+    },
+    {
+      "text": " this box here and slide it. Okay? I",
+      "start": 1475.63,
+      "duration": 7.187
+    },
+    {
+      "text": " will show you a GIF image. You can see",
+      "start": 1481.871,
+      "duration": 3.45
+    },
+    {
+      "text": " this is the image. So here, this box",
+      "start": 1484.371,
+      "duration": 3.926
+    },
+    {
+      "text": " will move in this way. And you can see.",
+      "start": 1487.358,
+      "duration": 4.333
+    },
+    {
+      "text": " I hope you get the idea. Now comes the",
+      "start": 1494.616,
+      "duration": 3.44
+    },
+    {
+      "text": " important question. Pause the video for",
+      "start": 1497.108,
+      "duration": 4.236
+    },
+    {
+      "text": " a moment and think, when this",
+      "start": 1500.397,
+      "duration": 2.521
+    },
+    {
+      "text": " convolution operation is performed",
+      "start": 1501.971,
+      "duration": 2.784
+    },
+    {
+      "text": " between this image and this filter,",
+      "start": 1503.807,
+      "duration": 2.836
+    },
+    {
+      "text": " then this feature map that is created,",
+      "start": 1505.696,
+      "duration": 2.994
+    },
+    {
+      "text": " what will its shape be? I guess you are",
+      "start": 1510.969,
+      "duration": 4.23
+    },
+    {
+      "text": " understanding. It is also written here",
+      "start": 1514.246,
+      "duration": 3.497
+    },
+    {
+      "text": " that the resultant will be 4 cross 4.",
+      "start": 1516.799,
+      "duration": 3.048
+    },
+    {
+      "text": " Single channel, why will it be a single",
+      "start": 1519.593,
+      "duration": 3.154
+    },
+    {
+      "text": " channel? It is very simple. If you are",
+      "start": 1521.803,
+      "duration": 3.302
+    },
+    {
+      "text": " able to imagine it, you will understand",
+      "start": 1524.155,
+      "duration": 2.932
+    },
+    {
+      "text": ". So this filter of ours has 3 cross 3",
+      "start": 1526.087,
+      "duration": 5.628
+    },
+    {
+      "text": " cross 3, which means 27 values. So when",
+      "start": 1530.793,
+      "duration": 7.402
+    },
+    {
+      "text": " we start convolving it over this volume",
+      "start": 1537.255,
+      "duration": 3.311
+    },
+    {
+      "text": ", we will first take the 27 values here",
+      "start": 1539.566,
+      "duration": 3.312
+    },
+    {
+      "text": ". Okay? So basically, 27 values are",
+      "start": 1541.878,
+      "duration": 5.325
+    },
+    {
+      "text": " being element-wise multiplied with 27",
+      "start": 1546.276,
+      "duration": 3.688
+    },
+    {
+      "text": " values and then added. So basically,",
+      "start": 1549.037,
+      "duration": 4.806
+    },
+    {
+      "text": " when you place this filter here for the",
+      "start": 1552.895,
+      "duration": 3.011
+    },
+    {
+      "text": " first time, you are getting one number",
+      "start": 1554.957,
+      "duration": 2.96
+    },
+    {
+      "text": " which will come for this box. Then you",
+      "start": 1556.969,
+      "duration": 3.599
+    },
+    {
+      "text": " move this way, then another number,",
+      "start": 1559.623,
+      "duration": 2.914
+    },
+    {
+      "text": " another number, and another number.",
+      "start": 1561.592,
+      "duration": 2.915
+    },
+    {
+      "text": " Then you come down, and you start",
+      "start": 1564.116,
+      "duration": 2.672
+    },
+    {
+      "text": " getting its corresponding numbers. That",
+      "start": 1565.839,
+      "duration": 4.633
+    },
+    {
+      "text": " is why when you convolve a",
+      "start": 1569.523,
+      "duration": 2.346
+    },
+    {
+      "text": " three-channel image with a",
+      "start": 1570.921,
+      "duration": 2.346
+    },
+    {
+      "text": " three-channel filter, you get a",
+      "start": 1572.319,
+      "duration": 2.604
+    },
+    {
+      "text": " single-channel feature map. So you must",
+      "start": 1573.975,
+      "duration": 9.793
+    },
+    {
+      "text": " always remember that when you convolve",
+      "start": 1582.827,
+      "duration": 3.216
+    },
+    {
+      "text": " an m cross m cross channel with an n",
+      "start": 1585.102,
+      "duration": 3.1
+    },
+    {
+      "text": " cross n cross channel filter, you get",
+      "start": 1587.26,
+      "duration": 3.159
+    },
+    {
+      "text": " an m-n + 1 cross m-n + 1 single-channel",
+      "start": 1589.477,
+      "duration": 3.275
+    },
+    {
+      "text": " feature map. This is the biggest",
+      "start": 1591.81,
+      "duration": 8.999
+    },
+    {
+      "text": " learning here. I hope you have",
+      "start": 1599.854,
+      "duration": 2.827
+    },
+    {
+      "text": " understood this whole thing. So now, in",
+      "start": 1601.727,
+      "duration": 3.871
+    },
+    {
+      "text": " this video, we will discuss one last",
+      "start": 1604.66,
+      "duration": 3.25
+    },
+    {
+      "text": " thing: what happens if you apply",
+      "start": 1606.973,
+      "duration": 3.0
+    },
+    {
+      "text": " multiple filters to the same image. So",
+      "start": 1609.036,
+      "duration": 3.916
+    },
+    {
+      "text": " honestly, this happens very rarely. In",
+      "start": 1612.018,
+      "duration": 3.536
+    },
+    {
+      "text": " fact, it never happens that you only",
+      "start": 1614.61,
+      "duration": 3.004
+    },
+    {
+      "text": " apply a single filter to your image.",
+      "start": 1616.67,
+      "duration": 3.005
+    },
+    {
+      "text": " Generally, you apply more filters, more",
+      "start": 1619.636,
+      "duration": 3.455
+    },
+    {
+      "text": " than one filter. Okay? So for example,",
+      "start": 1622.154,
+      "duration": 5.835
+    },
+    {
+      "text": " suppose you can imagine that you have",
+      "start": 1627.042,
+      "duration": 2.951
+    },
+    {
+      "text": " applied two filters and the first",
+      "start": 1629.046,
+      "duration": 2.741
+    },
+    {
+      "text": " filter will perform vertical edge",
+      "start": 1630.84,
+      "duration": 2.74
+    },
+    {
+      "text": " detection. The second one will perform",
+      "start": 1632.633,
+      "duration": 4.406
+    },
+    {
+      "text": " horizontal edge detection. There could",
+      "start": 1636.089,
+      "duration": 3.134
+    },
+    {
+      "text": " be a third filter that performs slant",
+      "start": 1638.272,
+      "duration": 2.817
+    },
+    {
+      "text": " edge detection. Meaning, it depends.",
+      "start": 1640.138,
+      "duration": 3.394
+    },
+    {
+      "text": " Okay? So you have to understand what",
+      "start": 1642.632,
+      "duration": 3.061
+    },
+    {
+      "text": " will happen in this case. So, by now",
+      "start": 1644.741,
+      "duration": 3.938
+    },
+    {
+      "text": " you must have understood that when you",
+      "start": 1647.746,
+      "duration": 3.558
+    },
+    {
+      "text": " perform a 3x3 convolution on a 6x6x3",
+      "start": 1650.371,
+      "duration": 3.424
+    },
+    {
+      "text": " input, you will get this 4x4 feature",
+      "start": 1652.862,
+      "duration": 3.423
+    },
+    {
+      "text": " map, so with one filter you will be",
+      "start": 1655.353,
+      "duration": 3.356
+    },
+    {
+      "text": " getting one feature map. If you have",
+      "start": 1657.776,
+      "duration": 4.357
+    },
+    {
+      "text": " two filters, then you will get another",
+      "start": 1661.183,
+      "duration": 2.914
+    },
+    {
+      "text": " feature map of the same dimension. If",
+      "start": 1663.148,
+      "duration": 2.903
+    },
+    {
+      "text": " there were three filters, one more",
+      "start": 1665.096,
+      "duration": 2.537
+    },
+    {
+      "text": " feature map would be obtained. If there",
+      "start": 1666.678,
+      "duration": 2.863
+    },
+    {
+      "text": " were 10 filters, 10 feature maps would",
+      "start": 1668.592,
+      "duration": 2.93
+    },
+    {
+      "text": " be obtained. And now, if you have two",
+      "start": 1670.573,
+      "duration": 4.299
+    },
+    {
+      "text": " feature maps, you can treat them like a",
+      "start": 1673.929,
+      "duration": 3.244
+    },
+    {
+      "text": " volume, like this. So here, your",
+      "start": 1676.23,
+      "duration": 6.606
+    },
+    {
+      "text": " resultant shape is 4x4x2, and you can",
+      "start": 1681.9,
+      "duration": 3.358
+    },
+    {
+      "text": " imagine it as a volume that will act as",
+      "start": 1684.322,
+      "duration": 3.486
+    },
+    {
+      "text": " input for further convolution layers.",
+      "start": 1686.872,
+      "duration": 3.359
+    },
+    {
+      "text": " Okay? I hope you are understanding this",
+      "start": 1691.422,
+      "duration": 3.153
+    },
+    {
+      "text": " point. Okay? If you had 10 filters,",
+      "start": 1693.622,
+      "duration": 4.835
+    },
+    {
+      "text": " then your resultant would be 4x4x10. So",
+      "start": 1697.529,
+      "duration": 9.049
+    },
+    {
+      "text": ", basically, this number here is the",
+      "start": 1705.578,
+      "duration": 3.21
+    },
+    {
+      "text": " number of filters used. The number of",
+      "start": 1707.85,
+      "duration": 6.154
+    },
+    {
+      "text": " filters you use is the number of",
+      "start": 1713.05,
+      "duration": 2.469
+    },
+    {
+      "text": " channels you will have in your output.",
+      "start": 1714.565,
+      "duration": 2.745
+    },
+    {
+      "text": " Okay? I hope things are clear up to",
+      "start": 1717.219,
+      "duration": 2.829
+    },
+    {
+      "text": " this point. So that's it for the video,",
+      "start": 1719.093,
+      "duration": 3.046
+    },
+    {
+      "text": " guys. I hope I was able to explain to",
+      "start": 1721.193,
+      "duration": 3.001
+    },
+    {
+      "text": " you easily how the convolution",
+      "start": 1723.246,
+      "duration": 2.579
+    },
+    {
+      "text": " operation works. In the upcoming videos",
+      "start": 1724.878,
+      "duration": 3.155
+    },
+    {
+      "text": ", we will cover some more important",
+      "start": 1727.033,
+      "duration": 2.93
+    },
+    {
+      "text": " topics. Such as, what are strides? What",
+      "start": 1729.018,
+      "duration": 3.706
+    },
+    {
+      "text": " is padding? What is pooling? And once",
+      "start": 1731.773,
+      "duration": 4.083
+    },
+    {
+      "text": " we study all these components, we will",
+      "start": 1734.91,
+      "duration": 3.063
+    },
+    {
+      "text": " combine them to build a CNN",
+      "start": 1737.027,
+      "duration": 2.466
+    },
+    {
+      "text": " architecture, and then we will do the",
+      "start": 1738.547,
+      "duration": 3.009
+    },
+    {
+      "text": " further work in subsequent videos. So",
+      "start": 1740.61,
+      "duration": 3.926
+    },
+    {
+      "text": " if you liked the video, please like it,",
+      "start": 1743.587,
+      "duration": 2.989
+    },
+    {
+      "text": " and if you haven't subscribed to the",
+      "start": 1745.627,
+      "duration": 2.835
+    },
+    {
+      "text": " channel, please subscribe to the",
+      "start": 1747.513,
+      "duration": 2.632
+    },
+    {
+      "text": " channel. That's it from my side.",
+      "start": 1749.196,
+      "duration": 2.918
+    }
+  ]
+}

@@ -1,0 +1,2555 @@
+{
+  "id": "0MVXteg7TB4",
+  "index": 51,
+  "title": "Pretrained models in CNN | ImageNET Dataset | ILSVRC | Keras Code",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and you are  welcome to CampusX. In this video, we  will continue our deep learning  playlist. So far, we have learned two  things within CNNs in deep learning.  First of all, how CNN architectures  work, and we also worked a bit on image  classification by building our own CNN  architecture. Today's video is a bit  different because in today's video I  will discuss with you how you can use  pre-trained models. What are  pre-trained models? A pre-trained model  is a CNN architecture or other neural  network architecture that someone else  has built. Someone else has trained it  on a different dataset. But it is so  good that you can also use it for your  own problem. Okay? So in today's video,  I will first explain to you where the  concept of pre-trained models came from , and after that, we will learn how to  use pre-trained models in Keras. Trust  me, it is a very important topic  because going forward, when we study  transfer learning, which is very, very  important. These concepts will come in  handy there. Okay? So try to watch  today's video from end to end, and  whatever code I write, try to do it  along with me. Okay? So let's start the  video. We will start our discussion on  why we should use a pre-trained model.  Pre-trained means a model built by  someone else. Why should we use a CNN  model? Rather than using our own model.  Okay? I will give you two reasons.  Reason number one, that when you use  CNN models, you are basically working  on some image-based data. So you might  have heard this about deep learning  that deep learning is data hungry.  Meaning deep learning models need a lot  of data to perform well. Now if you are  talking about CNN, it means you need a  lot of image data. And even in image  data, if you are talking about a  classification problem, you need a lot  of labeled data. Let's say you are  building a cat-dog classifier. Then you  need a lot of photos of cats and dogs.  Okay? Well, you can solve this problem.  You can go to Google Images and scrape  the data. But there is one more problem . You also need labeling along with it.  Meaning for every photo you download,  you will also have to specify next to  it whether there is a dog or a cat in  this photo. Now imagine you need 10,000  photos and you downloaded them from  Google. But what will you have to do  now? You will have to sit down and  manually label these 10,000 images. Now  that is a tedious task. All right? This  will take time and effort. So, if a  company wants to get this done, you  need to hire people and pay them a  salary. So basically, it's a financial  loss. Now, in the future, maybe this  work will become a bit easier. If  companies like Pinterest come forward  and open-source their data. But at this  point, it is a tedious task to have  your own data for your deep learning  model. This is reason number one.  Reason number two is time. So, let's  say even if you have a lot of data,  there is a problem that when you train  your model on a lot of data, the  training process takes time—sometimes  it takes hours, days, or even weeks on  large datasets. So, it basically means  your entire model-building process is  going to be slow. So, the solution is  that rather than using our own model,  what we can do is use someone else's  pre-made model, which we call a  pre-trained model. Now, my goal in  today's video is to try and explain to  you from the very beginning where the  concept of pre-trained models came from , and then I will also show you how to  use them. Now, to understand the  concept of pre-trained models, you need  to know about the ImageNet dataset. All  right? So, in very simple words, if I  tell you, ImageNet is basically a  visual database. Of images. All right?  Now, let's talk about it in a bit more  detail. Let's talk about the why, what,  and how? So that you have a detailed  idea about it. Let's talk about the why ? Why was this ImageNet database  created? So, around 2006, there was a  computer researcher called Fei-Fei Li.  So, at this point, around 2006, deep  learning was starting to resurface a  bit. It was becoming famous. At that  time, most of the researchers were  focusing on models and algorithms. Most  deep learning researchers were focused  on model building and algorithm  building. At that time, Fei-Fei Li  thought that if deep learning is all  about data, then in the future, it's  absolutely necessary that we have some  very large and good datasets upon which  these models and algorithms will work.  So what he did, from 2006, he started  building this database, the ImageNet  database. Okay, so he met with a  professor who created WordNet, and  together with him, he built this  database of 1.4 million images. In  Indian terms, if we say it, he created  a database of 14 million images. Okay?  And in these 14 million images, there  were 20,000 categories. Meaning, there  was data of 20,000 things here. Cat,  dog, man, woman, vehicle, table, chair;  many such categories that are daily  household items. Plus, whatever you see  around you on a daily basis, they  created 1.4 million images of 20,000  such things. Okay? Now, all of these  images were labeled. And labeled in  such a way that if, say, there is an  image of a dog, it was very  well-organized labeling, indicating  that it is a dog. And within the dog,  what breed of dog is it? What is its  visual description? It is a white dog.  In this way, they labeled everything  very well hierarchically. And moreover,  around 1 million images, roughly 10  lakh images, were also given bounding  box labeling. What is bounding box  labeling? Suppose you have this photo  and there is a cat in it. So, in a  bounding box, you draw a box to show  where the object is in the image. So,  this helps a lot in the object  localization task. So, in this database  of ours, there were 14 million images  that were well-labeled in this manner.  And at least 1 million images were for  object localization. There were  bounding boxes. Okay? Now, thinking  about this whole thing, you might  wonder how it was built. How did they  build this entire thing? So they used  crowdsourcing. Basically, they took the  help of the crowd. They asked people, \" Here is a photo. Tell us what is in it. \" Or, \"Here is a photo. Tell us where  that object is.\" They took help from  people. Okay? They used something like  a CAPTCHA-type program using a service  by Amazon called Mechanical Turk. They  used this service to build this entire  database of images. And this is that  very database. This is that very  dataset that changed the future of deep  learning. How? For that, we will  discuss the next thing, which is called  the ImageNet Challenge. So, once the  ImageNet database was created, these  researchers decided that we should use  this large dataset. Let's build a  competition. Alright? It is called the  ILSVRC. ImageNet Large Scale Visual  Recognition Challenge. Alright? Or  simply put, it is also called the  ImageNet Challenge. So, this challenge  started in 2010, and its goal was for  the best image classification models to  surface. They needed to be brought to  people's attention. Alright? So, a lot  of people participated in this  competition. The dataset used in this  competition was actually a subset of  the original ImageNet dataset. So, the  original one had 140 million images.  The dataset used in our competition had  only 1 million, or you could say.  Around 10 lakh images were used. Where  the initial dataset had 20,000 classes.  In the ImageNet Challenge, there were  only 1,000 classes. So, they reduced  the complexity a bit. Alright? So, a  lot of teams and researchers  participated in this challenge in 2010,  and the models that came in the first  couple of years were mostly machine  learning-based models. Deep learning  was not being used there. So, these  were models where machine learning  algorithms were at work. People were  doing manual feature extraction here.  If you have ever done this, you might  have an idea. You extract SIFT and HOG  features and then use ensemble learning , etc., to make predictions. Alright?  So, when the team won in 2010, the  error rate of their model was around 28 %. A 28%error rate means that if you  show this model 100 images, it will  make mistakes on 28 of them. Alright?  In 2011, machine learning-based models  arrived again, and the error rate  improved slightly. It went down to 25%.  Meaning, if you show this winning model  100 images, it will make mistakes on 25  of them. Alright? The real change  happened in 2012. 2012 is a landmark  year for deep learning. What happened  in 2012 was that Geoffrey Hinton  participated in this competition with a  CNN model called AlexNet. I will show  you its architecture a little later.  But AlexNet was a CNN model. Basically,  a deep learning-based model, and this  was the first time a deep learning  model participated, and secondly, they  used a GPU for the first time. I'm  sorry, instead of using a CPU, they  used a GPU, which made the training  fast. And this was also the first time  that a CNN model used ReLU as an  activation layer. And as soon as it  participated in this competition, it  brought a revolution. In 2012, the  error rate due to AlexNet dropped  straight to 16%, which was an  improvement of over 10%from the  second-place entry. And as soon as  AlexNet won the competition, the entire  tech world's eyes turned to this CNN  model, and people started noticing what  kind of technology had arrived that  left machine learning so far behind.  Okay? And that was the first time that  everyone truly took notice of deep  learning, and after that, consistently  in 2013 and 2014, as long as the  competition continued, deep learning  models and CNNs kept coming and winning  the competition. Okay? I will tell you  about that next. So guys, this is the  architecture of AlexNet. I got this  from Andrew Ng's lecture. So you can  see that in ImageNet, you have colored  images that are 227 by 227. What  AlexNet did was use 96 filters of 11 by  11 in the first layer. Then they kept  the stride at 4 and the padding same.  For max pooling, they used a size of 3  by 3. They kept the stride at 2. You  can do all the calculations. I mean, we  have already discussed all of this.  When we built our own CNNs. After that,  they again kept 256 filters of 5 by 5.  Filters. Then again max pooling, and  after that 384 filters. And eventually,  at the end, you can see they used three  fully connected layers with 9216, 4096.  Actually, they used two fully connected  layers. This is flattening. Flattening  resulted in 9216. And at the end, you  can see they added a Softmax layer with  1000 units because the problem we have  is a multi-class classification problem  where there are a thousand classes.  Okay? So I would recommend you pause  the video once or go on the internet  and try to understand the architecture  of AlexNet. If possible, if you have  time, try to build it in Keras. It  would be a great exercise. Okay? So  this was the 2012 winning model that  started the deep learning revolution.  Okay? So that is why I felt it was  important to show this once. Now I will  tell you what happened going forward in  2013 and 2014. In the following years,  deep learning models consistently  improved and kept winning all the  contests. This is a chart that will  give you some idea. So in 2010 and 2011 , machine learning models won the  competition with 28%and 25%error rates,  and in 2012, AlexNet arrived, which won  the competition and showed a 16.4%error  rate, which was kind of revolutionary  at that time. After that, in 2013,  there was this CNN architecture called  ZFNet, which improved it further and  brought the error rate down to 11.7%.  Okay? After that, another very famous  CNN architecture came along, which is  called VGG. Visual Geometry Group. I  guess that is its full form. They  brought it down to 7.3%. VGG Net, in  fact, got very famous. This is an  architecture that became very famous,  and going forward, you will see in many  places that we will be using VGG Net.  Okay? In 2015, Google also joined and  their CNN architecture won with a 6.7% error rate, and in 2016, there was this  other famous architecture called ResNet , which brought the whole thing to an  unbelievable 3.5%error rate. So this  stage has now crossed humans. Meaning,  on that dataset, the human error rate  is 5%. Meaning, if you show 100 photos  to humans as well, even humans make  mistakes in five of them. But not this  model. Its error rate is less than  humans. Just think how much progress we  have made in deep learning that our  computer vision systems are surpassing  actual human vision systems. Okay? So  your job at this point should be to go  and study these architectures. On the  internet, you would get a lot of  resources where their architecture is  explained. You will see a common  pattern that as the years go by, more  and more layers were added—meaning  the complexity of the CNN model  increased—and because of that  increase in complexity, the error rate  has reduced. Okay? So this should be  your task. Go and search for these  models once. Look at their architecture . If you have time and are interested,  then try to recreate them in Keras. It  would be a great exercise. Meanwhile,  the idea we needed to take from  ImageNet and the ImageNet challenge, we  have gotten it. Now I will explain to  you what the logic is behind using  pre-trained models. Why should we use  them? So I guess you must have  understood the concept of pre-trained  models. Let me explicitly specify it  once. So the idea is very simple. I  told you at the beginning of the video  that to train a deep learning model,  you need a lot of data, which is costly , and even if you have data, training  takes a lot of time. So researchers  simply observed that if we already have  very good models like VGGNet, ResNet,  which are already trained on datasets  like ImageNet, where you have the  thousand most common classes that exist . Then if we have such a model, why  should we train our own model? Why not  directly use them? There will be two  benefits. First, you don't need  training. Since you don't need training , you don't need to gather data. Even  if you have zero data, it will work.  Even if you have very little data, it  will work. And the second benefit is  that since you don't have to train, it  won't take time. You can use these  models directly. The good part is that  in Keras, our library, you get many  pre-trained models. So what am I going  to do now? I will show you how to use  some good models available in the Keras  library. Okay? On a problem. So if you  Google \"Keras pre-trained models,\" the  first result you will see is Keras  Applications. If you go to that page,  you will see a list of all those  pre-trained models that are available  in Keras. Okay? So you can see these  are the models: Xception, VGG19, VGG16  with 16 layers, VGG19 with 19 layers,  ResNet 50, ResNet 50 V 2—these are  all famous models. Inception V3,  MobileNet, which is very lightweight.  After that, you can just go through the  whole list. Here, the size is also  mentioned, showing how large these  models are. So you can see VGG16, which  we will use quite a bit in the future.  It is around 528 MB. Why is it so big?  Because it is pre-trained. It is  pre-trained, meaning all the parameters , the trainable parameters, which are  roughly around 138.4 million. Basically , the weights for all of them are  stored as numbers. That is why it is so  big. ResNet 50 is a bit more  lightweight at 98 MB because it has  fewer parameters. Okay? Here, top-1  accuracy and top-5 accuracy are written . Top-1 accuracy means being able to  identify exactly what is in the image.  Top-5 accuracy means that out of the  top five outputs it gives, at least one  is correct. That is top-5 accuracy.  Okay? So, you can see accuracy is also  written there. Parameters are written.  The number of layers is written. And  after that, the time taken for  inference on CPU and GPU. This entire  listing is provided here. So, I would  recommend you take a look at it once.  The famous modules among these are  Xception, VGG, ResNet, Inception, and  MobileNet is also used a lot. So, these  are some famous modules in architecture  that you will see ahead. Okay? So, what  am I doing now? I will show you an  example of ResNet 50, and we will build  a sort of universal classifier where  you can input any image, and it will  try to predict what is inside that  image. Okay? So, the code is already  written. In fact, I just took the code  from them. An example code was provided  here. I have kept that same code here.  Here, I have uploaded four images. All  four are completely different things.  Bread, chair, dog, and tomato. Let me  show you. You can see this is an image  of a dog. This is bread, this is a  tomato, and this is a chair. I am  providing these four things. Let me  show you the code. Here, we have  imported everything. You have to focus  on this one. Here, we have imported  ResNet 50. Okay? From within ResNet 50,  we have imported preprocess input and  decode predictions. After that, we  created the model of the ResNet 50  class here. We specified here that the  weights we want are the ones obtained  after training on the ImageNet database . Okay? After that, we provided the  path of the image here. Loaded the  image. Converted it into an array.  Expand dims means converted it into a  batch and pre-processed it and put it  into x. Okay? Now we have that image in  x. The model has a predict function. We  sent x into it, and whatever prediction  we got, we decoded it using decode  predictions. And I am showing you the  top three predictions. So, first, when  I ran the tomato, the result actually  came out as strawberry, which is not  the correct answer. But \"hip\" is also  appearing. I searched for \"hip\" in  vegetables, and it looked something  like this. So, I guess there was a bit  of confusion with the tomato. But if  you try the other things, the result  comes out correctly. Let me show you.  If you are trying for a dog, you will  get not only 'dog', but it also shows  the breed. It says Labrador Retriever  and Golden Retriever. The dog I have, I  think it's a Golden Retriever. If we  run it on the breed. On the breed image , then this is the result. It says  folding chair. Okay? Which is correct.  And if we run it on a chair. The chair  extension is JFIF, JFIF. And if we get  the result, you can see it's a folding  chair. Okay? So you can see how easily  I didn't have to put in any effort. I  didn't even have to build my own  architecture. I simply took someone  else's model and sort of created a  universal classifier, where I send  anything, and it tells me what's inside  the image. Okay? So that was the goal  of this entire video, to explain to you  what pre-trained models are. Why they  exist, and how to use them using Keras.  I hope I was able to explain it to you.  So that was the video, guys. I hope you  understood how to use pre-trained  models. The next video will be on  transfer learning. There, all these  concepts will kind of be reused. So  whatever you have learned will help you . Okay? So if you liked the video,  please like it, and if you haven't  subscribed to the channel yet, please  do subscribe. That's it from my side.  See you in the next video. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and you are",
+      "start": 0.1,
+      "duration": 3.138
+    },
+    {
+      "text": " welcome to CampusX. In this video, we",
+      "start": 2.294,
+      "duration": 3.021
+    },
+    {
+      "text": " will continue our deep learning",
+      "start": 4.365,
+      "duration": 2.553
+    },
+    {
+      "text": " playlist. So far, we have learned two",
+      "start": 5.969,
+      "duration": 3.027
+    },
+    {
+      "text": " things within CNNs in deep learning.",
+      "start": 8.05,
+      "duration": 2.969
+    },
+    {
+      "text": " First of all, how CNN architectures",
+      "start": 10.119,
+      "duration": 3.142
+    },
+    {
+      "text": " work, and we also worked a bit on image",
+      "start": 12.322,
+      "duration": 3.388
+    },
+    {
+      "text": " classification by building our own CNN",
+      "start": 14.771,
+      "duration": 3.326
+    },
+    {
+      "text": " architecture. Today's video is a bit",
+      "start": 17.159,
+      "duration": 3.034
+    },
+    {
+      "text": " different because in today's video I",
+      "start": 19.244,
+      "duration": 2.863
+    },
+    {
+      "text": " will discuss with you how you can use",
+      "start": 21.159,
+      "duration": 2.914
+    },
+    {
+      "text": " pre-trained models. What are",
+      "start": 23.125,
+      "duration": 2.494
+    },
+    {
+      "text": " pre-trained models? A pre-trained model",
+      "start": 24.671,
+      "duration": 3.681
+    },
+    {
+      "text": " is a CNN architecture or other neural",
+      "start": 27.407,
+      "duration": 3.023
+    },
+    {
+      "text": " network architecture that someone else",
+      "start": 29.485,
+      "duration": 3.079
+    },
+    {
+      "text": " has built. Someone else has trained it",
+      "start": 31.618,
+      "duration": 3.536
+    },
+    {
+      "text": " on a different dataset. But it is so",
+      "start": 34.204,
+      "duration": 2.928
+    },
+    {
+      "text": " good that you can also use it for your",
+      "start": 36.18,
+      "duration": 2.798
+    },
+    {
+      "text": " own problem. Okay? So in today's video,",
+      "start": 38.026,
+      "duration": 4.041
+    },
+    {
+      "text": " I will first explain to you where the",
+      "start": 41.125,
+      "duration": 3.141
+    },
+    {
+      "text": " concept of pre-trained models came from",
+      "start": 43.323,
+      "duration": 3.257
+    },
+    {
+      "text": ", and after that, we will learn how to",
+      "start": 45.58,
+      "duration": 3.199
+    },
+    {
+      "text": " use pre-trained models in Keras. Trust",
+      "start": 47.837,
+      "duration": 3.292
+    },
+    {
+      "text": " me, it is a very important topic",
+      "start": 50.181,
+      "duration": 2.679
+    },
+    {
+      "text": " because going forward, when we study",
+      "start": 51.913,
+      "duration": 2.888
+    },
+    {
+      "text": " transfer learning, which is very, very",
+      "start": 53.854,
+      "duration": 2.993
+    },
+    {
+      "text": " important. These concepts will come in",
+      "start": 55.9,
+      "duration": 2.864
+    },
+    {
+      "text": " handy there. Okay? So try to watch",
+      "start": 57.81,
+      "duration": 3.028
+    },
+    {
+      "text": " today's video from end to end, and",
+      "start": 59.894,
+      "duration": 2.93
+    },
+    {
+      "text": " whatever code I write, try to do it",
+      "start": 61.88,
+      "duration": 2.986
+    },
+    {
+      "text": " along with me. Okay? So let's start the",
+      "start": 63.923,
+      "duration": 3.712
+    },
+    {
+      "text": " video. We will start our discussion on",
+      "start": 66.685,
+      "duration": 4.396
+    },
+    {
+      "text": " why we should use a pre-trained model.",
+      "start": 70.131,
+      "duration": 2.874
+    },
+    {
+      "text": " Pre-trained means a model built by",
+      "start": 73.245,
+      "duration": 2.918
+    },
+    {
+      "text": " someone else. Why should we use a CNN",
+      "start": 75.219,
+      "duration": 3.325
+    },
+    {
+      "text": " model? Rather than using our own model.",
+      "start": 77.607,
+      "duration": 3.54
+    },
+    {
+      "text": " Okay? I will give you two reasons.",
+      "start": 80.532,
+      "duration": 3.021
+    },
+    {
+      "text": " Reason number one, that when you use",
+      "start": 84.961,
+      "duration": 3.1
+    },
+    {
+      "text": " CNN models, you are basically working",
+      "start": 87.12,
+      "duration": 3.159
+    },
+    {
+      "text": " on some image-based data. So you might",
+      "start": 89.338,
+      "duration": 6.793
+    },
+    {
+      "text": " have heard this about deep learning",
+      "start": 95.178,
+      "duration": 2.646
+    },
+    {
+      "text": " that deep learning is data hungry.",
+      "start": 96.871,
+      "duration": 2.6
+    },
+    {
+      "text": " Meaning deep learning models need a lot",
+      "start": 102.359,
+      "duration": 3.048
+    },
+    {
+      "text": " of data to perform well. Now if you are",
+      "start": 104.46,
+      "duration": 4.467
+    },
+    {
+      "text": " talking about CNN, it means you need a",
+      "start": 107.983,
+      "duration": 3.128
+    },
+    {
+      "text": " lot of image data. And even in image",
+      "start": 110.167,
+      "duration": 4.954
+    },
+    {
+      "text": " data, if you are talking about a",
+      "start": 114.173,
+      "duration": 2.669
+    },
+    {
+      "text": " classification problem, you need a lot",
+      "start": 115.894,
+      "duration": 2.982
+    },
+    {
+      "text": " of labeled data. Let's say you are",
+      "start": 117.928,
+      "duration": 6.451
+    },
+    {
+      "text": " building a cat-dog classifier. Then you",
+      "start": 123.433,
+      "duration": 5.417
+    },
+    {
+      "text": " need a lot of photos of cats and dogs.",
+      "start": 127.903,
+      "duration": 3.034
+    },
+    {
+      "text": " Okay? Well, you can solve this problem.",
+      "start": 131.662,
+      "duration": 3.468
+    },
+    {
+      "text": " You can go to Google Images and scrape",
+      "start": 135.403,
+      "duration": 2.893
+    },
+    {
+      "text": " the data. But there is one more problem",
+      "start": 137.346,
+      "duration": 4.11
+    },
+    {
+      "text": ". You also need labeling along with it.",
+      "start": 140.456,
+      "duration": 3.931
+    },
+    {
+      "text": " Meaning for every photo you download,",
+      "start": 145.619,
+      "duration": 2.93
+    },
+    {
+      "text": " you will also have to specify next to",
+      "start": 147.601,
+      "duration": 2.93
+    },
+    {
+      "text": " it whether there is a dog or a cat in",
+      "start": 149.583,
+      "duration": 2.93
+    },
+    {
+      "text": " this photo. Now imagine you need 10,000",
+      "start": 151.566,
+      "duration": 6.194
+    },
+    {
+      "text": " photos and you downloaded them from",
+      "start": 156.816,
+      "duration": 2.97
+    },
+    {
+      "text": " Google. But what will you have to do",
+      "start": 158.843,
+      "duration": 4.383
+    },
+    {
+      "text": " now? You will have to sit down and",
+      "start": 162.267,
+      "duration": 3.971
+    },
+    {
+      "text": " manually label these 10,000 images. Now",
+      "start": 165.295,
+      "duration": 4.491
+    },
+    {
+      "text": " that is a tedious task. All right? This",
+      "start": 168.848,
+      "duration": 4.078
+    },
+    {
+      "text": " will take time and effort. So, if a",
+      "start": 171.974,
+      "duration": 3.856
+    },
+    {
+      "text": " company wants to get this done, you",
+      "start": 174.886,
+      "duration": 2.94
+    },
+    {
+      "text": " need to hire people and pay them a",
+      "start": 176.882,
+      "duration": 2.885
+    },
+    {
+      "text": " salary. So basically, it's a financial",
+      "start": 178.822,
+      "duration": 4.369
+    },
+    {
+      "text": " loss. Now, in the future, maybe this",
+      "start": 182.257,
+      "duration": 4.031
+    },
+    {
+      "text": " work will become a bit easier. If",
+      "start": 185.349,
+      "duration": 3.707
+    },
+    {
+      "text": " companies like Pinterest come forward",
+      "start": 188.106,
+      "duration": 2.829
+    },
+    {
+      "text": " and open-source their data. But at this",
+      "start": 189.985,
+      "duration": 4.74
+    },
+    {
+      "text": " point, it is a tedious task to have",
+      "start": 193.776,
+      "duration": 2.779
+    },
+    {
+      "text": " your own data for your deep learning",
+      "start": 195.606,
+      "duration": 2.831
+    },
+    {
+      "text": " model. This is reason number one.",
+      "start": 197.487,
+      "duration": 3.983
+    },
+    {
+      "text": " Reason number two is time. So, let's",
+      "start": 201.9,
+      "duration": 7.244
+    },
+    {
+      "text": " say even if you have a lot of data,",
+      "start": 208.203,
+      "duration": 3.069
+    },
+    {
+      "text": " there is a problem that when you train",
+      "start": 210.331,
+      "duration": 3.247
+    },
+    {
+      "text": " your model on a lot of data, the",
+      "start": 212.637,
+      "duration": 2.892
+    },
+    {
+      "text": " training process takes time—sometimes",
+      "start": 214.589,
+      "duration": 3.305
+    },
+    {
+      "text": " it takes hours, days, or even weeks on",
+      "start": 216.954,
+      "duration": 3.246
+    },
+    {
+      "text": " large datasets. So, it basically means",
+      "start": 219.26,
+      "duration": 6.395
+    },
+    {
+      "text": " your entire model-building process is",
+      "start": 224.713,
+      "duration": 3.14
+    },
+    {
+      "text": " going to be slow. So, the solution is",
+      "start": 226.911,
+      "duration": 6.928
+    },
+    {
+      "text": " that rather than using our own model,",
+      "start": 232.897,
+      "duration": 3.158
+    },
+    {
+      "text": " what we can do is use someone else's",
+      "start": 235.113,
+      "duration": 3.1
+    },
+    {
+      "text": " pre-made model, which we call a",
+      "start": 237.271,
+      "duration": 2.808
+    },
+    {
+      "text": " pre-trained model. Now, my goal in",
+      "start": 239.138,
+      "duration": 9.235
+    },
+    {
+      "text": " today's video is to try and explain to",
+      "start": 247.427,
+      "duration": 3.081
+    },
+    {
+      "text": " you from the very beginning where the",
+      "start": 249.562,
+      "duration": 3.026
+    },
+    {
+      "text": " concept of pre-trained models came from",
+      "start": 251.643,
+      "duration": 3.135
+    },
+    {
+      "text": ", and then I will also show you how to",
+      "start": 253.778,
+      "duration": 3.08
+    },
+    {
+      "text": " use them. Now, to understand the",
+      "start": 255.913,
+      "duration": 5.098
+    },
+    {
+      "text": " concept of pre-trained models, you need",
+      "start": 260.068,
+      "duration": 3.236
+    },
+    {
+      "text": " to know about the ImageNet dataset. All",
+      "start": 262.361,
+      "duration": 3.549
+    },
+    {
+      "text": " right? So, in very simple words, if I",
+      "start": 264.955,
+      "duration": 4.357
+    },
+    {
+      "text": " tell you, ImageNet is basically a",
+      "start": 268.381,
+      "duration": 3.285
+    },
+    {
+      "text": " visual database. Of images. All right?",
+      "start": 270.735,
+      "duration": 10.606
+    },
+    {
+      "text": " Now, let's talk about it in a bit more",
+      "start": 280.469,
+      "duration": 3.065
+    },
+    {
+      "text": " detail. Let's talk about the why, what,",
+      "start": 282.588,
+      "duration": 4.668
+    },
+    {
+      "text": " and how? So that you have a detailed",
+      "start": 286.32,
+      "duration": 5.257
+    },
+    {
+      "text": " idea about it. Let's talk about the why",
+      "start": 290.627,
+      "duration": 3.525
+    },
+    {
+      "text": "? Why was this ImageNet database",
+      "start": 293.152,
+      "duration": 3.609
+    },
+    {
+      "text": " created? So, around 2006, there was a",
+      "start": 295.818,
+      "duration": 6.211
+    },
+    {
+      "text": " computer researcher called Fei-Fei Li.",
+      "start": 301.104,
+      "duration": 3.832
+    },
+    {
+      "text": " So, at this point, around 2006, deep",
+      "start": 307.062,
+      "duration": 3.489
+    },
+    {
+      "text": " learning was starting to resurface a",
+      "start": 309.62,
+      "duration": 3.49
+    },
+    {
+      "text": " bit. It was becoming famous. At that",
+      "start": 312.179,
+      "duration": 7.008
+    },
+    {
+      "text": " time, most of the researchers were",
+      "start": 318.242,
+      "duration": 2.869
+    },
+    {
+      "text": " focusing on models and algorithms. Most",
+      "start": 320.166,
+      "duration": 7.3
+    },
+    {
+      "text": " deep learning researchers were focused",
+      "start": 326.517,
+      "duration": 2.908
+    },
+    {
+      "text": " on model building and algorithm",
+      "start": 328.475,
+      "duration": 2.556
+    },
+    {
+      "text": " building. At that time, Fei-Fei Li",
+      "start": 330.082,
+      "duration": 5.477
+    },
+    {
+      "text": " thought that if deep learning is all",
+      "start": 334.615,
+      "duration": 3.006
+    },
+    {
+      "text": " about data, then in the future, it's",
+      "start": 336.676,
+      "duration": 3.006
+    },
+    {
+      "text": " absolutely necessary that we have some",
+      "start": 338.738,
+      "duration": 3.117
+    },
+    {
+      "text": " very large and good datasets upon which",
+      "start": 340.911,
+      "duration": 3.173
+    },
+    {
+      "text": " these models and algorithms will work.",
+      "start": 343.14,
+      "duration": 3.118
+    },
+    {
+      "text": " So what he did, from 2006, he started",
+      "start": 348.516,
+      "duration": 3.557
+    },
+    {
+      "text": " building this database, the ImageNet",
+      "start": 351.142,
+      "duration": 3.488
+    },
+    {
+      "text": " database. Okay, so he met with a",
+      "start": 353.699,
+      "duration": 6.712
+    },
+    {
+      "text": " professor who created WordNet, and",
+      "start": 359.477,
+      "duration": 3.214
+    },
+    {
+      "text": " together with him, he built this",
+      "start": 361.756,
+      "duration": 3.084
+    },
+    {
+      "text": " database of 1.4 million images. In",
+      "start": 363.906,
+      "duration": 11.085
+    },
+    {
+      "text": " Indian terms, if we say it, he created",
+      "start": 374.062,
+      "duration": 3.695
+    },
+    {
+      "text": " a database of 14 million images. Okay?",
+      "start": 376.828,
+      "duration": 6.829
+    },
+    {
+      "text": " And in these 14 million images, there",
+      "start": 384.454,
+      "duration": 3.456
+    },
+    {
+      "text": " were 20,000 categories. Meaning, there",
+      "start": 386.976,
+      "duration": 5.454
+    },
+    {
+      "text": " was data of 20,000 things here. Cat,",
+      "start": 391.493,
+      "duration": 4.437
+    },
+    {
+      "text": " dog, man, woman, vehicle, table, chair;",
+      "start": 395.015,
+      "duration": 4.285
+    },
+    {
+      "text": " many such categories that are daily",
+      "start": 398.384,
+      "duration": 3.948
+    },
+    {
+      "text": " household items. Plus, whatever you see",
+      "start": 401.417,
+      "duration": 5.875
+    },
+    {
+      "text": " around you on a daily basis, they",
+      "start": 406.362,
+      "duration": 3.329
+    },
+    {
+      "text": " created 1.4 million images of 20,000",
+      "start": 408.761,
+      "duration": 3.54
+    },
+    {
+      "text": " such things. Okay? Now, all of these",
+      "start": 411.372,
+      "duration": 7.434
+    },
+    {
+      "text": " images were labeled. And labeled in",
+      "start": 417.862,
+      "duration": 7.258
+    },
+    {
+      "text": " such a way that if, say, there is an",
+      "start": 424.18,
+      "duration": 3.166
+    },
+    {
+      "text": " image of a dog, it was very",
+      "start": 426.406,
+      "duration": 2.625
+    },
+    {
+      "text": " well-organized labeling, indicating",
+      "start": 428.091,
+      "duration": 3.106
+    },
+    {
+      "text": " that it is a dog. And within the dog,",
+      "start": 430.258,
+      "duration": 3.819
+    },
+    {
+      "text": " what breed of dog is it? What is its",
+      "start": 433.131,
+      "duration": 3.125
+    },
+    {
+      "text": " visual description? It is a white dog.",
+      "start": 435.305,
+      "duration": 3.147
+    },
+    {
+      "text": " In this way, they labeled everything",
+      "start": 437.924,
+      "duration": 2.992
+    },
+    {
+      "text": " very well hierarchically. And moreover,",
+      "start": 439.971,
+      "duration": 7.611
+    },
+    {
+      "text": " around 1 million images, roughly 10",
+      "start": 446.647,
+      "duration": 3.255
+    },
+    {
+      "text": " lakh images, were also given bounding",
+      "start": 448.967,
+      "duration": 3.384
+    },
+    {
+      "text": " box labeling. What is bounding box",
+      "start": 451.416,
+      "duration": 6.619
+    },
+    {
+      "text": " labeling? Suppose you have this photo",
+      "start": 457.09,
+      "duration": 4.492
+    },
+    {
+      "text": " and there is a cat in it. So, in a",
+      "start": 460.628,
+      "duration": 5.339
+    },
+    {
+      "text": " bounding box, you draw a box to show",
+      "start": 465.026,
+      "duration": 3.139
+    },
+    {
+      "text": " where the object is in the image. So,",
+      "start": 467.225,
+      "duration": 4.437
+    },
+    {
+      "text": " this helps a lot in the object",
+      "start": 470.724,
+      "duration": 2.86
+    },
+    {
+      "text": " localization task. So, in this database",
+      "start": 472.646,
+      "duration": 5.327
+    },
+    {
+      "text": " of ours, there were 14 million images",
+      "start": 477.033,
+      "duration": 3.214
+    },
+    {
+      "text": " that were well-labeled in this manner.",
+      "start": 479.307,
+      "duration": 3.274
+    },
+    {
+      "text": " And at least 1 million images were for",
+      "start": 483.709,
+      "duration": 3.074
+    },
+    {
+      "text": " object localization. There were",
+      "start": 485.838,
+      "duration": 4.0
+    },
+    {
+      "text": " bounding boxes. Okay? Now, thinking",
+      "start": 488.892,
+      "duration": 4.021
+    },
+    {
+      "text": " about this whole thing, you might",
+      "start": 491.968,
+      "duration": 2.787
+    },
+    {
+      "text": " wonder how it was built. How did they",
+      "start": 493.809,
+      "duration": 3.745
+    },
+    {
+      "text": " build this entire thing? So they used",
+      "start": 496.604,
+      "duration": 5.592
+    },
+    {
+      "text": " crowdsourcing. Basically, they took the",
+      "start": 501.251,
+      "duration": 5.554
+    },
+    {
+      "text": " help of the crowd. They asked people, \"",
+      "start": 505.855,
+      "duration": 4.052
+    },
+    {
+      "text": "Here is a photo. Tell us what is in it.",
+      "start": 508.907,
+      "duration": 4.121
+    },
+    {
+      "text": "\" Or, \"Here is a photo. Tell us where",
+      "start": 512.028,
+      "duration": 3.646
+    },
+    {
+      "text": " that object is.\" They took help from",
+      "start": 514.749,
+      "duration": 3.144
+    },
+    {
+      "text": " people. Okay? They used something like",
+      "start": 516.937,
+      "duration": 4.87
+    },
+    {
+      "text": " a CAPTCHA-type program using a service",
+      "start": 520.863,
+      "duration": 3.096
+    },
+    {
+      "text": " by Amazon called Mechanical Turk. They",
+      "start": 523.014,
+      "duration": 7.119
+    },
+    {
+      "text": " used this service to build this entire",
+      "start": 529.188,
+      "duration": 3.08
+    },
+    {
+      "text": " database of images. And this is that",
+      "start": 531.323,
+      "duration": 4.943
+    },
+    {
+      "text": " very database. This is that very",
+      "start": 535.321,
+      "duration": 4.91
+    },
+    {
+      "text": " dataset that changed the future of deep",
+      "start": 539.282,
+      "duration": 3.004
+    },
+    {
+      "text": " learning. How? For that, we will",
+      "start": 541.337,
+      "duration": 7.281
+    },
+    {
+      "text": " discuss the next thing, which is called",
+      "start": 547.67,
+      "duration": 3.025
+    },
+    {
+      "text": " the ImageNet Challenge. So, once the",
+      "start": 549.747,
+      "duration": 10.019
+    },
+    {
+      "text": " ImageNet database was created, these",
+      "start": 558.827,
+      "duration": 3.188
+    },
+    {
+      "text": " researchers decided that we should use",
+      "start": 561.075,
+      "duration": 3.31
+    },
+    {
+      "text": " this large dataset. Let's build a",
+      "start": 563.446,
+      "duration": 5.034
+    },
+    {
+      "text": " competition. Alright? It is called the",
+      "start": 567.53,
+      "duration": 4.287
+    },
+    {
+      "text": " ILSVRC. ImageNet Large Scale Visual",
+      "start": 570.901,
+      "duration": 4.017
+    },
+    {
+      "text": " Recognition Challenge. Alright? Or",
+      "start": 573.978,
+      "duration": 4.975
+    },
+    {
+      "text": " simply put, it is also called the",
+      "start": 578.008,
+      "duration": 2.836
+    },
+    {
+      "text": " ImageNet Challenge. So, this challenge",
+      "start": 579.9,
+      "duration": 8.235
+    },
+    {
+      "text": " started in 2010, and its goal was for",
+      "start": 587.197,
+      "duration": 3.3
+    },
+    {
+      "text": " the best image classification models to",
+      "start": 589.559,
+      "duration": 3.423
+    },
+    {
+      "text": " surface. They needed to be brought to",
+      "start": 592.044,
+      "duration": 5.527
+    },
+    {
+      "text": " people's attention. Alright? So, a lot",
+      "start": 596.611,
+      "duration": 2.906
+    },
+    {
+      "text": " of people participated in this",
+      "start": 598.576,
+      "duration": 2.755
+    },
+    {
+      "text": " competition. The dataset used in this",
+      "start": 600.389,
+      "duration": 5.494
+    },
+    {
+      "text": " competition was actually a subset of",
+      "start": 604.939,
+      "duration": 3.022
+    },
+    {
+      "text": " the original ImageNet dataset. So, the",
+      "start": 607.017,
+      "duration": 5.832
+    },
+    {
+      "text": " original one had 140 million images.",
+      "start": 611.931,
+      "duration": 3.951
+    },
+    {
+      "text": " The dataset used in our competition had",
+      "start": 616.005,
+      "duration": 3.259
+    },
+    {
+      "text": " only 1 million, or you could say.",
+      "start": 618.322,
+      "duration": 2.912
+    },
+    {
+      "text": " Around 10 lakh images were used. Where",
+      "start": 621.436,
+      "duration": 4.097
+    },
+    {
+      "text": " the initial dataset had 20,000 classes.",
+      "start": 624.601,
+      "duration": 3.642
+    },
+    {
+      "text": " In the ImageNet Challenge, there were",
+      "start": 628.431,
+      "duration": 3.243
+    },
+    {
+      "text": " only 1,000 classes. So, they reduced",
+      "start": 630.735,
+      "duration": 3.397
+    },
+    {
+      "text": " the complexity a bit. Alright? So, a",
+      "start": 633.194,
+      "duration": 6.253
+    },
+    {
+      "text": " lot of teams and researchers",
+      "start": 638.504,
+      "duration": 2.583
+    },
+    {
+      "text": " participated in this challenge in 2010,",
+      "start": 640.143,
+      "duration": 3.205
+    },
+    {
+      "text": " and the models that came in the first",
+      "start": 642.405,
+      "duration": 3.092
+    },
+    {
+      "text": " couple of years were mostly machine",
+      "start": 644.553,
+      "duration": 2.979
+    },
+    {
+      "text": " learning-based models. Deep learning",
+      "start": 646.589,
+      "duration": 5.766
+    },
+    {
+      "text": " was not being used there. So, these",
+      "start": 651.405,
+      "duration": 3.457
+    },
+    {
+      "text": " were models where machine learning",
+      "start": 653.916,
+      "duration": 2.835
+    },
+    {
+      "text": " algorithms were at work. People were",
+      "start": 655.805,
+      "duration": 3.911
+    },
+    {
+      "text": " doing manual feature extraction here.",
+      "start": 658.769,
+      "duration": 2.982
+    },
+    {
+      "text": " If you have ever done this, you might",
+      "start": 662.278,
+      "duration": 2.859
+    },
+    {
+      "text": " have an idea. You extract SIFT and HOG",
+      "start": 664.187,
+      "duration": 4.506
+    },
+    {
+      "text": " features and then use ensemble learning",
+      "start": 667.754,
+      "duration": 3.387
+    },
+    {
+      "text": ", etc., to make predictions. Alright?",
+      "start": 670.141,
+      "duration": 3.985
+    },
+    {
+      "text": " So, when the team won in 2010, the",
+      "start": 674.23,
+      "duration": 3.441
+    },
+    {
+      "text": " error rate of their model was around 28",
+      "start": 676.743,
+      "duration": 3.801
+    },
+    {
+      "text": "%. A 28%error rate means that if you",
+      "start": 679.544,
+      "duration": 7.602
+    },
+    {
+      "text": " show this model 100 images, it will",
+      "start": 686.212,
+      "duration": 3.302
+    },
+    {
+      "text": " make mistakes on 28 of them. Alright?",
+      "start": 688.58,
+      "duration": 4.907
+    },
+    {
+      "text": " In 2011, machine learning-based models",
+      "start": 693.753,
+      "duration": 3.343
+    },
+    {
+      "text": " arrived again, and the error rate",
+      "start": 696.158,
+      "duration": 3.036
+    },
+    {
+      "text": " improved slightly. It went down to 25%.",
+      "start": 698.255,
+      "duration": 4.39
+    },
+    {
+      "text": " Meaning, if you show this winning model",
+      "start": 701.745,
+      "duration": 3.413
+    },
+    {
+      "text": " 100 images, it will make mistakes on 25",
+      "start": 704.22,
+      "duration": 3.413
+    },
+    {
+      "text": " of them. Alright? The real change",
+      "start": 706.695,
+      "duration": 4.009
+    },
+    {
+      "text": " happened in 2012. 2012 is a landmark",
+      "start": 709.767,
+      "duration": 4.956
+    },
+    {
+      "text": " year for deep learning. What happened",
+      "start": 713.788,
+      "duration": 3.894
+    },
+    {
+      "text": " in 2012 was that Geoffrey Hinton",
+      "start": 716.742,
+      "duration": 2.933
+    },
+    {
+      "text": " participated in this competition with a",
+      "start": 718.735,
+      "duration": 3.356
+    },
+    {
+      "text": " CNN model called AlexNet. I will show",
+      "start": 721.151,
+      "duration": 3.476
+    },
+    {
+      "text": " you its architecture a little later.",
+      "start": 723.674,
+      "duration": 2.695
+    },
+    {
+      "text": " But AlexNet was a CNN model. Basically,",
+      "start": 725.739,
+      "duration": 4.59
+    },
+    {
+      "text": " a deep learning-based model, and this",
+      "start": 729.39,
+      "duration": 3.242
+    },
+    {
+      "text": " was the first time a deep learning",
+      "start": 731.693,
+      "duration": 3.06
+    },
+    {
+      "text": " model participated, and secondly, they",
+      "start": 733.813,
+      "duration": 3.303
+    },
+    {
+      "text": " used a GPU for the first time. I'm",
+      "start": 736.177,
+      "duration": 4.064
+    },
+    {
+      "text": " sorry, instead of using a CPU, they",
+      "start": 739.312,
+      "duration": 3.499
+    },
+    {
+      "text": " used a GPU, which made the training",
+      "start": 741.883,
+      "duration": 3.499
+    },
+    {
+      "text": " fast. And this was also the first time",
+      "start": 744.453,
+      "duration": 4.086
+    },
+    {
+      "text": " that a CNN model used ReLU as an",
+      "start": 747.596,
+      "duration": 2.818
+    },
+    {
+      "text": " activation layer. And as soon as it",
+      "start": 749.471,
+      "duration": 4.905
+    },
+    {
+      "text": " participated in this competition, it",
+      "start": 753.429,
+      "duration": 2.89
+    },
+    {
+      "text": " brought a revolution. In 2012, the",
+      "start": 755.371,
+      "duration": 5.66
+    },
+    {
+      "text": " error rate due to AlexNet dropped",
+      "start": 760.097,
+      "duration": 3.162
+    },
+    {
+      "text": " straight to 16%, which was an",
+      "start": 762.325,
+      "duration": 2.9
+    },
+    {
+      "text": " improvement of over 10%from the",
+      "start": 764.291,
+      "duration": 3.032
+    },
+    {
+      "text": " second-place entry. And as soon as",
+      "start": 766.388,
+      "duration": 6.607
+    },
+    {
+      "text": " AlexNet won the competition, the entire",
+      "start": 772.054,
+      "duration": 3.306
+    },
+    {
+      "text": " tech world's eyes turned to this CNN",
+      "start": 774.42,
+      "duration": 3.128
+    },
+    {
+      "text": " model, and people started noticing what",
+      "start": 776.607,
+      "duration": 3.306
+    },
+    {
+      "text": " kind of technology had arrived that",
+      "start": 778.972,
+      "duration": 3.07
+    },
+    {
+      "text": " left machine learning so far behind.",
+      "start": 781.101,
+      "duration": 3.129
+    },
+    {
+      "text": " Okay? And that was the first time that",
+      "start": 785.343,
+      "duration": 4.203
+    },
+    {
+      "text": " everyone truly took notice of deep",
+      "start": 788.608,
+      "duration": 3.097
+    },
+    {
+      "text": " learning, and after that, consistently",
+      "start": 790.767,
+      "duration": 3.345
+    },
+    {
+      "text": " in 2013 and 2014, as long as the",
+      "start": 793.173,
+      "duration": 2.975
+    },
+    {
+      "text": " competition continued, deep learning",
+      "start": 795.209,
+      "duration": 3.222
+    },
+    {
+      "text": " models and CNNs kept coming and winning",
+      "start": 797.492,
+      "duration": 3.407
+    },
+    {
+      "text": " the competition. Okay? I will tell you",
+      "start": 799.96,
+      "duration": 4.229
+    },
+    {
+      "text": " about that next. So guys, this is the",
+      "start": 803.239,
+      "duration": 3.44
+    },
+    {
+      "text": " architecture of AlexNet. I got this",
+      "start": 805.743,
+      "duration": 3.829
+    },
+    {
+      "text": " from Andrew Ng's lecture. So you can",
+      "start": 808.631,
+      "duration": 5.022
+    },
+    {
+      "text": " see that in ImageNet, you have colored",
+      "start": 812.731,
+      "duration": 3.967
+    },
+    {
+      "text": " images that are 227 by 227. What",
+      "start": 815.776,
+      "duration": 4.763
+    },
+    {
+      "text": " AlexNet did was use 96 filters of 11 by",
+      "start": 819.611,
+      "duration": 3.829
+    },
+    {
+      "text": " 11 in the first layer. Then they kept",
+      "start": 822.513,
+      "duration": 5.789
+    },
+    {
+      "text": " the stride at 4 and the padding same.",
+      "start": 827.354,
+      "duration": 2.9
+    },
+    {
+      "text": " For max pooling, they used a size of 3",
+      "start": 831.202,
+      "duration": 3.677
+    },
+    {
+      "text": " by 3. They kept the stride at 2. You",
+      "start": 833.949,
+      "duration": 3.367
+    },
+    {
+      "text": " can do all the calculations. I mean, we",
+      "start": 836.369,
+      "duration": 3.166
+    },
+    {
+      "text": " have already discussed all of this.",
+      "start": 838.586,
+      "duration": 2.788
+    },
+    {
+      "text": " When we built our own CNNs. After that,",
+      "start": 840.816,
+      "duration": 3.679
+    },
+    {
+      "text": " they again kept 256 filters of 5 by 5.",
+      "start": 843.574,
+      "duration": 4.031
+    },
+    {
+      "text": " Filters. Then again max pooling, and",
+      "start": 847.597,
+      "duration": 3.82
+    },
+    {
+      "text": " after that 384 filters. And eventually,",
+      "start": 850.492,
+      "duration": 4.109
+    },
+    {
+      "text": " at the end, you can see they used three",
+      "start": 853.686,
+      "duration": 4.321
+    },
+    {
+      "text": " fully connected layers with 9216, 4096.",
+      "start": 857.092,
+      "duration": 4.322
+    },
+    {
+      "text": " Actually, they used two fully connected",
+      "start": 860.514,
+      "duration": 3.264
+    },
+    {
+      "text": " layers. This is flattening. Flattening",
+      "start": 862.836,
+      "duration": 3.549
+    },
+    {
+      "text": " resulted in 9216. And at the end, you",
+      "start": 865.484,
+      "duration": 3.857
+    },
+    {
+      "text": " can see they added a Softmax layer with",
+      "start": 868.398,
+      "duration": 3.214
+    },
+    {
+      "text": " 1000 units because the problem we have",
+      "start": 870.669,
+      "duration": 3.158
+    },
+    {
+      "text": " is a multi-class classification problem",
+      "start": 872.883,
+      "duration": 3.215
+    },
+    {
+      "text": " where there are a thousand classes.",
+      "start": 875.154,
+      "duration": 2.988
+    },
+    {
+      "text": " Okay? So I would recommend you pause",
+      "start": 877.382,
+      "duration": 3.422
+    },
+    {
+      "text": " the video once or go on the internet",
+      "start": 879.855,
+      "duration": 2.83
+    },
+    {
+      "text": " and try to understand the architecture",
+      "start": 881.736,
+      "duration": 2.932
+    },
+    {
+      "text": " of AlexNet. If possible, if you have",
+      "start": 883.718,
+      "duration": 3.712
+    },
+    {
+      "text": " time, try to build it in Keras. It",
+      "start": 886.492,
+      "duration": 3.267
+    },
+    {
+      "text": " would be a great exercise. Okay? So",
+      "start": 888.816,
+      "duration": 4.354
+    },
+    {
+      "text": " this was the 2012 winning model that",
+      "start": 892.224,
+      "duration": 2.963
+    },
+    {
+      "text": " started the deep learning revolution.",
+      "start": 894.241,
+      "duration": 3.018
+    },
+    {
+      "text": " Okay? So that is why I felt it was",
+      "start": 897.153,
+      "duration": 2.927
+    },
+    {
+      "text": " important to show this once. Now I will",
+      "start": 899.13,
+      "duration": 3.156
+    },
+    {
+      "text": " tell you what happened going forward in",
+      "start": 901.352,
+      "duration": 3.561
+    },
+    {
+      "text": " 2013 and 2014. In the following years,",
+      "start": 903.979,
+      "duration": 4.98
+    },
+    {
+      "text": " deep learning models consistently",
+      "start": 908.014,
+      "duration": 2.824
+    },
+    {
+      "text": " improved and kept winning all the",
+      "start": 909.893,
+      "duration": 2.824
+    },
+    {
+      "text": " contests. This is a chart that will",
+      "start": 911.772,
+      "duration": 4.221
+    },
+    {
+      "text": " give you some idea. So in 2010 and 2011",
+      "start": 915.039,
+      "duration": 5.078
+    },
+    {
+      "text": ", machine learning models won the",
+      "start": 919.117,
+      "duration": 3.456
+    },
+    {
+      "text": " competition with 28%and 25%error rates,",
+      "start": 921.648,
+      "duration": 3.903
+    },
+    {
+      "text": " and in 2012, AlexNet arrived, which won",
+      "start": 924.625,
+      "duration": 3.903
+    },
+    {
+      "text": " the competition and showed a 16.4%error",
+      "start": 927.603,
+      "duration": 3.903
+    },
+    {
+      "text": " rate, which was kind of revolutionary",
+      "start": 930.58,
+      "duration": 3.754
+    },
+    {
+      "text": " at that time. After that, in 2013,",
+      "start": 933.409,
+      "duration": 5.706
+    },
+    {
+      "text": " there was this CNN architecture called",
+      "start": 938.187,
+      "duration": 3.752
+    },
+    {
+      "text": " ZFNet, which improved it further and",
+      "start": 941.012,
+      "duration": 3.607
+    },
+    {
+      "text": " brought the error rate down to 11.7%.",
+      "start": 943.691,
+      "duration": 3.68
+    },
+    {
+      "text": " Okay? After that, another very famous",
+      "start": 947.162,
+      "duration": 3.433
+    },
+    {
+      "text": " CNN architecture came along, which is",
+      "start": 949.657,
+      "duration": 3.277
+    },
+    {
+      "text": " called VGG. Visual Geometry Group. I",
+      "start": 951.996,
+      "duration": 3.355
+    },
+    {
+      "text": " guess that is its full form. They",
+      "start": 954.401,
+      "duration": 2.798
+    },
+    {
+      "text": " brought it down to 7.3%. VGG Net, in",
+      "start": 956.274,
+      "duration": 3.824
+    },
+    {
+      "text": " fact, got very famous. This is an",
+      "start": 959.182,
+      "duration": 3.53
+    },
+    {
+      "text": " architecture that became very famous,",
+      "start": 961.77,
+      "duration": 3.18
+    },
+    {
+      "text": " and going forward, you will see in many",
+      "start": 964.009,
+      "duration": 3.297
+    },
+    {
+      "text": " places that we will be using VGG Net.",
+      "start": 966.365,
+      "duration": 3.18
+    },
+    {
+      "text": " Okay? In 2015, Google also joined and",
+      "start": 968.782,
+      "duration": 5.613
+    },
+    {
+      "text": " their CNN architecture won with a 6.7%",
+      "start": 973.466,
+      "duration": 3.704
+    },
+    {
+      "text": "error rate, and in 2016, there was this",
+      "start": 976.17,
+      "duration": 3.775
+    },
+    {
+      "text": " other famous architecture called ResNet",
+      "start": 979.016,
+      "duration": 3.775
+    },
+    {
+      "text": ", which brought the whole thing to an",
+      "start": 981.791,
+      "duration": 3.633
+    },
+    {
+      "text": " unbelievable 3.5%error rate. So this",
+      "start": 984.495,
+      "duration": 5.443
+    },
+    {
+      "text": " stage has now crossed humans. Meaning,",
+      "start": 989.001,
+      "duration": 3.459
+    },
+    {
+      "text": " on that dataset, the human error rate",
+      "start": 991.527,
+      "duration": 3.469
+    },
+    {
+      "text": " is 5%. Meaning, if you show 100 photos",
+      "start": 994.063,
+      "duration": 3.392
+    },
+    {
+      "text": " to humans as well, even humans make",
+      "start": 996.516,
+      "duration": 3.135
+    },
+    {
+      "text": " mistakes in five of them. But not this",
+      "start": 998.712,
+      "duration": 3.297
+    },
+    {
+      "text": " model. Its error rate is less than",
+      "start": 1001.061,
+      "duration": 3.92
+    },
+    {
+      "text": " humans. Just think how much progress we",
+      "start": 1004.034,
+      "duration": 4.606
+    },
+    {
+      "text": " have made in deep learning that our",
+      "start": 1007.693,
+      "duration": 2.839
+    },
+    {
+      "text": " computer vision systems are surpassing",
+      "start": 1009.585,
+      "duration": 2.997
+    },
+    {
+      "text": " actual human vision systems. Okay? So",
+      "start": 1011.635,
+      "duration": 5.396
+    },
+    {
+      "text": " your job at this point should be to go",
+      "start": 1016.08,
+      "duration": 2.887
+    },
+    {
+      "text": " and study these architectures. On the",
+      "start": 1018.017,
+      "duration": 4.388
+    },
+    {
+      "text": " internet, you would get a lot of",
+      "start": 1021.455,
+      "duration": 2.577
+    },
+    {
+      "text": " resources where their architecture is",
+      "start": 1023.082,
+      "duration": 2.824
+    },
+    {
+      "text": " explained. You will see a common",
+      "start": 1024.955,
+      "duration": 3.992
+    },
+    {
+      "text": " pattern that as the years go by, more",
+      "start": 1028.004,
+      "duration": 3.112
+    },
+    {
+      "text": " and more layers were added—meaning",
+      "start": 1030.173,
+      "duration": 3.055
+    },
+    {
+      "text": " the complexity of the CNN model",
+      "start": 1032.285,
+      "duration": 2.769
+    },
+    {
+      "text": " increased—and because of that",
+      "start": 1034.111,
+      "duration": 2.77
+    },
+    {
+      "text": " increase in complexity, the error rate",
+      "start": 1035.938,
+      "duration": 3.169
+    },
+    {
+      "text": " has reduced. Okay? So this should be",
+      "start": 1038.164,
+      "duration": 4.025
+    },
+    {
+      "text": " your task. Go and search for these",
+      "start": 1041.239,
+      "duration": 2.804
+    },
+    {
+      "text": " models once. Look at their architecture",
+      "start": 1043.096,
+      "duration": 2.919
+    },
+    {
+      "text": ". If you have time and are interested,",
+      "start": 1045.015,
+      "duration": 4.104
+    },
+    {
+      "text": " then try to recreate them in Keras. It",
+      "start": 1048.172,
+      "duration": 4.276
+    },
+    {
+      "text": " would be a great exercise. Meanwhile,",
+      "start": 1051.505,
+      "duration": 3.454
+    },
+    {
+      "text": " the idea we needed to take from",
+      "start": 1054.011,
+      "duration": 2.622
+    },
+    {
+      "text": " ImageNet and the ImageNet challenge, we",
+      "start": 1055.685,
+      "duration": 3.04
+    },
+    {
+      "text": " have gotten it. Now I will explain to",
+      "start": 1057.778,
+      "duration": 4.092
+    },
+    {
+      "text": " you what the logic is behind using",
+      "start": 1060.925,
+      "duration": 2.857
+    },
+    {
+      "text": " pre-trained models. Why should we use",
+      "start": 1062.837,
+      "duration": 3.587
+    },
+    {
+      "text": " them? So I guess you must have",
+      "start": 1065.471,
+      "duration": 2.546
+    },
+    {
+      "text": " understood the concept of pre-trained",
+      "start": 1067.067,
+      "duration": 2.864
+    },
+    {
+      "text": " models. Let me explicitly specify it",
+      "start": 1068.982,
+      "duration": 3.341
+    },
+    {
+      "text": " once. So the idea is very simple. I",
+      "start": 1071.39,
+      "duration": 5.615
+    },
+    {
+      "text": " told you at the beginning of the video",
+      "start": 1076.059,
+      "duration": 3.035
+    },
+    {
+      "text": " that to train a deep learning model,",
+      "start": 1078.148,
+      "duration": 2.929
+    },
+    {
+      "text": " you need a lot of data, which is costly",
+      "start": 1080.13,
+      "duration": 3.089
+    },
+    {
+      "text": ", and even if you have data, training",
+      "start": 1082.219,
+      "duration": 2.983
+    },
+    {
+      "text": " takes a lot of time. So researchers",
+      "start": 1084.255,
+      "duration": 10.098
+    },
+    {
+      "text": " simply observed that if we already have",
+      "start": 1093.411,
+      "duration": 3.259
+    },
+    {
+      "text": " very good models like VGGNet, ResNet,",
+      "start": 1095.728,
+      "duration": 3.142
+    },
+    {
+      "text": " which are already trained on datasets",
+      "start": 1097.928,
+      "duration": 3.143
+    },
+    {
+      "text": " like ImageNet, where you have the",
+      "start": 1100.129,
+      "duration": 2.911
+    },
+    {
+      "text": " thousand most common classes that exist",
+      "start": 1102.098,
+      "duration": 3.259
+    },
+    {
+      "text": ". Then if we have such a model, why",
+      "start": 1104.357,
+      "duration": 8.653
+    },
+    {
+      "text": " should we train our own model? Why not",
+      "start": 1112.062,
+      "duration": 4.084
+    },
+    {
+      "text": " directly use them? There will be two",
+      "start": 1115.202,
+      "duration": 4.885
+    },
+    {
+      "text": " benefits. First, you don't need",
+      "start": 1119.135,
+      "duration": 3.094
+    },
+    {
+      "text": " training. Since you don't need training",
+      "start": 1121.285,
+      "duration": 4.404
+    },
+    {
+      "text": ", you don't need to gather data. Even",
+      "start": 1124.689,
+      "duration": 3.943
+    },
+    {
+      "text": " if you have zero data, it will work.",
+      "start": 1127.69,
+      "duration": 3.11
+    },
+    {
+      "text": " Even if you have very little data, it",
+      "start": 1129.917,
+      "duration": 2.976
+    },
+    {
+      "text": " will work. And the second benefit is",
+      "start": 1131.946,
+      "duration": 3.135
+    },
+    {
+      "text": " that since you don't have to train, it",
+      "start": 1134.13,
+      "duration": 2.857
+    },
+    {
+      "text": " won't take time. You can use these",
+      "start": 1136.036,
+      "duration": 3.363
+    },
+    {
+      "text": " models directly. The good part is that",
+      "start": 1138.452,
+      "duration": 4.789
+    },
+    {
+      "text": " in Keras, our library, you get many",
+      "start": 1142.303,
+      "duration": 3.154
+    },
+    {
+      "text": " pre-trained models. So what am I going",
+      "start": 1144.519,
+      "duration": 4.407
+    },
+    {
+      "text": " to do now? I will show you how to use",
+      "start": 1147.974,
+      "duration": 5.25
+    },
+    {
+      "text": " some good models available in the Keras",
+      "start": 1152.274,
+      "duration": 2.951
+    },
+    {
+      "text": " library. Okay? On a problem. So if you",
+      "start": 1154.275,
+      "duration": 5.582
+    },
+    {
+      "text": " Google \"Keras pre-trained models,\" the",
+      "start": 1158.915,
+      "duration": 3.202
+    },
+    {
+      "text": " first result you will see is Keras",
+      "start": 1161.174,
+      "duration": 2.97
+    },
+    {
+      "text": " Applications. If you go to that page,",
+      "start": 1163.202,
+      "duration": 3.598
+    },
+    {
+      "text": " you will see a list of all those",
+      "start": 1165.853,
+      "duration": 2.676
+    },
+    {
+      "text": " pre-trained models that are available",
+      "start": 1167.581,
+      "duration": 2.939
+    },
+    {
+      "text": " in Keras. Okay? So you can see these",
+      "start": 1169.572,
+      "duration": 4.344
+    },
+    {
+      "text": " are the models: Xception, VGG19, VGG16",
+      "start": 1172.991,
+      "duration": 3.872
+    },
+    {
+      "text": " with 16 layers, VGG19 with 19 layers,",
+      "start": 1175.938,
+      "duration": 3.796
+    },
+    {
+      "text": " ResNet 50, ResNet 50 V 2—these are",
+      "start": 1178.81,
+      "duration": 3.72
+    },
+    {
+      "text": " all famous models. Inception V3,",
+      "start": 1181.605,
+      "duration": 3.363
+    },
+    {
+      "text": " MobileNet, which is very lightweight.",
+      "start": 1184.037,
+      "duration": 3.568
+    },
+    {
+      "text": " After that, you can just go through the",
+      "start": 1187.363,
+      "duration": 3.013
+    },
+    {
+      "text": " whole list. Here, the size is also",
+      "start": 1189.428,
+      "duration": 3.283
+    },
+    {
+      "text": " mentioned, showing how large these",
+      "start": 1191.765,
+      "duration": 2.83
+    },
+    {
+      "text": " models are. So you can see VGG16, which",
+      "start": 1193.648,
+      "duration": 3.319
+    },
+    {
+      "text": " we will use quite a bit in the future.",
+      "start": 1196.027,
+      "duration": 3.289
+    },
+    {
+      "text": " It is around 528 MB. Why is it so big?",
+      "start": 1198.416,
+      "duration": 4.404
+    },
+    {
+      "text": " Because it is pre-trained. It is",
+      "start": 1201.92,
+      "duration": 2.669
+    },
+    {
+      "text": " pre-trained, meaning all the parameters",
+      "start": 1203.649,
+      "duration": 3.334
+    },
+    {
+      "text": ", the trainable parameters, which are",
+      "start": 1205.983,
+      "duration": 3.215
+    },
+    {
+      "text": " roughly around 138.4 million. Basically",
+      "start": 1208.258,
+      "duration": 3.233
+    },
+    {
+      "text": ", the weights for all of them are",
+      "start": 1210.491,
+      "duration": 2.458
+    },
+    {
+      "text": " stored as numbers. That is why it is so",
+      "start": 1211.993,
+      "duration": 2.9
+    },
+    {
+      "text": " big. ResNet 50 is a bit more",
+      "start": 1213.943,
+      "duration": 2.472
+    },
+    {
+      "text": " lightweight at 98 MB because it has",
+      "start": 1215.466,
+      "duration": 2.783
+    },
+    {
+      "text": " fewer parameters. Okay? Here, top-1",
+      "start": 1217.3,
+      "duration": 3.302
+    },
+    {
+      "text": " accuracy and top-5 accuracy are written",
+      "start": 1219.678,
+      "duration": 3.949
+    },
+    {
+      "text": ". Top-1 accuracy means being able to",
+      "start": 1222.627,
+      "duration": 3.943
+    },
+    {
+      "text": " identify exactly what is in the image.",
+      "start": 1225.63,
+      "duration": 3.252
+    },
+    {
+      "text": " Top-5 accuracy means that out of the",
+      "start": 1229.946,
+      "duration": 3.236
+    },
+    {
+      "text": " top five outputs it gives, at least one",
+      "start": 1232.244,
+      "duration": 3.422
+    },
+    {
+      "text": " is correct. That is top-5 accuracy.",
+      "start": 1234.728,
+      "duration": 3.95
+    },
+    {
+      "text": " Okay? So, you can see accuracy is also",
+      "start": 1237.778,
+      "duration": 3.242
+    },
+    {
+      "text": " written there. Parameters are written.",
+      "start": 1240.074,
+      "duration": 2.929
+    },
+    {
+      "text": " The number of layers is written. And",
+      "start": 1242.334,
+      "duration": 2.945
+    },
+    {
+      "text": " after that, the time taken for",
+      "start": 1244.347,
+      "duration": 3.04
+    },
+    {
+      "text": " inference on CPU and GPU. This entire",
+      "start": 1246.455,
+      "duration": 3.417
+    },
+    {
+      "text": " listing is provided here. So, I would",
+      "start": 1248.928,
+      "duration": 3.095
+    },
+    {
+      "text": " recommend you take a look at it once.",
+      "start": 1251.076,
+      "duration": 2.986
+    },
+    {
+      "text": " The famous modules among these are",
+      "start": 1253.564,
+      "duration": 3.423
+    },
+    {
+      "text": " Xception, VGG, ResNet, Inception, and",
+      "start": 1256.058,
+      "duration": 3.637
+    },
+    {
+      "text": " MobileNet is also used a lot. So, these",
+      "start": 1258.767,
+      "duration": 3.999
+    },
+    {
+      "text": " are some famous modules in architecture",
+      "start": 1261.82,
+      "duration": 3.11
+    },
+    {
+      "text": " that you will see ahead. Okay? So, what",
+      "start": 1263.985,
+      "duration": 3.438
+    },
+    {
+      "text": " am I doing now? I will show you an",
+      "start": 1266.486,
+      "duration": 3.164
+    },
+    {
+      "text": " example of ResNet 50, and we will build",
+      "start": 1268.705,
+      "duration": 3.165
+    },
+    {
+      "text": " a sort of universal classifier where",
+      "start": 1270.925,
+      "duration": 2.998
+    },
+    {
+      "text": " you can input any image, and it will",
+      "start": 1272.979,
+      "duration": 2.998
+    },
+    {
+      "text": " try to predict what is inside that",
+      "start": 1275.032,
+      "duration": 2.887
+    },
+    {
+      "text": " image. Okay? So, the code is already",
+      "start": 1276.975,
+      "duration": 3.39
+    },
+    {
+      "text": " written. In fact, I just took the code",
+      "start": 1279.417,
+      "duration": 2.91
+    },
+    {
+      "text": " from them. An example code was provided",
+      "start": 1281.375,
+      "duration": 3.027
+    },
+    {
+      "text": " here. I have kept that same code here.",
+      "start": 1283.454,
+      "duration": 2.846
+    },
+    {
+      "text": " Here, I have uploaded four images. All",
+      "start": 1285.4,
+      "duration": 3.299
+    },
+    {
+      "text": " four are completely different things.",
+      "start": 1287.744,
+      "duration": 2.68
+    },
+    {
+      "text": " Bread, chair, dog, and tomato. Let me",
+      "start": 1289.524,
+      "duration": 3.675
+    },
+    {
+      "text": " show you. You can see this is an image",
+      "start": 1292.247,
+      "duration": 5.309
+    },
+    {
+      "text": " of a dog. This is bread, this is a",
+      "start": 1296.604,
+      "duration": 2.796
+    },
+    {
+      "text": " tomato, and this is a chair. I am",
+      "start": 1298.453,
+      "duration": 2.788
+    },
+    {
+      "text": " providing these four things. Let me",
+      "start": 1300.294,
+      "duration": 2.846
+    },
+    {
+      "text": " show you the code. Here, we have",
+      "start": 1302.186,
+      "duration": 2.909
+    },
+    {
+      "text": " imported everything. You have to focus",
+      "start": 1304.151,
+      "duration": 3.427
+    },
+    {
+      "text": " on this one. Here, we have imported",
+      "start": 1306.627,
+      "duration": 3.731
+    },
+    {
+      "text": " ResNet 50. Okay? From within ResNet 50,",
+      "start": 1309.43,
+      "duration": 4.521
+    },
+    {
+      "text": " we have imported preprocess input and",
+      "start": 1313.014,
+      "duration": 3.317
+    },
+    {
+      "text": " decode predictions. After that, we",
+      "start": 1315.394,
+      "duration": 3.282
+    },
+    {
+      "text": " created the model of the ResNet 50",
+      "start": 1317.736,
+      "duration": 3.067
+    },
+    {
+      "text": " class here. We specified here that the",
+      "start": 1319.864,
+      "duration": 4.309
+    },
+    {
+      "text": " weights we want are the ones obtained",
+      "start": 1323.222,
+      "duration": 2.823
+    },
+    {
+      "text": " after training on the ImageNet database",
+      "start": 1325.094,
+      "duration": 2.922
+    },
+    {
+      "text": ". Okay? After that, we provided the",
+      "start": 1327.016,
+      "duration": 5.026
+    },
+    {
+      "text": " path of the image here. Loaded the",
+      "start": 1331.097,
+      "duration": 3.265
+    },
+    {
+      "text": " image. Converted it into an array.",
+      "start": 1333.417,
+      "duration": 3.065
+    },
+    {
+      "text": " Expand dims means converted it into a",
+      "start": 1336.099,
+      "duration": 3.157
+    },
+    {
+      "text": " batch and pre-processed it and put it",
+      "start": 1338.314,
+      "duration": 3.158
+    },
+    {
+      "text": " into x. Okay? Now we have that image in",
+      "start": 1340.53,
+      "duration": 3.903
+    },
+    {
+      "text": " x. The model has a predict function. We",
+      "start": 1343.491,
+      "duration": 3.254
+    },
+    {
+      "text": " sent x into it, and whatever prediction",
+      "start": 1345.807,
+      "duration": 3.418
+    },
+    {
+      "text": " we got, we decoded it using decode",
+      "start": 1348.287,
+      "duration": 3.107
+    },
+    {
+      "text": " predictions. And I am showing you the",
+      "start": 1350.456,
+      "duration": 3.249
+    },
+    {
+      "text": " top three predictions. So, first, when",
+      "start": 1352.757,
+      "duration": 3.174
+    },
+    {
+      "text": " I ran the tomato, the result actually",
+      "start": 1354.989,
+      "duration": 3.162
+    },
+    {
+      "text": " came out as strawberry, which is not",
+      "start": 1357.209,
+      "duration": 3.103
+    },
+    {
+      "text": " the correct answer. But \"hip\" is also",
+      "start": 1359.371,
+      "duration": 3.219
+    },
+    {
+      "text": " appearing. I searched for \"hip\" in",
+      "start": 1361.649,
+      "duration": 2.79
+    },
+    {
+      "text": " vegetables, and it looked something",
+      "start": 1363.487,
+      "duration": 2.668
+    },
+    {
+      "text": " like this. So, I guess there was a bit",
+      "start": 1365.203,
+      "duration": 2.835
+    },
+    {
+      "text": " of confusion with the tomato. But if",
+      "start": 1367.085,
+      "duration": 2.724
+    },
+    {
+      "text": " you try the other things, the result",
+      "start": 1368.854,
+      "duration": 2.636
+    },
+    {
+      "text": " comes out correctly. Let me show you.",
+      "start": 1370.535,
+      "duration": 2.771
+    },
+    {
+      "text": " If you are trying for a dog, you will",
+      "start": 1373.626,
+      "duration": 3.076
+    },
+    {
+      "text": " get not only 'dog', but it also shows",
+      "start": 1375.758,
+      "duration": 3.077
+    },
+    {
+      "text": " the breed. It says Labrador Retriever",
+      "start": 1377.891,
+      "duration": 5.42
+    },
+    {
+      "text": " and Golden Retriever. The dog I have, I",
+      "start": 1382.368,
+      "duration": 4.117
+    },
+    {
+      "text": " think it's a Golden Retriever. If we",
+      "start": 1385.542,
+      "duration": 3.712
+    },
+    {
+      "text": " run it on the breed. On the breed image",
+      "start": 1388.302,
+      "duration": 4.849
+    },
+    {
+      "text": ", then this is the result. It says",
+      "start": 1392.151,
+      "duration": 3.803
+    },
+    {
+      "text": " folding chair. Okay? Which is correct.",
+      "start": 1395.013,
+      "duration": 3.299
+    },
+    {
+      "text": " And if we run it on a chair. The chair",
+      "start": 1397.952,
+      "duration": 9.421
+    },
+    {
+      "text": " extension is JFIF, JFIF. And if we get",
+      "start": 1406.481,
+      "duration": 8.957
+    },
+    {
+      "text": " the result, you can see it's a folding",
+      "start": 1414.489,
+      "duration": 2.935
+    },
+    {
+      "text": " chair. Okay? So you can see how easily",
+      "start": 1416.475,
+      "duration": 3.733
+    },
+    {
+      "text": " I didn't have to put in any effort. I",
+      "start": 1419.257,
+      "duration": 3.165
+    },
+    {
+      "text": " didn't even have to build my own",
+      "start": 1421.47,
+      "duration": 2.525
+    },
+    {
+      "text": " architecture. I simply took someone",
+      "start": 1423.043,
+      "duration": 4.976
+    },
+    {
+      "text": " else's model and sort of created a",
+      "start": 1427.075,
+      "duration": 2.89
+    },
+    {
+      "text": " universal classifier, where I send",
+      "start": 1429.02,
+      "duration": 2.89
+    },
+    {
+      "text": " anything, and it tells me what's inside",
+      "start": 1430.966,
+      "duration": 3.168
+    },
+    {
+      "text": " the image. Okay? So that was the goal",
+      "start": 1433.19,
+      "duration": 5.752
+    },
+    {
+      "text": " of this entire video, to explain to you",
+      "start": 1437.998,
+      "duration": 3.193
+    },
+    {
+      "text": " what pre-trained models are. Why they",
+      "start": 1440.247,
+      "duration": 3.176
+    },
+    {
+      "text": " exist, and how to use them using Keras.",
+      "start": 1442.484,
+      "duration": 3.377
+    },
+    {
+      "text": " I hope I was able to explain it to you.",
+      "start": 1444.961,
+      "duration": 2.723
+    },
+    {
+      "text": " So that was the video, guys. I hope you",
+      "start": 1446.784,
+      "duration": 3.198
+    },
+    {
+      "text": " understood how to use pre-trained",
+      "start": 1449.034,
+      "duration": 2.716
+    },
+    {
+      "text": " models. The next video will be on",
+      "start": 1450.802,
+      "duration": 2.631
+    },
+    {
+      "text": " transfer learning. There, all these",
+      "start": 1452.479,
+      "duration": 2.806
+    },
+    {
+      "text": " concepts will kind of be reused. So",
+      "start": 1454.339,
+      "duration": 2.919
+    },
+    {
+      "text": " whatever you have learned will help you",
+      "start": 1456.301,
+      "duration": 2.701
+    },
+    {
+      "text": ". Okay? So if you liked the video,",
+      "start": 1458.002,
+      "duration": 3.034
+    },
+    {
+      "text": " please like it, and if you haven't",
+      "start": 1460.083,
+      "duration": 2.597
+    },
+    {
+      "text": " subscribed to the channel yet, please",
+      "start": 1461.727,
+      "duration": 2.737
+    },
+    {
+      "text": " do subscribe. That's it from my side.",
+      "start": 1463.511,
+      "duration": 2.818
+    },
+    {
+      "text": " See you in the next video. Bye.",
+      "start": 1465.429,
+      "duration": 2.657
+    }
+  ]
+}

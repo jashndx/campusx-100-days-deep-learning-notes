@@ -1,0 +1,3506 @@
+{
+  "title": "100 Days of Deep Learning",
+  "count": 84,
+  "entries": [
+    {
+      "title": "100 Days of Deep Learning | Course Announcement",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/2dH_qjc9mFg/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDgin-EuXaWEZRzSsbQZG4HnPfvFA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2dH_qjc9mFg/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAtCr5dYpZfQZE4vBdw67DMFuRjdw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2dH_qjc9mFg/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBndea-lgA80dt_IJyMMUHFEHDrvw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2dH_qjc9mFg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAMmj3lejjuCbSB6cBVJsQi2Rm2Tg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1112,
+      "view_count": 1300000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "2dH_qjc9mFg",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=2dH_qjc9mFg",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "What is Deep Learning? Deep Learning Vs Machine Learning | Complete Deep Learning Course",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/fHF22Wxuyw4/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDCEbkyKPxiYhISRz1buMLYjHpiyw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/fHF22Wxuyw4/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAVBdawhuuu3J9wzwydIfLhCLhJJw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/fHF22Wxuyw4/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAWsxpj7-GWHv8e7nytjZWo3OHGQg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/fHF22Wxuyw4/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC3B3p3tIM1X6LCkASDOOswlald8g",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 4018,
+      "view_count": 397000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "fHF22Wxuyw4",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=fHF22Wxuyw4",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Types of Neural Networks | History of Deep Learning | Applications of Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/fne_UE7hDn0/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCCboOicQs2mZ7Q8bkZCF7Q1gEt-A",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/fne_UE7hDn0/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBdBmYa0SGW8oXtDT6D55SJQPLbMw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/fne_UE7hDn0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCaQTJFUHDma7fxtiNnK-egfh-yQw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/fne_UE7hDn0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXVkLIgnoSL6T68MRQsvtVsjJCDw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1996,
+      "view_count": 270000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "fne_UE7hDn0",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=fne_UE7hDn0",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "What is a Perceptron? Perceptron Vs Neuron | Perceptron Geometric Intuition",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/X7iIKPoZ0Sw/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC_LSLUp1bEMOCxpRT5lCHeTbVsmg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/X7iIKPoZ0Sw/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAAT40haCzZCq1QNu-ZfRt2u-omlw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/X7iIKPoZ0Sw/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBpyGJ0UbzHlxsVXNWgByrW2IYipQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/X7iIKPoZ0Sw/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDZUTRZkaNJLzOVuKNQhPUCwoGnpQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2314,
+      "view_count": 354000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "X7iIKPoZ0Sw",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=X7iIKPoZ0Sw",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Perceptron Trick | How to train a Perceptron | Perceptron Part 2 |  Deep Learning Full Course",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/Lu2bruOHN6g/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB-roqkLD-PNU2vLE6uQzwAeEj-mQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Lu2bruOHN6g/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBUuLO-4RdEf-nVybicSr1xOcIbyw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Lu2bruOHN6g/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDDmmgyYsJzM2yPsoZ2Gu9ssRJNEA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Lu2bruOHN6g/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCvFaUn2m4fPFQvcl3xiL2stw3Gag",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3105,
+      "view_count": 298000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "Lu2bruOHN6g",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=Lu2bruOHN6g",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Perceptron Loss Function | Hinge Loss | Binary Cross Entropy | Sigmoid Function",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/2_gCL5RAkHc/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDN3IOwchG4Y4Dv8gWJMfarfXa0ZQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2_gCL5RAkHc/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD-FK-zL5lZATyl5IufYxk_TbEw-g",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2_gCL5RAkHc/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLClWvlf6pmG2haEDFgCtMRFyzwKfw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2_gCL5RAkHc/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDislk4jVnfVezRU6ilE4h_SZJ0nQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3553,
+      "view_count": 269000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "2_gCL5RAkHc",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=2_gCL5RAkHc",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Problem with Perceptron",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/Jp44b27VnOg/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDxPpy3yEStA6qunNHWVLrkzAvkJw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Jp44b27VnOg/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAboHH8hwHwsor3KhRhy36K2ONEFg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Jp44b27VnOg/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBjTYg5g9Im3jHimWSAc1qbZyTnhw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Jp44b27VnOg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD8E-uTfUDi40UUl927-mrA2KRTrA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 459,
+      "view_count": 128000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "Jp44b27VnOg",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=Jp44b27VnOg",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "MLP Notation",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/H0_3SJh4Rqs/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDJ6Fem_RIDFsSwx7gqoYOPgoGnvw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/H0_3SJh4Rqs/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAcfxFctl6srvsR4tLvaVGzg5Lrlg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/H0_3SJh4Rqs/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCghIZWwtN0eJc4xR7be-dDE1sbvw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/H0_3SJh4Rqs/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCz9udXu2ZfK8K9RwqTKrM9PrEGjA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 804,
+      "view_count": 163000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "H0_3SJh4Rqs",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=H0_3SJh4Rqs",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Multi Layer Perceptron | MLP Intuition",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/qw7wFGgNCSU/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBYV1iZ-d8zR67hqMftq1R5UMcO5w",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/qw7wFGgNCSU/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCZBvXXTwaOSZc44xExwa5n4eZNdw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/qw7wFGgNCSU/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDEcnIn8vxrQcHj4hHQtuzmUhM1CA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/qw7wFGgNCSU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD0Q2rUSYyflFCDWmPY5nuqJJraBw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2266,
+      "view_count": 206000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "qw7wFGgNCSU",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=qw7wFGgNCSU",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Forward Propagation | How a neural network predicts output?",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/7MuiScUkboE/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCJPKSXV20-yxW9Vdo-JI-MvCo_Hg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/7MuiScUkboE/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDx_WulJI5bYLB0ofp9vaS4lKLOsQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/7MuiScUkboE/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCyEbD539w4CHZaNiK5ksqfeR-YUw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/7MuiScUkboE/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBt_jYZXmYrg7JoYLATNxjlWUZ7rA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 931,
+      "view_count": 188000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "7MuiScUkboE",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=7MuiScUkboE",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Customer Churn Prediction using ANN | Keras and Tensorflow | Deep Learning Classification",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/9wmImImmgcI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC3z5QpGpXB7TLRjuudc-rlL_sg4w",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/9wmImImmgcI/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD5XtPSujIXkmhClG71LVqyTff6cg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/9wmImImmgcI/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDOwFVElJD14AcEoOIRFoBmx1I0YA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/9wmImImmgcI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAAOy_75KI4mjSp-Zj-4r3acrfA3g",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2123,
+      "view_count": 205000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "9wmImImmgcI",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=9wmImImmgcI",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Handwritten Digit Classification using ANN | MNIST Dataset",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/3xPT2Pk0Jds/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAj2hqO_C8H8F6Jbq6qpF3RxBHLMg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/3xPT2Pk0Jds/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCt8H6dFiSp_Y96Z1_kTqqjisH8bQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/3xPT2Pk0Jds/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAUeevZ0WUL-vpcbsSIAB7YDM5uBw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/3xPT2Pk0Jds/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAoRXfwOonTMdw0HYqLBOSS2VogeA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1720,
+      "view_count": 165000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "3xPT2Pk0Jds",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=3xPT2Pk0Jds",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Graduate Admission Prediction using ANN",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/RCmiPBiA4qg/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC2aSq13XcQONfMFjHsQtYG8A7WsQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/RCmiPBiA4qg/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC3jcnL87UR6Cnbo4NBUXH6J32L_g",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/RCmiPBiA4qg/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBCdEzGhCPNIx9DmYyg7gNzd5K3kg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/RCmiPBiA4qg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLADKFzXffn8m8VvX0IfujdnIh-KqA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1063,
+      "view_count": 95000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "RCmiPBiA4qg",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=RCmiPBiA4qg",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Loss Functions in Deep Learning | Deep Learning | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/gb5nm_3jBIo/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCdTXDICsJAskLDr5XNJU_lJhSRsg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/gb5nm_3jBIo/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBAJyL7H13qMshe1hMxpP6TGt2jKA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/gb5nm_3jBIo/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCRRc_o-EnOFeuzGbtsirGI3ajv4w",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/gb5nm_3jBIo/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVb4VtFokgK0T0pM9m_KMQircRbA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3596,
+      "view_count": 226000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "gb5nm_3jBIo",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=gb5nm_3jBIo",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Backpropagation in Deep Learning | Part 1 | The What?",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/6M1wWQmcUjQ/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAOiJc2XrPk9028P8y9cCe8bQvJww",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/6M1wWQmcUjQ/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAFNuSkYIX2aYJ9AtFxGvQ_rKwVRA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/6M1wWQmcUjQ/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAJ5Q3y3flnFZe_1pipLud9Jvc81g",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/6M1wWQmcUjQ/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAo1QWVedt_veALo4Of_hvZelJyWw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3259,
+      "view_count": 266000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "6M1wWQmcUjQ",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=6M1wWQmcUjQ",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Backpropagation Part 2 | The How | Complete Deep Learning Playlist",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/ma6hWrU-LaI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD6sGqWUSIHnffl9xA8X0M8cZwbpg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/ma6hWrU-LaI/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCAHxhkq_PY3Zre9tX8P2F5jtrdOw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/ma6hWrU-LaI/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDS6yqMQxnlHQmbByElOOMR7deSAg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/ma6hWrU-LaI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC1UC1Bbp6csJfZXhhJdTuhVqKTmA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3596,
+      "view_count": 167000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "ma6hWrU-LaI",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=ma6hWrU-LaI",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Backpropagation Part 3 | The Why | Complete Deep Learning Playlist",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/6xO-x8y0YSY/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD7YGsHKtIfa6Ldfw776AtXJLLQlg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/6xO-x8y0YSY/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAC7HiePFUHH1PlEH0l2U5aQBYUVA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/6xO-x8y0YSY/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCchA507A_u5UCnQgyNm_20CzpRwg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/6xO-x8y0YSY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDxgmH8cGcfdLTqrpv4X7Vw4bBmmw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2421,
+      "view_count": 110000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "6xO-x8y0YSY",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=6xO-x8y0YSY",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Vanishing Gradient Problem in ANN | Exploding Gradient Problem | Code Example",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/uCrevbBh0zM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD21RXm1AweSKJcwyCyZFotmUPd0Q",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/uCrevbBh0zM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDGBLKBBe64wdll2phyDH9PHWIFHg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/uCrevbBh0zM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBKW7uWtuhLC_XSUpzcdWYYSXFvjA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/uCrevbBh0zM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDNuMtTOEiqHAEVOZfs5EIK6qUdPw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1936,
+      "view_count": 129000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "uCrevbBh0zM",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=uCrevbBh0zM",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "MLP Memoization | Complete Deep Learning Playlist",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/rW0eeTXas4k/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCS6iCkVrnwprGHq6jNTB06lu1VXQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/rW0eeTXas4k/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCHMGwC2E94bvrWOrXS32ZGzj1gTQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/rW0eeTXas4k/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDtKsfTIzmvTLHDt_g1HEMEpGUSQg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/rW0eeTXas4k/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLALKUIbzWXRfcWxrQaRIKImreVxcQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1524,
+      "view_count": 96000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "rW0eeTXas4k",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=rW0eeTXas4k",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Gradient Descent in Neural Networks | Batch vs Stochastics vs Mini Batch Gradient Descent",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/7z6yXpYk7sw/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLASU9pWyXRblbY02iDUysC3wEVBfQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/7z6yXpYk7sw/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBIwqzCCG4zyAJ1buSDYoXdii4vlA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/7z6yXpYk7sw/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBRdM0vyRSFOcsS0HFnIZiLRT_ISg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/7z6yXpYk7sw/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCzlrZ4PLqD_NOh3UnQ6Ubr0ChBvg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2273,
+      "view_count": 171000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "7z6yXpYk7sw",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=7z6yXpYk7sw",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "How to Improve the Performance of a Neural Network",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/Ue_6n1yT_R8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA3wX9javLLCmOSFb42yRTPxwK48Q",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Ue_6n1yT_R8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDAKO9cg-xgMX_TpWk3g9ZznmrSxw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Ue_6n1yT_R8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBnuZ780dJ-ffEEBnCY0yMmLQOCuQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Ue_6n1yT_R8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBIDyEhr_3Zb_U_G5PMC9qg3BI0dw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1824,
+      "view_count": 105000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "Ue_6n1yT_R8",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=Ue_6n1yT_R8",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Early Stopping In Neural Networks | End to End Deep Learning Course",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/Ygvskt5HadI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBaToFE2LaKBuNRMRFZfmQNkcinZw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Ygvskt5HadI/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCqk8s93h8ssKpaLPB8c1wuQeTkng",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Ygvskt5HadI/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAF9OzIvu6_vz3Anrk2LCdPZo2kyQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Ygvskt5HadI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAFtiQGq1-qLUEH73ypemV2wc0uag",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 720,
+      "view_count": 98000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "Ygvskt5HadI",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=Ygvskt5HadI",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Data Scaling in Neural Network | Feature Scaling in ANN | End to End Deep Learning Course",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/mzRO0cVppQ0/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAWVW61Z6jzzry7uIcn1D4zOEVKtQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/mzRO0cVppQ0/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBrh5FlAWSBnwX0gnpglEyqETO2pg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/mzRO0cVppQ0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCZhrke9WMJR96vhI0SSoTNtS38MA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/mzRO0cVppQ0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDY4gZsmR0KouqI82MJ6YIIxHzELg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1015,
+      "view_count": 81000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "mzRO0cVppQ0",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=mzRO0cVppQ0",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Dropout Layer in Deep Learning | Dropouts in ANN | End to End Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/gyTlcHVeBjM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBVazPozIumZITrSycLHjtvWSbopA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/gyTlcHVeBjM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDuHZjMWvDTH6UX4MxplNqFSQVneQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/gyTlcHVeBjM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLACBVB590SbWpApdGVkhr8wOUeMAA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/gyTlcHVeBjM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAiVix3BVf6WPpRwMbVscUVk4cSNA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1671,
+      "view_count": 108000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "gyTlcHVeBjM",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=gyTlcHVeBjM",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Dropout Layers in ANN | Code Example | Regression | Classification",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/tgIx04ML7-Y/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBpl1CF5mIurEPNunTQ3jZ9gupPjA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/tgIx04ML7-Y/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBIW_iAKmMal7VvfaKpNH520fh3OQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/tgIx04ML7-Y/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAz0JW_XjXMRNLFtuhxWdE7AI7Whg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/tgIx04ML7-Y/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBiQHCOY6ayu3eFeeCwvgN8mNu1Pg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1157,
+      "view_count": 74000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "tgIx04ML7-Y",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=tgIx04ML7-Y",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Regularization in Deep Learning | L2 Regularization in ANN | L1 Regularization | Weight Decay in ANN",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/4xRonrhtkzc/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBL9hoEd3p4Xfa4MN3vy_lCuy5a9w",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4xRonrhtkzc/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC-ujVZNa3nvFRpg-GeuwwCty61Tw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4xRonrhtkzc/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCCU2RnWTj9-hred5rXV9v8ctaR_g",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4xRonrhtkzc/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBEnCfb1fbaaGjcnWIpALOXuFyZpA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2157,
+      "view_count": 134000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "4xRonrhtkzc",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=4xRonrhtkzc",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Activation Functions in Deep Learning | Sigmoid, Tanh and Relu Activation Function",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/7LcUkgzx3AY/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCbpUHvvF6GuEeGMcyyDZJYy7W4ww",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/7LcUkgzx3AY/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA9gcmkOCxjU4_R0H3-k_JUGIvKxg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/7LcUkgzx3AY/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBzpFnZk9VTVdgeE7EUS0893IxGBw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/7LcUkgzx3AY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBnjCdGV9jXWgFtz7ckL0xYAxkX_Q",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2692,
+      "view_count": 177000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "7LcUkgzx3AY",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=7LcUkgzx3AY",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Relu Variants Explained | Leaky Relu | Parametric Relu | Elu | Selu | Activation Functions Part 2",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/2OwWs7Hzr9g/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCaf8xwLsGtxSVE5TSLpxANkpWTdg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2OwWs7Hzr9g/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA4cBf_vGNgSgQ6Xlxccq3QpA2gAQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2OwWs7Hzr9g/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCdP7dxLScBtY0uShCww30i3vifEA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2OwWs7Hzr9g/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAb4y1gJXZNm2rTpTbWcLpjaD5Cfg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2005,
+      "view_count": 95000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "2OwWs7Hzr9g",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=2OwWs7Hzr9g",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Weight Initialization Techniques | What not to do? | Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/2MSY0HwH5Ss/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA6AHlaZIqluj8jTgkKy7_mWPxhrA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2MSY0HwH5Ss/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCIewzh8zxbUwWuHqEJQ-ifE5yibw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2MSY0HwH5Ss/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAWSvGzs_GB_7e1yS1Itlo4fXdqGw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2MSY0HwH5Ss/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBLtcLh-lCWRmEmgg00rbTIs35H5Q",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2964,
+      "view_count": 106000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "2MSY0HwH5Ss",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=2MSY0HwH5Ss",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Xavier/Glorat And He Weight Initialization in Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/nwVOSgcrbQI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCTA9nff9Gote8NYwrdIyEQggQBDw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/nwVOSgcrbQI/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA7cPMJDTLsGGZ-Dgoyy5UqEwW3Bg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/nwVOSgcrbQI/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDeMTXzEz7Nc29KtttjbS53w5F5Ug",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/nwVOSgcrbQI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAKDlfLj_r4e3Pm4mcP_qhI51xYFQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1267,
+      "view_count": 76000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "nwVOSgcrbQI",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=nwVOSgcrbQI",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Batch Normalization in Deep Learning | Batch Learning in Keras",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/2AscwXePInA/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDCKYmLTBrRK4lhhJMaGBJ6rwWXUA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2AscwXePInA/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDEAyyHVW-HHWl4z7p3HSVsqcYg4A",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2AscwXePInA/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCVaD4I6SMobITkrjTts0XR-hq5gw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/2AscwXePInA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB7OYfCc3KEVWLHXswP61o08x5rjg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2619,
+      "view_count": 147000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "2AscwXePInA",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=2AscwXePInA",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Optimizers in Deep Learning | Part 1 | Complete Deep Learning Course",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/iCTTnQJn50E/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAIBJMnvgVQiIrWEsiQwpc-XAj3HA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/iCTTnQJn50E/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDflKElOK_5qdnQXodvkZpBYcLP6A",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/iCTTnQJn50E/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCYBWKyW37lrJEgbB6Prg6MylnqvA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/iCTTnQJn50E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBis9iGJuFXj3M6qT54tLyVHbJK2g",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1354,
+      "view_count": 166000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": null,
+      "uploader_url": null,
+      "creators": null,
+      "ie_key": "Youtube",
+      "id": "iCTTnQJn50E",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=iCTTnQJn50E",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Exponentially Weighted Moving Average or Exponential Weighted Average | Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/jAqVuYJ8TP8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD0KQQE2R35bXA0b0ftXXcX6jKY6g",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/jAqVuYJ8TP8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCjXIQhOn3CXiKR0UsI71pZLURDqA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/jAqVuYJ8TP8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDpxZLmyo-C1ukkPP-TzGM8jyWNQA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/jAqVuYJ8TP8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDRAsoKHXmiSq6QGyB9CbHc0r4TUw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1131,
+      "view_count": 94000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": null,
+      "uploader_url": null,
+      "creators": null,
+      "ie_key": "Youtube",
+      "id": "jAqVuYJ8TP8",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=jAqVuYJ8TP8",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "SGD with Momentum Explained in Detail with Animations | Optimizers in Deep Learning Part 2",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/vVS4csXRlcQ/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDDfAM7LYF_Fmmf8G6mhR26XQPJOQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/vVS4csXRlcQ/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCw7AzDNjEJ7nG9aSKKZ4FAaGi4DQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/vVS4csXRlcQ/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCV1xHML-eIWE6J3xFX_mze5lYgSw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/vVS4csXRlcQ/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC82a02v0ttxE0n5wIBEBaAcQaoTg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2305,
+      "view_count": 112000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": null,
+      "uploader_url": null,
+      "creators": null,
+      "ie_key": "Youtube",
+      "id": "vVS4csXRlcQ",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=vVS4csXRlcQ",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Nesterov Accelerated Gradient (NAG) Explained in Detail | Animations | Optimizers in Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/rKG9E6rce1c/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBnPS_USt3amn6RvjDyDFMJ_XrF9Q",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/rKG9E6rce1c/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAEDUL9nkXZd0LGaBtBFNZ3Jpartw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/rKG9E6rce1c/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBbhK7WwVQhN_gXK5QkfHjiejw7JA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/rKG9E6rce1c/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBnxnnMOptabxjVVva74A4xWaM1dA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1670,
+      "view_count": 85000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": null,
+      "uploader_url": null,
+      "creators": null,
+      "ie_key": "Youtube",
+      "id": "rKG9E6rce1c",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=rKG9E6rce1c",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "AdaGrad Explained in Detail with Animations | Optimizers in Deep Learning Part 4",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/nqL9xYmhEpg/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAxLyFm-b_vdJAVIiONmdZbcx7E8g",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/nqL9xYmhEpg/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBTQQQtZR9ClfPeXP6mHTqdh3wziw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/nqL9xYmhEpg/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA62VimPNATJA1Zd0vUMNuRDU1Bng",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/nqL9xYmhEpg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA_WzKOIdEGiBy9qRWbD3WOOTQo4w",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1589,
+      "view_count": 87000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": null,
+      "uploader_url": null,
+      "creators": null,
+      "ie_key": "Youtube",
+      "id": "nqL9xYmhEpg",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=nqL9xYmhEpg",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "RMSProp Explained in Detail with Animations | Optimizers in Deep Learning Part 5",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/p0wSmKslWi0/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA0lsbrwCyuECi2V_APGpTbeALebg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/p0wSmKslWi0/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBPXfr3vOMC_azWMhlK8bwG-J7Wbw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/p0wSmKslWi0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDN-PbeR-H6L1sjXTfVeY3SzJN6ug",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/p0wSmKslWi0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCqbWQlRR6leluptT4yIH7OJq8ocg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 758,
+      "view_count": 71000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": null,
+      "uploader_url": null,
+      "creators": null,
+      "ie_key": "Youtube",
+      "id": "p0wSmKslWi0",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=p0wSmKslWi0",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Adam Optimizer Explained in Detail with Animations | Optimizers in Deep Learning Part 5",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/N5AynalXD9g/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAXR88x2IP-tswVNRe6GT7qLtP1Pw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/N5AynalXD9g/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB0DmiAnZw-YJyBF3-ChMNe7vf39w",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/N5AynalXD9g/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCM8xNy7N9BHsRbYEbGre6H2ATJ3Q",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/N5AynalXD9g/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAe7nRNWHQDp4EmfhmjWoOprUnooQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 759,
+      "view_count": 113000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": null,
+      "uploader_url": null,
+      "creators": null,
+      "ie_key": "Youtube",
+      "id": "N5AynalXD9g",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=N5AynalXD9g",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Keras Tuner | Hyperparameter Tuning a Neural Network",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/oYnyNLj8RMA/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBlCJzNpUK818s8RP8i_buJOJ9cRw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/oYnyNLj8RMA/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBbT7tqDf5Aigy3AjU_g0r1ecyIcg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/oYnyNLj8RMA/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCEVM7GgpRYhjLAFExoEz9zHXKFMg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/oYnyNLj8RMA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCB9OkxsGLtuVkC_ToIzxaF0sL81A",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3934,
+      "view_count": 99000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "oYnyNLj8RMA",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=oYnyNLj8RMA",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "What is Convolutional Neural Network (CNN) | CNN Intution",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/hDVFXf74P-U/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCt1G4C2NIg6doEZGpm6VfyRnx6xQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/hDVFXf74P-U/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBR8PLpL4c5PbTLeavfofSkqamMYQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/hDVFXf74P-U/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDczsGKKCxrV7YsafO977df125MLw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/hDVFXf74P-U/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBLvXSq5XraX6yj6rEpB1C_OPG6aA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1630,
+      "view_count": 314000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "hDVFXf74P-U",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=hDVFXf74P-U",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "CNN Vs Visual Cortex | The Famous Cat Experiment | History of CNN",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/aslTGS9ef98/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDNgzoWpUUYni7qHI83fHrYdyhfFg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/aslTGS9ef98/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB699ShNzCNwU4CpTf6-LTba2jTRw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/aslTGS9ef98/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB2di43sKnf7qMHsgY44XNWFLnzsg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/aslTGS9ef98/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCKjykMLipo-jbmYXWD7oSjrQ-3wA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 902,
+      "view_count": 130000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "aslTGS9ef98",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=aslTGS9ef98",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "CNN Part 3 | Convolution Operation",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/cgJx3GvQ5y8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAPGdW9fLPeY58UhogAKdkAo37y4Q",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/cgJx3GvQ5y8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBIizjrTpl-Qso5rLYeuJq_ML2kJQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/cgJx3GvQ5y8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDyR5b9SDh8bndC41njcD_wiYQcsw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/cgJx3GvQ5y8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCtes_aynmWb72uah5dpRwN3Dt_wA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1754,
+      "view_count": 175000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "cgJx3GvQ5y8",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=cgJx3GvQ5y8",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Padding & Strides in CNN | CNN Lecture 4 | Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/btWE6SsdDZA/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDNFdTncxkjTqV198fsPqq8-Kd65Q",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/btWE6SsdDZA/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBrKzamKaTRy5DVpwp-B-iTOjt8QA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/btWE6SsdDZA/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCC3vXoYnl-a6xNzpMa17UmBdZ9aA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/btWE6SsdDZA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLArTppAq8ytKOioiM9OYUAC9dsEig",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1466,
+      "view_count": 157000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "btWE6SsdDZA",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=btWE6SsdDZA",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Pooling Layer in CNN | MaxPooling in Convolutional Neural Network",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/DwmGefkowCU/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCcBmnRC8W6LC0BluCQKwSVnO-GaA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/DwmGefkowCU/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBV0B5BgrCLETZB7rbjRAxfb4eT7Q",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/DwmGefkowCU/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBE8PTNXWDiSB53mzzqFrg6Ng5hjQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/DwmGefkowCU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDjKyeItrqcmaior_i7FxaaEHcsSQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1674,
+      "view_count": 169000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "DwmGefkowCU",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=DwmGefkowCU",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "CNN Architecture | LeNet -5 Architecture",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/ewsvsJQOuTI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBFMPHGJHBJQj-8h3JKvHkZu--1Kg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/ewsvsJQOuTI/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLColsjAY7w_QPTYo-2O4NSs5Js2Dw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/ewsvsJQOuTI/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB3TiD4yMY7LgUz2QG-5xSQJwSe0Q",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/ewsvsJQOuTI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDFjOF5FIzfmL3bYNc6FV0RL5vM-g",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1200,
+      "view_count": 161000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "ewsvsJQOuTI",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=ewsvsJQOuTI",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Comparing CNN Vs ANN  | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/niE5DRKvD_E/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAfHuk8e0J0fN9BrR3t3gqMTUTjZQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/niE5DRKvD_E/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAt3JQvxZk-KW9HvxVhDS0AXvfTVQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/niE5DRKvD_E/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLClAqOgqnJlET7ZAuXnC9xLBoNutw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/niE5DRKvD_E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDH6BUzCDI-BNvNLMfb4uQnvmP0SA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1062,
+      "view_count": 102000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "niE5DRKvD_E",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=niE5DRKvD_E",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Backpropagation in CNN | Part 1 | Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/RvCCFttGFMY/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA95v8dpeIhy1l7qKv1rp0l24rd5Q",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/RvCCFttGFMY/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDsAlBlyNh2sCQamJA8XnvKwfveeA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/RvCCFttGFMY/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBOpZwVtze3AmYRfkLaNdHjEbtYsA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/RvCCFttGFMY/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC2eH_qsqF7rZ48PYVT8ik0WoZHrQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2181,
+      "view_count": 130000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "RvCCFttGFMY",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=RvCCFttGFMY",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "CNN Backpropagation Part 2 | How Backpropagation works on Convolution, Maxpooling and Flatten Layers",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/OoSDzOodY3Y/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDdU8A6Ld3U5i42kV2NQyDVv38nrA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/OoSDzOodY3Y/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA-gHixOrDSXq7T7x56qgMkWPFFIA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/OoSDzOodY3Y/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAJKGOUHuhrgn_FfdZ2HaKxr9n0ug",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/OoSDzOodY3Y/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDkOOnN8h3HZmgD7foTX32nW2QVEA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2607,
+      "view_count": 87000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "OoSDzOodY3Y",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=OoSDzOodY3Y",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Cat Vs Dog Image Classification Project | Deep Learning Project | CNN Project",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/0K4J_PTgysc/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBHu90XZOMHp2TjrOY1aq3l-9iRkw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/0K4J_PTgysc/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBlRQTVo40MlunijvHYC4OgG0wE1g",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/0K4J_PTgysc/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBJcK2Ng8VjARhFOqb8PBx9x3xN4g",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/0K4J_PTgysc/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCVm649x3wGFrP6t1CRkrLS42b1FQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1649,
+      "view_count": 344000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "0K4J_PTgysc",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=0K4J_PTgysc",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Data Augmentation in Deep Learning | CNN",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/sM2C-SsREgM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDqQCxg7ee4_thQmAMlfuIRGUnQNg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/sM2C-SsREgM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDlhZhAalUm1IkRM3OeR8Zv5-k_5g",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/sM2C-SsREgM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC0Jk6zThEkslFvALTCTLbi-EDxdg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/sM2C-SsREgM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCDqT-JyiFuwIgQUxrs6KnEw1a9Wg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1609,
+      "view_count": 110000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "sM2C-SsREgM",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=sM2C-SsREgM",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Pretrained models in CNN | ImageNET Dataset | ILSVRC | Keras Code",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/0MVXteg7TB4/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAp_7GkD3igGJvOX001_B87idbsYQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/0MVXteg7TB4/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDVao1B5NAMMJWz3CRxePrkNn9YQA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/0MVXteg7TB4/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCqe891_69zU9GPva935NQIJ5kgkg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/0MVXteg7TB4/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB3e8HdJWiSaEHUTbGLHzc0rNTxXw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1468,
+      "view_count": 109000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "0MVXteg7TB4",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=0MVXteg7TB4",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "What does a CNN see? | Visualizing CNN Filters and Feature Maps | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/WJysB1RK2vM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCA8PwJo3yfnGKQ-uHMB2B9v3Ah6A",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/WJysB1RK2vM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC2X9e8HpBGT7Hwgef_ttzU4wAWtg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/WJysB1RK2vM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA63LGTCQr8TaCHbmkBuS3NsPUiZA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/WJysB1RK2vM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBppBaztlpXAqZVSZwmIreqZfgEHQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 783,
+      "view_count": 71000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "WJysB1RK2vM",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=WJysB1RK2vM",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "What is Transfer Learning? Transfer Learning in Keras | Fine Tuning Vs Feature Extraction",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/WWcgHjuKVqA/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCEyXH1CFnHnuNgaQ8V9K-k7-K6Yg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/WWcgHjuKVqA/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAvTFCOmIKkcEQ1Bs2SPTR6WaTAKg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/WWcgHjuKVqA/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDVgKljhQyCWoF58aP8NjHBkKZLCQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/WWcgHjuKVqA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBW8qKIo97hO61n7B_E3yE-XiWGNw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2033,
+      "view_count": 177000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "WWcgHjuKVqA",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=WWcgHjuKVqA",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Keras Functional Model | How to build non-linear Neural Networks?",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/OvQQP1QVru8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBaIJx5LyeB5BTzE2zWAQnZ2SlIyw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/OvQQP1QVru8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB60RkfIgXFR96OZeS1mzD7T-A-WQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/OvQQP1QVru8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB3djuoRXJZat0LsHEpda0wqiyWKg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/OvQQP1QVru8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA-0bp3u3DkEeGlXA8c8wt6IcePIw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1538,
+      "view_count": 76000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "OvQQP1QVru8",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=OvQQP1QVru8",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Why RNNs are needed | RNNs Vs ANNs | RNN Part 1",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/4KpRP-YUw6c/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDXjn903Z2EDLy9EH7xK_7CUzxtgg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4KpRP-YUw6c/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAPqy5v0rzex7U9a9GnauucdxO6ng",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4KpRP-YUw6c/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD3rpd1v5w7cWM0UZPtzPrAeRSEsA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4KpRP-YUw6c/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDyWFM8UgJQZGIQqasQf_baOMah2Q",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1819,
+      "view_count": 232000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "4KpRP-YUw6c",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=4KpRP-YUw6c",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Recurrent Neural Network | Forward Propagation | Architecture",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/BjWqCcbusMM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCyFzQouLS7k_GMp_NWXNsKGVS0UA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/BjWqCcbusMM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB3JTWLpdSDY9MTV2lgsz3kSf9SiQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/BjWqCcbusMM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBvzLiCUr6m0iHFOvkV3TNKJ74ArQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/BjWqCcbusMM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLASzH6wEmf69wTvcflLY-_XRQhnLg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2504,
+      "view_count": 234000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "BjWqCcbusMM",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=BjWqCcbusMM",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "RNN Sentiment Analysis | RNN Code Example in Keras | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/JgnbwKnHMZQ/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDYdgKK0vup3KpUVojR2xJjHn8uMQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/JgnbwKnHMZQ/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDPRFYAevYC4_MwlAM4es7sB7C43w",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/JgnbwKnHMZQ/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBpeKhvtxl7Qfy6Pz8d-dyZyL2oFA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/JgnbwKnHMZQ/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBgxxMyJ87UapvDZYCM94ZwTg4Hag",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2217,
+      "view_count": 141000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "JgnbwKnHMZQ",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=JgnbwKnHMZQ",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Types of RNN | Many to Many | One to Many | Many to One RNNs",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/TkOBxzhIySg/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB04cpDotZ_wDJv4Nb8LA_DyZ-WOg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/TkOBxzhIySg/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBHV_BAPUyGj0iRNTtFJfUcgQvuYA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/TkOBxzhIySg/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDGTpdarTmoj_neV9qA4GmKWla0sQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/TkOBxzhIySg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDLneCHpb-vkeDMw7u5V371FZEqoA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1340,
+      "view_count": 108000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "TkOBxzhIySg",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=TkOBxzhIySg",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "How Backpropagation works in RNN | Backpropagation Through Time",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/OvCz1acvt-k/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLANJ5Rpo8e8D8ron736CWBErBK19w",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/OvCz1acvt-k/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCoPLvzZ2-egcHnEIhU2iq345ucoQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/OvCz1acvt-k/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCbJXdV1SUdxH1KOJjwXUiBOlWbFQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/OvCz1acvt-k/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCaMsOzdkabftYirHBcCn7QyFgarA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2038,
+      "view_count": 128000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "OvCz1acvt-k",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=OvCz1acvt-k",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Problems with RNN | 100 Days of Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/AWHSZzp96kM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA2NJE_opZV-SHvJmPGsSvv0Yi8iA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/AWHSZzp96kM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBoEs3JlashlCdVpx4xu8lvdcVfRA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/AWHSZzp96kM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBqwcj1pg2VQhGvkF-WIlLf1ig0BA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/AWHSZzp96kM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAqXXaBFaV-U3sLFGl8YmTjjU6cEA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1938,
+      "view_count": 103000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "AWHSZzp96kM",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=AWHSZzp96kM",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "LSTM | Long Short Term Memory | Part 1 | The What? | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/z7IPBg6MyrU/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCHrNPrW3EEeGeBlzFZ0tpFYi06sg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/z7IPBg6MyrU/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDTeC4ys_eyTtk2YZearEuvVvlaBQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/z7IPBg6MyrU/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB6czimYXQ7ZTUYacd84YGBDipTvg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/z7IPBg6MyrU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAAWwFLGxsG7_S0Xh5LHjVYrmFbew",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2538,
+      "view_count": 209000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "z7IPBg6MyrU",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=z7IPBg6MyrU",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "LSTM Architecture | Part 2 | The How? | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/Akv3poqqwI4/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDrkDjr9DW3locMdqPVX5txOeCmqg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Akv3poqqwI4/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLD6p7Ais0WkvsqvFyn6YCfMsJ8CNQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Akv3poqqwI4/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCpkJSyn_LJnx6uPkrr8qWdrA7OJg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Akv3poqqwI4/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA9fNzrCgo9p2-Le-EGzCduST0Gyg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 4213,
+      "view_count": 181000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "Akv3poqqwI4",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=Akv3poqqwI4",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "LSTM | Part 3 | Next Word Predictor Using | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/fiqo6uPCJVI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAjBEd1By-DnxrcFh9WkKM2_79Tlg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/fiqo6uPCJVI/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBKZqHPN5GAUtvenhxLwAWsC_20yQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/fiqo6uPCJVI/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAlBnLPaHLewlrsV2kk24q5YuVS6w",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/fiqo6uPCJVI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCbtoxQohMi5qHClfaOaHSeaczpnA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3605,
+      "view_count": 131000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "fiqo6uPCJVI",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=fiqo6uPCJVI",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Gated Recurrent Unit | Deep Learning | GRU | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/QQfZAoNGQmE/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAeSgQF5QoK45yA7S1prAlujzV-jA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/QQfZAoNGQmE/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCH4S1-TCaTFfd2xrDmta7dTAFqQA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/QQfZAoNGQmE/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBmWDz3t3zY26twcCZIiwFr4K09NA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/QQfZAoNGQmE/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDBTGaRiRcskZFdCmiDYcrGRax80Q",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 5182,
+      "view_count": 139000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "QQfZAoNGQmE",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=QQfZAoNGQmE",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Deep RNNs | Stacked RNNs | Stacked LSTMs | Stacked GRUs | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/mlDkTrlLaio/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAWwIO5be0uRydp-P8ujk5QauebBQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/mlDkTrlLaio/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB8mZte7iF2t1h4jVnafVkoAuPLjQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/mlDkTrlLaio/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAXD4qWLEL4QwW2I1s-9WYqacsMtw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/mlDkTrlLaio/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAb8A-U9DbkXBaRj8SfxAtdklAecg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2708,
+      "view_count": 73000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "mlDkTrlLaio",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=mlDkTrlLaio",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Bidirectional RNN | BiLSTM | Bidirectional LSTM | Bidirectional GRU",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/k2NSm3MNdYg/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB9P6XxpW-1KoC0eNa-I1W7GUx7Ng",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/k2NSm3MNdYg/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCXMsatIexEraVlkto_O2g4RNzV2Q",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/k2NSm3MNdYg/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCyil7jeWfwJDqo4HBwcw7jGoV3Ng",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/k2NSm3MNdYg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBgWcC8xrg9XS4tSeeHRMg4lrrIPg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1541,
+      "view_count": 76000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "k2NSm3MNdYg",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=k2NSm3MNdYg",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "The Epic History of Large Language Models (LLMs) | From LSTMs to ChatGPT | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/8fX3rOjTloc/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCRDfjFO7ofNtJ4H4eld-7BBNukgA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/8fX3rOjTloc/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBex0u4tHy_tVhbRYs8gg-icThmsQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/8fX3rOjTloc/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDKt9d8cK6PzaJqWtWNu705_rSxcQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/8fX3rOjTloc/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDABMVZLIi2xZt-yLn-xHS6mDjAww",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 5226,
+      "view_count": 252000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "8fX3rOjTloc",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=8fX3rOjTloc",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Encoder Decoder | Sequence-to-Sequence Architecture | Deep Learning | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/KiL74WsgxoA/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCDCLQz-pTkQWbrvq0NboR7Qe8_OA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/KiL74WsgxoA/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCEyc-SPKR1sNIvGv1ErBvA0ELWpA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/KiL74WsgxoA/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDGJz1e_eItOBfHW3OPqqNx7FLYqQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/KiL74WsgxoA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBcvs8qbp5Ycp1JAhXUEmpdUsNVsg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 4422,
+      "view_count": 201000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "KiL74WsgxoA",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=KiL74WsgxoA",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Attention Mechanism in 1 video | Seq2Seq Networks | Encoder Decoder Architecture",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/rj5V6q6-XUM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCqvVgpv3fwiFjxTFz291tdeLU9nA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/rj5V6q6-XUM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAU7fpPLrLBm-TKN8l0iBg-66GGtw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/rj5V6q6-XUM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB_-h--QLDPo2FpmiNmGDu2VxLXDA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/rj5V6q6-XUM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDshdjqN6UtsyTklDtkWBKDBr7m3w",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2484,
+      "view_count": 158000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "rj5V6q6-XUM",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=rj5V6q6-XUM",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Bahdanau Attention Vs Luong Attention",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/0hZT4_fHfNQ/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBeE1K-hxBVkr5ZCukD8PfvcA_yKg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/0hZT4_fHfNQ/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB2n7BxYWqwkohqYM1A61cjqtjGMg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/0hZT4_fHfNQ/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBPbu0IxaGor8gf3DXEP7wrrOTWkw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/0hZT4_fHfNQ/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAYJHn6ccHYp9ejRr5B7r5kndkNcQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3153,
+      "view_count": 90000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "0hZT4_fHfNQ",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=0hZT4_fHfNQ",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Introduction to Transformers | Transformers Part 1",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/BjRVS2wTtcA/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCAVd1usTHA07rAEZDUDL01ADsOkw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/BjRVS2wTtcA/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDpxNHxJI9SCjsYDrHtuLyWOrH7KQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/BjRVS2wTtcA/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCg6ldz6KXA1bgNPYhJhkEQPz_tlg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/BjRVS2wTtcA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDxEMwwq8eQFvlD-lrd6u7OK_-Rng",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3605,
+      "view_count": 384000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "BjRVS2wTtcA",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=BjRVS2wTtcA",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "What is Self Attention | Transformers Part 2 | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/XnGGmvpDLA0/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBf6DeyNDugghEh61w0pNjbhsCoNw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/XnGGmvpDLA0/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA3gtYKpy7rwmIsxsj7na7OvpT-gA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/XnGGmvpDLA0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC3mK3viYxGru7i2FKeeA7RpkJWXA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/XnGGmvpDLA0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCMulhQJELh9Rq3BWlgMUHdCl6prw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1401,
+      "view_count": 171000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "XnGGmvpDLA0",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=XnGGmvpDLA0",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Self Attention in Transformers | Deep Learning | Simple Explanation with Code!",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/-tCKPl_8Xb8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAiI_ioXmg3zCoekAaSXUTzXM4e9g",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/-tCKPl_8Xb8/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAG_iouVBZz8k49LxWn41XGZe6FMw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/-tCKPl_8Xb8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBZhyeZqGq0yzcZ9aGss_iIfSraZg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/-tCKPl_8Xb8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBxi09YQLdcPvWhZLWT_tztEysY9g",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 5004,
+      "view_count": 231000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "-tCKPl_8Xb8",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=-tCKPl_8Xb8",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Scaled Dot Product Attention | Why do we scale Self Attention?",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/r7mAt0iVqwo/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDT8FxsvNw_5FWbLfenwHkfdvEf7g",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/r7mAt0iVqwo/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCQPICWvaxBVfH4kApzcHtDJY3C5w",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/r7mAt0iVqwo/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDY_WfnWMG8Tvga-wmShwWiQkN5Fw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/r7mAt0iVqwo/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAyo-zd97QSJ4E-Xhm9odCEvixqhQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3042,
+      "view_count": 125000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "r7mAt0iVqwo",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=r7mAt0iVqwo",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Self Attention Geometric Intuition | How to Visualize Self Attention | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/5ZgGuujZSbs/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDVAj30Ln2XTWFB1mJNeos36M6DXg",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/5ZgGuujZSbs/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBkBa-9EIQ0u55ECM0UIhlXbxf0bw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/5ZgGuujZSbs/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDB1FouSABNro-3ZNHYkcugHu9FoA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/5ZgGuujZSbs/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA_BFIZSP1n36jHdGh5-Iv1nsRaYA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1252,
+      "view_count": 83000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "5ZgGuujZSbs",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=5ZgGuujZSbs",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Why is Self Attention called \"Self\"? | Self Attention Vs Luong Attention in Depth Lecture | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/o4ZVA0TuDRg/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBNYTxctclAAwAl351SoENnBX2ruQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/o4ZVA0TuDRg/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDOWuC1vdIg9EcXgkjq0ACCrLrH8A",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/o4ZVA0TuDRg/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBKfTky3oUm29YOoVE2d0F3Won7Lw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/o4ZVA0TuDRg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCLf8J7BHVsnnHyTyGwj5d_g6eiXw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 1355,
+      "view_count": 67000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "o4ZVA0TuDRg",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=o4ZVA0TuDRg",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "What is Multi-head Attention in Transformers | Multi-head Attention v Self Attention | Deep Learning",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/bX2QwpjsmuA/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBlVPw4OIUZIj_vEHPNSpRS3ODXPQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/bX2QwpjsmuA/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDTD_9HRebjwhSyphLuXQ092ix3eA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/bX2QwpjsmuA/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC93ADav2IS1_Cg0VOnWsn_6DBx7Q",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/bX2QwpjsmuA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCNiKc4jZlk26ewjd4_OmDcDAm33Q",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2307,
+      "view_count": 111000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "bX2QwpjsmuA",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=bX2QwpjsmuA",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Positional Encoding in Transformers | Deep Learning | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/GeoQBNNqIbM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLB0NAIDzzbMm1yiRmVL_lJc8vYHUw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/GeoQBNNqIbM/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA9GcZiacHybzljx5R3GSt25eEgOg",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/GeoQBNNqIbM/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDn2OUd-CPQcDmK8fPaP_2AmVmP8Q",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/GeoQBNNqIbM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBwqBeKbsWkK0yduixc_5uGhQS3OQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 4395,
+      "view_count": 125000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "GeoQBNNqIbM",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=GeoQBNNqIbM",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Layer Normalization in Transformers | Layer Norm Vs Batch Norm",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/qti0QPdaelg/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCNXhq2v7mrwhBdp_4VghbuunATNA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/qti0QPdaelg/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDnRvnwIUztb64yrKz9Ia2Kn26AvA",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/qti0QPdaelg/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDV5nJUFQn1Gi4C94VP2IDSH4cmLw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/qti0QPdaelg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDgwwLoNNTTqetYBVMUxN-KEVgQgw",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2817,
+      "view_count": 97000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "qti0QPdaelg",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=qti0QPdaelg",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Transformer Architecture | Part 1 Encoder Architecture | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/Vs87qcdm8l0/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCD9OqstXkCKZgV_9d5pSom9oQxHQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Vs87qcdm8l0/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBDqbauRyEec7MbV0GN6zXZIvl2pw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Vs87qcdm8l0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBsTN9XAJl7gSo0XyjKujauML4sHQ",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/Vs87qcdm8l0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDrd6GyOClKPlrBi9DMNqtnc8mx_w",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3298,
+      "view_count": 119000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "Vs87qcdm8l0",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=Vs87qcdm8l0",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Masked Self Attention | Masked Multi-head Attention in Transformer | Transformer Decoder",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/m6onaKFzF94/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCz-CKgpiijlyUepGP18Zl-3622NQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/m6onaKFzF94/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBJZSl9Ubs47ncIGjpv3DZ45suhfw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/m6onaKFzF94/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDeOdTA1CtY3PrGhlxkovho_b1JCA",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/m6onaKFzF94/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAmQeOuK_v9y-xSVMnGGiSI8gQ_Qg",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 3654,
+      "view_count": 92000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "m6onaKFzF94",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=m6onaKFzF94",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Cross Attention in Transformers | 100 Days Of Deep Learning | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/smOnJtCevoU/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDZxw4QUAikCKZTN3xDY5i1bh03Aw",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/smOnJtCevoU/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCNmHrUJIhUpvYmvflYlXQAyxm62w",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/smOnJtCevoU/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB9IFKIZeQB-3etSwBCKRBqhhrzJw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/smOnJtCevoU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCkH8q_fhE0l0ZcR8RFrsH7nCSjzA",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2047,
+      "view_count": 74000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "smOnJtCevoU",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=smOnJtCevoU",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Transformer Decoder Architecture | Deep Learning | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/DI2_hrAulYo/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLDmtbIH5_0t8tJ_-6RyM5MkKTrFhA",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/DI2_hrAulYo/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAWnBOC6mcdjuCKfIummSi-Yc2rjQ",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/DI2_hrAulYo/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCdoohFDHCsNzHl0tUjbMC09RYOkg",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/DI2_hrAulYo/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC8xIZ9LCHGM1wCIf_YPO9hVBDLcQ",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2906,
+      "view_count": 79000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "DI2_hrAulYo",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=DI2_hrAulYo",
+      "__x_forwarded_for_ip": null
+    },
+    {
+      "title": "Transformer Inference | How Inference is done in Transformer? | Deep Learning | CampusX",
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/FtsMOzlwxws/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBXS4exrZ7tcjQ2PrNWgPASeG76uQ",
+          "height": 94,
+          "width": 168
+        },
+        {
+          "url": "https://i.ytimg.com/vi/FtsMOzlwxws/hqdefault.jpg?sqp=-oaymwEbCMQBEG5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLA7LcsZdkGC3bft8latLffg7XoPxw",
+          "height": 110,
+          "width": 196
+        },
+        {
+          "url": "https://i.ytimg.com/vi/FtsMOzlwxws/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAVqRpOMXg1f7qqaZ0fYZityV56Mw",
+          "height": 138,
+          "width": 246
+        },
+        {
+          "url": "https://i.ytimg.com/vi/FtsMOzlwxws/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDA_8cGngsDgvG-I6tUmNaHFgFw1Q",
+          "height": 188,
+          "width": 336
+        }
+      ],
+      "duration": 2712,
+      "view_count": 85000,
+      "timestamp": null,
+      "live_status": null,
+      "availability": null,
+      "channel_url": "https://www.youtube.com/channel/UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader_url": "https://www.youtube.com/@campusx-official",
+      "creators": null,
+      "channel": "CampusX",
+      "channel_id": "UCCWi3hpnq_Pe03nGxuS7isg",
+      "uploader": "CampusX",
+      "uploader_id": "@campusx-official",
+      "ie_key": "Youtube",
+      "id": "FtsMOzlwxws",
+      "_type": "url",
+      "url": "https://www.youtube.com/watch?v=FtsMOzlwxws",
+      "__x_forwarded_for_ip": null
+    }
+  ]
+}

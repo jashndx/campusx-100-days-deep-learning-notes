@@ -1,0 +1,978 @@
+[
+  {
+    "index": 1,
+    "title": "100 Days of Deep Learning | Course Announcement",
+    "id": "2dH_qjc9mFg",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 2,
+    "title": "What is Deep Learning? Deep Learning Vs Machine Learning | Complete Deep Learning Course",
+    "id": "fHF22Wxuyw4",
+    "links": [
+      "https://learnwith.campusx.in",
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 3,
+    "title": "Types of Neural Networks | History of Deep Learning | Applications of Deep Learning",
+    "id": "fne_UE7hDn0",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 4,
+    "title": "What is a Perceptron? Perceptron Vs Neuron | Perceptron Geometric Intuition",
+    "id": "X7iIKPoZ0Sw",
+    "links": [
+      "https://github.com/campusx-official/100-days-of-deep-learning/tree/main/day3",
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 5,
+    "title": "Perceptron Trick | How to train a Perceptron | Perceptron Part 2 |  Deep Learning Full Course",
+    "id": "Lu2bruOHN6g",
+    "links": [
+      "https://github.com/campusx-official/100-days-of-deep-learning/tree/main/day4",
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 6,
+    "title": "Perceptron Loss Function | Hinge Loss | Binary Cross Entropy | Sigmoid Function",
+    "id": "2_gCL5RAkHc",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://github.com/campusx-official/100-days-of-deep-learning/tree/main/day5%20-%20Perceptron%20Loss%20Function",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 7,
+    "title": "Problem with Perceptron",
+    "id": "Jp44b27VnOg",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1x6detmf4WAUAT2pfdCts-dVrqnz4_gNB?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 8,
+    "title": "MLP Notation",
+    "id": "H0_3SJh4Rqs",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 9,
+    "title": "Multi Layer Perceptron | MLP Intuition",
+    "id": "qw7wFGgNCSU",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 10,
+    "title": "Forward Propagation | How a neural network predicts output?",
+    "id": "7MuiScUkboE",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 11,
+    "title": "Customer Churn Prediction using ANN | Keras and Tensorflow | Deep Learning Classification",
+    "id": "9wmImImmgcI",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://www.kaggle.com/campusx/notebook8ad570467f",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 12,
+    "title": "Handwritten Digit Classification using ANN | MNIST Dataset",
+    "id": "3xPT2Pk0Jds",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1SqETl3Zi1EEesdJfEv6_QimB-M-YjKGx?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 13,
+    "title": "Graduate Admission Prediction using ANN",
+    "id": "RCmiPBiA4qg",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://www.kaggle.com/campusx/gre-admission-prediction",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 14,
+    "title": "Loss Functions in Deep Learning | Deep Learning | CampusX",
+    "id": "gb5nm_3jBIo",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 15,
+    "title": "Backpropagation in Deep Learning | Part 1 | The What?",
+    "id": "6M1wWQmcUjQ",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://www.youtube.com/watch?v=ORyfPJypKuU&t=4072s&ab_channel=CampusX",
+      "https://www.youtube.com/watch?v=7MuiScUkboE&ab_channel=CampusX",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 16,
+    "title": "Backpropagation Part 2 | The How | Complete Deep Learning Playlist",
+    "id": "ma6hWrU-LaI",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1kIljMvDFx7dyyDXTMsd1fEkg9Q24xhIE?usp=sharing",
+      "https://colab.research.google.com/drive/1dJZZdhngq4eN83sQCupyh2QbyzrsBB-e?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 17,
+    "title": "Backpropagation Part 3 | The Why | Complete Deep Learning Playlist",
+    "id": "6xO-x8y0YSY",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 18,
+    "title": "Vanishing Gradient Problem in ANN | Exploding Gradient Problem | Code Example",
+    "id": "uCrevbBh0zM",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1j1qAWzo6sjNU3f_vkMMijOAuFi1JoV8p?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 19,
+    "title": "MLP Memoization | Complete Deep Learning Playlist",
+    "id": "rW0eeTXas4k",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 20,
+    "title": "Gradient Descent in Neural Networks | Batch vs Stochastics vs Mini Batch Gradient Descent",
+    "id": "7z6yXpYk7sw",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/131xWdpUiy_f87tN0dRpKaEvOxR9DoiSB?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 21,
+    "title": "How to Improve the Performance of a Neural Network",
+    "id": "Ue_6n1yT_R8",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://drive.google.com/file/d/1FsOzMQltwI3CURqL9X6SJ-OBOqSDti1i/view?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 22,
+    "title": "Early Stopping In Neural Networks | End to End Deep Learning Course",
+    "id": "Ygvskt5HadI",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1JG6PCAa5A0-CLOcKhugqU4uyZXWNjtKP?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 23,
+    "title": "Data Scaling in Neural Network | Feature Scaling in ANN | End to End Deep Learning Course",
+    "id": "mzRO0cVppQ0",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1lexRUY37fJd6op-WiJicPRB65PwA8YaO?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 24,
+    "title": "Dropout Layer in Deep Learning | Dropouts in ANN | End to End Deep Learning",
+    "id": "gyTlcHVeBjM",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 25,
+    "title": "Dropout Layers in ANN | Code Example | Regression | Classification",
+    "id": "tgIx04ML7-Y",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1KyMLdV1yB0qVdS-1huxKMN9xVKhrfxGL?usp=sharing",
+      "https://drive.google.com/file/d/1p9I76sny0zyIX9VNBEivj6TJaFGwj0GG/view?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 26,
+    "title": "Regularization in Deep Learning | L2 Regularization in ANN | L1 Regularization | Weight Decay in ANN",
+    "id": "4xRonrhtkzc",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1PObj5KrXLDDmHjoJ1x0bVmxAFbif5s7q?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 27,
+    "title": "Activation Functions in Deep Learning | Sigmoid, Tanh and Relu Activation Function",
+    "id": "7LcUkgzx3AY",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 28,
+    "title": "Relu Variants Explained | Leaky Relu | Parametric Relu | Elu | Selu | Activation Functions Part 2",
+    "id": "2OwWs7Hzr9g",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 29,
+    "title": "Weight Initialization Techniques | What not to do? | Deep Learning",
+    "id": "2MSY0HwH5Ss",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1M4q5yRA0iQXh9h8Y3J7zFGIQzO_Pv9n0?usp=sharing",
+      "https://colab.research.google.com/drive/1bsVRmTjYjiQUFee3REHCYeY3vv5r7nfH?usp=sharing",
+      "https://www.deeplearning.ai/ai-notes/initialization/",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 30,
+    "title": "Xavier/Glorat And He Weight Initialization in Deep Learning",
+    "id": "nwVOSgcrbQI",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1Z3pWYFWgUKP7htokOj201APi574a3-vY?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 31,
+    "title": "Batch Normalization in Deep Learning | Batch Learning in Keras",
+    "id": "2AscwXePInA",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1473vOd0lCPbRW-co_Rm-_TBXgeajkJZ_?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 32,
+    "title": "Optimizers in Deep Learning | Part 1 | Complete Deep Learning Course",
+    "id": "iCTTnQJn50E",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 33,
+    "title": "Exponentially Weighted Moving Average or Exponential Weighted Average | Deep Learning",
+    "id": "jAqVuYJ8TP8",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 34,
+    "title": "SGD with Momentum Explained in Detail with Animations | Optimizers in Deep Learning Part 2",
+    "id": "vVS4csXRlcQ",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://www.youtube.com/watch?v=TXVtbgaEyms&t=1s&ab_channel=CampusX",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 35,
+    "title": "Nesterov Accelerated Gradient (NAG) Explained in Detail | Animations | Optimizers in Deep Learning",
+    "id": "rKG9E6rce1c",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 36,
+    "title": "AdaGrad Explained in Detail with Animations | Optimizers in Deep Learning Part 4",
+    "id": "nqL9xYmhEpg",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 37,
+    "title": "RMSProp Explained in Detail with Animations | Optimizers in Deep Learning Part 5",
+    "id": "p0wSmKslWi0",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 38,
+    "title": "Adam Optimizer Explained in Detail with Animations | Optimizers in Deep Learning Part 5",
+    "id": "N5AynalXD9g",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 39,
+    "title": "Keras Tuner | Hyperparameter Tuning a Neural Network",
+    "id": "oYnyNLj8RMA",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 40,
+    "title": "What is Convolutional Neural Network (CNN) | CNN Intution",
+    "id": "hDVFXf74P-U",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 41,
+    "title": "CNN Vs Visual Cortex | The Famous Cat Experiment | History of CNN",
+    "id": "aslTGS9ef98",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 42,
+    "title": "CNN Part 3 | Convolution Operation",
+    "id": "cgJx3GvQ5y8",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 43,
+    "title": "Padding & Strides in CNN | CNN Lecture 4 | Deep Learning",
+    "id": "btWE6SsdDZA",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1HBMLctcBnhvV6Rj62Zc8eAXERQw54l2H?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 44,
+    "title": "Pooling Layer in CNN | MaxPooling in Convolutional Neural Network",
+    "id": "DwmGefkowCU",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1F4F6Q9O-hPvCDeOWcqMUa5BuBOvuOBWc?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 45,
+    "title": "CNN Architecture | LeNet -5 Architecture",
+    "id": "ewsvsJQOuTI",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 46,
+    "title": "Comparing CNN Vs ANN  | CampusX",
+    "id": "niE5DRKvD_E",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 47,
+    "title": "Backpropagation in CNN | Part 1 | Deep Learning",
+    "id": "RvCCFttGFMY",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 48,
+    "title": "CNN Backpropagation Part 2 | How Backpropagation works on Convolution, Maxpooling and Flatten Layers",
+    "id": "OoSDzOodY3Y",
+    "links": [
+      "https://www.youtube.com/watch?v=RvCCFttGFMY&ab_channel=CampusX",
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 49,
+    "title": "Cat Vs Dog Image Classification Project | Deep Learning Project | CNN Project",
+    "id": "0K4J_PTgysc",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://www.kaggle.com/datasets/salader/dogsvscats",
+      "https://colab.research.google.com/drive/1S6CYa2sOwluV8xz2RF0QDrpXjdNs3RKE?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 50,
+    "title": "Data Augmentation in Deep Learning | CNN",
+    "id": "sM2C-SsREgM",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 51,
+    "title": "Pretrained models in CNN | ImageNET Dataset | ILSVRC | Keras Code",
+    "id": "0MVXteg7TB4",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 52,
+    "title": "What does a CNN see? | Visualizing CNN Filters and Feature Maps | CampusX",
+    "id": "WJysB1RK2vM",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1HmL5auiKu3vbKDOTjbnofEmsqMWYViG9?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 53,
+    "title": "What is Transfer Learning? Transfer Learning in Keras | Fine Tuning Vs Feature Extraction",
+    "id": "WWcgHjuKVqA",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://www.kaggle.com/datasets/salader/dogs-vs-cats",
+      "https://colab.research.google.com/drive/1VxoR4vMmZJAOCsDUnfezPuFQqHdKabcL?usp=sharing",
+      "https://colab.research.google.com/drive/1q_INiVDAzhSy1L_A87fBTf2wC3l3MiWy?usp=sharing",
+      "https://colab.research.google.com/drive/1mEWfubs2tR0CkqyxqP49cK30n7V5_NCm?usp=sharing",
+      "https://www.youtube.com/watch?v=0MVXteg7TB4&ab_channel=CampusX",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 54,
+    "title": "Keras Functional Model | How to build non-linear Neural Networks?",
+    "id": "OvQQP1QVru8",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1uCHf6hoLR1a-46RznVjqnhVZNechF0fz?usp=sharing",
+      "https://colab.research.google.com/drive/1pKfnYBal9HhuwRADU0FrWaVJ11_llk8-?usp=sharing",
+      "https://colab.research.google.com/drive/1B2azaSX9g55olY473c7WAMf3E5-717Ge?usp=sharing",
+      "https://www.kaggle.com/datasets/jangedoo/utkface-new",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 55,
+    "title": "Why RNNs are needed | RNNs Vs ANNs | RNN Part 1",
+    "id": "4KpRP-YUw6c",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 56,
+    "title": "Recurrent Neural Network | Forward Propagation | Architecture",
+    "id": "BjWqCcbusMM",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 57,
+    "title": "RNN Sentiment Analysis | RNN Code Example in Keras | CampusX",
+    "id": "JgnbwKnHMZQ",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1uY7NEHi59w4FkB8TViwLjUDKxgCA8W5G?usp=sharing",
+      "https://colab.research.google.com/drive/1FLJZ0LeMiW_6OkzFrC-o035YZPBFEFR4?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 58,
+    "title": "Types of RNN | Many to Many | One to Many | Many to One RNNs",
+    "id": "TkOBxzhIySg",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 59,
+    "title": "How Backpropagation works in RNN | Backpropagation Through Time",
+    "id": "OvCz1acvt-k",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 60,
+    "title": "Problems with RNN | 100 Days of Deep Learning",
+    "id": "AWHSZzp96kM",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 61,
+    "title": "LSTM | Long Short Term Memory | Part 1 | The What? | CampusX",
+    "id": "z7IPBg6MyrU",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colah.github.io/posts/2015-08-Understanding-LSTMs/",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 62,
+    "title": "LSTM Architecture | Part 2 | The How? | CampusX",
+    "id": "Akv3poqqwI4",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colah.github.io/posts/2015-08-Understanding-LSTMs/",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 63,
+    "title": "LSTM | Part 3 | Next Word Predictor Using | CampusX",
+    "id": "fiqo6uPCJVI",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1e55Lnl0I0gFgzrbOwEAGsqmnKKwAWpRO?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 64,
+    "title": "Gated Recurrent Unit | Deep Learning | GRU | CampusX",
+    "id": "QQfZAoNGQmE",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 65,
+    "title": "Deep RNNs | Stacked RNNs | Stacked LSTMs | Stacked GRUs | CampusX",
+    "id": "mlDkTrlLaio",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://colab.research.google.com/drive/1c4eN4cPxajCpFG6yr1mAUi3sV1JaGLDY?usp=sharing",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 66,
+    "title": "Bidirectional RNN | BiLSTM | Bidirectional LSTM | Bidirectional GRU",
+    "id": "k2NSm3MNdYg",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 67,
+    "title": "The Epic History of Large Language Models (LLMs) | From LSTMs to ChatGPT | CampusX",
+    "id": "8fX3rOjTloc",
+    "links": [
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 68,
+    "title": "Encoder Decoder | Sequence-to-Sequence Architecture | Deep Learning | CampusX",
+    "id": "KiL74WsgxoA",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 69,
+    "title": "Attention Mechanism in 1 video | Seq2Seq Networks | Encoder Decoder Architecture",
+    "id": "rj5V6q6-XUM",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 70,
+    "title": "Bahdanau Attention Vs Luong Attention",
+    "id": "0hZT4_fHfNQ",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 71,
+    "title": "Introduction to Transformers | Transformers Part 1",
+    "id": "BjRVS2wTtcA",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in/s/store",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 72,
+    "title": "What is Self Attention | Transformers Part 2 | CampusX",
+    "id": "XnGGmvpDLA0",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in/s/store",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 73,
+    "title": "Self Attention in Transformers | Deep Learning | Simple Explanation with Code!",
+    "id": "-tCKPl_8Xb8",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in/s/store",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 74,
+    "title": "Scaled Dot Product Attention | Why do we scale Self Attention?",
+    "id": "r7mAt0iVqwo",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in/s/store",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 75,
+    "title": "Self Attention Geometric Intuition | How to Visualize Self Attention | CampusX",
+    "id": "5ZgGuujZSbs",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 76,
+    "title": "Why is Self Attention called \"Self\"? | Self Attention Vs Luong Attention in Depth Lecture | CampusX",
+    "id": "o4ZVA0TuDRg",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 77,
+    "title": "What is Multi-head Attention in Transformers | Multi-head Attention v Self Attention | Deep Learning",
+    "id": "bX2QwpjsmuA",
+    "links": [
+      "https://colab.research.google.com/drive/1hXIQ77A4TYS4y3UthWF-Ci7V7vVUoxmQ#scrollTo=YLAhBxDSScmV",
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 78,
+    "title": "Positional Encoding in Transformers | Deep Learning | CampusX",
+    "id": "GeoQBNNqIbM",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://docs.google.com/document/d/1OsMe9jGHoZS67FH8TdIzcUaDWuu5RAbCbBKk2cNq6Dk/edit#heading=h.gvv0r2jo3vjw",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 79,
+    "title": "Layer Normalization in Transformers | Layer Norm Vs Batch Norm",
+    "id": "qti0QPdaelg",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://docs.google.com/document/d/1OsMe9jGHoZS67FH8TdIzcUaDWuu5RAbCbBKk2cNq6Dk/edit#heading=h.gvv0r2jo3vjw",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 80,
+    "title": "Transformer Architecture | Part 1 Encoder Architecture | CampusX",
+    "id": "Vs87qcdm8l0",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://docs.google.com/document/d/1OsMe9jGHoZS67FH8TdIzcUaDWuu5RAbCbBKk2cNq6Dk/edit#heading=h.gvv0r2jo3vjw",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 81,
+    "title": "Masked Self Attention | Masked Multi-head Attention in Transformer | Transformer Decoder",
+    "id": "m6onaKFzF94",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://docs.google.com/document/d/1OsMe9jGHoZS67FH8TdIzcUaDWuu5RAbCbBKk2cNq6Dk/edit#heading=h.gvv0r2jo3vjw",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 82,
+    "title": "Cross Attention in Transformers | 100 Days Of Deep Learning | CampusX",
+    "id": "smOnJtCevoU",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://docs.google.com/document/d/1OsMe9jGHoZS67FH8TdIzcUaDWuu5RAbCbBKk2cNq6Dk/edit#heading=h.gvv0r2jo3vjw",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 83,
+    "title": "Transformer Decoder Architecture | Deep Learning | CampusX",
+    "id": "DI2_hrAulYo",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://docs.google.com/document/d/1OsMe9jGHoZS67FH8TdIzcUaDWuu5RAbCbBKk2cNq6Dk/edit#heading=h.gvv0r2jo3vjw",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  },
+  {
+    "index": 84,
+    "title": "Transformer Inference | How Inference is done in Transformer? | Deep Learning | CampusX",
+    "id": "FtsMOzlwxws",
+    "links": [
+      "https://learnwith.campusx.in/s/store/courses/YouTube%20Notes",
+      "https://learnwith.campusx.in",
+      "https://docs.google.com/document/d/1OsMe9jGHoZS67FH8TdIzcUaDWuu5RAbCbBKk2cNq6Dk/edit#heading=h.gvv0r2jo3vjw",
+      "https://www.linkedin.com/company/campusx-official",
+      "https://www.instagram.com/campusx.official"
+    ]
+  }
+]

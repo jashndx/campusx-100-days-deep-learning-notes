@@ -1,0 +1,2515 @@
+{
+  "id": "rW0eeTXas4k",
+  "index": 19,
+  "title": "MLP Memoization | Complete Deep Learning Playlist",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and you are  welcome to my YouTube channel. In this  video, we are continuing our deep  learning playlist. So, we have covered  backpropagation so far. We have also  seen how gradient descent is applied.  Today, in this video, we will cover a  slightly different type of topic. We  will cover a topic called memoization.  Now, this topic is from computer  science, but you will find its usage in  data science in many places as well.  For example, in the backpropagation  algorithm, internally, when it was  converted into a library, the concept  of memoization must have been used.  Right? So, in today's video, I am going  to explain two things to you. First,  what is memoization and how it is used  in backpropagation. Right? Second, a  small thing I forgot to tell you in all  three backpropagation videos, and that  is if you have a neural network with  more than one hidden layer, then  calculating the derivatives of the  weights of the first layer is a bit  complex. It is a bit tricky. So, I will  calculate that and show it to you in  this video. So, we will cover this  concept along with memoization in this  video. Again, it is an important video.  You should know these concepts. Right?  So, let's start the video. So guys, how  is memoization used in neural networks  and deep learning? Especially while  doing backpropagation. Before  understanding this, you should know  what memoization is. Right? So, I  searched for memoization on Google and  this is the first result from Wikipedia . In computing, memoization is an  optimization technique used primarily  to speed up computer programs by  storing the results of expensive  function calls and returning the cached  result when the same inputs occur again . So, in simple words, if you have  written a program where the same output  is being calculated repeatedly. Then in  such a situation, what you do is that  when you calculate the output for the  first time, you store it somewhere. So  that when you are asked to get the  output on the same input again, you  don't calculate it again. You just take  the stored result and show it. What  happens with this entire thing? Your  program speeds up and takes less time.  There is only one drawback, you have to  spend some space to store things. So,  this is a very famous trick in computer  science. There is a branch of  programming called dynamic programming.  That is where this trick is used. Okay?  So to understand this a bit better,  what I will do is show you a small  example which is kind of shown  everywhere whenever you are taught  memoization. So what are we doing? We  are writing code for Fibonacci. I guess  you know the Fibonacci series. Where  the value of any given term is obtained  by adding the previous two terms. Okay?  So what do I have to do? I have to  create a function called Fibonacci  which will get n as input, and I have  to tell what the nth term is. What is  the nth term of Fibonacci? Okay? So it  is very simple. I will use recursion.  My logic will be very simple. Right now  we are not going into the coding. I  just want to show you the output. I  would say if n = 1 or n = 0, I would  simply return one. Else what I will do  is, I will call, or rather return,  calling the function itself with n-1 as  input and then calling itself with n-2  as input. That's it. This is the code.  Let me show you. I am calling Fibonacci  once, and let's say I want to find out  what five, as in the fifth term, is. So  as soon as I run this, you would get  eight. Okay? If I write 10 here, I  would get 89; if I write 12, I would  get 233. Okay, so you can see this code  is working, but this code, it is a very  inefficient code. I will show you, as  soon as you give, let's say, 36 as  input here, see, it started taking a  bit more time for this program to  calculate it. You see, now such a big  number is coming, but it took some time . It took a little longer. What if I  make this input 40? Now look, it will  take a lot more time. It will take time  in minutes. In fact, if you put 48  instead of 40 here, it will take 3  hours to get the output. If you made it  100, it might take 2 months. This is  highly inefficient. What is the reason?  I will explain it to you. So, this code  we have written is code with  exponential time complexity. How? Look,  when you have to find Fibonacci of five , what are you doing for that?  According to your logic, you are  calculating the Fibonacci of four, and  the Fibonacci of three. For four, you  are again calculating three, and you  are calculating two. For three, you are  calculating two and one, and for two,  you are calculating one and zero. The  good thing is, at least, that you know  the Fibonacci of one and zero. It is  one. So here, you will again calculate  one and zero for two. Here, you will  again calculate two. You will calculate  one. Here, you will calculate one, and  you will calculate zero. So you can see , just to calculate this one thing, how  many things did you have to repeat? You  can notice. To calculate five, you have  calculated three twice. You have  recalculated this entire subtree. Okay?  To calculate five, you have calculated  two once, twice, and three times. Now  imagine, if you are asked to draw the  same tree for 48, for that you will  calculate 47, calculate 46. For 47, you  will calculate 46, and calculate 45.  For 46, you will calculate 45,  calculate 44, and imagine this tree.  How large it will become. So, what is  the solution to this, so that you don't  have to recalculate repeatedly? So the  logic is that once you have calculated  something, like you calculated this,  then you won't calculate it again. Okay ? In fact, I can show it to you. How  inefficient this code is. Look, this is  the output. It came after quite some  time. Let me show you by measuring the  time. Import time and what I will do is , watch carefully. What I would do is,  I will write here 'start' equals to.  time.time (). And after the code is  calculated, I would print time.time ()  minus start. And it will tell me in  seconds. So if I let's say put 36 here,  it is taking this many seconds for me.  Look, it took 7 seconds. If I make it  38, then you see how many seconds it  will take. You can see all the function  calls happening below. It is taking 19  seconds. If you make this 40, it will  go up to 1 minute. So in short, if you  plot a graph. Plot a graph. Time taken  by the program, rather, here is the  input to the program and here is the  time taken by the program. Then it  would be like this, exponential.  Because here, for every task, you have  to do two tasks. So its time complexity  is 2 to the power of n. What is the way  to improve this? Memoization. What will  you do? You will make a small change in  this code. The change will be that you  create a dictionary and store these  values inside it. Value of zero is one,  value of one is also one. And you will  pass this dictionary into this function . Here too, you will receive this  dictionary. And here, what you check  this time is, if n is in d, it means  you have already put the value of this  given input into the dictionary. So  instead of calculating it again, you  will return n from inside d. Else, what  you will do is, you will write this.  Dictionary of n = Fibonacci of n-1 +  Fibonacci of n-2 and you would return d  of n, this is the code. And this is the  output. Uh, just one second. There is  an error here. We will have to pass the  dictionary as an input here as well.  This function now needs a dictionary  too. Here is our code. See, how much  time did it take to calculate 38? It  took only this much time. If I provide  100 here now, it will take very little  time. Look, it is taking the same  amount of time. Okay? So, I will  summarize. What is memoization?  Memoization is a trick. It is a  computer science trick. Where what do  you do? You spend space to reduce time.  Basically, you speed up your program.  Okay? Now I will tell you how you can  use this same trick in backpropagation  to make your backpropagation algorithm  faster. So guys, now we know about  memoization. Now we need to understand  how you use memoization in a neural  network setup when you are using  backpropagation. Okay? But before  explaining this, I want to explain one  more thing that I forgot to explain  when I was teaching you backpropagation , and that is, if you have a neural  network that has two hidden layers. We  have only worked on neural networks so  far that had only one hidden layer.  Okay? This is a neural network that has  two hidden layers. Because of this, the  complexity increases a bit. So I just  want to give you a flavor of how that  complexity increased and how to handle  it. So what I will do is, here we have  four layers. This is the input layer.  This is the input layer. This is hidden  layer one, this is hidden layer two.  And this is the output layer. Okay? I  will show you how to find the  derivatives of one weight from here,  one from here, and one from here. Why  do we calculate derivatives? Because in  the backpropagation algorithm, what do  you need to do? You need to update. And  to update, you need the derivatives of  all your weights and biases. Okay? So,  I just want to show you that the  derivatives for the weights in this  layer are a bit difficult to calculate.  Okay? That is what I want to show you.  By the way, if you look at this point,  how many total trainable parameters do  we have in this neural network? If you  count, we have 9 + 3 here, 6 + 2 here,  and 2 + 1 here, so that's 12. This is  eight, and this is three. So, in total,  we have 23 trainable parameters. Okay?  Now, let me show you one by one how you  will calculate all these weights in a  complex neural network like this. Okay?  For that, what I will do is I will just  take a snapshot of this. Because we  need this on the screen the entire time . So I will just take the screenshot.  This much. And let's pin it to the  screen. Yes. Now what we will do is  First, we will calculate the derivative  for this weight of ours. Okay? So, what  do I need to do? I need to find the  partial of L with respect to W2.  Actually, this will be W3. W311. Now  look. Here you can clearly see that  your L depends on y-hat. You can take a  regression setup, or a classification  setup, and your y-hat, in turn, depends  on five things, and one of them is this . So you can actually write this entire  derivative like this: d L by dy-hat* partial of y-hat/partial of W311. Okay?  In exactly the same way, you can  calculate the derivative for this  weight as well. I hope you are getting  the point. Now let me quickly show you  how you will calculate the derivative  of this weight. Okay, watch carefully.  So, if you want to find the derivative  of this weight, which basically means  you need to find del of L—the name of  this weight will be 2 1—its  derivative will be, watch carefully  what it will be. Loss depends on y-hat,  y-hat depends on this output, this  output. Okay? So I would write O21. And  now O21 depends on our weight, which is  W21. So this time, you will write your  derivative like this: del L by del  y-hat multiplied by del y-hat by del  O21*by del O21 by del W21. 211, we are  still talking about the chain rule here . We are talking about the chain rule.  Okay? Now, the main problem starts from  here. I mean, I hope you are guessing,  you are able to understand that you can  find the derivative of any of these six  weights in this layer like this. Okay?  You can do it yourself with a pen and  paper. Okay? I will now show you what  the problem will be in this layer. What  is going to be the problem with the  nine weights in this layer? Watch  carefully. The problem will be that if  we understand it through this chart  again, you would understand that L  depends on y-hat. y-hat depends on O21,  O21 depends on O11, and now O11 depends  on this first-layer weight. Do you  understand? Look, L depends on y-hat,  y-hat depends on this output. This  output depends on this output, and now  this output depends on this weight.  Okay? So here, you are traveling a long  path. But the problem is this. I will  show you. One problem is that when you  changed W1, when you changed it here,  the output of this node changed. But  the output of this node is moving  forward through two paths. See. So this  time, there is an additional complexity  in our entire flow. Okay? Meaning, you  are going through this path once. And  once you are going through this path.  You will have to consider both of these . Okay? So in math, what happens is  that in such a situation, if you are  asked to differentiate, then what do  you do? Let me show you. Suppose this  is your x. From which fx is being  formed and gx is being formed, and then  from this, your h...fx and gx are being  formed. And if someone tells you to  find this. So, how is this calculated?  You track both paths. So, what do you  need to do first? You will write this  as del H/del fx multiplied by del fx/ del x and then what will you add to it?  For the second path, you will write del  of del gx times del gx/dx, okay? So,  this is what you have to do. The  situation here is almost the same as  well. There is just a slight difference  here, and that difference is this. Let  me show you that you have W 1 here.  From this, from this O1 is being formed . Now, a path is going from O1. Towards  O21. From O21, another path is going  towards y-hat. And this y-hat is going  towards the loss. And from O11, there  is another path that is going towards  O21 and from O21 it is going towards Y.  This is the path. Okay? And what do I  need to find? I need to find del L/del  WW11. This is the thing I need to  calculate. So, based on the logic we  have discussed, we will do this entire  work. Okay? Watch carefully. When we  calculate this, it will actually be del  L with respect to del y-hat. Now I need  to calculate this much differentiation,  this one. I need to calculate this  differentiation.  But this differentiation is exactly  like that. So what will we do? We will  write it like this. So we will first  take this path and then we will take  this path. Okay? So first we are taking  the upper path. According to the upper  path, it will be del y-hat () by del  O21 multiplied by del O21 del O1, and  then it will be multiplied by del WW11.  Okay, and now we will take the second  path here; according to the second path , it will be y-hat () by O21, I have  written O21 in both places. This should  be O22, my bad; this should be O22,  right, you are passing through here, it  will be O22. So this would be O22*by  del O22 del O11*by del O11 del WW1 1  And this is the answer, this is the  answer guys. Okay? So you can see, if  you had to find the derivative of this  weight. How complex is the thing you  have calculated here. Okay? Similarly,  if you have to find it for any other  weight in this layer, you will have to  do exactly this same work. Okay? So you  can see, just with two hidden layers— we only have two hidden layers—and  already the formula to calculate our  derivatives has become so cumbersome  and difficult. You can see how many  things we have to calculate to derive  just one thing. Imagine you have a very  deep neural network with 10 hidden  layers. Just thinking about it might  scare you, realizing how many such  terms will appear there. That is where  the role of memoization comes in. Okay?  If you go on repeating these  calculations, calculating these  derivatives will become very slow. But  the good thing is that when you start  calculating derivatives from the back.  The derivatives you calculate here are  useful there, and the ones you  calculate there are useful here. So  basically, once you have calculated a  derivative here, you can store it  somewhere and use it later. So, what  will happen with this whole process?  Your time will be reduced. Even if it  takes a little memory, the time will  improve significantly. Okay? Like I can  show you an example right now. So, when  we did the calculation in the first  layer here. At this point, when we  calculated based on the outermost  weight, we derived this thing and this  thing. Then, as soon as we entered the  second layer, you can see this is  exactly the same as what we derived  here. So why should we calculate it  again here? I guess you are  understanding. If you have already  calculated it, you will just reuse it.  Similarly, you calculated this new  thing, so you will store it somewhere.  You will store this too because it will  be useful later, and it really will be  useful later. Notice. I will show you  that at this place, this thing uh, no,  this thing is exactly what you derived  here. Okay? This thing is exactly what  you derived here. Okay? You calculated  this new thing, but you need it again  here. Okay? So, I hope you are  understanding that even though this  expression of yours keeps getting very  complex. And many more derivative terms  start getting added here. But the idea  is very simple: as you go deeper into  the neural network, you need the  previous weights and derivatives again.  So what do you do? You store them and  reuse them. And that is the whole idea  behind memoization. What happens  because of this? Your neural network  training becomes fast. Okay? So that is  the meaning; when we talk about  backpropagation, always remember that  backpropagation is basically two things . It is chain differentiation, or you  can call it the chain rule. Applied  with the technique of memoization. Okay ? The chain rule is math, and this is  computer science. And it is the  combination of these two that forms our  backpropagation algorithm, which  libraries like Keras or TensorFlow use.  Okay? So, I wanted to explain this  concept to you separately. Because this  is a very important concept. Let me  summarize it for you once. We learned  two things. First, as you go deeper  into your neural network, more terms  appear in calculating derivatives. Okay ? And the formula for calculating its  derivative becomes even more complex.  Okay? Try adding one more layer and see . More complexity is added to it. Okay?  So, because of the arrival of so many  terms, what happens is that you have to  recalculate the same derivatives  repeatedly. But if you recalculate the  same thing, your additional time will  be wasted, and that is not a good thing . So, to optimize your overall  algorithm, what you do is use a trick  called memoization, which is a core  trick used in computer science,  especially in the field of dynamic  programming. And when you use this  trick intelligently with the chain rule , that is your backpropagation  algorithm. You should have this  understanding that mathematically, the  chain rule is the main guy, and when  you are converting it into code,  memoization is helping you. Okay? So I  hope you got this entire intuition. So  that's it for the video, guys. I hope  you understood the video and liked it  as well. If so, please press that like  button. Also, if you haven't subscribed , do subscribe to my channel. Okay? I  will keep bringing more videos like  this. So that's it from my side. Thanks  for watching. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and you are",
+      "start": 0.419,
+      "duration": 3.224
+    },
+    {
+      "text": " welcome to my YouTube channel. In this",
+      "start": 2.702,
+      "duration": 3.476
+    },
+    {
+      "text": " video, we are continuing our deep",
+      "start": 5.229,
+      "duration": 2.694
+    },
+    {
+      "text": " learning playlist. So, we have covered",
+      "start": 6.975,
+      "duration": 3.313
+    },
+    {
+      "text": " backpropagation so far. We have also",
+      "start": 9.348,
+      "duration": 3.48
+    },
+    {
+      "text": " seen how gradient descent is applied.",
+      "start": 11.909,
+      "duration": 3.991
+    },
+    {
+      "text": " Today, in this video, we will cover a",
+      "start": 15.139,
+      "duration": 2.896
+    },
+    {
+      "text": " slightly different type of topic. We",
+      "start": 17.087,
+      "duration": 3.162
+    },
+    {
+      "text": " will cover a topic called memoization.",
+      "start": 19.324,
+      "duration": 3.855
+    },
+    {
+      "text": " Now, this topic is from computer",
+      "start": 23.019,
+      "duration": 2.397
+    },
+    {
+      "text": " science, but you will find its usage in",
+      "start": 24.46,
+      "duration": 2.703
+    },
+    {
+      "text": " data science in many places as well.",
+      "start": 26.206,
+      "duration": 2.573
+    },
+    {
+      "text": " For example, in the backpropagation",
+      "start": 28.899,
+      "duration": 3.226
+    },
+    {
+      "text": " algorithm, internally, when it was",
+      "start": 31.189,
+      "duration": 3.162
+    },
+    {
+      "text": " converted into a library, the concept",
+      "start": 33.415,
+      "duration": 3.354
+    },
+    {
+      "text": " of memoization must have been used.",
+      "start": 35.832,
+      "duration": 3.227
+    },
+    {
+      "text": " Right? So, in today's video, I am going",
+      "start": 38.441,
+      "duration": 3.02
+    },
+    {
+      "text": " to explain two things to you. First,",
+      "start": 40.505,
+      "duration": 3.037
+    },
+    {
+      "text": " what is memoization and how it is used",
+      "start": 42.623,
+      "duration": 4.063
+    },
+    {
+      "text": " in backpropagation. Right? Second, a",
+      "start": 45.767,
+      "duration": 5.008
+    },
+    {
+      "text": " small thing I forgot to tell you in all",
+      "start": 49.846,
+      "duration": 3.76
+    },
+    {
+      "text": " three backpropagation videos, and that",
+      "start": 52.676,
+      "duration": 3.689
+    },
+    {
+      "text": " is if you have a neural network with",
+      "start": 55.436,
+      "duration": 3.547
+    },
+    {
+      "text": " more than one hidden layer, then",
+      "start": 58.054,
+      "duration": 3.264
+    },
+    {
+      "text": " calculating the derivatives of the",
+      "start": 60.389,
+      "duration": 3.405
+    },
+    {
+      "text": " weights of the first layer is a bit",
+      "start": 62.865,
+      "duration": 3.477
+    },
+    {
+      "text": " complex. It is a bit tricky. So, I will",
+      "start": 65.412,
+      "duration": 4.461
+    },
+    {
+      "text": " calculate that and show it to you in",
+      "start": 68.912,
+      "duration": 2.415
+    },
+    {
+      "text": " this video. So, we will cover this",
+      "start": 70.366,
+      "duration": 2.854
+    },
+    {
+      "text": " concept along with memoization in this",
+      "start": 72.278,
+      "duration": 3.213
+    },
+    {
+      "text": " video. Again, it is an important video.",
+      "start": 74.549,
+      "duration": 3.671
+    },
+    {
+      "text": " You should know these concepts. Right?",
+      "start": 77.387,
+      "duration": 3.739
+    },
+    {
+      "text": " So, let's start the video. So guys, how",
+      "start": 80.226,
+      "duration": 3.48
+    },
+    {
+      "text": " is memoization used in neural networks",
+      "start": 82.786,
+      "duration": 4.062
+    },
+    {
+      "text": " and deep learning? Especially while",
+      "start": 85.929,
+      "duration": 3.582
+    },
+    {
+      "text": " doing backpropagation. Before",
+      "start": 88.57,
+      "duration": 2.885
+    },
+    {
+      "text": " understanding this, you should know",
+      "start": 90.508,
+      "duration": 2.845
+    },
+    {
+      "text": " what memoization is. Right? So, I",
+      "start": 92.405,
+      "duration": 3.122
+    },
+    {
+      "text": " searched for memoization on Google and",
+      "start": 94.582,
+      "duration": 3.108
+    },
+    {
+      "text": " this is the first result from Wikipedia",
+      "start": 96.746,
+      "duration": 3.163
+    },
+    {
+      "text": ". In computing, memoization is an",
+      "start": 98.909,
+      "duration": 4.007
+    },
+    {
+      "text": " optimization technique used primarily",
+      "start": 101.981,
+      "duration": 3.384
+    },
+    {
+      "text": " to speed up computer programs by",
+      "start": 104.43,
+      "duration": 3.062
+    },
+    {
+      "text": " storing the results of expensive",
+      "start": 106.556,
+      "duration": 3.063
+    },
+    {
+      "text": " function calls and returning the cached",
+      "start": 108.683,
+      "duration": 3.513
+    },
+    {
+      "text": " result when the same inputs occur again",
+      "start": 111.261,
+      "duration": 3.513
+    },
+    {
+      "text": ". So, in simple words, if you have",
+      "start": 113.774,
+      "duration": 5.006
+    },
+    {
+      "text": " written a program where the same output",
+      "start": 117.867,
+      "duration": 4.39
+    },
+    {
+      "text": " is being calculated repeatedly. Then in",
+      "start": 121.344,
+      "duration": 4.296
+    },
+    {
+      "text": " such a situation, what you do is that",
+      "start": 124.688,
+      "duration": 2.804
+    },
+    {
+      "text": " when you calculate the output for the",
+      "start": 126.541,
+      "duration": 2.803
+    },
+    {
+      "text": " first time, you store it somewhere. So",
+      "start": 128.393,
+      "duration": 3.287
+    },
+    {
+      "text": " that when you are asked to get the",
+      "start": 130.74,
+      "duration": 3.061
+    },
+    {
+      "text": " output on the same input again, you",
+      "start": 132.862,
+      "duration": 3.121
+    },
+    {
+      "text": " don't calculate it again. You just take",
+      "start": 135.043,
+      "duration": 3.711
+    },
+    {
+      "text": " the stored result and show it. What",
+      "start": 137.822,
+      "duration": 3.298
+    },
+    {
+      "text": " happens with this entire thing? Your",
+      "start": 140.159,
+      "duration": 2.657
+    },
+    {
+      "text": " program speeds up and takes less time.",
+      "start": 141.904,
+      "duration": 4.359
+    },
+    {
+      "text": " There is only one drawback, you have to",
+      "start": 145.363,
+      "duration": 3.82
+    },
+    {
+      "text": " spend some space to store things. So,",
+      "start": 148.256,
+      "duration": 3.637
+    },
+    {
+      "text": " this is a very famous trick in computer",
+      "start": 150.938,
+      "duration": 2.739
+    },
+    {
+      "text": " science. There is a branch of",
+      "start": 152.722,
+      "duration": 3.53
+    },
+    {
+      "text": " programming called dynamic programming.",
+      "start": 155.343,
+      "duration": 4.536
+    },
+    {
+      "text": " That is where this trick is used. Okay?",
+      "start": 159.319,
+      "duration": 3.66
+    },
+    {
+      "text": " So to understand this a bit better,",
+      "start": 162.879,
+      "duration": 3.424
+    },
+    {
+      "text": " what I will do is show you a small",
+      "start": 165.372,
+      "duration": 3.355
+    },
+    {
+      "text": " example which is kind of shown",
+      "start": 167.796,
+      "duration": 3.078
+    },
+    {
+      "text": " everywhere whenever you are taught",
+      "start": 169.943,
+      "duration": 3.355
+    },
+    {
+      "text": " memoization. So what are we doing? We",
+      "start": 172.367,
+      "duration": 3.929
+    },
+    {
+      "text": " are writing code for Fibonacci. I guess",
+      "start": 175.35,
+      "duration": 3.24
+    },
+    {
+      "text": " you know the Fibonacci series. Where",
+      "start": 177.658,
+      "duration": 3.39
+    },
+    {
+      "text": " the value of any given term is obtained",
+      "start": 180.098,
+      "duration": 2.955
+    },
+    {
+      "text": " by adding the previous two terms. Okay?",
+      "start": 182.103,
+      "duration": 3.086
+    },
+    {
+      "text": " So what do I have to do? I have to",
+      "start": 184.289,
+      "duration": 2.826
+    },
+    {
+      "text": " create a function called Fibonacci",
+      "start": 186.175,
+      "duration": 3.028
+    },
+    {
+      "text": " which will get n as input, and I have",
+      "start": 188.262,
+      "duration": 3.207
+    },
+    {
+      "text": " to tell what the nth term is. What is",
+      "start": 190.529,
+      "duration": 3.574
+    },
+    {
+      "text": " the nth term of Fibonacci? Okay? So it",
+      "start": 193.16,
+      "duration": 3.397
+    },
+    {
+      "text": " is very simple. I will use recursion.",
+      "start": 195.6,
+      "duration": 2.935
+    },
+    {
+      "text": " My logic will be very simple. Right now",
+      "start": 197.635,
+      "duration": 2.632
+    },
+    {
+      "text": " we are not going into the coding. I",
+      "start": 199.302,
+      "duration": 2.293
+    },
+    {
+      "text": " just want to show you the output. I",
+      "start": 200.639,
+      "duration": 3.39
+    },
+    {
+      "text": " would say if n = 1 or n = 0, I would",
+      "start": 203.138,
+      "duration": 4.941
+    },
+    {
+      "text": " simply return one. Else what I will do",
+      "start": 207.188,
+      "duration": 7.255
+    },
+    {
+      "text": " is, I will call, or rather return,",
+      "start": 213.536,
+      "duration": 4.157
+    },
+    {
+      "text": " calling the function itself with n-1 as",
+      "start": 216.786,
+      "duration": 4.622
+    },
+    {
+      "text": " input and then calling itself with n-2",
+      "start": 220.501,
+      "duration": 4.529
+    },
+    {
+      "text": " as input. That's it. This is the code.",
+      "start": 224.123,
+      "duration": 4.396
+    },
+    {
+      "text": " Let me show you. I am calling Fibonacci",
+      "start": 228.739,
+      "duration": 3.565
+    },
+    {
+      "text": " once, and let's say I want to find out",
+      "start": 231.374,
+      "duration": 3.668
+    },
+    {
+      "text": " what five, as in the fifth term, is. So",
+      "start": 234.112,
+      "duration": 3.826
+    },
+    {
+      "text": " as soon as I run this, you would get",
+      "start": 237.007,
+      "duration": 3.505
+    },
+    {
+      "text": " eight. Okay? If I write 10 here, I",
+      "start": 239.582,
+      "duration": 4.973
+    },
+    {
+      "text": " would get 89; if I write 12, I would",
+      "start": 243.633,
+      "duration": 3.807
+    },
+    {
+      "text": " get 233. Okay, so you can see this code",
+      "start": 246.517,
+      "duration": 4.04
+    },
+    {
+      "text": " is working, but this code, it is a very",
+      "start": 249.635,
+      "duration": 4.04
+    },
+    {
+      "text": " inefficient code. I will show you, as",
+      "start": 252.753,
+      "duration": 4.943
+    },
+    {
+      "text": " soon as you give, let's say, 36 as",
+      "start": 256.766,
+      "duration": 3.358
+    },
+    {
+      "text": " input here, see, it started taking a",
+      "start": 259.193,
+      "duration": 3.497
+    },
+    {
+      "text": " bit more time for this program to",
+      "start": 261.759,
+      "duration": 3.289
+    },
+    {
+      "text": " calculate it. You see, now such a big",
+      "start": 264.117,
+      "duration": 5.093
+    },
+    {
+      "text": " number is coming, but it took some time",
+      "start": 268.289,
+      "duration": 4.071
+    },
+    {
+      "text": ". It took a little longer. What if I",
+      "start": 271.36,
+      "duration": 3.703
+    },
+    {
+      "text": " make this input 40? Now look, it will",
+      "start": 274.117,
+      "duration": 4.162
+    },
+    {
+      "text": " take a lot more time. It will take time",
+      "start": 277.359,
+      "duration": 3.503
+    },
+    {
+      "text": " in minutes. In fact, if you put 48",
+      "start": 279.903,
+      "duration": 2.854
+    },
+    {
+      "text": " instead of 40 here, it will take 3",
+      "start": 281.816,
+      "duration": 3.007
+    },
+    {
+      "text": " hours to get the output. If you made it",
+      "start": 283.882,
+      "duration": 3.703
+    },
+    {
+      "text": " 100, it might take 2 months. This is",
+      "start": 286.667,
+      "duration": 4.051
+    },
+    {
+      "text": " highly inefficient. What is the reason?",
+      "start": 289.792,
+      "duration": 3.348
+    },
+    {
+      "text": " I will explain it to you. So, this code",
+      "start": 292.24,
+      "duration": 3.488
+    },
+    {
+      "text": " we have written is code with",
+      "start": 294.793,
+      "duration": 2.83
+    },
+    {
+      "text": " exponential time complexity. How? Look,",
+      "start": 296.689,
+      "duration": 4.504
+    },
+    {
+      "text": " when you have to find Fibonacci of five",
+      "start": 300.243,
+      "duration": 2.924
+    },
+    {
+      "text": ", what are you doing for that?",
+      "start": 302.167,
+      "duration": 2.481
+    },
+    {
+      "text": " According to your logic, you are",
+      "start": 303.748,
+      "duration": 2.467
+    },
+    {
+      "text": " calculating the Fibonacci of four, and",
+      "start": 305.261,
+      "duration": 2.744
+    },
+    {
+      "text": " the Fibonacci of three. For four, you",
+      "start": 307.05,
+      "duration": 2.807
+    },
+    {
+      "text": " are again calculating three, and you",
+      "start": 308.907,
+      "duration": 2.804
+    },
+    {
+      "text": " are calculating two. For three, you are",
+      "start": 310.761,
+      "duration": 3.394
+    },
+    {
+      "text": " calculating two and one, and for two,",
+      "start": 313.224,
+      "duration": 3.582
+    },
+    {
+      "text": " you are calculating one and zero. The",
+      "start": 315.876,
+      "duration": 3.679
+    },
+    {
+      "text": " good thing is, at least, that you know",
+      "start": 318.614,
+      "duration": 3.228
+    },
+    {
+      "text": " the Fibonacci of one and zero. It is",
+      "start": 320.901,
+      "duration": 3.418
+    },
+    {
+      "text": " one. So here, you will again calculate",
+      "start": 323.423,
+      "duration": 4.844
+    },
+    {
+      "text": " one and zero for two. Here, you will",
+      "start": 327.366,
+      "duration": 4.111
+    },
+    {
+      "text": " again calculate two. You will calculate",
+      "start": 330.531,
+      "duration": 3.011
+    },
+    {
+      "text": " one. Here, you will calculate one, and",
+      "start": 332.588,
+      "duration": 2.97
+    },
+    {
+      "text": " you will calculate zero. So you can see",
+      "start": 334.607,
+      "duration": 3.006
+    },
+    {
+      "text": ", just to calculate this one thing, how",
+      "start": 336.613,
+      "duration": 2.875
+    },
+    {
+      "text": " many things did you have to repeat? You",
+      "start": 338.536,
+      "duration": 3.076
+    },
+    {
+      "text": " can notice. To calculate five, you have",
+      "start": 340.689,
+      "duration": 4.593
+    },
+    {
+      "text": " calculated three twice. You have",
+      "start": 344.364,
+      "duration": 4.037
+    },
+    {
+      "text": " recalculated this entire subtree. Okay?",
+      "start": 347.456,
+      "duration": 3.604
+    },
+    {
+      "text": " To calculate five, you have calculated",
+      "start": 350.559,
+      "duration": 4.546
+    },
+    {
+      "text": " two once, twice, and three times. Now",
+      "start": 354.199,
+      "duration": 5.201
+    },
+    {
+      "text": " imagine, if you are asked to draw the",
+      "start": 358.467,
+      "duration": 3.48
+    },
+    {
+      "text": " same tree for 48, for that you will",
+      "start": 361.015,
+      "duration": 3.346
+    },
+    {
+      "text": " calculate 47, calculate 46. For 47, you",
+      "start": 363.428,
+      "duration": 4.053
+    },
+    {
+      "text": " will calculate 46, and calculate 45.",
+      "start": 366.549,
+      "duration": 3.43
+    },
+    {
+      "text": " For 46, you will calculate 45,",
+      "start": 369.419,
+      "duration": 3.167
+    },
+    {
+      "text": " calculate 44, and imagine this tree.",
+      "start": 371.658,
+      "duration": 3.601
+    },
+    {
+      "text": " How large it will become. So, what is",
+      "start": 374.579,
+      "duration": 3.837
+    },
+    {
+      "text": " the solution to this, so that you don't",
+      "start": 377.476,
+      "duration": 3.33
+    },
+    {
+      "text": " have to recalculate repeatedly? So the",
+      "start": 379.866,
+      "duration": 4.198
+    },
+    {
+      "text": " logic is that once you have calculated",
+      "start": 383.111,
+      "duration": 2.806
+    },
+    {
+      "text": " something, like you calculated this,",
+      "start": 384.964,
+      "duration": 2.711
+    },
+    {
+      "text": " then you won't calculate it again. Okay",
+      "start": 386.723,
+      "duration": 3.726
+    },
+    {
+      "text": "? In fact, I can show it to you. How",
+      "start": 389.449,
+      "duration": 2.931
+    },
+    {
+      "text": " inefficient this code is. Look, this is",
+      "start": 391.437,
+      "duration": 3.086
+    },
+    {
+      "text": " the output. It came after quite some",
+      "start": 393.566,
+      "duration": 2.421
+    },
+    {
+      "text": " time. Let me show you by measuring the",
+      "start": 395.023,
+      "duration": 2.818
+    },
+    {
+      "text": " time. Import time and what I will do is",
+      "start": 396.889,
+      "duration": 4.924
+    },
+    {
+      "text": ", watch carefully. What I would do is,",
+      "start": 400.813,
+      "duration": 5.357
+    },
+    {
+      "text": " I will write here 'start' equals to.",
+      "start": 405.244,
+      "duration": 3.675
+    },
+    {
+      "text": " time.time (). And after the code is",
+      "start": 411.139,
+      "duration": 5.37
+    },
+    {
+      "text": " calculated, I would print time.time ()",
+      "start": 415.6,
+      "duration": 4.456
+    },
+    {
+      "text": " minus start. And it will tell me in",
+      "start": 419.147,
+      "duration": 3.659
+    },
+    {
+      "text": " seconds. So if I let's say put 36 here,",
+      "start": 421.856,
+      "duration": 3.69
+    },
+    {
+      "text": " it is taking this many seconds for me.",
+      "start": 424.611,
+      "duration": 3.468
+    },
+    {
+      "text": " Look, it took 7 seconds. If I make it",
+      "start": 433.379,
+      "duration": 3.812
+    },
+    {
+      "text": " 38, then you see how many seconds it",
+      "start": 436.247,
+      "duration": 3.016
+    },
+    {
+      "text": " will take. You can see all the function",
+      "start": 438.319,
+      "duration": 6.467
+    },
+    {
+      "text": " calls happening below. It is taking 19",
+      "start": 443.845,
+      "duration": 3.349
+    },
+    {
+      "text": " seconds. If you make this 40, it will",
+      "start": 446.246,
+      "duration": 3.282
+    },
+    {
+      "text": " go up to 1 minute. So in short, if you",
+      "start": 448.584,
+      "duration": 3.633
+    },
+    {
+      "text": " plot a graph. Plot a graph. Time taken",
+      "start": 451.289,
+      "duration": 5.599
+    },
+    {
+      "text": " by the program, rather, here is the",
+      "start": 455.943,
+      "duration": 2.922
+    },
+    {
+      "text": " input to the program and here is the",
+      "start": 457.92,
+      "duration": 2.977
+    },
+    {
+      "text": " time taken by the program. Then it",
+      "start": 459.952,
+      "duration": 3.788
+    },
+    {
+      "text": " would be like this, exponential.",
+      "start": 462.816,
+      "duration": 3.432
+    },
+    {
+      "text": " Because here, for every task, you have",
+      "start": 465.348,
+      "duration": 2.998
+    },
+    {
+      "text": " to do two tasks. So its time complexity",
+      "start": 467.398,
+      "duration": 3.054
+    },
+    {
+      "text": " is 2 to the power of n. What is the way",
+      "start": 469.503,
+      "duration": 3.115
+    },
+    {
+      "text": " to improve this? Memoization. What will",
+      "start": 471.675,
+      "duration": 3.341
+    },
+    {
+      "text": " you do? You will make a small change in",
+      "start": 474.061,
+      "duration": 2.766
+    },
+    {
+      "text": " this code. The change will be that you",
+      "start": 475.871,
+      "duration": 3.244
+    },
+    {
+      "text": " create a dictionary and store these",
+      "start": 478.178,
+      "duration": 3.213
+    },
+    {
+      "text": " values inside it. Value of zero is one,",
+      "start": 480.454,
+      "duration": 3.559
+    },
+    {
+      "text": " value of one is also one. And you will",
+      "start": 483.039,
+      "duration": 3.182
+    },
+    {
+      "text": " pass this dictionary into this function",
+      "start": 485.283,
+      "duration": 3.414
+    },
+    {
+      "text": ". Here too, you will receive this",
+      "start": 487.697,
+      "duration": 3.676
+    },
+    {
+      "text": " dictionary. And here, what you check",
+      "start": 490.433,
+      "duration": 3.84
+    },
+    {
+      "text": " this time is, if n is in d, it means",
+      "start": 493.343,
+      "duration": 3.512
+    },
+    {
+      "text": " you have already put the value of this",
+      "start": 495.925,
+      "duration": 3.651
+    },
+    {
+      "text": " given input into the dictionary. So",
+      "start": 498.646,
+      "duration": 3.48
+    },
+    {
+      "text": " instead of calculating it again, you",
+      "start": 501.179,
+      "duration": 2.928
+    },
+    {
+      "text": " will return n from inside d. Else, what",
+      "start": 503.16,
+      "duration": 3.4
+    },
+    {
+      "text": " you will do is, you will write this.",
+      "start": 505.628,
+      "duration": 3.451
+    },
+    {
+      "text": " Dictionary of n = Fibonacci of n-1 +",
+      "start": 509.959,
+      "duration": 5.521
+    },
+    {
+      "text": " Fibonacci of n-2 and you would return d",
+      "start": 514.606,
+      "duration": 5.898
+    },
+    {
+      "text": " of n, this is the code. And this is the",
+      "start": 519.63,
+      "duration": 11.282
+    },
+    {
+      "text": " output. Uh, just one second. There is",
+      "start": 530.013,
+      "duration": 5.312
+    },
+    {
+      "text": " an error here. We will have to pass the",
+      "start": 534.362,
+      "duration": 2.571
+    },
+    {
+      "text": " dictionary as an input here as well.",
+      "start": 535.973,
+      "duration": 2.44
+    },
+    {
+      "text": " This function now needs a dictionary",
+      "start": 537.639,
+      "duration": 3.599
+    },
+    {
+      "text": " too. Here is our code. See, how much",
+      "start": 540.311,
+      "duration": 6.542
+    },
+    {
+      "text": " time did it take to calculate 38? It",
+      "start": 545.923,
+      "duration": 3.529
+    },
+    {
+      "text": " took only this much time. If I provide",
+      "start": 548.5,
+      "duration": 3.232
+    },
+    {
+      "text": " 100 here now, it will take very little",
+      "start": 550.809,
+      "duration": 3.907
+    },
+    {
+      "text": " time. Look, it is taking the same",
+      "start": 553.792,
+      "duration": 2.613
+    },
+    {
+      "text": " amount of time. Okay? So, I will",
+      "start": 555.447,
+      "duration": 3.08
+    },
+    {
+      "text": " summarize. What is memoization?",
+      "start": 557.591,
+      "duration": 2.809
+    },
+    {
+      "text": " Memoization is a trick. It is a",
+      "start": 559.5,
+      "duration": 2.689
+    },
+    {
+      "text": " computer science trick. Where what do",
+      "start": 561.242,
+      "duration": 3.302
+    },
+    {
+      "text": " you do? You spend space to reduce time.",
+      "start": 563.619,
+      "duration": 4.721
+    },
+    {
+      "text": " Basically, you speed up your program.",
+      "start": 567.86,
+      "duration": 3.12
+    },
+    {
+      "text": " Okay? Now I will tell you how you can",
+      "start": 570.151,
+      "duration": 3.78
+    },
+    {
+      "text": " use this same trick in backpropagation",
+      "start": 573.003,
+      "duration": 3.748
+    },
+    {
+      "text": " to make your backpropagation algorithm",
+      "start": 575.823,
+      "duration": 3.748
+    },
+    {
+      "text": " faster. So guys, now we know about",
+      "start": 578.643,
+      "duration": 3.605
+    },
+    {
+      "text": " memoization. Now we need to understand",
+      "start": 581.324,
+      "duration": 3.847
+    },
+    {
+      "text": " how you use memoization in a neural",
+      "start": 584.243,
+      "duration": 3.51
+    },
+    {
+      "text": " network setup when you are using",
+      "start": 586.825,
+      "duration": 3.294
+    },
+    {
+      "text": " backpropagation. Okay? But before",
+      "start": 589.191,
+      "duration": 4.074
+    },
+    {
+      "text": " explaining this, I want to explain one",
+      "start": 592.335,
+      "duration": 3.684
+    },
+    {
+      "text": " more thing that I forgot to explain",
+      "start": 595.089,
+      "duration": 3.472
+    },
+    {
+      "text": " when I was teaching you backpropagation",
+      "start": 597.631,
+      "duration": 3.754
+    },
+    {
+      "text": ", and that is, if you have a neural",
+      "start": 600.385,
+      "duration": 3.471
+    },
+    {
+      "text": " network that has two hidden layers. We",
+      "start": 602.927,
+      "duration": 4.3
+    },
+    {
+      "text": " have only worked on neural networks so",
+      "start": 606.281,
+      "duration": 3.053
+    },
+    {
+      "text": " far that had only one hidden layer.",
+      "start": 608.388,
+      "duration": 2.891
+    },
+    {
+      "text": " Okay? This is a neural network that has",
+      "start": 610.54,
+      "duration": 3.329
+    },
+    {
+      "text": " two hidden layers. Because of this, the",
+      "start": 612.919,
+      "duration": 3.227
+    },
+    {
+      "text": " complexity increases a bit. So I just",
+      "start": 615.199,
+      "duration": 3.56
+    },
+    {
+      "text": " want to give you a flavor of how that",
+      "start": 617.801,
+      "duration": 2.562
+    },
+    {
+      "text": " complexity increased and how to handle",
+      "start": 619.405,
+      "duration": 2.605
+    },
+    {
+      "text": " it. So what I will do is, here we have",
+      "start": 621.052,
+      "duration": 4.809
+    },
+    {
+      "text": " four layers. This is the input layer.",
+      "start": 624.947,
+      "duration": 3.678
+    },
+    {
+      "text": " This is the input layer. This is hidden",
+      "start": 627.725,
+      "duration": 2.876
+    },
+    {
+      "text": " layer one, this is hidden layer two.",
+      "start": 629.639,
+      "duration": 2.379
+    },
+    {
+      "text": " And this is the output layer. Okay? I",
+      "start": 631.118,
+      "duration": 3.791
+    },
+    {
+      "text": " will show you how to find the",
+      "start": 633.998,
+      "duration": 3.581
+    },
+    {
+      "text": " derivatives of one weight from here,",
+      "start": 636.668,
+      "duration": 4.204
+    },
+    {
+      "text": " one from here, and one from here. Why",
+      "start": 639.961,
+      "duration": 5.06
+    },
+    {
+      "text": " do we calculate derivatives? Because in",
+      "start": 644.068,
+      "duration": 2.88
+    },
+    {
+      "text": " the backpropagation algorithm, what do",
+      "start": 645.994,
+      "duration": 2.724
+    },
+    {
+      "text": " you need to do? You need to update. And",
+      "start": 647.763,
+      "duration": 3.439
+    },
+    {
+      "text": " to update, you need the derivatives of",
+      "start": 650.268,
+      "duration": 3.527
+    },
+    {
+      "text": " all your weights and biases. Okay? So,",
+      "start": 652.861,
+      "duration": 4.295
+    },
+    {
+      "text": " I just want to show you that the",
+      "start": 656.221,
+      "duration": 3.104
+    },
+    {
+      "text": " derivatives for the weights in this",
+      "start": 658.39,
+      "duration": 3.301
+    },
+    {
+      "text": " layer are a bit difficult to calculate.",
+      "start": 660.756,
+      "duration": 3.564
+    },
+    {
+      "text": " Okay? That is what I want to show you.",
+      "start": 663.911,
+      "duration": 2.697
+    },
+    {
+      "text": " By the way, if you look at this point,",
+      "start": 666.699,
+      "duration": 2.603
+    },
+    {
+      "text": " how many total trainable parameters do",
+      "start": 668.344,
+      "duration": 2.604
+    },
+    {
+      "text": " we have in this neural network? If you",
+      "start": 669.99,
+      "duration": 4.876
+    },
+    {
+      "text": " count, we have 9 + 3 here, 6 + 2 here,",
+      "start": 673.997,
+      "duration": 5.986
+    },
+    {
+      "text": " and 2 + 1 here, so that's 12. This is",
+      "start": 679.114,
+      "duration": 6.733
+    },
+    {
+      "text": " eight, and this is three. So, in total,",
+      "start": 684.888,
+      "duration": 3.715
+    },
+    {
+      "text": " we have 23 trainable parameters. Okay?",
+      "start": 687.68,
+      "duration": 3.947
+    },
+    {
+      "text": " Now, let me show you one by one how you",
+      "start": 690.727,
+      "duration": 3.425
+    },
+    {
+      "text": " will calculate all these weights in a",
+      "start": 693.214,
+      "duration": 3.301
+    },
+    {
+      "text": " complex neural network like this. Okay?",
+      "start": 695.577,
+      "duration": 3.709
+    },
+    {
+      "text": " For that, what I will do is I will just",
+      "start": 698.386,
+      "duration": 3.218
+    },
+    {
+      "text": " take a snapshot of this. Because we",
+      "start": 700.661,
+      "duration": 2.951
+    },
+    {
+      "text": " need this on the screen the entire time",
+      "start": 702.66,
+      "duration": 2.897
+    },
+    {
+      "text": ". So I will just take the screenshot.",
+      "start": 704.557,
+      "duration": 4.182
+    },
+    {
+      "text": " This much. And let's pin it to the",
+      "start": 709.179,
+      "duration": 4.935
+    },
+    {
+      "text": " screen. Yes. Now what we will do is",
+      "start": 713.214,
+      "duration": 4.146
+    },
+    {
+      "text": " First, we will calculate the derivative",
+      "start": 718.1,
+      "duration": 5.021
+    },
+    {
+      "text": " for this weight of ours. Okay? So, what",
+      "start": 722.224,
+      "duration": 4.61
+    },
+    {
+      "text": " do I need to do? I need to find the",
+      "start": 725.888,
+      "duration": 3.741
+    },
+    {
+      "text": " partial of L with respect to W2.",
+      "start": 728.726,
+      "duration": 4.113
+    },
+    {
+      "text": " Actually, this will be W3. W311. Now",
+      "start": 733.979,
+      "duration": 5.54
+    },
+    {
+      "text": " look. Here you can clearly see that",
+      "start": 738.599,
+      "duration": 5.161
+    },
+    {
+      "text": " your L depends on y-hat. You can take a",
+      "start": 742.861,
+      "duration": 5.873
+    },
+    {
+      "text": " regression setup, or a classification",
+      "start": 747.814,
+      "duration": 3.949
+    },
+    {
+      "text": " setup, and your y-hat, in turn, depends",
+      "start": 750.843,
+      "duration": 4.108
+    },
+    {
+      "text": " on five things, and one of them is this",
+      "start": 754.031,
+      "duration": 4.108
+    },
+    {
+      "text": ". So you can actually write this entire",
+      "start": 757.139,
+      "duration": 4.674
+    },
+    {
+      "text": " derivative like this: d L by dy-hat*",
+      "start": 760.876,
+      "duration": 6.403
+    },
+    {
+      "text": "partial of y-hat/partial of W311. Okay?",
+      "start": 766.279,
+      "duration": 8.787
+    },
+    {
+      "text": " In exactly the same way, you can",
+      "start": 774.166,
+      "duration": 3.169
+    },
+    {
+      "text": " calculate the derivative for this",
+      "start": 776.403,
+      "duration": 3.238
+    },
+    {
+      "text": " weight as well. I hope you are getting",
+      "start": 778.708,
+      "duration": 3.104
+    },
+    {
+      "text": " the point. Now let me quickly show you",
+      "start": 780.857,
+      "duration": 2.788
+    },
+    {
+      "text": " how you will calculate the derivative",
+      "start": 782.689,
+      "duration": 2.626
+    },
+    {
+      "text": " of this weight. Okay, watch carefully.",
+      "start": 784.359,
+      "duration": 3.08
+    },
+    {
+      "text": " So, if you want to find the derivative",
+      "start": 787.699,
+      "duration": 4.032
+    },
+    {
+      "text": " of this weight, which basically means",
+      "start": 790.811,
+      "duration": 3.952
+    },
+    {
+      "text": " you need to find del of L—the name of",
+      "start": 793.843,
+      "duration": 4.112
+    },
+    {
+      "text": " this weight will be 2 1—its",
+      "start": 797.035,
+      "duration": 3.314
+    },
+    {
+      "text": " derivative will be, watch carefully",
+      "start": 799.429,
+      "duration": 3.793
+    },
+    {
+      "text": " what it will be. Loss depends on y-hat,",
+      "start": 802.302,
+      "duration": 9.954
+    },
+    {
+      "text": " y-hat depends on this output, this",
+      "start": 811.43,
+      "duration": 6.9
+    },
+    {
+      "text": " output. Okay? So I would write O21. And",
+      "start": 817.504,
+      "duration": 7.342
+    },
+    {
+      "text": " now O21 depends on our weight, which is",
+      "start": 823.909,
+      "duration": 3.437
+    },
+    {
+      "text": " W21. So this time, you will write your",
+      "start": 826.409,
+      "duration": 7.54
+    },
+    {
+      "text": " derivative like this: del L by del",
+      "start": 833.051,
+      "duration": 4.472
+    },
+    {
+      "text": " y-hat multiplied by del y-hat by del",
+      "start": 836.625,
+      "duration": 4.676
+    },
+    {
+      "text": " O21*by del O21 by del W21. 211, we are",
+      "start": 840.403,
+      "duration": 7.311
+    },
+    {
+      "text": " still talking about the chain rule here",
+      "start": 846.792,
+      "duration": 4.03
+    },
+    {
+      "text": ". We are talking about the chain rule.",
+      "start": 849.822,
+      "duration": 3.777
+    },
+    {
+      "text": " Okay? Now, the main problem starts from",
+      "start": 852.719,
+      "duration": 3.345
+    },
+    {
+      "text": " here. I mean, I hope you are guessing,",
+      "start": 855.113,
+      "duration": 4.236
+    },
+    {
+      "text": " you are able to understand that you can",
+      "start": 858.424,
+      "duration": 3.937
+    },
+    {
+      "text": " find the derivative of any of these six",
+      "start": 861.437,
+      "duration": 3.937
+    },
+    {
+      "text": " weights in this layer like this. Okay?",
+      "start": 864.449,
+      "duration": 4.63
+    },
+    {
+      "text": " You can do it yourself with a pen and",
+      "start": 868.739,
+      "duration": 2.648
+    },
+    {
+      "text": " paper. Okay? I will now show you what",
+      "start": 870.431,
+      "duration": 3.498
+    },
+    {
+      "text": " the problem will be in this layer. What",
+      "start": 872.991,
+      "duration": 3.705
+    },
+    {
+      "text": " is going to be the problem with the",
+      "start": 875.756,
+      "duration": 3.079
+    },
+    {
+      "text": " nine weights in this layer? Watch",
+      "start": 877.894,
+      "duration": 3.348
+    },
+    {
+      "text": " carefully. The problem will be that if",
+      "start": 880.294,
+      "duration": 5.141
+    },
+    {
+      "text": " we understand it through this chart",
+      "start": 884.527,
+      "duration": 4.211
+    },
+    {
+      "text": " again, you would understand that L",
+      "start": 887.829,
+      "duration": 4.119
+    },
+    {
+      "text": " depends on y-hat. y-hat depends on O21,",
+      "start": 891.04,
+      "duration": 7.599
+    },
+    {
+      "text": " O21 depends on O11, and now O11 depends",
+      "start": 897.751,
+      "duration": 5.382
+    },
+    {
+      "text": " on this first-layer weight. Do you",
+      "start": 902.246,
+      "duration": 5.786
+    },
+    {
+      "text": " understand? Look, L depends on y-hat,",
+      "start": 907.15,
+      "duration": 6.57
+    },
+    {
+      "text": " y-hat depends on this output. This",
+      "start": 912.88,
+      "duration": 6.126
+    },
+    {
+      "text": " output depends on this output, and now",
+      "start": 918.067,
+      "duration": 3.348
+    },
+    {
+      "text": " this output depends on this weight.",
+      "start": 920.476,
+      "duration": 3.163
+    },
+    {
+      "text": " Okay? So here, you are traveling a long",
+      "start": 922.78,
+      "duration": 3.299
+    },
+    {
+      "text": " path. But the problem is this. I will",
+      "start": 925.132,
+      "duration": 3.251
+    },
+    {
+      "text": " show you. One problem is that when you",
+      "start": 927.441,
+      "duration": 4.692
+    },
+    {
+      "text": " changed W1, when you changed it here,",
+      "start": 931.242,
+      "duration": 5.037
+    },
+    {
+      "text": " the output of this node changed. But",
+      "start": 935.388,
+      "duration": 5.38
+    },
+    {
+      "text": " the output of this node is moving",
+      "start": 939.831,
+      "duration": 3.083
+    },
+    {
+      "text": " forward through two paths. See. So this",
+      "start": 941.977,
+      "duration": 10.32
+    },
+    {
+      "text": " time, there is an additional complexity",
+      "start": 951.36,
+      "duration": 3.445
+    },
+    {
+      "text": " in our entire flow. Okay? Meaning, you",
+      "start": 953.867,
+      "duration": 3.974
+    },
+    {
+      "text": " are going through this path once. And",
+      "start": 956.906,
+      "duration": 5.136
+    },
+    {
+      "text": " once you are going through this path.",
+      "start": 961.09,
+      "duration": 2.769
+    },
+    {
+      "text": " You will have to consider both of these",
+      "start": 963.239,
+      "duration": 3.262
+    },
+    {
+      "text": ". Okay? So in math, what happens is",
+      "start": 965.501,
+      "duration": 4.231
+    },
+    {
+      "text": " that in such a situation, if you are",
+      "start": 968.798,
+      "duration": 3.392
+    },
+    {
+      "text": " asked to differentiate, then what do",
+      "start": 971.256,
+      "duration": 3.391
+    },
+    {
+      "text": " you do? Let me show you. Suppose this",
+      "start": 973.714,
+      "duration": 6.408
+    },
+    {
+      "text": " is your x. From which fx is being",
+      "start": 979.207,
+      "duration": 6.168
+    },
+    {
+      "text": " formed and gx is being formed, and then",
+      "start": 984.436,
+      "duration": 3.368
+    },
+    {
+      "text": " from this, your h...fx and gx are being",
+      "start": 986.865,
+      "duration": 5.43
+    },
+    {
+      "text": " formed. And if someone tells you to",
+      "start": 991.378,
+      "duration": 3.829
+    },
+    {
+      "text": " find this. So, how is this calculated?",
+      "start": 994.268,
+      "duration": 5.251
+    },
+    {
+      "text": " You track both paths. So, what do you",
+      "start": 998.639,
+      "duration": 3.649
+    },
+    {
+      "text": " need to do first? You will write this",
+      "start": 1001.335,
+      "duration": 4.56
+    },
+    {
+      "text": " as del H/del fx multiplied by del fx/",
+      "start": 1004.994,
+      "duration": 4.653
+    },
+    {
+      "text": "del x and then what will you add to it?",
+      "start": 1008.647,
+      "duration": 4.852
+    },
+    {
+      "text": " For the second path, you will write del",
+      "start": 1013.62,
+      "duration": 4.342
+    },
+    {
+      "text": " of del gx times del gx/dx, okay? So,",
+      "start": 1017.048,
+      "duration": 9.138
+    },
+    {
+      "text": " this is what you have to do. The",
+      "start": 1025.249,
+      "duration": 4.43
+    },
+    {
+      "text": " situation here is almost the same as",
+      "start": 1028.719,
+      "duration": 2.44
+    },
+    {
+      "text": " well. There is just a slight difference",
+      "start": 1030.199,
+      "duration": 3.109
+    },
+    {
+      "text": " here, and that difference is this. Let",
+      "start": 1032.359,
+      "duration": 3.547
+    },
+    {
+      "text": " me show you that you have W 1 here.",
+      "start": 1035.115,
+      "duration": 8.324
+    },
+    {
+      "text": " From this, from this O1 is being formed",
+      "start": 1043.459,
+      "duration": 8.706
+    },
+    {
+      "text": ". Now, a path is going from O1. Towards",
+      "start": 1051.165,
+      "duration": 5.867
+    },
+    {
+      "text": " O21. From O21, another path is going",
+      "start": 1056.186,
+      "duration": 4.804
+    },
+    {
+      "text": " towards y-hat. And this y-hat is going",
+      "start": 1060.084,
+      "duration": 4.377
+    },
+    {
+      "text": " towards the loss. And from O11, there",
+      "start": 1063.535,
+      "duration": 4.164
+    },
+    {
+      "text": " is another path that is going towards",
+      "start": 1066.778,
+      "duration": 3.929
+    },
+    {
+      "text": " O21 and from O21 it is going towards Y.",
+      "start": 1069.786,
+      "duration": 4.087
+    },
+    {
+      "text": " This is the path. Okay? And what do I",
+      "start": 1072.952,
+      "duration": 3.615
+    },
+    {
+      "text": " need to find? I need to find del L/del",
+      "start": 1075.612,
+      "duration": 4.189
+    },
+    {
+      "text": " WW11. This is the thing I need to",
+      "start": 1078.905,
+      "duration": 3.542
+    },
+    {
+      "text": " calculate. So, based on the logic we",
+      "start": 1081.488,
+      "duration": 3.379
+    },
+    {
+      "text": " have discussed, we will do this entire",
+      "start": 1083.921,
+      "duration": 3.02
+    },
+    {
+      "text": " work. Okay? Watch carefully. When we",
+      "start": 1085.994,
+      "duration": 4.373
+    },
+    {
+      "text": " calculate this, it will actually be del",
+      "start": 1089.5,
+      "duration": 6.173
+    },
+    {
+      "text": " L with respect to del y-hat. Now I need",
+      "start": 1094.805,
+      "duration": 5.994
+    },
+    {
+      "text": " to calculate this much differentiation,",
+      "start": 1099.867,
+      "duration": 3.652
+    },
+    {
+      "text": " this one. I need to calculate this",
+      "start": 1102.587,
+      "duration": 5.072
+    },
+    {
+      "text": " differentiation.",
+      "start": 1106.711,
+      "duration": 1.828
+    },
+    {
+      "text": " But this differentiation is exactly",
+      "start": 1108.059,
+      "duration": 2.978
+    },
+    {
+      "text": " like that. So what will we do? We will",
+      "start": 1110.093,
+      "duration": 3.427
+    },
+    {
+      "text": " write it like this. So we will first",
+      "start": 1112.606,
+      "duration": 6.412
+    },
+    {
+      "text": " take this path and then we will take",
+      "start": 1118.137,
+      "duration": 5.87
+    },
+    {
+      "text": " this path. Okay? So first we are taking",
+      "start": 1123.064,
+      "duration": 3.871
+    },
+    {
+      "text": " the upper path. According to the upper",
+      "start": 1125.994,
+      "duration": 4.721
+    },
+    {
+      "text": " path, it will be del y-hat () by del",
+      "start": 1129.796,
+      "duration": 7.033
+    },
+    {
+      "text": " O21 multiplied by del O21 del O1, and",
+      "start": 1135.994,
+      "duration": 7.887
+    },
+    {
+      "text": " then it will be multiplied by del WW11.",
+      "start": 1142.978,
+      "duration": 6.66
+    },
+    {
+      "text": " Okay, and now we will take the second",
+      "start": 1150.4,
+      "duration": 3.624
+    },
+    {
+      "text": " path here; according to the second path",
+      "start": 1153.095,
+      "duration": 3.767
+    },
+    {
+      "text": ", it will be y-hat () by O21, I have",
+      "start": 1155.862,
+      "duration": 6.935
+    },
+    {
+      "text": " written O21 in both places. This should",
+      "start": 1161.87,
+      "duration": 5.294
+    },
+    {
+      "text": " be O22, my bad; this should be O22,",
+      "start": 1166.234,
+      "duration": 3.436
+    },
+    {
+      "text": " right, you are passing through here, it",
+      "start": 1168.74,
+      "duration": 3.715
+    },
+    {
+      "text": " will be O22. So this would be O22*by",
+      "start": 1171.524,
+      "duration": 6.127
+    },
+    {
+      "text": " del O22 del O11*by del O11 del WW1 1",
+      "start": 1176.827,
+      "duration": 7.312
+    },
+    {
+      "text": " And this is the answer, this is the",
+      "start": 1185.659,
+      "duration": 3.304
+    },
+    {
+      "text": " answer guys. Okay? So you can see, if",
+      "start": 1188.029,
+      "duration": 5.059
+    },
+    {
+      "text": " you had to find the derivative of this",
+      "start": 1192.184,
+      "duration": 4.672
+    },
+    {
+      "text": " weight. How complex is the thing you",
+      "start": 1195.952,
+      "duration": 4.466
+    },
+    {
+      "text": " have calculated here. Okay? Similarly,",
+      "start": 1199.504,
+      "duration": 5.257
+    },
+    {
+      "text": " if you have to find it for any other",
+      "start": 1203.85,
+      "duration": 4.211
+    },
+    {
+      "text": " weight in this layer, you will have to",
+      "start": 1207.15,
+      "duration": 4.39
+    },
+    {
+      "text": " do exactly this same work. Okay? So you",
+      "start": 1210.629,
+      "duration": 7.653
+    },
+    {
+      "text": " can see, just with two hidden layers—",
+      "start": 1217.366,
+      "duration": 4.276
+    },
+    {
+      "text": "we only have two hidden layers—and",
+      "start": 1220.642,
+      "duration": 4.023
+    },
+    {
+      "text": " already the formula to calculate our",
+      "start": 1223.749,
+      "duration": 4.023
+    },
+    {
+      "text": " derivatives has become so cumbersome",
+      "start": 1226.856,
+      "duration": 4.024
+    },
+    {
+      "text": " and difficult. You can see how many",
+      "start": 1229.964,
+      "duration": 4.097
+    },
+    {
+      "text": " things we have to calculate to derive",
+      "start": 1233.116,
+      "duration": 3.04
+    },
+    {
+      "text": " just one thing. Imagine you have a very",
+      "start": 1235.211,
+      "duration": 4.537
+    },
+    {
+      "text": " deep neural network with 10 hidden",
+      "start": 1238.817,
+      "duration": 3.35
+    },
+    {
+      "text": " layers. Just thinking about it might",
+      "start": 1241.236,
+      "duration": 3.807
+    },
+    {
+      "text": " scare you, realizing how many such",
+      "start": 1244.09,
+      "duration": 2.607
+    },
+    {
+      "text": " terms will appear there. That is where",
+      "start": 1245.744,
+      "duration": 3.746
+    },
+    {
+      "text": " the role of memoization comes in. Okay?",
+      "start": 1248.546,
+      "duration": 3.813
+    },
+    {
+      "text": " If you go on repeating these",
+      "start": 1251.979,
+      "duration": 2.332
+    },
+    {
+      "text": " calculations, calculating these",
+      "start": 1253.358,
+      "duration": 2.475
+    },
+    {
+      "text": " derivatives will become very slow. But",
+      "start": 1254.881,
+      "duration": 3.577
+    },
+    {
+      "text": " the good thing is that when you start",
+      "start": 1257.531,
+      "duration": 3.701
+    },
+    {
+      "text": " calculating derivatives from the back.",
+      "start": 1260.305,
+      "duration": 3.774
+    },
+    {
+      "text": " The derivatives you calculate here are",
+      "start": 1264.079,
+      "duration": 3.086
+    },
+    {
+      "text": " useful there, and the ones you",
+      "start": 1266.22,
+      "duration": 2.647
+    },
+    {
+      "text": " calculate there are useful here. So",
+      "start": 1267.922,
+      "duration": 3.568
+    },
+    {
+      "text": " basically, once you have calculated a",
+      "start": 1270.576,
+      "duration": 4.188
+    },
+    {
+      "text": " derivative here, you can store it",
+      "start": 1273.85,
+      "duration": 3.843
+    },
+    {
+      "text": " somewhere and use it later. So, what",
+      "start": 1276.779,
+      "duration": 3.702
+    },
+    {
+      "text": " will happen with this whole process?",
+      "start": 1279.516,
+      "duration": 2.24
+    },
+    {
+      "text": " Your time will be reduced. Even if it",
+      "start": 1280.856,
+      "duration": 5.47
+    },
+    {
+      "text": " takes a little memory, the time will",
+      "start": 1285.403,
+      "duration": 3.778
+    },
+    {
+      "text": " improve significantly. Okay? Like I can",
+      "start": 1288.258,
+      "duration": 3.893
+    },
+    {
+      "text": " show you an example right now. So, when",
+      "start": 1291.207,
+      "duration": 3.485
+    },
+    {
+      "text": " we did the calculation in the first",
+      "start": 1293.78,
+      "duration": 4.089
+    },
+    {
+      "text": " layer here. At this point, when we",
+      "start": 1296.958,
+      "duration": 4.498
+    },
+    {
+      "text": " calculated based on the outermost",
+      "start": 1300.537,
+      "duration": 3.665
+    },
+    {
+      "text": " weight, we derived this thing and this",
+      "start": 1303.283,
+      "duration": 4.07
+    },
+    {
+      "text": " thing. Then, as soon as we entered the",
+      "start": 1306.434,
+      "duration": 4.168
+    },
+    {
+      "text": " second layer, you can see this is",
+      "start": 1309.672,
+      "duration": 3.282
+    },
+    {
+      "text": " exactly the same as what we derived",
+      "start": 1312.023,
+      "duration": 3.421
+    },
+    {
+      "text": " here. So why should we calculate it",
+      "start": 1314.513,
+      "duration": 3.005
+    },
+    {
+      "text": " again here? I guess you are",
+      "start": 1316.57,
+      "duration": 2.589
+    },
+    {
+      "text": " understanding. If you have already",
+      "start": 1318.204,
+      "duration": 2.758
+    },
+    {
+      "text": " calculated it, you will just reuse it.",
+      "start": 1320.014,
+      "duration": 2.966
+    },
+    {
+      "text": " Similarly, you calculated this new",
+      "start": 1322.22,
+      "duration": 2.881
+    },
+    {
+      "text": " thing, so you will store it somewhere.",
+      "start": 1324.156,
+      "duration": 3.104
+    },
+    {
+      "text": " You will store this too because it will",
+      "start": 1326.48,
+      "duration": 2.932
+    },
+    {
+      "text": " be useful later, and it really will be",
+      "start": 1328.462,
+      "duration": 2.883
+    },
+    {
+      "text": " useful later. Notice. I will show you",
+      "start": 1330.394,
+      "duration": 4.867
+    },
+    {
+      "text": " that at this place, this thing uh, no,",
+      "start": 1334.393,
+      "duration": 9.157
+    },
+    {
+      "text": " this thing is exactly what you derived",
+      "start": 1342.652,
+      "duration": 4.858
+    },
+    {
+      "text": " here. Okay? This thing is exactly what",
+      "start": 1346.612,
+      "duration": 5.645
+    },
+    {
+      "text": " you derived here. Okay? You calculated",
+      "start": 1351.351,
+      "duration": 4.552
+    },
+    {
+      "text": " this new thing, but you need it again",
+      "start": 1354.954,
+      "duration": 2.914
+    },
+    {
+      "text": " here. Okay? So, I hope you are",
+      "start": 1356.92,
+      "duration": 4.142
+    },
+    {
+      "text": " understanding that even though this",
+      "start": 1360.112,
+      "duration": 2.758
+    },
+    {
+      "text": " expression of yours keeps getting very",
+      "start": 1361.92,
+      "duration": 2.908
+    },
+    {
+      "text": " complex. And many more derivative terms",
+      "start": 1363.878,
+      "duration": 3.988
+    },
+    {
+      "text": " start getting added here. But the idea",
+      "start": 1366.92,
+      "duration": 3.785
+    },
+    {
+      "text": " is very simple: as you go deeper into",
+      "start": 1369.804,
+      "duration": 4.658
+    },
+    {
+      "text": " the neural network, you need the",
+      "start": 1373.561,
+      "duration": 4.164
+    },
+    {
+      "text": " previous weights and derivatives again.",
+      "start": 1376.824,
+      "duration": 4.856
+    },
+    {
+      "text": " So what do you do? You store them and",
+      "start": 1380.859,
+      "duration": 4.572
+    },
+    {
+      "text": " reuse them. And that is the whole idea",
+      "start": 1384.535,
+      "duration": 4.907
+    },
+    {
+      "text": " behind memoization. What happens",
+      "start": 1388.51,
+      "duration": 2.922
+    },
+    {
+      "text": " because of this? Your neural network",
+      "start": 1390.467,
+      "duration": 3.174
+    },
+    {
+      "text": " training becomes fast. Okay? So that is",
+      "start": 1392.72,
+      "duration": 4.473
+    },
+    {
+      "text": " the meaning; when we talk about",
+      "start": 1396.264,
+      "duration": 3.214
+    },
+    {
+      "text": " backpropagation, always remember that",
+      "start": 1398.549,
+      "duration": 3.643
+    },
+    {
+      "text": " backpropagation is basically two things",
+      "start": 1401.263,
+      "duration": 3.785
+    },
+    {
+      "text": ". It is chain differentiation, or you",
+      "start": 1404.048,
+      "duration": 4.8
+    },
+    {
+      "text": " can call it the chain rule. Applied",
+      "start": 1407.942,
+      "duration": 5.07
+    },
+    {
+      "text": " with the technique of memoization. Okay",
+      "start": 1412.091,
+      "duration": 6.476
+    },
+    {
+      "text": "? The chain rule is math, and this is",
+      "start": 1417.567,
+      "duration": 5.533
+    },
+    {
+      "text": " computer science. And it is the",
+      "start": 1422.197,
+      "duration": 4.476
+    },
+    {
+      "text": " combination of these two that forms our",
+      "start": 1425.743,
+      "duration": 3.736
+    },
+    {
+      "text": " backpropagation algorithm, which",
+      "start": 1428.549,
+      "duration": 3.245
+    },
+    {
+      "text": " libraries like Keras or TensorFlow use.",
+      "start": 1430.864,
+      "duration": 3.737
+    },
+    {
+      "text": " Okay? So, I wanted to explain this",
+      "start": 1433.701,
+      "duration": 2.528
+    },
+    {
+      "text": " concept to you separately. Because this",
+      "start": 1435.265,
+      "duration": 2.674
+    },
+    {
+      "text": " is a very important concept. Let me",
+      "start": 1436.994,
+      "duration": 3.051
+    },
+    {
+      "text": " summarize it for you once. We learned",
+      "start": 1439.109,
+      "duration": 3.283
+    },
+    {
+      "text": " two things. First, as you go deeper",
+      "start": 1441.44,
+      "duration": 3.466
+    },
+    {
+      "text": " into your neural network, more terms",
+      "start": 1443.964,
+      "duration": 3.077
+    },
+    {
+      "text": " appear in calculating derivatives. Okay",
+      "start": 1446.098,
+      "duration": 3.753
+    },
+    {
+      "text": "? And the formula for calculating its",
+      "start": 1448.851,
+      "duration": 2.894
+    },
+    {
+      "text": " derivative becomes even more complex.",
+      "start": 1450.794,
+      "duration": 2.804
+    },
+    {
+      "text": " Okay? Try adding one more layer and see",
+      "start": 1452.698,
+      "duration": 3.585
+    },
+    {
+      "text": ". More complexity is added to it. Okay?",
+      "start": 1455.283,
+      "duration": 3.508
+    },
+    {
+      "text": " So, because of the arrival of so many",
+      "start": 1457.891,
+      "duration": 2.868
+    },
+    {
+      "text": " terms, what happens is that you have to",
+      "start": 1459.809,
+      "duration": 2.969
+    },
+    {
+      "text": " recalculate the same derivatives",
+      "start": 1461.829,
+      "duration": 2.616
+    },
+    {
+      "text": " repeatedly. But if you recalculate the",
+      "start": 1463.495,
+      "duration": 3.523
+    },
+    {
+      "text": " same thing, your additional time will",
+      "start": 1466.06,
+      "duration": 2.536
+    },
+    {
+      "text": " be wasted, and that is not a good thing",
+      "start": 1467.638,
+      "duration": 2.619
+    },
+    {
+      "text": ". So, to optimize your overall",
+      "start": 1469.257,
+      "duration": 4.616
+    },
+    {
+      "text": " algorithm, what you do is use a trick",
+      "start": 1472.944,
+      "duration": 3.635
+    },
+    {
+      "text": " called memoization, which is a core",
+      "start": 1475.65,
+      "duration": 3.492
+    },
+    {
+      "text": " trick used in computer science,",
+      "start": 1478.214,
+      "duration": 3.207
+    },
+    {
+      "text": " especially in the field of dynamic",
+      "start": 1480.492,
+      "duration": 3.422
+    },
+    {
+      "text": " programming. And when you use this",
+      "start": 1482.985,
+      "duration": 4.757
+    },
+    {
+      "text": " trick intelligently with the chain rule",
+      "start": 1486.821,
+      "duration": 4.09
+    },
+    {
+      "text": ", that is your backpropagation",
+      "start": 1489.911,
+      "duration": 3.376
+    },
+    {
+      "text": " algorithm. You should have this",
+      "start": 1492.366,
+      "duration": 3.002
+    },
+    {
+      "text": " understanding that mathematically, the",
+      "start": 1494.421,
+      "duration": 2.994
+    },
+    {
+      "text": " chain rule is the main guy, and when",
+      "start": 1496.468,
+      "duration": 2.889
+    },
+    {
+      "text": " you are converting it into code,",
+      "start": 1498.409,
+      "duration": 2.68
+    },
+    {
+      "text": " memoization is helping you. Okay? So I",
+      "start": 1500.141,
+      "duration": 3.428
+    },
+    {
+      "text": " hope you got this entire intuition. So",
+      "start": 1502.634,
+      "duration": 3.956
+    },
+    {
+      "text": " that's it for the video, guys. I hope",
+      "start": 1505.646,
+      "duration": 3.226
+    },
+    {
+      "text": " you understood the video and liked it",
+      "start": 1507.931,
+      "duration": 3.178
+    },
+    {
+      "text": " as well. If so, please press that like",
+      "start": 1510.168,
+      "duration": 3.409
+    },
+    {
+      "text": " button. Also, if you haven't subscribed",
+      "start": 1512.64,
+      "duration": 3.68
+    },
+    {
+      "text": ", do subscribe to my channel. Okay? I",
+      "start": 1515.32,
+      "duration": 3.979
+    },
+    {
+      "text": " will keep bringing more videos like",
+      "start": 1518.345,
+      "duration": 2.595
+    },
+    {
+      "text": " this. So that's it from my side. Thanks",
+      "start": 1519.986,
+      "duration": 3.33
+    },
+    {
+      "text": " for watching. Bye.",
+      "start": 1522.362,
+      "duration": 2.173
+    }
+  ]
+}

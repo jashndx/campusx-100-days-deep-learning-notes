@@ -1,0 +1,5675 @@
+{
+  "id": "2_gCL5RAkHc",
+  "index": 6,
+  "title": "Perceptron Loss Function | Hinge Loss | Binary Cross Entropy | Sigmoid Function",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hello guys, my name is Nitish and you  are welcome to my YouTube channel. So  in this video, we will continue our 100  Days of Deep Learning course. The topic  of today's video is Loss Functions in  Perceptron. If you remember our last  video, I taught you a clever trick  called the Perceptron Trick. Using  which you can learn the weights and  biases of your perceptron. But I also  told you that it is not the perfect way . It is a makeshift method. It gets the  job done but it will not always work.  So in this video, I will show you the  most accurate way to find the  perceptron's weights and biases. We  will start this video by discussing  what the problems are with the  perceptron trick, and then we will  study loss functions and learn how to  train a perceptron using them. And the  most interesting part of this video  will be the very last part. Where I  will tell you another concept of how  you can extract different types of  behaviors by applying different loss  functions to your perceptron. Alright?  So on the whole, my review of this  video is that it is very important. It  will provide a great foundation for you  going forward. Okay? So please do watch  this video till the end. Okay? So now  let's start the video. So guys, before  starting this video, let's take a quick  recap. Because for the things we need  to cover in this video, it is important  that your previous videos are clear.  Alright? When we started the perceptron , we first established that a  perceptron is basically a mathematical  model. Which is based on the neuron  that is in our brain. Alright? Or in  humans. So it looks something like this . If we move forward with this example,  we have CGPA and IQ as inputs. There  are two input columns and 'Placed' is  our output column. The neuron looks  like this. From here, your input moves.  Here is x1 and here is x2. CGPA is our  x1. IQ is our x2. At once, you will  insert one row of information. 7.8.  This one is for the bias term. Now,  your perceptron has weights and biases.  Since there are two input columns here,  there are two weights and one bias. As  the input terms increase, the weights  will start to increase. An operation  takes place right here. Basically, this  operation is a dot product. We are  calling this z. And this z then goes  into a step function. The step function  has a simple logic: if z is > = 0, the  output is one, and if z is < 0, the  output is zero. This is how our  perceptron performs classification.  Right? Now, we also saw that the  geometric intuition of a perceptron is  that it is nothing but a line. If you  are talking about 2D data, in 3D it  would be a plane, and in higher  dimensions, it would be a hyperplane.  So, the idea is that whenever you draw  a line, two regions are created. One is  a positive region and the other is a  negative region. And that is why,  because two regions are formed, it is  useful for binary classification. We  studied all of this. Then, we also  learned that like every machine  learning algorithm, there are two  stages here as well. One is prediction,  which I showed you here, and the second  is training. Now, in training, I told  you that the job of training is to  calculate the values of these weights  and bias. That is why you perform  training. Right? So, I explained one  technique for training in the last  video, the \"Perceptron Rule,\" where we  used a very simple algorithm; we were  randomly picking points 1,000 times,  and we were starting with a random line . Like, suppose this is a random line,  and every time we were picking a point  randomly and asking it if it was on the  correct side of the line or the wrong  side. If it was on the wrong side, we  would pull the line towards it. Right?  And we did this 1,000 times. And what  was happening was that after doing it  1,000 times, the line would eventually  move and reach the correct position.  And this line reaching the correct  position meant I was getting the  equation ax + by + c = 0. Where A was  nothing but W1, B was nothing but W2,  and C was nothing but our intercept  term. Right? So, this was the  Perceptron Rule. We covered this in the  last video. So, what I have told you so  far is a summary of what we studied in  the last two videos. Now, we will move  forward from here. Right? So, first of  all, I'll tell you that the Perceptron  Rule we studied works perfectly fine  for all practical purposes. I showed  you the code running in the last video.  I also showed you its output plotted on  a graph, and you must have seen that  the line is successfully distinguishing  both classes. Right? But there are some  problems with the Perceptron Rule. So,  first, we will discuss those problems,  and then we will discuss their  solutions, during which we will learn  about loss functions, which is the  title of this video. So guys, the  biggest problem with the Perceptron  Trick is that the line you get, or  rather the values of W1, W2, and B,  cannot be said to be 100%confidently  the best values to classify between  green and red points. Let me explain;  the fundamental logic of the Perceptron  Trick is that if a point is  misclassified, it will pull the line  towards itself. But if it is correctly  classified, it will tell the line not  to change at all. Not telling the line  to change means there will be no  changes in W1, W2, and B. Let me repeat  that once more. If a point is correctly  classified by the line, then there will  be no changes in the values of W1, W2,  and B. The line will not move. But only  if a point is misclassified will there  be changes in W1, W2, and B, and the  line will move. Now, what is the  fundamental flaw in this logic? First  of all, how would you differentiate, or  let me ask you, let's say this is one  line. Meaning, this is a set of W1, W2,  and B values. And another line is this.  Right? So, since this is a different  line, its W1, W2, and B will be  different. Because you selected points  randomly to complete the process, the  Perceptron Trick could give you either  of these two lines. You could get  either one of these lines. Now, think  and tell me, how will you know which is  the better line? Right? For that matter , you cannot ensure that every time you  run the Perceptron Trick, you will get  the same line. It's possible that the  first time you ran it, you got this  line. The second time, you are getting  this line. So, the primary flaw is that  your Perceptron Trick doesn't tell you  how well your classification is  actually performing. Alright? So you  cannot quantify your result. You cannot  say how good it is. Alright? What is  the second problem? Sometimes there can  be an issue with convergence too. It is  possible that your perceptron model  might not converge at all because you  have to pick points randomly. So look,  what else could be a problem? Let me  tell you. So another problem could be  that, let's say, you started with this  line. Alright? Now, with this line, all  these points are correctly classified,  these points are incorrectly classified , and all these are also correctly  classified. Alright? Now, you had to  select 1000 points randomly. So imagine , every time you end up selecting a  point that is already correctly  classified. Then what will happen is  that this line will not move from its  place at all. Alright? I mean, it won't  happen generally because you are using  a random function, so it shouldn't  happen, but this possibility could  exist. Alright? Another possibility  could be that you keep selecting the  same point over and over. That won't  happen. Again, I am giving you some  hypothetical scenarios where there  could be problems with convergence. So,  the perceptron trick is a great hack. \" Hack\" is the right word to describe the  perceptron trick. 99%of the time, it  will give you a result. But there are  two issues. In 1%of cases, it might not  converge, and 100%of the time, you  won't be able to say if the line you  got is the best line or if a better  line could exist. Alright? So in  machine learning, whenever you are  searching for things this way, like  searching for the values of W2, W1, and  B. You don't use hacks like this. You  use loss functions. Because of loss  functions, you are able to quantify.  This word is very important. You are  able to quantify how good the result  you obtained is. Alright? So, we will  now discuss that if the perceptron  trick is not the perfect solution, then  what is the perfect solution? Now,  let's do one thing. First of all, let's  discuss what a loss function is.  Honestly, if you have worked a lot in  machine learning, you would know what a  loss function is. But still, I will  give you a beginner's perspective on  what a loss function is. In machine  learning, a loss function is a way to  measure how well or how poorly your  machine learning model is performing.  Right? Let me give you an example. So,  let's take our perceptron example.  Where we have data with two classes.  And our job is to find a line that will  perfectly classify these two classes.  Now, in this two-dimensional space,  there could be many lines. There could  be many lines. Right? Here, every line  will have an equation. Meaning, every  line will have an associated W1, W2,  and B. We want the line that best  classifies these two sets of points.  Right? So, what will the loss function  be? The loss function will give you a  number for every line. And from that  number, you will know whether that line  is the best one or not. Right? So, the  loss function is basically a function  of W1, W2, and B; in this perceptron  case, the loss function will be a  function of W1, W2, and B. Meaning, in  three variables. So, if you make  changes to W1, W2, or B, or all three,  or any combination of two, the output  of this function will also change. This  means, let's say you started with this  line. Right? And this line has some W1,  W2, and B. So, at this point, if you  plug this W1, W2, and B into the  function, you get an output. Let's say  the output is 25. So, in a way, this 25  indicates your error. Right? Now, what  did you do? You pushed this line a  little to the side and grabbed this new  line. So, you basically made changes to  W1, W2, and B. Since W1, W2, and B  changed, the output of this function  also changed. Now it's 23, so this 23  is again an error, but at this point,  you know that since 23 is less than 25,  this line has less error than the  previous one. This means this line is  better than the previous line. So, what  do you need to do? You have to keep  changing the values of W1, W2, and B  until you reach a point where the  output of this particular function is  minimized. And that set of W1, W2, and  B would be your final line. And there  cannot be a better line than that. That  is how loss functions work. Okay? So, a  loss function is a method to tell how  well a machine learning algorithm is  performing on your problem. Okay? In  fact, you might have even seen many  loss functions. If you talk about  linear regression, there was mean  squared error, (yi-yi_hat) squared.  Okay? Similarly, you might have studied  logistic regression too. There, we had  log loss. Okay? You might have studied  SVM. There was hinge loss. In this way,  there are even more. I mean, there is  one-zero loss. There are many such loss  functions. Depending on the problem.  Depending on the type of problem you  are solving, you can use that type of  loss function. Okay? The good thing is  that by thinking a bit innovatively,  you can even create your own loss  functions. Okay? It is totally possible . So now we have understood two things:  that there is a problem in the  perceptron trick, and the way to solve  it is loss functions. So what will we  do next? We will finalize a loss  function for the perceptron. Okay? We  will do that next. So guys, let's try  to find a loss function for our  perceptron. Okay? So, as I said, your  loss function is actually a  mathematical function of W1, W2, and B,  and its job is that for every W1, W2,  and B—basically for every line—it  will give you a number. And this number  tells you the error of your model. Okay ? So, let me give you a very simple  example of a loss function. A very  simple example could be. Number of  misclassified points. This can also be  an error function. Okay? I mean, what  will we do? When we draw any line, we  will count how many mistakes it made.  Like, let's say this is your line. Okay ? So there will be a W1, W2, and B  attached to this. Now, if you see, it  made 1, 2, 3, 4, 5, 6, and 7 mistakes.  Okay? So for this line, the output of  our error function is seven. Because  the number of misclassified points is  seven. So now what did you do? You made  changes to W1, W2, and B, and you came  here. Let's say you came here. This is  your new line. Okay? Now you will count  again. 1 2 3 4 5, so for this new line,  the number of misclassified points is  five. So you can conclude that this  white line is better than this blue  line. Okay? But this is a very  simplistic loss function. You can  easily think of a better loss function.  Let me show you. The problem with this  loss function is that it gives equal  value to all misclassified points. That  is why we are saying 1 + 1 + 1 + 1 + 1  = 5. This means that all the mistakes  it is making are equal. But that is not  the case. If you think about it, a  misclassified point that is further  from the line is a bigger mistake for  this line. And a misclassified point  that is closer to the line is a smaller  mistake. So we should also consider the  magnitude of the mistake. Okay? So let  me tell you a second loss function. A  second loss function could be this:  what do you do? You calculate the  distance of the misclassified point.  For example, let's say you have two  misclassified points. This is a red  misclassified point. This is a  correctly classified red point. This is  a correctly classified green point and  this is your incorrectly classified  green point. Okay? So there are two  mistakes happening here. This is one  mistake and this is the second mistake.  So what you do is, rather than counting  how many mistakes were made, you  calculate the perpendicular distance of  all these mistakes from the line. Let's  call it D1. And this is D2. Okay? Now,  the more, let's say the distance here  is 10 and here it is 13, so your total  error will be 10 + 13, so this loss  function is better than the previous  one. Why? Because here you are kind of  bringing the magnitude of the mistake  you are making into your loss function.  Okay? So this will guide you in a  better way to reach the right line.  Although the loss function used in  perceptron, the error is not based on  distance. Okay? Something else is used  there. I will tell you what is used. So  let's say we have a line. At this point , let's assume its equation is 2x + 3y  + 4 = 0. Okay? And there is a  misclassified point here and a  misclassified point here as well. Let's  assume for a moment that the  coordinates of this misclassified point  are, let's say, 4, 6 and the  coordinates of this other misclassified  point are 1, 1 or maybe we assume it's  in the negative. Assume it's right here . It's at this spot and its coordinates  are -2, -2, okay? These are the  coordinates for the points on both our  lines. Okay? So what do you do? Rather  than calculating this distance, what  you do is you find something else which  is actually proportional to this  distance. Okay? So, what do you do? You  take the coordinates and plug them into  the equation of this line. So, for this  point you would write 2*4 + 3*6 + 4,  you find this quantity and it would be  8 + 18, 30, okay? Similarly, for this  point also, you will find 2*-2 + 3*-2 +  4, so this would be -4 -6 -10, -6, okay ? Now what will you do? Since this is  negative, you will take its absolute  value and make it six, and then to  calculate the total error, you will do  30 + 6. Okay? So this is actually used  in the perceptron's loss function, this  technique is used, and if you want, you  can validate that what we did is  proportional to calculating the  distance, meaning the point with the  greater distance will have a higher  value for this operation as well. Okay?  You can verify this. Now, in my opinion , this was implemented instead of  calculating distance because  calculating distance is a bit complex.  And this is a very simple operation.  This is basically a dot product. So  that is why you use this one rather  than using distance. Okay? Now what  will I do? I will show you the actual  loss function that Scikit-Learn has  implemented and then we will work on it . So guys, now I will show you what the  actual loss function of the perceptron  is. Okay? So what is on your screen is  a Scikit-Learn documentation page where  we are on the SGD page. SGD is  Stochastic Gradient Descent, which is  an optimization technique that you use  to find the best parameters. We will  have a discussion about this; whatever  is here, you have a general error  function for SGD which has two  components. One is this L function and  one is this regularization parameter.  Now, look here, it is clearly written  that when SGD works on a perceptron,  its loss function becomes this. Okay?  Which is very close to the hinge loss  function if you look at it. Right? The  only difference is that here there is a  one minus. Here there is no one minus.  Right? So, it is clearly visible to me  from here that the loss function of the  perceptron implemented by Scikit-learn  is this. Right? So, let me do one thing . I will write this more clearly. So,  according to that documentation, your  loss function is the loss function of  W1, W2, and B, and this is its entire  formula. LYI F XI Plus alpha R W1 W2  Right? Now, we can ignore this term at  this point because this is for  regularization. We are currently  assuming that we are not using  regularization. Right? So, our loss  function is just this much. Now, let's  simplify this a bit. In this loss  function, this thing here this thing  here is actually, for the perceptron,  what I am writing. Max of 0, -yi f xi.  Now, there is just one thing not clear:  what is this fxi? fxi is basically w1  x1 + w2 x2 + b, which is the dot  product we have been calling z so far.  Right? So, fxi is the same. So, this is  the loss function actually. If you want , you can go back up and replace it to  write it in such a way that our loss  function is 1/n from i = 1 to n Max of  0, -yi f xi, instead of that, I'm not  writing this for now. I will simply  write it like this. This is our loss  function, guys. This is our loss  function. Right? And obviously, if you  understand a couple more things. Like 1 /n, here n is the number of rows in the  data. Right? So, basically, we are  picking up every row and calculating  this for it, and then we are adding up  the values for all points and dividing  by n to get the average error. Right?  Also, one more thing to understand here  is that this loss function depends on  three things. W1, W2, and B; just think , what is this fxi? These three things.  Right? W1 x1 + W2 x2 + B, right? So,  the value of this entire loss function  will only change when you make changes  to the values of W1, W2, or B. Because  the other things here are constant. If  you look at it, this yi of yours is a  constant. What is Yi? The output in  your data, like we had data for CGPA,  IQ, and whether placement happened or  not? So, whether this placement  happened or not? This is your yi for  every row. Right? Similarly, when you  are calculating fxi, look here too;  what are x1 and x2? x1 and x2 are your  CGPA and IQ values, which are again  constant in the data. What is the only  thing you can change? W1, W2, and b,  and whenever you change these, the  value of this L will change. Now, our  task is to find values for W1, W2, and  B for which the value of this loss  function becomes minimum. So, if we  write this in a completely mathematical  form, we need to find the argmin of W1,  W2, and B so that the value of this  entire expression is minimized. Right?  We need to find a value of W1, W2, and  B for which the value of this  expression is minimum. This is our  mathematical formulation of this loss  function. Right? And do you know how  this is done? To do this, we use  gradient descent. Right? We use  gradient descent, and that is what we  will do next. But before that, we will  try to understand how this math  function, which is a kind of hinge loss , works and what the geometric  intuition of this is. What the  geometric intuition of this whole thing  is, we will understand that. So guys,  now let me break down the loss function  for you a little bit. Because honestly,  it looks a bit scary. Right? And it's  not clear what this loss function is  trying to say. So we will now  understand what this loss function  wants to say. Right? So, let's  understand the setup first. We will  assume that this is a dataset that has  two input columns and one output column . And our data is represented in such a  way that there are n rows, first of all . Right? And this is the first row,  this is the second row, and so on.  Somewhere in between, there will be an  ith row. And we are representing each  of our values in this way. I J, where I  represents its row number and J  represents its column number. Right? So  X1 means the first column of the first  row. X12 means the second column of the  first row, and so on. Right? First, you  need to understand this setup. After  that, what have I done? I have written  my loss function here. And here, I have  also defined what fxi means. fxi means  w1 multiplied by xi1, the first column  value, and xi2 means the second column  value of the ith row. Right? You need  to understand this first. Now, let’s  break down this loss function a bit.  The scariest thing visible in this loss  function is this. max (0, 1-yi*f (xi))  For a moment, let's assume this entire  1-yi*f (xi) is x. Right? Here it is. So  now, this is a simple function. Just  think about it. What is happening here  is that if your x value is greater than  or equal to 0, the output will be x,  and if x is less than 0, the output  will be 0. It is just this simple  function. So in short, if the value of  yi*f (xi) is greater than or equal to 0 , the output of this whole thing will  be that number. Right? And if this  whole thing is less than 0, then the  output will be 0. That’s it. This  function is trying to say just that.  Right? I guess you are following along  so far. Pick up a pen and paper, and  you will understand. Now, what am I  doing? I am going to break down this  loss function. And I will assume we  only have two points. Not n points. We  only have two points. So if you break  down this loss function, it becomes L =  1/2, since we only have two points. And  then I will break down the sigma. First , I will write it for the first point.  So for the first point, it becomes max  (0, 1-y1*f (x1)), plus max (0, 1-y2*f ( x2)). That is it for our two points.  Now you can imagine that even if you  have n points, you will do the same  thing. You will keep adding terms and  this n will keep updating. Right? Now  what will fx2 be? If you put 2 instead  of i here, then fx2 will be w1. x21 +  w2*x22 + b. Now here, you can see how  easily this is being calculated. We are  talking about this row. The second one.  Right? So guys, we have understood the  loss function by breaking it down a  little. Now, I will explain the  geometric intuition of this loss  function, what it’s actually telling  us geometrically. Okay? So, what have I  done? I have taken a dataset that has  four points. It's data for just four  students. And one thing to notice here  is that for students who didn't get  placed, I have assigned -1. Not zero.  Okay? This is important. The other  numbers don't really have any meaning.  I just put them there as placeholders.  And here are those four points. Okay?  Out of these, two students haven't been  placed, and two students have been  placed. And let's assume we currently  have this line. Okay? It is cutting  through our data this way, and the W1,  W2, and B for this line are written  here. Okay? Now, if you think about it,  in the context of a line, there can  only be four types of points. Okay? One  point could be such that the data says  placement will happen, and your line  also says placement will happen.  Basically, the point is falling on the  green side of the line. Okay? The  second type is where the data says  placement will not happen, and yeah, in  the first one, the point is this one.  Okay? The second point is where it's  written in the data that placement  won't happen. My model also said  placement won't happen. This point here . Okay? The third scenario is that the  data says placement will happen. We  said it won't happen. Okay? This point  here. And lastly, the data says it  won't happen. We said it will—this  point here. These are the only four  types. Okay? Now, for all these four  types, what does this thing mean? I  will calculate and show you. I will  calculate and show this for all these  four points. Okay? Let's first take  this point. So, for this point, the  value of yi will be one. Okay? And what  will be the value of fxi? The value of  fxi will be w1*x1, the value of the  first column, plus w2*x2 + b. Now think , what are you actually doing with this  number? When you plug the coordinates  into the line equation, I’ve already  told you that since this point is on  the positive side of the line, this  number will be greater than or equal to  0, okay? This means, for this point, yi  is one, or you can say it's positive,  and what will f (xi) be? It will be  positive. So, their product will also  be positive, but since you are  multiplying it by -1, what will it  become overall? Negative. As soon as it  becomes negative overall, this becomes  max (0, some negative number). So, its  output will be zero. This means when  you go to calculate this term in the  loss function for this point, it will  come out equal to 0. This is a very  important thing. Pause the video for a  moment and understand it yourself. Okay ? Now, let's take a second example. The  second example is this point, or you  can say this point here. Okay? Now, for  this point, yi will be -1, meaning  negative. And f (xi) will be negative  as well, since it is on the negative  side of the line. Okay, and when you  multiply a negative by a negative, it  becomes positive; but adding a -1 in  front makes it negative again. So,  again, max (0, something negative)  would be 0, which means if there is a  point in the red region that is  correctly classified. For that too,  your math term would be zero. So, up to  this point, we have understood that if  your line has classified correctly, the  contribution of that point to the loss  function will be zero. Okay? Now, let's  move to a point that is misclassified.  Okay? Where the output is 1, but our  prediction is -1. Meaning, this point  of yours. Okay? Now, for this point, yi  would be positive because it is +1. And  your f (xi) is negative since it is on  the negative side of the line. Okay? So , their product will also be negative,  and then with the negative sign in  front, it will become positive. So,  this equation of yours will become some  positive number, and the output will be  some positive number. This means if a  green point is in the red region,  meaning it is misclassified, then this  term will be a non-zero number. Meaning , it will contribute something to the  loss function. Okay? Let's take the  last case. This specific point. For  this point, if you look, yi is negative . Meaning, it is negative in the data.  But since f (xi) is on the positive  side of the line. This will be positive . The product of both will again be  negative, and multiplying by -1 makes  it positive again. So the same thing  will hold true, and your output will be  positive. Meaning, for this point as  well, there will be some non-zero  contribution. So, it is clear  geometrically that if a point is  correctly classified, it has zero  contribution to the loss function. But  if the point is misclassified, what are  we doing? We are calculating this term  for it; since yi is just 1 or -1, its  magnitude is 1, so it doesn't matter.  So basically, the magnitude is coming  from f (xi). And what is f (xi)? It's  when we substitute the coordinates of  this red point or this green point into  the line's equation. Right? So, as I  mentioned a while ago, instead of using  distance, we use a proportional metric.  Where we take the coordinates and plug  them into the line equation. We are  actually doing exactly that. Just think  about it. What we discussed a while ago  about building the loss function. The  same thing discussed there is  implemented here with the help of this  loss function. So, all this effort is  just to give it the form of a proper  equation. Right? So, I hope you have  understood the geometric meaning of  this loss function. We have already  discussed the geometric meaning of this  loss function earlier. Now I have just  explained it to you in detail. Right?  Now that we have understood the loss  function. I will tell you how to find  values for W1, W2, and B that minimize  this entire thing. So guys, what we  have to do now is find values for W1,  W2, and B such that the value of this  entire equation becomes minimum. Right?  I have already explained in my gradient  descent video that you handle such  scenarios using gradient descent. So,  it will be that l is a function of  three things. If we assume for a moment  that w2 and b are constant and consider  it only as a function of w1, you can  actually take any form of the function.  Like, it's possible that this is the  function between L and W1. Right? So  what is your task? To find a value for  W1 for which L is minimum. Basically,  to find this point. To find this value  of W1. Right? So I have told you that  to do this, you use an optimization  algorithm like gradient descent. Right?  So I am not going to explain gradient  descent from scratch. If you are  interested, you can watch my video on  gradient descent. You will understand  how gradient descent works. I will just  tell you in short what you need to do.  You need to run a loop for i in number  of epochs. You can take any value for  epochs, take 100, take 1000, whatever  works for you. Now what do you need to  do? Inside this loop, at the very start , you can randomly pick values for W1,  W2, and B. For instance, let's assume  all three values are one. Now what will  we do? Inside this loop, we will keep  updating all three. So the update rule  will be this. The value of W1 will be  W1 minus learning rate times del L del  W1, right. Learning rate is basically  something like 0.1, you can experiment  with this too. So this became the  update rule for W1. For W2 similarly,  you need to calculate W2 minus learning  rate times partial derivative of L with  respect to W2, and similarly B = B  minus learning rate times del L/del B,  right? So here you have the initial  values of all three. You also have the  learning rate. You just need to  calculate three quantities. These three  partial derivatives. You need to find  these partial derivatives. Basically,  differentiate this function with  respect to W1, W2, and B, and you will  get the whole thing. Right? So now I  will just show you by differentiating  next what you get when you  differentiate this function with  respect to W1, W2, and B, and then we  will implement that in the code. So  let's go guys, now we will  differentiate our loss function with  respect to W1, W2, and B. Right? We  will do it with respect to W1 first,  and after seeing that, we will  understand what to do with W2 and B.  Right? So here is my loss function. I  have written it here again, where fxi  is this. Right? Now this loss function  is not completely differentiable. You  must be understanding that. So if you  want to differentiate this, you can  apply the chain rule, where I need to  find dl/dw1, so I will find del l/dfxi.  And then I will differentiate dfxi with  respect to dw1 and multiply both. Okay?  So here I have created two separate  paths. In this path, I have calculated  del l/dfxi, and here I have calculated  dfxi/dw1, okay? This is easier. Think  about it. I just need to differentiate  this with respect to w1. So this simple  answer came out. Okay? Whereas if you  go to differentiate del L/dfxi, you  will have to differentiate it  conditionally. If this number is  greater than zero, it will be zero, and  if this number is less than zero, your  differentiation would be-yi, okay? So I  combined both of these, and here is my  differentiation dl/dw1: 0 if this  number is greater than zero, and-yi xi1 , okay? What is XI1? CGPA, IQ, Placed —this is the value of X i1. The value  of the first column of the i-th row,  which is in CGPA. Okay? So this is del  l/dw1, okay? So we will have to write  an if-else condition. We have to check  this condition, and based on that, we  will either return zero or calculate  this. Okay? Going by the same logic,  your del l/dw2 will also be the same.  Just what will come here? xi2, and  similarly del l/db will be simple. From  there, -yi will come here. So this is  my differentiation. Now I just have to  convert this into code using gradient  descent, and then our work will be done . So guys, we have now found all these  partial derivatives. So what will we do  now? We will code gradient descent. By  the way, I made a mistake. The mistake  is that in the update rule for gradient  descent, there is a plus here. So this  was a mistake. Sorry about this. So now  we just have to do what? Run this code  inside these epochs. Okay? So I have  already written the code. I will show  you. So I created a dataset myself  using make_classification. In this, x  has two columns. y has one column. I  can quickly show it to you. So this is  my data. This is x. Okay? There are 100  points and two columns. Its shape would  be this. And y It basically gives an  output like 10. Its shape would be 100.  Okay? Here, I have plotted the graph to  show you. These are my two classes. I  need to draw a line between these two.  Okay? So, this is the entire code. It  is a very simple code. Take a look once . So, I have created a function named  perceptron, in which I will get x and y  as input. First of all, I initialized  W1, W2, and B to one. My learning rate  is one. You can see this learning rate  is one. Also, the initial values of W1,  W2, and this is one. Now, what did I do ? I ran epochs 1000 times here. And  each time, inside every epoch, what am  I doing? I am going through every row.  And checking this condition there. I am  checking this condition. This condition , this condition I am checking. Just  give me one second. This condition here . So, I am calculating fxi. First of  all, fxi is basically z, where I am  multiplying W1 by the first column  value of the current row. I am  multiplying W2 by the second column of  the current row and adding the value of  B to it. This is my Z, and then I am  multiplying it by YI. To find out what  the sign of this thing is. Okay? So you  can see, if it is less than zero, only  then am I applying this update rule.  And what is the update rule? That W1 is  LR*YI*XI's zeroth value, and W 2's  update rule is this. B's update rule is  this. As soon as this loop finishes. I  am returning W1, W2, and B. Here, I  have called the function. I can show  you the rest of the code, in fact, at  this point, that this is my W1. This is  my W2 and this is my B. Okay? The rest  of the code is just to plot the graph.  So you can look at this code easily.  When I plotted the line, this is the  line that I am getting. Okay? So, our  loss function is working. So guys, now  in this video, there is one last and  most important thing I need to discuss  with you. If you remember, in the first  Perceptron video, I told you one thing,  which was that the Perceptron is a  mathematical model. It is a  mathematical model. Right? And this is  true as well. Look, here is the  Perceptron model. Inputs come in from  this side here. Here, the summation  happens. This z then goes into this  activation function and then y is  calculated from here, and then you  implement a loss function here for  training. Right? So, we have just seen  all of this. But the good part is that  the Perceptron is very flexible because  of its design. The way this model is  built. It has a lot of flexibility. Let  me give you an example. Right now, we  used the step function as the  activation function. But let's say  tomorrow someone asks me that instead  of outputting 1 or -1, I want the  output in probabilities, like what is  the probability of it being 1? What is  the probability of it being -1? Then  what I can do is I can easily replace  this step function with a sigmoid  function. Right? Right? Your sigmoid  function is this one. Just one second.  Okay? Where z is basically W1X1 + W2X2  + B, right? This will give me a  probability. And now, what can I do? I  can use another loss function, which is  named binary cross-entropy; perhaps you  have heard the name binary  cross-entropy, and its formula is  something like this, the equation for  this loss function is minus yi log yi  hat plus 1-yi log 1-yi, right? If you  use this loss function in conjunction  with this activation function and apply  SGD this time, you will get  probabilities in the outputs. And guess  what? You have already seen this  combination before in a machine  learning algorithm, and that machine  learning algorithm's name is logistic  regression. So, you might have heard  many people saying that a Perceptron is  equal to, equal to logistic regression.  Practically speaking, that is true. But  technically speaking, a Perceptron and  logistic regression are the same  algorithm only when your activation  function is sigmoid and your loss  function is this one, binary  cross-entropy. Right? So, you can see  the flexibility. If I want, I can use  the Perceptron with a step function and  use it as a Perceptron. Where the  output is 1 or 0. Or if I want, I can  also extract the output in terms of  probabilities. I just have to make two  changes. I have to use my sigmoid  function. I will also change the  activation function and loss function  to use binary cross-entropy. All right?  In fact, the flexibility doesn't end  here. So, if tomorrow I have to work on  a multi-class classification problem  with more than two classes. What can I  do there? I can again change this  combination. This time, I will use  softmax for the activation function.  And for the loss function, I would use  categorical cross-entropy. Okay, its  formula is: the sum of all your classes , from 1 to M, for example, if you have  three classes, it will be three, y j  log y hat j. So, this is basically up  to you, this entire flexibility. By the  way, the softmax function is: e to the  power zi divided by sigma j = j = 1 to  k, the number of classes you have, e to  the power zj; or you can say that the  output for one particular class would  be e ^ z1, assuming you have three  classes. Is this okay? So, this case  now becomes softmax regression. I have  already taught you this in 100 Days of  Machine Learning. So, again, you can  see what I changed. This time, I used  softmax for the activation function and  categorical cross-entropy for the loss  function. All right? The matter does  not end here. If you want, you can even  use a perceptron for regression. Again,  you don't have to do much. Instead of a  step function, you just need to use a  linear activation function. So, what  does the step function do? If z is  greater than or equal to zero, it  outputs one. If z is less than zero, it  outputs negative one. What will the  linear function do? It takes z and  outputs z itself. So, basically, there  is no activation function. So, if you  use no activation function, or you can  say you used a linear activation  function, and instead of the loss  function, if you use mean squared error , yi minus yi hat squared. Then it  becomes linear regression. This becomes  linear regression. All right? So, the  point is that the perceptron is a  mathematical model that can be used in  multiple ways because it is flexible by  design. Its design itself is flexible.  So, I will just do this. I will change  my activation function. I will change  my loss function. Every time I have to  apply SGD, which is Stochastic Gradient  Descent, and I will keep getting my  parameters each time. All right? To  summarize it once, I will write it here . What will we do? Here we will write  the loss function. Here we will write  the activation and here we will write  the output. So it is very simple. If  your activation function is step and  you are using hinge loss, then it would  act as a perceptron or you could call  it a binary classifier whose output  will be either 1 or -1. All right? If  you are using the activation function  sigmoid and your loss function is log  loss, which we also call binary  cross-entropy. Then this will act as  logistic regression, which will give an  output between zero and one. And it is  still binary. Meaning it can handle two  classes. This is a binary classifier.  Going forward, if your activation  function is softmax, and your loss  function is categorical, cross-entropy.  Then it will work as softmax regression  and it will help you in more than two,  as in multi-class classification, but  the output will be probabilities, just  like the case above. All right? Lastly,  if your activation function is linear,  or you could say no activation function  is used, and your loss function is mean  squared error, then this would act as  linear regression, and your output will  be a number, and that number can be  anything. All right? So these are the  four cases in your perceptron. Now you  will see ahead that we will use these  four cases later. All right? If we are  solving a regression problem, we will  use this case. If we are using  classification, then we will use any of  these three, depending on the  requirement. But it is most important  to understand that this same  mathematical model, this very  perceptron, is being used for different  things because its design is very  flexible and it is not fixed to any one  particular thing. All right? I hope you  understood this entire discussion. So  that was the video, guys. I hope you  understood everything. It was a bit  complex. I think if you go back and  watch the video again at some complex  parts, things will become clear to you.  Also, I would recommend that you  download the code once and try running  it on your machine. Now, in the  upcoming videos, we will gradually move  towards the multi-layer perceptron. In  the next video, we will discuss exactly  what the problem with perceptrons is  that necessitated multilayer  perceptrons, and then we will start  studying multilayer perceptrons. All  right? So, that's it from my side.  Before I go, a request that if you like  the video, please do like and share it.  With whoever needs it. Also, if you  haven't subscribed to my channel,  please do subscribe. Okay? So, that's  it from my side. See you in the next  video.",
+  "snippets": [
+    {
+      "text": "Hello guys, my name is Nitish and you",
+      "start": 0.26,
+      "duration": 3.076
+    },
+    {
+      "text": " are welcome to my YouTube channel. So",
+      "start": 2.392,
+      "duration": 3.54
+    },
+    {
+      "text": " in this video, we will continue our 100",
+      "start": 4.988,
+      "duration": 3.188
+    },
+    {
+      "text": " Days of Deep Learning course. The topic",
+      "start": 7.232,
+      "duration": 3.787
+    },
+    {
+      "text": " of today's video is Loss Functions in",
+      "start": 10.09,
+      "duration": 3.634
+    },
+    {
+      "text": " Perceptron. If you remember our last",
+      "start": 12.795,
+      "duration": 4.398
+    },
+    {
+      "text": " video, I taught you a clever trick",
+      "start": 16.255,
+      "duration": 3.118
+    },
+    {
+      "text": " called the Perceptron Trick. Using",
+      "start": 18.435,
+      "duration": 4.699
+    },
+    {
+      "text": " which you can learn the weights and",
+      "start": 22.206,
+      "duration": 3.491
+    },
+    {
+      "text": " biases of your perceptron. But I also",
+      "start": 24.768,
+      "duration": 4.291
+    },
+    {
+      "text": " told you that it is not the perfect way",
+      "start": 28.117,
+      "duration": 3.263
+    },
+    {
+      "text": ". It is a makeshift method. It gets the",
+      "start": 30.38,
+      "duration": 3.745
+    },
+    {
+      "text": " job done but it will not always work.",
+      "start": 33.192,
+      "duration": 3.507
+    },
+    {
+      "text": " So in this video, I will show you the",
+      "start": 36.839,
+      "duration": 3.309
+    },
+    {
+      "text": " most accurate way to find the",
+      "start": 39.21,
+      "duration": 2.81
+    },
+    {
+      "text": " perceptron's weights and biases. We",
+      "start": 41.082,
+      "duration": 5.02
+    },
+    {
+      "text": " will start this video by discussing",
+      "start": 45.183,
+      "duration": 3.857
+    },
+    {
+      "text": " what the problems are with the",
+      "start": 48.122,
+      "duration": 3.448
+    },
+    {
+      "text": " perceptron trick, and then we will",
+      "start": 50.652,
+      "duration": 3.775
+    },
+    {
+      "text": " study loss functions and learn how to",
+      "start": 53.508,
+      "duration": 4.02
+    },
+    {
+      "text": " train a perceptron using them. And the",
+      "start": 56.61,
+      "duration": 4.607
+    },
+    {
+      "text": " most interesting part of this video",
+      "start": 60.269,
+      "duration": 2.794
+    },
+    {
+      "text": " will be the very last part. Where I",
+      "start": 62.114,
+      "duration": 4.197
+    },
+    {
+      "text": " will tell you another concept of how",
+      "start": 65.37,
+      "duration": 3.12
+    },
+    {
+      "text": " you can extract different types of",
+      "start": 67.549,
+      "duration": 3.003
+    },
+    {
+      "text": " behaviors by applying different loss",
+      "start": 69.611,
+      "duration": 3.12
+    },
+    {
+      "text": " functions to your perceptron. Alright?",
+      "start": 71.79,
+      "duration": 4.549
+    },
+    {
+      "text": " So on the whole, my review of this",
+      "start": 75.739,
+      "duration": 3.584
+    },
+    {
+      "text": " video is that it is very important. It",
+      "start": 78.399,
+      "duration": 4.267
+    },
+    {
+      "text": " will provide a great foundation for you",
+      "start": 81.739,
+      "duration": 3.846
+    },
+    {
+      "text": " going forward. Okay? So please do watch",
+      "start": 84.658,
+      "duration": 3.767
+    },
+    {
+      "text": " this video till the end. Okay? So now",
+      "start": 87.48,
+      "duration": 3.62
+    },
+    {
+      "text": " let's start the video. So guys, before",
+      "start": 90.163,
+      "duration": 4.7
+    },
+    {
+      "text": " starting this video, let's take a quick",
+      "start": 93.914,
+      "duration": 2.988
+    },
+    {
+      "text": " recap. Because for the things we need",
+      "start": 95.953,
+      "duration": 4.186
+    },
+    {
+      "text": " to cover in this video, it is important",
+      "start": 99.179,
+      "duration": 2.56
+    },
+    {
+      "text": " that your previous videos are clear.",
+      "start": 100.779,
+      "duration": 2.44
+    },
+    {
+      "text": " Alright? When we started the perceptron",
+      "start": 103.039,
+      "duration": 4.617
+    },
+    {
+      "text": ", we first established that a",
+      "start": 106.656,
+      "duration": 2.834
+    },
+    {
+      "text": " perceptron is basically a mathematical",
+      "start": 108.553,
+      "duration": 3.403
+    },
+    {
+      "text": " model. Which is based on the neuron",
+      "start": 111.019,
+      "duration": 7.969
+    },
+    {
+      "text": " that is in our brain. Alright? Or in",
+      "start": 118.091,
+      "duration": 5.224
+    },
+    {
+      "text": " humans. So it looks something like this",
+      "start": 122.451,
+      "duration": 4.374
+    },
+    {
+      "text": ". If we move forward with this example,",
+      "start": 125.825,
+      "duration": 4.479
+    },
+    {
+      "text": " we have CGPA and IQ as inputs. There",
+      "start": 129.392,
+      "duration": 4.041
+    },
+    {
+      "text": " are two input columns and 'Placed' is",
+      "start": 132.472,
+      "duration": 2.432
+    },
+    {
+      "text": " our output column. The neuron looks",
+      "start": 133.943,
+      "duration": 3.355
+    },
+    {
+      "text": " like this. From here, your input moves.",
+      "start": 136.385,
+      "duration": 4.315
+    },
+    {
+      "text": " Here is x1 and here is x2. CGPA is our",
+      "start": 139.819,
+      "duration": 4.137
+    },
+    {
+      "text": " x1. IQ is our x2. At once, you will",
+      "start": 143.047,
+      "duration": 3.697
+    },
+    {
+      "text": " insert one row of information. 7.8.",
+      "start": 145.809,
+      "duration": 3.391
+    },
+    {
+      "text": " This one is for the bias term. Now,",
+      "start": 150.419,
+      "duration": 4.023
+    },
+    {
+      "text": " your perceptron has weights and biases.",
+      "start": 153.533,
+      "duration": 4.546
+    },
+    {
+      "text": " Since there are two input columns here,",
+      "start": 158.039,
+      "duration": 3.329
+    },
+    {
+      "text": " there are two weights and one bias. As",
+      "start": 160.428,
+      "duration": 3.373
+    },
+    {
+      "text": " the input terms increase, the weights",
+      "start": 162.851,
+      "duration": 2.874
+    },
+    {
+      "text": " will start to increase. An operation",
+      "start": 164.775,
+      "duration": 3.357
+    },
+    {
+      "text": " takes place right here. Basically, this",
+      "start": 167.183,
+      "duration": 4.816
+    },
+    {
+      "text": " operation is a dot product. We are",
+      "start": 171.11,
+      "duration": 5.489
+    },
+    {
+      "text": " calling this z. And this z then goes",
+      "start": 175.679,
+      "duration": 3.273
+    },
+    {
+      "text": " into a step function. The step function",
+      "start": 177.999,
+      "duration": 3.673
+    },
+    {
+      "text": " has a simple logic: if z is > = 0, the",
+      "start": 180.759,
+      "duration": 4.336
+    },
+    {
+      "text": " output is one, and if z is < 0, the",
+      "start": 184.182,
+      "duration": 4.072
+    },
+    {
+      "text": " output is zero. This is how our",
+      "start": 187.342,
+      "duration": 3.47
+    },
+    {
+      "text": " perceptron performs classification.",
+      "start": 189.876,
+      "duration": 3.224
+    },
+    {
+      "text": " Right? Now, we also saw that the",
+      "start": 192.26,
+      "duration": 4.613
+    },
+    {
+      "text": " geometric intuition of a perceptron is",
+      "start": 195.957,
+      "duration": 4.184
+    },
+    {
+      "text": " that it is nothing but a line. If you",
+      "start": 199.225,
+      "duration": 5.041
+    },
+    {
+      "text": " are talking about 2D data, in 3D it",
+      "start": 203.327,
+      "duration": 3.138
+    },
+    {
+      "text": " would be a plane, and in higher",
+      "start": 205.526,
+      "duration": 2.893
+    },
+    {
+      "text": " dimensions, it would be a hyperplane.",
+      "start": 207.48,
+      "duration": 3.26
+    },
+    {
+      "text": " So, the idea is that whenever you draw",
+      "start": 210.14,
+      "duration": 3.033
+    },
+    {
+      "text": " a line, two regions are created. One is",
+      "start": 212.227,
+      "duration": 3.141
+    },
+    {
+      "text": " a positive region and the other is a",
+      "start": 214.422,
+      "duration": 2.968
+    },
+    {
+      "text": " negative region. And that is why,",
+      "start": 216.445,
+      "duration": 3.072
+    },
+    {
+      "text": " because two regions are formed, it is",
+      "start": 218.575,
+      "duration": 3.17
+    },
+    {
+      "text": " useful for binary classification. We",
+      "start": 220.804,
+      "duration": 3.948
+    },
+    {
+      "text": " studied all of this. Then, we also",
+      "start": 223.828,
+      "duration": 3.65
+    },
+    {
+      "text": " learned that like every machine",
+      "start": 226.526,
+      "duration": 2.476
+    },
+    {
+      "text": " learning algorithm, there are two",
+      "start": 228.049,
+      "duration": 2.571
+    },
+    {
+      "text": " stages here as well. One is prediction,",
+      "start": 229.668,
+      "duration": 4.441
+    },
+    {
+      "text": " which I showed you here, and the second",
+      "start": 233.192,
+      "duration": 4.231
+    },
+    {
+      "text": " is training. Now, in training, I told",
+      "start": 236.506,
+      "duration": 6.116
+    },
+    {
+      "text": " you that the job of training is to",
+      "start": 241.708,
+      "duration": 3.923
+    },
+    {
+      "text": " calculate the values of these weights",
+      "start": 244.717,
+      "duration": 4.182
+    },
+    {
+      "text": " and bias. That is why you perform",
+      "start": 247.985,
+      "duration": 3.001
+    },
+    {
+      "text": " training. Right? So, I explained one",
+      "start": 250.028,
+      "duration": 4.414
+    },
+    {
+      "text": " technique for training in the last",
+      "start": 253.562,
+      "duration": 5.087
+    },
+    {
+      "text": " video, the \"Perceptron Rule,\" where we",
+      "start": 257.769,
+      "duration": 5.568
+    },
+    {
+      "text": " used a very simple algorithm; we were",
+      "start": 262.457,
+      "duration": 5.447
+    },
+    {
+      "text": " randomly picking points 1,000 times,",
+      "start": 267.024,
+      "duration": 5.327
+    },
+    {
+      "text": " and we were starting with a random line",
+      "start": 271.472,
+      "duration": 5.687
+    },
+    {
+      "text": ". Like, suppose this is a random line,",
+      "start": 276.159,
+      "duration": 3.24
+    },
+    {
+      "text": " and every time we were picking a point",
+      "start": 278.447,
+      "duration": 2.816
+    },
+    {
+      "text": " randomly and asking it if it was on the",
+      "start": 280.311,
+      "duration": 2.864
+    },
+    {
+      "text": " correct side of the line or the wrong",
+      "start": 282.223,
+      "duration": 2.769
+    },
+    {
+      "text": " side. If it was on the wrong side, we",
+      "start": 284.04,
+      "duration": 2.898
+    },
+    {
+      "text": " would pull the line towards it. Right?",
+      "start": 285.979,
+      "duration": 2.88
+    },
+    {
+      "text": " And we did this 1,000 times. And what",
+      "start": 287.959,
+      "duration": 3.688
+    },
+    {
+      "text": " was happening was that after doing it",
+      "start": 290.691,
+      "duration": 2.614
+    },
+    {
+      "text": " 1,000 times, the line would eventually",
+      "start": 292.348,
+      "duration": 2.658
+    },
+    {
+      "text": " move and reach the correct position.",
+      "start": 294.049,
+      "duration": 2.571
+    },
+    {
+      "text": " And this line reaching the correct",
+      "start": 296.939,
+      "duration": 3.149
+    },
+    {
+      "text": " position meant I was getting the",
+      "start": 299.151,
+      "duration": 3.024
+    },
+    {
+      "text": " equation ax + by + c = 0. Where A was",
+      "start": 301.238,
+      "duration": 4.726
+    },
+    {
+      "text": " nothing but W1, B was nothing but W2,",
+      "start": 305.052,
+      "duration": 4.235
+    },
+    {
+      "text": " and C was nothing but our intercept",
+      "start": 308.374,
+      "duration": 4.061
+    },
+    {
+      "text": " term. Right? So, this was the",
+      "start": 311.522,
+      "duration": 2.859
+    },
+    {
+      "text": " Perceptron Rule. We covered this in the",
+      "start": 313.43,
+      "duration": 2.837
+    },
+    {
+      "text": " last video. So, what I have told you so",
+      "start": 315.311,
+      "duration": 3.367
+    },
+    {
+      "text": " far is a summary of what we studied in",
+      "start": 317.739,
+      "duration": 3.306
+    },
+    {
+      "text": " the last two videos. Now, we will move",
+      "start": 320.106,
+      "duration": 3.478
+    },
+    {
+      "text": " forward from here. Right? So, first of",
+      "start": 322.639,
+      "duration": 4.146
+    },
+    {
+      "text": " all, I'll tell you that the Perceptron",
+      "start": 325.853,
+      "duration": 3.555
+    },
+    {
+      "text": " Rule we studied works perfectly fine",
+      "start": 328.475,
+      "duration": 3.421
+    },
+    {
+      "text": " for all practical purposes. I showed",
+      "start": 330.963,
+      "duration": 4.156
+    },
+    {
+      "text": " you the code running in the last video.",
+      "start": 334.174,
+      "duration": 3.145
+    },
+    {
+      "text": " I also showed you its output plotted on",
+      "start": 337.4,
+      "duration": 3.4
+    },
+    {
+      "text": " a graph, and you must have seen that",
+      "start": 339.861,
+      "duration": 3.215
+    },
+    {
+      "text": " the line is successfully distinguishing",
+      "start": 342.138,
+      "duration": 3.4
+    },
+    {
+      "text": " both classes. Right? But there are some",
+      "start": 344.6,
+      "duration": 4.679
+    },
+    {
+      "text": " problems with the Perceptron Rule. So,",
+      "start": 348.34,
+      "duration": 4.464
+    },
+    {
+      "text": " first, we will discuss those problems,",
+      "start": 351.859,
+      "duration": 3.093
+    },
+    {
+      "text": " and then we will discuss their",
+      "start": 354.007,
+      "duration": 2.653
+    },
+    {
+      "text": " solutions, during which we will learn",
+      "start": 355.715,
+      "duration": 3.038
+    },
+    {
+      "text": " about loss functions, which is the",
+      "start": 357.809,
+      "duration": 2.873
+    },
+    {
+      "text": " title of this video. So guys, the",
+      "start": 359.737,
+      "duration": 5.662
+    },
+    {
+      "text": " biggest problem with the Perceptron",
+      "start": 364.519,
+      "duration": 5.2
+    },
+    {
+      "text": " Trick is that the line you get, or",
+      "start": 368.839,
+      "duration": 5.08
+    },
+    {
+      "text": " rather the values of W1, W2, and B,",
+      "start": 373.039,
+      "duration": 5.2
+    },
+    {
+      "text": " cannot be said to be 100%confidently",
+      "start": 377.359,
+      "duration": 5.32
+    },
+    {
+      "text": " the best values to classify between",
+      "start": 381.799,
+      "duration": 5.2
+    },
+    {
+      "text": " green and red points. Let me explain;",
+      "start": 386.119,
+      "duration": 6.475
+    },
+    {
+      "text": " the fundamental logic of the Perceptron",
+      "start": 391.654,
+      "duration": 3.328
+    },
+    {
+      "text": " Trick is that if a point is",
+      "start": 394.042,
+      "duration": 2.612
+    },
+    {
+      "text": " misclassified, it will pull the line",
+      "start": 395.714,
+      "duration": 3.149
+    },
+    {
+      "text": " towards itself. But if it is correctly",
+      "start": 397.923,
+      "duration": 4.445
+    },
+    {
+      "text": " classified, it will tell the line not",
+      "start": 401.435,
+      "duration": 3.505
+    },
+    {
+      "text": " to change at all. Not telling the line",
+      "start": 404.008,
+      "duration": 3.954
+    },
+    {
+      "text": " to change means there will be no",
+      "start": 407.014,
+      "duration": 2.667
+    },
+    {
+      "text": " changes in W1, W2, and B. Let me repeat",
+      "start": 408.733,
+      "duration": 3.033
+    },
+    {
+      "text": " that once more. If a point is correctly",
+      "start": 410.818,
+      "duration": 4.251
+    },
+    {
+      "text": " classified by the line, then there will",
+      "start": 414.137,
+      "duration": 3.663
+    },
+    {
+      "text": " be no changes in the values of W1, W2,",
+      "start": 416.868,
+      "duration": 3.595
+    },
+    {
+      "text": " and B. The line will not move. But only",
+      "start": 419.531,
+      "duration": 4.006
+    },
+    {
+      "text": " if a point is misclassified will there",
+      "start": 422.592,
+      "duration": 3.082
+    },
+    {
+      "text": " be changes in W1, W2, and B, and the",
+      "start": 424.729,
+      "duration": 2.973
+    },
+    {
+      "text": " line will move. Now, what is the",
+      "start": 426.757,
+      "duration": 2.968
+    },
+    {
+      "text": " fundamental flaw in this logic? First",
+      "start": 428.779,
+      "duration": 4.153
+    },
+    {
+      "text": " of all, how would you differentiate, or",
+      "start": 431.994,
+      "duration": 3.437
+    },
+    {
+      "text": " let me ask you, let's say this is one",
+      "start": 434.493,
+      "duration": 3.312
+    },
+    {
+      "text": " line. Meaning, this is a set of W1, W2,",
+      "start": 436.867,
+      "duration": 5.172
+    },
+    {
+      "text": " and B values. And another line is this.",
+      "start": 441.128,
+      "duration": 6.652
+    },
+    {
+      "text": " Right? So, since this is a different",
+      "start": 448.639,
+      "duration": 3.158
+    },
+    {
+      "text": " line, its W1, W2, and B will be",
+      "start": 450.849,
+      "duration": 2.601
+    },
+    {
+      "text": " different. Because you selected points",
+      "start": 452.502,
+      "duration": 4.558
+    },
+    {
+      "text": " randomly to complete the process, the",
+      "start": 456.123,
+      "duration": 3.303
+    },
+    {
+      "text": " Perceptron Trick could give you either",
+      "start": 458.489,
+      "duration": 3.365
+    },
+    {
+      "text": " of these two lines. You could get",
+      "start": 460.917,
+      "duration": 3.84
+    },
+    {
+      "text": " either one of these lines. Now, think",
+      "start": 463.803,
+      "duration": 4.028
+    },
+    {
+      "text": " and tell me, how will you know which is",
+      "start": 466.906,
+      "duration": 3.934
+    },
+    {
+      "text": " the better line? Right? For that matter",
+      "start": 469.915,
+      "duration": 4.749
+    },
+    {
+      "text": ", you cannot ensure that every time you",
+      "start": 473.664,
+      "duration": 3.355
+    },
+    {
+      "text": " run the Perceptron Trick, you will get",
+      "start": 476.079,
+      "duration": 3.294
+    },
+    {
+      "text": " the same line. It's possible that the",
+      "start": 478.433,
+      "duration": 2.803
+    },
+    {
+      "text": " first time you ran it, you got this",
+      "start": 480.272,
+      "duration": 2.269
+    },
+    {
+      "text": " line. The second time, you are getting",
+      "start": 481.577,
+      "duration": 2.691
+    },
+    {
+      "text": " this line. So, the primary flaw is that",
+      "start": 483.309,
+      "duration": 4.367
+    },
+    {
+      "text": " your Perceptron Trick doesn't tell you",
+      "start": 486.747,
+      "duration": 3.711
+    },
+    {
+      "text": " how well your classification is",
+      "start": 489.53,
+      "duration": 3.211
+    },
+    {
+      "text": " actually performing. Alright? So you",
+      "start": 491.813,
+      "duration": 5.202
+    },
+    {
+      "text": " cannot quantify your result. You cannot",
+      "start": 496.111,
+      "duration": 5.248
+    },
+    {
+      "text": " say how good it is. Alright? What is",
+      "start": 500.423,
+      "duration": 3.716
+    },
+    {
+      "text": " the second problem? Sometimes there can",
+      "start": 503.189,
+      "duration": 3.154
+    },
+    {
+      "text": " be an issue with convergence too. It is",
+      "start": 505.395,
+      "duration": 3.498
+    },
+    {
+      "text": " possible that your perceptron model",
+      "start": 507.963,
+      "duration": 3.479
+    },
+    {
+      "text": " might not converge at all because you",
+      "start": 510.513,
+      "duration": 3.621
+    },
+    {
+      "text": " have to pick points randomly. So look,",
+      "start": 513.205,
+      "duration": 3.866
+    },
+    {
+      "text": " what else could be a problem? Let me",
+      "start": 516.123,
+      "duration": 3.131
+    },
+    {
+      "text": " tell you. So another problem could be",
+      "start": 518.326,
+      "duration": 4.768
+    },
+    {
+      "text": " that, let's say, you started with this",
+      "start": 522.15,
+      "duration": 3.132
+    },
+    {
+      "text": " line. Alright? Now, with this line, all",
+      "start": 524.338,
+      "duration": 4.612
+    },
+    {
+      "text": " these points are correctly classified,",
+      "start": 528.008,
+      "duration": 3.204
+    },
+    {
+      "text": " these points are incorrectly classified",
+      "start": 530.27,
+      "duration": 3.261
+    },
+    {
+      "text": ", and all these are also correctly",
+      "start": 532.531,
+      "duration": 2.972
+    },
+    {
+      "text": " classified. Alright? Now, you had to",
+      "start": 534.561,
+      "duration": 4.196
+    },
+    {
+      "text": " select 1000 points randomly. So imagine",
+      "start": 537.849,
+      "duration": 4.569
+    },
+    {
+      "text": ", every time you end up selecting a",
+      "start": 541.418,
+      "duration": 3.658
+    },
+    {
+      "text": " point that is already correctly",
+      "start": 544.152,
+      "duration": 3.355
+    },
+    {
+      "text": " classified. Then what will happen is",
+      "start": 546.583,
+      "duration": 3.299
+    },
+    {
+      "text": " that this line will not move from its",
+      "start": 548.924,
+      "duration": 2.578
+    },
+    {
+      "text": " place at all. Alright? I mean, it won't",
+      "start": 550.544,
+      "duration": 3.694
+    },
+    {
+      "text": " happen generally because you are using",
+      "start": 553.289,
+      "duration": 2.946
+    },
+    {
+      "text": " a random function, so it shouldn't",
+      "start": 555.286,
+      "duration": 2.742
+    },
+    {
+      "text": " happen, but this possibility could",
+      "start": 557.079,
+      "duration": 2.741
+    },
+    {
+      "text": " exist. Alright? Another possibility",
+      "start": 558.871,
+      "duration": 3.176
+    },
+    {
+      "text": " could be that you keep selecting the",
+      "start": 561.091,
+      "duration": 2.598
+    },
+    {
+      "text": " same point over and over. That won't",
+      "start": 562.734,
+      "duration": 2.632
+    },
+    {
+      "text": " happen. Again, I am giving you some",
+      "start": 564.408,
+      "duration": 2.762
+    },
+    {
+      "text": " hypothetical scenarios where there",
+      "start": 566.221,
+      "duration": 2.72
+    },
+    {
+      "text": " could be problems with convergence. So,",
+      "start": 567.992,
+      "duration": 3.086
+    },
+    {
+      "text": " the perceptron trick is a great hack. \"",
+      "start": 570.145,
+      "duration": 3.624
+    },
+    {
+      "text": "Hack\" is the right word to describe the",
+      "start": 572.769,
+      "duration": 3.717
+    },
+    {
+      "text": " perceptron trick. 99%of the time, it",
+      "start": 575.555,
+      "duration": 3.664
+    },
+    {
+      "text": " will give you a result. But there are",
+      "start": 578.292,
+      "duration": 3.858
+    },
+    {
+      "text": " two issues. In 1%of cases, it might not",
+      "start": 581.213,
+      "duration": 5.009
+    },
+    {
+      "text": " converge, and 100%of the time, you",
+      "start": 585.309,
+      "duration": 3.951
+    },
+    {
+      "text": " won't be able to say if the line you",
+      "start": 588.347,
+      "duration": 4.124
+    },
+    {
+      "text": " got is the best line or if a better",
+      "start": 591.558,
+      "duration": 4.038
+    },
+    {
+      "text": " line could exist. Alright? So in",
+      "start": 594.683,
+      "duration": 5.39
+    },
+    {
+      "text": " machine learning, whenever you are",
+      "start": 599.144,
+      "duration": 3.412
+    },
+    {
+      "text": " searching for things this way, like",
+      "start": 601.627,
+      "duration": 3.482
+    },
+    {
+      "text": " searching for the values of W2, W1, and",
+      "start": 604.18,
+      "duration": 3.767
+    },
+    {
+      "text": " B. You don't use hacks like this. You",
+      "start": 607.018,
+      "duration": 4.986
+    },
+    {
+      "text": " use loss functions. Because of loss",
+      "start": 611.125,
+      "duration": 6.245
+    },
+    {
+      "text": " functions, you are able to quantify.",
+      "start": 616.445,
+      "duration": 3.715
+    },
+    {
+      "text": " This word is very important. You are",
+      "start": 620.119,
+      "duration": 3.763
+    },
+    {
+      "text": " able to quantify how good the result",
+      "start": 622.948,
+      "duration": 3.385
+    },
+    {
+      "text": " you obtained is. Alright? So, we will",
+      "start": 625.399,
+      "duration": 4.334
+    },
+    {
+      "text": " now discuss that if the perceptron",
+      "start": 628.796,
+      "duration": 3.145
+    },
+    {
+      "text": " trick is not the perfect solution, then",
+      "start": 631.004,
+      "duration": 3.461
+    },
+    {
+      "text": " what is the perfect solution? Now,",
+      "start": 633.528,
+      "duration": 3.351
+    },
+    {
+      "text": " let's do one thing. First of all, let's",
+      "start": 635.924,
+      "duration": 3.452
+    },
+    {
+      "text": " discuss what a loss function is.",
+      "start": 638.431,
+      "duration": 2.748
+    },
+    {
+      "text": " Honestly, if you have worked a lot in",
+      "start": 640.919,
+      "duration": 2.744
+    },
+    {
+      "text": " machine learning, you would know what a",
+      "start": 642.711,
+      "duration": 2.839
+    },
+    {
+      "text": " loss function is. But still, I will",
+      "start": 644.597,
+      "duration": 3.594
+    },
+    {
+      "text": " give you a beginner's perspective on",
+      "start": 647.248,
+      "duration": 3.06
+    },
+    {
+      "text": " what a loss function is. In machine",
+      "start": 649.365,
+      "duration": 4.336
+    },
+    {
+      "text": " learning, a loss function is a way to",
+      "start": 652.793,
+      "duration": 4.409
+    },
+    {
+      "text": " measure how well or how poorly your",
+      "start": 656.294,
+      "duration": 4.225
+    },
+    {
+      "text": " machine learning model is performing.",
+      "start": 659.611,
+      "duration": 4.409
+    },
+    {
+      "text": " Right? Let me give you an example. So,",
+      "start": 663.4,
+      "duration": 4.117
+    },
+    {
+      "text": " let's take our perceptron example.",
+      "start": 666.579,
+      "duration": 3.112
+    },
+    {
+      "text": " Where we have data with two classes.",
+      "start": 668.791,
+      "duration": 4.631
+    },
+    {
+      "text": " And our job is to find a line that will",
+      "start": 673.499,
+      "duration": 3.856
+    },
+    {
+      "text": " perfectly classify these two classes.",
+      "start": 676.428,
+      "duration": 3.711
+    },
+    {
+      "text": " Now, in this two-dimensional space,",
+      "start": 680.119,
+      "duration": 3.212
+    },
+    {
+      "text": " there could be many lines. There could",
+      "start": 682.395,
+      "duration": 3.597
+    },
+    {
+      "text": " be many lines. Right? Here, every line",
+      "start": 685.055,
+      "duration": 3.754
+    },
+    {
+      "text": " will have an equation. Meaning, every",
+      "start": 687.874,
+      "duration": 4.417
+    },
+    {
+      "text": " line will have an associated W1, W2,",
+      "start": 691.382,
+      "duration": 4.269
+    },
+    {
+      "text": " and B. We want the line that best",
+      "start": 694.742,
+      "duration": 3.997
+    },
+    {
+      "text": " classifies these two sets of points.",
+      "start": 697.83,
+      "duration": 4.27
+    },
+    {
+      "text": " Right? So, what will the loss function",
+      "start": 701.819,
+      "duration": 3.329
+    },
+    {
+      "text": " be? The loss function will give you a",
+      "start": 704.201,
+      "duration": 4.904
+    },
+    {
+      "text": " number for every line. And from that",
+      "start": 708.214,
+      "duration": 5.452
+    },
+    {
+      "text": " number, you will know whether that line",
+      "start": 712.743,
+      "duration": 4.018
+    },
+    {
+      "text": " is the best one or not. Right? So, the",
+      "start": 715.839,
+      "duration": 5.278
+    },
+    {
+      "text": " loss function is basically a function",
+      "start": 720.208,
+      "duration": 4.373
+    },
+    {
+      "text": " of W1, W2, and B; in this perceptron",
+      "start": 723.672,
+      "duration": 4.282
+    },
+    {
+      "text": " case, the loss function will be a",
+      "start": 727.045,
+      "duration": 4.008
+    },
+    {
+      "text": " function of W1, W2, and B. Meaning, in",
+      "start": 730.145,
+      "duration": 4.464
+    },
+    {
+      "text": " three variables. So, if you make",
+      "start": 733.7,
+      "duration": 6.44
+    },
+    {
+      "text": " changes to W1, W2, or B, or all three,",
+      "start": 739.23,
+      "duration": 4.399
+    },
+    {
+      "text": " or any combination of two, the output",
+      "start": 742.718,
+      "duration": 4.31
+    },
+    {
+      "text": " of this function will also change. This",
+      "start": 746.117,
+      "duration": 6.411
+    },
+    {
+      "text": " means, let's say you started with this",
+      "start": 751.651,
+      "duration": 5.653
+    },
+    {
+      "text": " line. Right? And this line has some W1,",
+      "start": 756.426,
+      "duration": 4.905
+    },
+    {
+      "text": " W2, and B. So, at this point, if you",
+      "start": 760.388,
+      "duration": 3.039
+    },
+    {
+      "text": " plug this W1, W2, and B into the",
+      "start": 762.483,
+      "duration": 2.813
+    },
+    {
+      "text": " function, you get an output. Let's say",
+      "start": 764.353,
+      "duration": 3.546
+    },
+    {
+      "text": " the output is 25. So, in a way, this 25",
+      "start": 766.965,
+      "duration": 4.667
+    },
+    {
+      "text": " indicates your error. Right? Now, what",
+      "start": 770.725,
+      "duration": 5.169
+    },
+    {
+      "text": " did you do? You pushed this line a",
+      "start": 774.944,
+      "duration": 2.672
+    },
+    {
+      "text": " little to the side and grabbed this new",
+      "start": 776.661,
+      "duration": 2.767
+    },
+    {
+      "text": " line. So, you basically made changes to",
+      "start": 778.473,
+      "duration": 3.784
+    },
+    {
+      "text": " W1, W2, and B. Since W1, W2, and B",
+      "start": 781.316,
+      "duration": 2.977
+    },
+    {
+      "text": " changed, the output of this function",
+      "start": 783.351,
+      "duration": 3.093
+    },
+    {
+      "text": " also changed. Now it's 23, so this 23",
+      "start": 785.503,
+      "duration": 5.302
+    },
+    {
+      "text": " is again an error, but at this point,",
+      "start": 789.896,
+      "duration": 4.358
+    },
+    {
+      "text": " you know that since 23 is less than 25,",
+      "start": 793.344,
+      "duration": 4.539
+    },
+    {
+      "text": " this line has less error than the",
+      "start": 796.974,
+      "duration": 3.994
+    },
+    {
+      "text": " previous one. This means this line is",
+      "start": 800.059,
+      "duration": 5.369
+    },
+    {
+      "text": " better than the previous line. So, what",
+      "start": 804.521,
+      "duration": 4.505
+    },
+    {
+      "text": " do you need to do? You have to keep",
+      "start": 808.072,
+      "duration": 3.477
+    },
+    {
+      "text": " changing the values of W1, W2, and B",
+      "start": 810.639,
+      "duration": 4.218
+    },
+    {
+      "text": " until you reach a point where the",
+      "start": 813.947,
+      "duration": 3.95
+    },
+    {
+      "text": " output of this particular function is",
+      "start": 816.987,
+      "duration": 4.308
+    },
+    {
+      "text": " minimized. And that set of W1, W2, and",
+      "start": 820.384,
+      "duration": 6.157
+    },
+    {
+      "text": " B would be your final line. And there",
+      "start": 825.656,
+      "duration": 4.774
+    },
+    {
+      "text": " cannot be a better line than that. That",
+      "start": 829.489,
+      "duration": 3.416
+    },
+    {
+      "text": " is how loss functions work. Okay? So, a",
+      "start": 831.976,
+      "duration": 3.981
+    },
+    {
+      "text": " loss function is a method to tell how",
+      "start": 835.023,
+      "duration": 3.425
+    },
+    {
+      "text": " well a machine learning algorithm is",
+      "start": 837.514,
+      "duration": 3.36
+    },
+    {
+      "text": " performing on your problem. Okay? In",
+      "start": 839.94,
+      "duration": 3.594
+    },
+    {
+      "text": " fact, you might have even seen many",
+      "start": 842.588,
+      "duration": 2.881
+    },
+    {
+      "text": " loss functions. If you talk about",
+      "start": 844.522,
+      "duration": 3.994
+    },
+    {
+      "text": " linear regression, there was mean",
+      "start": 847.615,
+      "duration": 4.293
+    },
+    {
+      "text": " squared error, (yi-yi_hat) squared.",
+      "start": 851.008,
+      "duration": 4.492
+    },
+    {
+      "text": " Okay? Similarly, you might have studied",
+      "start": 854.87,
+      "duration": 3.325
+    },
+    {
+      "text": " logistic regression too. There, we had",
+      "start": 857.247,
+      "duration": 3.7
+    },
+    {
+      "text": " log loss. Okay? You might have studied",
+      "start": 860.046,
+      "duration": 4.669
+    },
+    {
+      "text": " SVM. There was hinge loss. In this way,",
+      "start": 863.776,
+      "duration": 5.356
+    },
+    {
+      "text": " there are even more. I mean, there is",
+      "start": 868.191,
+      "duration": 3.36
+    },
+    {
+      "text": " one-zero loss. There are many such loss",
+      "start": 870.616,
+      "duration": 4.052
+    },
+    {
+      "text": " functions. Depending on the problem.",
+      "start": 873.753,
+      "duration": 3.266
+    },
+    {
+      "text": " Depending on the type of problem you",
+      "start": 876.66,
+      "duration": 2.471
+    },
+    {
+      "text": " are solving, you can use that type of",
+      "start": 878.172,
+      "duration": 2.513
+    },
+    {
+      "text": " loss function. Okay? The good thing is",
+      "start": 879.726,
+      "duration": 3.539
+    },
+    {
+      "text": " that by thinking a bit innovatively,",
+      "start": 882.321,
+      "duration": 3.016
+    },
+    {
+      "text": " you can even create your own loss",
+      "start": 884.393,
+      "duration": 2.848
+    },
+    {
+      "text": " functions. Okay? It is totally possible",
+      "start": 886.297,
+      "duration": 3.487
+    },
+    {
+      "text": ". So now we have understood two things:",
+      "start": 888.784,
+      "duration": 4.164
+    },
+    {
+      "text": " that there is a problem in the",
+      "start": 892.025,
+      "duration": 3.326
+    },
+    {
+      "text": " perceptron trick, and the way to solve",
+      "start": 894.428,
+      "duration": 3.946
+    },
+    {
+      "text": " it is loss functions. So what will we",
+      "start": 897.452,
+      "duration": 3.707
+    },
+    {
+      "text": " do next? We will finalize a loss",
+      "start": 900.212,
+      "duration": 4.163
+    },
+    {
+      "text": " function for the perceptron. Okay? We",
+      "start": 903.449,
+      "duration": 4.858
+    },
+    {
+      "text": " will do that next. So guys, let's try",
+      "start": 907.366,
+      "duration": 4.268
+    },
+    {
+      "text": " to find a loss function for our",
+      "start": 910.708,
+      "duration": 3.3
+    },
+    {
+      "text": " perceptron. Okay? So, as I said, your",
+      "start": 913.082,
+      "duration": 6.636
+    },
+    {
+      "text": " loss function is actually a",
+      "start": 918.793,
+      "duration": 3.015
+    },
+    {
+      "text": " mathematical function of W1, W2, and B,",
+      "start": 920.883,
+      "duration": 3.911
+    },
+    {
+      "text": " and its job is that for every W1, W2,",
+      "start": 923.869,
+      "duration": 3.762
+    },
+    {
+      "text": " and B—basically for every line—it",
+      "start": 926.706,
+      "duration": 3.762
+    },
+    {
+      "text": " will give you a number. And this number",
+      "start": 929.542,
+      "duration": 5.769
+    },
+    {
+      "text": " tells you the error of your model. Okay",
+      "start": 934.387,
+      "duration": 4.216
+    },
+    {
+      "text": "? So, let me give you a very simple",
+      "start": 937.603,
+      "duration": 3.251
+    },
+    {
+      "text": " example of a loss function. A very",
+      "start": 939.917,
+      "duration": 3.411
+    },
+    {
+      "text": " simple example could be. Number of",
+      "start": 942.402,
+      "duration": 4.67
+    },
+    {
+      "text": " misclassified points. This can also be",
+      "start": 946.203,
+      "duration": 5.902
+    },
+    {
+      "text": " an error function. Okay? I mean, what",
+      "start": 951.194,
+      "duration": 5.384
+    },
+    {
+      "text": " will we do? When we draw any line, we",
+      "start": 955.628,
+      "duration": 3.514
+    },
+    {
+      "text": " will count how many mistakes it made.",
+      "start": 958.206,
+      "duration": 3.373
+    },
+    {
+      "text": " Like, let's say this is your line. Okay",
+      "start": 961.079,
+      "duration": 4.028
+    },
+    {
+      "text": "? So there will be a W1, W2, and B",
+      "start": 964.107,
+      "duration": 3.746
+    },
+    {
+      "text": " attached to this. Now, if you see, it",
+      "start": 966.932,
+      "duration": 4.879
+    },
+    {
+      "text": " made 1, 2, 3, 4, 5, 6, and 7 mistakes.",
+      "start": 970.914,
+      "duration": 4.905
+    },
+    {
+      "text": " Okay? So for this line, the output of",
+      "start": 975.199,
+      "duration": 3.892
+    },
+    {
+      "text": " our error function is seven. Because",
+      "start": 978.143,
+      "duration": 3.636
+    },
+    {
+      "text": " the number of misclassified points is",
+      "start": 980.839,
+      "duration": 3.22
+    },
+    {
+      "text": " seven. So now what did you do? You made",
+      "start": 983.119,
+      "duration": 3.481
+    },
+    {
+      "text": " changes to W1, W2, and B, and you came",
+      "start": 985.662,
+      "duration": 3.381
+    },
+    {
+      "text": " here. Let's say you came here. This is",
+      "start": 988.105,
+      "duration": 5.068
+    },
+    {
+      "text": " your new line. Okay? Now you will count",
+      "start": 992.249,
+      "duration": 4.053
+    },
+    {
+      "text": " again. 1 2 3 4 5, so for this new line,",
+      "start": 995.364,
+      "duration": 4.413
+    },
+    {
+      "text": " the number of misclassified points is",
+      "start": 998.854,
+      "duration": 3.843
+    },
+    {
+      "text": " five. So you can conclude that this",
+      "start": 1001.774,
+      "duration": 4.076
+    },
+    {
+      "text": " white line is better than this blue",
+      "start": 1004.922,
+      "duration": 3.524
+    },
+    {
+      "text": " line. Okay? But this is a very",
+      "start": 1007.518,
+      "duration": 3.906
+    },
+    {
+      "text": " simplistic loss function. You can",
+      "start": 1010.478,
+      "duration": 4.066
+    },
+    {
+      "text": " easily think of a better loss function.",
+      "start": 1013.593,
+      "duration": 2.926
+    },
+    {
+      "text": " Let me show you. The problem with this",
+      "start": 1016.199,
+      "duration": 3.88
+    },
+    {
+      "text": " loss function is that it gives equal",
+      "start": 1019.155,
+      "duration": 3.71
+    },
+    {
+      "text": " value to all misclassified points. That",
+      "start": 1021.94,
+      "duration": 4.619
+    },
+    {
+      "text": " is why we are saying 1 + 1 + 1 + 1 + 1",
+      "start": 1025.629,
+      "duration": 3.66
+    },
+    {
+      "text": " = 5. This means that all the mistakes",
+      "start": 1028.359,
+      "duration": 4.132
+    },
+    {
+      "text": " it is making are equal. But that is not",
+      "start": 1031.557,
+      "duration": 3.428
+    },
+    {
+      "text": " the case. If you think about it, a",
+      "start": 1034.039,
+      "duration": 3.513
+    },
+    {
+      "text": " misclassified point that is further",
+      "start": 1036.622,
+      "duration": 3.44
+    },
+    {
+      "text": " from the line is a bigger mistake for",
+      "start": 1039.132,
+      "duration": 3.58
+    },
+    {
+      "text": " this line. And a misclassified point",
+      "start": 1041.781,
+      "duration": 3.874
+    },
+    {
+      "text": " that is closer to the line is a smaller",
+      "start": 1044.72,
+      "duration": 3.551
+    },
+    {
+      "text": " mistake. So we should also consider the",
+      "start": 1047.336,
+      "duration": 3.24
+    },
+    {
+      "text": " magnitude of the mistake. Okay? So let",
+      "start": 1049.628,
+      "duration": 3.313
+    },
+    {
+      "text": " me tell you a second loss function. A",
+      "start": 1052.003,
+      "duration": 3.325
+    },
+    {
+      "text": " second loss function could be this:",
+      "start": 1054.391,
+      "duration": 3.192
+    },
+    {
+      "text": " what do you do? You calculate the",
+      "start": 1056.646,
+      "duration": 3.145
+    },
+    {
+      "text": " distance of the misclassified point.",
+      "start": 1058.852,
+      "duration": 3.187
+    },
+    {
+      "text": " For example, let's say you have two",
+      "start": 1061.179,
+      "duration": 3.185
+    },
+    {
+      "text": " misclassified points. This is a red",
+      "start": 1063.427,
+      "duration": 3.581
+    },
+    {
+      "text": " misclassified point. This is a",
+      "start": 1066.066,
+      "duration": 3.72
+    },
+    {
+      "text": " correctly classified red point. This is",
+      "start": 1068.885,
+      "duration": 4.974
+    },
+    {
+      "text": " a correctly classified green point and",
+      "start": 1072.918,
+      "duration": 3.224
+    },
+    {
+      "text": " this is your incorrectly classified",
+      "start": 1075.2,
+      "duration": 3.049
+    },
+    {
+      "text": " green point. Okay? So there are two",
+      "start": 1077.307,
+      "duration": 3.156
+    },
+    {
+      "text": " mistakes happening here. This is one",
+      "start": 1079.511,
+      "duration": 3.069
+    },
+    {
+      "text": " mistake and this is the second mistake.",
+      "start": 1081.631,
+      "duration": 2.989
+    },
+    {
+      "text": " So what you do is, rather than counting",
+      "start": 1084.22,
+      "duration": 3.532
+    },
+    {
+      "text": " how many mistakes were made, you",
+      "start": 1086.816,
+      "duration": 3.078
+    },
+    {
+      "text": " calculate the perpendicular distance of",
+      "start": 1088.959,
+      "duration": 3.532
+    },
+    {
+      "text": " all these mistakes from the line. Let's",
+      "start": 1091.556,
+      "duration": 4.748
+    },
+    {
+      "text": " call it D1. And this is D2. Okay? Now,",
+      "start": 1095.366,
+      "duration": 7.038
+    },
+    {
+      "text": " the more, let's say the distance here",
+      "start": 1101.504,
+      "duration": 4.714
+    },
+    {
+      "text": " is 10 and here it is 13, so your total",
+      "start": 1105.319,
+      "duration": 4.814
+    },
+    {
+      "text": " error will be 10 + 13, so this loss",
+      "start": 1109.233,
+      "duration": 4.514
+    },
+    {
+      "text": " function is better than the previous",
+      "start": 1112.847,
+      "duration": 4.614
+    },
+    {
+      "text": " one. Why? Because here you are kind of",
+      "start": 1116.561,
+      "duration": 4.236
+    },
+    {
+      "text": " bringing the magnitude of the mistake",
+      "start": 1119.863,
+      "duration": 3.43
+    },
+    {
+      "text": " you are making into your loss function.",
+      "start": 1122.358,
+      "duration": 3.562
+    },
+    {
+      "text": " Okay? So this will guide you in a",
+      "start": 1125.339,
+      "duration": 3.394
+    },
+    {
+      "text": " better way to reach the right line.",
+      "start": 1127.783,
+      "duration": 2.756
+    },
+    {
+      "text": " Although the loss function used in",
+      "start": 1131.259,
+      "duration": 4.267
+    },
+    {
+      "text": " perceptron, the error is not based on",
+      "start": 1134.622,
+      "duration": 4.556
+    },
+    {
+      "text": " distance. Okay? Something else is used",
+      "start": 1138.274,
+      "duration": 5.376
+    },
+    {
+      "text": " there. I will tell you what is used. So",
+      "start": 1142.735,
+      "duration": 4.11
+    },
+    {
+      "text": " let's say we have a line. At this point",
+      "start": 1145.938,
+      "duration": 5.395
+    },
+    {
+      "text": ", let's assume its equation is 2x + 3y",
+      "start": 1150.333,
+      "duration": 4.546
+    },
+    {
+      "text": " + 4 = 0. Okay? And there is a",
+      "start": 1153.972,
+      "duration": 4.938
+    },
+    {
+      "text": " misclassified point here and a",
+      "start": 1158.011,
+      "duration": 4.023
+    },
+    {
+      "text": " misclassified point here as well. Let's",
+      "start": 1161.134,
+      "duration": 6.094
+    },
+    {
+      "text": " assume for a moment that the",
+      "start": 1166.306,
+      "duration": 3.184
+    },
+    {
+      "text": " coordinates of this misclassified point",
+      "start": 1168.568,
+      "duration": 4.042
+    },
+    {
+      "text": " are, let's say, 4, 6 and the",
+      "start": 1171.688,
+      "duration": 3.183
+    },
+    {
+      "text": " coordinates of this other misclassified",
+      "start": 1173.949,
+      "duration": 4.042
+    },
+    {
+      "text": " point are 1, 1 or maybe we assume it's",
+      "start": 1177.069,
+      "duration": 3.964
+    },
+    {
+      "text": " in the negative. Assume it's right here",
+      "start": 1180.111,
+      "duration": 6.174
+    },
+    {
+      "text": ". It's at this spot and its coordinates",
+      "start": 1185.285,
+      "duration": 5.912
+    },
+    {
+      "text": " are -2, -2, okay? These are the",
+      "start": 1190.294,
+      "duration": 4.107
+    },
+    {
+      "text": " coordinates for the points on both our",
+      "start": 1193.457,
+      "duration": 3.112
+    },
+    {
+      "text": " lines. Okay? So what do you do? Rather",
+      "start": 1195.625,
+      "duration": 3.396
+    },
+    {
+      "text": " than calculating this distance, what",
+      "start": 1198.082,
+      "duration": 3.206
+    },
+    {
+      "text": " you do is you find something else which",
+      "start": 1200.349,
+      "duration": 3.39
+    },
+    {
+      "text": " is actually proportional to this",
+      "start": 1202.8,
+      "duration": 2.961
+    },
+    {
+      "text": " distance. Okay? So, what do you do? You",
+      "start": 1204.822,
+      "duration": 3.373
+    },
+    {
+      "text": " take the coordinates and plug them into",
+      "start": 1207.24,
+      "duration": 2.761
+    },
+    {
+      "text": " the equation of this line. So, for this",
+      "start": 1209.046,
+      "duration": 5.158
+    },
+    {
+      "text": " point you would write 2*4 + 3*6 + 4,",
+      "start": 1213.34,
+      "duration": 5.877
+    },
+    {
+      "text": " you find this quantity and it would be",
+      "start": 1218.352,
+      "duration": 6.148
+    },
+    {
+      "text": " 8 + 18, 30, okay? Similarly, for this",
+      "start": 1223.635,
+      "duration": 7.831
+    },
+    {
+      "text": " point also, you will find 2*-2 + 3*-2 +",
+      "start": 1230.587,
+      "duration": 5.695
+    },
+    {
+      "text": " 4, so this would be -4 -6 -10, -6, okay",
+      "start": 1235.403,
+      "duration": 5.695
+    },
+    {
+      "text": "? Now what will you do? Since this is",
+      "start": 1240.098,
+      "duration": 4.921
+    },
+    {
+      "text": " negative, you will take its absolute",
+      "start": 1244.077,
+      "duration": 3.106
+    },
+    {
+      "text": " value and make it six, and then to",
+      "start": 1246.241,
+      "duration": 2.989
+    },
+    {
+      "text": " calculate the total error, you will do",
+      "start": 1248.288,
+      "duration": 3.223
+    },
+    {
+      "text": " 30 + 6. Okay? So this is actually used",
+      "start": 1250.569,
+      "duration": 5.623
+    },
+    {
+      "text": " in the perceptron's loss function, this",
+      "start": 1255.26,
+      "duration": 3.685
+    },
+    {
+      "text": " technique is used, and if you want, you",
+      "start": 1258.014,
+      "duration": 3.685
+    },
+    {
+      "text": " can validate that what we did is",
+      "start": 1260.767,
+      "duration": 3.203
+    },
+    {
+      "text": " proportional to calculating the",
+      "start": 1263.039,
+      "duration": 3.134
+    },
+    {
+      "text": " distance, meaning the point with the",
+      "start": 1265.242,
+      "duration": 3.478
+    },
+    {
+      "text": " greater distance will have a higher",
+      "start": 1267.789,
+      "duration": 3.409
+    },
+    {
+      "text": " value for this operation as well. Okay?",
+      "start": 1270.267,
+      "duration": 4.413
+    },
+    {
+      "text": " You can verify this. Now, in my opinion",
+      "start": 1273.78,
+      "duration": 4.419
+    },
+    {
+      "text": ", this was implemented instead of",
+      "start": 1277.199,
+      "duration": 2.908
+    },
+    {
+      "text": " calculating distance because",
+      "start": 1279.165,
+      "duration": 2.619
+    },
+    {
+      "text": " calculating distance is a bit complex.",
+      "start": 1280.842,
+      "duration": 3.197
+    },
+    {
+      "text": " And this is a very simple operation.",
+      "start": 1285.119,
+      "duration": 2.96
+    },
+    {
+      "text": " This is basically a dot product. So",
+      "start": 1287.179,
+      "duration": 5.113
+    },
+    {
+      "text": " that is why you use this one rather",
+      "start": 1291.348,
+      "duration": 2.97
+    },
+    {
+      "text": " than using distance. Okay? Now what",
+      "start": 1293.374,
+      "duration": 4.115
+    },
+    {
+      "text": " will I do? I will show you the actual",
+      "start": 1296.535,
+      "duration": 4.077
+    },
+    {
+      "text": " loss function that Scikit-Learn has",
+      "start": 1299.701,
+      "duration": 4.112
+    },
+    {
+      "text": " implemented and then we will work on it",
+      "start": 1302.902,
+      "duration": 4.469
+    },
+    {
+      "text": ". So guys, now I will show you what the",
+      "start": 1306.371,
+      "duration": 4.05
+    },
+    {
+      "text": " actual loss function of the perceptron",
+      "start": 1309.494,
+      "duration": 3.774
+    },
+    {
+      "text": " is. Okay? So what is on your screen is",
+      "start": 1312.341,
+      "duration": 5.032
+    },
+    {
+      "text": " a Scikit-Learn documentation page where",
+      "start": 1316.448,
+      "duration": 3.917
+    },
+    {
+      "text": " we are on the SGD page. SGD is",
+      "start": 1319.44,
+      "duration": 4.979
+    },
+    {
+      "text": " Stochastic Gradient Descent, which is",
+      "start": 1323.492,
+      "duration": 3.709
+    },
+    {
+      "text": " an optimization technique that you use",
+      "start": 1326.274,
+      "duration": 3.782
+    },
+    {
+      "text": " to find the best parameters. We will",
+      "start": 1329.13,
+      "duration": 5.627
+    },
+    {
+      "text": " have a discussion about this; whatever",
+      "start": 1333.828,
+      "duration": 3.707
+    },
+    {
+      "text": " is here, you have a general error",
+      "start": 1336.606,
+      "duration": 3.35
+    },
+    {
+      "text": " function for SGD which has two",
+      "start": 1339.027,
+      "duration": 3.137
+    },
+    {
+      "text": " components. One is this L function and",
+      "start": 1341.235,
+      "duration": 4.675
+    },
+    {
+      "text": " one is this regularization parameter.",
+      "start": 1344.978,
+      "duration": 3.521
+    },
+    {
+      "text": " Now, look here, it is clearly written",
+      "start": 1347.659,
+      "duration": 4.364
+    },
+    {
+      "text": " that when SGD works on a perceptron,",
+      "start": 1351.114,
+      "duration": 4.274
+    },
+    {
+      "text": " its loss function becomes this. Okay?",
+      "start": 1354.479,
+      "duration": 5.88
+    },
+    {
+      "text": " Which is very close to the hinge loss",
+      "start": 1359.467,
+      "duration": 4.369
+    },
+    {
+      "text": " function if you look at it. Right? The",
+      "start": 1362.927,
+      "duration": 4.227
+    },
+    {
+      "text": " only difference is that here there is a",
+      "start": 1366.197,
+      "duration": 2.672
+    },
+    {
+      "text": " one minus. Here there is no one minus.",
+      "start": 1367.912,
+      "duration": 3.187
+    },
+    {
+      "text": " Right? So, it is clearly visible to me",
+      "start": 1370.299,
+      "duration": 4.39
+    },
+    {
+      "text": " from here that the loss function of the",
+      "start": 1373.754,
+      "duration": 3.503
+    },
+    {
+      "text": " perceptron implemented by Scikit-learn",
+      "start": 1376.321,
+      "duration": 3.44
+    },
+    {
+      "text": " is this. Right? So, let me do one thing",
+      "start": 1378.825,
+      "duration": 3.811
+    },
+    {
+      "text": ". I will write this more clearly. So,",
+      "start": 1381.636,
+      "duration": 4.522
+    },
+    {
+      "text": " according to that documentation, your",
+      "start": 1385.224,
+      "duration": 3.447
+    },
+    {
+      "text": " loss function is the loss function of",
+      "start": 1387.737,
+      "duration": 3.446
+    },
+    {
+      "text": " W1, W2, and B, and this is its entire",
+      "start": 1390.249,
+      "duration": 6.563
+    },
+    {
+      "text": " formula. LYI F XI Plus alpha R W1 W2",
+      "start": 1395.877,
+      "duration": 17.322
+    },
+    {
+      "text": " Right? Now, we can ignore this term at",
+      "start": 1414.179,
+      "duration": 4.799
+    },
+    {
+      "text": " this point because this is for",
+      "start": 1418.045,
+      "duration": 3.031
+    },
+    {
+      "text": " regularization. We are currently",
+      "start": 1420.143,
+      "duration": 4.201
+    },
+    {
+      "text": " assuming that we are not using",
+      "start": 1423.405,
+      "duration": 2.848
+    },
+    {
+      "text": " regularization. Right? So, our loss",
+      "start": 1425.315,
+      "duration": 3.445
+    },
+    {
+      "text": " function is just this much. Now, let's",
+      "start": 1427.825,
+      "duration": 4.414
+    },
+    {
+      "text": " simplify this a bit. In this loss",
+      "start": 1431.319,
+      "duration": 3.764
+    },
+    {
+      "text": " function, this thing here this thing",
+      "start": 1434.156,
+      "duration": 6.2
+    },
+    {
+      "text": " here is actually, for the perceptron,",
+      "start": 1439.415,
+      "duration": 3.209
+    },
+    {
+      "text": " what I am writing. Max of 0, -yi f xi.",
+      "start": 1441.684,
+      "duration": 5.776
+    },
+    {
+      "text": " Now, there is just one thing not clear:",
+      "start": 1447.837,
+      "duration": 5.652
+    },
+    {
+      "text": " what is this fxi? fxi is basically w1",
+      "start": 1452.608,
+      "duration": 7.172
+    },
+    {
+      "text": " x1 + w2 x2 + b, which is the dot",
+      "start": 1458.925,
+      "duration": 5.942
+    },
+    {
+      "text": " product we have been calling z so far.",
+      "start": 1463.948,
+      "duration": 4.091
+    },
+    {
+      "text": " Right? So, fxi is the same. So, this is",
+      "start": 1467.156,
+      "duration": 4.296
+    },
+    {
+      "text": " the loss function actually. If you want",
+      "start": 1470.528,
+      "duration": 4.888
+    },
+    {
+      "text": ", you can go back up and replace it to",
+      "start": 1474.416,
+      "duration": 3.963
+    },
+    {
+      "text": " write it in such a way that our loss",
+      "start": 1477.457,
+      "duration": 3.807
+    },
+    {
+      "text": " function is 1/n from i = 1 to n Max of",
+      "start": 1480.342,
+      "duration": 6.487
+    },
+    {
+      "text": " 0, -yi f xi, instead of that, I'm not",
+      "start": 1485.98,
+      "duration": 6.606
+    },
+    {
+      "text": " writing this for now. I will simply",
+      "start": 1491.738,
+      "duration": 5.636
+    },
+    {
+      "text": " write it like this. This is our loss",
+      "start": 1496.438,
+      "duration": 4.121
+    },
+    {
+      "text": " function, guys. This is our loss",
+      "start": 1499.64,
+      "duration": 4.545
+    },
+    {
+      "text": " function. Right? And obviously, if you",
+      "start": 1503.26,
+      "duration": 5.49
+    },
+    {
+      "text": " understand a couple more things. Like 1",
+      "start": 1507.811,
+      "duration": 4.852
+    },
+    {
+      "text": "/n, here n is the number of rows in the",
+      "start": 1511.663,
+      "duration": 6.231
+    },
+    {
+      "text": " data. Right? So, basically, we are",
+      "start": 1517.028,
+      "duration": 4.533
+    },
+    {
+      "text": " picking up every row and calculating",
+      "start": 1520.623,
+      "duration": 3.234
+    },
+    {
+      "text": " this for it, and then we are adding up",
+      "start": 1522.919,
+      "duration": 3.357
+    },
+    {
+      "text": " the values for all points and dividing",
+      "start": 1525.338,
+      "duration": 3.357
+    },
+    {
+      "text": " by n to get the average error. Right?",
+      "start": 1527.757,
+      "duration": 3.942
+    },
+    {
+      "text": " Also, one more thing to understand here",
+      "start": 1531.539,
+      "duration": 4.171
+    },
+    {
+      "text": " is that this loss function depends on",
+      "start": 1534.791,
+      "duration": 4.009
+    },
+    {
+      "text": " three things. W1, W2, and B; just think",
+      "start": 1537.881,
+      "duration": 4.987
+    },
+    {
+      "text": ", what is this fxi? These three things.",
+      "start": 1541.868,
+      "duration": 3.832
+    },
+    {
+      "text": " Right? W1 x1 + W2 x2 + B, right? So,",
+      "start": 1544.8,
+      "duration": 4.513
+    },
+    {
+      "text": " the value of this entire loss function",
+      "start": 1548.371,
+      "duration": 3.212
+    },
+    {
+      "text": " will only change when you make changes",
+      "start": 1550.641,
+      "duration": 3.212
+    },
+    {
+      "text": " to the values of W1, W2, or B. Because",
+      "start": 1552.911,
+      "duration": 3.212
+    },
+    {
+      "text": " the other things here are constant. If",
+      "start": 1555.181,
+      "duration": 4.021
+    },
+    {
+      "text": " you look at it, this yi of yours is a",
+      "start": 1558.273,
+      "duration": 3.635
+    },
+    {
+      "text": " constant. What is Yi? The output in",
+      "start": 1560.979,
+      "duration": 4.567
+    },
+    {
+      "text": " your data, like we had data for CGPA,",
+      "start": 1564.616,
+      "duration": 3.582
+    },
+    {
+      "text": " IQ, and whether placement happened or",
+      "start": 1567.267,
+      "duration": 3.583
+    },
+    {
+      "text": " not? So, whether this placement",
+      "start": 1569.919,
+      "duration": 2.936
+    },
+    {
+      "text": " happened or not? This is your yi for",
+      "start": 1571.891,
+      "duration": 2.91
+    },
+    {
+      "text": " every row. Right? Similarly, when you",
+      "start": 1573.866,
+      "duration": 3.62
+    },
+    {
+      "text": " are calculating fxi, look here too;",
+      "start": 1576.55,
+      "duration": 3.24
+    },
+    {
+      "text": " what are x1 and x2? x1 and x2 are your",
+      "start": 1578.854,
+      "duration": 3.551
+    },
+    {
+      "text": " CGPA and IQ values, which are again",
+      "start": 1581.459,
+      "duration": 2.86
+    },
+    {
+      "text": " constant in the data. What is the only",
+      "start": 1583.372,
+      "duration": 2.873
+    },
+    {
+      "text": " thing you can change? W1, W2, and b,",
+      "start": 1585.286,
+      "duration": 2.998
+    },
+    {
+      "text": " and whenever you change these, the",
+      "start": 1587.356,
+      "duration": 3.441
+    },
+    {
+      "text": " value of this L will change. Now, our",
+      "start": 1589.869,
+      "duration": 4.096
+    },
+    {
+      "text": " task is to find values for W1, W2, and",
+      "start": 1593.059,
+      "duration": 7.254
+    },
+    {
+      "text": " B for which the value of this loss",
+      "start": 1599.403,
+      "duration": 4.08
+    },
+    {
+      "text": " function becomes minimum. So, if we",
+      "start": 1602.574,
+      "duration": 7.077
+    },
+    {
+      "text": " write this in a completely mathematical",
+      "start": 1608.743,
+      "duration": 4.607
+    },
+    {
+      "text": " form, we need to find the argmin of W1,",
+      "start": 1612.443,
+      "duration": 4.607
+    },
+    {
+      "text": " W2, and B so that the value of this",
+      "start": 1616.142,
+      "duration": 4.237
+    },
+    {
+      "text": " entire expression is minimized. Right?",
+      "start": 1619.471,
+      "duration": 9.107
+    },
+    {
+      "text": " We need to find a value of W1, W2, and",
+      "start": 1628.279,
+      "duration": 3.772
+    },
+    {
+      "text": " B for which the value of this",
+      "start": 1631.124,
+      "duration": 3.116
+    },
+    {
+      "text": " expression is minimum. This is our",
+      "start": 1633.313,
+      "duration": 4.603
+    },
+    {
+      "text": " mathematical formulation of this loss",
+      "start": 1636.97,
+      "duration": 3.007
+    },
+    {
+      "text": " function. Right? And do you know how",
+      "start": 1639.031,
+      "duration": 3.983
+    },
+    {
+      "text": " this is done? To do this, we use",
+      "start": 1642.085,
+      "duration": 4.794
+    },
+    {
+      "text": " gradient descent. Right? We use",
+      "start": 1645.981,
+      "duration": 5.604
+    },
+    {
+      "text": " gradient descent, and that is what we",
+      "start": 1650.64,
+      "duration": 3.016
+    },
+    {
+      "text": " will do next. But before that, we will",
+      "start": 1652.71,
+      "duration": 5.1
+    },
+    {
+      "text": " try to understand how this math",
+      "start": 1656.893,
+      "duration": 3.572
+    },
+    {
+      "text": " function, which is a kind of hinge loss",
+      "start": 1659.548,
+      "duration": 4.236
+    },
+    {
+      "text": ", works and what the geometric",
+      "start": 1662.784,
+      "duration": 3.489
+    },
+    {
+      "text": " intuition of this is. What the",
+      "start": 1665.356,
+      "duration": 4.304
+    },
+    {
+      "text": " geometric intuition of this whole thing",
+      "start": 1668.7,
+      "duration": 2.56
+    },
+    {
+      "text": " is, we will understand that. So guys,",
+      "start": 1670.3,
+      "duration": 2.817
+    },
+    {
+      "text": " now let me break down the loss function",
+      "start": 1672.179,
+      "duration": 3.43
+    },
+    {
+      "text": " for you a little bit. Because honestly,",
+      "start": 1674.671,
+      "duration": 3.322
+    },
+    {
+      "text": " it looks a bit scary. Right? And it's",
+      "start": 1677.043,
+      "duration": 3.319
+    },
+    {
+      "text": " not clear what this loss function is",
+      "start": 1679.407,
+      "duration": 2.632
+    },
+    {
+      "text": " trying to say. So we will now",
+      "start": 1681.084,
+      "duration": 2.641
+    },
+    {
+      "text": " understand what this loss function",
+      "start": 1682.773,
+      "duration": 2.619
+    },
+    {
+      "text": " wants to say. Right? So, let's",
+      "start": 1684.439,
+      "duration": 3.076
+    },
+    {
+      "text": " understand the setup first. We will",
+      "start": 1686.57,
+      "duration": 3.258
+    },
+    {
+      "text": " assume that this is a dataset that has",
+      "start": 1688.896,
+      "duration": 3.55
+    },
+    {
+      "text": " two input columns and one output column",
+      "start": 1691.513,
+      "duration": 3.618
+    },
+    {
+      "text": ". And our data is represented in such a",
+      "start": 1694.131,
+      "duration": 4.918
+    },
+    {
+      "text": " way that there are n rows, first of all",
+      "start": 1698.144,
+      "duration": 4.7
+    },
+    {
+      "text": ". Right? And this is the first row,",
+      "start": 1701.844,
+      "duration": 3.386
+    },
+    {
+      "text": " this is the second row, and so on.",
+      "start": 1704.268,
+      "duration": 2.271
+    },
+    {
+      "text": " Somewhere in between, there will be an",
+      "start": 1705.649,
+      "duration": 2.325
+    },
+    {
+      "text": " ith row. And we are representing each",
+      "start": 1707.009,
+      "duration": 3.314
+    },
+    {
+      "text": " of our values in this way. I J, where I",
+      "start": 1709.392,
+      "duration": 4.037
+    },
+    {
+      "text": " represents its row number and J",
+      "start": 1712.5,
+      "duration": 3.195
+    },
+    {
+      "text": " represents its column number. Right? So",
+      "start": 1714.766,
+      "duration": 3.693
+    },
+    {
+      "text": " X1 means the first column of the first",
+      "start": 1717.51,
+      "duration": 2.917
+    },
+    {
+      "text": " row. X12 means the second column of the",
+      "start": 1719.478,
+      "duration": 3.052
+    },
+    {
+      "text": " first row, and so on. Right? First, you",
+      "start": 1721.579,
+      "duration": 3.508
+    },
+    {
+      "text": " need to understand this setup. After",
+      "start": 1724.132,
+      "duration": 2.981
+    },
+    {
+      "text": " that, what have I done? I have written",
+      "start": 1726.16,
+      "duration": 3.077
+    },
+    {
+      "text": " my loss function here. And here, I have",
+      "start": 1728.3,
+      "duration": 3.529
+    },
+    {
+      "text": " also defined what fxi means. fxi means",
+      "start": 1730.892,
+      "duration": 4.765
+    },
+    {
+      "text": " w1 multiplied by xi1, the first column",
+      "start": 1734.762,
+      "duration": 4.96
+    },
+    {
+      "text": " value, and xi2 means the second column",
+      "start": 1738.826,
+      "duration": 4.96
+    },
+    {
+      "text": " value of the ith row. Right? You need",
+      "start": 1742.89,
+      "duration": 5.021
+    },
+    {
+      "text": " to understand this first. Now, let’s",
+      "start": 1746.966,
+      "duration": 3.397
+    },
+    {
+      "text": " break down this loss function a bit.",
+      "start": 1749.426,
+      "duration": 3.293
+    },
+    {
+      "text": " The scariest thing visible in this loss",
+      "start": 1751.9,
+      "duration": 3.764
+    },
+    {
+      "text": " function is this. max (0, 1-yi*f (xi))",
+      "start": 1754.735,
+      "duration": 7.844
+    },
+    {
+      "text": " For a moment, let's assume this entire",
+      "start": 1764.099,
+      "duration": 5.912
+    },
+    {
+      "text": " 1-yi*f (xi) is x. Right? Here it is. So",
+      "start": 1769.141,
+      "duration": 6.615
+    },
+    {
+      "text": " now, this is a simple function. Just",
+      "start": 1774.806,
+      "duration": 2.8
+    },
+    {
+      "text": " think about it. What is happening here",
+      "start": 1776.643,
+      "duration": 4.493
+    },
+    {
+      "text": " is that if your x value is greater than",
+      "start": 1780.231,
+      "duration": 4.719
+    },
+    {
+      "text": " or equal to 0, the output will be x,",
+      "start": 1784.045,
+      "duration": 4.432
+    },
+    {
+      "text": " and if x is less than 0, the output",
+      "start": 1787.573,
+      "duration": 4.337
+    },
+    {
+      "text": " will be 0. It is just this simple",
+      "start": 1791.005,
+      "duration": 4.302
+    },
+    {
+      "text": " function. So in short, if the value of",
+      "start": 1794.358,
+      "duration": 5.858
+    },
+    {
+      "text": " yi*f (xi) is greater than or equal to 0",
+      "start": 1799.329,
+      "duration": 5.396
+    },
+    {
+      "text": ", the output of this whole thing will",
+      "start": 1803.725,
+      "duration": 5.171
+    },
+    {
+      "text": " be that number. Right? And if this",
+      "start": 1808.009,
+      "duration": 5.239
+    },
+    {
+      "text": " whole thing is less than 0, then the",
+      "start": 1812.309,
+      "duration": 3.185
+    },
+    {
+      "text": " output will be 0. That’s it. This",
+      "start": 1814.555,
+      "duration": 2.98
+    },
+    {
+      "text": " function is trying to say just that.",
+      "start": 1816.583,
+      "duration": 2.714
+    },
+    {
+      "text": " Right? I guess you are following along",
+      "start": 1818.397,
+      "duration": 2.815
+    },
+    {
+      "text": " so far. Pick up a pen and paper, and",
+      "start": 1820.253,
+      "duration": 2.465
+    },
+    {
+      "text": " you will understand. Now, what am I",
+      "start": 1821.757,
+      "duration": 2.451
+    },
+    {
+      "text": " doing? I am going to break down this",
+      "start": 1823.249,
+      "duration": 2.747
+    },
+    {
+      "text": " loss function. And I will assume we",
+      "start": 1825.044,
+      "duration": 3.253
+    },
+    {
+      "text": " only have two points. Not n points. We",
+      "start": 1827.359,
+      "duration": 3.916
+    },
+    {
+      "text": " only have two points. So if you break",
+      "start": 1830.344,
+      "duration": 4.8
+    },
+    {
+      "text": " down this loss function, it becomes L =",
+      "start": 1834.233,
+      "duration": 4.497
+    },
+    {
+      "text": " 1/2, since we only have two points. And",
+      "start": 1837.82,
+      "duration": 5.363
+    },
+    {
+      "text": " then I will break down the sigma. First",
+      "start": 1842.251,
+      "duration": 3.755
+    },
+    {
+      "text": ", I will write it for the first point.",
+      "start": 1845.006,
+      "duration": 2.733
+    },
+    {
+      "text": " So for the first point, it becomes max",
+      "start": 1847.615,
+      "duration": 8.178
+    },
+    {
+      "text": " (0, 1-y1*f (x1)), plus max (0, 1-y2*f (",
+      "start": 1854.982,
+      "duration": 8.368
+    },
+    {
+      "text": "x2)). That is it for our two points.",
+      "start": 1862.35,
+      "duration": 8.127
+    },
+    {
+      "text": " Now you can imagine that even if you",
+      "start": 1870.699,
+      "duration": 2.841
+    },
+    {
+      "text": " have n points, you will do the same",
+      "start": 1872.591,
+      "duration": 2.79
+    },
+    {
+      "text": " thing. You will keep adding terms and",
+      "start": 1874.432,
+      "duration": 3.599
+    },
+    {
+      "text": " this n will keep updating. Right? Now",
+      "start": 1877.078,
+      "duration": 3.421
+    },
+    {
+      "text": " what will fx2 be? If you put 2 instead",
+      "start": 1879.592,
+      "duration": 4.625
+    },
+    {
+      "text": " of i here, then fx2 will be w1. x21 +",
+      "start": 1883.314,
+      "duration": 8.213
+    },
+    {
+      "text": " w2*x22 + b. Now here, you can see how",
+      "start": 1890.844,
+      "duration": 7.178
+    },
+    {
+      "text": " easily this is being calculated. We are",
+      "start": 1897.086,
+      "duration": 3.841
+    },
+    {
+      "text": " talking about this row. The second one.",
+      "start": 1899.988,
+      "duration": 4.051
+    },
+    {
+      "text": " Right? So guys, we have understood the",
+      "start": 1903.33,
+      "duration": 3.179
+    },
+    {
+      "text": " loss function by breaking it down a",
+      "start": 1905.558,
+      "duration": 2.72
+    },
+    {
+      "text": " little. Now, I will explain the",
+      "start": 1907.327,
+      "duration": 3.458
+    },
+    {
+      "text": " geometric intuition of this loss",
+      "start": 1909.862,
+      "duration": 3.458
+    },
+    {
+      "text": " function, what it’s actually telling",
+      "start": 1912.397,
+      "duration": 3.919
+    },
+    {
+      "text": " us geometrically. Okay? So, what have I",
+      "start": 1915.393,
+      "duration": 4.431
+    },
+    {
+      "text": " done? I have taken a dataset that has",
+      "start": 1918.883,
+      "duration": 4.332
+    },
+    {
+      "text": " four points. It's data for just four",
+      "start": 1922.297,
+      "duration": 3.95
+    },
+    {
+      "text": " students. And one thing to notice here",
+      "start": 1925.322,
+      "duration": 4.185
+    },
+    {
+      "text": " is that for students who didn't get",
+      "start": 1928.559,
+      "duration": 2.811
+    },
+    {
+      "text": " placed, I have assigned -1. Not zero.",
+      "start": 1930.422,
+      "duration": 3.554
+    },
+    {
+      "text": " Okay? This is important. The other",
+      "start": 1933.076,
+      "duration": 3.245
+    },
+    {
+      "text": " numbers don't really have any meaning.",
+      "start": 1935.36,
+      "duration": 2.481
+    },
+    {
+      "text": " I just put them there as placeholders.",
+      "start": 1937.019,
+      "duration": 4.641
+    },
+    {
+      "text": " And here are those four points. Okay?",
+      "start": 1940.89,
+      "duration": 3.179
+    },
+    {
+      "text": " Out of these, two students haven't been",
+      "start": 1943.259,
+      "duration": 3.187
+    },
+    {
+      "text": " placed, and two students have been",
+      "start": 1945.502,
+      "duration": 2.908
+    },
+    {
+      "text": " placed. And let's assume we currently",
+      "start": 1947.466,
+      "duration": 3.039
+    },
+    {
+      "text": " have this line. Okay? It is cutting",
+      "start": 1949.552,
+      "duration": 3.338
+    },
+    {
+      "text": " through our data this way, and the W1,",
+      "start": 1951.951,
+      "duration": 3.312
+    },
+    {
+      "text": " W2, and B for this line are written",
+      "start": 1954.324,
+      "duration": 3.129
+    },
+    {
+      "text": " here. Okay? Now, if you think about it,",
+      "start": 1956.514,
+      "duration": 4.077
+    },
+    {
+      "text": " in the context of a line, there can",
+      "start": 1959.653,
+      "duration": 3.167
+    },
+    {
+      "text": " only be four types of points. Okay? One",
+      "start": 1961.882,
+      "duration": 4.695
+    },
+    {
+      "text": " point could be such that the data says",
+      "start": 1965.71,
+      "duration": 7.958
+    },
+    {
+      "text": " placement will happen, and your line",
+      "start": 1972.761,
+      "duration": 4.348
+    },
+    {
+      "text": " also says placement will happen.",
+      "start": 1976.202,
+      "duration": 3.977
+    },
+    {
+      "text": " Basically, the point is falling on the",
+      "start": 1980.219,
+      "duration": 2.593
+    },
+    {
+      "text": " green side of the line. Okay? The",
+      "start": 1981.854,
+      "duration": 3.236
+    },
+    {
+      "text": " second type is where the data says",
+      "start": 1984.16,
+      "duration": 3.392
+    },
+    {
+      "text": " placement will not happen, and yeah, in",
+      "start": 1986.622,
+      "duration": 3.743
+    },
+    {
+      "text": " the first one, the point is this one.",
+      "start": 1989.436,
+      "duration": 3.603
+    },
+    {
+      "text": " Okay? The second point is where it's",
+      "start": 1992.339,
+      "duration": 2.964
+    },
+    {
+      "text": " written in the data that placement",
+      "start": 1994.343,
+      "duration": 2.343
+    },
+    {
+      "text": " won't happen. My model also said",
+      "start": 1995.725,
+      "duration": 2.422
+    },
+    {
+      "text": " placement won't happen. This point here",
+      "start": 1997.191,
+      "duration": 2.895
+    },
+    {
+      "text": ". Okay? The third scenario is that the",
+      "start": 1999.086,
+      "duration": 3.091
+    },
+    {
+      "text": " data says placement will happen. We",
+      "start": 2001.218,
+      "duration": 2.647
+    },
+    {
+      "text": " said it won't happen. Okay? This point",
+      "start": 2002.939,
+      "duration": 4.45
+    },
+    {
+      "text": " here. And lastly, the data says it",
+      "start": 2006.464,
+      "duration": 3.202
+    },
+    {
+      "text": " won't happen. We said it will—this",
+      "start": 2008.726,
+      "duration": 3.143
+    },
+    {
+      "text": " point here. These are the only four",
+      "start": 2010.923,
+      "duration": 2.735
+    },
+    {
+      "text": " types. Okay? Now, for all these four",
+      "start": 2012.695,
+      "duration": 3.84
+    },
+    {
+      "text": " types, what does this thing mean? I",
+      "start": 2015.575,
+      "duration": 3.61
+    },
+    {
+      "text": " will calculate and show you. I will",
+      "start": 2018.272,
+      "duration": 5.635
+    },
+    {
+      "text": " calculate and show this for all these",
+      "start": 2022.948,
+      "duration": 2.532
+    },
+    {
+      "text": " four points. Okay? Let's first take",
+      "start": 2024.522,
+      "duration": 3.522
+    },
+    {
+      "text": " this point. So, for this point, the",
+      "start": 2027.127,
+      "duration": 4.629
+    },
+    {
+      "text": " value of yi will be one. Okay? And what",
+      "start": 2030.839,
+      "duration": 5.618
+    },
+    {
+      "text": " will be the value of fxi? The value of",
+      "start": 2035.522,
+      "duration": 3.711
+    },
+    {
+      "text": " fxi will be w1*x1, the value of the",
+      "start": 2038.316,
+      "duration": 6.259
+    },
+    {
+      "text": " first column, plus w2*x2 + b. Now think",
+      "start": 2043.683,
+      "duration": 5.777
+    },
+    {
+      "text": ", what are you actually doing with this",
+      "start": 2048.46,
+      "duration": 4.733
+    },
+    {
+      "text": " number? When you plug the coordinates",
+      "start": 2052.289,
+      "duration": 4.273
+    },
+    {
+      "text": " into the line equation, I’ve already",
+      "start": 2055.626,
+      "duration": 3.416
+    },
+    {
+      "text": " told you that since this point is on",
+      "start": 2058.105,
+      "duration": 3.289
+    },
+    {
+      "text": " the positive side of the line, this",
+      "start": 2060.458,
+      "duration": 3.225
+    },
+    {
+      "text": " number will be greater than or equal to",
+      "start": 2062.747,
+      "duration": 3.479
+    },
+    {
+      "text": " 0, okay? This means, for this point, yi",
+      "start": 2065.29,
+      "duration": 6.555
+    },
+    {
+      "text": " is one, or you can say it's positive,",
+      "start": 2070.966,
+      "duration": 5.471
+    },
+    {
+      "text": " and what will f (xi) be? It will be",
+      "start": 2075.558,
+      "duration": 5.241
+    },
+    {
+      "text": " positive. So, their product will also",
+      "start": 2079.859,
+      "duration": 4.077
+    },
+    {
+      "text": " be positive, but since you are",
+      "start": 2082.989,
+      "duration": 2.596
+    },
+    {
+      "text": " multiplying it by -1, what will it",
+      "start": 2084.638,
+      "duration": 2.809
+    },
+    {
+      "text": " become overall? Negative. As soon as it",
+      "start": 2086.5,
+      "duration": 5.257
+    },
+    {
+      "text": " becomes negative overall, this becomes",
+      "start": 2090.847,
+      "duration": 4.425
+    },
+    {
+      "text": " max (0, some negative number). So, its",
+      "start": 2094.362,
+      "duration": 4.384
+    },
+    {
+      "text": " output will be zero. This means when",
+      "start": 2097.828,
+      "duration": 4.477
+    },
+    {
+      "text": " you go to calculate this term in the",
+      "start": 2101.358,
+      "duration": 2.933
+    },
+    {
+      "text": " loss function for this point, it will",
+      "start": 2103.345,
+      "duration": 2.986
+    },
+    {
+      "text": " come out equal to 0. This is a very",
+      "start": 2105.385,
+      "duration": 4.226
+    },
+    {
+      "text": " important thing. Pause the video for a",
+      "start": 2108.651,
+      "duration": 2.461
+    },
+    {
+      "text": " moment and understand it yourself. Okay",
+      "start": 2110.146,
+      "duration": 2.747
+    },
+    {
+      "text": "? Now, let's take a second example. The",
+      "start": 2111.893,
+      "duration": 3.326
+    },
+    {
+      "text": " second example is this point, or you",
+      "start": 2114.291,
+      "duration": 3.567
+    },
+    {
+      "text": " can say this point here. Okay? Now, for",
+      "start": 2116.929,
+      "duration": 4.78
+    },
+    {
+      "text": " this point, yi will be -1, meaning",
+      "start": 2120.786,
+      "duration": 3.591
+    },
+    {
+      "text": " negative. And f (xi) will be negative",
+      "start": 2123.453,
+      "duration": 5.349
+    },
+    {
+      "text": " as well, since it is on the negative",
+      "start": 2127.874,
+      "duration": 3.564
+    },
+    {
+      "text": " side of the line. Okay, and when you",
+      "start": 2130.509,
+      "duration": 4.864
+    },
+    {
+      "text": " multiply a negative by a negative, it",
+      "start": 2134.422,
+      "duration": 2.838
+    },
+    {
+      "text": " becomes positive; but adding a -1 in",
+      "start": 2136.31,
+      "duration": 2.789
+    },
+    {
+      "text": " front makes it negative again. So,",
+      "start": 2138.148,
+      "duration": 3.494
+    },
+    {
+      "text": " again, max (0, something negative)",
+      "start": 2140.724,
+      "duration": 3.78
+    },
+    {
+      "text": " would be 0, which means if there is a",
+      "start": 2143.586,
+      "duration": 4.025
+    },
+    {
+      "text": " point in the red region that is",
+      "start": 2146.693,
+      "duration": 3.535
+    },
+    {
+      "text": " correctly classified. For that too,",
+      "start": 2149.309,
+      "duration": 3.712
+    },
+    {
+      "text": " your math term would be zero. So, up to",
+      "start": 2152.09,
+      "duration": 3.993
+    },
+    {
+      "text": " this point, we have understood that if",
+      "start": 2155.177,
+      "duration": 4.567
+    },
+    {
+      "text": " your line has classified correctly, the",
+      "start": 2158.838,
+      "duration": 4.661
+    },
+    {
+      "text": " contribution of that point to the loss",
+      "start": 2162.593,
+      "duration": 4.567
+    },
+    {
+      "text": " function will be zero. Okay? Now, let's",
+      "start": 2166.253,
+      "duration": 5.475
+    },
+    {
+      "text": " move to a point that is misclassified.",
+      "start": 2170.791,
+      "duration": 3.389
+    },
+    {
+      "text": " Okay? Where the output is 1, but our",
+      "start": 2174.059,
+      "duration": 3.661
+    },
+    {
+      "text": " prediction is -1. Meaning, this point",
+      "start": 2176.786,
+      "duration": 4.811
+    },
+    {
+      "text": " of yours. Okay? Now, for this point, yi",
+      "start": 2180.685,
+      "duration": 5.323
+    },
+    {
+      "text": " would be positive because it is +1. And",
+      "start": 2185.092,
+      "duration": 5.513
+    },
+    {
+      "text": " your f (xi) is negative since it is on",
+      "start": 2189.687,
+      "duration": 4.124
+    },
+    {
+      "text": " the negative side of the line. Okay? So",
+      "start": 2192.893,
+      "duration": 6.591
+    },
+    {
+      "text": ", their product will also be negative,",
+      "start": 2198.484,
+      "duration": 3.387
+    },
+    {
+      "text": " and then with the negative sign in",
+      "start": 2200.933,
+      "duration": 3.136
+    },
+    {
+      "text": " front, it will become positive. So,",
+      "start": 2203.132,
+      "duration": 4.749
+    },
+    {
+      "text": " this equation of yours will become some",
+      "start": 2206.942,
+      "duration": 3.362
+    },
+    {
+      "text": " positive number, and the output will be",
+      "start": 2209.365,
+      "duration": 3.362
+    },
+    {
+      "text": " some positive number. This means if a",
+      "start": 2211.788,
+      "duration": 4.082
+    },
+    {
+      "text": " green point is in the red region,",
+      "start": 2214.938,
+      "duration": 3.266
+    },
+    {
+      "text": " meaning it is misclassified, then this",
+      "start": 2217.273,
+      "duration": 3.609
+    },
+    {
+      "text": " term will be a non-zero number. Meaning",
+      "start": 2219.951,
+      "duration": 3.657
+    },
+    {
+      "text": ", it will contribute something to the",
+      "start": 2222.608,
+      "duration": 2.63
+    },
+    {
+      "text": " loss function. Okay? Let's take the",
+      "start": 2224.282,
+      "duration": 3.134
+    },
+    {
+      "text": " last case. This specific point. For",
+      "start": 2226.461,
+      "duration": 3.893
+    },
+    {
+      "text": " this point, if you look, yi is negative",
+      "start": 2229.426,
+      "duration": 3.802
+    },
+    {
+      "text": ". Meaning, it is negative in the data.",
+      "start": 2232.228,
+      "duration": 3.711
+    },
+    {
+      "text": " But since f (xi) is on the positive",
+      "start": 2235.079,
+      "duration": 3.061
+    },
+    {
+      "text": " side of the line. This will be positive",
+      "start": 2237.198,
+      "duration": 3.283
+    },
+    {
+      "text": ". The product of both will again be",
+      "start": 2239.481,
+      "duration": 3.073
+    },
+    {
+      "text": " negative, and multiplying by -1 makes",
+      "start": 2241.612,
+      "duration": 3.152
+    },
+    {
+      "text": " it positive again. So the same thing",
+      "start": 2243.822,
+      "duration": 3.182
+    },
+    {
+      "text": " will hold true, and your output will be",
+      "start": 2246.065,
+      "duration": 3.375
+    },
+    {
+      "text": " positive. Meaning, for this point as",
+      "start": 2248.5,
+      "duration": 2.879
+    },
+    {
+      "text": " well, there will be some non-zero",
+      "start": 2250.424,
+      "duration": 2.499
+    },
+    {
+      "text": " contribution. So, it is clear",
+      "start": 2251.968,
+      "duration": 4.261
+    },
+    {
+      "text": " geometrically that if a point is",
+      "start": 2255.32,
+      "duration": 3.921
+    },
+    {
+      "text": " correctly classified, it has zero",
+      "start": 2258.332,
+      "duration": 4.013
+    },
+    {
+      "text": " contribution to the loss function. But",
+      "start": 2261.436,
+      "duration": 5.523
+    },
+    {
+      "text": " if the point is misclassified, what are",
+      "start": 2266.053,
+      "duration": 4.65
+    },
+    {
+      "text": " we doing? We are calculating this term",
+      "start": 2269.796,
+      "duration": 4.942
+    },
+    {
+      "text": " for it; since yi is just 1 or -1, its",
+      "start": 2273.817,
+      "duration": 3.932
+    },
+    {
+      "text": " magnitude is 1, so it doesn't matter.",
+      "start": 2276.828,
+      "duration": 3.932
+    },
+    {
+      "text": " So basically, the magnitude is coming",
+      "start": 2280.82,
+      "duration": 3.22
+    },
+    {
+      "text": " from f (xi). And what is f (xi)? It's",
+      "start": 2283.1,
+      "duration": 4.031
+    },
+    {
+      "text": " when we substitute the coordinates of",
+      "start": 2286.189,
+      "duration": 3.141
+    },
+    {
+      "text": " this red point or this green point into",
+      "start": 2288.388,
+      "duration": 3.256
+    },
+    {
+      "text": " the line's equation. Right? So, as I",
+      "start": 2290.702,
+      "duration": 4.488
+    },
+    {
+      "text": " mentioned a while ago, instead of using",
+      "start": 2294.272,
+      "duration": 4.173
+    },
+    {
+      "text": " distance, we use a proportional metric.",
+      "start": 2297.526,
+      "duration": 4.174
+    },
+    {
+      "text": " Where we take the coordinates and plug",
+      "start": 2301.63,
+      "duration": 2.588
+    },
+    {
+      "text": " them into the line equation. We are",
+      "start": 2303.259,
+      "duration": 2.578
+    },
+    {
+      "text": " actually doing exactly that. Just think",
+      "start": 2304.888,
+      "duration": 2.914
+    },
+    {
+      "text": " about it. What we discussed a while ago",
+      "start": 2306.839,
+      "duration": 2.638
+    },
+    {
+      "text": " about building the loss function. The",
+      "start": 2308.519,
+      "duration": 3.794
+    },
+    {
+      "text": " same thing discussed there is",
+      "start": 2311.358,
+      "duration": 2.293
+    },
+    {
+      "text": " implemented here with the help of this",
+      "start": 2312.696,
+      "duration": 2.695
+    },
+    {
+      "text": " loss function. So, all this effort is",
+      "start": 2314.435,
+      "duration": 4.782
+    },
+    {
+      "text": " just to give it the form of a proper",
+      "start": 2318.305,
+      "duration": 4.172
+    },
+    {
+      "text": " equation. Right? So, I hope you have",
+      "start": 2321.565,
+      "duration": 4.538
+    },
+    {
+      "text": " understood the geometric meaning of",
+      "start": 2325.158,
+      "duration": 2.923
+    },
+    {
+      "text": " this loss function. We have already",
+      "start": 2327.136,
+      "duration": 3.866
+    },
+    {
+      "text": " discussed the geometric meaning of this",
+      "start": 2330.044,
+      "duration": 2.619
+    },
+    {
+      "text": " loss function earlier. Now I have just",
+      "start": 2331.705,
+      "duration": 3.019
+    },
+    {
+      "text": " explained it to you in detail. Right?",
+      "start": 2333.772,
+      "duration": 3.134
+    },
+    {
+      "text": " Now that we have understood the loss",
+      "start": 2336.006,
+      "duration": 2.564
+    },
+    {
+      "text": " function. I will tell you how to find",
+      "start": 2337.613,
+      "duration": 5.069
+    },
+    {
+      "text": " values for W1, W2, and B that minimize",
+      "start": 2341.78,
+      "duration": 4.72
+    },
+    {
+      "text": " this entire thing. So guys, what we",
+      "start": 2345.598,
+      "duration": 5.039
+    },
+    {
+      "text": " have to do now is find values for W1,",
+      "start": 2349.709,
+      "duration": 3.676
+    },
+    {
+      "text": " W2, and B such that the value of this",
+      "start": 2352.457,
+      "duration": 3.676
+    },
+    {
+      "text": " entire equation becomes minimum. Right?",
+      "start": 2355.205,
+      "duration": 4.194
+    },
+    {
+      "text": " I have already explained in my gradient",
+      "start": 2359.319,
+      "duration": 3.224
+    },
+    {
+      "text": " descent video that you handle such",
+      "start": 2361.6,
+      "duration": 2.94
+    },
+    {
+      "text": " scenarios using gradient descent. So,",
+      "start": 2363.597,
+      "duration": 5.258
+    },
+    {
+      "text": " it will be that l is a function of",
+      "start": 2367.92,
+      "duration": 3.224
+    },
+    {
+      "text": " three things. If we assume for a moment",
+      "start": 2370.209,
+      "duration": 5.204
+    },
+    {
+      "text": " that w2 and b are constant and consider",
+      "start": 2374.483,
+      "duration": 3.736
+    },
+    {
+      "text": " it only as a function of w1, you can",
+      "start": 2377.289,
+      "duration": 3.525
+    },
+    {
+      "text": " actually take any form of the function.",
+      "start": 2379.884,
+      "duration": 3.736
+    },
+    {
+      "text": " Like, it's possible that this is the",
+      "start": 2383.29,
+      "duration": 3.08
+    },
+    {
+      "text": " function between L and W1. Right? So",
+      "start": 2385.427,
+      "duration": 3.408
+    },
+    {
+      "text": " what is your task? To find a value for",
+      "start": 2387.891,
+      "duration": 3.217
+    },
+    {
+      "text": " W1 for which L is minimum. Basically,",
+      "start": 2390.167,
+      "duration": 3.161
+    },
+    {
+      "text": " to find this point. To find this value",
+      "start": 2392.382,
+      "duration": 3.313
+    },
+    {
+      "text": " of W1. Right? So I have told you that",
+      "start": 2394.762,
+      "duration": 3.587
+    },
+    {
+      "text": " to do this, you use an optimization",
+      "start": 2397.417,
+      "duration": 3.389
+    },
+    {
+      "text": " algorithm like gradient descent. Right?",
+      "start": 2399.874,
+      "duration": 4.266
+    },
+    {
+      "text": " So I am not going to explain gradient",
+      "start": 2403.46,
+      "duration": 2.58
+    },
+    {
+      "text": " descent from scratch. If you are",
+      "start": 2405.083,
+      "duration": 2.384
+    },
+    {
+      "text": " interested, you can watch my video on",
+      "start": 2406.506,
+      "duration": 2.435
+    },
+    {
+      "text": " gradient descent. You will understand",
+      "start": 2407.98,
+      "duration": 2.785
+    },
+    {
+      "text": " how gradient descent works. I will just",
+      "start": 2409.817,
+      "duration": 3.2
+    },
+    {
+      "text": " tell you in short what you need to do.",
+      "start": 2412.079,
+      "duration": 3.341
+    },
+    {
+      "text": " You need to run a loop for i in number",
+      "start": 2414.679,
+      "duration": 5.094
+    },
+    {
+      "text": " of epochs. You can take any value for",
+      "start": 2418.881,
+      "duration": 4.131
+    },
+    {
+      "text": " epochs, take 100, take 1000, whatever",
+      "start": 2422.071,
+      "duration": 3.154
+    },
+    {
+      "text": " works for you. Now what do you need to",
+      "start": 2424.283,
+      "duration": 2.719
+    },
+    {
+      "text": " do? Inside this loop, at the very start",
+      "start": 2426.036,
+      "duration": 4.573
+    },
+    {
+      "text": ", you can randomly pick values for W1,",
+      "start": 2429.609,
+      "duration": 4.073
+    },
+    {
+      "text": " W2, and B. For instance, let's assume",
+      "start": 2432.763,
+      "duration": 3.993
+    },
+    {
+      "text": " all three values are one. Now what will",
+      "start": 2435.837,
+      "duration": 4.462
+    },
+    {
+      "text": " we do? Inside this loop, we will keep",
+      "start": 2439.359,
+      "duration": 2.824
+    },
+    {
+      "text": " updating all three. So the update rule",
+      "start": 2441.227,
+      "duration": 2.919
+    },
+    {
+      "text": " will be this. The value of W1 will be",
+      "start": 2443.2,
+      "duration": 4.796
+    },
+    {
+      "text": " W1 minus learning rate times del L del",
+      "start": 2447.118,
+      "duration": 5.622
+    },
+    {
+      "text": " W1, right. Learning rate is basically",
+      "start": 2451.862,
+      "duration": 4.95
+    },
+    {
+      "text": " something like 0.1, you can experiment",
+      "start": 2455.874,
+      "duration": 3.356
+    },
+    {
+      "text": " with this too. So this became the",
+      "start": 2458.292,
+      "duration": 4.005
+    },
+    {
+      "text": " update rule for W1. For W2 similarly,",
+      "start": 2461.359,
+      "duration": 5.035
+    },
+    {
+      "text": " you need to calculate W2 minus learning",
+      "start": 2465.49,
+      "duration": 4.751
+    },
+    {
+      "text": " rate times partial derivative of L with",
+      "start": 2469.337,
+      "duration": 4.751
+    },
+    {
+      "text": " respect to W2, and similarly B = B",
+      "start": 2473.184,
+      "duration": 4.27
+    },
+    {
+      "text": " minus learning rate times del L/del B,",
+      "start": 2476.55,
+      "duration": 4.655
+    },
+    {
+      "text": " right? So here you have the initial",
+      "start": 2480.301,
+      "duration": 4.455
+    },
+    {
+      "text": " values of all three. You also have the",
+      "start": 2483.823,
+      "duration": 3.261
+    },
+    {
+      "text": " learning rate. You just need to",
+      "start": 2486.133,
+      "duration": 2.751
+    },
+    {
+      "text": " calculate three quantities. These three",
+      "start": 2487.943,
+      "duration": 4.154
+    },
+    {
+      "text": " partial derivatives. You need to find",
+      "start": 2491.214,
+      "duration": 7.254
+    },
+    {
+      "text": " these partial derivatives. Basically,",
+      "start": 2497.513,
+      "duration": 3.593
+    },
+    {
+      "text": " differentiate this function with",
+      "start": 2500.175,
+      "duration": 3.199
+    },
+    {
+      "text": " respect to W1, W2, and B, and you will",
+      "start": 2502.443,
+      "duration": 3.612
+    },
+    {
+      "text": " get the whole thing. Right? So now I",
+      "start": 2505.124,
+      "duration": 4.766
+    },
+    {
+      "text": " will just show you by differentiating",
+      "start": 2508.961,
+      "duration": 3.642
+    },
+    {
+      "text": " next what you get when you",
+      "start": 2511.675,
+      "duration": 2.857
+    },
+    {
+      "text": " differentiate this function with",
+      "start": 2513.603,
+      "duration": 3.285
+    },
+    {
+      "text": " respect to W1, W2, and B, and then we",
+      "start": 2515.96,
+      "duration": 3.642
+    },
+    {
+      "text": " will implement that in the code. So",
+      "start": 2518.673,
+      "duration": 4.374
+    },
+    {
+      "text": " let's go guys, now we will",
+      "start": 2522.121,
+      "duration": 2.923
+    },
+    {
+      "text": " differentiate our loss function with",
+      "start": 2524.118,
+      "duration": 3.662
+    },
+    {
+      "text": " respect to W1, W2, and B. Right? We",
+      "start": 2526.853,
+      "duration": 5.164
+    },
+    {
+      "text": " will do it with respect to W1 first,",
+      "start": 2531.076,
+      "duration": 3.135
+    },
+    {
+      "text": " and after seeing that, we will",
+      "start": 2533.27,
+      "duration": 2.779
+    },
+    {
+      "text": " understand what to do with W2 and B.",
+      "start": 2535.109,
+      "duration": 3.134
+    },
+    {
+      "text": " Right? So here is my loss function. I",
+      "start": 2537.303,
+      "duration": 4.022
+    },
+    {
+      "text": " have written it here again, where fxi",
+      "start": 2540.412,
+      "duration": 4.207
+    },
+    {
+      "text": " is this. Right? Now this loss function",
+      "start": 2543.705,
+      "duration": 3.724
+    },
+    {
+      "text": " is not completely differentiable. You",
+      "start": 2546.482,
+      "duration": 3.013
+    },
+    {
+      "text": " must be understanding that. So if you",
+      "start": 2548.553,
+      "duration": 3.503
+    },
+    {
+      "text": " want to differentiate this, you can",
+      "start": 2551.138,
+      "duration": 3.868
+    },
+    {
+      "text": " apply the chain rule, where I need to",
+      "start": 2554.088,
+      "duration": 4.032
+    },
+    {
+      "text": " find dl/dw1, so I will find del l/dfxi.",
+      "start": 2557.202,
+      "duration": 4.197
+    },
+    {
+      "text": " And then I will differentiate dfxi with",
+      "start": 2562.059,
+      "duration": 3.628
+    },
+    {
+      "text": " respect to dw1 and multiply both. Okay?",
+      "start": 2564.754,
+      "duration": 3.785
+    },
+    {
+      "text": " So here I have created two separate",
+      "start": 2567.719,
+      "duration": 2.933
+    },
+    {
+      "text": " paths. In this path, I have calculated",
+      "start": 2569.707,
+      "duration": 5.158
+    },
+    {
+      "text": " del l/dfxi, and here I have calculated",
+      "start": 2573.96,
+      "duration": 4.588
+    },
+    {
+      "text": " dfxi/dw1, okay? This is easier. Think",
+      "start": 2577.642,
+      "duration": 4.723
+    },
+    {
+      "text": " about it. I just need to differentiate",
+      "start": 2581.427,
+      "duration": 3.945
+    },
+    {
+      "text": " this with respect to w1. So this simple",
+      "start": 2584.435,
+      "duration": 4.736
+    },
+    {
+      "text": " answer came out. Okay? Whereas if you",
+      "start": 2588.243,
+      "duration": 4.852
+    },
+    {
+      "text": " go to differentiate del L/dfxi, you",
+      "start": 2592.166,
+      "duration": 3.49
+    },
+    {
+      "text": " will have to differentiate it",
+      "start": 2594.728,
+      "duration": 3.063
+    },
+    {
+      "text": " conditionally. If this number is",
+      "start": 2596.862,
+      "duration": 4.474
+    },
+    {
+      "text": " greater than zero, it will be zero, and",
+      "start": 2600.396,
+      "duration": 3.334
+    },
+    {
+      "text": " if this number is less than zero, your",
+      "start": 2602.79,
+      "duration": 3.274
+    },
+    {
+      "text": " differentiation would be-yi, okay? So I",
+      "start": 2605.124,
+      "duration": 4.6
+    },
+    {
+      "text": " combined both of these, and here is my",
+      "start": 2608.801,
+      "duration": 3.905
+    },
+    {
+      "text": " differentiation dl/dw1: 0 if this",
+      "start": 2611.782,
+      "duration": 3.523
+    },
+    {
+      "text": " number is greater than zero, and-yi xi1",
+      "start": 2614.382,
+      "duration": 3.981
+    },
+    {
+      "text": ", okay? What is XI1? CGPA, IQ, Placed",
+      "start": 2617.363,
+      "duration": 7.19
+    },
+    {
+      "text": "—this is the value of X i1. The value",
+      "start": 2623.553,
+      "duration": 6.484
+    },
+    {
+      "text": " of the first column of the i-th row,",
+      "start": 2629.086,
+      "duration": 2.755
+    },
+    {
+      "text": " which is in CGPA. Okay? So this is del",
+      "start": 2630.89,
+      "duration": 4.983
+    },
+    {
+      "text": " l/dw1, okay? So we will have to write",
+      "start": 2635.023,
+      "duration": 4.056
+    },
+    {
+      "text": " an if-else condition. We have to check",
+      "start": 2638.127,
+      "duration": 2.85
+    },
+    {
+      "text": " this condition, and based on that, we",
+      "start": 2640.024,
+      "duration": 2.724
+    },
+    {
+      "text": " will either return zero or calculate",
+      "start": 2641.794,
+      "duration": 2.678
+    },
+    {
+      "text": " this. Okay? Going by the same logic,",
+      "start": 2643.519,
+      "duration": 4.14
+    },
+    {
+      "text": " your del l/dw2 will also be the same.",
+      "start": 2646.753,
+      "duration": 4.486
+    },
+    {
+      "text": " Just what will come here? xi2, and",
+      "start": 2650.379,
+      "duration": 3.833
+    },
+    {
+      "text": " similarly del l/db will be simple. From",
+      "start": 2653.309,
+      "duration": 4.753
+    },
+    {
+      "text": " there, -yi will come here. So this is",
+      "start": 2657.133,
+      "duration": 3.76
+    },
+    {
+      "text": " my differentiation. Now I just have to",
+      "start": 2659.954,
+      "duration": 3.877
+    },
+    {
+      "text": " convert this into code using gradient",
+      "start": 2662.899,
+      "duration": 3.533
+    },
+    {
+      "text": " descent, and then our work will be done",
+      "start": 2665.5,
+      "duration": 3.67
+    },
+    {
+      "text": ". So guys, we have now found all these",
+      "start": 2668.17,
+      "duration": 4.753
+    },
+    {
+      "text": " partial derivatives. So what will we do",
+      "start": 2671.987,
+      "duration": 3.763
+    },
+    {
+      "text": " now? We will code gradient descent. By",
+      "start": 2674.792,
+      "duration": 3.418
+    },
+    {
+      "text": " the way, I made a mistake. The mistake",
+      "start": 2677.295,
+      "duration": 4.133
+    },
+    {
+      "text": " is that in the update rule for gradient",
+      "start": 2680.487,
+      "duration": 3.302
+    },
+    {
+      "text": " descent, there is a plus here. So this",
+      "start": 2682.848,
+      "duration": 3.576
+    },
+    {
+      "text": " was a mistake. Sorry about this. So now",
+      "start": 2685.508,
+      "duration": 4.139
+    },
+    {
+      "text": " we just have to do what? Run this code",
+      "start": 2688.705,
+      "duration": 5.014
+    },
+    {
+      "text": " inside these epochs. Okay? So I have",
+      "start": 2692.859,
+      "duration": 5.08
+    },
+    {
+      "text": " already written the code. I will show",
+      "start": 2696.978,
+      "duration": 2.897
+    },
+    {
+      "text": " you. So I created a dataset myself",
+      "start": 2698.95,
+      "duration": 5.269
+    },
+    {
+      "text": " using make_classification. In this, x",
+      "start": 2703.319,
+      "duration": 5.005
+    },
+    {
+      "text": " has two columns. y has one column. I",
+      "start": 2707.402,
+      "duration": 3.953
+    },
+    {
+      "text": " can quickly show it to you. So this is",
+      "start": 2710.412,
+      "duration": 3.799
+    },
+    {
+      "text": " my data. This is x. Okay? There are 100",
+      "start": 2713.314,
+      "duration": 4.512
+    },
+    {
+      "text": " points and two columns. Its shape would",
+      "start": 2716.886,
+      "duration": 4.078
+    },
+    {
+      "text": " be this. And y It basically gives an",
+      "start": 2720.032,
+      "duration": 7.29
+    },
+    {
+      "text": " output like 10. Its shape would be 100.",
+      "start": 2726.403,
+      "duration": 3.937
+    },
+    {
+      "text": " Okay? Here, I have plotted the graph to",
+      "start": 2730.68,
+      "duration": 3.859
+    },
+    {
+      "text": " show you. These are my two classes. I",
+      "start": 2733.593,
+      "duration": 3.264
+    },
+    {
+      "text": " need to draw a line between these two.",
+      "start": 2735.915,
+      "duration": 3.204
+    },
+    {
+      "text": " Okay? So, this is the entire code. It",
+      "start": 2738.441,
+      "duration": 4.268
+    },
+    {
+      "text": " is a very simple code. Take a look once",
+      "start": 2741.756,
+      "duration": 3.198
+    },
+    {
+      "text": ". So, I have created a function named",
+      "start": 2743.954,
+      "duration": 3.158
+    },
+    {
+      "text": " perceptron, in which I will get x and y",
+      "start": 2746.169,
+      "duration": 3.221
+    },
+    {
+      "text": " as input. First of all, I initialized",
+      "start": 2748.447,
+      "duration": 4.103
+    },
+    {
+      "text": " W1, W2, and B to one. My learning rate",
+      "start": 2751.627,
+      "duration": 4.318
+    },
+    {
+      "text": " is one. You can see this learning rate",
+      "start": 2755.042,
+      "duration": 4.696
+    },
+    {
+      "text": " is one. Also, the initial values of W1,",
+      "start": 2758.831,
+      "duration": 5.674
+    },
+    {
+      "text": " W2, and this is one. Now, what did I do",
+      "start": 2763.614,
+      "duration": 5.024
+    },
+    {
+      "text": "? I ran epochs 1000 times here. And",
+      "start": 2767.638,
+      "duration": 4.578
+    },
+    {
+      "text": " each time, inside every epoch, what am",
+      "start": 2771.295,
+      "duration": 4.011
+    },
+    {
+      "text": " I doing? I am going through every row.",
+      "start": 2774.385,
+      "duration": 3.815
+    },
+    {
+      "text": " And checking this condition there. I am",
+      "start": 2777.78,
+      "duration": 6.786
+    },
+    {
+      "text": " checking this condition. This condition",
+      "start": 2783.622,
+      "duration": 3.834
+    },
+    {
+      "text": ", this condition I am checking. Just",
+      "start": 2786.456,
+      "duration": 4.729
+    },
+    {
+      "text": " give me one second. This condition here",
+      "start": 2790.242,
+      "duration": 4.129
+    },
+    {
+      "text": ". So, I am calculating fxi. First of",
+      "start": 2793.371,
+      "duration": 4.181
+    },
+    {
+      "text": " all, fxi is basically z, where I am",
+      "start": 2796.619,
+      "duration": 3.333
+    },
+    {
+      "text": " multiplying W1 by the first column",
+      "start": 2799.019,
+      "duration": 3.266
+    },
+    {
+      "text": " value of the current row. I am",
+      "start": 2801.352,
+      "duration": 3.549
+    },
+    {
+      "text": " multiplying W2 by the second column of",
+      "start": 2803.957,
+      "duration": 3.115
+    },
+    {
+      "text": " the current row and adding the value of",
+      "start": 2806.127,
+      "duration": 3.171
+    },
+    {
+      "text": " B to it. This is my Z, and then I am",
+      "start": 2808.353,
+      "duration": 3.723
+    },
+    {
+      "text": " multiplying it by YI. To find out what",
+      "start": 2811.156,
+      "duration": 4.457
+    },
+    {
+      "text": " the sign of this thing is. Okay? So you",
+      "start": 2814.698,
+      "duration": 5.231
+    },
+    {
+      "text": " can see, if it is less than zero, only",
+      "start": 2819.05,
+      "duration": 5.592
+    },
+    {
+      "text": " then am I applying this update rule.",
+      "start": 2823.763,
+      "duration": 5.352
+    },
+    {
+      "text": " And what is the update rule? That W1 is",
+      "start": 2828.215,
+      "duration": 4.801
+    },
+    {
+      "text": " LR*YI*XI's zeroth value, and W 2's",
+      "start": 2832.146,
+      "duration": 5.41
+    },
+    {
+      "text": " update rule is this. B's update rule is",
+      "start": 2836.686,
+      "duration": 6.153
+    },
+    {
+      "text": " this. As soon as this loop finishes. I",
+      "start": 2841.912,
+      "duration": 3.565
+    },
+    {
+      "text": " am returning W1, W2, and B. Here, I",
+      "start": 2844.556,
+      "duration": 3.756
+    },
+    {
+      "text": " have called the function. I can show",
+      "start": 2847.39,
+      "duration": 4.27
+    },
+    {
+      "text": " you the rest of the code, in fact, at",
+      "start": 2850.742,
+      "duration": 4.034
+    },
+    {
+      "text": " this point, that this is my W1. This is",
+      "start": 2853.858,
+      "duration": 5.206
+    },
+    {
+      "text": " my W2 and this is my B. Okay? The rest",
+      "start": 2858.16,
+      "duration": 4.462
+    },
+    {
+      "text": " of the code is just to plot the graph.",
+      "start": 2861.677,
+      "duration": 3.102
+    },
+    {
+      "text": " So you can look at this code easily.",
+      "start": 2863.999,
+      "duration": 2.64
+    },
+    {
+      "text": " When I plotted the line, this is the",
+      "start": 2865.739,
+      "duration": 2.872
+    },
+    {
+      "text": " line that I am getting. Okay? So, our",
+      "start": 2867.663,
+      "duration": 4.323
+    },
+    {
+      "text": " loss function is working. So guys, now",
+      "start": 2871.084,
+      "duration": 4.954
+    },
+    {
+      "text": " in this video, there is one last and",
+      "start": 2875.1,
+      "duration": 3.219
+    },
+    {
+      "text": " most important thing I need to discuss",
+      "start": 2877.38,
+      "duration": 3.342
+    },
+    {
+      "text": " with you. If you remember, in the first",
+      "start": 2879.784,
+      "duration": 4.59
+    },
+    {
+      "text": " Perceptron video, I told you one thing,",
+      "start": 2883.451,
+      "duration": 4.007
+    },
+    {
+      "text": " which was that the Perceptron is a",
+      "start": 2886.535,
+      "duration": 3.622
+    },
+    {
+      "text": " mathematical model. It is a",
+      "start": 2889.234,
+      "duration": 4.739
+    },
+    {
+      "text": " mathematical model. Right? And this is",
+      "start": 2893.041,
+      "duration": 3.612
+    },
+    {
+      "text": " true as well. Look, here is the",
+      "start": 2895.715,
+      "duration": 2.992
+    },
+    {
+      "text": " Perceptron model. Inputs come in from",
+      "start": 2897.771,
+      "duration": 4.061
+    },
+    {
+      "text": " this side here. Here, the summation",
+      "start": 2900.907,
+      "duration": 4.806
+    },
+    {
+      "text": " happens. This z then goes into this",
+      "start": 2904.776,
+      "duration": 3.7
+    },
+    {
+      "text": " activation function and then y is",
+      "start": 2907.545,
+      "duration": 3.282
+    },
+    {
+      "text": " calculated from here, and then you",
+      "start": 2909.896,
+      "duration": 3.351
+    },
+    {
+      "text": " implement a loss function here for",
+      "start": 2912.316,
+      "duration": 3.351
+    },
+    {
+      "text": " training. Right? So, we have just seen",
+      "start": 2914.736,
+      "duration": 4.171
+    },
+    {
+      "text": " all of this. But the good part is that",
+      "start": 2917.974,
+      "duration": 4.177
+    },
+    {
+      "text": " the Perceptron is very flexible because",
+      "start": 2921.224,
+      "duration": 3.827
+    },
+    {
+      "text": " of its design. The way this model is",
+      "start": 2924.124,
+      "duration": 4.525
+    },
+    {
+      "text": " built. It has a lot of flexibility. Let",
+      "start": 2927.741,
+      "duration": 3.872
+    },
+    {
+      "text": " me give you an example. Right now, we",
+      "start": 2930.681,
+      "duration": 3.463
+    },
+    {
+      "text": " used the step function as the",
+      "start": 2933.206,
+      "duration": 2.794
+    },
+    {
+      "text": " activation function. But let's say",
+      "start": 2935.062,
+      "duration": 4.073
+    },
+    {
+      "text": " tomorrow someone asks me that instead",
+      "start": 2938.191,
+      "duration": 3.095
+    },
+    {
+      "text": " of outputting 1 or -1, I want the",
+      "start": 2940.343,
+      "duration": 2.868
+    },
+    {
+      "text": " output in probabilities, like what is",
+      "start": 2942.268,
+      "duration": 3.095
+    },
+    {
+      "text": " the probability of it being 1? What is",
+      "start": 2944.42,
+      "duration": 4.163
+    },
+    {
+      "text": " the probability of it being -1? Then",
+      "start": 2947.632,
+      "duration": 3.467
+    },
+    {
+      "text": " what I can do is I can easily replace",
+      "start": 2950.17,
+      "duration": 3.598
+    },
+    {
+      "text": " this step function with a sigmoid",
+      "start": 2952.839,
+      "duration": 3.317
+    },
+    {
+      "text": " function. Right? Right? Your sigmoid",
+      "start": 2955.226,
+      "duration": 4.812
+    },
+    {
+      "text": " function is this one. Just one second.",
+      "start": 2959.128,
+      "duration": 8.371
+    },
+    {
+      "text": " Okay? Where z is basically W1X1 + W2X2",
+      "start": 2972.039,
+      "duration": 6.277
+    },
+    {
+      "text": " + B, right? This will give me a",
+      "start": 2977.44,
+      "duration": 5.642
+    },
+    {
+      "text": " probability. And now, what can I do? I",
+      "start": 2982.164,
+      "duration": 5.673
+    },
+    {
+      "text": " can use another loss function, which is",
+      "start": 2986.935,
+      "duration": 4.833
+    },
+    {
+      "text": " named binary cross-entropy; perhaps you",
+      "start": 2990.866,
+      "duration": 4.832
+    },
+    {
+      "text": " have heard the name binary",
+      "start": 2994.797,
+      "duration": 3.555
+    },
+    {
+      "text": " cross-entropy, and its formula is",
+      "start": 2997.45,
+      "duration": 4.243
+    },
+    {
+      "text": " something like this, the equation for",
+      "start": 3000.791,
+      "duration": 4.636
+    },
+    {
+      "text": " this loss function is minus yi log yi",
+      "start": 3004.525,
+      "duration": 9.66
+    },
+    {
+      "text": " hat plus 1-yi log 1-yi, right? If you",
+      "start": 3013.431,
+      "duration": 12.723
+    },
+    {
+      "text": " use this loss function in conjunction",
+      "start": 3025.244,
+      "duration": 4.304
+    },
+    {
+      "text": " with this activation function and apply",
+      "start": 3028.637,
+      "duration": 4.482
+    },
+    {
+      "text": " SGD this time, you will get",
+      "start": 3032.209,
+      "duration": 3.411
+    },
+    {
+      "text": " probabilities in the outputs. And guess",
+      "start": 3034.709,
+      "duration": 4.654
+    },
+    {
+      "text": " what? You have already seen this",
+      "start": 3038.419,
+      "duration": 3.581
+    },
+    {
+      "text": " combination before in a machine",
+      "start": 3041.059,
+      "duration": 2.813
+    },
+    {
+      "text": " learning algorithm, and that machine",
+      "start": 3042.93,
+      "duration": 3.105
+    },
+    {
+      "text": " learning algorithm's name is logistic",
+      "start": 3045.094,
+      "duration": 3.164
+    },
+    {
+      "text": " regression. So, you might have heard",
+      "start": 3047.316,
+      "duration": 4.444
+    },
+    {
+      "text": " many people saying that a Perceptron is",
+      "start": 3050.846,
+      "duration": 6.326
+    },
+    {
+      "text": " equal to, equal to logistic regression.",
+      "start": 3056.239,
+      "duration": 3.6
+    },
+    {
+      "text": " Practically speaking, that is true. But",
+      "start": 3059.299,
+      "duration": 4.758
+    },
+    {
+      "text": " technically speaking, a Perceptron and",
+      "start": 3063.143,
+      "duration": 4.272
+    },
+    {
+      "text": " logistic regression are the same",
+      "start": 3066.501,
+      "duration": 3.756
+    },
+    {
+      "text": " algorithm only when your activation",
+      "start": 3069.343,
+      "duration": 4.013
+    },
+    {
+      "text": " function is sigmoid and your loss",
+      "start": 3072.442,
+      "duration": 6.728
+    },
+    {
+      "text": " function is this one, binary",
+      "start": 3078.273,
+      "duration": 3.869
+    },
+    {
+      "text": " cross-entropy. Right? So, you can see",
+      "start": 3081.244,
+      "duration": 4.254
+    },
+    {
+      "text": " the flexibility. If I want, I can use",
+      "start": 3084.555,
+      "duration": 3.806
+    },
+    {
+      "text": " the Perceptron with a step function and",
+      "start": 3087.451,
+      "duration": 4.498
+    },
+    {
+      "text": " use it as a Perceptron. Where the",
+      "start": 3091.039,
+      "duration": 3.736
+    },
+    {
+      "text": " output is 1 or 0. Or if I want, I can",
+      "start": 3093.839,
+      "duration": 3.436
+    },
+    {
+      "text": " also extract the output in terms of",
+      "start": 3096.333,
+      "duration": 3.02
+    },
+    {
+      "text": " probabilities. I just have to make two",
+      "start": 3098.411,
+      "duration": 3.47
+    },
+    {
+      "text": " changes. I have to use my sigmoid",
+      "start": 3100.939,
+      "duration": 3.456
+    },
+    {
+      "text": " function. I will also change the",
+      "start": 3103.451,
+      "duration": 4.051
+    },
+    {
+      "text": " activation function and loss function",
+      "start": 3106.567,
+      "duration": 3.395
+    },
+    {
+      "text": " to use binary cross-entropy. All right?",
+      "start": 3109.026,
+      "duration": 4.012
+    },
+    {
+      "text": " In fact, the flexibility doesn't end",
+      "start": 3112.159,
+      "duration": 3.331
+    },
+    {
+      "text": " here. So, if tomorrow I have to work on",
+      "start": 3114.555,
+      "duration": 4.514
+    },
+    {
+      "text": " a multi-class classification problem",
+      "start": 3118.159,
+      "duration": 4.262
+    },
+    {
+      "text": " with more than two classes. What can I",
+      "start": 3121.512,
+      "duration": 4.568
+    },
+    {
+      "text": " do there? I can again change this",
+      "start": 3125.17,
+      "duration": 3.181
+    },
+    {
+      "text": " combination. This time, I will use",
+      "start": 3127.406,
+      "duration": 4.508
+    },
+    {
+      "text": " softmax for the activation function.",
+      "start": 3131.02,
+      "duration": 4.799
+    },
+    {
+      "text": " And for the loss function, I would use",
+      "start": 3137.359,
+      "duration": 7.267
+    },
+    {
+      "text": " categorical cross-entropy. Okay, its",
+      "start": 3143.791,
+      "duration": 8.577
+    },
+    {
+      "text": " formula is: the sum of all your classes",
+      "start": 3151.462,
+      "duration": 4.676
+    },
+    {
+      "text": ", from 1 to M, for example, if you have",
+      "start": 3155.138,
+      "duration": 4.676
+    },
+    {
+      "text": " three classes, it will be three, y j",
+      "start": 3158.908,
+      "duration": 4.393
+    },
+    {
+      "text": " log y hat j. So, this is basically up",
+      "start": 3162.396,
+      "duration": 9.384
+    },
+    {
+      "text": " to you, this entire flexibility. By the",
+      "start": 3170.864,
+      "duration": 6.61
+    },
+    {
+      "text": " way, the softmax function is: e to the",
+      "start": 3176.6,
+      "duration": 5.783
+    },
+    {
+      "text": " power zi divided by sigma j = j = 1 to",
+      "start": 3181.508,
+      "duration": 9.706
+    },
+    {
+      "text": " k, the number of classes you have, e to",
+      "start": 3190.296,
+      "duration": 4.194
+    },
+    {
+      "text": " the power zj; or you can say that the",
+      "start": 3193.572,
+      "duration": 4.03
+    },
+    {
+      "text": " output for one particular class would",
+      "start": 3196.684,
+      "duration": 4.031
+    },
+    {
+      "text": " be e ^ z1, assuming you have three",
+      "start": 3199.797,
+      "duration": 3.784
+    },
+    {
+      "text": " classes. Is this okay? So, this case",
+      "start": 3202.663,
+      "duration": 8.117
+    },
+    {
+      "text": " now becomes softmax regression. I have",
+      "start": 3209.947,
+      "duration": 7.075
+    },
+    {
+      "text": " already taught you this in 100 Days of",
+      "start": 3216.071,
+      "duration": 2.858
+    },
+    {
+      "text": " Machine Learning. So, again, you can",
+      "start": 3217.977,
+      "duration": 2.86
+    },
+    {
+      "text": " see what I changed. This time, I used",
+      "start": 3219.889,
+      "duration": 3.01
+    },
+    {
+      "text": " softmax for the activation function and",
+      "start": 3221.948,
+      "duration": 2.928
+    },
+    {
+      "text": " categorical cross-entropy for the loss",
+      "start": 3223.926,
+      "duration": 2.878
+    },
+    {
+      "text": " function. All right? The matter does",
+      "start": 3225.854,
+      "duration": 3.104
+    },
+    {
+      "text": " not end here. If you want, you can even",
+      "start": 3228.017,
+      "duration": 4.455
+    },
+    {
+      "text": " use a perceptron for regression. Again,",
+      "start": 3231.544,
+      "duration": 5.535
+    },
+    {
+      "text": " you don't have to do much. Instead of a",
+      "start": 3236.132,
+      "duration": 3.867
+    },
+    {
+      "text": " step function, you just need to use a",
+      "start": 3239.069,
+      "duration": 6.444
+    },
+    {
+      "text": " linear activation function. So, what",
+      "start": 3244.576,
+      "duration": 3.16
+    },
+    {
+      "text": " does the step function do? If z is",
+      "start": 3246.779,
+      "duration": 2.843
+    },
+    {
+      "text": " greater than or equal to zero, it",
+      "start": 3248.691,
+      "duration": 3.273
+    },
+    {
+      "text": " outputs one. If z is less than zero, it",
+      "start": 3251.033,
+      "duration": 3.164
+    },
+    {
+      "text": " outputs negative one. What will the",
+      "start": 3253.236,
+      "duration": 2.435
+    },
+    {
+      "text": " linear function do? It takes z and",
+      "start": 3254.708,
+      "duration": 3.306
+    },
+    {
+      "text": " outputs z itself. So, basically, there",
+      "start": 3257.086,
+      "duration": 3.355
+    },
+    {
+      "text": " is no activation function. So, if you",
+      "start": 3259.486,
+      "duration": 2.918
+    },
+    {
+      "text": " use no activation function, or you can",
+      "start": 3261.466,
+      "duration": 3.377
+    },
+    {
+      "text": " say you used a linear activation",
+      "start": 3263.905,
+      "duration": 3.002
+    },
+    {
+      "text": " function, and instead of the loss",
+      "start": 3265.969,
+      "duration": 3.064
+    },
+    {
+      "text": " function, if you use mean squared error",
+      "start": 3268.096,
+      "duration": 7.338
+    },
+    {
+      "text": ", yi minus yi hat squared. Then it",
+      "start": 3274.434,
+      "duration": 5.816
+    },
+    {
+      "text": " becomes linear regression. This becomes",
+      "start": 3279.329,
+      "duration": 5.415
+    },
+    {
+      "text": " linear regression. All right? So, the",
+      "start": 3283.851,
+      "duration": 4.72
+    },
+    {
+      "text": " point is that the perceptron is a",
+      "start": 3287.656,
+      "duration": 3.795
+    },
+    {
+      "text": " mathematical model that can be used in",
+      "start": 3290.535,
+      "duration": 4.219
+    },
+    {
+      "text": " multiple ways because it is flexible by",
+      "start": 3293.838,
+      "duration": 4.303
+    },
+    {
+      "text": " design. Its design itself is flexible.",
+      "start": 3297.226,
+      "duration": 4.393
+    },
+    {
+      "text": " So, I will just do this. I will change",
+      "start": 3300.719,
+      "duration": 3.102
+    },
+    {
+      "text": " my activation function. I will change",
+      "start": 3302.87,
+      "duration": 2.872
+    },
+    {
+      "text": " my loss function. Every time I have to",
+      "start": 3304.791,
+      "duration": 3.749
+    },
+    {
+      "text": " apply SGD, which is Stochastic Gradient",
+      "start": 3307.6,
+      "duration": 3.34
+    },
+    {
+      "text": " Descent, and I will keep getting my",
+      "start": 3310.0,
+      "duration": 3.1
+    },
+    {
+      "text": " parameters each time. All right? To",
+      "start": 3312.16,
+      "duration": 4.635
+    },
+    {
+      "text": " summarize it once, I will write it here",
+      "start": 3315.855,
+      "duration": 3.34
+    },
+    {
+      "text": ". What will we do? Here we will write",
+      "start": 3318.195,
+      "duration": 5.42
+    },
+    {
+      "text": " the loss function. Here we will write",
+      "start": 3322.742,
+      "duration": 6.953
+    },
+    {
+      "text": " the activation and here we will write",
+      "start": 3328.791,
+      "duration": 4.57
+    },
+    {
+      "text": " the output. So it is very simple. If",
+      "start": 3332.457,
+      "duration": 6.308
+    },
+    {
+      "text": " your activation function is step and",
+      "start": 3337.878,
+      "duration": 5.076
+    },
+    {
+      "text": " you are using hinge loss, then it would",
+      "start": 3342.067,
+      "duration": 5.416
+    },
+    {
+      "text": " act as a perceptron or you could call",
+      "start": 3346.596,
+      "duration": 5.189
+    },
+    {
+      "text": " it a binary classifier whose output",
+      "start": 3350.899,
+      "duration": 4.962
+    },
+    {
+      "text": " will be either 1 or -1. All right? If",
+      "start": 3354.974,
+      "duration": 5.314
+    },
+    {
+      "text": " you are using the activation function",
+      "start": 3359.393,
+      "duration": 4.876
+    },
+    {
+      "text": " sigmoid and your loss function is log",
+      "start": 3363.374,
+      "duration": 4.877
+    },
+    {
+      "text": " loss, which we also call binary",
+      "start": 3367.356,
+      "duration": 5.723
+    },
+    {
+      "text": " cross-entropy. Then this will act as",
+      "start": 3372.167,
+      "duration": 7.704
+    },
+    {
+      "text": " logistic regression, which will give an",
+      "start": 3378.976,
+      "duration": 5.109
+    },
+    {
+      "text": " output between zero and one. And it is",
+      "start": 3383.19,
+      "duration": 5.967
+    },
+    {
+      "text": " still binary. Meaning it can handle two",
+      "start": 3388.27,
+      "duration": 3.962
+    },
+    {
+      "text": " classes. This is a binary classifier.",
+      "start": 3391.286,
+      "duration": 4.034
+    },
+    {
+      "text": " Going forward, if your activation",
+      "start": 3395.279,
+      "duration": 3.542
+    },
+    {
+      "text": " function is softmax, and your loss",
+      "start": 3397.898,
+      "duration": 6.907
+    },
+    {
+      "text": " function is categorical, cross-entropy.",
+      "start": 3403.904,
+      "duration": 9.555
+    },
+    {
+      "text": " Then it will work as softmax regression",
+      "start": 3412.879,
+      "duration": 5.062
+    },
+    {
+      "text": " and it will help you in more than two,",
+      "start": 3417.045,
+      "duration": 4.959
+    },
+    {
+      "text": " as in multi-class classification, but",
+      "start": 3421.108,
+      "duration": 6.346
+    },
+    {
+      "text": " the output will be probabilities, just",
+      "start": 3426.553,
+      "duration": 4.752
+    },
+    {
+      "text": " like the case above. All right? Lastly,",
+      "start": 3430.404,
+      "duration": 5.181
+    },
+    {
+      "text": " if your activation function is linear,",
+      "start": 3434.683,
+      "duration": 4.727
+    },
+    {
+      "text": " or you could say no activation function",
+      "start": 3438.508,
+      "duration": 4.825
+    },
+    {
+      "text": " is used, and your loss function is mean",
+      "start": 3442.431,
+      "duration": 4.826
+    },
+    {
+      "text": " squared error, then this would act as",
+      "start": 3446.355,
+      "duration": 4.629
+    },
+    {
+      "text": " linear regression, and your output will",
+      "start": 3450.082,
+      "duration": 4.825
+    },
+    {
+      "text": " be a number, and that number can be",
+      "start": 3454.005,
+      "duration": 4.433
+    },
+    {
+      "text": " anything. All right? So these are the",
+      "start": 3457.536,
+      "duration": 4.555
+    },
+    {
+      "text": " four cases in your perceptron. Now you",
+      "start": 3461.164,
+      "duration": 4.058
+    },
+    {
+      "text": " will see ahead that we will use these",
+      "start": 3464.299,
+      "duration": 3.866
+    },
+    {
+      "text": " four cases later. All right? If we are",
+      "start": 3467.243,
+      "duration": 3.792
+    },
+    {
+      "text": " solving a regression problem, we will",
+      "start": 3470.088,
+      "duration": 2.957
+    },
+    {
+      "text": " use this case. If we are using",
+      "start": 3472.098,
+      "duration": 3.13
+    },
+    {
+      "text": " classification, then we will use any of",
+      "start": 3474.277,
+      "duration": 2.894
+    },
+    {
+      "text": " these three, depending on the",
+      "start": 3476.22,
+      "duration": 2.408
+    },
+    {
+      "text": " requirement. But it is most important",
+      "start": 3477.677,
+      "duration": 4.224
+    },
+    {
+      "text": " to understand that this same",
+      "start": 3480.977,
+      "duration": 3.126
+    },
+    {
+      "text": " mathematical model, this very",
+      "start": 3483.178,
+      "duration": 3.202
+    },
+    {
+      "text": " perceptron, is being used for different",
+      "start": 3485.456,
+      "duration": 3.96
+    },
+    {
+      "text": " things because its design is very",
+      "start": 3488.492,
+      "duration": 3.505
+    },
+    {
+      "text": " flexible and it is not fixed to any one",
+      "start": 3491.073,
+      "duration": 3.96
+    },
+    {
+      "text": " particular thing. All right? I hope you",
+      "start": 3494.109,
+      "duration": 3.827
+    },
+    {
+      "text": " understood this entire discussion. So",
+      "start": 3496.986,
+      "duration": 3.064
+    },
+    {
+      "text": " that was the video, guys. I hope you",
+      "start": 3499.116,
+      "duration": 3.505
+    },
+    {
+      "text": " understood everything. It was a bit",
+      "start": 3501.685,
+      "duration": 3.188
+    },
+    {
+      "text": " complex. I think if you go back and",
+      "start": 3503.923,
+      "duration": 3.016
+    },
+    {
+      "text": " watch the video again at some complex",
+      "start": 3505.995,
+      "duration": 3.077
+    },
+    {
+      "text": " parts, things will become clear to you.",
+      "start": 3508.129,
+      "duration": 3.19
+    },
+    {
+      "text": " Also, I would recommend that you",
+      "start": 3511.299,
+      "duration": 2.308
+    },
+    {
+      "text": " download the code once and try running",
+      "start": 3512.648,
+      "duration": 2.553
+    },
+    {
+      "text": " it on your machine. Now, in the",
+      "start": 3514.242,
+      "duration": 3.398
+    },
+    {
+      "text": " upcoming videos, we will gradually move",
+      "start": 3516.689,
+      "duration": 2.918
+    },
+    {
+      "text": " towards the multi-layer perceptron. In",
+      "start": 3518.657,
+      "duration": 3.345
+    },
+    {
+      "text": " the next video, we will discuss exactly",
+      "start": 3521.065,
+      "duration": 3.431
+    },
+    {
+      "text": " what the problem with perceptrons is",
+      "start": 3523.558,
+      "duration": 3.244
+    },
+    {
+      "text": " that necessitated multilayer",
+      "start": 3525.865,
+      "duration": 2.745
+    },
+    {
+      "text": " perceptrons, and then we will start",
+      "start": 3527.672,
+      "duration": 3.182
+    },
+    {
+      "text": " studying multilayer perceptrons. All",
+      "start": 3529.917,
+      "duration": 3.262
+    },
+    {
+      "text": " right? So, that's it from my side.",
+      "start": 3532.235,
+      "duration": 3.356
+    },
+    {
+      "text": " Before I go, a request that if you like",
+      "start": 3535.739,
+      "duration": 3.31
+    },
+    {
+      "text": " the video, please do like and share it.",
+      "start": 3538.109,
+      "duration": 3.311
+    },
+    {
+      "text": " With whoever needs it. Also, if you",
+      "start": 3541.56,
+      "duration": 3.853
+    },
+    {
+      "text": " haven't subscribed to my channel,",
+      "start": 3544.46,
+      "duration": 2.577
+    },
+    {
+      "text": " please do subscribe. Okay? So, that's",
+      "start": 3546.084,
+      "duration": 3.828
+    },
+    {
+      "text": " it from my side. See you in the next",
+      "start": 3548.962,
+      "duration": 2.824
+    },
+    {
+      "text": " video.",
+      "start": 3550.831,
+      "duration": 1.268
+    }
+  ]
+}

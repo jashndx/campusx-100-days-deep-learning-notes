@@ -1,0 +1,3735 @@
+{
+  "id": "JgnbwKnHMZQ",
+  "index": 57,
+  "title": "RNN Sentiment Analysis | RNN Code Example in Keras | CampusX",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and you are  welcome to my YouTube channel. So, in  this video, we are going to continue  our Deep Learning playlist. Before  starting the video, I would like to say  sorry because I haven't updated this  playlist for about 8 or 9 days. I am  really sorry. But the reason was that I  was traveling, traveling quite a lot.  And at the same time, the mentorship  program was also launched. So, it was  becoming a bit difficult to do both  things together. I hope you can  understand. So, going forward, I would  like to be more consistent. So, let me  tell you what today's video is about.  In the last video, we covered how RNNs  work. We understood forward propagation  inside RNNs in great detail. Now, in  today's video, I want to show you  practically how you can implement RNNs  using Keras. Okay? So, we are taking a  small case study where we will perform  sentiment analysis using Keras and RNN.  Obviously, the goal of this video is  not to gain higher accuracy. Meaning,  we are not chasing accuracy. We are not  trying to build a very powerful model.  But the main goal is to make you  understand how the entire flow works.  How you build a sentiment analysis  project using RNN. Okay? So, you will  learn some new things. We will use two  different approaches, and that will  give you a good idea for building  future projects. Okay? So, that's it  from my side, and let's not waste your  time. Let's start the video. So guys,  if you want to perform sentiment  analysis using RNN, generally the  dataset you will get will look like  this: you will have text as input and  you will have 1 or 0 as labels for the  output. 1 means positive sentiment, 0  means negative sentiment. And you will  have to build a sentiment analysis  model on this data using RNN. Now, the  most important thing in this entire  process is that you must first convert  this text data into numbers or convert  it into vectors in some way. Because  your RNN model will only work on  numbers or vectors. Right? So in this  video, I will show you two different  workflows on how you can convert your  text into numbers. Okay? So, the first  technique we are going to study is the  integer encoding technique. And the  second is a very popular technique used  in deep learning. That is called  embeddings. Okay? I am going to show  you both these techniques. First, let's  focus on integer encoding. So, I will  explain through this example how you  convert text into vectors using integer  encoding. So, what will you do first?  You will form a vocabulary. Vocabulary  means how many unique words are in your  entire document. Like here, you can see  there are five unique words. Okay? Then  what will you do? You will provide an  integer value to each unique word. You  will provide an index. Like 'Hi'  becomes one, 'There' becomes two, 'How'  becomes three, 'Are' four, 'You' five.  Okay? Now, in the next step, what do  you do? You basically replace these  sentences with their index values. Like  for sentence one, 'Hi There', it will  become one and two. And for the next  sentence, it will become three, four,  and five. Okay? Now, the problem is  that these two sentences, when  converted to numbers, have different  sizes. Because the number of words is  different. So, what will you do in the  third step? You will perform padding.  Okay? Padding means you will bring them  all to the same size. So, basically,  what you will do is add a zero at the  end or at the beginning of the sentence  above. Okay? And now you have your  vectors, which are of equal size. And  once you have these vectors, you can  send them into an RNN to train. Okay?  So, I will quickly show you this entire  workflow in Keras. Where we will do  what? First, we will see how text is  converted to vectors and then we will  send it to an RNN to train. So guys, I  have already written the code. I will  explain it to you quickly. So, first of  all, we have imported NumPy. After that , here is my document. So, you can  consider this as our input data. Our  input data consists of 10 sentences.  Okay? Inside this list, every item is  one sentence. Right? Now, the first  thing you need to do is tokenize your  entire document. Tokenizing means you  will separate it word by word. If there  is a capital letter, you will convert  it to a small letter. You will remove  special symbols. So, all these things  are done within the tokenizer. So, what  are you doing? Here, the tokenizer is  already in Keras. You are importing it  and creating an object for it. And here  you are passing a parameter, the OOV  token. So OOV stands for  Out-Of-Vocabulary token. So, I have  written Nitish here. You can actually  write anything. You can even write ' nothing' here. So, the meaning of this  OOV token is, suppose you trained your  model on this data. Right? Now, during  prediction, it's possible that when you  provide new text, there might be a word  not in our training data. So, how to  handle that? That is the purpose of the  OOV token. We will replace every new  word with this 'nothing' word. Okay?  That's it. It's a simple concept. Now  what are you doing? You created this  tokenizer object and you are calling a  method called 'fit_on_texts' and  passing this document. Okay? So in a  way, the tokenizer will do its job. The  tokenizer does a few things. It will  separate the text word by word. Also,  it will generate indices behind the  scenes. It will convert all capital  letters into small letters. That is why  you use the Keras tokenizer. Because  many things are handled behind the  scenes. Okay? So once you have done ' fit_on_texts'. Now this tokenizer  object has some information. For  example, there is an attribute called ' word_index'. If you print it, you will  see how many unique words are in your  vocabulary and what index your  tokenizer has assigned to them. Like  Nitish got one, OOV vocabulary;  actually, let's run it again. In fact,  let's run it from the start. Here is  our word count. So you can see OOV  vocabulary came in at one. India came  in at two. Will win (Jeetega) came in  at three. And in this way, we have  assigned an index to every word in our  vocabulary. Okay? Now, if you want, you  can also find out how many times each  word appeared. You can get the  frequency count using the 'word_counts'  attribute. Okay? As soon as you run  this, you will see how many times each  word appeared. Like India appeared four  times. Okay? Apart from this, there are  other things too. You can see how many  sentences are in your document.  Basically, you can find the number of  rows using 'document_count'. Okay? So,  we have completed the first part up to  here. You have generated the indexes.  The 1 2 3 4 5 that we did. You have  generated these indexes. Now, what will  you do? There is a function, a method  inside the tokenizer called  text_to_sequences, and you will send  your document to it, and as soon as you  do this, your sequences will be  generated for every sentence. Okay? You  can see what our first sentence was? Go  India. So what did it do? It went and  checked what the index of 'Go' is. 10  and what is the index of 'India'? Two.  So what did it do? It went below and  replaced that word with 10 2. Okay? So  this is how our sentence became a  sequence. Okay? Now what is the last  step remaining? Since the size of the  sequences in all these sentences is  different. So what will you do? You  will apply padding. So that is what we  did in the next step. In Keras utils,  there is a module called pad_sequences.  And you passed the sequences into  pad_sequences. These are the sequences.  Okay? And you specified here that the  padding will be 'post'. 'Post' means  zeros will be added at the end. You can  also do 'pre'. As soon as you did this,  look guys, here are your sequences.  Okay? And in this way, our input data  is ready. Okay? So I hope you  understood up to this point how you  prepare input data. How you convert  text into numbers or vectors. Come on  guys, now I will show you how to run a  proper sentiment analysis code. So we  will use a dataset that is pre-built in  the Keras library. The name of the  dataset is IMDb. So in this dataset,  you get IMDb reviews and their  sentiments. Okay? So, the good part  about this dataset is that it is  already in the Keras library and is  pre-processed. Okay? So that you can  start working on it directly. Okay? So  here you can see I first imported the  libraries. Imported the Sequential  model. Imported the Dense layer.  Imported the SimpleRNN layer. To be  honest, I haven't used Embedding here.  But I have imported it. I will use it  later. Now look here, what are you  doing first? You are calling load_data  from IMDb and you are loading the data  here. Okay? So Let's run this code once . So you can see it is downloading. Now , the dataset here is already tokenized . In fact, it is also integer-encoded  already. So you can see if you load  x_train. First of all, if you check the  shape of x_train, you will see that we  have a number of reviews, which is  25,000 in the training data, and if you  go to test, we have 25,000 rows in the  test set as well. Okay? Now, if you  want to see what each review looks like , you can print x_train. As soon as you  print x_train, you will notice that  there are no sentences or words here.  Actually, what it is, is that this data  is preprocessed and integer-encoded  beforehand. So the thing I showed you  earlier, where we were analyzing the  entire vocabulary to allocate an  integer to every word, that work has  already been done. Okay? That is why  when you extract the first review, like  x_train [0], you would see that rather  than seeing sentences, you are actually  seeing these numbers. Okay? So where  are these numbers coming from? From  integer encoding. We assigned an  integer to every word in the vocabulary , and rather than using the word, we  have that number. Okay? So the effort  we had to put in has been saved. Okay?  Now moving forward, first, what we will  do is make the length of all our  reviews equal. Okay? Because if you  notice, if you calculate the length of  x_train [0], you would see that its  length is 218. This means the first  review in your dataset has 218 words.  But if you extract the second review,  it has 189. If you extract the third,  it has 141. So what will we do? We will  do padding. Okay? Which I showed you  how to do a little while ago. Now you  can use the same technique for padding  that you used earlier. But what am I  doing? I am trimming this entire  dataset. I am saying that I only want  the first 50 words of every review. Why  am I doing this? Because the data  becomes very large, and it takes a lot  of time to train. So if you are doing  this on your machine and you have time,  then don't do what I did. Okay? What I  am doing is calling pad sequences and  passing a parameter here. Max length  equals 50. So basically, what am I  doing? Trimming every review of mine to  50 words. Each of my reviews will  consist of only 50 words. So I am  losing the rest of the information. But  if you are doing this on your machine,  just do this much. Just do this much.  Okay? And your code will start running  on the entire data. Okay? But since I  need to train this model. I am not  doing that for now. I ran both of these  codes. And pad sequences is not defined . So let us run this code once, and  then come back down and run this code  again. And now if you look at X-train  dot shape, you would see that you have  25,000 reviews. But each review has 50  words. In fact, I can show it to you.  Here is my X-train and here is the zero  index of my X-train. Okay? Here is my  first review consisting of 50 words.  Okay? Now our main work starts from  here. We built a model, a sequential  model. And now what are we doing?  Adding a simple RNN layer to that model  with 32 nodes. Okay? And here we are  providing the input shape. And what is  our input shape? 50, 1, okay? Why is it  50, 1? 50 is the time steps and 1 is  the input feature. Okay? So let me show  you what that means. There are 50  numbers. In every review. There are 50  numbers. Okay? So now what will happen  is that these 50 will actually act as  time steps. Okay? And in each time step , one number will be picked up and sent  to our model. Okay? So basically, our  model's architecture is such that there  is an input node. Then there is our RNN  layer and in this RNN layer there are  32 nodes. Okay? And obviously, it is  connected in this way. And then further  ahead There is a dense layer. Okay?  Where we have applied a sigmoid. Okay?  So what will happen? As soon as you use  this review, the first 25 will be  inserted here. Okay? The entire flow of  the RNN will occur. After that, 26 will  come here. Then at the next time step  two or time step three, 18 will come  here. Then at time step three, four, 19  will come here. And in this way, all  these numbers will go in, and  eventually, you will get y-hat from  here. Okay? If I ask you how many  parameters are there in this entire  model? Then you can calculate it very  easily. Here you have 32 weights. Then  here you have 32 biases. Then here you  have 32 by 32. More weights for the  feedback. Okay? And then you have 32 by  1 weights here. And here you have one  bias. Okay? So, in total, how many  weights do you have? 32 + 32 + 32*32,  okay? If you calculate this number, it  will be 64 + 32*32, which is 1088. So  1088 is your total number of weights.  So if I go back to the code, I can show  you that in the simple RNN there are  1088 parameters and in the dense layer  there are 33 parameters. 32 weights and  one bias. Okay? I hope you are  understanding this whole thing. Now  there is one more thing here, I have  set return sequences to false. Okay? So , I told you what happens is that at  every time step you give some input,  like 25, and you also feed the output  from the previous time step, t-1, and  then 'o'() comes out from here, which  then goes to the next time step. Okay?  So this keeps getting calculated the  whole time. So if you have set return  sequences to false, then this normal  flow will continue. But if you set  return sequences to true, then you  actually send this output out every  time. Every time this output will go  out. Meaning it will come to you. It  will come to the programmer. But, but  if you have set it to false, you won't  get this output outside. It will stay  inside the system. And eventually, at  the last time step, it will come out as  y-hat. Okay? So just understand it like  this, for sentiment analysis we need to  keep return sequences false. Because we  need the output at the last time step.  But there could be certain NLP tasks  like Named Entity Recognition where  when you send each word, you need to  find out against each word whether it  is, I am sorry, whether it is relevant  to us or not. Is it an entity or not.  Okay? Similarly, if you are doing  machine translation where you want to  convert one sentence into another, then  you might need the output at every step  there too. So what you will do there is , rather than having return_sequences  as False, you will keep it as True.  Don't worry, even if you don't  understand this right now, as we move  forward we will do some projects where  I will show you its variations. Okay,  anyway, here is our model and now we  just need to compile this model. In  compiling, you specified the loss. You  specified the optimizer. You specified  the metric and then after that you  called fit. You provided X_train and  y_train. Kept epochs as five. In  validation data, you kept X_test and  y_test. When I trained this model,  honestly, the results were not very  good. The accuracy did not improve much . One reason for that was that we did  not use all the words. We used only 50  words of our reviews. And second, we  did not run many epochs. Also, there  could be some other problems. Right now , our goal was not to achieve the best  model. Our goal was to understand how  you can convert what you learned about  RNNs in the last video into code. So I  hope you understood the first thing.  Now I will show you another workflow. I  will show you another way through which  you can do the same thing and that is  called embeddings, and it will  generally give you better results. A  technique you will see a lot in RNNs is  embedding. Okay? So let me tell you  once what embedding is. Although if you  have watched my NLP playlist. There I  have talked about embeddings in great  detail. But let's take a quick revision  once again. Here is a definition that I  have taken from Wikipedia. So in NLP,  word embedding or embedding is a term  used for the representation of words  for text analysis. Typically in the  form of real-valued vectors that encode  the meaning of the word such that words  that are closer in the vector space are  expected to be similar in meaning. So  the basic फंडा is, what do you  do? You have words like 'this', 'is', ' nice'. What do you do? Based on the  whole document, after looking at the  entire document, you convert each word  into a vector. Okay? Now this vector is  dense. Being dense means the values are  non-zero. The text representation  techniques you have been looking at so  far are actually sparse representations . Sparse representation means that a  lot of the values are zero. For example , let's take a case. You have a  sentiment analysis problem. Where you  have multiple reviews. Review one,  review two, and so on. Now, let's  assume this review two is the largest  and has 2000 words. And let's say  review one only has 20 words. So,  according to the technique we just  studied, what would you do? First, you  would perform integer encoding. So,  basically, you will get a vector  containing 20 numbers. But then, to  make them all equal, what will you have  to do? You will have to do padding. So,  think about it: when you pad this 20- word one, you will add a lot—meaning  1980—zeros to these 20 numbers. So  basically, you will have a large vector  containing 2000 numbers, but out of  these, 1980 numbers are zero. So it  will be a sparse vector where many  values are zero. They are not useful.  So, that is what I am telling you, that  when you use word embedding, the vector  representation you create is dense.  Meaning most values are non-zero. They  are useful. The second important thing  is that word embedding can capture  semantic meaning. This means the  context in which a word is being used.  Our embedding technique can understand  this. Right? So, this is another  benefit due to which you can develop  much better models. So, what are the  two benefits? First, it is a dense  representation. Most values are  non-zero. Because of which, the  dimensions are fewer. Meaning, here, as  it is becoming a 2000-dimension one.  Here, if you want, you can get the job  done with just 32 dimensions. The  second benefit is that it can capture  semantic meaning. It is written here  that words that are closer in vector  space are expected to be similar in  meaning. This method can understand  meaning. Right? And the third point I  want to discuss is that you are not  reading something completely new. You  might have heard about Word2Vec in NLP  or perhaps about GloVe. These are all  word embedding techniques. In deep  learning, if you want, you can learn an  embedding during the training process  of the model you are building. Right?  So basically, in Keras, there is a  thing called the embedding layer. What  you can do is, in your RNN model  initially, you can put an embedding  layer, which will automatically create  a dense representation of all your  words and send that representation into  this RNN. Instead of the sparse  representation you were sending earlier  by integer encoding, you will now send  this dense representation into the RNN,  and it will perform sentiment analysis  for you. Okay? So in short, the benefit  is that you get better results. Okay?  So now I will try to show you how the  Keras embedding layer works. Okay?  Applying an embedding layer in Keras is  very easy. You basically just have to  make sure that whatever data you are  inputting into the embedding layer is  integer encoded. That's it. The rest,  the embedding layer handles everything  automatically. Okay? So I will try to  explain how the embedding layer works  using the same example. We have taken  the same document again which has 10  sentences. Okay? After that, we first  need to tokenize. So we created a  tokenizer object and called the  fit_on_texts function. Okay? After  doing this, we found that there are 17  unique words in our vocabulary. Okay?  So then what did we do? We called the  texts_to_sequences function to generate  the sequences. And these are the  sequences for all our 10 sentences.  Right? You have done this before as  well. Now after this, we have to  perform padding because we have to make  sure the input we are providing is all  of the same shape. So we used  pad_sequences. We set padding to post.  And after that, this is how our input  data is looking. Everything is fine up  to here. Now you will start the main  work from here. You form a Keras  Sequential model and then you add an  embedding layer to it. Okay? Now you  have to specify three things in the  embedding layer. First, what is your  total vocabulary length? Meaning, how  many unique words are in your  vocabulary. Okay? Second, you specify  what the output dimension of the  embedding you want to form will be.  What is the dimension of the dense  vector you want to create? So basically , if you put two here, it means you  want to represent every word using two  numbers. Now you can put 2 here, or you  can even put 200. It is up to you. This  is like a hyperparameter. You tune it  to find the best value. And the last  thing is input length. Here you have to  specify how many words you have. Right?  So this becomes your model. Right? As  soon as you build this model, I will  show you what its architecture looks  like. In our case, as soon as you build  this model, I will show you what its  architecture looks like. In our case,  we have words in this manner. This was  our first review. Right? This was our  first review. So basically, every  review consists of five numbers or five  words. Right? And in total, there are  17 words. So what are you doing? You  are actually forming a neural network  where there are 17 nodes at the input.  And then there are two more nodes in  the output layer. Right? This means  there are weights here that are 17 by 2 . Right? So now you will pick these  words one by one and send them here,  and you will send every word here as a  17-dimensional vector. Right? You can  do one-hot encoding. It happens  automatically internally. Right? And  all these weights are randomly  initialized. Now what will happen? This  entire layer gets trained with your RNN . Right? Right? Backpropagation and  everything happens. So basically, you  find the best value for these weights,  and this is the whole embedding process . Right? At the end, you will get two  numbers from here for every word. Like  when you put this word 'nine' here, you  will basically get two numbers here. So  these two numbers are the  representation of each word. Right? So  what will happen? When you input a full  review, for every word, you will get a  dense vector like this. So we have, in  total, Our representation will look  like this, which were the first five  numbers. Now for each number, two more  numbers will be there. So this is  exactly what I have done here in our  notebook. I have not trained the model  here. I am showing you the predictions  directly on the initial weights. So you  can see when you send sequences into  model.predict. So what happens is that  we have this sequence. So for every  review, what you will get is this. How?  Look, you will understand it. So for  every word you are getting two words.  Okay? For every word you are getting  two words. Okay? Then for the next  three zeros, two words each. So  basically, this whole thing is actually  the representation of one review. Then  this is a representation of the second  review. This is for the third, this for  the fourth, and this way, for 10  reviews, you are getting a vector of  1010 numbers. Okay? So I hope you  understood how you create embeddings.  Now that we know how an embedding layer  works. I will show you the embedding  workflow on the same IMDb data again.  Okay? So here you can see we have  imported everything. Here we have  imported the data again. Here we are  shortening all our reviews. So every  review will contain only 50 words. Okay ? No matter how big or small, it will  become 50 words. Okay? This is the  shape of our X_train. It is currently  25,000 comma 50. Now look, the main  thing starts here. This is the  architecture of our model. So we are  creating a sequential model and what  did we do first? We added an embedding  layer. Okay? So in the embedding layer,  you first specified that your  vocabulary size is 10,000. Actually,  it's more than that, but I have limited  it to 10,000 for now. Okay? After that,  you specified here that for every word,  I want a dense vector of dimension two.  Okay? And third, you had to specify the  input size, which is 50. So you can  write it there. 50, okay. What did you  do after that? You directly fed the  output from the embedding to a simple  RNN layer with 32 nodes. Return  sequences is false. Meaning, the output  won't come out from the intermediate  time steps. Okay? And finally, there is  a dense layer with one node and the  activation is sigmoid. Okay? So, if I  want to show you, the architecture of  this entire model is such that first,  there is an embedding layer receiving  an input of 10,000 dimensions. Okay?  And this is our two-dimensional output  from the embedding. Okay? From here,  the output goes into our RNN. And in  that RNN, there are 32 neurons, and  then the output goes into our sigmoid.  Okay? So, if you talk about weights,  then here you will have 10,000  multiplied by two weights. Okay? Then  for every word, you will get an output  of two dimensions from here. You are  connecting that right here. So here you  will have a total of 64 weights, which  is 2*32. Okay? Then there will be these  feedback connections of 32*32, and then  there would be 32 weights here. Okay?  These will be the weights. If you talk  about bias, then there will be 32  biases here and one bias here. Okay? So  this is the architecture of our model.  Okay? I will show you the same thing  here. You can see 2000 coming out from  the embedding. 1120 is coming out from  the RNN part. And then there are 33  trainable parameters in the output  layer. Okay? And after this, you don't  have to do anything else. You need to  compile the model and then fit the  model. We have used the exact same  approach here. And this time you will  notice that when you are training this  model, you are gaining higher  accuracies of around 80%. Okay? What  was stuck at 50 has now come to around  80. Although there is some overfitting  happening. It is reaching 98%on  training. But on testing, it is  stopping at 76-77. So that is a matter  for later. We will study how to reduce  overfitting later on. But right now, my  main goal was to explain to you the  flow of how to use simple RNN in Keras  with two different approaches. One was  integer encoding and the second one was  the embedding approach. Okay? Now, one  more thing, you can either learn  embeddings by adding an embedding layer  to your model, or you can also use  pre-trained embeddings like Word2Vec or  GloVe, that is up to you. Okay?  Generally, depending on the dataset, I  would say training it with the model  gives you more benefit. Because the  embeddings that are generated are  actually generated according to your  dataset. They are more custom and are  able to capture the semantic meaning  within your dataset. Okay? So I hope  you understood this entire flow. Now  going forward, in the next video our  goal is to understand how  backpropagation works in an RNN. So  that was the video, guys. I hope you  liked the video. And also understood it . I would recommend you try running  these codes yourself once. You will get  some confidence. And if you liked the  video, hit like, and if you haven't  subscribed to the channel, please  subscribe. Okay? See you in the next  video. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and you are",
+      "start": 0.1,
+      "duration": 3.18
+    },
+    {
+      "text": " welcome to my YouTube channel. So, in",
+      "start": 2.338,
+      "duration": 3.132
+    },
+    {
+      "text": " this video, we are going to continue",
+      "start": 4.522,
+      "duration": 2.866
+    },
+    {
+      "text": " our Deep Learning playlist. Before",
+      "start": 6.44,
+      "duration": 3.035
+    },
+    {
+      "text": " starting the video, I would like to say",
+      "start": 8.541,
+      "duration": 3.578
+    },
+    {
+      "text": " sorry because I haven't updated this",
+      "start": 11.185,
+      "duration": 3.379
+    },
+    {
+      "text": " playlist for about 8 or 9 days. I am",
+      "start": 13.63,
+      "duration": 3.64
+    },
+    {
+      "text": " really sorry. But the reason was that I",
+      "start": 16.368,
+      "duration": 3.745
+    },
+    {
+      "text": " was traveling, traveling quite a lot.",
+      "start": 19.163,
+      "duration": 2.856
+    },
+    {
+      "text": " And at the same time, the mentorship",
+      "start": 21.299,
+      "duration": 2.714
+    },
+    {
+      "text": " program was also launched. So, it was",
+      "start": 23.06,
+      "duration": 2.849
+    },
+    {
+      "text": " becoming a bit difficult to do both",
+      "start": 24.954,
+      "duration": 2.578
+    },
+    {
+      "text": " things together. I hope you can",
+      "start": 26.577,
+      "duration": 2.682
+    },
+    {
+      "text": " understand. So, going forward, I would",
+      "start": 28.319,
+      "duration": 3.965
+    },
+    {
+      "text": " like to be more consistent. So, let me",
+      "start": 31.359,
+      "duration": 3.763
+    },
+    {
+      "text": " tell you what today's video is about.",
+      "start": 34.17,
+      "duration": 2.79
+    },
+    {
+      "text": " In the last video, we covered how RNNs",
+      "start": 36.879,
+      "duration": 3.21
+    },
+    {
+      "text": " work. We understood forward propagation",
+      "start": 39.148,
+      "duration": 3.968
+    },
+    {
+      "text": " inside RNNs in great detail. Now, in",
+      "start": 42.175,
+      "duration": 3.971
+    },
+    {
+      "text": " today's video, I want to show you",
+      "start": 45.225,
+      "duration": 3.583
+    },
+    {
+      "text": " practically how you can implement RNNs",
+      "start": 47.886,
+      "duration": 3.975
+    },
+    {
+      "text": " using Keras. Okay? So, we are taking a",
+      "start": 50.939,
+      "duration": 4.86
+    },
+    {
+      "text": " small case study where we will perform",
+      "start": 54.865,
+      "duration": 3.481
+    },
+    {
+      "text": " sentiment analysis using Keras and RNN.",
+      "start": 57.412,
+      "duration": 3.547
+    },
+    {
+      "text": " Obviously, the goal of this video is",
+      "start": 60.759,
+      "duration": 3.259
+    },
+    {
+      "text": " not to gain higher accuracy. Meaning,",
+      "start": 63.081,
+      "duration": 3.451
+    },
+    {
+      "text": " we are not chasing accuracy. We are not",
+      "start": 65.587,
+      "duration": 3.041
+    },
+    {
+      "text": " trying to build a very powerful model.",
+      "start": 67.668,
+      "duration": 2.52
+    },
+    {
+      "text": " But the main goal is to make you",
+      "start": 69.639,
+      "duration": 2.865
+    },
+    {
+      "text": " understand how the entire flow works.",
+      "start": 71.562,
+      "duration": 3.158
+    },
+    {
+      "text": " How you build a sentiment analysis",
+      "start": 74.72,
+      "duration": 3.206
+    },
+    {
+      "text": " project using RNN. Okay? So, you will",
+      "start": 76.991,
+      "duration": 3.769
+    },
+    {
+      "text": " learn some new things. We will use two",
+      "start": 79.803,
+      "duration": 2.885
+    },
+    {
+      "text": " different approaches, and that will",
+      "start": 81.744,
+      "duration": 2.963
+    },
+    {
+      "text": " give you a good idea for building",
+      "start": 83.763,
+      "duration": 2.85
+    },
+    {
+      "text": " future projects. Okay? So, that's it",
+      "start": 85.669,
+      "duration": 3.305
+    },
+    {
+      "text": " from my side, and let's not waste your",
+      "start": 88.033,
+      "duration": 3.252
+    },
+    {
+      "text": " time. Let's start the video. So guys,",
+      "start": 90.344,
+      "duration": 4.596
+    },
+    {
+      "text": " if you want to perform sentiment",
+      "start": 94.032,
+      "duration": 3.965
+    },
+    {
+      "text": " analysis using RNN, generally the",
+      "start": 97.09,
+      "duration": 4.057
+    },
+    {
+      "text": " dataset you will get will look like",
+      "start": 100.24,
+      "duration": 4.243
+    },
+    {
+      "text": " this: you will have text as input and",
+      "start": 103.576,
+      "duration": 4.428
+    },
+    {
+      "text": " you will have 1 or 0 as labels for the",
+      "start": 107.096,
+      "duration": 4.521
+    },
+    {
+      "text": " output. 1 means positive sentiment, 0",
+      "start": 110.71,
+      "duration": 4.668
+    },
+    {
+      "text": " means negative sentiment. And you will",
+      "start": 114.444,
+      "duration": 4.092
+    },
+    {
+      "text": " have to build a sentiment analysis",
+      "start": 117.627,
+      "duration": 4.109
+    },
+    {
+      "text": " model on this data using RNN. Now, the",
+      "start": 120.827,
+      "duration": 5.098
+    },
+    {
+      "text": " most important thing in this entire",
+      "start": 125.011,
+      "duration": 4.004
+    },
+    {
+      "text": " process is that you must first convert",
+      "start": 128.101,
+      "duration": 4.261
+    },
+    {
+      "text": " this text data into numbers or convert",
+      "start": 131.448,
+      "duration": 4.261
+    },
+    {
+      "text": " it into vectors in some way. Because",
+      "start": 134.795,
+      "duration": 4.69
+    },
+    {
+      "text": " your RNN model will only work on",
+      "start": 138.572,
+      "duration": 3.773
+    },
+    {
+      "text": " numbers or vectors. Right? So in this",
+      "start": 141.432,
+      "duration": 4.401
+    },
+    {
+      "text": " video, I will show you two different",
+      "start": 144.909,
+      "duration": 3.714
+    },
+    {
+      "text": " workflows on how you can convert your",
+      "start": 147.698,
+      "duration": 3.789
+    },
+    {
+      "text": " text into numbers. Okay? So, the first",
+      "start": 150.563,
+      "duration": 4.583
+    },
+    {
+      "text": " technique we are going to study is the",
+      "start": 154.248,
+      "duration": 4.876
+    },
+    {
+      "text": " integer encoding technique. And the",
+      "start": 158.226,
+      "duration": 4.748
+    },
+    {
+      "text": " second is a very popular technique used",
+      "start": 162.037,
+      "duration": 3.423
+    },
+    {
+      "text": " in deep learning. That is called",
+      "start": 164.522,
+      "duration": 4.001
+    },
+    {
+      "text": " embeddings. Okay? I am going to show",
+      "start": 167.608,
+      "duration": 4.148
+    },
+    {
+      "text": " you both these techniques. First, let's",
+      "start": 170.803,
+      "duration": 4.093
+    },
+    {
+      "text": " focus on integer encoding. So, I will",
+      "start": 173.979,
+      "duration": 4.73
+    },
+    {
+      "text": " explain through this example how you",
+      "start": 177.78,
+      "duration": 3.553
+    },
+    {
+      "text": " convert text into vectors using integer",
+      "start": 180.404,
+      "duration": 3.766
+    },
+    {
+      "text": " encoding. So, what will you do first?",
+      "start": 183.241,
+      "duration": 3.647
+    },
+    {
+      "text": " You will form a vocabulary. Vocabulary",
+      "start": 185.988,
+      "duration": 5.273
+    },
+    {
+      "text": " means how many unique words are in your",
+      "start": 190.322,
+      "duration": 3.351
+    },
+    {
+      "text": " entire document. Like here, you can see",
+      "start": 192.734,
+      "duration": 4.548
+    },
+    {
+      "text": " there are five unique words. Okay? Then",
+      "start": 196.361,
+      "duration": 4.374
+    },
+    {
+      "text": " what will you do? You will provide an",
+      "start": 199.784,
+      "duration": 3.197
+    },
+    {
+      "text": " integer value to each unique word. You",
+      "start": 202.044,
+      "duration": 3.398
+    },
+    {
+      "text": " will provide an index. Like 'Hi'",
+      "start": 204.489,
+      "duration": 3.52
+    },
+    {
+      "text": " becomes one, 'There' becomes two, 'How'",
+      "start": 207.059,
+      "duration": 2.95
+    },
+    {
+      "text": " becomes three, 'Are' four, 'You' five.",
+      "start": 209.059,
+      "duration": 2.9
+    },
+    {
+      "text": " Okay? Now, in the next step, what do",
+      "start": 212.779,
+      "duration": 3.432
+    },
+    {
+      "text": " you do? You basically replace these",
+      "start": 215.26,
+      "duration": 3.81
+    },
+    {
+      "text": " sentences with their index values. Like",
+      "start": 218.142,
+      "duration": 4.817
+    },
+    {
+      "text": " for sentence one, 'Hi There', it will",
+      "start": 222.039,
+      "duration": 3.96
+    },
+    {
+      "text": " become one and two. And for the next",
+      "start": 225.079,
+      "duration": 5.82
+    },
+    {
+      "text": " sentence, it will become three, four,",
+      "start": 229.995,
+      "duration": 4.561
+    },
+    {
+      "text": " and five. Okay? Now, the problem is",
+      "start": 233.652,
+      "duration": 4.982
+    },
+    {
+      "text": " that these two sentences, when",
+      "start": 237.733,
+      "duration": 3.962
+    },
+    {
+      "text": " converted to numbers, have different",
+      "start": 240.793,
+      "duration": 4.554
+    },
+    {
+      "text": " sizes. Because the number of words is",
+      "start": 244.446,
+      "duration": 3.219
+    },
+    {
+      "text": " different. So, what will you do in the",
+      "start": 246.71,
+      "duration": 2.966
+    },
+    {
+      "text": " third step? You will perform padding.",
+      "start": 248.727,
+      "duration": 3.89
+    },
+    {
+      "text": " Okay? Padding means you will bring them",
+      "start": 251.8,
+      "duration": 3.475
+    },
+    {
+      "text": " all to the same size. So, basically,",
+      "start": 254.34,
+      "duration": 3.968
+    },
+    {
+      "text": " what you will do is add a zero at the",
+      "start": 257.403,
+      "duration": 4.513
+    },
+    {
+      "text": " end or at the beginning of the sentence",
+      "start": 261.011,
+      "duration": 4.703
+    },
+    {
+      "text": " above. Okay? And now you have your",
+      "start": 264.809,
+      "duration": 4.753
+    },
+    {
+      "text": " vectors, which are of equal size. And",
+      "start": 268.669,
+      "duration": 4.93
+    },
+    {
+      "text": " once you have these vectors, you can",
+      "start": 272.697,
+      "duration": 4.52
+    },
+    {
+      "text": " send them into an RNN to train. Okay?",
+      "start": 276.314,
+      "duration": 4.695
+    },
+    {
+      "text": " So, I will quickly show you this entire",
+      "start": 280.109,
+      "duration": 3.824
+    },
+    {
+      "text": " workflow in Keras. Where we will do",
+      "start": 283.005,
+      "duration": 3.555
+    },
+    {
+      "text": " what? First, we will see how text is",
+      "start": 285.617,
+      "duration": 4.282
+    },
+    {
+      "text": " converted to vectors and then we will",
+      "start": 288.989,
+      "duration": 4.33
+    },
+    {
+      "text": " send it to an RNN to train. So guys, I",
+      "start": 292.409,
+      "duration": 4.288
+    },
+    {
+      "text": " have already written the code. I will",
+      "start": 295.744,
+      "duration": 2.909
+    },
+    {
+      "text": " explain it to you quickly. So, first of",
+      "start": 297.709,
+      "duration": 3.656
+    },
+    {
+      "text": " all, we have imported NumPy. After that",
+      "start": 300.453,
+      "duration": 4.739
+    },
+    {
+      "text": ", here is my document. So, you can",
+      "start": 304.192,
+      "duration": 4.397
+    },
+    {
+      "text": " consider this as our input data. Our",
+      "start": 307.673,
+      "duration": 4.316
+    },
+    {
+      "text": " input data consists of 10 sentences.",
+      "start": 311.079,
+      "duration": 4.24
+    },
+    {
+      "text": " Okay? Inside this list, every item is",
+      "start": 314.559,
+      "duration": 4.209
+    },
+    {
+      "text": " one sentence. Right? Now, the first",
+      "start": 317.845,
+      "duration": 4.735
+    },
+    {
+      "text": " thing you need to do is tokenize your",
+      "start": 321.641,
+      "duration": 3.273
+    },
+    {
+      "text": " entire document. Tokenizing means you",
+      "start": 323.976,
+      "duration": 4.856
+    },
+    {
+      "text": " will separate it word by word. If there",
+      "start": 327.928,
+      "duration": 4.659
+    },
+    {
+      "text": " is a capital letter, you will convert",
+      "start": 331.63,
+      "duration": 2.611
+    },
+    {
+      "text": " it to a small letter. You will remove",
+      "start": 333.284,
+      "duration": 3.019
+    },
+    {
+      "text": " special symbols. So, all these things",
+      "start": 335.359,
+      "duration": 3.013
+    },
+    {
+      "text": " are done within the tokenizer. So, what",
+      "start": 337.42,
+      "duration": 3.252
+    },
+    {
+      "text": " are you doing? Here, the tokenizer is",
+      "start": 339.731,
+      "duration": 3.546
+    },
+    {
+      "text": " already in Keras. You are importing it",
+      "start": 342.336,
+      "duration": 3.666
+    },
+    {
+      "text": " and creating an object for it. And here",
+      "start": 345.074,
+      "duration": 3.886
+    },
+    {
+      "text": " you are passing a parameter, the OOV",
+      "start": 348.038,
+      "duration": 3.798
+    },
+    {
+      "text": " token. So OOV stands for",
+      "start": 350.913,
+      "duration": 3.483
+    },
+    {
+      "text": " Out-Of-Vocabulary token. So, I have",
+      "start": 353.477,
+      "duration": 4.429
+    },
+    {
+      "text": " written Nitish here. You can actually",
+      "start": 356.994,
+      "duration": 3.815
+    },
+    {
+      "text": " write anything. You can even write '",
+      "start": 359.869,
+      "duration": 4.356
+    },
+    {
+      "text": "nothing' here. So, the meaning of this",
+      "start": 363.225,
+      "duration": 4.784
+    },
+    {
+      "text": " OOV token is, suppose you trained your",
+      "start": 367.096,
+      "duration": 4.296
+    },
+    {
+      "text": " model on this data. Right? Now, during",
+      "start": 370.479,
+      "duration": 4.738
+    },
+    {
+      "text": " prediction, it's possible that when you",
+      "start": 374.313,
+      "duration": 4.741
+    },
+    {
+      "text": " provide new text, there might be a word",
+      "start": 378.15,
+      "duration": 4.741
+    },
+    {
+      "text": " not in our training data. So, how to",
+      "start": 381.987,
+      "duration": 4.299
+    },
+    {
+      "text": " handle that? That is the purpose of the",
+      "start": 385.366,
+      "duration": 3.246
+    },
+    {
+      "text": " OOV token. We will replace every new",
+      "start": 387.656,
+      "duration": 2.94
+    },
+    {
+      "text": " word with this 'nothing' word. Okay?",
+      "start": 389.648,
+      "duration": 2.943
+    },
+    {
+      "text": " That's it. It's a simple concept. Now",
+      "start": 391.691,
+      "duration": 3.082
+    },
+    {
+      "text": " what are you doing? You created this",
+      "start": 393.813,
+      "duration": 3.172
+    },
+    {
+      "text": " tokenizer object and you are calling a",
+      "start": 396.067,
+      "duration": 4.136
+    },
+    {
+      "text": " method called 'fit_on_texts' and",
+      "start": 399.286,
+      "duration": 3.64
+    },
+    {
+      "text": " passing this document. Okay? So in a",
+      "start": 402.009,
+      "duration": 4.207
+    },
+    {
+      "text": " way, the tokenizer will do its job. The",
+      "start": 405.276,
+      "duration": 3.345
+    },
+    {
+      "text": " tokenizer does a few things. It will",
+      "start": 407.675,
+      "duration": 2.975
+    },
+    {
+      "text": " separate the text word by word. Also,",
+      "start": 409.701,
+      "duration": 3.195
+    },
+    {
+      "text": " it will generate indices behind the",
+      "start": 411.996,
+      "duration": 4.486
+    },
+    {
+      "text": " scenes. It will convert all capital",
+      "start": 415.581,
+      "duration": 3.271
+    },
+    {
+      "text": " letters into small letters. That is why",
+      "start": 417.906,
+      "duration": 3.396
+    },
+    {
+      "text": " you use the Keras tokenizer. Because",
+      "start": 420.375,
+      "duration": 3.652
+    },
+    {
+      "text": " many things are handled behind the",
+      "start": 423.086,
+      "duration": 2.985
+    },
+    {
+      "text": " scenes. Okay? So once you have done '",
+      "start": 425.13,
+      "duration": 4.014
+    },
+    {
+      "text": "fit_on_texts'. Now this tokenizer",
+      "start": 428.144,
+      "duration": 3.888
+    },
+    {
+      "text": " object has some information. For",
+      "start": 431.12,
+      "duration": 3.934
+    },
+    {
+      "text": " example, there is an attribute called '",
+      "start": 434.106,
+      "duration": 3.013
+    },
+    {
+      "text": "word_index'. If you print it, you will",
+      "start": 436.119,
+      "duration": 4.383
+    },
+    {
+      "text": " see how many unique words are in your",
+      "start": 439.585,
+      "duration": 4.054
+    },
+    {
+      "text": " vocabulary and what index your",
+      "start": 442.722,
+      "duration": 3.476
+    },
+    {
+      "text": " tokenizer has assigned to them. Like",
+      "start": 445.281,
+      "duration": 4.272
+    },
+    {
+      "text": " Nitish got one, OOV vocabulary;",
+      "start": 448.617,
+      "duration": 2.973
+    },
+    {
+      "text": " actually, let's run it again. In fact,",
+      "start": 450.654,
+      "duration": 3.589
+    },
+    {
+      "text": " let's run it from the start. Here is",
+      "start": 453.303,
+      "duration": 3.35
+    },
+    {
+      "text": " our word count. So you can see OOV",
+      "start": 455.721,
+      "duration": 3.702
+    },
+    {
+      "text": " vocabulary came in at one. India came",
+      "start": 458.498,
+      "duration": 3.655
+    },
+    {
+      "text": " in at two. Will win (Jeetega) came in",
+      "start": 461.207,
+      "duration": 2.517
+    },
+    {
+      "text": " at three. And in this way, we have",
+      "start": 462.759,
+      "duration": 2.994
+    },
+    {
+      "text": " assigned an index to every word in our",
+      "start": 464.819,
+      "duration": 3.513
+    },
+    {
+      "text": " vocabulary. Okay? Now, if you want, you",
+      "start": 467.398,
+      "duration": 4.145
+    },
+    {
+      "text": " can also find out how many times each",
+      "start": 470.6,
+      "duration": 3.098
+    },
+    {
+      "text": " word appeared. You can get the",
+      "start": 472.755,
+      "duration": 2.811
+    },
+    {
+      "text": " frequency count using the 'word_counts'",
+      "start": 474.627,
+      "duration": 3.385
+    },
+    {
+      "text": " attribute. Okay? As soon as you run",
+      "start": 477.073,
+      "duration": 3.686
+    },
+    {
+      "text": " this, you will see how many times each",
+      "start": 479.835,
+      "duration": 3.87
+    },
+    {
+      "text": " word appeared. Like India appeared four",
+      "start": 482.781,
+      "duration": 3.251
+    },
+    {
+      "text": " times. Okay? Apart from this, there are",
+      "start": 485.076,
+      "duration": 2.73
+    },
+    {
+      "text": " other things too. You can see how many",
+      "start": 486.838,
+      "duration": 3.737
+    },
+    {
+      "text": " sentences are in your document.",
+      "start": 489.659,
+      "duration": 3.6
+    },
+    {
+      "text": " Basically, you can find the number of",
+      "start": 492.899,
+      "duration": 3.264
+    },
+    {
+      "text": " rows using 'document_count'. Okay? So,",
+      "start": 495.225,
+      "duration": 4.226
+    },
+    {
+      "text": " we have completed the first part up to",
+      "start": 498.515,
+      "duration": 3.439
+    },
+    {
+      "text": " here. You have generated the indexes.",
+      "start": 501.018,
+      "duration": 6.541
+    },
+    {
+      "text": " The 1 2 3 4 5 that we did. You have",
+      "start": 506.719,
+      "duration": 3.535
+    },
+    {
+      "text": " generated these indexes. Now, what will",
+      "start": 509.313,
+      "duration": 3.257
+    },
+    {
+      "text": " you do? There is a function, a method",
+      "start": 511.614,
+      "duration": 4.711
+    },
+    {
+      "text": " inside the tokenizer called",
+      "start": 515.389,
+      "duration": 2.719
+    },
+    {
+      "text": " text_to_sequences, and you will send",
+      "start": 517.172,
+      "duration": 3.292
+    },
+    {
+      "text": " your document to it, and as soon as you",
+      "start": 519.527,
+      "duration": 3.484
+    },
+    {
+      "text": " do this, your sequences will be",
+      "start": 522.074,
+      "duration": 2.974
+    },
+    {
+      "text": " generated for every sentence. Okay? You",
+      "start": 524.112,
+      "duration": 4.86
+    },
+    {
+      "text": " can see what our first sentence was? Go",
+      "start": 528.023,
+      "duration": 3.418
+    },
+    {
+      "text": " India. So what did it do? It went and",
+      "start": 530.552,
+      "duration": 3.226
+    },
+    {
+      "text": " checked what the index of 'Go' is. 10",
+      "start": 532.82,
+      "duration": 2.651
+    },
+    {
+      "text": " and what is the index of 'India'? Two.",
+      "start": 534.526,
+      "duration": 3.203
+    },
+    {
+      "text": " So what did it do? It went below and",
+      "start": 536.829,
+      "duration": 3.995
+    },
+    {
+      "text": " replaced that word with 10 2. Okay? So",
+      "start": 539.912,
+      "duration": 4.587
+    },
+    {
+      "text": " this is how our sentence became a",
+      "start": 543.568,
+      "duration": 3.295
+    },
+    {
+      "text": " sequence. Okay? Now what is the last",
+      "start": 545.933,
+      "duration": 3.272
+    },
+    {
+      "text": " step remaining? Since the size of the",
+      "start": 548.248,
+      "duration": 3.019
+    },
+    {
+      "text": " sequences in all these sentences is",
+      "start": 550.327,
+      "duration": 3.079
+    },
+    {
+      "text": " different. So what will you do? You",
+      "start": 552.465,
+      "duration": 3.074
+    },
+    {
+      "text": " will apply padding. So that is what we",
+      "start": 554.595,
+      "duration": 2.86
+    },
+    {
+      "text": " did in the next step. In Keras utils,",
+      "start": 556.494,
+      "duration": 3.12
+    },
+    {
+      "text": " there is a module called pad_sequences.",
+      "start": 558.689,
+      "duration": 3.95
+    },
+    {
+      "text": " And you passed the sequences into",
+      "start": 561.86,
+      "duration": 3.281
+    },
+    {
+      "text": " pad_sequences. These are the sequences.",
+      "start": 564.21,
+      "duration": 3.289
+    },
+    {
+      "text": " Okay? And you specified here that the",
+      "start": 566.68,
+      "duration": 3.551
+    },
+    {
+      "text": " padding will be 'post'. 'Post' means",
+      "start": 569.297,
+      "duration": 3.295
+    },
+    {
+      "text": " zeros will be added at the end. You can",
+      "start": 571.645,
+      "duration": 3.227
+    },
+    {
+      "text": " also do 'pre'. As soon as you did this,",
+      "start": 573.933,
+      "duration": 3.97
+    },
+    {
+      "text": " look guys, here are your sequences.",
+      "start": 576.966,
+      "duration": 3.194
+    },
+    {
+      "text": " Okay? And in this way, our input data",
+      "start": 579.819,
+      "duration": 4.251
+    },
+    {
+      "text": " is ready. Okay? So I hope you",
+      "start": 583.157,
+      "duration": 3.423
+    },
+    {
+      "text": " understood up to this point how you",
+      "start": 585.643,
+      "duration": 3.212
+    },
+    {
+      "text": " prepare input data. How you convert",
+      "start": 587.918,
+      "duration": 3.761
+    },
+    {
+      "text": " text into numbers or vectors. Come on",
+      "start": 590.764,
+      "duration": 4.593
+    },
+    {
+      "text": " guys, now I will show you how to run a",
+      "start": 594.419,
+      "duration": 3.378
+    },
+    {
+      "text": " proper sentiment analysis code. So we",
+      "start": 596.86,
+      "duration": 3.893
+    },
+    {
+      "text": " will use a dataset that is pre-built in",
+      "start": 599.843,
+      "duration": 4.535
+    },
+    {
+      "text": " the Keras library. The name of the",
+      "start": 603.468,
+      "duration": 3.751
+    },
+    {
+      "text": " dataset is IMDb. So in this dataset,",
+      "start": 606.279,
+      "duration": 5.028
+    },
+    {
+      "text": " you get IMDb reviews and their",
+      "start": 610.418,
+      "duration": 4.33
+    },
+    {
+      "text": " sentiments. Okay? So, the good part",
+      "start": 613.859,
+      "duration": 5.272
+    },
+    {
+      "text": " about this dataset is that it is",
+      "start": 618.209,
+      "duration": 3.471
+    },
+    {
+      "text": " already in the Keras library and is",
+      "start": 620.757,
+      "duration": 3.703
+    },
+    {
+      "text": " pre-processed. Okay? So that you can",
+      "start": 623.537,
+      "duration": 4.063
+    },
+    {
+      "text": " start working on it directly. Okay? So",
+      "start": 626.658,
+      "duration": 3.863
+    },
+    {
+      "text": " here you can see I first imported the",
+      "start": 629.595,
+      "duration": 3.743
+    },
+    {
+      "text": " libraries. Imported the Sequential",
+      "start": 632.412,
+      "duration": 3.39
+    },
+    {
+      "text": " model. Imported the Dense layer.",
+      "start": 634.867,
+      "duration": 3.092
+    },
+    {
+      "text": " Imported the SimpleRNN layer. To be",
+      "start": 637.079,
+      "duration": 3.769
+    },
+    {
+      "text": " honest, I haven't used Embedding here.",
+      "start": 639.901,
+      "duration": 3.038
+    },
+    {
+      "text": " But I have imported it. I will use it",
+      "start": 642.139,
+      "duration": 3.213
+    },
+    {
+      "text": " later. Now look here, what are you",
+      "start": 644.416,
+      "duration": 3.208
+    },
+    {
+      "text": " doing first? You are calling load_data",
+      "start": 646.679,
+      "duration": 3.828
+    },
+    {
+      "text": " from IMDb and you are loading the data",
+      "start": 649.588,
+      "duration": 4.084
+    },
+    {
+      "text": " here. Okay? So Let's run this code once",
+      "start": 652.753,
+      "duration": 6.656
+    },
+    {
+      "text": ". So you can see it is downloading. Now",
+      "start": 658.409,
+      "duration": 4.09
+    },
+    {
+      "text": ", the dataset here is already tokenized",
+      "start": 661.499,
+      "duration": 5.68
+    },
+    {
+      "text": ". In fact, it is also integer-encoded",
+      "start": 666.179,
+      "duration": 3.718
+    },
+    {
+      "text": " already. So you can see if you load",
+      "start": 668.966,
+      "duration": 4.703
+    },
+    {
+      "text": " x_train. First of all, if you check the",
+      "start": 672.786,
+      "duration": 5.716
+    },
+    {
+      "text": " shape of x_train, you will see that we",
+      "start": 677.589,
+      "duration": 4.323
+    },
+    {
+      "text": " have a number of reviews, which is",
+      "start": 680.999,
+      "duration": 6.835
+    },
+    {
+      "text": " 25,000 in the training data, and if you",
+      "start": 686.916,
+      "duration": 4.203
+    },
+    {
+      "text": " go to test, we have 25,000 rows in the",
+      "start": 690.201,
+      "duration": 4.12
+    },
+    {
+      "text": " test set as well. Okay? Now, if you",
+      "start": 693.403,
+      "duration": 4.996
+    },
+    {
+      "text": " want to see what each review looks like",
+      "start": 697.47,
+      "duration": 3.766
+    },
+    {
+      "text": ", you can print x_train. As soon as you",
+      "start": 700.236,
+      "duration": 4.939
+    },
+    {
+      "text": " print x_train, you will notice that",
+      "start": 704.25,
+      "duration": 3.641
+    },
+    {
+      "text": " there are no sentences or words here.",
+      "start": 706.967,
+      "duration": 3.792
+    },
+    {
+      "text": " Actually, what it is, is that this data",
+      "start": 710.739,
+      "duration": 2.954
+    },
+    {
+      "text": " is preprocessed and integer-encoded",
+      "start": 712.743,
+      "duration": 2.754
+    },
+    {
+      "text": " beforehand. So the thing I showed you",
+      "start": 714.547,
+      "duration": 4.345
+    },
+    {
+      "text": " earlier, where we were analyzing the",
+      "start": 717.974,
+      "duration": 3.986
+    },
+    {
+      "text": " entire vocabulary to allocate an",
+      "start": 721.042,
+      "duration": 3.654
+    },
+    {
+      "text": " integer to every word, that work has",
+      "start": 723.779,
+      "duration": 3.985
+    },
+    {
+      "text": " already been done. Okay? That is why",
+      "start": 726.847,
+      "duration": 4.342
+    },
+    {
+      "text": " when you extract the first review, like",
+      "start": 730.255,
+      "duration": 3.555
+    },
+    {
+      "text": " x_train [0], you would see that rather",
+      "start": 732.876,
+      "duration": 3.49
+    },
+    {
+      "text": " than seeing sentences, you are actually",
+      "start": 735.431,
+      "duration": 3.556
+    },
+    {
+      "text": " seeing these numbers. Okay? So where",
+      "start": 738.052,
+      "duration": 3.495
+    },
+    {
+      "text": " are these numbers coming from? From",
+      "start": 740.591,
+      "duration": 2.663
+    },
+    {
+      "text": " integer encoding. We assigned an",
+      "start": 742.316,
+      "duration": 3.21
+    },
+    {
+      "text": " integer to every word in the vocabulary",
+      "start": 744.601,
+      "duration": 3.918
+    },
+    {
+      "text": ", and rather than using the word, we",
+      "start": 747.519,
+      "duration": 3.693
+    },
+    {
+      "text": " have that number. Okay? So the effort",
+      "start": 750.287,
+      "duration": 4.047
+    },
+    {
+      "text": " we had to put in has been saved. Okay?",
+      "start": 753.405,
+      "duration": 3.994
+    },
+    {
+      "text": " Now moving forward, first, what we will",
+      "start": 756.639,
+      "duration": 6.759
+    },
+    {
+      "text": " do is make the length of all our",
+      "start": 762.464,
+      "duration": 3.12
+    },
+    {
+      "text": " reviews equal. Okay? Because if you",
+      "start": 764.651,
+      "duration": 4.765
+    },
+    {
+      "text": " notice, if you calculate the length of",
+      "start": 768.507,
+      "duration": 4.432
+    },
+    {
+      "text": " x_train [0], you would see that its",
+      "start": 772.03,
+      "duration": 4.161
+    },
+    {
+      "text": " length is 218. This means the first",
+      "start": 775.282,
+      "duration": 6.48
+    },
+    {
+      "text": " review in your dataset has 218 words.",
+      "start": 780.846,
+      "duration": 4.114
+    },
+    {
+      "text": " But if you extract the second review,",
+      "start": 784.239,
+      "duration": 4.382
+    },
+    {
+      "text": " it has 189. If you extract the third,",
+      "start": 787.713,
+      "duration": 4.721
+    },
+    {
+      "text": " it has 141. So what will we do? We will",
+      "start": 791.519,
+      "duration": 3.911
+    },
+    {
+      "text": " do padding. Okay? Which I showed you",
+      "start": 794.492,
+      "duration": 3.185
+    },
+    {
+      "text": " how to do a little while ago. Now you",
+      "start": 796.72,
+      "duration": 2.942
+    },
+    {
+      "text": " can use the same technique for padding",
+      "start": 798.725,
+      "duration": 3.401
+    },
+    {
+      "text": " that you used earlier. But what am I",
+      "start": 801.189,
+      "duration": 3.476
+    },
+    {
+      "text": " doing? I am trimming this entire",
+      "start": 803.727,
+      "duration": 3.159
+    },
+    {
+      "text": " dataset. I am saying that I only want",
+      "start": 805.951,
+      "duration": 4.12
+    },
+    {
+      "text": " the first 50 words of every review. Why",
+      "start": 809.153,
+      "duration": 4.21
+    },
+    {
+      "text": " am I doing this? Because the data",
+      "start": 812.431,
+      "duration": 3.767
+    },
+    {
+      "text": " becomes very large, and it takes a lot",
+      "start": 815.26,
+      "duration": 3.374
+    },
+    {
+      "text": " of time to train. So if you are doing",
+      "start": 817.697,
+      "duration": 4.285
+    },
+    {
+      "text": " this on your machine and you have time,",
+      "start": 821.056,
+      "duration": 3.882
+    },
+    {
+      "text": " then don't do what I did. Okay? What I",
+      "start": 824.011,
+      "duration": 4.263
+    },
+    {
+      "text": " am doing is calling pad sequences and",
+      "start": 827.356,
+      "duration": 4.013
+    },
+    {
+      "text": " passing a parameter here. Max length",
+      "start": 830.45,
+      "duration": 3.797
+    },
+    {
+      "text": " equals 50. So basically, what am I",
+      "start": 833.314,
+      "duration": 2.677
+    },
+    {
+      "text": " doing? Trimming every review of mine to",
+      "start": 835.031,
+      "duration": 3.856
+    },
+    {
+      "text": " 50 words. Each of my reviews will",
+      "start": 837.964,
+      "duration": 3.383
+    },
+    {
+      "text": " consist of only 50 words. So I am",
+      "start": 840.408,
+      "duration": 3.129
+    },
+    {
+      "text": " losing the rest of the information. But",
+      "start": 842.586,
+      "duration": 3.69
+    },
+    {
+      "text": " if you are doing this on your machine,",
+      "start": 845.328,
+      "duration": 2.994
+    },
+    {
+      "text": " just do this much. Just do this much.",
+      "start": 847.375,
+      "duration": 4.484
+    },
+    {
+      "text": " Okay? And your code will start running",
+      "start": 851.079,
+      "duration": 4.885
+    },
+    {
+      "text": " on the entire data. Okay? But since I",
+      "start": 855.055,
+      "duration": 3.994
+    },
+    {
+      "text": " need to train this model. I am not",
+      "start": 858.106,
+      "duration": 2.944
+    },
+    {
+      "text": " doing that for now. I ran both of these",
+      "start": 860.101,
+      "duration": 3.796
+    },
+    {
+      "text": " codes. And pad sequences is not defined",
+      "start": 862.96,
+      "duration": 5.531
+    },
+    {
+      "text": ". So let us run this code once, and",
+      "start": 867.491,
+      "duration": 6.713
+    },
+    {
+      "text": " then come back down and run this code",
+      "start": 873.35,
+      "duration": 6.394
+    },
+    {
+      "text": " again. And now if you look at X-train",
+      "start": 878.89,
+      "duration": 7.684
+    },
+    {
+      "text": " dot shape, you would see that you have",
+      "start": 885.678,
+      "duration": 4.97
+    },
+    {
+      "text": " 25,000 reviews. But each review has 50",
+      "start": 889.752,
+      "duration": 4.669
+    },
+    {
+      "text": " words. In fact, I can show it to you.",
+      "start": 893.509,
+      "duration": 3.97
+    },
+    {
+      "text": " Here is my X-train and here is the zero",
+      "start": 897.739,
+      "duration": 3.522
+    },
+    {
+      "text": " index of my X-train. Okay? Here is my",
+      "start": 900.326,
+      "duration": 5.484
+    },
+    {
+      "text": " first review consisting of 50 words.",
+      "start": 904.889,
+      "duration": 3.85
+    },
+    {
+      "text": " Okay? Now our main work starts from",
+      "start": 908.0,
+      "duration": 3.842
+    },
+    {
+      "text": " here. We built a model, a sequential",
+      "start": 910.908,
+      "duration": 3.844
+    },
+    {
+      "text": " model. And now what are we doing?",
+      "start": 913.824,
+      "duration": 2.755
+    },
+    {
+      "text": " Adding a simple RNN layer to that model",
+      "start": 916.539,
+      "duration": 3.917
+    },
+    {
+      "text": " with 32 nodes. Okay? And here we are",
+      "start": 919.531,
+      "duration": 4.656
+    },
+    {
+      "text": " providing the input shape. And what is",
+      "start": 923.242,
+      "duration": 3.324
+    },
+    {
+      "text": " our input shape? 50, 1, okay? Why is it",
+      "start": 925.63,
+      "duration": 5.451
+    },
+    {
+      "text": " 50, 1? 50 is the time steps and 1 is",
+      "start": 930.178,
+      "duration": 4.207
+    },
+    {
+      "text": " the input feature. Okay? So let me show",
+      "start": 933.472,
+      "duration": 4.322
+    },
+    {
+      "text": " you what that means. There are 50",
+      "start": 936.868,
+      "duration": 6.665
+    },
+    {
+      "text": " numbers. In every review. There are 50",
+      "start": 942.676,
+      "duration": 4.924
+    },
+    {
+      "text": " numbers. Okay? So now what will happen",
+      "start": 946.674,
+      "duration": 4.508
+    },
+    {
+      "text": " is that these 50 will actually act as",
+      "start": 950.269,
+      "duration": 4.224
+    },
+    {
+      "text": " time steps. Okay? And in each time step",
+      "start": 953.58,
+      "duration": 4.397
+    },
+    {
+      "text": ", one number will be picked up and sent",
+      "start": 956.977,
+      "duration": 3.636
+    },
+    {
+      "text": " to our model. Okay? So basically, our",
+      "start": 959.68,
+      "duration": 4.534
+    },
+    {
+      "text": " model's architecture is such that there",
+      "start": 963.268,
+      "duration": 3.101
+    },
+    {
+      "text": " is an input node. Then there is our RNN",
+      "start": 965.423,
+      "duration": 5.009
+    },
+    {
+      "text": " layer and in this RNN layer there are",
+      "start": 969.516,
+      "duration": 4.088
+    },
+    {
+      "text": " 32 nodes. Okay? And obviously, it is",
+      "start": 972.687,
+      "duration": 5.234
+    },
+    {
+      "text": " connected in this way. And then further",
+      "start": 976.999,
+      "duration": 4.541
+    },
+    {
+      "text": " ahead There is a dense layer. Okay?",
+      "start": 980.617,
+      "duration": 5.454
+    },
+    {
+      "text": " Where we have applied a sigmoid. Okay?",
+      "start": 985.171,
+      "duration": 3.458
+    },
+    {
+      "text": " So what will happen? As soon as you use",
+      "start": 987.729,
+      "duration": 3.39
+    },
+    {
+      "text": " this review, the first 25 will be",
+      "start": 990.191,
+      "duration": 3.384
+    },
+    {
+      "text": " inserted here. Okay? The entire flow of",
+      "start": 992.647,
+      "duration": 4.875
+    },
+    {
+      "text": " the RNN will occur. After that, 26 will",
+      "start": 996.599,
+      "duration": 4.061
+    },
+    {
+      "text": " come here. Then at the next time step",
+      "start": 999.725,
+      "duration": 3.883
+    },
+    {
+      "text": " two or time step three, 18 will come",
+      "start": 1002.673,
+      "duration": 3.337
+    },
+    {
+      "text": " here. Then at time step three, four, 19",
+      "start": 1005.075,
+      "duration": 3.6
+    },
+    {
+      "text": " will come here. And in this way, all",
+      "start": 1007.74,
+      "duration": 3.361
+    },
+    {
+      "text": " these numbers will go in, and",
+      "start": 1010.16,
+      "duration": 2.715
+    },
+    {
+      "text": " eventually, you will get y-hat from",
+      "start": 1011.934,
+      "duration": 3.07
+    },
+    {
+      "text": " here. Okay? If I ask you how many",
+      "start": 1014.063,
+      "duration": 4.311
+    },
+    {
+      "text": " parameters are there in this entire",
+      "start": 1017.449,
+      "duration": 3.625
+    },
+    {
+      "text": " model? Then you can calculate it very",
+      "start": 1020.149,
+      "duration": 3.966
+    },
+    {
+      "text": " easily. Here you have 32 weights. Then",
+      "start": 1023.173,
+      "duration": 9.659
+    },
+    {
+      "text": " here you have 32 biases. Then here you",
+      "start": 1031.936,
+      "duration": 5.612
+    },
+    {
+      "text": " have 32 by 32. More weights for the",
+      "start": 1036.64,
+      "duration": 5.925
+    },
+    {
+      "text": " feedback. Okay? And then you have 32 by",
+      "start": 1041.631,
+      "duration": 6.199
+    },
+    {
+      "text": " 1 weights here. And here you have one",
+      "start": 1046.942,
+      "duration": 5.459
+    },
+    {
+      "text": " bias. Okay? So, in total, how many",
+      "start": 1051.497,
+      "duration": 3.624
+    },
+    {
+      "text": " weights do you have? 32 + 32 + 32*32,",
+      "start": 1054.17,
+      "duration": 6.339
+    },
+    {
+      "text": " okay? If you calculate this number, it",
+      "start": 1059.763,
+      "duration": 6.711
+    },
+    {
+      "text": " will be 64 + 32*32, which is 1088. So",
+      "start": 1065.61,
+      "duration": 7.719
+    },
+    {
+      "text": " 1088 is your total number of weights.",
+      "start": 1072.404,
+      "duration": 3.775
+    },
+    {
+      "text": " So if I go back to the code, I can show",
+      "start": 1075.68,
+      "duration": 3.629
+    },
+    {
+      "text": " you that in the simple RNN there are",
+      "start": 1078.377,
+      "duration": 3.427
+    },
+    {
+      "text": " 1088 parameters and in the dense layer",
+      "start": 1080.872,
+      "duration": 3.562
+    },
+    {
+      "text": " there are 33 parameters. 32 weights and",
+      "start": 1083.501,
+      "duration": 3.928
+    },
+    {
+      "text": " one bias. Okay? I hope you are",
+      "start": 1086.511,
+      "duration": 3.38
+    },
+    {
+      "text": " understanding this whole thing. Now",
+      "start": 1088.955,
+      "duration": 3.275
+    },
+    {
+      "text": " there is one more thing here, I have",
+      "start": 1091.3,
+      "duration": 3.494
+    },
+    {
+      "text": " set return sequences to false. Okay? So",
+      "start": 1093.864,
+      "duration": 5.076
+    },
+    {
+      "text": ", I told you what happens is that at",
+      "start": 1097.94,
+      "duration": 4.256
+    },
+    {
+      "text": " every time step you give some input,",
+      "start": 1101.287,
+      "duration": 4.256
+    },
+    {
+      "text": " like 25, and you also feed the output",
+      "start": 1104.633,
+      "duration": 4.347
+    },
+    {
+      "text": " from the previous time step, t-1, and",
+      "start": 1108.07,
+      "duration": 4.347
+    },
+    {
+      "text": " then 'o'() comes out from here, which",
+      "start": 1111.507,
+      "duration": 4.347
+    },
+    {
+      "text": " then goes to the next time step. Okay?",
+      "start": 1114.944,
+      "duration": 5.635
+    },
+    {
+      "text": " So this keeps getting calculated the",
+      "start": 1119.905,
+      "duration": 2.92
+    },
+    {
+      "text": " whole time. So if you have set return",
+      "start": 1121.878,
+      "duration": 3.52
+    },
+    {
+      "text": " sequences to false, then this normal",
+      "start": 1124.471,
+      "duration": 3.641
+    },
+    {
+      "text": " flow will continue. But if you set",
+      "start": 1127.185,
+      "duration": 3.614
+    },
+    {
+      "text": " return sequences to true, then you",
+      "start": 1129.879,
+      "duration": 3.72
+    },
+    {
+      "text": " actually send this output out every",
+      "start": 1132.679,
+      "duration": 3.8
+    },
+    {
+      "text": " time. Every time this output will go",
+      "start": 1135.559,
+      "duration": 4.477
+    },
+    {
+      "text": " out. Meaning it will come to you. It",
+      "start": 1139.083,
+      "duration": 2.834
+    },
+    {
+      "text": " will come to the programmer. But, but",
+      "start": 1140.962,
+      "duration": 2.804
+    },
+    {
+      "text": " if you have set it to false, you won't",
+      "start": 1142.822,
+      "duration": 3.123
+    },
+    {
+      "text": " get this output outside. It will stay",
+      "start": 1145.001,
+      "duration": 2.966
+    },
+    {
+      "text": " inside the system. And eventually, at",
+      "start": 1147.011,
+      "duration": 3.126
+    },
+    {
+      "text": " the last time step, it will come out as",
+      "start": 1149.199,
+      "duration": 3.424
+    },
+    {
+      "text": " y-hat. Okay? So just understand it like",
+      "start": 1151.686,
+      "duration": 3.398
+    },
+    {
+      "text": " this, for sentiment analysis we need to",
+      "start": 1154.131,
+      "duration": 2.828
+    },
+    {
+      "text": " keep return sequences false. Because we",
+      "start": 1156.006,
+      "duration": 3.379
+    },
+    {
+      "text": " need the output at the last time step.",
+      "start": 1158.435,
+      "duration": 2.925
+    },
+    {
+      "text": " But there could be certain NLP tasks",
+      "start": 1161.799,
+      "duration": 4.052
+    },
+    {
+      "text": " like Named Entity Recognition where",
+      "start": 1164.936,
+      "duration": 3.968
+    },
+    {
+      "text": " when you send each word, you need to",
+      "start": 1167.989,
+      "duration": 4.053
+    },
+    {
+      "text": " find out against each word whether it",
+      "start": 1171.127,
+      "duration": 4.137
+    },
+    {
+      "text": " is, I am sorry, whether it is relevant",
+      "start": 1174.349,
+      "duration": 4.222
+    },
+    {
+      "text": " to us or not. Is it an entity or not.",
+      "start": 1177.656,
+      "duration": 4.455
+    },
+    {
+      "text": " Okay? Similarly, if you are doing",
+      "start": 1181.211,
+      "duration": 3.272
+    },
+    {
+      "text": " machine translation where you want to",
+      "start": 1183.548,
+      "duration": 3.377
+    },
+    {
+      "text": " convert one sentence into another, then",
+      "start": 1185.989,
+      "duration": 3.506
+    },
+    {
+      "text": " you might need the output at every step",
+      "start": 1188.559,
+      "duration": 3.506
+    },
+    {
+      "text": " there too. So what you will do there is",
+      "start": 1191.129,
+      "duration": 3.296
+    },
+    {
+      "text": ", rather than having return_sequences",
+      "start": 1193.425,
+      "duration": 3.052
+    },
+    {
+      "text": " as False, you will keep it as True.",
+      "start": 1195.532,
+      "duration": 2.942
+    },
+    {
+      "text": " Don't worry, even if you don't",
+      "start": 1198.24,
+      "duration": 2.398
+    },
+    {
+      "text": " understand this right now, as we move",
+      "start": 1199.684,
+      "duration": 2.725
+    },
+    {
+      "text": " forward we will do some projects where",
+      "start": 1201.456,
+      "duration": 2.771
+    },
+    {
+      "text": " I will show you its variations. Okay,",
+      "start": 1203.274,
+      "duration": 3.772
+    },
+    {
+      "text": " anyway, here is our model and now we",
+      "start": 1206.14,
+      "duration": 4.36
+    },
+    {
+      "text": " just need to compile this model. In",
+      "start": 1209.593,
+      "duration": 4.211
+    },
+    {
+      "text": " compiling, you specified the loss. You",
+      "start": 1212.864,
+      "duration": 3.325
+    },
+    {
+      "text": " specified the optimizer. You specified",
+      "start": 1215.244,
+      "duration": 3.333
+    },
+    {
+      "text": " the metric and then after that you",
+      "start": 1217.646,
+      "duration": 3.358
+    },
+    {
+      "text": " called fit. You provided X_train and",
+      "start": 1220.073,
+      "duration": 2.864
+    },
+    {
+      "text": " y_train. Kept epochs as five. In",
+      "start": 1221.978,
+      "duration": 2.756
+    },
+    {
+      "text": " validation data, you kept X_test and",
+      "start": 1223.789,
+      "duration": 2.992
+    },
+    {
+      "text": " y_test. When I trained this model,",
+      "start": 1225.836,
+      "duration": 3.113
+    },
+    {
+      "text": " honestly, the results were not very",
+      "start": 1228.011,
+      "duration": 3.141
+    },
+    {
+      "text": " good. The accuracy did not improve much",
+      "start": 1230.214,
+      "duration": 3.679
+    },
+    {
+      "text": ". One reason for that was that we did",
+      "start": 1232.893,
+      "duration": 3.688
+    },
+    {
+      "text": " not use all the words. We used only 50",
+      "start": 1235.652,
+      "duration": 3.653
+    },
+    {
+      "text": " words of our reviews. And second, we",
+      "start": 1238.355,
+      "duration": 2.997
+    },
+    {
+      "text": " did not run many epochs. Also, there",
+      "start": 1240.404,
+      "duration": 3.045
+    },
+    {
+      "text": " could be some other problems. Right now",
+      "start": 1242.503,
+      "duration": 3.349
+    },
+    {
+      "text": ", our goal was not to achieve the best",
+      "start": 1244.852,
+      "duration": 3.421
+    },
+    {
+      "text": " model. Our goal was to understand how",
+      "start": 1247.336,
+      "duration": 3.852
+    },
+    {
+      "text": " you can convert what you learned about",
+      "start": 1250.263,
+      "duration": 3.847
+    },
+    {
+      "text": " RNNs in the last video into code. So I",
+      "start": 1253.185,
+      "duration": 3.92
+    },
+    {
+      "text": " hope you understood the first thing.",
+      "start": 1256.162,
+      "duration": 3.038
+    },
+    {
+      "text": " Now I will show you another workflow. I",
+      "start": 1258.439,
+      "duration": 3.486
+    },
+    {
+      "text": " will show you another way through which",
+      "start": 1260.991,
+      "duration": 3.593
+    },
+    {
+      "text": " you can do the same thing and that is",
+      "start": 1263.651,
+      "duration": 3.46
+    },
+    {
+      "text": " called embeddings, and it will",
+      "start": 1266.177,
+      "duration": 2.995
+    },
+    {
+      "text": " generally give you better results. A",
+      "start": 1268.238,
+      "duration": 3.598
+    },
+    {
+      "text": " technique you will see a lot in RNNs is",
+      "start": 1270.894,
+      "duration": 3.251
+    },
+    {
+      "text": " embedding. Okay? So let me tell you",
+      "start": 1273.202,
+      "duration": 3.661
+    },
+    {
+      "text": " once what embedding is. Although if you",
+      "start": 1275.925,
+      "duration": 3.4
+    },
+    {
+      "text": " have watched my NLP playlist. There I",
+      "start": 1278.383,
+      "duration": 3.196
+    },
+    {
+      "text": " have talked about embeddings in great",
+      "start": 1280.633,
+      "duration": 3.011
+    },
+    {
+      "text": " detail. But let's take a quick revision",
+      "start": 1282.698,
+      "duration": 3.049
+    },
+    {
+      "text": " once again. Here is a definition that I",
+      "start": 1284.796,
+      "duration": 3.603
+    },
+    {
+      "text": " have taken from Wikipedia. So in NLP,",
+      "start": 1287.459,
+      "duration": 3.569
+    },
+    {
+      "text": " word embedding or embedding is a term",
+      "start": 1290.115,
+      "duration": 4.216
+    },
+    {
+      "text": " used for the representation of words",
+      "start": 1293.418,
+      "duration": 4.129
+    },
+    {
+      "text": " for text analysis. Typically in the",
+      "start": 1296.634,
+      "duration": 4.792
+    },
+    {
+      "text": " form of real-valued vectors that encode",
+      "start": 1300.482,
+      "duration": 3.162
+    },
+    {
+      "text": " the meaning of the word such that words",
+      "start": 1302.699,
+      "duration": 3.162
+    },
+    {
+      "text": " that are closer in the vector space are",
+      "start": 1304.916,
+      "duration": 3.162
+    },
+    {
+      "text": " expected to be similar in meaning. So",
+      "start": 1307.134,
+      "duration": 4.08
+    },
+    {
+      "text": " the basic फंडा is, what do you",
+      "start": 1310.272,
+      "duration": 3.196
+    },
+    {
+      "text": " do? You have words like 'this', 'is', '",
+      "start": 1312.526,
+      "duration": 5.749
+    },
+    {
+      "text": "nice'. What do you do? Based on the",
+      "start": 1317.275,
+      "duration": 4.151
+    },
+    {
+      "text": " whole document, after looking at the",
+      "start": 1320.503,
+      "duration": 3.782
+    },
+    {
+      "text": " entire document, you convert each word",
+      "start": 1323.363,
+      "duration": 3.936
+    },
+    {
+      "text": " into a vector. Okay? Now this vector is",
+      "start": 1326.377,
+      "duration": 5.567
+    },
+    {
+      "text": " dense. Being dense means the values are",
+      "start": 1331.043,
+      "duration": 5.405
+    },
+    {
+      "text": " non-zero. The text representation",
+      "start": 1335.547,
+      "duration": 5.597
+    },
+    {
+      "text": " techniques you have been looking at so",
+      "start": 1340.197,
+      "duration": 2.992
+    },
+    {
+      "text": " far are actually sparse representations",
+      "start": 1342.241,
+      "duration": 3.045
+    },
+    {
+      "text": ". Sparse representation means that a",
+      "start": 1344.286,
+      "duration": 3.701
+    },
+    {
+      "text": " lot of the values are zero. For example",
+      "start": 1347.04,
+      "duration": 3.039
+    },
+    {
+      "text": ", let's take a case. You have a",
+      "start": 1349.079,
+      "duration": 2.985
+    },
+    {
+      "text": " sentiment analysis problem. Where you",
+      "start": 1351.154,
+      "duration": 4.406
+    },
+    {
+      "text": " have multiple reviews. Review one,",
+      "start": 1354.651,
+      "duration": 4.385
+    },
+    {
+      "text": " review two, and so on. Now, let's",
+      "start": 1358.143,
+      "duration": 4.195
+    },
+    {
+      "text": " assume this review two is the largest",
+      "start": 1361.404,
+      "duration": 3.437
+    },
+    {
+      "text": " and has 2000 words. And let's say",
+      "start": 1363.907,
+      "duration": 3.419
+    },
+    {
+      "text": " review one only has 20 words. So,",
+      "start": 1366.396,
+      "duration": 3.403
+    },
+    {
+      "text": " according to the technique we just",
+      "start": 1368.857,
+      "duration": 2.974
+    },
+    {
+      "text": " studied, what would you do? First, you",
+      "start": 1370.889,
+      "duration": 3.172
+    },
+    {
+      "text": " would perform integer encoding. So,",
+      "start": 1373.112,
+      "duration": 2.835
+    },
+    {
+      "text": " basically, you will get a vector",
+      "start": 1375.004,
+      "duration": 2.8
+    },
+    {
+      "text": " containing 20 numbers. But then, to",
+      "start": 1376.861,
+      "duration": 3.271
+    },
+    {
+      "text": " make them all equal, what will you have",
+      "start": 1379.182,
+      "duration": 2.93
+    },
+    {
+      "text": " to do? You will have to do padding. So,",
+      "start": 1381.162,
+      "duration": 3.75
+    },
+    {
+      "text": " think about it: when you pad this 20-",
+      "start": 1384.003,
+      "duration": 4.368
+    },
+    {
+      "text": "word one, you will add a lot—meaning",
+      "start": 1387.371,
+      "duration": 4.459
+    },
+    {
+      "text": " 1980—zeros to these 20 numbers. So",
+      "start": 1390.921,
+      "duration": 5.433
+    },
+    {
+      "text": " basically, you will have a large vector",
+      "start": 1395.431,
+      "duration": 4.004
+    },
+    {
+      "text": " containing 2000 numbers, but out of",
+      "start": 1398.512,
+      "duration": 3.696
+    },
+    {
+      "text": " these, 1980 numbers are zero. So it",
+      "start": 1401.285,
+      "duration": 4.427
+    },
+    {
+      "text": " will be a sparse vector where many",
+      "start": 1404.79,
+      "duration": 3.673
+    },
+    {
+      "text": " values are zero. They are not useful.",
+      "start": 1407.542,
+      "duration": 3.398
+    },
+    {
+      "text": " So, that is what I am telling you, that",
+      "start": 1410.04,
+      "duration": 3.509
+    },
+    {
+      "text": " when you use word embedding, the vector",
+      "start": 1412.613,
+      "duration": 3.509
+    },
+    {
+      "text": " representation you create is dense.",
+      "start": 1415.187,
+      "duration": 3.252
+    },
+    {
+      "text": " Meaning most values are non-zero. They",
+      "start": 1417.539,
+      "duration": 4.02
+    },
+    {
+      "text": " are useful. The second important thing",
+      "start": 1420.619,
+      "duration": 4.228
+    },
+    {
+      "text": " is that word embedding can capture",
+      "start": 1423.923,
+      "duration": 7.406
+    },
+    {
+      "text": " semantic meaning. This means the",
+      "start": 1430.472,
+      "duration": 5.692
+    },
+    {
+      "text": " context in which a word is being used.",
+      "start": 1435.292,
+      "duration": 5.848
+    },
+    {
+      "text": " Our embedding technique can understand",
+      "start": 1441.3,
+      "duration": 3.728
+    },
+    {
+      "text": " this. Right? So, this is another",
+      "start": 1444.1,
+      "duration": 4.058
+    },
+    {
+      "text": " benefit due to which you can develop",
+      "start": 1447.222,
+      "duration": 3.304
+    },
+    {
+      "text": " much better models. So, what are the",
+      "start": 1449.59,
+      "duration": 3.031
+    },
+    {
+      "text": " two benefits? First, it is a dense",
+      "start": 1451.666,
+      "duration": 2.728
+    },
+    {
+      "text": " representation. Most values are",
+      "start": 1453.446,
+      "duration": 2.984
+    },
+    {
+      "text": " non-zero. Because of which, the",
+      "start": 1455.503,
+      "duration": 3.029
+    },
+    {
+      "text": " dimensions are fewer. Meaning, here, as",
+      "start": 1457.593,
+      "duration": 3.732
+    },
+    {
+      "text": " it is becoming a 2000-dimension one.",
+      "start": 1460.373,
+      "duration": 2.706
+    },
+    {
+      "text": " Here, if you want, you can get the job",
+      "start": 1462.279,
+      "duration": 2.878
+    },
+    {
+      "text": " done with just 32 dimensions. The",
+      "start": 1464.206,
+      "duration": 2.752
+    },
+    {
+      "text": " second benefit is that it can capture",
+      "start": 1466.011,
+      "duration": 2.956
+    },
+    {
+      "text": " semantic meaning. It is written here",
+      "start": 1468.02,
+      "duration": 3.03
+    },
+    {
+      "text": " that words that are closer in vector",
+      "start": 1470.098,
+      "duration": 2.743
+    },
+    {
+      "text": " space are expected to be similar in",
+      "start": 1471.889,
+      "duration": 2.694
+    },
+    {
+      "text": " meaning. This method can understand",
+      "start": 1473.631,
+      "duration": 3.093
+    },
+    {
+      "text": " meaning. Right? And the third point I",
+      "start": 1475.781,
+      "duration": 3.519
+    },
+    {
+      "text": " want to discuss is that you are not",
+      "start": 1478.345,
+      "duration": 2.57
+    },
+    {
+      "text": " reading something completely new. You",
+      "start": 1479.96,
+      "duration": 3.367
+    },
+    {
+      "text": " might have heard about Word2Vec in NLP",
+      "start": 1482.409,
+      "duration": 4.132
+    },
+    {
+      "text": " or perhaps about GloVe. These are all",
+      "start": 1485.623,
+      "duration": 4.432
+    },
+    {
+      "text": " word embedding techniques. In deep",
+      "start": 1489.127,
+      "duration": 5.58
+    },
+    {
+      "text": " learning, if you want, you can learn an",
+      "start": 1493.783,
+      "duration": 3.945
+    },
+    {
+      "text": " embedding during the training process",
+      "start": 1496.803,
+      "duration": 3.794
+    },
+    {
+      "text": " of the model you are building. Right?",
+      "start": 1499.673,
+      "duration": 5.729
+    },
+    {
+      "text": " So basically, in Keras, there is a",
+      "start": 1504.502,
+      "duration": 3.354
+    },
+    {
+      "text": " thing called the embedding layer. What",
+      "start": 1506.925,
+      "duration": 5.314
+    },
+    {
+      "text": " you can do is, in your RNN model",
+      "start": 1511.324,
+      "duration": 3.723
+    },
+    {
+      "text": " initially, you can put an embedding",
+      "start": 1514.132,
+      "duration": 3.977
+    },
+    {
+      "text": " layer, which will automatically create",
+      "start": 1517.195,
+      "duration": 4.233
+    },
+    {
+      "text": " a dense representation of all your",
+      "start": 1520.513,
+      "duration": 3.892
+    },
+    {
+      "text": " words and send that representation into",
+      "start": 1523.491,
+      "duration": 4.318
+    },
+    {
+      "text": " this RNN. Instead of the sparse",
+      "start": 1526.894,
+      "duration": 3.867
+    },
+    {
+      "text": " representation you were sending earlier",
+      "start": 1529.812,
+      "duration": 3.008
+    },
+    {
+      "text": " by integer encoding, you will now send",
+      "start": 1531.872,
+      "duration": 2.956
+    },
+    {
+      "text": " this dense representation into the RNN,",
+      "start": 1533.88,
+      "duration": 3.008
+    },
+    {
+      "text": " and it will perform sentiment analysis",
+      "start": 1535.94,
+      "duration": 2.956
+    },
+    {
+      "text": " for you. Okay? So in short, the benefit",
+      "start": 1537.948,
+      "duration": 4.44
+    },
+    {
+      "text": " is that you get better results. Okay?",
+      "start": 1541.474,
+      "duration": 4.255
+    },
+    {
+      "text": " So now I will try to show you how the",
+      "start": 1544.829,
+      "duration": 6.815
+    },
+    {
+      "text": " Keras embedding layer works. Okay?",
+      "start": 1550.801,
+      "duration": 6.418
+    },
+    {
+      "text": " Applying an embedding layer in Keras is",
+      "start": 1557.459,
+      "duration": 3.59
+    },
+    {
+      "text": " very easy. You basically just have to",
+      "start": 1560.115,
+      "duration": 4.362
+    },
+    {
+      "text": " make sure that whatever data you are",
+      "start": 1563.554,
+      "duration": 3.795
+    },
+    {
+      "text": " inputting into the embedding layer is",
+      "start": 1566.427,
+      "duration": 3.872
+    },
+    {
+      "text": " integer encoded. That's it. The rest,",
+      "start": 1569.376,
+      "duration": 3.617
+    },
+    {
+      "text": " the embedding layer handles everything",
+      "start": 1572.041,
+      "duration": 2.834
+    },
+    {
+      "text": " automatically. Okay? So I will try to",
+      "start": 1573.923,
+      "duration": 3.424
+    },
+    {
+      "text": " explain how the embedding layer works",
+      "start": 1576.413,
+      "duration": 3.448
+    },
+    {
+      "text": " using the same example. We have taken",
+      "start": 1578.927,
+      "duration": 3.427
+    },
+    {
+      "text": " the same document again which has 10",
+      "start": 1581.414,
+      "duration": 3.148
+    },
+    {
+      "text": " sentences. Okay? After that, we first",
+      "start": 1583.622,
+      "duration": 4.458
+    },
+    {
+      "text": " need to tokenize. So we created a",
+      "start": 1587.161,
+      "duration": 3.924
+    },
+    {
+      "text": " tokenizer object and called the",
+      "start": 1590.159,
+      "duration": 3.284
+    },
+    {
+      "text": " fit_on_texts function. Okay? After",
+      "start": 1592.517,
+      "duration": 4.37
+    },
+    {
+      "text": " doing this, we found that there are 17",
+      "start": 1595.961,
+      "duration": 3.8
+    },
+    {
+      "text": " unique words in our vocabulary. Okay?",
+      "start": 1598.834,
+      "duration": 4.085
+    },
+    {
+      "text": " So then what did we do? We called the",
+      "start": 1602.059,
+      "duration": 3.752
+    },
+    {
+      "text": " texts_to_sequences function to generate",
+      "start": 1604.89,
+      "duration": 4.097
+    },
+    {
+      "text": " the sequences. And these are the",
+      "start": 1608.067,
+      "duration": 3.598
+    },
+    {
+      "text": " sequences for all our 10 sentences.",
+      "start": 1610.742,
+      "duration": 3.668
+    },
+    {
+      "text": " Right? You have done this before as",
+      "start": 1613.51,
+      "duration": 3.203
+    },
+    {
+      "text": " well. Now after this, we have to",
+      "start": 1615.77,
+      "duration": 3.04
+    },
+    {
+      "text": " perform padding because we have to make",
+      "start": 1617.871,
+      "duration": 3.372
+    },
+    {
+      "text": " sure the input we are providing is all",
+      "start": 1620.304,
+      "duration": 3.31
+    },
+    {
+      "text": " of the same shape. So we used",
+      "start": 1622.675,
+      "duration": 2.849
+    },
+    {
+      "text": " pad_sequences. We set padding to post.",
+      "start": 1624.589,
+      "duration": 3.576
+    },
+    {
+      "text": " And after that, this is how our input",
+      "start": 1627.265,
+      "duration": 4.425
+    },
+    {
+      "text": " data is looking. Everything is fine up",
+      "start": 1630.783,
+      "duration": 3.565
+    },
+    {
+      "text": " to here. Now you will start the main",
+      "start": 1633.388,
+      "duration": 2.826
+    },
+    {
+      "text": " work from here. You form a Keras",
+      "start": 1635.266,
+      "duration": 3.302
+    },
+    {
+      "text": " Sequential model and then you add an",
+      "start": 1637.655,
+      "duration": 4.126
+    },
+    {
+      "text": " embedding layer to it. Okay? Now you",
+      "start": 1640.868,
+      "duration": 4.332
+    },
+    {
+      "text": " have to specify three things in the",
+      "start": 1644.249,
+      "duration": 2.703
+    },
+    {
+      "text": " embedding layer. First, what is your",
+      "start": 1646.001,
+      "duration": 3.59
+    },
+    {
+      "text": " total vocabulary length? Meaning, how",
+      "start": 1648.674,
+      "duration": 3.816
+    },
+    {
+      "text": " many unique words are in your",
+      "start": 1651.543,
+      "duration": 2.525
+    },
+    {
+      "text": " vocabulary. Okay? Second, you specify",
+      "start": 1653.12,
+      "duration": 3.741
+    },
+    {
+      "text": " what the output dimension of the",
+      "start": 1655.93,
+      "duration": 3.211
+    },
+    {
+      "text": " embedding you want to form will be.",
+      "start": 1658.21,
+      "duration": 3.419
+    },
+    {
+      "text": " What is the dimension of the dense",
+      "start": 1660.959,
+      "duration": 3.318
+    },
+    {
+      "text": " vector you want to create? So basically",
+      "start": 1663.345,
+      "duration": 4.2
+    },
+    {
+      "text": ", if you put two here, it means you",
+      "start": 1666.545,
+      "duration": 4.287
+    },
+    {
+      "text": " want to represent every word using two",
+      "start": 1669.925,
+      "duration": 4.568
+    },
+    {
+      "text": " numbers. Now you can put 2 here, or you",
+      "start": 1673.587,
+      "duration": 3.531
+    },
+    {
+      "text": " can even put 200. It is up to you. This",
+      "start": 1676.172,
+      "duration": 3.405
+    },
+    {
+      "text": " is like a hyperparameter. You tune it",
+      "start": 1678.638,
+      "duration": 3.593
+    },
+    {
+      "text": " to find the best value. And the last",
+      "start": 1681.312,
+      "duration": 3.819
+    },
+    {
+      "text": " thing is input length. Here you have to",
+      "start": 1684.187,
+      "duration": 3.64
+    },
+    {
+      "text": " specify how many words you have. Right?",
+      "start": 1686.881,
+      "duration": 3.538
+    },
+    {
+      "text": " So this becomes your model. Right? As",
+      "start": 1689.519,
+      "duration": 4.649
+    },
+    {
+      "text": " soon as you build this model, I will",
+      "start": 1693.213,
+      "duration": 2.616
+    },
+    {
+      "text": " show you what its architecture looks",
+      "start": 1694.874,
+      "duration": 2.615
+    },
+    {
+      "text": " like. In our case, as soon as you build",
+      "start": 1696.534,
+      "duration": 3.625
+    },
+    {
+      "text": " this model, I will show you what its",
+      "start": 1699.215,
+      "duration": 2.985
+    },
+    {
+      "text": " architecture looks like. In our case,",
+      "start": 1701.255,
+      "duration": 3.918
+    },
+    {
+      "text": " we have words in this manner. This was",
+      "start": 1704.296,
+      "duration": 5.253
+    },
+    {
+      "text": " our first review. Right? This was our",
+      "start": 1708.623,
+      "duration": 4.965
+    },
+    {
+      "text": " first review. So basically, every",
+      "start": 1712.648,
+      "duration": 3.385
+    },
+    {
+      "text": " review consists of five numbers or five",
+      "start": 1715.112,
+      "duration": 4.1
+    },
+    {
+      "text": " words. Right? And in total, there are",
+      "start": 1718.292,
+      "duration": 4.259
+    },
+    {
+      "text": " 17 words. So what are you doing? You",
+      "start": 1721.629,
+      "duration": 3.896
+    },
+    {
+      "text": " are actually forming a neural network",
+      "start": 1724.601,
+      "duration": 3.793
+    },
+    {
+      "text": " where there are 17 nodes at the input.",
+      "start": 1727.47,
+      "duration": 3.869
+    },
+    {
+      "text": " And then there are two more nodes in",
+      "start": 1730.859,
+      "duration": 4.92
+    },
+    {
+      "text": " the output layer. Right? This means",
+      "start": 1734.887,
+      "duration": 5.349
+    },
+    {
+      "text": " there are weights here that are 17 by 2",
+      "start": 1739.313,
+      "duration": 4.028
+    },
+    {
+      "text": ". Right? So now you will pick these",
+      "start": 1742.341,
+      "duration": 5.98
+    },
+    {
+      "text": " words one by one and send them here,",
+      "start": 1747.391,
+      "duration": 3.523
+    },
+    {
+      "text": " and you will send every word here as a",
+      "start": 1749.984,
+      "duration": 3.663
+    },
+    {
+      "text": " 17-dimensional vector. Right? You can",
+      "start": 1752.717,
+      "duration": 3.951
+    },
+    {
+      "text": " do one-hot encoding. It happens",
+      "start": 1755.73,
+      "duration": 2.883
+    },
+    {
+      "text": " automatically internally. Right? And",
+      "start": 1757.666,
+      "duration": 3.367
+    },
+    {
+      "text": " all these weights are randomly",
+      "start": 1760.11,
+      "duration": 3.324
+    },
+    {
+      "text": " initialized. Now what will happen? This",
+      "start": 1762.511,
+      "duration": 3.681
+    },
+    {
+      "text": " entire layer gets trained with your RNN",
+      "start": 1765.323,
+      "duration": 6.079
+    },
+    {
+      "text": ". Right? Right? Backpropagation and",
+      "start": 1770.402,
+      "duration": 2.996
+    },
+    {
+      "text": " everything happens. So basically, you",
+      "start": 1772.441,
+      "duration": 3.447
+    },
+    {
+      "text": " find the best value for these weights,",
+      "start": 1774.963,
+      "duration": 3.836
+    },
+    {
+      "text": " and this is the whole embedding process",
+      "start": 1777.873,
+      "duration": 3.911
+    },
+    {
+      "text": ". Right? At the end, you will get two",
+      "start": 1780.784,
+      "duration": 4.355
+    },
+    {
+      "text": " numbers from here for every word. Like",
+      "start": 1784.206,
+      "duration": 3.628
+    },
+    {
+      "text": " when you put this word 'nine' here, you",
+      "start": 1786.888,
+      "duration": 3.099
+    },
+    {
+      "text": " will basically get two numbers here. So",
+      "start": 1789.041,
+      "duration": 3.333
+    },
+    {
+      "text": " these two numbers are the",
+      "start": 1791.471,
+      "duration": 3.439
+    },
+    {
+      "text": " representation of each word. Right? So",
+      "start": 1794.007,
+      "duration": 4.975
+    },
+    {
+      "text": " what will happen? When you input a full",
+      "start": 1798.024,
+      "duration": 4.985
+    },
+    {
+      "text": " review, for every word, you will get a",
+      "start": 1802.133,
+      "duration": 5.686
+    },
+    {
+      "text": " dense vector like this. So we have, in",
+      "start": 1806.942,
+      "duration": 5.53
+    },
+    {
+      "text": " total, Our representation will look",
+      "start": 1811.55,
+      "duration": 20.347
+    },
+    {
+      "text": " like this, which were the first five",
+      "start": 1830.953,
+      "duration": 3.004
+    },
+    {
+      "text": " numbers. Now for each number, two more",
+      "start": 1833.013,
+      "duration": 4.046
+    },
+    {
+      "text": " numbers will be there. So this is",
+      "start": 1836.119,
+      "duration": 4.048
+    },
+    {
+      "text": " exactly what I have done here in our",
+      "start": 1839.238,
+      "duration": 3.553
+    },
+    {
+      "text": " notebook. I have not trained the model",
+      "start": 1841.861,
+      "duration": 4.732
+    },
+    {
+      "text": " here. I am showing you the predictions",
+      "start": 1845.65,
+      "duration": 3.636
+    },
+    {
+      "text": " directly on the initial weights. So you",
+      "start": 1848.351,
+      "duration": 3.715
+    },
+    {
+      "text": " can see when you send sequences into",
+      "start": 1851.124,
+      "duration": 3.086
+    },
+    {
+      "text": " model.predict. So what happens is that",
+      "start": 1853.267,
+      "duration": 4.212
+    },
+    {
+      "text": " we have this sequence. So for every",
+      "start": 1856.545,
+      "duration": 4.765
+    },
+    {
+      "text": " review, what you will get is this. How?",
+      "start": 1860.436,
+      "duration": 7.783
+    },
+    {
+      "text": " Look, you will understand it. So for",
+      "start": 1867.359,
+      "duration": 3.465
+    },
+    {
+      "text": " every word you are getting two words.",
+      "start": 1869.935,
+      "duration": 5.104
+    },
+    {
+      "text": " Okay? For every word you are getting",
+      "start": 1874.399,
+      "duration": 5.723
+    },
+    {
+      "text": " two words. Okay? Then for the next",
+      "start": 1879.223,
+      "duration": 3.617
+    },
+    {
+      "text": " three zeros, two words each. So",
+      "start": 1881.89,
+      "duration": 3.429
+    },
+    {
+      "text": " basically, this whole thing is actually",
+      "start": 1884.399,
+      "duration": 4.12
+    },
+    {
+      "text": " the representation of one review. Then",
+      "start": 1887.599,
+      "duration": 5.075
+    },
+    {
+      "text": " this is a representation of the second",
+      "start": 1891.758,
+      "duration": 4.189
+    },
+    {
+      "text": " review. This is for the third, this for",
+      "start": 1895.031,
+      "duration": 4.42
+    },
+    {
+      "text": " the fourth, and this way, for 10",
+      "start": 1898.518,
+      "duration": 3.16
+    },
+    {
+      "text": " reviews, you are getting a vector of",
+      "start": 1900.745,
+      "duration": 3.43
+    },
+    {
+      "text": " 1010 numbers. Okay? So I hope you",
+      "start": 1903.242,
+      "duration": 4.741
+    },
+    {
+      "text": " understood how you create embeddings.",
+      "start": 1907.08,
+      "duration": 4.599
+    },
+    {
+      "text": " Now that we know how an embedding layer",
+      "start": 1911.499,
+      "duration": 4.425
+    },
+    {
+      "text": " works. I will show you the embedding",
+      "start": 1915.012,
+      "duration": 4.549
+    },
+    {
+      "text": " workflow on the same IMDb data again.",
+      "start": 1918.649,
+      "duration": 4.27
+    },
+    {
+      "text": " Okay? So here you can see we have",
+      "start": 1922.359,
+      "duration": 3.402
+    },
+    {
+      "text": " imported everything. Here we have",
+      "start": 1924.815,
+      "duration": 3.447
+    },
+    {
+      "text": " imported the data again. Here we are",
+      "start": 1927.332,
+      "duration": 4.847
+    },
+    {
+      "text": " shortening all our reviews. So every",
+      "start": 1931.275,
+      "duration": 5.173
+    },
+    {
+      "text": " review will contain only 50 words. Okay",
+      "start": 1935.529,
+      "duration": 4.297
+    },
+    {
+      "text": "? No matter how big or small, it will",
+      "start": 1938.826,
+      "duration": 3.095
+    },
+    {
+      "text": " become 50 words. Okay? This is the",
+      "start": 1940.975,
+      "duration": 3.324
+    },
+    {
+      "text": " shape of our X_train. It is currently",
+      "start": 1943.354,
+      "duration": 3.596
+    },
+    {
+      "text": " 25,000 comma 50. Now look, the main",
+      "start": 1946.039,
+      "duration": 3.577
+    },
+    {
+      "text": " thing starts here. This is the",
+      "start": 1948.665,
+      "duration": 2.56
+    },
+    {
+      "text": " architecture of our model. So we are",
+      "start": 1950.277,
+      "duration": 3.053
+    },
+    {
+      "text": " creating a sequential model and what",
+      "start": 1952.385,
+      "duration": 2.965
+    },
+    {
+      "text": " did we do first? We added an embedding",
+      "start": 1954.405,
+      "duration": 3.534
+    },
+    {
+      "text": " layer. Okay? So in the embedding layer,",
+      "start": 1957.01,
+      "duration": 3.652
+    },
+    {
+      "text": " you first specified that your",
+      "start": 1959.712,
+      "duration": 2.453
+    },
+    {
+      "text": " vocabulary size is 10,000. Actually,",
+      "start": 1961.215,
+      "duration": 3.129
+    },
+    {
+      "text": " it's more than that, but I have limited",
+      "start": 1963.392,
+      "duration": 2.845
+    },
+    {
+      "text": " it to 10,000 for now. Okay? After that,",
+      "start": 1965.285,
+      "duration": 4.052
+    },
+    {
+      "text": " you specified here that for every word,",
+      "start": 1968.394,
+      "duration": 3.194
+    },
+    {
+      "text": " I want a dense vector of dimension two.",
+      "start": 1970.644,
+      "duration": 3.195
+    },
+    {
+      "text": " Okay? And third, you had to specify the",
+      "start": 1973.639,
+      "duration": 3.628
+    },
+    {
+      "text": " input size, which is 50. So you can",
+      "start": 1976.325,
+      "duration": 3.614
+    },
+    {
+      "text": " write it there. 50, okay. What did you",
+      "start": 1979.039,
+      "duration": 7.243
+    },
+    {
+      "text": " do after that? You directly fed the",
+      "start": 1985.34,
+      "duration": 4.267
+    },
+    {
+      "text": " output from the embedding to a simple",
+      "start": 1988.689,
+      "duration": 4.013
+    },
+    {
+      "text": " RNN layer with 32 nodes. Return",
+      "start": 1991.784,
+      "duration": 4.221
+    },
+    {
+      "text": " sequences is false. Meaning, the output",
+      "start": 1995.072,
+      "duration": 3.372
+    },
+    {
+      "text": " won't come out from the intermediate",
+      "start": 1997.491,
+      "duration": 2.716
+    },
+    {
+      "text": " time steps. Okay? And finally, there is",
+      "start": 1999.254,
+      "duration": 3.648
+    },
+    {
+      "text": " a dense layer with one node and the",
+      "start": 2001.963,
+      "duration": 3.144
+    },
+    {
+      "text": " activation is sigmoid. Okay? So, if I",
+      "start": 2004.168,
+      "duration": 4.215
+    },
+    {
+      "text": " want to show you, the architecture of",
+      "start": 2007.476,
+      "duration": 4.444
+    },
+    {
+      "text": " this entire model is such that first,",
+      "start": 2011.013,
+      "duration": 4.444
+    },
+    {
+      "text": " there is an embedding layer receiving",
+      "start": 2014.55,
+      "duration": 4.443
+    },
+    {
+      "text": " an input of 10,000 dimensions. Okay?",
+      "start": 2018.086,
+      "duration": 5.653
+    },
+    {
+      "text": " And this is our two-dimensional output",
+      "start": 2024.039,
+      "duration": 3.725
+    },
+    {
+      "text": " from the embedding. Okay? From here,",
+      "start": 2026.836,
+      "duration": 5.133
+    },
+    {
+      "text": " the output goes into our RNN. And in",
+      "start": 2031.052,
+      "duration": 5.195
+    },
+    {
+      "text": " that RNN, there are 32 neurons, and",
+      "start": 2035.342,
+      "duration": 4.319
+    },
+    {
+      "text": " then the output goes into our sigmoid.",
+      "start": 2038.756,
+      "duration": 4.603
+    },
+    {
+      "text": " Okay? So, if you talk about weights,",
+      "start": 2043.099,
+      "duration": 5.761
+    },
+    {
+      "text": " then here you will have 10,000",
+      "start": 2047.973,
+      "duration": 4.382
+    },
+    {
+      "text": " multiplied by two weights. Okay? Then",
+      "start": 2051.468,
+      "duration": 6.286
+    },
+    {
+      "text": " for every word, you will get an output",
+      "start": 2056.843,
+      "duration": 4.378
+    },
+    {
+      "text": " of two dimensions from here. You are",
+      "start": 2060.31,
+      "duration": 4.278
+    },
+    {
+      "text": " connecting that right here. So here you",
+      "start": 2063.657,
+      "duration": 4.983
+    },
+    {
+      "text": " will have a total of 64 weights, which",
+      "start": 2067.743,
+      "duration": 4.942
+    },
+    {
+      "text": " is 2*32. Okay? Then there will be these",
+      "start": 2071.789,
+      "duration": 6.17
+    },
+    {
+      "text": " feedback connections of 32*32, and then",
+      "start": 2077.049,
+      "duration": 4.51
+    },
+    {
+      "text": " there would be 32 weights here. Okay?",
+      "start": 2080.649,
+      "duration": 4.899
+    },
+    {
+      "text": " These will be the weights. If you talk",
+      "start": 2084.648,
+      "duration": 2.911
+    },
+    {
+      "text": " about bias, then there will be 32",
+      "start": 2086.622,
+      "duration": 3.085
+    },
+    {
+      "text": " biases here and one bias here. Okay? So",
+      "start": 2088.77,
+      "duration": 3.589
+    },
+    {
+      "text": " this is the architecture of our model.",
+      "start": 2091.422,
+      "duration": 3.373
+    },
+    {
+      "text": " Okay? I will show you the same thing",
+      "start": 2093.895,
+      "duration": 2.833
+    },
+    {
+      "text": " here. You can see 2000 coming out from",
+      "start": 2095.771,
+      "duration": 4.125
+    },
+    {
+      "text": " the embedding. 1120 is coming out from",
+      "start": 2098.983,
+      "duration": 5.035
+    },
+    {
+      "text": " the RNN part. And then there are 33",
+      "start": 2103.103,
+      "duration": 3.949
+    },
+    {
+      "text": " trainable parameters in the output",
+      "start": 2106.108,
+      "duration": 2.9
+    },
+    {
+      "text": " layer. Okay? And after this, you don't",
+      "start": 2108.064,
+      "duration": 3.356
+    },
+    {
+      "text": " have to do anything else. You need to",
+      "start": 2110.458,
+      "duration": 3.035
+    },
+    {
+      "text": " compile the model and then fit the",
+      "start": 2112.58,
+      "duration": 3.952
+    },
+    {
+      "text": " model. We have used the exact same",
+      "start": 2115.619,
+      "duration": 3.261
+    },
+    {
+      "text": " approach here. And this time you will",
+      "start": 2117.933,
+      "duration": 3.187
+    },
+    {
+      "text": " notice that when you are training this",
+      "start": 2120.173,
+      "duration": 3.04
+    },
+    {
+      "text": " model, you are gaining higher",
+      "start": 2122.267,
+      "duration": 2.557
+    },
+    {
+      "text": " accuracies of around 80%. Okay? What",
+      "start": 2123.877,
+      "duration": 4.08
+    },
+    {
+      "text": " was stuck at 50 has now come to around",
+      "start": 2127.023,
+      "duration": 3.51
+    },
+    {
+      "text": " 80. Although there is some overfitting",
+      "start": 2129.599,
+      "duration": 3.182
+    },
+    {
+      "text": " happening. It is reaching 98%on",
+      "start": 2131.832,
+      "duration": 3.014
+    },
+    {
+      "text": " training. But on testing, it is",
+      "start": 2133.911,
+      "duration": 3.489
+    },
+    {
+      "text": " stopping at 76-77. So that is a matter",
+      "start": 2136.481,
+      "duration": 3.302
+    },
+    {
+      "text": " for later. We will study how to reduce",
+      "start": 2138.819,
+      "duration": 3.167
+    },
+    {
+      "text": " overfitting later on. But right now, my",
+      "start": 2141.045,
+      "duration": 4.352
+    },
+    {
+      "text": " main goal was to explain to you the",
+      "start": 2144.455,
+      "duration": 3.015
+    },
+    {
+      "text": " flow of how to use simple RNN in Keras",
+      "start": 2146.527,
+      "duration": 3.188
+    },
+    {
+      "text": " with two different approaches. One was",
+      "start": 2148.772,
+      "duration": 4.249
+    },
+    {
+      "text": " integer encoding and the second one was",
+      "start": 2152.087,
+      "duration": 3.571
+    },
+    {
+      "text": " the embedding approach. Okay? Now, one",
+      "start": 2154.723,
+      "duration": 4.257
+    },
+    {
+      "text": " more thing, you can either learn",
+      "start": 2158.05,
+      "duration": 3.244
+    },
+    {
+      "text": " embeddings by adding an embedding layer",
+      "start": 2160.364,
+      "duration": 3.734
+    },
+    {
+      "text": " to your model, or you can also use",
+      "start": 2163.169,
+      "duration": 3.383
+    },
+    {
+      "text": " pre-trained embeddings like Word2Vec or",
+      "start": 2165.622,
+      "duration": 3.735
+    },
+    {
+      "text": " GloVe, that is up to you. Okay?",
+      "start": 2168.427,
+      "duration": 3.851
+    },
+    {
+      "text": " Generally, depending on the dataset, I",
+      "start": 2171.819,
+      "duration": 2.796
+    },
+    {
+      "text": " would say training it with the model",
+      "start": 2173.662,
+      "duration": 2.702
+    },
+    {
+      "text": " gives you more benefit. Because the",
+      "start": 2175.411,
+      "duration": 3.652
+    },
+    {
+      "text": " embeddings that are generated are",
+      "start": 2178.144,
+      "duration": 3.655
+    },
+    {
+      "text": " actually generated according to your",
+      "start": 2180.879,
+      "duration": 3.896
+    },
+    {
+      "text": " dataset. They are more custom and are",
+      "start": 2183.856,
+      "duration": 3.725
+    },
+    {
+      "text": " able to capture the semantic meaning",
+      "start": 2186.648,
+      "duration": 3.445
+    },
+    {
+      "text": " within your dataset. Okay? So I hope",
+      "start": 2189.161,
+      "duration": 3.368
+    },
+    {
+      "text": " you understood this entire flow. Now",
+      "start": 2191.576,
+      "duration": 3.173
+    },
+    {
+      "text": " going forward, in the next video our",
+      "start": 2193.799,
+      "duration": 2.804
+    },
+    {
+      "text": " goal is to understand how",
+      "start": 2195.653,
+      "duration": 2.253
+    },
+    {
+      "text": " backpropagation works in an RNN. So",
+      "start": 2196.956,
+      "duration": 3.23
+    },
+    {
+      "text": " that was the video, guys. I hope you",
+      "start": 2199.229,
+      "duration": 2.778
+    },
+    {
+      "text": " liked the video. And also understood it",
+      "start": 2201.067,
+      "duration": 3.561
+    },
+    {
+      "text": ". I would recommend you try running",
+      "start": 2203.628,
+      "duration": 2.663
+    },
+    {
+      "text": " these codes yourself once. You will get",
+      "start": 2205.335,
+      "duration": 2.957
+    },
+    {
+      "text": " some confidence. And if you liked the",
+      "start": 2207.334,
+      "duration": 3.432
+    },
+    {
+      "text": " video, hit like, and if you haven't",
+      "start": 2209.807,
+      "duration": 2.414
+    },
+    {
+      "text": " subscribed to the channel, please",
+      "start": 2211.261,
+      "duration": 2.333
+    },
+    {
+      "text": " subscribe. Okay? See you in the next",
+      "start": 2212.635,
+      "duration": 3.487
+    },
+    {
+      "text": " video. Bye.",
+      "start": 2215.164,
+      "duration": 1.951
+    }
+  ]
+}

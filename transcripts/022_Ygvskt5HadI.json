@@ -1,0 +1,1540 @@
+{
+  "id": "Ygvskt5HadI",
+  "index": 22,
+  "title": "Early Stopping In Neural Networks | End to End Deep Learning Course",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and welcome  to my YouTube channel. So in this video , we will continue our deep learning  playlist. As we discussed in the last  video, we are now going to learn how  you can improve a neural network. Right ? So, today we will start our first  video on that, and today's topic is  early stopping. Okay? Let's first  discuss what early stopping is and why  it is needed. So let's say you are  training a neural network. In the  process of training a neural network,  you always have to specify how many  epochs you want to train it for. Epochs  means how many times you want to  iterate over the same data to train  your model. Right? Now, how would you  know what the right number of epochs is ? Like, should I run my model for 100  epochs, 1,000, or 10,000? How will I  know? You might ask me, why do we need  to specify it at all? We can just run  it for a very long time. Let's say we  run it for 10,000 epochs and then see  how the model has been trained. I would  say there is a problem with this  approach. The problem is that if you  train your model for too many epochs,  sometimes a scenario arises, depending  on your data, where your model starts  overfitting. Overfitting means you will  get very good results on your training  data. But as soon as you run your model  on new data, you would see that the  results are not as good. In fact, to  prove this point, I will show you; I'll  run 5,000—or I don't know, I don't  remember, maybe 3,500 or 4,000 epochs —on a dataset. And you will see that  overfitting will happen there. And then  we will discuss how you can use early  stopping to stop the training at the  exact point where overfitting begins to  occur. Okay? So let me share the screen . I have already written this code. I  will just readjust the screen. Just  give me one second. Yes. So here I have  imported everything, and after that, we  created our own classification data  using \"make_circles.\" In which there  are 100 data points, and our data looks  like this. Right? Now, what did I do? I  performed a train-test split. These are  all very routine steps. Everyone must  be familiar with them. After that, I  created my Keras model here. My model  is very simple. It has only one hidden  layer and in that hidden layer, there  are 256 nodes. 256 neurons. Okay? As  soon as I ran this. Our model was  created. To compile the model, we have  to specify these three things. I  specified these three things and after  that, I fit the model. Okay? By  providing my X-train and y-train, I ran  it for 3500 epochs for now, though I  could have shown more. I kept verbose  at zero so the output wouldn't print,  and I passed my test dataset into the  validation data here. Okay? I could  have done a validation split as well,  but both approaches work. Now, when you  run this model—I'm not showing it  running here because 3500 epochs will  take time. So, I can show you the  output. What did I do? I printed the  loss and validation loss, the loss on  the training data and the loss on the  validation data, together. And this was  the curve. Now, if you focus a little  on this curve, you would see that up to  a point, our orange-colored curve,  which is the test data curve, its loss  was reducing up until this point. Up to  this point. After this point, it  started increasing. You can see, even  if you focus on the training data, the  training loss continues to reduce even  after that. But you can see this gap.  This gap is increasing. And this gap  tells you that your model is now  overfitting. This means the correct  number of epochs, looking at this graph , appears to be somewhere around  300-350. It's not very clear right now.  But you get the idea. Training this  model the right amount means training  it for about 300 to 350 epochs. Not  more than that, because as soon as you  go beyond that, your model will start  to overfit. So, this is where the  concept of early stopping comes in. So,  early stopping is a mechanism in Keras  that automatically detects that after a  certain point, if you keep training the  model, it is causing harm rather than  benefit. It is overfitting. Or you  could say that your loss is starting to  increase or your accuracy is starting  to decrease. So, what does it do? It  detects that state during training and  stops your model's training right at  that point. Right? This mechanism is  called early stopping, and to implement  early stopping in Keras, there is a  callbacks feature. We will study  callbacks in detail later. There are  many different types of callbacks.  Callbacks are basically a way to make  Keras do something after every epoch.  So, what we will do here is early  stopping. We will check after every  epoch whether the training is actually  benefiting or not. If it is not, then  we will stop the training right there.  That is what early stopping is. Right?  So, in the code ahead, I have  implemented early stopping. By the way,  this is the decision boundary of the  model we trained for around 3500 epochs . So, it's forming a decision boundary  that is kind of good. I mean, it's okay . Obviously, there is some  misclassification in some places. Like  this point here is misclassified. The  points here are a bit misclassified.  But more or less, it's decent. But  overfitting is happening. Now what will  we do? We will move to the early  stopping approach. First of all, I  defined the model again. You will  notice here that I haven't made any  changes. It's running exactly as it was . Right? We don't need to change  anything in the model compilation  process either. Right? And then, what  do you do here? There is a function  called Early Stopping. It's actually a  class in Keras. You create its  constructor. You create an object of it . And in the process of creating the  object, you have to provide some inputs . You have to define some parameters.  Now, what are these parameters? I will  show you in a little while. When we go  to the Early Stopping page in the Keras  documentation. For now, just understand  that I configured my early stopping  here and put it in a variable called  callback. Right? And when we called fit , everything in fit is the same. Except  at the end, the callbacks value has  been set to the callback variable. So,  in this step, what am I doing? I am  implementing early stopping. And  everything else is the same. Now when I  ran this code, guys, you can see that  this code stopped at the 327th epoch  and said \"early stopping\". There is no  point in going beyond this. Stop right  here. You will find your best training  parameters right here. After this,  overfitting is happening. Okay? And  guess what? When we saw this curve, we  could see that we should have really  stopped around 300-350. That is exactly  what we see here. Okay? Then when I  plotted it, you can see here this  orange curve is your test loss. And the  blue curve is your training loss. Look  here, it is starting to diverge a bit.  Meaning it is getting a bit separated  from this blue line. So right here, it  already detected that overfitting is  about to happen. Stop right here. Okay?  And at this point, when I plotted my  decision boundary, it was perfect and  giving the right result. So you can see  I only had to train for 300-350 epochs.  Rather than training it for like 3500  epochs which I did here. Instead of  3500 epochs, I ran only 300 epochs. I  am getting the same result at just 10%.  Okay? So that is the beauty of early  stopping and that is why you should  implement early stopping. Okay? Now  let's take a look at what things are  involved in early stopping. So here you  have some parameters. By using these,  you can bring some flexibility to your  early stopping mechanism. First of all,  you can specify here which quantity you  want to monitor. On what do you want to  perform early stopping? So generally,  you want to do it on the validation  loss. You want to measure how much loss  is coming on new data, unseen data. You  can also do it for accuracy. If the  accuracy is decreasing, then early  stopping will happen. If the loss is  increasing, then early stopping will  happen. Okay? What does minimum delta  indicate? Look here, it is written,  minimum change in the monitored  quantity to qualify as an improvement.  How much you consider an improvement,  you specify that number using min delta . Okay? After that comes patience. This  is also a very important thing.  Patience is the number of epochs with  no improvement after which training  will be stopped. Meaning, suppose there  was no benefit in this epoch. Then you  won't stop immediately. You will wait a  bit longer, which is called patience.  You ran another epoch and realized that , no man, there is still no improvement . Then you ran another epoch and still  there is no benefit. So if you have set  patience equal to three, it will wait  for three epochs. If you have set  patience to five, it will wait for five  epochs. If there is no improvement, it  will trigger early stopping. Okay? Next  is verbose. By setting verbose equal to  0, you won't see this thing that  appears at the end, \"Epoch 327 early  stopping,\" it won't be visible. Since I  had set verbose equal to 1, I was able  to see it. Look here, next is mode  equal to auto. What does mode do? Mode  is one of these three: auto, min, or  max. Okay? Now it is written here, \"In  min mode training will stop when the  quantity monitored has stopped  decreasing.\" Okay? \"In max mode it will  stop when the quantity monitored has  stopped increasing.\" Okay? It depends  on the quantity that you are monitoring . If you are talking about accuracy, it  will set something else, and if you are  talking about loss, it will set  something else. Okay? Actually, the  best practice is to set it to auto.  Keras is intelligent enough to  understand what you want to do. Okay?  So, I always use auto. In very rare  scenarios, you have to specify min or  max yourself. Okay? Next is baseline.  Baseline is basically a baseline value  for the monitored quantity. Training  will stop if the model doesn't show  improvement over the baseline. You  provide a number. Generally, no one  provides a number. I mean, unless you  have a deep understanding of your data.  Providing a number in this way is a bit  difficult. Next is restore; by the way,  I have set the baseline to None here.  You can see it. Okay? Restore best  weights. Whether to restore model  weights from the epoch with the best  value of the monitored quantity. It is  basically that there will be one epoch  where your loss is the lowest. Do you  want to use the value of the weights at  that particular epoch or not? Okay? So  I have set it to false here. You can  also set it to true. What will happen  by setting it to true? It is possible  that the values from an earlier epoch  might get set in your weights. So for  now, I have kept it as false. There is  no major downside. But you can try with  a true value. Try experimenting and see  what results you get. All right? So, I  hope you understood it. It was a small  topic. This is called early stopping.  And generally, when you work with a  proper real-world dataset, you don't  train it for a very long time. You  leave the responsibility to early  stopping to decide how many epochs the  training should run. So it’s a very  useful feature, a small feature but it  is very useful. All right? So I would  recommend you run this code I shared  with you once and develop some  intuition on how early stopping works.  Also, try changing the parameters I  mentioned and you would see that you  get different types of results. All  right? So that's it for the video. I  hope you enjoyed it. Let's meet in the  next video. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and welcome",
+      "start": 0.379,
+      "duration": 3.217
+    },
+    {
+      "text": " to my YouTube channel. So in this video",
+      "start": 2.655,
+      "duration": 3.492
+    },
+    {
+      "text": ", we will continue our deep learning",
+      "start": 5.147,
+      "duration": 3.044
+    },
+    {
+      "text": " playlist. As we discussed in the last",
+      "start": 7.248,
+      "duration": 3.443
+    },
+    {
+      "text": " video, we are now going to learn how",
+      "start": 9.756,
+      "duration": 3.336
+    },
+    {
+      "text": " you can improve a neural network. Right",
+      "start": 12.157,
+      "duration": 3.788
+    },
+    {
+      "text": "? So, today we will start our first",
+      "start": 14.945,
+      "duration": 3.566
+    },
+    {
+      "text": " video on that, and today's topic is",
+      "start": 17.567,
+      "duration": 2.943
+    },
+    {
+      "text": " early stopping. Okay? Let's first",
+      "start": 19.566,
+      "duration": 4.173
+    },
+    {
+      "text": " discuss what early stopping is and why",
+      "start": 22.801,
+      "duration": 3.352
+    },
+    {
+      "text": " it is needed. So let's say you are",
+      "start": 25.215,
+      "duration": 3.597
+    },
+    {
+      "text": " training a neural network. In the",
+      "start": 27.877,
+      "duration": 3.467
+    },
+    {
+      "text": " process of training a neural network,",
+      "start": 30.412,
+      "duration": 3.502
+    },
+    {
+      "text": " you always have to specify how many",
+      "start": 32.981,
+      "duration": 3.367
+    },
+    {
+      "text": " epochs you want to train it for. Epochs",
+      "start": 35.416,
+      "duration": 4.32
+    },
+    {
+      "text": " means how many times you want to",
+      "start": 38.792,
+      "duration": 2.795
+    },
+    {
+      "text": " iterate over the same data to train",
+      "start": 40.643,
+      "duration": 2.963
+    },
+    {
+      "text": " your model. Right? Now, how would you",
+      "start": 42.662,
+      "duration": 4.401
+    },
+    {
+      "text": " know what the right number of epochs is",
+      "start": 46.145,
+      "duration": 4.173
+    },
+    {
+      "text": "? Like, should I run my model for 100",
+      "start": 49.318,
+      "duration": 4.008
+    },
+    {
+      "text": " epochs, 1,000, or 10,000? How will I",
+      "start": 52.393,
+      "duration": 3.796
+    },
+    {
+      "text": " know? You might ask me, why do we need",
+      "start": 55.251,
+      "duration": 4.254
+    },
+    {
+      "text": " to specify it at all? We can just run",
+      "start": 58.59,
+      "duration": 3.694
+    },
+    {
+      "text": " it for a very long time. Let's say we",
+      "start": 61.331,
+      "duration": 3.311
+    },
+    {
+      "text": " run it for 10,000 epochs and then see",
+      "start": 63.704,
+      "duration": 3.292
+    },
+    {
+      "text": " how the model has been trained. I would",
+      "start": 66.058,
+      "duration": 3.528
+    },
+    {
+      "text": " say there is a problem with this",
+      "start": 68.635,
+      "duration": 2.588
+    },
+    {
+      "text": " approach. The problem is that if you",
+      "start": 70.272,
+      "duration": 3.83
+    },
+    {
+      "text": " train your model for too many epochs,",
+      "start": 73.173,
+      "duration": 3.624
+    },
+    {
+      "text": " sometimes a scenario arises, depending",
+      "start": 75.868,
+      "duration": 3.694
+    },
+    {
+      "text": " on your data, where your model starts",
+      "start": 78.633,
+      "duration": 3.624
+    },
+    {
+      "text": " overfitting. Overfitting means you will",
+      "start": 81.328,
+      "duration": 3.997
+    },
+    {
+      "text": " get very good results on your training",
+      "start": 84.379,
+      "duration": 3.055
+    },
+    {
+      "text": " data. But as soon as you run your model",
+      "start": 86.488,
+      "duration": 3.751
+    },
+    {
+      "text": " on new data, you would see that the",
+      "start": 89.299,
+      "duration": 3.1
+    },
+    {
+      "text": " results are not as good. In fact, to",
+      "start": 91.459,
+      "duration": 4.398
+    },
+    {
+      "text": " prove this point, I will show you; I'll",
+      "start": 94.911,
+      "duration": 3.12
+    },
+    {
+      "text": " run 5,000—or I don't know, I don't",
+      "start": 97.086,
+      "duration": 2.957
+    },
+    {
+      "text": " remember, maybe 3,500 or 4,000 epochs",
+      "start": 99.097,
+      "duration": 3.012
+    },
+    {
+      "text": "—on a dataset. And you will see that",
+      "start": 101.109,
+      "duration": 4.16
+    },
+    {
+      "text": " overfitting will happen there. And then",
+      "start": 104.319,
+      "duration": 3.83
+    },
+    {
+      "text": " we will discuss how you can use early",
+      "start": 107.211,
+      "duration": 3.265
+    },
+    {
+      "text": " stopping to stop the training at the",
+      "start": 109.537,
+      "duration": 3.204
+    },
+    {
+      "text": " exact point where overfitting begins to",
+      "start": 111.802,
+      "duration": 3.388
+    },
+    {
+      "text": " occur. Okay? So let me share the screen",
+      "start": 114.251,
+      "duration": 4.234
+    },
+    {
+      "text": ". I have already written this code. I",
+      "start": 117.485,
+      "duration": 3.809
+    },
+    {
+      "text": " will just readjust the screen. Just",
+      "start": 120.349,
+      "duration": 3.303
+    },
+    {
+      "text": " give me one second. Yes. So here I have",
+      "start": 122.73,
+      "duration": 5.079
+    },
+    {
+      "text": " imported everything, and after that, we",
+      "start": 126.886,
+      "duration": 4.037
+    },
+    {
+      "text": " created our own classification data",
+      "start": 130.001,
+      "duration": 3.725
+    },
+    {
+      "text": " using \"make_circles.\" In which there",
+      "start": 132.804,
+      "duration": 4.211
+    },
+    {
+      "text": " are 100 data points, and our data looks",
+      "start": 136.079,
+      "duration": 3.496
+    },
+    {
+      "text": " like this. Right? Now, what did I do? I",
+      "start": 138.639,
+      "duration": 3.842
+    },
+    {
+      "text": " performed a train-test split. These are",
+      "start": 141.522,
+      "duration": 3.241
+    },
+    {
+      "text": " all very routine steps. Everyone must",
+      "start": 143.848,
+      "duration": 3.659
+    },
+    {
+      "text": " be familiar with them. After that, I",
+      "start": 146.542,
+      "duration": 2.796
+    },
+    {
+      "text": " created my Keras model here. My model",
+      "start": 148.406,
+      "duration": 3.613
+    },
+    {
+      "text": " is very simple. It has only one hidden",
+      "start": 151.084,
+      "duration": 3.656
+    },
+    {
+      "text": " layer and in that hidden layer, there",
+      "start": 153.807,
+      "duration": 3.507
+    },
+    {
+      "text": " are 256 nodes. 256 neurons. Okay? As",
+      "start": 156.381,
+      "duration": 4.849
+    },
+    {
+      "text": " soon as I ran this. Our model was",
+      "start": 160.316,
+      "duration": 4.349
+    },
+    {
+      "text": " created. To compile the model, we have",
+      "start": 163.717,
+      "duration": 3.755
+    },
+    {
+      "text": " to specify these three things. I",
+      "start": 166.519,
+      "duration": 2.741
+    },
+    {
+      "text": " specified these three things and after",
+      "start": 168.321,
+      "duration": 3.317
+    },
+    {
+      "text": " that, I fit the model. Okay? By",
+      "start": 170.699,
+      "duration": 4.022
+    },
+    {
+      "text": " providing my X-train and y-train, I ran",
+      "start": 173.782,
+      "duration": 3.386
+    },
+    {
+      "text": " it for 3500 epochs for now, though I",
+      "start": 176.229,
+      "duration": 3.202
+    },
+    {
+      "text": " could have shown more. I kept verbose",
+      "start": 178.493,
+      "duration": 3.946
+    },
+    {
+      "text": " at zero so the output wouldn't print,",
+      "start": 181.497,
+      "duration": 3.113
+    },
+    {
+      "text": " and I passed my test dataset into the",
+      "start": 183.668,
+      "duration": 3.114
+    },
+    {
+      "text": " validation data here. Okay? I could",
+      "start": 185.839,
+      "duration": 3.604
+    },
+    {
+      "text": " have done a validation split as well,",
+      "start": 188.483,
+      "duration": 2.501
+    },
+    {
+      "text": " but both approaches work. Now, when you",
+      "start": 190.025,
+      "duration": 3.426
+    },
+    {
+      "text": " run this model—I'm not showing it",
+      "start": 192.519,
+      "duration": 3.4
+    },
+    {
+      "text": " running here because 3500 epochs will",
+      "start": 194.988,
+      "duration": 3.536
+    },
+    {
+      "text": " take time. So, I can show you the",
+      "start": 197.593,
+      "duration": 3.219
+    },
+    {
+      "text": " output. What did I do? I printed the",
+      "start": 199.865,
+      "duration": 3.54
+    },
+    {
+      "text": " loss and validation loss, the loss on",
+      "start": 202.461,
+      "duration": 3.066
+    },
+    {
+      "text": " the training data and the loss on the",
+      "start": 204.583,
+      "duration": 3.067
+    },
+    {
+      "text": " validation data, together. And this was",
+      "start": 206.706,
+      "duration": 3.8
+    },
+    {
+      "text": " the curve. Now, if you focus a little",
+      "start": 209.562,
+      "duration": 4.548
+    },
+    {
+      "text": " on this curve, you would see that up to",
+      "start": 213.193,
+      "duration": 4.228
+    },
+    {
+      "text": " a point, our orange-colored curve,",
+      "start": 216.504,
+      "duration": 3.814
+    },
+    {
+      "text": " which is the test data curve, its loss",
+      "start": 219.4,
+      "duration": 4.146
+    },
+    {
+      "text": " was reducing up until this point. Up to",
+      "start": 222.628,
+      "duration": 4.789
+    },
+    {
+      "text": " this point. After this point, it",
+      "start": 226.48,
+      "duration": 3.079
+    },
+    {
+      "text": " started increasing. You can see, even",
+      "start": 228.614,
+      "duration": 3.386
+    },
+    {
+      "text": " if you focus on the training data, the",
+      "start": 231.047,
+      "duration": 2.79
+    },
+    {
+      "text": " training loss continues to reduce even",
+      "start": 232.884,
+      "duration": 2.79
+    },
+    {
+      "text": " after that. But you can see this gap.",
+      "start": 234.721,
+      "duration": 3.02
+    },
+    {
+      "text": " This gap is increasing. And this gap",
+      "start": 236.841,
+      "duration": 3.055
+    },
+    {
+      "text": " tells you that your model is now",
+      "start": 238.949,
+      "duration": 2.7
+    },
+    {
+      "text": " overfitting. This means the correct",
+      "start": 240.702,
+      "duration": 4.212
+    },
+    {
+      "text": " number of epochs, looking at this graph",
+      "start": 243.979,
+      "duration": 3.545
+    },
+    {
+      "text": ", appears to be somewhere around",
+      "start": 246.524,
+      "duration": 3.087
+    },
+    {
+      "text": " 300-350. It's not very clear right now.",
+      "start": 248.677,
+      "duration": 4.382
+    },
+    {
+      "text": " But you get the idea. Training this",
+      "start": 252.16,
+      "duration": 3.159
+    },
+    {
+      "text": " model the right amount means training",
+      "start": 254.383,
+      "duration": 3.389
+    },
+    {
+      "text": " it for about 300 to 350 epochs. Not",
+      "start": 256.837,
+      "duration": 3.548
+    },
+    {
+      "text": " more than that, because as soon as you",
+      "start": 259.433,
+      "duration": 2.851
+    },
+    {
+      "text": " go beyond that, your model will start",
+      "start": 261.332,
+      "duration": 2.802
+    },
+    {
+      "text": " to overfit. So, this is where the",
+      "start": 263.183,
+      "duration": 2.676
+    },
+    {
+      "text": " concept of early stopping comes in. So,",
+      "start": 264.899,
+      "duration": 3.048
+    },
+    {
+      "text": " early stopping is a mechanism in Keras",
+      "start": 267.003,
+      "duration": 3.131
+    },
+    {
+      "text": " that automatically detects that after a",
+      "start": 269.191,
+      "duration": 3.187
+    },
+    {
+      "text": " certain point, if you keep training the",
+      "start": 271.434,
+      "duration": 3.188
+    },
+    {
+      "text": " model, it is causing harm rather than",
+      "start": 273.678,
+      "duration": 3.076
+    },
+    {
+      "text": " benefit. It is overfitting. Or you",
+      "start": 275.81,
+      "duration": 3.648
+    },
+    {
+      "text": " could say that your loss is starting to",
+      "start": 278.505,
+      "duration": 2.817
+    },
+    {
+      "text": " increase or your accuracy is starting",
+      "start": 280.369,
+      "duration": 2.724
+    },
+    {
+      "text": " to decrease. So, what does it do? It",
+      "start": 282.139,
+      "duration": 3.855
+    },
+    {
+      "text": " detects that state during training and",
+      "start": 285.052,
+      "duration": 3.196
+    },
+    {
+      "text": " stops your model's training right at",
+      "start": 287.306,
+      "duration": 3.08
+    },
+    {
+      "text": " that point. Right? This mechanism is",
+      "start": 289.444,
+      "duration": 4.158
+    },
+    {
+      "text": " called early stopping, and to implement",
+      "start": 292.656,
+      "duration": 3.117
+    },
+    {
+      "text": " early stopping in Keras, there is a",
+      "start": 294.828,
+      "duration": 2.9
+    },
+    {
+      "text": " callbacks feature. We will study",
+      "start": 296.782,
+      "duration": 3.029
+    },
+    {
+      "text": " callbacks in detail later. There are",
+      "start": 298.855,
+      "duration": 2.785
+    },
+    {
+      "text": " many different types of callbacks.",
+      "start": 300.689,
+      "duration": 2.67
+    },
+    {
+      "text": " Callbacks are basically a way to make",
+      "start": 303.119,
+      "duration": 3.21
+    },
+    {
+      "text": " Keras do something after every epoch.",
+      "start": 305.388,
+      "duration": 3.211
+    },
+    {
+      "text": " So, what we will do here is early",
+      "start": 308.339,
+      "duration": 2.811
+    },
+    {
+      "text": " stopping. We will check after every",
+      "start": 310.205,
+      "duration": 2.782
+    },
+    {
+      "text": " epoch whether the training is actually",
+      "start": 312.031,
+      "duration": 2.685
+    },
+    {
+      "text": " benefiting or not. If it is not, then",
+      "start": 313.76,
+      "duration": 2.854
+    },
+    {
+      "text": " we will stop the training right there.",
+      "start": 315.659,
+      "duration": 2.68
+    },
+    {
+      "text": " That is what early stopping is. Right?",
+      "start": 317.833,
+      "duration": 3.139
+    },
+    {
+      "text": " So, in the code ahead, I have",
+      "start": 320.072,
+      "duration": 2.526
+    },
+    {
+      "text": " implemented early stopping. By the way,",
+      "start": 321.65,
+      "duration": 3.301
+    },
+    {
+      "text": " this is the decision boundary of the",
+      "start": 324.012,
+      "duration": 3.201
+    },
+    {
+      "text": " model we trained for around 3500 epochs",
+      "start": 326.274,
+      "duration": 3.384
+    },
+    {
+      "text": ". So, it's forming a decision boundary",
+      "start": 328.658,
+      "duration": 3.088
+    },
+    {
+      "text": " that is kind of good. I mean, it's okay",
+      "start": 330.796,
+      "duration": 2.826
+    },
+    {
+      "text": ". Obviously, there is some",
+      "start": 332.622,
+      "duration": 2.28
+    },
+    {
+      "text": " misclassification in some places. Like",
+      "start": 333.945,
+      "duration": 2.875
+    },
+    {
+      "text": " this point here is misclassified. The",
+      "start": 335.885,
+      "duration": 3.44
+    },
+    {
+      "text": " points here are a bit misclassified.",
+      "start": 338.367,
+      "duration": 2.512
+    },
+    {
+      "text": " But more or less, it's decent. But",
+      "start": 339.999,
+      "duration": 3.142
+    },
+    {
+      "text": " overfitting is happening. Now what will",
+      "start": 342.201,
+      "duration": 3.532
+    },
+    {
+      "text": " we do? We will move to the early",
+      "start": 344.791,
+      "duration": 2.955
+    },
+    {
+      "text": " stopping approach. First of all, I",
+      "start": 346.795,
+      "duration": 2.954
+    },
+    {
+      "text": " defined the model again. You will",
+      "start": 348.799,
+      "duration": 2.73
+    },
+    {
+      "text": " notice here that I haven't made any",
+      "start": 350.569,
+      "duration": 2.4
+    },
+    {
+      "text": " changes. It's running exactly as it was",
+      "start": 352.009,
+      "duration": 3.161
+    },
+    {
+      "text": ". Right? We don't need to change",
+      "start": 354.17,
+      "duration": 2.868
+    },
+    {
+      "text": " anything in the model compilation",
+      "start": 356.088,
+      "duration": 2.664
+    },
+    {
+      "text": " process either. Right? And then, what",
+      "start": 357.802,
+      "duration": 3.543
+    },
+    {
+      "text": " do you do here? There is a function",
+      "start": 360.399,
+      "duration": 3.156
+    },
+    {
+      "text": " called Early Stopping. It's actually a",
+      "start": 362.617,
+      "duration": 3.276
+    },
+    {
+      "text": " class in Keras. You create its",
+      "start": 364.944,
+      "duration": 2.806
+    },
+    {
+      "text": " constructor. You create an object of it",
+      "start": 366.812,
+      "duration": 3.275
+    },
+    {
+      "text": ". And in the process of creating the",
+      "start": 369.087,
+      "duration": 3.122
+    },
+    {
+      "text": " object, you have to provide some inputs",
+      "start": 371.263,
+      "duration": 3.122
+    },
+    {
+      "text": ". You have to define some parameters.",
+      "start": 373.385,
+      "duration": 2.864
+    },
+    {
+      "text": " Now, what are these parameters? I will",
+      "start": 375.349,
+      "duration": 2.545
+    },
+    {
+      "text": " show you in a little while. When we go",
+      "start": 376.94,
+      "duration": 3.239
+    },
+    {
+      "text": " to the Early Stopping page in the Keras",
+      "start": 379.219,
+      "duration": 2.56
+    },
+    {
+      "text": " documentation. For now, just understand",
+      "start": 380.819,
+      "duration": 3.882
+    },
+    {
+      "text": " that I configured my early stopping",
+      "start": 383.755,
+      "duration": 2.871
+    },
+    {
+      "text": " here and put it in a variable called",
+      "start": 385.679,
+      "duration": 2.925
+    },
+    {
+      "text": " callback. Right? And when we called fit",
+      "start": 387.657,
+      "duration": 3.965
+    },
+    {
+      "text": ", everything in fit is the same. Except",
+      "start": 390.622,
+      "duration": 3.65
+    },
+    {
+      "text": " at the end, the callbacks value has",
+      "start": 393.328,
+      "duration": 2.945
+    },
+    {
+      "text": " been set to the callback variable. So,",
+      "start": 395.329,
+      "duration": 3.42
+    },
+    {
+      "text": " in this step, what am I doing? I am",
+      "start": 397.793,
+      "duration": 2.718
+    },
+    {
+      "text": " implementing early stopping. And",
+      "start": 399.569,
+      "duration": 2.948
+    },
+    {
+      "text": " everything else is the same. Now when I",
+      "start": 401.564,
+      "duration": 3.375
+    },
+    {
+      "text": " ran this code, guys, you can see that",
+      "start": 404.029,
+      "duration": 4.33
+    },
+    {
+      "text": " this code stopped at the 327th epoch",
+      "start": 407.449,
+      "duration": 4.24
+    },
+    {
+      "text": " and said \"early stopping\". There is no",
+      "start": 410.779,
+      "duration": 3.92
+    },
+    {
+      "text": " point in going beyond this. Stop right",
+      "start": 413.739,
+      "duration": 2.875
+    },
+    {
+      "text": " here. You will find your best training",
+      "start": 415.661,
+      "duration": 3.373
+    },
+    {
+      "text": " parameters right here. After this,",
+      "start": 418.087,
+      "duration": 2.764
+    },
+    {
+      "text": " overfitting is happening. Okay? And",
+      "start": 419.887,
+      "duration": 2.79
+    },
+    {
+      "text": " guess what? When we saw this curve, we",
+      "start": 421.733,
+      "duration": 3.938
+    },
+    {
+      "text": " could see that we should have really",
+      "start": 424.745,
+      "duration": 3.648
+    },
+    {
+      "text": " stopped around 300-350. That is exactly",
+      "start": 427.467,
+      "duration": 3.861
+    },
+    {
+      "text": " what we see here. Okay? Then when I",
+      "start": 430.375,
+      "duration": 3.455
+    },
+    {
+      "text": " plotted it, you can see here this",
+      "start": 432.907,
+      "duration": 3.555
+    },
+    {
+      "text": " orange curve is your test loss. And the",
+      "start": 435.539,
+      "duration": 4.029
+    },
+    {
+      "text": " blue curve is your training loss. Look",
+      "start": 438.627,
+      "duration": 3.661
+    },
+    {
+      "text": " here, it is starting to diverge a bit.",
+      "start": 441.34,
+      "duration": 2.979
+    },
+    {
+      "text": " Meaning it is getting a bit separated",
+      "start": 443.559,
+      "duration": 2.429
+    },
+    {
+      "text": " from this blue line. So right here, it",
+      "start": 445.027,
+      "duration": 2.835
+    },
+    {
+      "text": " already detected that overfitting is",
+      "start": 446.911,
+      "duration": 2.744
+    },
+    {
+      "text": " about to happen. Stop right here. Okay?",
+      "start": 448.703,
+      "duration": 3.526
+    },
+    {
+      "text": " And at this point, when I plotted my",
+      "start": 451.329,
+      "duration": 3.618
+    },
+    {
+      "text": " decision boundary, it was perfect and",
+      "start": 454.019,
+      "duration": 3.691
+    },
+    {
+      "text": " giving the right result. So you can see",
+      "start": 456.783,
+      "duration": 4.22
+    },
+    {
+      "text": " I only had to train for 300-350 epochs.",
+      "start": 460.092,
+      "duration": 4.467
+    },
+    {
+      "text": " Rather than training it for like 3500",
+      "start": 463.999,
+      "duration": 3.482
+    },
+    {
+      "text": " epochs which I did here. Instead of",
+      "start": 466.548,
+      "duration": 4.092
+    },
+    {
+      "text": " 3500 epochs, I ran only 300 epochs. I",
+      "start": 469.726,
+      "duration": 4.365
+    },
+    {
+      "text": " am getting the same result at just 10%.",
+      "start": 473.144,
+      "duration": 3.056
+    },
+    {
+      "text": " Okay? So that is the beauty of early",
+      "start": 475.42,
+      "duration": 3.209
+    },
+    {
+      "text": " stopping and that is why you should",
+      "start": 477.683,
+      "duration": 2.902
+    },
+    {
+      "text": " implement early stopping. Okay? Now",
+      "start": 479.64,
+      "duration": 3.267
+    },
+    {
+      "text": " let's take a look at what things are",
+      "start": 481.95,
+      "duration": 2.546
+    },
+    {
+      "text": " involved in early stopping. So here you",
+      "start": 483.539,
+      "duration": 3.24
+    },
+    {
+      "text": " have some parameters. By using these,",
+      "start": 485.84,
+      "duration": 3.306
+    },
+    {
+      "text": " you can bring some flexibility to your",
+      "start": 488.195,
+      "duration": 2.843
+    },
+    {
+      "text": " early stopping mechanism. First of all,",
+      "start": 490.087,
+      "duration": 3.289
+    },
+    {
+      "text": " you can specify here which quantity you",
+      "start": 492.439,
+      "duration": 3.452
+    },
+    {
+      "text": " want to monitor. On what do you want to",
+      "start": 494.954,
+      "duration": 3.161
+    },
+    {
+      "text": " perform early stopping? So generally,",
+      "start": 497.159,
+      "duration": 2.828
+    },
+    {
+      "text": " you want to do it on the validation",
+      "start": 499.029,
+      "duration": 2.476
+    },
+    {
+      "text": " loss. You want to measure how much loss",
+      "start": 500.548,
+      "duration": 3.861
+    },
+    {
+      "text": " is coming on new data, unseen data. You",
+      "start": 503.482,
+      "duration": 3.917
+    },
+    {
+      "text": " can also do it for accuracy. If the",
+      "start": 506.439,
+      "duration": 2.58
+    },
+    {
+      "text": " accuracy is decreasing, then early",
+      "start": 508.059,
+      "duration": 2.36
+    },
+    {
+      "text": " stopping will happen. If the loss is",
+      "start": 509.459,
+      "duration": 2.532
+    },
+    {
+      "text": " increasing, then early stopping will",
+      "start": 511.028,
+      "duration": 2.318
+    },
+    {
+      "text": " happen. Okay? What does minimum delta",
+      "start": 512.382,
+      "duration": 2.901
+    },
+    {
+      "text": " indicate? Look here, it is written,",
+      "start": 514.327,
+      "duration": 2.996
+    },
+    {
+      "text": " minimum change in the monitored",
+      "start": 516.377,
+      "duration": 2.666
+    },
+    {
+      "text": " quantity to qualify as an improvement.",
+      "start": 518.096,
+      "duration": 3.043
+    },
+    {
+      "text": " How much you consider an improvement,",
+      "start": 520.599,
+      "duration": 3.353
+    },
+    {
+      "text": " you specify that number using min delta",
+      "start": 523.015,
+      "duration": 3.481
+    },
+    {
+      "text": ". Okay? After that comes patience. This",
+      "start": 525.496,
+      "duration": 3.448
+    },
+    {
+      "text": " is also a very important thing.",
+      "start": 527.985,
+      "duration": 2.275
+    },
+    {
+      "text": " Patience is the number of epochs with",
+      "start": 529.799,
+      "duration": 2.841
+    },
+    {
+      "text": " no improvement after which training",
+      "start": 531.69,
+      "duration": 2.742
+    },
+    {
+      "text": " will be stopped. Meaning, suppose there",
+      "start": 533.482,
+      "duration": 3.529
+    },
+    {
+      "text": " was no benefit in this epoch. Then you",
+      "start": 536.058,
+      "duration": 2.931
+    },
+    {
+      "text": " won't stop immediately. You will wait a",
+      "start": 538.025,
+      "duration": 2.838
+    },
+    {
+      "text": " bit longer, which is called patience.",
+      "start": 539.917,
+      "duration": 2.982
+    },
+    {
+      "text": " You ran another epoch and realized that",
+      "start": 542.1,
+      "duration": 2.875
+    },
+    {
+      "text": ", no man, there is still no improvement",
+      "start": 543.975,
+      "duration": 2.876
+    },
+    {
+      "text": ". Then you ran another epoch and still",
+      "start": 545.851,
+      "duration": 2.885
+    },
+    {
+      "text": " there is no benefit. So if you have set",
+      "start": 547.781,
+      "duration": 3.247
+    },
+    {
+      "text": " patience equal to three, it will wait",
+      "start": 550.089,
+      "duration": 3.28
+    },
+    {
+      "text": " for three epochs. If you have set",
+      "start": 552.431,
+      "duration": 3.068
+    },
+    {
+      "text": " patience to five, it will wait for five",
+      "start": 554.552,
+      "duration": 3.03
+    },
+    {
+      "text": " epochs. If there is no improvement, it",
+      "start": 556.634,
+      "duration": 3.029
+    },
+    {
+      "text": " will trigger early stopping. Okay? Next",
+      "start": 558.712,
+      "duration": 3.797
+    },
+    {
+      "text": " is verbose. By setting verbose equal to",
+      "start": 561.601,
+      "duration": 4.793
+    },
+    {
+      "text": " 0, you won't see this thing that",
+      "start": 565.454,
+      "duration": 2.915
+    },
+    {
+      "text": " appears at the end, \"Epoch 327 early",
+      "start": 567.429,
+      "duration": 3.154
+    },
+    {
+      "text": " stopping,\" it won't be visible. Since I",
+      "start": 569.643,
+      "duration": 4.81
+    },
+    {
+      "text": " had set verbose equal to 1, I was able",
+      "start": 573.5,
+      "duration": 2.814
+    },
+    {
+      "text": " to see it. Look here, next is mode",
+      "start": 575.361,
+      "duration": 4.747
+    },
+    {
+      "text": " equal to auto. What does mode do? Mode",
+      "start": 579.215,
+      "duration": 4.383
+    },
+    {
+      "text": " is one of these three: auto, min, or",
+      "start": 582.652,
+      "duration": 2.973
+    },
+    {
+      "text": " max. Okay? Now it is written here, \"In",
+      "start": 584.679,
+      "duration": 3.82
+    },
+    {
+      "text": " min mode training will stop when the",
+      "start": 587.544,
+      "duration": 2.627
+    },
+    {
+      "text": " quantity monitored has stopped",
+      "start": 589.216,
+      "duration": 2.355
+    },
+    {
+      "text": " decreasing.\" Okay? \"In max mode it will",
+      "start": 590.616,
+      "duration": 4.221
+    },
+    {
+      "text": " stop when the quantity monitored has",
+      "start": 593.894,
+      "duration": 3.049
+    },
+    {
+      "text": " stopped increasing.\" Okay? It depends",
+      "start": 596.0,
+      "duration": 3.603
+    },
+    {
+      "text": " on the quantity that you are monitoring",
+      "start": 598.66,
+      "duration": 3.202
+    },
+    {
+      "text": ". If you are talking about accuracy, it",
+      "start": 600.862,
+      "duration": 3.134
+    },
+    {
+      "text": " will set something else, and if you are",
+      "start": 603.034,
+      "duration": 2.473
+    },
+    {
+      "text": " talking about loss, it will set",
+      "start": 604.544,
+      "duration": 2.171
+    },
+    {
+      "text": " something else. Okay? Actually, the",
+      "start": 605.753,
+      "duration": 3.315
+    },
+    {
+      "text": " best practice is to set it to auto.",
+      "start": 608.107,
+      "duration": 2.373
+    },
+    {
+      "text": " Keras is intelligent enough to",
+      "start": 609.813,
+      "duration": 2.219
+    },
+    {
+      "text": " understand what you want to do. Okay?",
+      "start": 611.073,
+      "duration": 2.799
+    },
+    {
+      "text": " So, I always use auto. In very rare",
+      "start": 612.972,
+      "duration": 3.28
+    },
+    {
+      "text": " scenarios, you have to specify min or",
+      "start": 615.301,
+      "duration": 2.826
+    },
+    {
+      "text": " max yourself. Okay? Next is baseline.",
+      "start": 617.177,
+      "duration": 3.583
+    },
+    {
+      "text": " Baseline is basically a baseline value",
+      "start": 620.2,
+      "duration": 2.795
+    },
+    {
+      "text": " for the monitored quantity. Training",
+      "start": 622.043,
+      "duration": 3.17
+    },
+    {
+      "text": " will stop if the model doesn't show",
+      "start": 624.257,
+      "duration": 2.549
+    },
+    {
+      "text": " improvement over the baseline. You",
+      "start": 625.851,
+      "duration": 2.768
+    },
+    {
+      "text": " provide a number. Generally, no one",
+      "start": 627.659,
+      "duration": 2.616
+    },
+    {
+      "text": " provides a number. I mean, unless you",
+      "start": 629.319,
+      "duration": 2.98
+    },
+    {
+      "text": " have a deep understanding of your data.",
+      "start": 631.359,
+      "duration": 3.34
+    },
+    {
+      "text": " Providing a number in this way is a bit",
+      "start": 633.999,
+      "duration": 2.747
+    },
+    {
+      "text": " difficult. Next is restore; by the way,",
+      "start": 635.791,
+      "duration": 3.958
+    },
+    {
+      "text": " I have set the baseline to None here.",
+      "start": 638.823,
+      "duration": 3.736
+    },
+    {
+      "text": " You can see it. Okay? Restore best",
+      "start": 641.859,
+      "duration": 3.186
+    },
+    {
+      "text": " weights. Whether to restore model",
+      "start": 644.102,
+      "duration": 3.088
+    },
+    {
+      "text": " weights from the epoch with the best",
+      "start": 646.232,
+      "duration": 2.516
+    },
+    {
+      "text": " value of the monitored quantity. It is",
+      "start": 647.79,
+      "duration": 3.878
+    },
+    {
+      "text": " basically that there will be one epoch",
+      "start": 650.746,
+      "duration": 3.959
+    },
+    {
+      "text": " where your loss is the lowest. Do you",
+      "start": 653.783,
+      "duration": 4.563
+    },
+    {
+      "text": " want to use the value of the weights at",
+      "start": 657.414,
+      "duration": 3.648
+    },
+    {
+      "text": " that particular epoch or not? Okay? So",
+      "start": 660.13,
+      "duration": 3.942
+    },
+    {
+      "text": " I have set it to false here. You can",
+      "start": 663.129,
+      "duration": 2.99
+    },
+    {
+      "text": " also set it to true. What will happen",
+      "start": 665.151,
+      "duration": 2.135
+    },
+    {
+      "text": " by setting it to true? It is possible",
+      "start": 666.31,
+      "duration": 2.255
+    },
+    {
+      "text": " that the values from an earlier epoch",
+      "start": 667.606,
+      "duration": 2.498
+    },
+    {
+      "text": " might get set in your weights. So for",
+      "start": 669.144,
+      "duration": 2.678
+    },
+    {
+      "text": " now, I have kept it as false. There is",
+      "start": 670.856,
+      "duration": 2.459
+    },
+    {
+      "text": " no major downside. But you can try with",
+      "start": 672.361,
+      "duration": 2.859
+    },
+    {
+      "text": " a true value. Try experimenting and see",
+      "start": 674.267,
+      "duration": 3.264
+    },
+    {
+      "text": " what results you get. All right? So, I",
+      "start": 676.593,
+      "duration": 3.335
+    },
+    {
+      "text": " hope you understood it. It was a small",
+      "start": 678.981,
+      "duration": 3.378
+    },
+    {
+      "text": " topic. This is called early stopping.",
+      "start": 681.427,
+      "duration": 3.072
+    },
+    {
+      "text": " And generally, when you work with a",
+      "start": 683.739,
+      "duration": 3.378
+    },
+    {
+      "text": " proper real-world dataset, you don't",
+      "start": 686.185,
+      "duration": 3.447
+    },
+    {
+      "text": " train it for a very long time. You",
+      "start": 688.7,
+      "duration": 4.266
+    },
+    {
+      "text": " leave the responsibility to early",
+      "start": 692.008,
+      "duration": 2.388
+    },
+    {
+      "text": " stopping to decide how many epochs the",
+      "start": 693.438,
+      "duration": 2.598
+    },
+    {
+      "text": " training should run. So it’s a very",
+      "start": 695.078,
+      "duration": 3.693
+    },
+    {
+      "text": " useful feature, a small feature but it",
+      "start": 697.815,
+      "duration": 2.692
+    },
+    {
+      "text": " is very useful. All right? So I would",
+      "start": 699.552,
+      "duration": 3.155
+    },
+    {
+      "text": " recommend you run this code I shared",
+      "start": 701.765,
+      "duration": 3.118
+    },
+    {
+      "text": " with you once and develop some",
+      "start": 703.941,
+      "duration": 2.765
+    },
+    {
+      "text": " intuition on how early stopping works.",
+      "start": 705.765,
+      "duration": 3.235
+    },
+    {
+      "text": " Also, try changing the parameters I",
+      "start": 708.919,
+      "duration": 2.696
+    },
+    {
+      "text": " mentioned and you would see that you",
+      "start": 710.663,
+      "duration": 2.745
+    },
+    {
+      "text": " get different types of results. All",
+      "start": 712.456,
+      "duration": 3.04
+    },
+    {
+      "text": " right? So that's it for the video. I",
+      "start": 714.532,
+      "duration": 2.642
+    },
+    {
+      "text": " hope you enjoyed it. Let's meet in the",
+      "start": 716.245,
+      "duration": 3.25
+    },
+    {
+      "text": " next video. Bye.",
+      "start": 718.534,
+      "duration": 1.965
+    }
+  ]
+}

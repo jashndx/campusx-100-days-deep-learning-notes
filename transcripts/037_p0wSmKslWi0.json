@@ -1,0 +1,1170 @@
+{
+  "id": "p0wSmKslWi0",
+  "index": 37,
+  "title": "RMSProp Explained in Detail with Animations | Optimizers in Deep Learning Part 5",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and you are  welcome to my YouTube channel. In this  video too, we will continue our deep  learning playlist. We are studying  optimizers in deep learning. And the  next optimizer we are going to study is  named RMSprop. So, let's start the  video. Let's start our discussion  around RMSprop. Okay? First of all,  let's look at its full form. The full  form of RMSprop is Root Mean Square.  Prop. Okay, and this optimization  technique is basically an improvement  over Adagrad. So, if you want to  understand Root Mean Square Prop, you  must have knowledge of Adagrad. Whose  video I shared in the last video.  Although, I will give you a few details . So, what did we discuss in the last  video? That you use Adagrad when you  have sparse data. Sparse data means  that in some of your columns, suppose a  lot of values are zero. So, you call  this type of data sparse. So, what  happens with sparse data is that the  contour plot of your loss function with  respect to parameters becomes very  elongated. It becomes like this. Like  this, as you can see here. Now, what is  the problem with this? That when you  try to optimize and reach the minima,  you come by making movements like this.  Okay? Which wastes time. Ideally, there  should be a movement like this,  directly to this spot. So, I showed you  through animations how your Batch  Gradient Descent or Momentum, both  optimize over these stretched curves  through these movements, which are  time-consuming and slow. So, this is  where Adagrad came in, and what did  Adagrad do? It solved this problem.  Right? Now, we also discussed that  Adagrad had a very big disadvantage.  And that disadvantage was that in  Adagrad, you do what? You reduce the  learning rate. You reduce it. But after  a point, the learning rate reduces so  much that the update becomes very small . Due to which, what happens is that  your Adagrad algorithm is unable to  converge properly. If this is the  minima, it will come here and stop. It  will come here and stop. It cannot make  this movement. Because you have reduced  the learning rate so much that the  updates being made are very, very small  and it gets stuck at one place. So,  this was the biggest problem with  Adagrad. RMSprop solves exactly this  problem. Right? So we will try to  understand the mathematics behind it  and then look at how this whole thing  works through an animation. Let’s  look at the problem I mentioned earlier  in AdaGrad mathematically. So, we have  data where one column consists only of  ones. In one column, we have our  x-values which contain many sparse  values. And then, we have our output  column y. Corresponding to this column,  we have parameter B. Corresponding to X , we have parameter M. So, when you  plot the graph, since X or you could  say M is sparse, an elongated bowl  problem occurs. Now, as I told you in  the last video about AdaGrad, what  happens is that you move rapidly in the  direction of B first, and then you move  in the direction of M. Meaning,  initially, you are making changes in B.  Because it is non-sparse. And then,  after a point, you start changing in  the direction of M. But sometimes,  suppose this is your local minima, you  end up stopping right here at this spot . You are unable to cover this distance . Meaning, you are unable to move back  in B. The reason is that B is your  non-sparse parameter. Now, what is  happening here? Mathematically, if you  look, you are dividing the learning  rate of B by this number VT. And what  is VT? The sum of squares of all past  gradients. So, after many epochs, you  will keep adding all the gradients from  the start up to that epoch, making this  number very large. As soon as this  number becomes large, the learning rate  for B becomes very small. And that is  why you cannot take a movement in this  direction. You will stop right here. I  hope you understand the problem. So,  the entire issue originates solely from  the fact that when calculating this vt  term, you are considering all past  gradients, which causes vt to become  very large. Because of that, this whole  term becomes very small, and the update  becomes negligible. So we have to stop  this vt from becoming too large in some  way, and that is exactly the problem  RMSprop solves. Let me show it to you.  In RMSprop, you make a small change,  and that small change is that you use  this formula while calculating vt. Beta  times vt-1 + 1-beta times the square of  the gradient, and the formula below  remains exactly the same. Where beta is  generally taken to be 0.95. Alright?  You can change it as well. So what is  the main difference? Previously, you  were taking the entire history of your  gradients right from the first epoch.  Now, what you are doing is taking an  exponentially weighted average. You are  taking an exponentially decaying  average. Where you are giving more  weight to the recent gradients and not  much weight to the values from older  epochs. So, automatically, this vt term  will not become as large as it was  becoming here. Because of that, the  learning rate won't become too small,  and the whole term won't shrink too  much, so you will continue to get  updates. We can also prove this  mathematically. You can see, if you  assume v0 is 0, then what will v1 be?  .95 multiplied by 0, because vt-1 is 0,  plus .05 times the square of the  gradient in step or epoch one. Then we  calculated v2, so v2 will be this plus  this. Then we calculated v3, so v3 will  be this plus this plus this. You can  see as we move forward, this gradient  is for epoch one. This is what came in  epoch two, and this is epoch three,  which is the most recent epoch. You can  see that the value from epoch one is  being multiplied by so many numbers.  And since these numbers are less than  one, it becomes an even smaller number.  Whereas this will be the largest one.  So, what we said earlier, that you give  the most value to the most recent  epochs and kind of start forgetting the  older epochs. That is why I wrote here  that this is an exponentially decaying  average. Right? And because of this, vt  never shoots up. It does not become  very large. Which prevents the learning  rate from becoming too small, and  updates keep happening. Because of this , the problem in Adagrad does not stop  here. It converges. Right? Let me show  you through an animation. Although you  won't see any difference in the  animation. In AdaGrad and RMSProp.  Because I told you in the last video  that you see this problem with AdaGrad  when you are working with complex  neural networks, or it can be said when  you are doing non-convex optimization.  AdaGrad works perfectly fine in the  case of convex optimization problems  like linear regression. And this entire  animation I have created, in fact, all  these graphs you see, are based on a  linear regression problem. That is why  you will see here that AdaGrad is  converging towards the global minima.  But if you apply AdaGrad to a proper  neural network, you would see that it  is unable to reach the global minima.  But RMSProp does. In both places,  whether you are applying it to linear  regression or to a neural network. So  you can see, this is RMSProp. We have  applied it to the same problem and you  can see its trajectory is very similar  to AdaGrad. In fact, I will show you  side by side. This is AdaGrad, and you  would notice its trajectory is exactly  like RMSProp. Because this is a convex  optimization problem. We have worked on  a linear regression problem. And that  is why both algorithms are behaving  exactly similarly. But if you work on a  non-convex optimization problem. If you  work on some complex neural network.  You would see that AdaGrad will not be  able to reach the minima. Whereas  RMSProp reaches it. Okay? So, I won't  be able to show you much through  animations here. But you have to  understand what the benefits are. Now  the question is, does RMSProp also have  any disadvantages? The answer is no. It  is empirically proven that RMSProp is  one of the best optimization techniques  to optimize neural networks. In fact,  before Adam came along, we mostly used  RMSProp to optimize our neural networks . So RMSProp still competes with Adam  today. If you don't get good enough  results from Adam in some problem, you  still use RMSProp. Okay? So as such,  there is no disadvantage here. It's  just that Adam is a technique that came  along and started performing a bit  better than RMSProp, which is why  RMSProp is used a little less. But it  is still a very, very powerful  optimization technique which has no  disadvantages. So that was the video,  guys. I hope you understood the video.  If you liked the video, please like it,  and if you haven't subscribed to the  channel, please subscribe. That's it  from my side. See you in the next video . Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and you are",
+      "start": 0.1,
+      "duration": 2.908
+    },
+    {
+      "text": " welcome to my YouTube channel. In this",
+      "start": 2.059,
+      "duration": 2.963
+    },
+    {
+      "text": " video too, we will continue our deep",
+      "start": 4.073,
+      "duration": 2.833
+    },
+    {
+      "text": " learning playlist. We are studying",
+      "start": 5.957,
+      "duration": 2.801
+    },
+    {
+      "text": " optimizers in deep learning. And the",
+      "start": 7.811,
+      "duration": 2.956
+    },
+    {
+      "text": " next optimizer we are going to study is",
+      "start": 9.823,
+      "duration": 3.182
+    },
+    {
+      "text": " named RMSprop. So, let's start the",
+      "start": 12.061,
+      "duration": 3.039
+    },
+    {
+      "text": " video. Let's start our discussion",
+      "start": 14.161,
+      "duration": 2.954
+    },
+    {
+      "text": " around RMSprop. Okay? First of all,",
+      "start": 16.17,
+      "duration": 3.561
+    },
+    {
+      "text": " let's look at its full form. The full",
+      "start": 18.784,
+      "duration": 3.434
+    },
+    {
+      "text": " form of RMSprop is Root Mean Square.",
+      "start": 21.294,
+      "duration": 6.78
+    },
+    {
+      "text": " Prop. Okay, and this optimization",
+      "start": 30.298,
+      "duration": 9.866
+    },
+    {
+      "text": " technique is basically an improvement",
+      "start": 39.221,
+      "duration": 3.116
+    },
+    {
+      "text": " over Adagrad. So, if you want to",
+      "start": 41.394,
+      "duration": 8.434
+    },
+    {
+      "text": " understand Root Mean Square Prop, you",
+      "start": 48.884,
+      "duration": 3.064
+    },
+    {
+      "text": " must have knowledge of Adagrad. Whose",
+      "start": 51.004,
+      "duration": 4.445
+    },
+    {
+      "text": " video I shared in the last video.",
+      "start": 54.507,
+      "duration": 2.887
+    },
+    {
+      "text": " Although, I will give you a few details",
+      "start": 58.03,
+      "duration": 3.201
+    },
+    {
+      "text": ". So, what did we discuss in the last",
+      "start": 60.231,
+      "duration": 4.433
+    },
+    {
+      "text": " video? That you use Adagrad when you",
+      "start": 63.723,
+      "duration": 4.284
+    },
+    {
+      "text": " have sparse data. Sparse data means",
+      "start": 67.06,
+      "duration": 5.579
+    },
+    {
+      "text": " that in some of your columns, suppose a",
+      "start": 71.697,
+      "duration": 3.257
+    },
+    {
+      "text": " lot of values are zero. So, you call",
+      "start": 74.012,
+      "duration": 5.208
+    },
+    {
+      "text": " this type of data sparse. So, what",
+      "start": 78.285,
+      "duration": 4.8
+    },
+    {
+      "text": " happens with sparse data is that the",
+      "start": 82.141,
+      "duration": 3.025
+    },
+    {
+      "text": " contour plot of your loss function with",
+      "start": 84.222,
+      "duration": 3.194
+    },
+    {
+      "text": " respect to parameters becomes very",
+      "start": 86.472,
+      "duration": 2.913
+    },
+    {
+      "text": " elongated. It becomes like this. Like",
+      "start": 88.441,
+      "duration": 6.476
+    },
+    {
+      "text": " this, as you can see here. Now, what is",
+      "start": 93.973,
+      "duration": 3.973
+    },
+    {
+      "text": " the problem with this? That when you",
+      "start": 96.999,
+      "duration": 4.407
+    },
+    {
+      "text": " try to optimize and reach the minima,",
+      "start": 100.457,
+      "duration": 2.905
+    },
+    {
+      "text": " you come by making movements like this.",
+      "start": 102.414,
+      "duration": 3.008
+    },
+    {
+      "text": " Okay? Which wastes time. Ideally, there",
+      "start": 105.822,
+      "duration": 4.193
+    },
+    {
+      "text": " should be a movement like this,",
+      "start": 109.071,
+      "duration": 2.73
+    },
+    {
+      "text": " directly to this spot. So, I showed you",
+      "start": 110.857,
+      "duration": 9.615
+    },
+    {
+      "text": " through animations how your Batch",
+      "start": 119.527,
+      "duration": 2.816
+    },
+    {
+      "text": " Gradient Descent or Momentum, both",
+      "start": 121.398,
+      "duration": 2.87
+    },
+    {
+      "text": " optimize over these stretched curves",
+      "start": 123.323,
+      "duration": 2.981
+    },
+    {
+      "text": " through these movements, which are",
+      "start": 125.359,
+      "duration": 2.871
+    },
+    {
+      "text": " time-consuming and slow. So, this is",
+      "start": 127.285,
+      "duration": 8.464
+    },
+    {
+      "text": " where Adagrad came in, and what did",
+      "start": 134.815,
+      "duration": 3.287
+    },
+    {
+      "text": " Adagrad do? It solved this problem.",
+      "start": 137.168,
+      "duration": 3.06
+    },
+    {
+      "text": " Right? Now, we also discussed that",
+      "start": 139.935,
+      "duration": 4.666
+    },
+    {
+      "text": " Adagrad had a very big disadvantage.",
+      "start": 143.665,
+      "duration": 3.289
+    },
+    {
+      "text": " And that disadvantage was that in",
+      "start": 149.625,
+      "duration": 2.917
+    },
+    {
+      "text": " Adagrad, you do what? You reduce the",
+      "start": 151.6,
+      "duration": 4.888
+    },
+    {
+      "text": " learning rate. You reduce it. But after",
+      "start": 155.535,
+      "duration": 8.191
+    },
+    {
+      "text": " a point, the learning rate reduces so",
+      "start": 162.782,
+      "duration": 3.064
+    },
+    {
+      "text": " much that the update becomes very small",
+      "start": 164.902,
+      "duration": 3.177
+    },
+    {
+      "text": ". Due to which, what happens is that",
+      "start": 167.079,
+      "duration": 7.352
+    },
+    {
+      "text": " your Adagrad algorithm is unable to",
+      "start": 173.485,
+      "duration": 2.894
+    },
+    {
+      "text": " converge properly. If this is the",
+      "start": 175.433,
+      "duration": 4.668
+    },
+    {
+      "text": " minima, it will come here and stop. It",
+      "start": 179.154,
+      "duration": 3.659
+    },
+    {
+      "text": " will come here and stop. It cannot make",
+      "start": 181.861,
+      "duration": 3.073
+    },
+    {
+      "text": " this movement. Because you have reduced",
+      "start": 183.984,
+      "duration": 5.248
+    },
+    {
+      "text": " the learning rate so much that the",
+      "start": 188.284,
+      "duration": 2.775
+    },
+    {
+      "text": " updates being made are very, very small",
+      "start": 190.111,
+      "duration": 3.037
+    },
+    {
+      "text": " and it gets stuck at one place. So,",
+      "start": 192.2,
+      "duration": 5.401
+    },
+    {
+      "text": " this was the biggest problem with",
+      "start": 196.659,
+      "duration": 2.91
+    },
+    {
+      "text": " Adagrad. RMSprop solves exactly this",
+      "start": 198.627,
+      "duration": 4.452
+    },
+    {
+      "text": " problem. Right? So we will try to",
+      "start": 202.15,
+      "duration": 5.064
+    },
+    {
+      "text": " understand the mathematics behind it",
+      "start": 206.261,
+      "duration": 2.695
+    },
+    {
+      "text": " and then look at how this whole thing",
+      "start": 208.004,
+      "duration": 2.742
+    },
+    {
+      "text": " works through an animation. Let’s",
+      "start": 209.793,
+      "duration": 5.201
+    },
+    {
+      "text": " look at the problem I mentioned earlier",
+      "start": 214.044,
+      "duration": 2.984
+    },
+    {
+      "text": " in AdaGrad mathematically. So, we have",
+      "start": 216.079,
+      "duration": 5.16
+    },
+    {
+      "text": " data where one column consists only of",
+      "start": 220.303,
+      "duration": 3.413
+    },
+    {
+      "text": " ones. In one column, we have our",
+      "start": 222.779,
+      "duration": 4.946
+    },
+    {
+      "text": " x-values which contain many sparse",
+      "start": 226.79,
+      "duration": 3.213
+    },
+    {
+      "text": " values. And then, we have our output",
+      "start": 229.068,
+      "duration": 3.154
+    },
+    {
+      "text": " column y. Corresponding to this column,",
+      "start": 231.278,
+      "duration": 6.255
+    },
+    {
+      "text": " we have parameter B. Corresponding to X",
+      "start": 236.595,
+      "duration": 3.389
+    },
+    {
+      "text": ", we have parameter M. So, when you",
+      "start": 238.984,
+      "duration": 3.145
+    },
+    {
+      "text": " plot the graph, since X or you could",
+      "start": 241.19,
+      "duration": 3.206
+    },
+    {
+      "text": " say M is sparse, an elongated bowl",
+      "start": 243.457,
+      "duration": 3.083
+    },
+    {
+      "text": " problem occurs. Now, as I told you in",
+      "start": 245.601,
+      "duration": 7.61
+    },
+    {
+      "text": " the last video about AdaGrad, what",
+      "start": 252.269,
+      "duration": 2.95
+    },
+    {
+      "text": " happens is that you move rapidly in the",
+      "start": 254.276,
+      "duration": 3.238
+    },
+    {
+      "text": " direction of B first, and then you move",
+      "start": 256.571,
+      "duration": 3.237
+    },
+    {
+      "text": " in the direction of M. Meaning,",
+      "start": 258.866,
+      "duration": 2.778
+    },
+    {
+      "text": " initially, you are making changes in B.",
+      "start": 260.702,
+      "duration": 3.237
+    },
+    {
+      "text": " Because it is non-sparse. And then,",
+      "start": 262.996,
+      "duration": 5.353
+    },
+    {
+      "text": " after a point, you start changing in",
+      "start": 267.405,
+      "duration": 3.019
+    },
+    {
+      "text": " the direction of M. But sometimes,",
+      "start": 269.48,
+      "duration": 2.907
+    },
+    {
+      "text": " suppose this is your local minima, you",
+      "start": 271.443,
+      "duration": 3.13
+    },
+    {
+      "text": " end up stopping right here at this spot",
+      "start": 273.63,
+      "duration": 3.186
+    },
+    {
+      "text": ". You are unable to cover this distance",
+      "start": 275.816,
+      "duration": 4.058
+    },
+    {
+      "text": ". Meaning, you are unable to move back",
+      "start": 278.874,
+      "duration": 6.331
+    },
+    {
+      "text": " in B. The reason is that B is your",
+      "start": 284.265,
+      "duration": 3.051
+    },
+    {
+      "text": " non-sparse parameter. Now, what is",
+      "start": 286.377,
+      "duration": 5.551
+    },
+    {
+      "text": " happening here? Mathematically, if you",
+      "start": 290.984,
+      "duration": 4.183
+    },
+    {
+      "text": " look, you are dividing the learning",
+      "start": 294.228,
+      "duration": 3.136
+    },
+    {
+      "text": " rate of B by this number VT. And what",
+      "start": 296.425,
+      "duration": 5.608
+    },
+    {
+      "text": " is VT? The sum of squares of all past",
+      "start": 301.1,
+      "duration": 4.003
+    },
+    {
+      "text": " gradients. So, after many epochs, you",
+      "start": 304.16,
+      "duration": 6.543
+    },
+    {
+      "text": " will keep adding all the gradients from",
+      "start": 309.759,
+      "duration": 3.196
+    },
+    {
+      "text": " the start up to that epoch, making this",
+      "start": 312.011,
+      "duration": 3.197
+    },
+    {
+      "text": " number very large. As soon as this",
+      "start": 314.264,
+      "duration": 6.597
+    },
+    {
+      "text": " number becomes large, the learning rate",
+      "start": 319.92,
+      "duration": 3.291
+    },
+    {
+      "text": " for B becomes very small. And that is",
+      "start": 322.269,
+      "duration": 4.839
+    },
+    {
+      "text": " why you cannot take a movement in this",
+      "start": 326.153,
+      "duration": 2.738
+    },
+    {
+      "text": " direction. You will stop right here. I",
+      "start": 327.937,
+      "duration": 4.79
+    },
+    {
+      "text": " hope you understand the problem. So,",
+      "start": 331.774,
+      "duration": 6.336
+    },
+    {
+      "text": " the entire issue originates solely from",
+      "start": 337.172,
+      "duration": 3.422
+    },
+    {
+      "text": " the fact that when calculating this vt",
+      "start": 339.656,
+      "duration": 3.36
+    },
+    {
+      "text": " term, you are considering all past",
+      "start": 342.079,
+      "duration": 3.111
+    },
+    {
+      "text": " gradients, which causes vt to become",
+      "start": 344.252,
+      "duration": 3.236
+    },
+    {
+      "text": " very large. Because of that, this whole",
+      "start": 346.55,
+      "duration": 8.781
+    },
+    {
+      "text": " term becomes very small, and the update",
+      "start": 354.388,
+      "duration": 3.241
+    },
+    {
+      "text": " becomes negligible. So we have to stop",
+      "start": 356.687,
+      "duration": 7.0
+    },
+    {
+      "text": " this vt from becoming too large in some",
+      "start": 362.747,
+      "duration": 3.32
+    },
+    {
+      "text": " way, and that is exactly the problem",
+      "start": 365.127,
+      "duration": 3.142
+    },
+    {
+      "text": " RMSprop solves. Let me show it to you.",
+      "start": 367.328,
+      "duration": 4.736
+    },
+    {
+      "text": " In RMSprop, you make a small change,",
+      "start": 373.73,
+      "duration": 3.238
+    },
+    {
+      "text": " and that small change is that you use",
+      "start": 376.031,
+      "duration": 3.301
+    },
+    {
+      "text": " this formula while calculating vt. Beta",
+      "start": 378.394,
+      "duration": 10.358
+    },
+    {
+      "text": " times vt-1 + 1-beta times the square of",
+      "start": 387.815,
+      "duration": 3.457
+    },
+    {
+      "text": " the gradient, and the formula below",
+      "start": 390.335,
+      "duration": 3.205
+    },
+    {
+      "text": " remains exactly the same. Where beta is",
+      "start": 392.603,
+      "duration": 21.28
+    },
+    {
+      "text": " generally taken to be 0.95. Alright?",
+      "start": 412.963,
+      "duration": 5.643
+    },
+    {
+      "text": " You can change it as well. So what is",
+      "start": 417.928,
+      "duration": 3.477
+    },
+    {
+      "text": " the main difference? Previously, you",
+      "start": 420.453,
+      "duration": 4.2
+    },
+    {
+      "text": " were taking the entire history of your",
+      "start": 423.707,
+      "duration": 3.026
+    },
+    {
+      "text": " gradients right from the first epoch.",
+      "start": 425.786,
+      "duration": 2.973
+    },
+    {
+      "text": " Now, what you are doing is taking an",
+      "start": 429.723,
+      "duration": 2.945
+    },
+    {
+      "text": " exponentially weighted average. You are",
+      "start": 431.722,
+      "duration": 5.012
+    },
+    {
+      "text": " taking an exponentially decaying",
+      "start": 435.788,
+      "duration": 2.728
+    },
+    {
+      "text": " average. Where you are giving more",
+      "start": 437.57,
+      "duration": 6.927
+    },
+    {
+      "text": " weight to the recent gradients and not",
+      "start": 443.543,
+      "duration": 2.781
+    },
+    {
+      "text": " much weight to the values from older",
+      "start": 445.37,
+      "duration": 2.687
+    },
+    {
+      "text": " epochs. So, automatically, this vt term",
+      "start": 447.104,
+      "duration": 6.945
+    },
+    {
+      "text": " will not become as large as it was",
+      "start": 453.111,
+      "duration": 3.11
+    },
+    {
+      "text": " becoming here. Because of that, the",
+      "start": 455.283,
+      "duration": 4.56
+    },
+    {
+      "text": " learning rate won't become too small,",
+      "start": 458.895,
+      "duration": 2.951
+    },
+    {
+      "text": " and the whole term won't shrink too",
+      "start": 460.898,
+      "duration": 2.845
+    },
+    {
+      "text": " much, so you will continue to get",
+      "start": 462.796,
+      "duration": 2.739
+    },
+    {
+      "text": " updates. We can also prove this",
+      "start": 464.588,
+      "duration": 4.174
+    },
+    {
+      "text": " mathematically. You can see, if you",
+      "start": 467.816,
+      "duration": 4.137
+    },
+    {
+      "text": " assume v0 is 0, then what will v1 be?",
+      "start": 471.029,
+      "duration": 3.83
+    },
+    {
+      "text": " .95 multiplied by 0, because vt-1 is 0,",
+      "start": 476.079,
+      "duration": 4.18
+    },
+    {
+      "text": " plus .05 times the square of the",
+      "start": 479.341,
+      "duration": 3.609
+    },
+    {
+      "text": " gradient in step or epoch one. Then we",
+      "start": 482.032,
+      "duration": 6.065
+    },
+    {
+      "text": " calculated v2, so v2 will be this plus",
+      "start": 487.174,
+      "duration": 3.923
+    },
+    {
+      "text": " this. Then we calculated v3, so v3 will",
+      "start": 490.174,
+      "duration": 5.429
+    },
+    {
+      "text": " be this plus this plus this. You can",
+      "start": 494.679,
+      "duration": 5.586
+    },
+    {
+      "text": " see as we move forward, this gradient",
+      "start": 499.32,
+      "duration": 3.045
+    },
+    {
+      "text": " is for epoch one. This is what came in",
+      "start": 501.421,
+      "duration": 4.972
+    },
+    {
+      "text": " epoch two, and this is epoch three,",
+      "start": 505.447,
+      "duration": 2.874
+    },
+    {
+      "text": " which is the most recent epoch. You can",
+      "start": 507.375,
+      "duration": 4.42
+    },
+    {
+      "text": " see that the value from epoch one is",
+      "start": 510.848,
+      "duration": 2.895
+    },
+    {
+      "text": " being multiplied by so many numbers.",
+      "start": 512.795,
+      "duration": 2.896
+    },
+    {
+      "text": " And since these numbers are less than",
+      "start": 515.588,
+      "duration": 2.932
+    },
+    {
+      "text": " one, it becomes an even smaller number.",
+      "start": 517.572,
+      "duration": 3.038
+    },
+    {
+      "text": " Whereas this will be the largest one.",
+      "start": 520.792,
+      "duration": 2.854
+    },
+    {
+      "text": " So, what we said earlier, that you give",
+      "start": 525.782,
+      "duration": 3.123
+    },
+    {
+      "text": " the most value to the most recent",
+      "start": 527.959,
+      "duration": 2.797
+    },
+    {
+      "text": " epochs and kind of start forgetting the",
+      "start": 529.811,
+      "duration": 3.123
+    },
+    {
+      "text": " older epochs. That is why I wrote here",
+      "start": 531.989,
+      "duration": 5.201
+    },
+    {
+      "text": " that this is an exponentially decaying",
+      "start": 536.24,
+      "duration": 2.93
+    },
+    {
+      "text": " average. Right? And because of this, vt",
+      "start": 538.221,
+      "duration": 4.964
+    },
+    {
+      "text": " never shoots up. It does not become",
+      "start": 542.246,
+      "duration": 3.524
+    },
+    {
+      "text": " very large. Which prevents the learning",
+      "start": 544.827,
+      "duration": 3.305
+    },
+    {
+      "text": " rate from becoming too small, and",
+      "start": 547.183,
+      "duration": 2.674
+    },
+    {
+      "text": " updates keep happening. Because of this",
+      "start": 548.908,
+      "duration": 4.134
+    },
+    {
+      "text": ", the problem in Adagrad does not stop",
+      "start": 552.042,
+      "duration": 3.192
+    },
+    {
+      "text": " here. It converges. Right? Let me show",
+      "start": 554.292,
+      "duration": 5.814
+    },
+    {
+      "text": " you through an animation. Although you",
+      "start": 559.151,
+      "duration": 3.466
+    },
+    {
+      "text": " won't see any difference in the",
+      "start": 561.662,
+      "duration": 2.404
+    },
+    {
+      "text": " animation. In AdaGrad and RMSProp.",
+      "start": 563.111,
+      "duration": 3.716
+    },
+    {
+      "text": " Because I told you in the last video",
+      "start": 569.897,
+      "duration": 2.892
+    },
+    {
+      "text": " that you see this problem with AdaGrad",
+      "start": 571.842,
+      "duration": 2.998
+    },
+    {
+      "text": " when you are working with complex",
+      "start": 573.893,
+      "duration": 2.735
+    },
+    {
+      "text": " neural networks, or it can be said when",
+      "start": 575.68,
+      "duration": 3.051
+    },
+    {
+      "text": " you are doing non-convex optimization.",
+      "start": 577.783,
+      "duration": 2.999
+    },
+    {
+      "text": " AdaGrad works perfectly fine in the",
+      "start": 587.322,
+      "duration": 3.068
+    },
+    {
+      "text": " case of convex optimization problems",
+      "start": 589.449,
+      "duration": 3.128
+    },
+    {
+      "text": " like linear regression. And this entire",
+      "start": 591.636,
+      "duration": 6.858
+    },
+    {
+      "text": " animation I have created, in fact, all",
+      "start": 597.551,
+      "duration": 3.163
+    },
+    {
+      "text": " these graphs you see, are based on a",
+      "start": 599.771,
+      "duration": 3.05
+    },
+    {
+      "text": " linear regression problem. That is why",
+      "start": 601.878,
+      "duration": 5.314
+    },
+    {
+      "text": " you will see here that AdaGrad is",
+      "start": 606.242,
+      "duration": 2.652
+    },
+    {
+      "text": " converging towards the global minima.",
+      "start": 607.944,
+      "duration": 2.853
+    },
+    {
+      "text": " But if you apply AdaGrad to a proper",
+      "start": 618.076,
+      "duration": 2.879
+    },
+    {
+      "text": " neural network, you would see that it",
+      "start": 620.007,
+      "duration": 2.932
+    },
+    {
+      "text": " is unable to reach the global minima.",
+      "start": 621.991,
+      "duration": 2.932
+    },
+    {
+      "text": " But RMSProp does. In both places,",
+      "start": 625.145,
+      "duration": 6.408
+    },
+    {
+      "text": " whether you are applying it to linear",
+      "start": 630.605,
+      "duration": 2.947
+    },
+    {
+      "text": " regression or to a neural network. So",
+      "start": 632.605,
+      "duration": 5.238
+    },
+    {
+      "text": " you can see, this is RMSProp. We have",
+      "start": 636.917,
+      "duration": 5.725
+    },
+    {
+      "text": " applied it to the same problem and you",
+      "start": 641.695,
+      "duration": 3.011
+    },
+    {
+      "text": " can see its trajectory is very similar",
+      "start": 643.759,
+      "duration": 3.01
+    },
+    {
+      "text": " to AdaGrad. In fact, I will show you",
+      "start": 645.822,
+      "duration": 4.301
+    },
+    {
+      "text": " side by side. This is AdaGrad, and you",
+      "start": 649.188,
+      "duration": 3.933
+    },
+    {
+      "text": " would notice its trajectory is exactly",
+      "start": 652.185,
+      "duration": 3.405
+    },
+    {
+      "text": " like RMSProp. Because this is a convex",
+      "start": 654.653,
+      "duration": 3.682
+    },
+    {
+      "text": " optimization problem. We have worked on",
+      "start": 657.392,
+      "duration": 3.199
+    },
+    {
+      "text": " a linear regression problem. And that",
+      "start": 659.639,
+      "duration": 3.674
+    },
+    {
+      "text": " is why both algorithms are behaving",
+      "start": 662.368,
+      "duration": 2.915
+    },
+    {
+      "text": " exactly similarly. But if you work on a",
+      "start": 664.338,
+      "duration": 4.54
+    },
+    {
+      "text": " non-convex optimization problem. If you",
+      "start": 667.933,
+      "duration": 4.241
+    },
+    {
+      "text": " work on some complex neural network.",
+      "start": 671.227,
+      "duration": 2.918
+    },
+    {
+      "text": " You would see that AdaGrad will not be",
+      "start": 673.682,
+      "duration": 2.802
+    },
+    {
+      "text": " able to reach the minima. Whereas",
+      "start": 675.532,
+      "duration": 3.253
+    },
+    {
+      "text": " RMSProp reaches it. Okay? So, I won't",
+      "start": 677.855,
+      "duration": 4.771
+    },
+    {
+      "text": " be able to show you much through",
+      "start": 681.678,
+      "duration": 2.662
+    },
+    {
+      "text": " animations here. But you have to",
+      "start": 683.392,
+      "duration": 3.55
+    },
+    {
+      "text": " understand what the benefits are. Now",
+      "start": 685.986,
+      "duration": 2.957
+    },
+    {
+      "text": " the question is, does RMSProp also have",
+      "start": 688.01,
+      "duration": 3.584
+    },
+    {
+      "text": " any disadvantages? The answer is no. It",
+      "start": 690.661,
+      "duration": 8.62
+    },
+    {
+      "text": " is empirically proven that RMSProp is",
+      "start": 698.339,
+      "duration": 3.141
+    },
+    {
+      "text": " one of the best optimization techniques",
+      "start": 700.537,
+      "duration": 3.257
+    },
+    {
+      "text": " to optimize neural networks. In fact,",
+      "start": 702.852,
+      "duration": 6.928
+    },
+    {
+      "text": " before Adam came along, we mostly used",
+      "start": 708.847,
+      "duration": 3.554
+    },
+    {
+      "text": " RMSProp to optimize our neural networks",
+      "start": 711.468,
+      "duration": 3.62
+    },
+    {
+      "text": ". So RMSProp still competes with Adam",
+      "start": 714.088,
+      "duration": 6.399
+    },
+    {
+      "text": " today. If you don't get good enough",
+      "start": 719.554,
+      "duration": 4.884
+    },
+    {
+      "text": " results from Adam in some problem, you",
+      "start": 723.494,
+      "duration": 3.129
+    },
+    {
+      "text": " still use RMSProp. Okay? So as such,",
+      "start": 725.679,
+      "duration": 3.917
+    },
+    {
+      "text": " there is no disadvantage here. It's",
+      "start": 728.656,
+      "duration": 3.111
+    },
+    {
+      "text": " just that Adam is a technique that came",
+      "start": 730.823,
+      "duration": 3.163
+    },
+    {
+      "text": " along and started performing a bit",
+      "start": 733.041,
+      "duration": 2.886
+    },
+    {
+      "text": " better than RMSProp, which is why",
+      "start": 734.982,
+      "duration": 2.83
+    },
+    {
+      "text": " RMSProp is used a little less. But it",
+      "start": 736.868,
+      "duration": 3.635
+    },
+    {
+      "text": " is still a very, very powerful",
+      "start": 739.562,
+      "duration": 2.781
+    },
+    {
+      "text": " optimization technique which has no",
+      "start": 741.402,
+      "duration": 3.078
+    },
+    {
+      "text": " disadvantages. So that was the video,",
+      "start": 743.539,
+      "duration": 3.836
+    },
+    {
+      "text": " guys. I hope you understood the video.",
+      "start": 746.436,
+      "duration": 2.98
+    },
+    {
+      "text": " If you liked the video, please like it,",
+      "start": 748.861,
+      "duration": 3.043
+    },
+    {
+      "text": " and if you haven't subscribed to the",
+      "start": 750.956,
+      "duration": 2.886
+    },
+    {
+      "text": " channel, please subscribe. That's it",
+      "start": 752.894,
+      "duration": 3.019
+    },
+    {
+      "text": " from my side. See you in the next video",
+      "start": 754.965,
+      "duration": 3.001
+    },
+    {
+      "text": ". Bye.",
+      "start": 756.966,
+      "duration": 1.518
+    }
+  ]
+}

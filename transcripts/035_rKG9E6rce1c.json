@@ -1,0 +1,2810 @@
+{
+  "id": "rKG9E6rce1c",
+  "index": 35,
+  "title": "Nesterov Accelerated Gradient (NAG) Explained in Detail | Animations | Optimizers in Deep Learning",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitish and you are  welcome to my YouTube channel. In this  video too, we are going to continue our  Deep Learning playlist. Today we will  study the second optimization technique . In the last video, we studied  Momentum with SGD. Today's video topic  is NAG. NAG stands for Nesterov  Accelerated Gradient. It is an  optimization technique created as a  small upgrade over Momentum, and it  mostly performs better than Momentum.  Okay? So today my goal is to give you  an intuition of Nesterov Accelerated  Gradient through animations and explain  the mathematics behind it. Okay? And in  the end, I will also show you how to  implement NAG in Keras. Okay? So let's  start the video. So guys, let's start  our discussion from the very beginning.  So we are having a discussion about  optimizers. What are optimizers? An  optimizer is basically the algorithm  used to find the optimal values for  your weights. For which the value of  your loss is at its minimum. The most  common optimizer you use is Gradient  Descent. You studied three variations  of Gradient Descent. Batch Gradient  Descent, Stochastic Gradient Descent,  and after that, you studied Mini-batch  Gradient Descent. Now, if you want to  know or already know one thing about  these optimizers, it's that they are a  bit slow. Because of which, the  training of the neural network also  becomes slow. And because of that, we  needed some advanced optimizers. One  such optimizer was Momentum, which we  covered in the last video. Now in  today's video, I am going to teach you  another important optimization  technique. Nesterov Accelerated  Gradient. It is a very difficult name.  But yeah, we will study this technique.  So I want to show you some animations  from the start. I have generated these  by coding. Like, what you see on your  screen right now is a simple linear  regression problem. Where your cost  function is Mean Squared Error, whose  error surface looks like this in 3D.  What you see on your screen. Okay? We  started from a random point. You can  notice one thing. Here is M. Here is B.  We are starting with a random M and B.  And we are minimizing it step by step,  and the red point you see below, that  red point is the correct value of M and  B. We have to reach there. Okay? Now,  take a look at the remaining graphs as  well. This graph here is a contour plot  of that same 3D graph. It is its  representation in 2D. And the one above  is our data. And we are trying to fit  this linear regression line onto it.  That is why you will notice that,  initially, the line will look incorrect , and then, little by little, it starts  fitting properly over the data. Now,  with this batch gradient descent, if  you count, you can see here that it  takes about 25 to 30 epochs for this  algorithm to converge on this data,  which is kind of slow. And that is why  we need to study some advanced  optimization techniques. One of those,  which we covered in the last video, is  momentum. So, you have understood batch  gradient descent. Let me show you  momentum, which is quite interesting.  So, we discussed momentum, that you  consider past gradients in a way that  they act as velocity. They act as  momentum. So, you will see the same  thing here. It is the same data. I have  just tweaked the algorithm a little to  implement momentum. Right? And you  would notice, if I show you from the  beginning, it behaves like a ball  rolling down a hill, crossing over,  then going back up, then coming down,  oscillating, and eventually, when it  becomes stable, it reaches the minima.  Right? You can see this same thing in  the contour plot, and you will see it  here as well. This line curve of yours,  you can see it crossed over and went in  the other direction. Then it came back  and crossed again. Then it came back,  and those oscillations will keep  getting smaller, and eventually, you  reach the correct line. Right? Now you  might say, \"Man, this is slower  compared to the previous one.\" Because  here, it is taking around 50 epochs to  reach the minima. So, look, you have to  use momentum a bit intelligently. There  is a factor here, the decay factor, the  beta I taught you in the last video. I  have set its value to 0.9 right now.  0.9 means I am valuing the old  velocities a lot. Because of which,  what is happening is that if my speed  is high, I am crossing over and going  too far ahead. Right? So, you can  manipulate this decay factor. I will  show you in a little while. The good  thing about momentum is that you notice  you have covered the initial distance,  the long path, very quickly. Let me  show it to you. Look at it once. You  are reaching the minima very rapidly.  Like within three or four epochs.  Whereas here, look at how many epochs  it is taking you to reach the minima. 4 , 5, 6, 7, 8, 9, 10, 11...meaning in  about 15 epochs you are reaching the  proximity of the minima. Notice here  how fast you are coming. Look at this.  Within three epochs, you have crossed  the minima. So this is its greatest  power. So what did I do? I gradually  decreased the decay factor. Like this  is decay factor 8. Notice. Here too you  reached quickly. But since I am now  giving less value to the old velocities . So my oscillations also get reduced a  little. Look at this. Can you see? They  have reduced. We reached around the  30th epoch. Where earlier it was taking  us 50. Look at this. In this, it was  taking us around 50. See, you are going  very high up. Here you are not going  that high. Look, you will stop right  here. See, in comparison to this. I  hope you understand what is happening  by increasing or decreasing the decay  factor. So what did I do? I set the  decay factor to five. Look here, what  happens by setting the decay factor to  five. Look, within 10 epochs I reached  the minima. Okay? Now this decay factor  along with momentum is much faster than  batch gradient descent which is taking  2025 epochs. This is taking only 38-39  epochs. Okay? So I hope you understood  this demonstration. Although I had  explained to you in the last video too  what momentum does. Now, a big problem  with momentum is perhaps already  visible to you. A big problem with  momentum is its oscillations. So this  data was a bit simple. So you  controlled it by reducing the decay  factor. But sometimes it will happen  that in a non-convex optimization  problem—this is a convex optimization  problem. But in a non-convex  optimization problem that is a bit  complex, these oscillations bother you  and your model takes more time to reach  the minima, to converge. So a solution  for that was found, which we call NAG.  Let me show you Nesterov Accelerated  Gradient, and here is its graph. Notice  that with the same decay factor, these  oscillations are decreasing. Look here  at how many oscillations were happening . See, these oscillations are quite  high. But when you apply NAG, you would  see there are far fewer oscillations.  Alright? This means if you control the  decay factor further, you can reach  your minima even faster. So, if I  summarize right at the beginning of the  video, what is NAG? NAG is basically a  way to implement the momentum technique . But there is an improvement here,  which is that you dampen your  oscillations. Dampening means you  reduce them. Alright? How do you do it?  I will show you mathematically, and  then I will give you its geometric  intuition. The math for the Nesterov  Accelerated Gradient optimization  technique is actually very simple. If  you know the math behind momentum.  Because in NAG, you just make a small  mathematical tweak to the momentum  optimization technique to get the NAG  optimization technique. So, I will  first discuss momentum with you, and  then I will tell you about NAG. If you  remember, the update rule in Momentum  with SGD is this. Your next weight is  the old weight minus the velocity term.  Alright? And the formula for the  velocity term is this. Beta times  velocity at t-1 plus learning rate of  the derivative of the loss function  with respect to w at time t. Alright?  Now, let's get a mathematical intuition  for this. If you fill it in here, what  do you get? You will get that the new  weight value will be the old weight  minus this entire thing. Right? This  means the update you are making to your  weights comes in two forms. One in the  form of this term and one in the form  of this term. Alright? Now think about  your old gradient descent, the formula  for which was this. This is the old  gradient descent. So, the update there  came only because of one thing: this  gradient. Here, it is coming because of  this gradient as well as this term.  This means, if you want to see it  visually, suppose this is your loss  function and this is your w, so if you  are here, where will you reach? This  term tells you that. But now, from here , where will you reach? In momentum,  this term decides two things. One is  your past velocity and the other is the  gradient at that point. This means that  if you are here, you will take slightly  longer jumps. Because it has two  components. One, you are getting a push  from the velocity so far, and two, you  move in the negative direction of the  gradient at this spot. So, this is what  is being explained here, that you are  making your update by combining two  things. That is why you move a bit  faster in this direction. Right? So,  this is the mathematical intuition of  momentum. Now, if you make a small  mathematical tweak to this, you get the  mathematical formulation of Nesterov  Accelerated Gradient. Right? Look, in  NAG, only one thing is different from  momentum, and that is at which position  this gradient update is calculated.  That's it. I will try to explain it to  you once. So, what happens in momentum  is that suppose you reached here from  here, and here from here. Now, where  will you go next from here? It depends  on two things. First, on your history  of velocity, which is this term. It  depends on this term here. And the  second depends on the gradient at that  point. Gradient at that point. Where is  the gradient sending you at this point?  So, you calculated the momentum of the  past velocities here and you calculated  the slope at this point, and that  becomes your update. But what do you do  in Nesterov Accelerated Gradient? Look  closely that suppose you reached here  from here, and here from here, and now  you have to decide where you will go  next. So, what do you do? You do not  calculate both these things together.  You apply the momentum term first. So  you applied the momentum term, and you  reached here. Now you calculate the  gradient at this location. And then,  you move forward or backward according  to that. That's the only difference.  Understand it once more. In momentum,  to know where to go after any point,  you have to do two calculations. First,  the momentum, and second, the gradient  at that point, and you take both jumps  together. In NAG, there is just a small  difference that you take the momentum  jump first, and then you calculate the  gradient at the spot where you arrive,  and then take further jumps based on  that. That's it. That's the only  difference. And because of this  difference, NAG performs better. I will  explain to you why this happens. But  first, let's take a look at the  mathematical formulation. So the  mathematical formulation is very simple . What do you do? First, you try to  find the place where you will reach  after the momentum jump. In literature,  this is called the look-ahead term. So  what are you doing? You are calculating  w look-ahead. And what is this? Your  current w, this w, minus beta times v t -1, basically your momentum so far.  Okay? Then what do you do? You  calculate vt. What is vt? Beta times v  t-1 plus the learning rate times the  gradient at the look-ahead time. Okay?  Now, the gradient you are calculating  is at this point, not at this point.  Okay? And finally, this becomes your  update rule. I hope you are  understanding this. Okay? What did you  calculate first? You were here. You  were at this place, at this point. You  first calculated this look-ahead value.  This one. How? Updated the momentum  term. Okay? After that, when you  reached this place, you calculated the  slope from here, which is this. So, if  you replace this term with this  equation, it basically becomes wt-w  look-ahead plus the gradient at  look-ahead. Okay? What is this? This is  this much distance. Plus, the slope at  this new place where you arrived is  your total update, and you are applying  that update from your previous location . I mean, it's not that difficult. Just  pause the video once and understand it.  In momentum, you apply both things  simultaneously at the place where you  currently are. Both momentum and the  current gradient. In Nesterov  Accelerated Gradient, what do you do?  First, you find the look-ahead point by  applying only momentum. Then you  calculate the gradient where you  arrived, and then take the gradient  movement. That's it. This is the only  difference, and here is your equation.  Now I will try to explain to you how it  reduces oscillations. This little trick . So let's see the side-by-side  geometric intuition of both momentum  and NAG, so you get clarity. So, Assume  this is our error surface. This is W,  and this is the loss. Our objective is  to randomly initialize at some W value.  Let's call it W naught, and we need to  reach this value. Because this is the  minima. This is where our loss is the  minimum. Okay? So what will happen? It  is very simple. At every point, you  will calculate two things. By the way,  we are talking about momentum. Now, at  every point you will calculate two  things. First, the momentum, and second , the gradient. So, in the beginning,  when you are starting, the momentum  will be zero. If you talk about the  gradient at this point, what do we have  to do? We have to go in the direction  of the negative of the gradient, or you  can call it the slope. We have to go in  that direction. So, the slope at this  point is negative. Why is it negative?  Because if you increase the weight, the  loss decreases. So the slope is  negative. So we will go in the  direction of the negative of the slope,  which is positive. Okay? So we will  basically move in this direction. In  this direction. So let's assume we  arrived here. Okay? Now, what are we  doing again? At this point, we will  calculate a momentum term, which will  be something. Since we are moving in  this direction, the momentum term will  also push us in this direction. At this  point too, the gradient is negative, so  we will move in the positive direction.  So, by taking a jump, let's assume we  arrived here. Now, at this point, we  will again calculate momentum. Since we  have already come in the positive  direction two or three times. So a  momentum is building up in this  direction that will push us even  further. Even now, our gradient is  positive. It is negative, so the update  will be positive. Let's assume we  reached here. Now, what will happen  here? We will again calculate momentum  and simultaneously calculate the  gradient, and both will send us in the  positive direction. So, let's assume  with the momentum push, we were  reaching here at this spot. Okay? And  with the gradient push, we went a  little further to this spot. We have  reached this spot. Let's call it W-temp . Okay? You are here. Now, what will  you do again at this spot? You will  calculate momentum. What will the  momentum do to you? It will send you in  the positive direction. It will send  you in this direction. And how is the  slope at this point? It is positive. So  you will go in the opposite direction.  Meaning negative. So now here for the  first time what is happening is that  momentum is sending you in this  direction, but your gradient is sending  you in this direction. But since the  momentum term will dominate and this  will remain smaller, you will move  slightly more in this direction. Then  after a while, you will calculate the  momentum again at this position. At  this position too, if momentum kind of  dominates the gradient, then again you  will move forward a little bit. Now by  the time you reach this point, what is  happening is that since your momentum  from the last few points is becoming  negative. So now, both the momentum and  the gradient will send you backward. So  you will start coming back. Then you  keep oscillating like this and  eventually stop here. That is how  momentum works. Okay? So what happened?  You started from here. You were  supposed to stop here. You were  supposed to stop at this spot. You were  supposed to stop at this minimum. But  you went ahead. You overshot. Took a  U-turn and came back. Took a smaller  U-turn and came back. And smaller and  smaller, and eventually you stopped.  That is how momentum works. Okay? Now  let's discuss what happens? When you  apply Nesterov Accelerated Gradient. I  am drawing the same error surface. This  is W, this is loss. And here is our  error surface. Okay? Now what will  happen this time? You will start from  here. Again, you will calculate two  things. You have to reach the momentum  here. You will calculate the momentum  and you will calculate the slope. The  momentum will be zero in the beginning.  So suppose you reached here, at this  spot. Some momentum built up here.  Suppose you reached here. Okay? Now  suppose when you are at this point,  what is happening? Look carefully.  Suppose you are at this point here. Now  what will happen here is that, as I  told you earlier, you don't do both  things together. You will calculate the  momentum first. Okay? So you calculated  only the momentum, so you would reach  this spot. This is your look-ahead  point. Okay? Now at this spot, you  calculated the gradient which is in  this direction. So what will happen is  that where in momentum you were going  further ahead and reaching here. Now  the gradient at this spot is in the  opposite direction, due to which you  will come back a little and you will  stop here. I hope you are understanding . What did we do here? Here, we  calculated both things together. We  reached here according to momentum, and  here according to the gradient. But  what did we do here? We first  calculated this look-ahead point using  momentum, and then when we calculated  the gradient at this point, it was in  the opposite direction. That is why we  stopped here. Okay? So, where we were  supposed to stop with momentum, we  stopped here instead. So you could say  that when you moved from here, you took  a small U-turn. Then a little in this  direction, and you arrived at the right  place. That's the main difference. This  is the geometric intuition of Nesterov  Accelerated Gradient: you find out in  advance what is going to happen. And  you are making your decisions  accordingly. Okay? If you remember this  point-based example, you will be able  to explain Nesterov Accelerated  Gradient to anyone. Let's discuss one  more thing: is there any disadvantage  to this technique, NAG? The answer is  yes. Uh, there is a disadvantage. Uh,  so from what we have learned so far,  you have understood that what NAG does  is dampen the oscillations that occur  in momentum. Now, what this can cause  is that you might get stuck in a local  minima. Imagine you have an error  surface like this in 2D. So what will  happen is that your ball rolls from  here, and in momentum, it might have  enough momentum to cross this and come  over here. But in NAG, what you are  doing is that you are kind of dampening  its momentum. So what will happen is  that it won't gain enough upward  momentum and will oscillate right here  and get stuck. So this is one potential  problem that you might see in some  datasets. In that case, we then have to  use other optimizers. But this is the  biggest disadvantage of NAG. So before  finishing the video, let's look at one  more important thing. In the momentum  video, I forgot to tell you how  momentum is implemented in Keras. So in  this video, I am telling you both. How  to implement momentum and how to  implement Nesterov Accelerated Gradient . Uh, Keras has implemented it very  simply. Uh, you have an SGD class that  you use to implement Stochastic  Gradient Descent or normal Gradient  Descent. You can simply implement  momentum and Nesterov by changing the  parameter values in that same class. So , if you want to implement SGD, you  just need to set the momentum parameter  to zero and the Nesterov parameter to  false. Okay? If you want to do SGD with  momentum, what will you do? You will  assign a value to momentum, which will  be your decay factor. Like point nine  or point five, and for Nesterov, you  will keep it false, so this will apply  momentum; and if you want to implement  NAG, then you must provide a value for  momentum as well, and you will need to  set Nesterov to true. That's it. These  are the three ways you can implement  three different optimizers in Keras.  It's very simple. So that was the video , guys. I hope you understood the  intuition and will be able to implement  it in Keras. If you liked the video,  please like it, and if you haven't  subscribed to the channel, please do  subscribe. Okay? That's it from my side . Thanks for watching. See you in the  next video. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitish and you are",
+      "start": 0.159,
+      "duration": 3.18
+    },
+    {
+      "text": " welcome to my YouTube channel. In this",
+      "start": 2.397,
+      "duration": 3.2
+    },
+    {
+      "text": " video too, we are going to continue our",
+      "start": 4.651,
+      "duration": 3.109
+    },
+    {
+      "text": " Deep Learning playlist. Today we will",
+      "start": 6.815,
+      "duration": 3.105
+    },
+    {
+      "text": " study the second optimization technique",
+      "start": 8.977,
+      "duration": 3.224
+    },
+    {
+      "text": ". In the last video, we studied",
+      "start": 11.201,
+      "duration": 3.07
+    },
+    {
+      "text": " Momentum with SGD. Today's video topic",
+      "start": 13.334,
+      "duration": 3.728
+    },
+    {
+      "text": " is NAG. NAG stands for Nesterov",
+      "start": 16.139,
+      "duration": 3.336
+    },
+    {
+      "text": " Accelerated Gradient. It is an",
+      "start": 18.549,
+      "duration": 3.953
+    },
+    {
+      "text": " optimization technique created as a",
+      "start": 21.567,
+      "duration": 3.29
+    },
+    {
+      "text": " small upgrade over Momentum, and it",
+      "start": 23.923,
+      "duration": 3.289
+    },
+    {
+      "text": " mostly performs better than Momentum.",
+      "start": 26.278,
+      "duration": 3.421
+    },
+    {
+      "text": " Okay? So today my goal is to give you",
+      "start": 29.599,
+      "duration": 4.374
+    },
+    {
+      "text": " an intuition of Nesterov Accelerated",
+      "start": 33.029,
+      "duration": 3.038
+    },
+    {
+      "text": " Gradient through animations and explain",
+      "start": 35.123,
+      "duration": 3.208
+    },
+    {
+      "text": " the mathematics behind it. Okay? And in",
+      "start": 37.387,
+      "duration": 4.624
+    },
+    {
+      "text": " the end, I will also show you how to",
+      "start": 41.081,
+      "duration": 3.534
+    },
+    {
+      "text": " implement NAG in Keras. Okay? So let's",
+      "start": 43.686,
+      "duration": 3.686
+    },
+    {
+      "text": " start the video. So guys, let's start",
+      "start": 46.426,
+      "duration": 3.113
+    },
+    {
+      "text": " our discussion from the very beginning.",
+      "start": 48.593,
+      "duration": 3.107
+    },
+    {
+      "text": " So we are having a discussion about",
+      "start": 51.059,
+      "duration": 4.128
+    },
+    {
+      "text": " optimizers. What are optimizers? An",
+      "start": 54.276,
+      "duration": 4.205
+    },
+    {
+      "text": " optimizer is basically the algorithm",
+      "start": 57.572,
+      "duration": 4.285
+    },
+    {
+      "text": " used to find the optimal values for",
+      "start": 60.948,
+      "duration": 4.193
+    },
+    {
+      "text": " your weights. For which the value of",
+      "start": 64.232,
+      "duration": 3.843
+    },
+    {
+      "text": " your loss is at its minimum. The most",
+      "start": 67.133,
+      "duration": 4.764
+    },
+    {
+      "text": " common optimizer you use is Gradient",
+      "start": 70.986,
+      "duration": 4.227
+    },
+    {
+      "text": " Descent. You studied three variations",
+      "start": 74.302,
+      "duration": 4.537
+    },
+    {
+      "text": " of Gradient Descent. Batch Gradient",
+      "start": 77.907,
+      "duration": 3.752
+    },
+    {
+      "text": " Descent, Stochastic Gradient Descent,",
+      "start": 80.712,
+      "duration": 2.955
+    },
+    {
+      "text": " and after that, you studied Mini-batch",
+      "start": 82.72,
+      "duration": 3.007
+    },
+    {
+      "text": " Gradient Descent. Now, if you want to",
+      "start": 84.78,
+      "duration": 3.829
+    },
+    {
+      "text": " know or already know one thing about",
+      "start": 87.678,
+      "duration": 3.482
+    },
+    {
+      "text": " these optimizers, it's that they are a",
+      "start": 90.229,
+      "duration": 3.62
+    },
+    {
+      "text": " bit slow. Because of which, the",
+      "start": 92.918,
+      "duration": 2.66
+    },
+    {
+      "text": " training of the neural network also",
+      "start": 94.62,
+      "duration": 2.499
+    },
+    {
+      "text": " becomes slow. And because of that, we",
+      "start": 96.162,
+      "duration": 3.692
+    },
+    {
+      "text": " needed some advanced optimizers. One",
+      "start": 98.939,
+      "duration": 4.781
+    },
+    {
+      "text": " such optimizer was Momentum, which we",
+      "start": 102.787,
+      "duration": 3.481
+    },
+    {
+      "text": " covered in the last video. Now in",
+      "start": 105.335,
+      "duration": 3.788
+    },
+    {
+      "text": " today's video, I am going to teach you",
+      "start": 108.208,
+      "duration": 4.197
+    },
+    {
+      "text": " another important optimization",
+      "start": 111.489,
+      "duration": 3.525
+    },
+    {
+      "text": " technique. Nesterov Accelerated",
+      "start": 114.098,
+      "duration": 4.428
+    },
+    {
+      "text": " Gradient. It is a very difficult name.",
+      "start": 117.647,
+      "duration": 3.592
+    },
+    {
+      "text": " But yeah, we will study this technique.",
+      "start": 120.439,
+      "duration": 3.24
+    },
+    {
+      "text": " So I want to show you some animations",
+      "start": 122.899,
+      "duration": 3.596
+    },
+    {
+      "text": " from the start. I have generated these",
+      "start": 125.566,
+      "duration": 3.886
+    },
+    {
+      "text": " by coding. Like, what you see on your",
+      "start": 128.527,
+      "duration": 4.144
+    },
+    {
+      "text": " screen right now is a simple linear",
+      "start": 131.757,
+      "duration": 4.005
+    },
+    {
+      "text": " regression problem. Where your cost",
+      "start": 134.848,
+      "duration": 4.457
+    },
+    {
+      "text": " function is Mean Squared Error, whose",
+      "start": 138.379,
+      "duration": 3.73
+    },
+    {
+      "text": " error surface looks like this in 3D.",
+      "start": 141.183,
+      "duration": 3.656
+    },
+    {
+      "text": " What you see on your screen. Okay? We",
+      "start": 144.579,
+      "duration": 4.287
+    },
+    {
+      "text": " started from a random point. You can",
+      "start": 147.946,
+      "duration": 3.597
+    },
+    {
+      "text": " notice one thing. Here is M. Here is B.",
+      "start": 150.58,
+      "duration": 3.851
+    },
+    {
+      "text": " We are starting with a random M and B.",
+      "start": 153.498,
+      "duration": 3.518
+    },
+    {
+      "text": " And we are minimizing it step by step,",
+      "start": 156.082,
+      "duration": 3.519
+    },
+    {
+      "text": " and the red point you see below, that",
+      "start": 158.667,
+      "duration": 3.452
+    },
+    {
+      "text": " red point is the correct value of M and",
+      "start": 161.185,
+      "duration": 3.585
+    },
+    {
+      "text": " B. We have to reach there. Okay? Now,",
+      "start": 163.836,
+      "duration": 4.343
+    },
+    {
+      "text": " take a look at the remaining graphs as",
+      "start": 167.219,
+      "duration": 2.52
+    },
+    {
+      "text": " well. This graph here is a contour plot",
+      "start": 168.779,
+      "duration": 3.517
+    },
+    {
+      "text": " of that same 3D graph. It is its",
+      "start": 171.347,
+      "duration": 3.228
+    },
+    {
+      "text": " representation in 2D. And the one above",
+      "start": 173.628,
+      "duration": 3.926
+    },
+    {
+      "text": " is our data. And we are trying to fit",
+      "start": 176.652,
+      "duration": 3.682
+    },
+    {
+      "text": " this linear regression line onto it.",
+      "start": 179.387,
+      "duration": 2.913
+    },
+    {
+      "text": " That is why you will notice that,",
+      "start": 181.98,
+      "duration": 2.53
+    },
+    {
+      "text": " initially, the line will look incorrect",
+      "start": 183.557,
+      "duration": 2.809
+    },
+    {
+      "text": ", and then, little by little, it starts",
+      "start": 185.366,
+      "duration": 2.809
+    },
+    {
+      "text": " fitting properly over the data. Now,",
+      "start": 187.221,
+      "duration": 4.363
+    },
+    {
+      "text": " with this batch gradient descent, if",
+      "start": 190.656,
+      "duration": 3.572
+    },
+    {
+      "text": " you count, you can see here that it",
+      "start": 193.299,
+      "duration": 3.501
+    },
+    {
+      "text": " takes about 25 to 30 epochs for this",
+      "start": 195.871,
+      "duration": 3.572
+    },
+    {
+      "text": " algorithm to converge on this data,",
+      "start": 198.515,
+      "duration": 3.5
+    },
+    {
+      "text": " which is kind of slow. And that is why",
+      "start": 201.087,
+      "duration": 5.057
+    },
+    {
+      "text": " we need to study some advanced",
+      "start": 205.215,
+      "duration": 3.13
+    },
+    {
+      "text": " optimization techniques. One of those,",
+      "start": 207.416,
+      "duration": 3.935
+    },
+    {
+      "text": " which we covered in the last video, is",
+      "start": 210.418,
+      "duration": 3.55
+    },
+    {
+      "text": " momentum. So, you have understood batch",
+      "start": 213.035,
+      "duration": 3.668
+    },
+    {
+      "text": " gradient descent. Let me show you",
+      "start": 215.758,
+      "duration": 2.939
+    },
+    {
+      "text": " momentum, which is quite interesting.",
+      "start": 217.748,
+      "duration": 2.871
+    },
+    {
+      "text": " So, we discussed momentum, that you",
+      "start": 221.08,
+      "duration": 4.477
+    },
+    {
+      "text": " consider past gradients in a way that",
+      "start": 224.656,
+      "duration": 4.677
+    },
+    {
+      "text": " they act as velocity. They act as",
+      "start": 228.432,
+      "duration": 5.084
+    },
+    {
+      "text": " momentum. So, you will see the same",
+      "start": 232.59,
+      "duration": 3.444
+    },
+    {
+      "text": " thing here. It is the same data. I have",
+      "start": 235.1,
+      "duration": 3.471
+    },
+    {
+      "text": " just tweaked the algorithm a little to",
+      "start": 237.642,
+      "duration": 3.713
+    },
+    {
+      "text": " implement momentum. Right? And you",
+      "start": 240.426,
+      "duration": 4.554
+    },
+    {
+      "text": " would notice, if I show you from the",
+      "start": 244.06,
+      "duration": 3.886
+    },
+    {
+      "text": " beginning, it behaves like a ball",
+      "start": 247.026,
+      "duration": 3.646
+    },
+    {
+      "text": " rolling down a hill, crossing over,",
+      "start": 249.752,
+      "duration": 3.807
+    },
+    {
+      "text": " then going back up, then coming down,",
+      "start": 252.639,
+      "duration": 3.966
+    },
+    {
+      "text": " oscillating, and eventually, when it",
+      "start": 255.685,
+      "duration": 3.887
+    },
+    {
+      "text": " becomes stable, it reaches the minima.",
+      "start": 258.652,
+      "duration": 4.047
+    },
+    {
+      "text": " Right? You can see this same thing in",
+      "start": 262.85,
+      "duration": 3.422
+    },
+    {
+      "text": " the contour plot, and you will see it",
+      "start": 265.334,
+      "duration": 3.274
+    },
+    {
+      "text": " here as well. This line curve of yours,",
+      "start": 267.669,
+      "duration": 3.851
+    },
+    {
+      "text": " you can see it crossed over and went in",
+      "start": 270.578,
+      "duration": 3.249
+    },
+    {
+      "text": " the other direction. Then it came back",
+      "start": 272.885,
+      "duration": 4.961
+    },
+    {
+      "text": " and crossed again. Then it came back,",
+      "start": 276.959,
+      "duration": 6.339
+    },
+    {
+      "text": " and those oscillations will keep",
+      "start": 282.349,
+      "duration": 2.634
+    },
+    {
+      "text": " getting smaller, and eventually, you",
+      "start": 284.034,
+      "duration": 2.839
+    },
+    {
+      "text": " reach the correct line. Right? Now you",
+      "start": 285.924,
+      "duration": 4.419
+    },
+    {
+      "text": " might say, \"Man, this is slower",
+      "start": 289.395,
+      "duration": 2.612
+    },
+    {
+      "text": " compared to the previous one.\" Because",
+      "start": 291.059,
+      "duration": 4.001
+    },
+    {
+      "text": " here, it is taking around 50 epochs to",
+      "start": 294.124,
+      "duration": 3.399
+    },
+    {
+      "text": " reach the minima. So, look, you have to",
+      "start": 296.586,
+      "duration": 4.856
+    },
+    {
+      "text": " use momentum a bit intelligently. There",
+      "start": 300.516,
+      "duration": 4.918
+    },
+    {
+      "text": " is a factor here, the decay factor, the",
+      "start": 304.493,
+      "duration": 3.302
+    },
+    {
+      "text": " beta I taught you in the last video. I",
+      "start": 306.854,
+      "duration": 3.335
+    },
+    {
+      "text": " have set its value to 0.9 right now.",
+      "start": 309.276,
+      "duration": 4.14
+    },
+    {
+      "text": " 0.9 means I am valuing the old",
+      "start": 312.519,
+      "duration": 4.65
+    },
+    {
+      "text": " velocities a lot. Because of which,",
+      "start": 316.29,
+      "duration": 4.011
+    },
+    {
+      "text": " what is happening is that if my speed",
+      "start": 319.345,
+      "duration": 2.659
+    },
+    {
+      "text": " is high, I am crossing over and going",
+      "start": 321.049,
+      "duration": 2.658
+    },
+    {
+      "text": " too far ahead. Right? So, you can",
+      "start": 322.752,
+      "duration": 3.153
+    },
+    {
+      "text": " manipulate this decay factor. I will",
+      "start": 324.98,
+      "duration": 3.662
+    },
+    {
+      "text": " show you in a little while. The good",
+      "start": 327.693,
+      "duration": 3.906
+    },
+    {
+      "text": " thing about momentum is that you notice",
+      "start": 330.657,
+      "duration": 3.246
+    },
+    {
+      "text": " you have covered the initial distance,",
+      "start": 332.96,
+      "duration": 3.189
+    },
+    {
+      "text": " the long path, very quickly. Let me",
+      "start": 335.206,
+      "duration": 4.135
+    },
+    {
+      "text": " show it to you. Look at it once. You",
+      "start": 338.385,
+      "duration": 3.092
+    },
+    {
+      "text": " are reaching the minima very rapidly.",
+      "start": 340.537,
+      "duration": 3.202
+    },
+    {
+      "text": " Like within three or four epochs.",
+      "start": 342.939,
+      "duration": 2.561
+    },
+    {
+      "text": " Whereas here, look at how many epochs",
+      "start": 344.679,
+      "duration": 3.052
+    },
+    {
+      "text": " it is taking you to reach the minima. 4",
+      "start": 346.786,
+      "duration": 4.155
+    },
+    {
+      "text": ", 5, 6, 7, 8, 9, 10, 11...meaning in",
+      "start": 349.941,
+      "duration": 3.24
+    },
+    {
+      "text": " about 15 epochs you are reaching the",
+      "start": 352.243,
+      "duration": 3.24
+    },
+    {
+      "text": " proximity of the minima. Notice here",
+      "start": 354.545,
+      "duration": 4.235
+    },
+    {
+      "text": " how fast you are coming. Look at this.",
+      "start": 357.835,
+      "duration": 3.153
+    },
+    {
+      "text": " Within three epochs, you have crossed",
+      "start": 360.119,
+      "duration": 2.993
+    },
+    {
+      "text": " the minima. So this is its greatest",
+      "start": 362.166,
+      "duration": 3.021
+    },
+    {
+      "text": " power. So what did I do? I gradually",
+      "start": 364.241,
+      "duration": 3.065
+    },
+    {
+      "text": " decreased the decay factor. Like this",
+      "start": 366.359,
+      "duration": 3.33
+    },
+    {
+      "text": " is decay factor 8. Notice. Here too you",
+      "start": 368.759,
+      "duration": 4.362
+    },
+    {
+      "text": " reached quickly. But since I am now",
+      "start": 372.168,
+      "duration": 3.083
+    },
+    {
+      "text": " giving less value to the old velocities",
+      "start": 374.32,
+      "duration": 3.67
+    },
+    {
+      "text": ". So my oscillations also get reduced a",
+      "start": 376.99,
+      "duration": 4.669
+    },
+    {
+      "text": " little. Look at this. Can you see? They",
+      "start": 380.751,
+      "duration": 5.784
+    },
+    {
+      "text": " have reduced. We reached around the",
+      "start": 385.595,
+      "duration": 3.175
+    },
+    {
+      "text": " 30th epoch. Where earlier it was taking",
+      "start": 387.832,
+      "duration": 3.241
+    },
+    {
+      "text": " us 50. Look at this. In this, it was",
+      "start": 390.127,
+      "duration": 3.388
+    },
+    {
+      "text": " taking us around 50. See, you are going",
+      "start": 392.57,
+      "duration": 6.441
+    },
+    {
+      "text": " very high up. Here you are not going",
+      "start": 398.078,
+      "duration": 3.121
+    },
+    {
+      "text": " that high. Look, you will stop right",
+      "start": 400.243,
+      "duration": 3.362
+    },
+    {
+      "text": " here. See, in comparison to this. I",
+      "start": 402.677,
+      "duration": 7.789
+    },
+    {
+      "text": " hope you understand what is happening",
+      "start": 409.514,
+      "duration": 2.758
+    },
+    {
+      "text": " by increasing or decreasing the decay",
+      "start": 411.32,
+      "duration": 2.758
+    },
+    {
+      "text": " factor. So what did I do? I set the",
+      "start": 413.126,
+      "duration": 3.595
+    },
+    {
+      "text": " decay factor to five. Look here, what",
+      "start": 415.779,
+      "duration": 3.03
+    },
+    {
+      "text": " happens by setting the decay factor to",
+      "start": 417.857,
+      "duration": 2.798
+    },
+    {
+      "text": " five. Look, within 10 epochs I reached",
+      "start": 419.702,
+      "duration": 8.124
+    },
+    {
+      "text": " the minima. Okay? Now this decay factor",
+      "start": 426.909,
+      "duration": 4.8
+    },
+    {
+      "text": " along with momentum is much faster than",
+      "start": 430.779,
+      "duration": 3.748
+    },
+    {
+      "text": " batch gradient descent which is taking",
+      "start": 433.597,
+      "duration": 3.678
+    },
+    {
+      "text": " 2025 epochs. This is taking only 38-39",
+      "start": 436.345,
+      "duration": 4.663
+    },
+    {
+      "text": " epochs. Okay? So I hope you understood",
+      "start": 440.117,
+      "duration": 3.8
+    },
+    {
+      "text": " this demonstration. Although I had",
+      "start": 442.969,
+      "duration": 3.263
+    },
+    {
+      "text": " explained to you in the last video too",
+      "start": 445.309,
+      "duration": 3.915
+    },
+    {
+      "text": " what momentum does. Now, a big problem",
+      "start": 448.301,
+      "duration": 4.243
+    },
+    {
+      "text": " with momentum is perhaps already",
+      "start": 451.604,
+      "duration": 2.93
+    },
+    {
+      "text": " visible to you. A big problem with",
+      "start": 453.594,
+      "duration": 3.455
+    },
+    {
+      "text": " momentum is its oscillations. So this",
+      "start": 456.12,
+      "duration": 3.716
+    },
+    {
+      "text": " data was a bit simple. So you",
+      "start": 458.901,
+      "duration": 2.933
+    },
+    {
+      "text": " controlled it by reducing the decay",
+      "start": 460.893,
+      "duration": 3.072
+    },
+    {
+      "text": " factor. But sometimes it will happen",
+      "start": 463.024,
+      "duration": 3.359
+    },
+    {
+      "text": " that in a non-convex optimization",
+      "start": 465.44,
+      "duration": 2.891
+    },
+    {
+      "text": " problem—this is a convex optimization",
+      "start": 467.388,
+      "duration": 3.235
+    },
+    {
+      "text": " problem. But in a non-convex",
+      "start": 469.68,
+      "duration": 3.889
+    },
+    {
+      "text": " optimization problem that is a bit",
+      "start": 472.642,
+      "duration": 3.487
+    },
+    {
+      "text": " complex, these oscillations bother you",
+      "start": 475.203,
+      "duration": 3.78
+    },
+    {
+      "text": " and your model takes more time to reach",
+      "start": 478.056,
+      "duration": 3.853
+    },
+    {
+      "text": " the minima, to converge. So a solution",
+      "start": 480.983,
+      "duration": 5.806
+    },
+    {
+      "text": " for that was found, which we call NAG.",
+      "start": 485.928,
+      "duration": 6.291
+    },
+    {
+      "text": " Let me show you Nesterov Accelerated",
+      "start": 491.659,
+      "duration": 4.151
+    },
+    {
+      "text": " Gradient, and here is its graph. Notice",
+      "start": 494.897,
+      "duration": 6.108
+    },
+    {
+      "text": " that with the same decay factor, these",
+      "start": 500.086,
+      "duration": 4.081
+    },
+    {
+      "text": " oscillations are decreasing. Look here",
+      "start": 503.248,
+      "duration": 3.957
+    },
+    {
+      "text": " at how many oscillations were happening",
+      "start": 506.255,
+      "duration": 2.934
+    },
+    {
+      "text": ". See, these oscillations are quite",
+      "start": 508.189,
+      "duration": 3.583
+    },
+    {
+      "text": " high. But when you apply NAG, you would",
+      "start": 510.827,
+      "duration": 3.905
+    },
+    {
+      "text": " see there are far fewer oscillations.",
+      "start": 513.807,
+      "duration": 3.772
+    },
+    {
+      "text": " Alright? This means if you control the",
+      "start": 516.699,
+      "duration": 3.996
+    },
+    {
+      "text": " decay factor further, you can reach",
+      "start": 519.772,
+      "duration": 3.675
+    },
+    {
+      "text": " your minima even faster. So, if I",
+      "start": 522.524,
+      "duration": 3.973
+    },
+    {
+      "text": " summarize right at the beginning of the",
+      "start": 525.572,
+      "duration": 3.913
+    },
+    {
+      "text": " video, what is NAG? NAG is basically a",
+      "start": 528.56,
+      "duration": 4.244
+    },
+    {
+      "text": " way to implement the momentum technique",
+      "start": 531.877,
+      "duration": 3.829
+    },
+    {
+      "text": ". But there is an improvement here,",
+      "start": 534.706,
+      "duration": 4.19
+    },
+    {
+      "text": " which is that you dampen your",
+      "start": 537.973,
+      "duration": 3.229
+    },
+    {
+      "text": " oscillations. Dampening means you",
+      "start": 540.279,
+      "duration": 3.872
+    },
+    {
+      "text": " reduce them. Alright? How do you do it?",
+      "start": 543.229,
+      "duration": 3.94
+    },
+    {
+      "text": " I will show you mathematically, and",
+      "start": 546.579,
+      "duration": 3.091
+    },
+    {
+      "text": " then I will give you its geometric",
+      "start": 548.73,
+      "duration": 3.032
+    },
+    {
+      "text": " intuition. The math for the Nesterov",
+      "start": 550.822,
+      "duration": 4.582
+    },
+    {
+      "text": " Accelerated Gradient optimization",
+      "start": 554.468,
+      "duration": 3.092
+    },
+    {
+      "text": " technique is actually very simple. If",
+      "start": 556.623,
+      "duration": 4.221
+    },
+    {
+      "text": " you know the math behind momentum.",
+      "start": 559.907,
+      "duration": 3.132
+    },
+    {
+      "text": " Because in NAG, you just make a small",
+      "start": 562.739,
+      "duration": 3.794
+    },
+    {
+      "text": " mathematical tweak to the momentum",
+      "start": 565.609,
+      "duration": 3.568
+    },
+    {
+      "text": " optimization technique to get the NAG",
+      "start": 568.252,
+      "duration": 3.795
+    },
+    {
+      "text": " optimization technique. So, I will",
+      "start": 571.122,
+      "duration": 4.686
+    },
+    {
+      "text": " first discuss momentum with you, and",
+      "start": 574.872,
+      "duration": 3.334
+    },
+    {
+      "text": " then I will tell you about NAG. If you",
+      "start": 577.27,
+      "duration": 5.575
+    },
+    {
+      "text": " remember, the update rule in Momentum",
+      "start": 581.939,
+      "duration": 4.485
+    },
+    {
+      "text": " with SGD is this. Your next weight is",
+      "start": 585.518,
+      "duration": 5.353
+    },
+    {
+      "text": " the old weight minus the velocity term.",
+      "start": 589.964,
+      "duration": 4.596
+    },
+    {
+      "text": " Alright? And the formula for the",
+      "start": 593.76,
+      "duration": 2.959
+    },
+    {
+      "text": " velocity term is this. Beta times",
+      "start": 595.772,
+      "duration": 3.949
+    },
+    {
+      "text": " velocity at t-1 plus learning rate of",
+      "start": 598.799,
+      "duration": 3.895
+    },
+    {
+      "text": " the derivative of the loss function",
+      "start": 601.772,
+      "duration": 3.738
+    },
+    {
+      "text": " with respect to w at time t. Alright?",
+      "start": 604.588,
+      "duration": 5.612
+    },
+    {
+      "text": " Now, let's get a mathematical intuition",
+      "start": 610.079,
+      "duration": 4.247
+    },
+    {
+      "text": " for this. If you fill it in here, what",
+      "start": 613.409,
+      "duration": 5.054
+    },
+    {
+      "text": " do you get? You will get that the new",
+      "start": 617.541,
+      "duration": 5.95
+    },
+    {
+      "text": " weight value will be the old weight",
+      "start": 622.585,
+      "duration": 4.321
+    },
+    {
+      "text": " minus this entire thing. Right? This",
+      "start": 626.001,
+      "duration": 12.651
+    },
+    {
+      "text": " means the update you are making to your",
+      "start": 637.75,
+      "duration": 4.835
+    },
+    {
+      "text": " weights comes in two forms. One in the",
+      "start": 641.684,
+      "duration": 4.602
+    },
+    {
+      "text": " form of this term and one in the form",
+      "start": 645.345,
+      "duration": 3.172
+    },
+    {
+      "text": " of this term. Alright? Now think about",
+      "start": 647.575,
+      "duration": 4.207
+    },
+    {
+      "text": " your old gradient descent, the formula",
+      "start": 650.861,
+      "duration": 3.999
+    },
+    {
+      "text": " for which was this. This is the old",
+      "start": 653.939,
+      "duration": 8.909
+    },
+    {
+      "text": " gradient descent. So, the update there",
+      "start": 661.895,
+      "duration": 4.071
+    },
+    {
+      "text": " came only because of one thing: this",
+      "start": 665.054,
+      "duration": 4.181
+    },
+    {
+      "text": " gradient. Here, it is coming because of",
+      "start": 668.323,
+      "duration": 4.223
+    },
+    {
+      "text": " this gradient as well as this term.",
+      "start": 671.595,
+      "duration": 2.724
+    },
+    {
+      "text": " This means, if you want to see it",
+      "start": 673.779,
+      "duration": 4.573
+    },
+    {
+      "text": " visually, suppose this is your loss",
+      "start": 677.46,
+      "duration": 4.79
+    },
+    {
+      "text": " function and this is your w, so if you",
+      "start": 681.359,
+      "duration": 5.114
+    },
+    {
+      "text": " are here, where will you reach? This",
+      "start": 685.582,
+      "duration": 5.133
+    },
+    {
+      "text": " term tells you that. But now, from here",
+      "start": 689.819,
+      "duration": 4.802
+    },
+    {
+      "text": ", where will you reach? In momentum,",
+      "start": 693.621,
+      "duration": 3.569
+    },
+    {
+      "text": " this term decides two things. One is",
+      "start": 696.258,
+      "duration": 4.347
+    },
+    {
+      "text": " your past velocity and the other is the",
+      "start": 699.799,
+      "duration": 8.577
+    },
+    {
+      "text": " gradient at that point. This means that",
+      "start": 707.57,
+      "duration": 7.333
+    },
+    {
+      "text": " if you are here, you will take slightly",
+      "start": 713.99,
+      "duration": 4.392
+    },
+    {
+      "text": " longer jumps. Because it has two",
+      "start": 717.469,
+      "duration": 3.286
+    },
+    {
+      "text": " components. One, you are getting a push",
+      "start": 719.807,
+      "duration": 3.736
+    },
+    {
+      "text": " from the velocity so far, and two, you",
+      "start": 722.614,
+      "duration": 3.681
+    },
+    {
+      "text": " move in the negative direction of the",
+      "start": 725.365,
+      "duration": 3.611
+    },
+    {
+      "text": " gradient at this spot. So, this is what",
+      "start": 728.046,
+      "duration": 4.035
+    },
+    {
+      "text": " is being explained here, that you are",
+      "start": 731.153,
+      "duration": 3.643
+    },
+    {
+      "text": " making your update by combining two",
+      "start": 733.867,
+      "duration": 3.5
+    },
+    {
+      "text": " things. That is why you move a bit",
+      "start": 736.439,
+      "duration": 3.36
+    },
+    {
+      "text": " faster in this direction. Right? So,",
+      "start": 738.862,
+      "duration": 3.858
+    },
+    {
+      "text": " this is the mathematical intuition of",
+      "start": 741.78,
+      "duration": 3.235
+    },
+    {
+      "text": " momentum. Now, if you make a small",
+      "start": 744.075,
+      "duration": 4.642
+    },
+    {
+      "text": " mathematical tweak to this, you get the",
+      "start": 747.788,
+      "duration": 3.79
+    },
+    {
+      "text": " mathematical formulation of Nesterov",
+      "start": 750.65,
+      "duration": 3.576
+    },
+    {
+      "text": " Accelerated Gradient. Right? Look, in",
+      "start": 753.297,
+      "duration": 5.241
+    },
+    {
+      "text": " NAG, only one thing is different from",
+      "start": 757.623,
+      "duration": 4.142
+    },
+    {
+      "text": " momentum, and that is at which position",
+      "start": 760.85,
+      "duration": 4.311
+    },
+    {
+      "text": " this gradient update is calculated.",
+      "start": 764.246,
+      "duration": 3.973
+    },
+    {
+      "text": " That's it. I will try to explain it to",
+      "start": 767.85,
+      "duration": 3.453
+    },
+    {
+      "text": " you once. So, what happens in momentum",
+      "start": 770.364,
+      "duration": 3.599
+    },
+    {
+      "text": " is that suppose you reached here from",
+      "start": 773.027,
+      "duration": 7.372
+    },
+    {
+      "text": " here, and here from here. Now, where",
+      "start": 779.463,
+      "duration": 3.605
+    },
+    {
+      "text": " will you go next from here? It depends",
+      "start": 782.127,
+      "duration": 3.808
+    },
+    {
+      "text": " on two things. First, on your history",
+      "start": 785.008,
+      "duration": 4.448
+    },
+    {
+      "text": " of velocity, which is this term. It",
+      "start": 788.558,
+      "duration": 7.534
+    },
+    {
+      "text": " depends on this term here. And the",
+      "start": 795.139,
+      "duration": 4.213
+    },
+    {
+      "text": " second depends on the gradient at that",
+      "start": 798.428,
+      "duration": 3.897
+    },
+    {
+      "text": " point. Gradient at that point. Where is",
+      "start": 801.401,
+      "duration": 7.558
+    },
+    {
+      "text": " the gradient sending you at this point?",
+      "start": 808.028,
+      "duration": 3.688
+    },
+    {
+      "text": " So, you calculated the momentum of the",
+      "start": 810.816,
+      "duration": 3.857
+    },
+    {
+      "text": " past velocities here and you calculated",
+      "start": 813.748,
+      "duration": 3.932
+    },
+    {
+      "text": " the slope at this point, and that",
+      "start": 816.755,
+      "duration": 3.482
+    },
+    {
+      "text": " becomes your update. But what do you do",
+      "start": 819.312,
+      "duration": 4.418
+    },
+    {
+      "text": " in Nesterov Accelerated Gradient? Look",
+      "start": 822.824,
+      "duration": 4.6
+    },
+    {
+      "text": " closely that suppose you reached here",
+      "start": 826.525,
+      "duration": 8.259
+    },
+    {
+      "text": " from here, and here from here, and now",
+      "start": 833.846,
+      "duration": 3.361
+    },
+    {
+      "text": " you have to decide where you will go",
+      "start": 836.269,
+      "duration": 3.237
+    },
+    {
+      "text": " next. So, what do you do? You do not",
+      "start": 838.568,
+      "duration": 3.885
+    },
+    {
+      "text": " calculate both these things together.",
+      "start": 841.526,
+      "duration": 3.713
+    },
+    {
+      "text": " You apply the momentum term first. So",
+      "start": 844.369,
+      "duration": 4.398
+    },
+    {
+      "text": " you applied the momentum term, and you",
+      "start": 847.836,
+      "duration": 3.625
+    },
+    {
+      "text": " reached here. Now you calculate the",
+      "start": 850.53,
+      "duration": 4.021
+    },
+    {
+      "text": " gradient at this location. And then,",
+      "start": 853.647,
+      "duration": 5.835
+    },
+    {
+      "text": " you move forward or backward according",
+      "start": 858.555,
+      "duration": 3.8
+    },
+    {
+      "text": " to that. That's the only difference.",
+      "start": 861.429,
+      "duration": 3.811
+    },
+    {
+      "text": " Understand it once more. In momentum,",
+      "start": 864.42,
+      "duration": 3.402
+    },
+    {
+      "text": " to know where to go after any point,",
+      "start": 866.896,
+      "duration": 3.652
+    },
+    {
+      "text": " you have to do two calculations. First,",
+      "start": 869.621,
+      "duration": 4.352
+    },
+    {
+      "text": " the momentum, and second, the gradient",
+      "start": 873.033,
+      "duration": 3.247
+    },
+    {
+      "text": " at that point, and you take both jumps",
+      "start": 875.339,
+      "duration": 3.248
+    },
+    {
+      "text": " together. In NAG, there is just a small",
+      "start": 877.646,
+      "duration": 5.581
+    },
+    {
+      "text": " difference that you take the momentum",
+      "start": 882.295,
+      "duration": 3.511
+    },
+    {
+      "text": " jump first, and then you calculate the",
+      "start": 884.874,
+      "duration": 3.58
+    },
+    {
+      "text": " gradient at the spot where you arrive,",
+      "start": 887.521,
+      "duration": 3.58
+    },
+    {
+      "text": " and then take further jumps based on",
+      "start": 890.169,
+      "duration": 3.443
+    },
+    {
+      "text": " that. That's it. That's the only",
+      "start": 892.68,
+      "duration": 4.055
+    },
+    {
+      "text": " difference. And because of this",
+      "start": 895.793,
+      "duration": 3.612
+    },
+    {
+      "text": " difference, NAG performs better. I will",
+      "start": 898.472,
+      "duration": 4.648
+    },
+    {
+      "text": " explain to you why this happens. But",
+      "start": 902.197,
+      "duration": 3.933
+    },
+    {
+      "text": " first, let's take a look at the",
+      "start": 905.18,
+      "duration": 2.566
+    },
+    {
+      "text": " mathematical formulation. So the",
+      "start": 906.796,
+      "duration": 3.256
+    },
+    {
+      "text": " mathematical formulation is very simple",
+      "start": 909.117,
+      "duration": 3.556
+    },
+    {
+      "text": ". What do you do? First, you try to",
+      "start": 911.673,
+      "duration": 3.542
+    },
+    {
+      "text": " find the place where you will reach",
+      "start": 914.289,
+      "duration": 3.584
+    },
+    {
+      "text": " after the momentum jump. In literature,",
+      "start": 916.947,
+      "duration": 4.502
+    },
+    {
+      "text": " this is called the look-ahead term. So",
+      "start": 920.503,
+      "duration": 3.948
+    },
+    {
+      "text": " what are you doing? You are calculating",
+      "start": 923.508,
+      "duration": 3.912
+    },
+    {
+      "text": " w look-ahead. And what is this? Your",
+      "start": 926.509,
+      "duration": 5.694
+    },
+    {
+      "text": " current w, this w, minus beta times v t",
+      "start": 931.329,
+      "duration": 5.917
+    },
+    {
+      "text": "-1, basically your momentum so far.",
+      "start": 936.246,
+      "duration": 5.413
+    },
+    {
+      "text": " Okay? Then what do you do? You",
+      "start": 941.839,
+      "duration": 3.406
+    },
+    {
+      "text": " calculate vt. What is vt? Beta times v",
+      "start": 944.361,
+      "duration": 6.836
+    },
+    {
+      "text": " t-1 plus the learning rate times the",
+      "start": 950.319,
+      "duration": 5.372
+    },
+    {
+      "text": " gradient at the look-ahead time. Okay?",
+      "start": 954.813,
+      "duration": 6.586
+    },
+    {
+      "text": " Now, the gradient you are calculating",
+      "start": 961.179,
+      "duration": 3.18
+    },
+    {
+      "text": " is at this point, not at this point.",
+      "start": 963.417,
+      "duration": 3.122
+    },
+    {
+      "text": " Okay? And finally, this becomes your",
+      "start": 966.299,
+      "duration": 5.018
+    },
+    {
+      "text": " update rule. I hope you are",
+      "start": 970.411,
+      "duration": 6.418
+    },
+    {
+      "text": " understanding this. Okay? What did you",
+      "start": 975.886,
+      "duration": 3.509
+    },
+    {
+      "text": " calculate first? You were here. You",
+      "start": 978.458,
+      "duration": 3.45
+    },
+    {
+      "text": " were at this place, at this point. You",
+      "start": 980.964,
+      "duration": 4.213
+    },
+    {
+      "text": " first calculated this look-ahead value.",
+      "start": 984.243,
+      "duration": 3.576
+    },
+    {
+      "text": " This one. How? Updated the momentum",
+      "start": 987.886,
+      "duration": 4.215
+    },
+    {
+      "text": " term. Okay? After that, when you",
+      "start": 991.172,
+      "duration": 4.491
+    },
+    {
+      "text": " reached this place, you calculated the",
+      "start": 994.723,
+      "duration": 3.288
+    },
+    {
+      "text": " slope from here, which is this. So, if",
+      "start": 997.072,
+      "duration": 5.32
+    },
+    {
+      "text": " you replace this term with this",
+      "start": 1001.497,
+      "duration": 4.273
+    },
+    {
+      "text": " equation, it basically becomes wt-w",
+      "start": 1004.875,
+      "duration": 8.394
+    },
+    {
+      "text": " look-ahead plus the gradient at",
+      "start": 1012.424,
+      "duration": 5.798
+    },
+    {
+      "text": " look-ahead. Okay? What is this? This is",
+      "start": 1017.377,
+      "duration": 8.11
+    },
+    {
+      "text": " this much distance. Plus, the slope at",
+      "start": 1024.559,
+      "duration": 5.345
+    },
+    {
+      "text": " this new place where you arrived is",
+      "start": 1028.966,
+      "duration": 3.189
+    },
+    {
+      "text": " your total update, and you are applying",
+      "start": 1031.217,
+      "duration": 3.438
+    },
+    {
+      "text": " that update from your previous location",
+      "start": 1033.718,
+      "duration": 3.438
+    },
+    {
+      "text": ". I mean, it's not that difficult. Just",
+      "start": 1036.156,
+      "duration": 4.397
+    },
+    {
+      "text": " pause the video once and understand it.",
+      "start": 1039.607,
+      "duration": 3.092
+    },
+    {
+      "text": " In momentum, you apply both things",
+      "start": 1042.58,
+      "duration": 3.172
+    },
+    {
+      "text": " simultaneously at the place where you",
+      "start": 1044.816,
+      "duration": 3.364
+    },
+    {
+      "text": " currently are. Both momentum and the",
+      "start": 1047.244,
+      "duration": 4.316
+    },
+    {
+      "text": " current gradient. In Nesterov",
+      "start": 1050.641,
+      "duration": 4.095
+    },
+    {
+      "text": " Accelerated Gradient, what do you do?",
+      "start": 1053.794,
+      "duration": 3.146
+    },
+    {
+      "text": " First, you find the look-ahead point by",
+      "start": 1056.12,
+      "duration": 3.773
+    },
+    {
+      "text": " applying only momentum. Then you",
+      "start": 1058.964,
+      "duration": 3.612
+    },
+    {
+      "text": " calculate the gradient where you",
+      "start": 1061.643,
+      "duration": 3.148
+    },
+    {
+      "text": " arrived, and then take the gradient",
+      "start": 1063.858,
+      "duration": 3.349
+    },
+    {
+      "text": " movement. That's it. This is the only",
+      "start": 1066.274,
+      "duration": 3.657
+    },
+    {
+      "text": " difference, and here is your equation.",
+      "start": 1068.986,
+      "duration": 3.073
+    },
+    {
+      "text": " Now I will try to explain to you how it",
+      "start": 1071.719,
+      "duration": 4.99
+    },
+    {
+      "text": " reduces oscillations. This little trick",
+      "start": 1075.811,
+      "duration": 4.232
+    },
+    {
+      "text": ". So let's see the side-by-side",
+      "start": 1079.043,
+      "duration": 3.86
+    },
+    {
+      "text": " geometric intuition of both momentum",
+      "start": 1081.969,
+      "duration": 3.365
+    },
+    {
+      "text": " and NAG, so you get clarity. So, Assume",
+      "start": 1084.399,
+      "duration": 6.132
+    },
+    {
+      "text": " this is our error surface. This is W,",
+      "start": 1089.61,
+      "duration": 6.13
+    },
+    {
+      "text": " and this is the loss. Our objective is",
+      "start": 1094.87,
+      "duration": 7.251
+    },
+    {
+      "text": " to randomly initialize at some W value.",
+      "start": 1101.248,
+      "duration": 5.931
+    },
+    {
+      "text": " Let's call it W naught, and we need to",
+      "start": 1107.259,
+      "duration": 3.904
+    },
+    {
+      "text": " reach this value. Because this is the",
+      "start": 1110.239,
+      "duration": 3.67
+    },
+    {
+      "text": " minima. This is where our loss is the",
+      "start": 1112.973,
+      "duration": 5.004
+    },
+    {
+      "text": " minimum. Okay? So what will happen? It",
+      "start": 1117.075,
+      "duration": 4.498
+    },
+    {
+      "text": " is very simple. At every point, you",
+      "start": 1120.64,
+      "duration": 3.598
+    },
+    {
+      "text": " will calculate two things. By the way,",
+      "start": 1123.308,
+      "duration": 3.895
+    },
+    {
+      "text": " we are talking about momentum. Now, at",
+      "start": 1126.25,
+      "duration": 3.272
+    },
+    {
+      "text": " every point you will calculate two",
+      "start": 1128.619,
+      "duration": 4.32
+    },
+    {
+      "text": " things. First, the momentum, and second",
+      "start": 1132.036,
+      "duration": 6.399
+    },
+    {
+      "text": ", the gradient. So, in the beginning,",
+      "start": 1137.435,
+      "duration": 4.748
+    },
+    {
+      "text": " when you are starting, the momentum",
+      "start": 1141.236,
+      "duration": 2.874
+    },
+    {
+      "text": " will be zero. If you talk about the",
+      "start": 1143.164,
+      "duration": 3.423
+    },
+    {
+      "text": " gradient at this point, what do we have",
+      "start": 1145.634,
+      "duration": 2.835
+    },
+    {
+      "text": " to do? We have to go in the direction",
+      "start": 1147.516,
+      "duration": 3.384
+    },
+    {
+      "text": " of the negative of the gradient, or you",
+      "start": 1149.945,
+      "duration": 2.745
+    },
+    {
+      "text": " can call it the slope. We have to go in",
+      "start": 1151.734,
+      "duration": 3.105
+    },
+    {
+      "text": " that direction. So, the slope at this",
+      "start": 1153.894,
+      "duration": 3.36
+    },
+    {
+      "text": " point is negative. Why is it negative?",
+      "start": 1156.318,
+      "duration": 3.132
+    },
+    {
+      "text": " Because if you increase the weight, the",
+      "start": 1158.819,
+      "duration": 3.864
+    },
+    {
+      "text": " loss decreases. So the slope is",
+      "start": 1161.757,
+      "duration": 3.608
+    },
+    {
+      "text": " negative. So we will go in the",
+      "start": 1164.438,
+      "duration": 3.199
+    },
+    {
+      "text": " direction of the negative of the slope,",
+      "start": 1166.709,
+      "duration": 3.802
+    },
+    {
+      "text": " which is positive. Okay? So we will",
+      "start": 1169.583,
+      "duration": 3.583
+    },
+    {
+      "text": " basically move in this direction. In",
+      "start": 1172.232,
+      "duration": 3.407
+    },
+    {
+      "text": " this direction. So let's assume we",
+      "start": 1174.714,
+      "duration": 3.219
+    },
+    {
+      "text": " arrived here. Okay? Now, what are we",
+      "start": 1176.988,
+      "duration": 4.786
+    },
+    {
+      "text": " doing again? At this point, we will",
+      "start": 1180.838,
+      "duration": 3.436
+    },
+    {
+      "text": " calculate a momentum term, which will",
+      "start": 1183.339,
+      "duration": 3.379
+    },
+    {
+      "text": " be something. Since we are moving in",
+      "start": 1185.782,
+      "duration": 3.331
+    },
+    {
+      "text": " this direction, the momentum term will",
+      "start": 1188.165,
+      "duration": 2.994
+    },
+    {
+      "text": " also push us in this direction. At this",
+      "start": 1190.212,
+      "duration": 3.18
+    },
+    {
+      "text": " point too, the gradient is negative, so",
+      "start": 1192.432,
+      "duration": 2.578
+    },
+    {
+      "text": " we will move in the positive direction.",
+      "start": 1194.051,
+      "duration": 2.578
+    },
+    {
+      "text": " So, by taking a jump, let's assume we",
+      "start": 1195.729,
+      "duration": 2.857
+    },
+    {
+      "text": " arrived here. Now, at this point, we",
+      "start": 1197.636,
+      "duration": 3.566
+    },
+    {
+      "text": " will again calculate momentum. Since we",
+      "start": 1200.245,
+      "duration": 2.898
+    },
+    {
+      "text": " have already come in the positive",
+      "start": 1202.194,
+      "duration": 2.668
+    },
+    {
+      "text": " direction two or three times. So a",
+      "start": 1203.913,
+      "duration": 2.932
+    },
+    {
+      "text": " momentum is building up in this",
+      "start": 1205.896,
+      "duration": 2.59
+    },
+    {
+      "text": " direction that will push us even",
+      "start": 1207.537,
+      "duration": 2.641
+    },
+    {
+      "text": " further. Even now, our gradient is",
+      "start": 1209.229,
+      "duration": 4.127
+    },
+    {
+      "text": " positive. It is negative, so the update",
+      "start": 1212.43,
+      "duration": 3.639
+    },
+    {
+      "text": " will be positive. Let's assume we",
+      "start": 1215.111,
+      "duration": 2.716
+    },
+    {
+      "text": " reached here. Now, what will happen",
+      "start": 1216.883,
+      "duration": 3.294
+    },
+    {
+      "text": " here? We will again calculate momentum",
+      "start": 1219.228,
+      "duration": 3.193
+    },
+    {
+      "text": " and simultaneously calculate the",
+      "start": 1221.472,
+      "duration": 2.641
+    },
+    {
+      "text": " gradient, and both will send us in the",
+      "start": 1223.165,
+      "duration": 2.949
+    },
+    {
+      "text": " positive direction. So, let's assume",
+      "start": 1225.165,
+      "duration": 3.31
+    },
+    {
+      "text": " with the momentum push, we were",
+      "start": 1227.529,
+      "duration": 2.698
+    },
+    {
+      "text": " reaching here at this spot. Okay? And",
+      "start": 1229.281,
+      "duration": 5.027
+    },
+    {
+      "text": " with the gradient push, we went a",
+      "start": 1233.371,
+      "duration": 3.08
+    },
+    {
+      "text": " little further to this spot. We have",
+      "start": 1235.514,
+      "duration": 4.716
+    },
+    {
+      "text": " reached this spot. Let's call it W-temp",
+      "start": 1239.292,
+      "duration": 3.812
+    },
+    {
+      "text": ". Okay? You are here. Now, what will",
+      "start": 1242.104,
+      "duration": 3.721
+    },
+    {
+      "text": " you do again at this spot? You will",
+      "start": 1244.875,
+      "duration": 2.872
+    },
+    {
+      "text": " calculate momentum. What will the",
+      "start": 1246.804,
+      "duration": 2.747
+    },
+    {
+      "text": " momentum do to you? It will send you in",
+      "start": 1248.595,
+      "duration": 2.609
+    },
+    {
+      "text": " the positive direction. It will send",
+      "start": 1250.239,
+      "duration": 2.439
+    },
+    {
+      "text": " you in this direction. And how is the",
+      "start": 1251.721,
+      "duration": 2.731
+    },
+    {
+      "text": " slope at this point? It is positive. So",
+      "start": 1253.5,
+      "duration": 3.396
+    },
+    {
+      "text": " you will go in the opposite direction.",
+      "start": 1255.932,
+      "duration": 2.369
+    },
+    {
+      "text": " Meaning negative. So now here for the",
+      "start": 1257.401,
+      "duration": 2.567
+    },
+    {
+      "text": " first time what is happening is that",
+      "start": 1259.006,
+      "duration": 2.36
+    },
+    {
+      "text": " momentum is sending you in this",
+      "start": 1260.404,
+      "duration": 2.171
+    },
+    {
+      "text": " direction, but your gradient is sending",
+      "start": 1261.613,
+      "duration": 2.474
+    },
+    {
+      "text": " you in this direction. But since the",
+      "start": 1263.124,
+      "duration": 3.066
+    },
+    {
+      "text": " momentum term will dominate and this",
+      "start": 1265.264,
+      "duration": 3.636
+    },
+    {
+      "text": " will remain smaller, you will move",
+      "start": 1267.973,
+      "duration": 3.489
+    },
+    {
+      "text": " slightly more in this direction. Then",
+      "start": 1270.535,
+      "duration": 4.252
+    },
+    {
+      "text": " after a while, you will calculate the",
+      "start": 1273.829,
+      "duration": 2.559
+    },
+    {
+      "text": " momentum again at this position. At",
+      "start": 1275.43,
+      "duration": 3.062
+    },
+    {
+      "text": " this position too, if momentum kind of",
+      "start": 1277.549,
+      "duration": 3.158
+    },
+    {
+      "text": " dominates the gradient, then again you",
+      "start": 1279.764,
+      "duration": 3.157
+    },
+    {
+      "text": " will move forward a little bit. Now by",
+      "start": 1281.978,
+      "duration": 3.618
+    },
+    {
+      "text": " the time you reach this point, what is",
+      "start": 1284.639,
+      "duration": 2.625
+    },
+    {
+      "text": " happening is that since your momentum",
+      "start": 1286.307,
+      "duration": 2.582
+    },
+    {
+      "text": " from the last few points is becoming",
+      "start": 1287.932,
+      "duration": 2.54
+    },
+    {
+      "text": " negative. So now, both the momentum and",
+      "start": 1289.515,
+      "duration": 3.432
+    },
+    {
+      "text": " the gradient will send you backward. So",
+      "start": 1292.01,
+      "duration": 3.532
+    },
+    {
+      "text": " you will start coming back. Then you",
+      "start": 1294.584,
+      "duration": 2.968
+    },
+    {
+      "text": " keep oscillating like this and",
+      "start": 1296.641,
+      "duration": 3.676
+    },
+    {
+      "text": " eventually stop here. That is how",
+      "start": 1299.406,
+      "duration": 3.812
+    },
+    {
+      "text": " momentum works. Okay? So what happened?",
+      "start": 1302.286,
+      "duration": 3.855
+    },
+    {
+      "text": " You started from here. You were",
+      "start": 1305.241,
+      "duration": 3.513
+    },
+    {
+      "text": " supposed to stop here. You were",
+      "start": 1307.828,
+      "duration": 2.953
+    },
+    {
+      "text": " supposed to stop at this spot. You were",
+      "start": 1309.81,
+      "duration": 2.267
+    },
+    {
+      "text": " supposed to stop at this minimum. But",
+      "start": 1311.116,
+      "duration": 2.753
+    },
+    {
+      "text": " you went ahead. You overshot. Took a",
+      "start": 1312.932,
+      "duration": 4.107
+    },
+    {
+      "text": " U-turn and came back. Took a smaller",
+      "start": 1316.109,
+      "duration": 3.499
+    },
+    {
+      "text": " U-turn and came back. And smaller and",
+      "start": 1318.666,
+      "duration": 3.512
+    },
+    {
+      "text": " smaller, and eventually you stopped.",
+      "start": 1321.252,
+      "duration": 3.687
+    },
+    {
+      "text": " That is how momentum works. Okay? Now",
+      "start": 1324.96,
+      "duration": 4.39
+    },
+    {
+      "text": " let's discuss what happens? When you",
+      "start": 1328.434,
+      "duration": 4.514
+    },
+    {
+      "text": " apply Nesterov Accelerated Gradient. I",
+      "start": 1332.035,
+      "duration": 5.028
+    },
+    {
+      "text": " am drawing the same error surface. This",
+      "start": 1336.127,
+      "duration": 4.565
+    },
+    {
+      "text": " is W, this is loss. And here is our",
+      "start": 1339.795,
+      "duration": 5.324
+    },
+    {
+      "text": " error surface. Okay? Now what will",
+      "start": 1344.219,
+      "duration": 3.93
+    },
+    {
+      "text": " happen this time? You will start from",
+      "start": 1347.185,
+      "duration": 2.767
+    },
+    {
+      "text": " here. Again, you will calculate two",
+      "start": 1349.007,
+      "duration": 3.301
+    },
+    {
+      "text": " things. You have to reach the momentum",
+      "start": 1351.372,
+      "duration": 5.053
+    },
+    {
+      "text": " here. You will calculate the momentum",
+      "start": 1355.537,
+      "duration": 5.722
+    },
+    {
+      "text": " and you will calculate the slope. The",
+      "start": 1360.319,
+      "duration": 3.185
+    },
+    {
+      "text": " momentum will be zero in the beginning.",
+      "start": 1362.536,
+      "duration": 2.233
+    },
+    {
+      "text": " So suppose you reached here, at this",
+      "start": 1363.88,
+      "duration": 2.987
+    },
+    {
+      "text": " spot. Some momentum built up here.",
+      "start": 1365.922,
+      "duration": 3.097
+    },
+    {
+      "text": " Suppose you reached here. Okay? Now",
+      "start": 1368.119,
+      "duration": 3.721
+    },
+    {
+      "text": " suppose when you are at this point,",
+      "start": 1370.914,
+      "duration": 3.582
+    },
+    {
+      "text": " what is happening? Look carefully.",
+      "start": 1373.57,
+      "duration": 3.509
+    },
+    {
+      "text": " Suppose you are at this point here. Now",
+      "start": 1377.059,
+      "duration": 4.064
+    },
+    {
+      "text": " what will happen here is that, as I",
+      "start": 1380.178,
+      "duration": 2.917
+    },
+    {
+      "text": " told you earlier, you don't do both",
+      "start": 1382.15,
+      "duration": 2.917
+    },
+    {
+      "text": " things together. You will calculate the",
+      "start": 1384.122,
+      "duration": 3.887
+    },
+    {
+      "text": " momentum first. Okay? So you calculated",
+      "start": 1387.092,
+      "duration": 4.047
+    },
+    {
+      "text": " only the momentum, so you would reach",
+      "start": 1390.2,
+      "duration": 3.265
+    },
+    {
+      "text": " this spot. This is your look-ahead",
+      "start": 1392.526,
+      "duration": 3.975
+    },
+    {
+      "text": " point. Okay? Now at this spot, you",
+      "start": 1395.583,
+      "duration": 5.394
+    },
+    {
+      "text": " calculated the gradient which is in",
+      "start": 1400.045,
+      "duration": 3.398
+    },
+    {
+      "text": " this direction. So what will happen is",
+      "start": 1402.511,
+      "duration": 3.888
+    },
+    {
+      "text": " that where in momentum you were going",
+      "start": 1405.455,
+      "duration": 3.053
+    },
+    {
+      "text": " further ahead and reaching here. Now",
+      "start": 1407.563,
+      "duration": 3.962
+    },
+    {
+      "text": " the gradient at this spot is in the",
+      "start": 1410.588,
+      "duration": 3.179
+    },
+    {
+      "text": " opposite direction, due to which you",
+      "start": 1412.829,
+      "duration": 3.241
+    },
+    {
+      "text": " will come back a little and you will",
+      "start": 1415.132,
+      "duration": 3.242
+    },
+    {
+      "text": " stop here. I hope you are understanding",
+      "start": 1417.436,
+      "duration": 3.819
+    },
+    {
+      "text": ". What did we do here? Here, we",
+      "start": 1420.255,
+      "duration": 3.119
+    },
+    {
+      "text": " calculated both things together. We",
+      "start": 1422.421,
+      "duration": 3.01
+    },
+    {
+      "text": " reached here according to momentum, and",
+      "start": 1424.487,
+      "duration": 3.193
+    },
+    {
+      "text": " here according to the gradient. But",
+      "start": 1426.736,
+      "duration": 3.318
+    },
+    {
+      "text": " what did we do here? We first",
+      "start": 1429.132,
+      "duration": 3.427
+    },
+    {
+      "text": " calculated this look-ahead point using",
+      "start": 1431.611,
+      "duration": 2.996
+    },
+    {
+      "text": " momentum, and then when we calculated",
+      "start": 1433.659,
+      "duration": 2.943
+    },
+    {
+      "text": " the gradient at this point, it was in",
+      "start": 1435.655,
+      "duration": 2.943
+    },
+    {
+      "text": " the opposite direction. That is why we",
+      "start": 1437.651,
+      "duration": 3.348
+    },
+    {
+      "text": " stopped here. Okay? So, where we were",
+      "start": 1440.054,
+      "duration": 3.194
+    },
+    {
+      "text": " supposed to stop with momentum, we",
+      "start": 1442.295,
+      "duration": 2.599
+    },
+    {
+      "text": " stopped here instead. So you could say",
+      "start": 1443.941,
+      "duration": 3.166
+    },
+    {
+      "text": " that when you moved from here, you took",
+      "start": 1446.168,
+      "duration": 3.362
+    },
+    {
+      "text": " a small U-turn. Then a little in this",
+      "start": 1448.59,
+      "duration": 3.596
+    },
+    {
+      "text": " direction, and you arrived at the right",
+      "start": 1451.246,
+      "duration": 3.317
+    },
+    {
+      "text": " place. That's the main difference. This",
+      "start": 1453.622,
+      "duration": 5.649
+    },
+    {
+      "text": " is the geometric intuition of Nesterov",
+      "start": 1458.339,
+      "duration": 3.587
+    },
+    {
+      "text": " Accelerated Gradient: you find out in",
+      "start": 1460.994,
+      "duration": 3.519
+    },
+    {
+      "text": " advance what is going to happen. And",
+      "start": 1463.581,
+      "duration": 4.989
+    },
+    {
+      "text": " you are making your decisions",
+      "start": 1467.633,
+      "duration": 2.841
+    },
+    {
+      "text": " accordingly. Okay? If you remember this",
+      "start": 1469.537,
+      "duration": 4.131
+    },
+    {
+      "text": " point-based example, you will be able",
+      "start": 1472.741,
+      "duration": 3.718
+    },
+    {
+      "text": " to explain Nesterov Accelerated",
+      "start": 1475.532,
+      "duration": 3.277
+    },
+    {
+      "text": " Gradient to anyone. Let's discuss one",
+      "start": 1477.883,
+      "duration": 4.518
+    },
+    {
+      "text": " more thing: is there any disadvantage",
+      "start": 1481.52,
+      "duration": 5.403
+    },
+    {
+      "text": " to this technique, NAG? The answer is",
+      "start": 1486.042,
+      "duration": 5.152
+    },
+    {
+      "text": " yes. Uh, there is a disadvantage. Uh,",
+      "start": 1490.263,
+      "duration": 3.239
+    },
+    {
+      "text": " so from what we have learned so far,",
+      "start": 1492.577,
+      "duration": 3.718
+    },
+    {
+      "text": " you have understood that what NAG does",
+      "start": 1495.37,
+      "duration": 3.868
+    },
+    {
+      "text": " is dampen the oscillations that occur",
+      "start": 1498.314,
+      "duration": 3.792
+    },
+    {
+      "text": " in momentum. Now, what this can cause",
+      "start": 1501.182,
+      "duration": 5.58
+    },
+    {
+      "text": " is that you might get stuck in a local",
+      "start": 1505.831,
+      "duration": 3.633
+    },
+    {
+      "text": " minima. Imagine you have an error",
+      "start": 1508.533,
+      "duration": 5.867
+    },
+    {
+      "text": " surface like this in 2D. So what will",
+      "start": 1513.537,
+      "duration": 6.477
+    },
+    {
+      "text": " happen is that your ball rolls from",
+      "start": 1519.078,
+      "duration": 3.261
+    },
+    {
+      "text": " here, and in momentum, it might have",
+      "start": 1521.404,
+      "duration": 3.325
+    },
+    {
+      "text": " enough momentum to cross this and come",
+      "start": 1523.793,
+      "duration": 3.455
+    },
+    {
+      "text": " over here. But in NAG, what you are",
+      "start": 1526.313,
+      "duration": 4.847
+    },
+    {
+      "text": " doing is that you are kind of dampening",
+      "start": 1530.229,
+      "duration": 3.7
+    },
+    {
+      "text": " its momentum. So what will happen is",
+      "start": 1532.999,
+      "duration": 4.175
+    },
+    {
+      "text": " that it won't gain enough upward",
+      "start": 1536.23,
+      "duration": 2.797
+    },
+    {
+      "text": " momentum and will oscillate right here",
+      "start": 1538.083,
+      "duration": 3.133
+    },
+    {
+      "text": " and get stuck. So this is one potential",
+      "start": 1540.272,
+      "duration": 5.192
+    },
+    {
+      "text": " problem that you might see in some",
+      "start": 1544.522,
+      "duration": 2.991
+    },
+    {
+      "text": " datasets. In that case, we then have to",
+      "start": 1546.572,
+      "duration": 5.144
+    },
+    {
+      "text": " use other optimizers. But this is the",
+      "start": 1550.795,
+      "duration": 3.813
+    },
+    {
+      "text": " biggest disadvantage of NAG. So before",
+      "start": 1553.675,
+      "duration": 3.86
+    },
+    {
+      "text": " finishing the video, let's look at one",
+      "start": 1556.579,
+      "duration": 2.672
+    },
+    {
+      "text": " more important thing. In the momentum",
+      "start": 1558.295,
+      "duration": 3.193
+    },
+    {
+      "text": " video, I forgot to tell you how",
+      "start": 1560.566,
+      "duration": 3.403
+    },
+    {
+      "text": " momentum is implemented in Keras. So in",
+      "start": 1563.047,
+      "duration": 3.903
+    },
+    {
+      "text": " this video, I am telling you both. How",
+      "start": 1565.999,
+      "duration": 3.006
+    },
+    {
+      "text": " to implement momentum and how to",
+      "start": 1568.086,
+      "duration": 3.569
+    },
+    {
+      "text": " implement Nesterov Accelerated Gradient",
+      "start": 1570.735,
+      "duration": 4.131
+    },
+    {
+      "text": ". Uh, Keras has implemented it very",
+      "start": 1573.866,
+      "duration": 4.773
+    },
+    {
+      "text": " simply. Uh, you have an SGD class that",
+      "start": 1577.748,
+      "duration": 4.161
+    },
+    {
+      "text": " you use to implement Stochastic",
+      "start": 1580.986,
+      "duration": 3.377
+    },
+    {
+      "text": " Gradient Descent or normal Gradient",
+      "start": 1583.439,
+      "duration": 3.684
+    },
+    {
+      "text": " Descent. You can simply implement",
+      "start": 1586.199,
+      "duration": 3.332
+    },
+    {
+      "text": " momentum and Nesterov by changing the",
+      "start": 1588.581,
+      "duration": 2.839
+    },
+    {
+      "text": " parameter values in that same class. So",
+      "start": 1590.469,
+      "duration": 3.824
+    },
+    {
+      "text": ", if you want to implement SGD, you",
+      "start": 1593.293,
+      "duration": 5.096
+    },
+    {
+      "text": " just need to set the momentum parameter",
+      "start": 1597.506,
+      "duration": 5.565
+    },
+    {
+      "text": " to zero and the Nesterov parameter to",
+      "start": 1602.188,
+      "duration": 5.331
+    },
+    {
+      "text": " false. Okay? If you want to do SGD with",
+      "start": 1606.636,
+      "duration": 5.304
+    },
+    {
+      "text": " momentum, what will you do? You will",
+      "start": 1610.999,
+      "duration": 4.246
+    },
+    {
+      "text": " assign a value to momentum, which will",
+      "start": 1614.323,
+      "duration": 3.974
+    },
+    {
+      "text": " be your decay factor. Like point nine",
+      "start": 1617.375,
+      "duration": 4.516
+    },
+    {
+      "text": " or point five, and for Nesterov, you",
+      "start": 1620.952,
+      "duration": 6.603
+    },
+    {
+      "text": " will keep it false, so this will apply",
+      "start": 1626.627,
+      "duration": 3.743
+    },
+    {
+      "text": " momentum; and if you want to implement",
+      "start": 1629.442,
+      "duration": 3.743
+    },
+    {
+      "text": " NAG, then you must provide a value for",
+      "start": 1632.257,
+      "duration": 3.742
+    },
+    {
+      "text": " momentum as well, and you will need to",
+      "start": 1635.072,
+      "duration": 5.802
+    },
+    {
+      "text": " set Nesterov to true. That's it. These",
+      "start": 1639.929,
+      "duration": 6.614
+    },
+    {
+      "text": " are the three ways you can implement",
+      "start": 1645.595,
+      "duration": 2.896
+    },
+    {
+      "text": " three different optimizers in Keras.",
+      "start": 1647.543,
+      "duration": 2.896
+    },
+    {
+      "text": " It's very simple. So that was the video",
+      "start": 1650.04,
+      "duration": 2.988
+    },
+    {
+      "text": ", guys. I hope you understood the",
+      "start": 1652.028,
+      "duration": 3.231
+    },
+    {
+      "text": " intuition and will be able to implement",
+      "start": 1654.332,
+      "duration": 3.84
+    },
+    {
+      "text": " it in Keras. If you liked the video,",
+      "start": 1657.245,
+      "duration": 3.331
+    },
+    {
+      "text": " please like it, and if you haven't",
+      "start": 1659.632,
+      "duration": 2.886
+    },
+    {
+      "text": " subscribed to the channel, please do",
+      "start": 1661.573,
+      "duration": 2.997
+    },
+    {
+      "text": " subscribe. Okay? That's it from my side",
+      "start": 1663.626,
+      "duration": 3.442
+    },
+    {
+      "text": ". Thanks for watching. See you in the",
+      "start": 1666.068,
+      "duration": 2.672
+    },
+    {
+      "text": " next video. Bye.",
+      "start": 1667.783,
+      "duration": 2.12
+    }
+  ]
+}

@@ -1,0 +1,2115 @@
+{
+  "id": "nwVOSgcrbQI",
+  "index": 30,
+  "title": "Xavier/Glorat And He Weight Initialization in Deep Learning",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitesh and you are  welcome to my YouTube channel. In this  video too, we will continue our deep  learning playlist. We started learning  about weight initialization in the last  video, and I told you what things you  shouldn't do. In this video, we will  move a bit further and discuss the  techniques used to initialize the  weights of a neural network. Okay? We  will look at two techniques. Xavier  initialization and He initialization,  and we will also look at their Keras  implementation in this video. So let's  start the video. So guys, let's  summarize once what we cannot do while  initializing weights in a neural  network. Okay? We discussed this in  great detail in the last video. And  four points emerge in the summary. The  first thing you cannot do is zero  initialization. Meaning you cannot set  the value of all your weights to zero.  The reason for this is that as soon as  you do this, training won't happen. The  value of your weights will remain  exactly as it was. It will stay at zero . At least in the case of tanh and ReLU . Okay? There is no benefit. Then we  discussed the second option, what if we  take non-zero constant values? Like  setting all weights to 0.5. There was  no benefit in this case either. In the  last video, I told you that because  what happens is that your multiple  weights start updating together. Okay?  So what happens is if you put even 10  nodes in a hidden layer, it will act  like a single node. So your model will  not be able to capture non-linearity.  It remains a linear model, which is of  no use. Okay? After this, we thought,  why not try random weights. So we  thought we would generate random  weights using this function. Whatever  shape we need to generate in, let's say  if this is the structure, then for  these four weights, the shape will be 2 , because we need four weights. And we  multiplied it by 0.01, thinking we  would initialize with small weights.  But what problem did this cause? This  caused two problems. First, the  vanishing gradient problem. And second,  slow convergence. Meaning the model was  reaching its solution very slowly. Okay ? So then we thought, let's do one  thing. Let's initialize with slightly  larger weights. So we then, I mean, we  just stopped multiplying by this here.  And we simply applied this formula. 2 2  okay, and these weights were generated  between -3 to 3, roughly speaking, the  weights generated here were your -0.1  to -0.1 okay, very small weights, so  basically we understood that we have to  initialize with random weights. But the  range of those numbers matters a lot.  You cannot take such a small range, and  you cannot take such a large range  either. So you have to find an  intermediate solution. Okay? This was  our learning. So now the question  arises, what can be done? Fortunately,  we are living in a day and age where  this problem has already been solved.  Many brilliant minds in deep learning  have worked on this problem and have  found some heuristics. Heuristics means , in simple words, a hack, meaning some  practical solution found through  experimentation that works very well.  Okay? So we will study those two  practical solutions today. So there are  two different solutions. The first  one's name is Xavier, or sometimes it  is called Glorot. Both are the names of  the same person. Initialization, and  the second is He initialization. Okay?  And in both of these, we will study two  types. One we will study is the Xavier  normal version where you use a normal  distribution, and the second we will  study is uniform, and in He also we  will study normal and uniform, both.  Okay? In Keras, these two are  implemented. Okay? Now the good part is  that you should already know that if  you are working with tanh or sigmoid.  No one works with sigmoid anymore. If  you are working with tanh, you should  use Xavier initialization. It has been  proven experimentally that Xavier gives  better results with tanh. And if you  are working with ReLU, then you should  work with He initialization. Again,  it's experimentally proven that He  gives better results with ReLU. Okay?  So this is what we have to study in  this video. So there is nothing much.  Basically, some formulas have emerged  through experiments. We will just look  at those formulas. Okay? And then we  will implement them in Keras. But  before that, I want to give you an  intuition. I want to give you an  intuition as to why these formulas work . Okay? So, if you've understood the  discussion so far, then you must have  grasped that you need to initialize  your weights with random values. That  much is certain. But the variance—or  you could say the spread or range—of  the weights you initialize cannot be  too small. Like this. Or too large.  Like this. Because both of these cause  different problems. Okay? By the way, I  think I didn't mention this. If you  work with large weights, you also get  the vanishing gradient problem. If you  are working with Sigmoid and Tanh, you  can also face the exploding gradient  problem if you are working with ReLU.  So the point is simply that we need  random weights, but specifically,  neither too small nor too large. So,  according to our requirements, we need  to perform random weight initialization  in a good range or with a good variance . This is what we need to understand  now. Look, the intuition is very simple . If you have followed everything so  far, you will understand. So, if you  remember, we were doing two things in  random weight initialization so far. We  were taking small weights, and what  were we doing in the case of small  weights? If you look at this setup,  where 250-dimensional inputs are going  into a hidden layer with 250 nodes  using np.random.randn. Basically, this  node is receiving 250 inputs. And there  are 250 such nodes. So the shape  becomes 250, 250. We were multiplying  this by a small constant like 0.01, and  in the case of large values, we were  writing np.random.randn (250, 250), but  this time we were multiplying by 1. Now , let me try to explain the problem  with both of these, and then we will  look at the solution. If you are  multiplying by 0.01, it means all these  weights are in this range, or roughly  in this range. Okay? Now just think,  your inputs, these x values, let's  assume they are in the range of -1 to 1  or 0 to 1, which are already small.  Multiply 250 such numbers together, and  then add those 250 numbers; that number  would be a very small number. And as  soon as you were sending it into this  node, its activation functions were  designed in such a way that they were  making it zero. So this was the problem  in the small case. What was the problem  in the large case was that the numbers  you generated were in the range of -3  to 3. So, if you multiply -3 to 3 with  the -1 to 1 range and add 250 such  numbers. Then that number could roughly  be in the range of -250 to 250. Now,  when you were sending such a large  value into your activation function, it  was getting saturated. Meaning, if it  is -250, depending on the activation  function, it was going to the extreme  negative max, as in the minimum. And if  it is positive 250, then it was  reaching the maximum value. So, there  was a problem in both cases. The  problem is arising because this node of  yours uses this expression to calculate  Z. Okay? So the first thing you can  understand, and those scientists also  realized, is that you cannot just  multiply by any constant. Because then  it wouldn't have any flexibility. The  number you multiply here should be  dependent on the architecture of the  neural network. Okay? So that is why  people proved it mathematically, but I  am telling you directly without the  mathematics because the math is a bit  difficult. People decided that the  variance of the numbers we generate  here should be 1/n. Okay? What is n  there? n is how many nodes are in the  previous layer for whichever layer you  are initializing weights. Or in simpler  words, how many inputs is this node  receiving? It is receiving 250. So the  variance should be 1/250. And this  means that now what will you multiply  here? You will multiply by the square  root of 1/250, which is the standard  deviation. Okay? What is the intuition  behind this? The intuition is very  simple. If n is very large. It means  you have a lot of these inputs. So you  want to minimize it. Okay? That is why  you basically made every number smaller  by using variance. You reduced the  range. Just think about it, the range  is being defined by 1/n. If n is very  large, each individual weight will be  very small. Okay? And if n is very low,  if the value of n is, let's say, only  two inputs are coming from here. In  that case, your weight will be large.  And that's the intuition. That's what  scientists did; they set the variance  value to 1/n. What is n? How many nodes  are in the previous layer? Or you can  say how many inputs are coming into a  single node. Number of inputs. Okay?  Let me explain it once again. The  intuition is very simple: if there are  too many inputs, you shouldn't let this  number become too large. So you make wi  smaller. That is why you set it to 1/n.  And if the number of inputs is very  small, to prevent wi xi from becoming  too tiny, you make wi a bit larger.  Because of this. Okay? So this is  Xavier initialization. Let me tell you.  The formula for Xavier initialization,  for the normal one, is the square root  of 1 divided by fan-in. What is fan-in?  Fan-in is basically the number of  inputs. Coming to the node. How many  inputs are coming into a particular  node, that is fan-in. Okay? So in  Xavier initialization, what you do is,  suppose this is it. You want to  initialize these four weights, so you  roughly write np.random.randn 2  multiplied by the square root of 1/2.  Okay? This is what Xavier  initialization is. Right? In some  places, this formula is implemented a  bit differently. In some places, this  is used. 2 divided by fan-in plus  fan-out. What is fan-out? How much  output is coming out from a particular  node. Okay? Usually, this is used more.  So you focus on this. But you should  know that a variation exists. Okay? So  I will quickly show you by running it  in Keras that using this really gives  you good results. So guys, you can see  I am working on the same data again to  be consistent. Our data looks like this  and we have to handle it. So here is my  model architecture. I have taken four  hidden layers. There are 10 neurons  each. The activation function is tan h.  Okay? And I extracted all weights using  get weights first. And then what will I  do? I am changing them. You can see  np.random.randn. And this time, look, I  am doing np.sqrt. 1/2 because the  inputs coming into the first layer are  two, and for the subsequent ones, they  are 10 inputs each. Right? So you can  see I have initialized my biases to  zero. There’s no problem with that.  And I set these weights using set  weights, and here are my new weights.  Right? And you can see, you might also  be getting an idea of what the range is  like. And then what did I do? I trained  my model with the same settings.  Nothing is different here. And as soon  as I trained the model, upon getting  the weights, you can see the weights  etc., have changed. Meaning, the  training happened correctly. And  finally, when I plotted my graph, you  can see a pretty good result. It  doesn’t look like overfitting. And it  doesn’t look like underfitting either . Honestly speaking, the pattern in the  data is being roughly captured. Maybe  if I had run the model for a few more  epochs, I would have gotten better  results. Right? But you get the idea of  how Xavier initialization is being done . Right? One thing you need to remember . You will only use Xavier  initialization with Tanh. You will not  use it with ReLU. Right? So that’s  why I have used Tanh here. So now that  you have seen and understood Xavier or  Glorot Normal. I will quickly tell you.  The formula for He Normal. Right? So  you already know that Xavier works  better for Tanh, and in the case of  ReLU, He Normal will work better. The  formula is nothing much. In this  formula of yours, there will just be a  small change: a 2 will replace the 1,  and here we will have fan_in. Right? So  this is your formula. Basically, what  you will do here is...You will make it  2/fan_in. Right? So that becomes He  Normal, and it is used in the case of  ReLU. If you are working with ReLU, you  should be using this one. Right? And  there is nothing else to it. Now, how  did these people reach these  conclusions? These are heuristics. It  happened through experimentation. You  can read their papers. They have  explained the math behind it. It’s  just that it is a bit complex. If you  want to understand it at the  application level, remembering this  formula will be sufficient. Right? So  these are the normal versions of both.  Now, there are uniform versions as well . The uniform version means the formula  is based on a uniform distribution. So,  I will tell you about both of them. If  you talk about Xavier or Glorot, the  formula for Xavier Uniform is that you  initialize or generate your weights  between minus limit and limit, and you  define the limit by square root of 6  divided by fan-in plus fan-out. This is  your formula for Xavier Uniform. So,  you will generate your numbers within  this given range. It should be a  uniform distribution. Okay? And if you  talk about He Normal, I'm sorry. He  Uniform; we have already seen Normal.  If you talk about He Uniform, in that  case, the formula is that you will  generate numbers or weights from minus  limit to limit, and the limit is  defined by root of 6 divided by fan-in.  That's it. Okay? These are your  formulas. You have to remember this.  Actually, you don't even have to  remember it. In fact, I will quickly  show you how you can set these values  in Keras. So, it's very easy to set  this weight initialization technique in  Keras. What you have to do is perform  this on a layer-by-layer basis. Like, I  am taking the same example. Now, you  just have to do nothing here. You just  need to set the value of this kernel  initializer parameter. Like I am  showing you how to work with the value  now. So, I have set He Normal here. If  you want, you can also set He Uniform.  And if you want, you can also set  Glorot Normal or Glorot Uniform.  Obviously, you will do that when you  are working with Tanh. For now, I have  set He Normal here. If it is coming to  your mind, what is it by default? If  you don't specify this, how does the  initialization happen? So, when I  looked at the Keras source code, Glorot  Uniform was the default there. Okay? So , if someone asks you, you can tell  them this. So, now there's nothing else  to do. Run this. I will run it once.  Let's see the get weights. It will come  out exactly in the same way. See, it is  the same kind of weight initialization.  Okay? Otherwise, we are not running all  this code now. We will not make these  changes. We will directly execute, we  will train our model, and our model is  trained. Let's take a look at its  result once. You can see, it's okay.  Meaning, it's a bit worse than the last  time. But again, this happens because  of multiple reasons. Once you make the  changes, you will understand. So this  was a He normal. Try out He uniform as  well. You guys should try Glorot  uniform and Glorot normal by keeping an  eye on them. Okay? So I have shown you  how it is done in Keras. So that was  the video, guys. If you combine both  videos, I know there was a lot of  information. But you just need to  remember the summary and how to run it  in Keras. Although, I would recommend  that you try running things on some  datasets. Run experiments and keep the  conclusions in your mind. Then it will  be more useful. Okay? If you liked the  video, please like it, and if you  haven't subscribed to the channel,  please subscribe. Okay? That's it from  my side. See you in the next video. Bye .",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitesh and you are",
+      "start": 0.299,
+      "duration": 3.004
+    },
+    {
+      "text": " welcome to my YouTube channel. In this",
+      "start": 2.356,
+      "duration": 3.223
+    },
+    {
+      "text": " video too, we will continue our deep",
+      "start": 4.63,
+      "duration": 2.851
+    },
+    {
+      "text": " learning playlist. We started learning",
+      "start": 6.533,
+      "duration": 3.472
+    },
+    {
+      "text": " about weight initialization in the last",
+      "start": 9.072,
+      "duration": 3.6
+    },
+    {
+      "text": " video, and I told you what things you",
+      "start": 11.739,
+      "duration": 3.466
+    },
+    {
+      "text": " shouldn't do. In this video, we will",
+      "start": 14.272,
+      "duration": 4.177
+    },
+    {
+      "text": " move a bit further and discuss the",
+      "start": 17.508,
+      "duration": 2.995
+    },
+    {
+      "text": " techniques used to initialize the",
+      "start": 19.561,
+      "duration": 2.936
+    },
+    {
+      "text": " weights of a neural network. Okay? We",
+      "start": 21.556,
+      "duration": 4.176
+    },
+    {
+      "text": " will look at two techniques. Xavier",
+      "start": 24.778,
+      "duration": 2.824
+    },
+    {
+      "text": " initialization and He initialization,",
+      "start": 26.66,
+      "duration": 3.12
+    },
+    {
+      "text": " and we will also look at their Keras",
+      "start": 28.837,
+      "duration": 3.063
+    },
+    {
+      "text": " implementation in this video. So let's",
+      "start": 30.957,
+      "duration": 3.47
+    },
+    {
+      "text": " start the video. So guys, let's",
+      "start": 33.501,
+      "duration": 3.37
+    },
+    {
+      "text": " summarize once what we cannot do while",
+      "start": 35.948,
+      "duration": 3.912
+    },
+    {
+      "text": " initializing weights in a neural",
+      "start": 38.937,
+      "duration": 3.452
+    },
+    {
+      "text": " network. Okay? We discussed this in",
+      "start": 41.465,
+      "duration": 3.979
+    },
+    {
+      "text": " great detail in the last video. And",
+      "start": 44.494,
+      "duration": 2.907
+    },
+    {
+      "text": " four points emerge in the summary. The",
+      "start": 46.487,
+      "duration": 4.591
+    },
+    {
+      "text": " first thing you cannot do is zero",
+      "start": 50.131,
+      "duration": 2.743
+    },
+    {
+      "text": " initialization. Meaning you cannot set",
+      "start": 51.927,
+      "duration": 4.105
+    },
+    {
+      "text": " the value of all your weights to zero.",
+      "start": 55.103,
+      "duration": 3.717
+    },
+    {
+      "text": " The reason for this is that as soon as",
+      "start": 58.04,
+      "duration": 3.505
+    },
+    {
+      "text": " you do this, training won't happen. The",
+      "start": 60.611,
+      "duration": 3.649
+    },
+    {
+      "text": " value of your weights will remain",
+      "start": 63.307,
+      "duration": 2.556
+    },
+    {
+      "text": " exactly as it was. It will stay at zero",
+      "start": 64.91,
+      "duration": 3.374
+    },
+    {
+      "text": ". At least in the case of tanh and ReLU",
+      "start": 67.284,
+      "duration": 3.559
+    },
+    {
+      "text": ". Okay? There is no benefit. Then we",
+      "start": 69.843,
+      "duration": 3.4
+    },
+    {
+      "text": " discussed the second option, what if we",
+      "start": 72.295,
+      "duration": 3.02
+    },
+    {
+      "text": " take non-zero constant values? Like",
+      "start": 74.367,
+      "duration": 3.123
+    },
+    {
+      "text": " setting all weights to 0.5. There was",
+      "start": 76.552,
+      "duration": 3.234
+    },
+    {
+      "text": " no benefit in this case either. In the",
+      "start": 78.829,
+      "duration": 3.216
+    },
+    {
+      "text": " last video, I told you that because",
+      "start": 81.119,
+      "duration": 3.596
+    },
+    {
+      "text": " what happens is that your multiple",
+      "start": 83.789,
+      "duration": 3.522
+    },
+    {
+      "text": " weights start updating together. Okay?",
+      "start": 86.385,
+      "duration": 4.384
+    },
+    {
+      "text": " So what happens is if you put even 10",
+      "start": 89.869,
+      "duration": 4.101
+    },
+    {
+      "text": " nodes in a hidden layer, it will act",
+      "start": 93.054,
+      "duration": 4.018
+    },
+    {
+      "text": " like a single node. So your model will",
+      "start": 96.156,
+      "duration": 4.1
+    },
+    {
+      "text": " not be able to capture non-linearity.",
+      "start": 99.33,
+      "duration": 3.749
+    },
+    {
+      "text": " It remains a linear model, which is of",
+      "start": 102.979,
+      "duration": 2.949
+    },
+    {
+      "text": " no use. Okay? After this, we thought,",
+      "start": 104.979,
+      "duration": 5.081
+    },
+    {
+      "text": " why not try random weights. So we",
+      "start": 109.131,
+      "duration": 4.779
+    },
+    {
+      "text": " thought we would generate random",
+      "start": 113.004,
+      "duration": 4.019
+    },
+    {
+      "text": " weights using this function. Whatever",
+      "start": 116.117,
+      "duration": 5.812
+    },
+    {
+      "text": " shape we need to generate in, let's say",
+      "start": 120.988,
+      "duration": 3.294
+    },
+    {
+      "text": " if this is the structure, then for",
+      "start": 123.341,
+      "duration": 5.113
+    },
+    {
+      "text": " these four weights, the shape will be 2",
+      "start": 127.513,
+      "duration": 3.31
+    },
+    {
+      "text": ", because we need four weights. And we",
+      "start": 129.823,
+      "duration": 3.557
+    },
+    {
+      "text": " multiplied it by 0.01, thinking we",
+      "start": 132.46,
+      "duration": 3.72
+    },
+    {
+      "text": " would initialize with small weights.",
+      "start": 135.26,
+      "duration": 3.88
+    },
+    {
+      "text": " But what problem did this cause? This",
+      "start": 138.24,
+      "duration": 2.777
+    },
+    {
+      "text": " caused two problems. First, the",
+      "start": 140.067,
+      "duration": 3.272
+    },
+    {
+      "text": " vanishing gradient problem. And second,",
+      "start": 142.399,
+      "duration": 6.087
+    },
+    {
+      "text": " slow convergence. Meaning the model was",
+      "start": 147.575,
+      "duration": 4.14
+    },
+    {
+      "text": " reaching its solution very slowly. Okay",
+      "start": 150.772,
+      "duration": 3.647
+    },
+    {
+      "text": "? So then we thought, let's do one",
+      "start": 153.419,
+      "duration": 2.968
+    },
+    {
+      "text": " thing. Let's initialize with slightly",
+      "start": 155.437,
+      "duration": 2.774
+    },
+    {
+      "text": " larger weights. So we then, I mean, we",
+      "start": 157.252,
+      "duration": 4.591
+    },
+    {
+      "text": " just stopped multiplying by this here.",
+      "start": 160.942,
+      "duration": 4.738
+    },
+    {
+      "text": " And we simply applied this formula. 2 2",
+      "start": 165.499,
+      "duration": 11.257
+    },
+    {
+      "text": " okay, and these weights were generated",
+      "start": 175.841,
+      "duration": 4.258
+    },
+    {
+      "text": " between -3 to 3, roughly speaking, the",
+      "start": 179.184,
+      "duration": 4.257
+    },
+    {
+      "text": " weights generated here were your -0.1",
+      "start": 182.527,
+      "duration": 4.172
+    },
+    {
+      "text": " to -0.1 okay, very small weights, so",
+      "start": 188.08,
+      "duration": 6.974
+    },
+    {
+      "text": " basically we understood that we have to",
+      "start": 194.162,
+      "duration": 5.228
+    },
+    {
+      "text": " initialize with random weights. But the",
+      "start": 198.498,
+      "duration": 7.17
+    },
+    {
+      "text": " range of those numbers matters a lot.",
+      "start": 204.765,
+      "duration": 4.574
+    },
+    {
+      "text": " You cannot take such a small range, and",
+      "start": 208.539,
+      "duration": 3.301
+    },
+    {
+      "text": " you cannot take such a large range",
+      "start": 210.899,
+      "duration": 3.007
+    },
+    {
+      "text": " either. So you have to find an",
+      "start": 212.965,
+      "duration": 3.158
+    },
+    {
+      "text": " intermediate solution. Okay? This was",
+      "start": 215.194,
+      "duration": 3.981
+    },
+    {
+      "text": " our learning. So now the question",
+      "start": 218.249,
+      "duration": 3.426
+    },
+    {
+      "text": " arises, what can be done? Fortunately,",
+      "start": 220.722,
+      "duration": 4.214
+    },
+    {
+      "text": " we are living in a day and age where",
+      "start": 223.988,
+      "duration": 2.854
+    },
+    {
+      "text": " this problem has already been solved.",
+      "start": 225.893,
+      "duration": 2.906
+    },
+    {
+      "text": " Many brilliant minds in deep learning",
+      "start": 229.319,
+      "duration": 3.715
+    },
+    {
+      "text": " have worked on this problem and have",
+      "start": 232.108,
+      "duration": 3.642
+    },
+    {
+      "text": " found some heuristics. Heuristics means",
+      "start": 234.824,
+      "duration": 5.746
+    },
+    {
+      "text": ", in simple words, a hack, meaning some",
+      "start": 239.57,
+      "duration": 5.073
+    },
+    {
+      "text": " practical solution found through",
+      "start": 243.747,
+      "duration": 4.343
+    },
+    {
+      "text": " experimentation that works very well.",
+      "start": 247.194,
+      "duration": 4.865
+    },
+    {
+      "text": " Okay? So we will study those two",
+      "start": 251.619,
+      "duration": 3.78
+    },
+    {
+      "text": " practical solutions today. So there are",
+      "start": 254.478,
+      "duration": 4.282
+    },
+    {
+      "text": " two different solutions. The first",
+      "start": 257.838,
+      "duration": 3.635
+    },
+    {
+      "text": " one's name is Xavier, or sometimes it",
+      "start": 260.544,
+      "duration": 3.633
+    },
+    {
+      "text": " is called Glorot. Both are the names of",
+      "start": 263.249,
+      "duration": 3.216
+    },
+    {
+      "text": " the same person. Initialization, and",
+      "start": 265.508,
+      "duration": 4.261
+    },
+    {
+      "text": " the second is He initialization. Okay?",
+      "start": 268.859,
+      "duration": 5.24
+    },
+    {
+      "text": " And in both of these, we will study two",
+      "start": 273.199,
+      "duration": 2.56
+    },
+    {
+      "text": " types. One we will study is the Xavier",
+      "start": 274.799,
+      "duration": 4.48
+    },
+    {
+      "text": " normal version where you use a normal",
+      "start": 278.359,
+      "duration": 3.96
+    },
+    {
+      "text": " distribution, and the second we will",
+      "start": 281.399,
+      "duration": 3.88
+    },
+    {
+      "text": " study is uniform, and in He also we",
+      "start": 284.359,
+      "duration": 3.8
+    },
+    {
+      "text": " will study normal and uniform, both.",
+      "start": 287.239,
+      "duration": 3.88
+    },
+    {
+      "text": " Okay? In Keras, these two are",
+      "start": 290.959,
+      "duration": 3.924
+    },
+    {
+      "text": " implemented. Okay? Now the good part is",
+      "start": 293.98,
+      "duration": 4.315
+    },
+    {
+      "text": " that you should already know that if",
+      "start": 297.354,
+      "duration": 3.117
+    },
+    {
+      "text": " you are working with tanh or sigmoid.",
+      "start": 299.53,
+      "duration": 6.99
+    },
+    {
+      "text": " No one works with sigmoid anymore. If",
+      "start": 305.7,
+      "duration": 3.999
+    },
+    {
+      "text": " you are working with tanh, you should",
+      "start": 308.759,
+      "duration": 3.231
+    },
+    {
+      "text": " use Xavier initialization. It has been",
+      "start": 311.051,
+      "duration": 3.849
+    },
+    {
+      "text": " proven experimentally that Xavier gives",
+      "start": 313.99,
+      "duration": 4.546
+    },
+    {
+      "text": " better results with tanh. And if you",
+      "start": 317.627,
+      "duration": 4.426
+    },
+    {
+      "text": " are working with ReLU, then you should",
+      "start": 321.106,
+      "duration": 3.027
+    },
+    {
+      "text": " work with He initialization. Again,",
+      "start": 323.186,
+      "duration": 3.627
+    },
+    {
+      "text": " it's experimentally proven that He",
+      "start": 325.882,
+      "duration": 3.347
+    },
+    {
+      "text": " gives better results with ReLU. Okay?",
+      "start": 328.298,
+      "duration": 4.001
+    },
+    {
+      "text": " So this is what we have to study in",
+      "start": 331.519,
+      "duration": 2.489
+    },
+    {
+      "text": " this video. So there is nothing much.",
+      "start": 333.05,
+      "duration": 3.549
+    },
+    {
+      "text": " Basically, some formulas have emerged",
+      "start": 335.759,
+      "duration": 3.347
+    },
+    {
+      "text": " through experiments. We will just look",
+      "start": 338.17,
+      "duration": 3.674
+    },
+    {
+      "text": " at those formulas. Okay? And then we",
+      "start": 340.919,
+      "duration": 3.732
+    },
+    {
+      "text": " will implement them in Keras. But",
+      "start": 343.708,
+      "duration": 2.995
+    },
+    {
+      "text": " before that, I want to give you an",
+      "start": 345.771,
+      "duration": 3.303
+    },
+    {
+      "text": " intuition. I want to give you an",
+      "start": 348.142,
+      "duration": 3.674
+    },
+    {
+      "text": " intuition as to why these formulas work",
+      "start": 350.887,
+      "duration": 3.742
+    },
+    {
+      "text": ". Okay? So, if you've understood the",
+      "start": 353.629,
+      "duration": 5.08
+    },
+    {
+      "text": " discussion so far, then you must have",
+      "start": 357.77,
+      "duration": 3.258
+    },
+    {
+      "text": " grasped that you need to initialize",
+      "start": 360.089,
+      "duration": 3.136
+    },
+    {
+      "text": " your weights with random values. That",
+      "start": 362.286,
+      "duration": 3.809
+    },
+    {
+      "text": " much is certain. But the variance—or",
+      "start": 365.154,
+      "duration": 4.606
+    },
+    {
+      "text": " you could say the spread or range—of",
+      "start": 368.826,
+      "duration": 3.534
+    },
+    {
+      "text": " the weights you initialize cannot be",
+      "start": 371.426,
+      "duration": 3.4
+    },
+    {
+      "text": " too small. Like this. Or too large.",
+      "start": 373.893,
+      "duration": 6.125
+    },
+    {
+      "text": " Like this. Because both of these cause",
+      "start": 379.879,
+      "duration": 3.777
+    },
+    {
+      "text": " different problems. Okay? By the way, I",
+      "start": 382.661,
+      "duration": 4.576
+    },
+    {
+      "text": " think I didn't mention this. If you",
+      "start": 386.292,
+      "duration": 4.836
+    },
+    {
+      "text": " work with large weights, you also get",
+      "start": 390.193,
+      "duration": 3.395
+    },
+    {
+      "text": " the vanishing gradient problem. If you",
+      "start": 392.653,
+      "duration": 4.673
+    },
+    {
+      "text": " are working with Sigmoid and Tanh, you",
+      "start": 396.417,
+      "duration": 4.458
+    },
+    {
+      "text": " can also face the exploding gradient",
+      "start": 399.966,
+      "duration": 4.276
+    },
+    {
+      "text": " problem if you are working with ReLU.",
+      "start": 403.333,
+      "duration": 4.367
+    },
+    {
+      "text": " So the point is simply that we need",
+      "start": 408.139,
+      "duration": 4.362
+    },
+    {
+      "text": " random weights, but specifically,",
+      "start": 411.597,
+      "duration": 4.171
+    },
+    {
+      "text": " neither too small nor too large. So,",
+      "start": 414.864,
+      "duration": 5.124
+    },
+    {
+      "text": " according to our requirements, we need",
+      "start": 419.006,
+      "duration": 1.682
+    },
+    {
+      "text": " to perform random weight initialization",
+      "start": 419.706,
+      "duration": 1.701
+    },
+    {
+      "text": " in a good range or with a good variance",
+      "start": 420.424,
+      "duration": 1.701
+    },
+    {
+      "text": ". This is what we need to understand",
+      "start": 421.125,
+      "duration": 2.996
+    },
+    {
+      "text": " now. Look, the intuition is very simple",
+      "start": 423.168,
+      "duration": 4.177
+    },
+    {
+      "text": ". If you have followed everything so",
+      "start": 426.345,
+      "duration": 4.585
+    },
+    {
+      "text": " far, you will understand. So, if you",
+      "start": 430.003,
+      "duration": 4.075
+    },
+    {
+      "text": " remember, we were doing two things in",
+      "start": 433.13,
+      "duration": 2.95
+    },
+    {
+      "text": " random weight initialization so far. We",
+      "start": 435.133,
+      "duration": 3.313
+    },
+    {
+      "text": " were taking small weights, and what",
+      "start": 437.603,
+      "duration": 6.514
+    },
+    {
+      "text": " were we doing in the case of small",
+      "start": 443.275,
+      "duration": 6.357
+    },
+    {
+      "text": " weights? If you look at this setup,",
+      "start": 448.789,
+      "duration": 3.383
+    },
+    {
+      "text": " where 250-dimensional inputs are going",
+      "start": 451.211,
+      "duration": 2.495
+    },
+    {
+      "text": " into a hidden layer with 250 nodes",
+      "start": 452.745,
+      "duration": 2.337
+    },
+    {
+      "text": " using np.random.randn. Basically, this",
+      "start": 454.121,
+      "duration": 2.462
+    },
+    {
+      "text": " node is receiving 250 inputs. And there",
+      "start": 455.616,
+      "duration": 2.692
+    },
+    {
+      "text": " are 250 such nodes. So the shape",
+      "start": 457.378,
+      "duration": 11.961
+    },
+    {
+      "text": " becomes 250, 250. We were multiplying",
+      "start": 469.105,
+      "duration": 15.376
+    },
+    {
+      "text": " this by a small constant like 0.01, and",
+      "start": 483.512,
+      "duration": 2.21
+    },
+    {
+      "text": " in the case of large values, we were",
+      "start": 484.753,
+      "duration": 2.116
+    },
+    {
+      "text": " writing np.random.randn (250, 250), but",
+      "start": 485.9,
+      "duration": 2.21
+    },
+    {
+      "text": " this time we were multiplying by 1. Now",
+      "start": 487.141,
+      "duration": 2.518
+    },
+    {
+      "text": ", let me try to explain the problem",
+      "start": 488.659,
+      "duration": 4.738
+    },
+    {
+      "text": " with both of these, and then we will",
+      "start": 492.504,
+      "duration": 4.846
+    },
+    {
+      "text": " look at the solution. If you are",
+      "start": 496.456,
+      "duration": 3.541
+    },
+    {
+      "text": " multiplying by 0.01, it means all these",
+      "start": 499.005,
+      "duration": 1.302
+    },
+    {
+      "text": " weights are in this range, or roughly",
+      "start": 499.315,
+      "duration": 1.286
+    },
+    {
+      "text": " in this range. Okay? Now just think,",
+      "start": 499.609,
+      "duration": 11.694
+    },
+    {
+      "text": " your inputs, these x values, let's",
+      "start": 510.37,
+      "duration": 3.278
+    },
+    {
+      "text": " assume they are in the range of -1 to 1",
+      "start": 512.715,
+      "duration": 3.612
+    },
+    {
+      "text": " or 0 to 1, which are already small.",
+      "start": 515.394,
+      "duration": 3.345
+    },
+    {
+      "text": " Multiply 250 such numbers together, and",
+      "start": 518.026,
+      "duration": 2.24
+    },
+    {
+      "text": " then add those 250 numbers; that number",
+      "start": 519.297,
+      "duration": 2.241
+    },
+    {
+      "text": " would be a very small number. And as",
+      "start": 520.569,
+      "duration": 3.072
+    },
+    {
+      "text": " soon as you were sending it into this",
+      "start": 522.695,
+      "duration": 2.988
+    },
+    {
+      "text": " node, its activation functions were",
+      "start": 524.736,
+      "duration": 2.881
+    },
+    {
+      "text": " designed in such a way that they were",
+      "start": 526.671,
+      "duration": 2.988
+    },
+    {
+      "text": " making it zero. So this was the problem",
+      "start": 528.713,
+      "duration": 4.409
+    },
+    {
+      "text": " in the small case. What was the problem",
+      "start": 532.184,
+      "duration": 4.25
+    },
+    {
+      "text": " in the large case was that the numbers",
+      "start": 535.483,
+      "duration": 2.889
+    },
+    {
+      "text": " you generated were in the range of -3",
+      "start": 537.422,
+      "duration": 2.839
+    },
+    {
+      "text": " to 3. So, if you multiply -3 to 3 with",
+      "start": 539.311,
+      "duration": 5.616
+    },
+    {
+      "text": " the -1 to 1 range and add 250 such",
+      "start": 544.019,
+      "duration": 4.132
+    },
+    {
+      "text": " numbers. Then that number could roughly",
+      "start": 547.243,
+      "duration": 5.059
+    },
+    {
+      "text": " be in the range of -250 to 250. Now,",
+      "start": 551.399,
+      "duration": 5.127
+    },
+    {
+      "text": " when you were sending such a large",
+      "start": 555.58,
+      "duration": 2.84
+    },
+    {
+      "text": " value into your activation function, it",
+      "start": 557.474,
+      "duration": 3.111
+    },
+    {
+      "text": " was getting saturated. Meaning, if it",
+      "start": 559.639,
+      "duration": 3.08
+    },
+    {
+      "text": " is -250, depending on the activation",
+      "start": 561.775,
+      "duration": 3.031
+    },
+    {
+      "text": " function, it was going to the extreme",
+      "start": 563.862,
+      "duration": 3.087
+    },
+    {
+      "text": " negative max, as in the minimum. And if",
+      "start": 566.005,
+      "duration": 3.295
+    },
+    {
+      "text": " it is positive 250, then it was",
+      "start": 568.357,
+      "duration": 2.766
+    },
+    {
+      "text": " reaching the maximum value. So, there",
+      "start": 570.18,
+      "duration": 3.345
+    },
+    {
+      "text": " was a problem in both cases. The",
+      "start": 572.592,
+      "duration": 4.552
+    },
+    {
+      "text": " problem is arising because this node of",
+      "start": 576.213,
+      "duration": 3.661
+    },
+    {
+      "text": " yours uses this expression to calculate",
+      "start": 578.943,
+      "duration": 3.661
+    },
+    {
+      "text": " Z. Okay? So the first thing you can",
+      "start": 581.673,
+      "duration": 4.899
+    },
+    {
+      "text": " understand, and those scientists also",
+      "start": 585.65,
+      "duration": 3.864
+    },
+    {
+      "text": " realized, is that you cannot just",
+      "start": 588.592,
+      "duration": 3.555
+    },
+    {
+      "text": " multiply by any constant. Because then",
+      "start": 591.224,
+      "duration": 4.006
+    },
+    {
+      "text": " it wouldn't have any flexibility. The",
+      "start": 594.311,
+      "duration": 4.29
+    },
+    {
+      "text": " number you multiply here should be",
+      "start": 597.688,
+      "duration": 3.974
+    },
+    {
+      "text": " dependent on the architecture of the",
+      "start": 600.75,
+      "duration": 4.149
+    },
+    {
+      "text": " neural network. Okay? So that is why",
+      "start": 603.986,
+      "duration": 4.193
+    },
+    {
+      "text": " people proved it mathematically, but I",
+      "start": 607.238,
+      "duration": 3.225
+    },
+    {
+      "text": " am telling you directly without the",
+      "start": 609.521,
+      "duration": 3.05
+    },
+    {
+      "text": " mathematics because the math is a bit",
+      "start": 611.629,
+      "duration": 3.166
+    },
+    {
+      "text": " difficult. People decided that the",
+      "start": 613.854,
+      "duration": 4.711
+    },
+    {
+      "text": " variance of the numbers we generate",
+      "start": 617.689,
+      "duration": 5.332
+    },
+    {
+      "text": " here should be 1/n. Okay? What is n",
+      "start": 622.144,
+      "duration": 10.312
+    },
+    {
+      "text": " there? n is how many nodes are in the",
+      "start": 631.554,
+      "duration": 4.343
+    },
+    {
+      "text": " previous layer for whichever layer you",
+      "start": 634.958,
+      "duration": 3.304
+    },
+    {
+      "text": " are initializing weights. Or in simpler",
+      "start": 637.323,
+      "duration": 4.476
+    },
+    {
+      "text": " words, how many inputs is this node",
+      "start": 640.874,
+      "duration": 3.636
+    },
+    {
+      "text": " receiving? It is receiving 250. So the",
+      "start": 643.585,
+      "duration": 3.669
+    },
+    {
+      "text": " variance should be 1/250. And this",
+      "start": 646.311,
+      "duration": 3.917
+    },
+    {
+      "text": " means that now what will you multiply",
+      "start": 649.304,
+      "duration": 3.818
+    },
+    {
+      "text": " here? You will multiply by the square",
+      "start": 652.198,
+      "duration": 4.221
+    },
+    {
+      "text": " root of 1/250, which is the standard",
+      "start": 655.506,
+      "duration": 4.136
+    },
+    {
+      "text": " deviation. Okay? What is the intuition",
+      "start": 658.729,
+      "duration": 3.806
+    },
+    {
+      "text": " behind this? The intuition is very",
+      "start": 661.589,
+      "duration": 3.08
+    },
+    {
+      "text": " simple. If n is very large. It means",
+      "start": 663.732,
+      "duration": 6.6
+    },
+    {
+      "text": " you have a lot of these inputs. So you",
+      "start": 669.441,
+      "duration": 5.984
+    },
+    {
+      "text": " want to minimize it. Okay? That is why",
+      "start": 674.523,
+      "duration": 4.931
+    },
+    {
+      "text": " you basically made every number smaller",
+      "start": 678.508,
+      "duration": 3.11
+    },
+    {
+      "text": " by using variance. You reduced the",
+      "start": 680.672,
+      "duration": 3.111
+    },
+    {
+      "text": " range. Just think about it, the range",
+      "start": 682.852,
+      "duration": 4.123
+    },
+    {
+      "text": " is being defined by 1/n. If n is very",
+      "start": 686.061,
+      "duration": 5.005
+    },
+    {
+      "text": " large, each individual weight will be",
+      "start": 690.147,
+      "duration": 3.984
+    },
+    {
+      "text": " very small. Okay? And if n is very low,",
+      "start": 693.211,
+      "duration": 5.15
+    },
+    {
+      "text": " if the value of n is, let's say, only",
+      "start": 697.43,
+      "duration": 3.541
+    },
+    {
+      "text": " two inputs are coming from here. In",
+      "start": 700.04,
+      "duration": 3.469
+    },
+    {
+      "text": " that case, your weight will be large.",
+      "start": 702.574,
+      "duration": 3.405
+    },
+    {
+      "text": " And that's the intuition. That's what",
+      "start": 705.159,
+      "duration": 3.847
+    },
+    {
+      "text": " scientists did; they set the variance",
+      "start": 708.1,
+      "duration": 4.453
+    },
+    {
+      "text": " value to 1/n. What is n? How many nodes",
+      "start": 711.646,
+      "duration": 5.727
+    },
+    {
+      "text": " are in the previous layer? Or you can",
+      "start": 716.457,
+      "duration": 5.226
+    },
+    {
+      "text": " say how many inputs are coming into a",
+      "start": 720.743,
+      "duration": 3.232
+    },
+    {
+      "text": " single node. Number of inputs. Okay?",
+      "start": 723.036,
+      "duration": 3.889
+    },
+    {
+      "text": " Let me explain it once again. The",
+      "start": 726.025,
+      "duration": 2.514
+    },
+    {
+      "text": " intuition is very simple: if there are",
+      "start": 727.617,
+      "duration": 3.95
+    },
+    {
+      "text": " too many inputs, you shouldn't let this",
+      "start": 730.644,
+      "duration": 4.028
+    },
+    {
+      "text": " number become too large. So you make wi",
+      "start": 733.749,
+      "duration": 4.966
+    },
+    {
+      "text": " smaller. That is why you set it to 1/n.",
+      "start": 737.858,
+      "duration": 4.762
+    },
+    {
+      "text": " And if the number of inputs is very",
+      "start": 742.38,
+      "duration": 3.17
+    },
+    {
+      "text": " small, to prevent wi xi from becoming",
+      "start": 744.612,
+      "duration": 3.295
+    },
+    {
+      "text": " too tiny, you make wi a bit larger.",
+      "start": 746.969,
+      "duration": 3.171
+    },
+    {
+      "text": " Because of this. Okay? So this is",
+      "start": 750.019,
+      "duration": 3.627
+    },
+    {
+      "text": " Xavier initialization. Let me tell you.",
+      "start": 752.719,
+      "duration": 3.88
+    },
+    {
+      "text": " The formula for Xavier initialization,",
+      "start": 758.36,
+      "duration": 4.912
+    },
+    {
+      "text": " for the normal one, is the square root",
+      "start": 762.375,
+      "duration": 4.913
+    },
+    {
+      "text": " of 1 divided by fan-in. What is fan-in?",
+      "start": 766.391,
+      "duration": 7.702
+    },
+    {
+      "text": " Fan-in is basically the number of",
+      "start": 773.479,
+      "duration": 4.928
+    },
+    {
+      "text": " inputs. Coming to the node. How many",
+      "start": 777.526,
+      "duration": 9.38
+    },
+    {
+      "text": " inputs are coming into a particular",
+      "start": 785.955,
+      "duration": 2.697
+    },
+    {
+      "text": " node, that is fan-in. Okay? So in",
+      "start": 787.7,
+      "duration": 3.523
+    },
+    {
+      "text": " Xavier initialization, what you do is,",
+      "start": 790.31,
+      "duration": 4.301
+    },
+    {
+      "text": " suppose this is it. You want to",
+      "start": 793.698,
+      "duration": 8.161
+    },
+    {
+      "text": " initialize these four weights, so you",
+      "start": 800.961,
+      "duration": 4.768
+    },
+    {
+      "text": " roughly write np.random.randn 2",
+      "start": 804.831,
+      "duration": 4.157
+    },
+    {
+      "text": " multiplied by the square root of 1/2.",
+      "start": 808.09,
+      "duration": 4.769
+    },
+    {
+      "text": " Okay? This is what Xavier",
+      "start": 814.719,
+      "duration": 2.921
+    },
+    {
+      "text": " initialization is. Right? In some",
+      "start": 816.698,
+      "duration": 3.569
+    },
+    {
+      "text": " places, this formula is implemented a",
+      "start": 819.322,
+      "duration": 3.053
+    },
+    {
+      "text": " bit differently. In some places, this",
+      "start": 821.431,
+      "duration": 3.316
+    },
+    {
+      "text": " is used. 2 divided by fan-in plus",
+      "start": 823.811,
+      "duration": 5.618
+    },
+    {
+      "text": " fan-out. What is fan-out? How much",
+      "start": 828.588,
+      "duration": 4.011
+    },
+    {
+      "text": " output is coming out from a particular",
+      "start": 831.665,
+      "duration": 3.524
+    },
+    {
+      "text": " node. Okay? Usually, this is used more.",
+      "start": 834.255,
+      "duration": 4.072
+    },
+    {
+      "text": " So you focus on this. But you should",
+      "start": 837.427,
+      "duration": 3.906
+    },
+    {
+      "text": " know that a variation exists. Okay? So",
+      "start": 840.403,
+      "duration": 4.246
+    },
+    {
+      "text": " I will quickly show you by running it",
+      "start": 843.745,
+      "duration": 4.53
+    },
+    {
+      "text": " in Keras that using this really gives",
+      "start": 847.371,
+      "duration": 4.53
+    },
+    {
+      "text": " you good results. So guys, you can see",
+      "start": 850.996,
+      "duration": 4.374
+    },
+    {
+      "text": " I am working on the same data again to",
+      "start": 854.431,
+      "duration": 3.3
+    },
+    {
+      "text": " be consistent. Our data looks like this",
+      "start": 856.792,
+      "duration": 4.289
+    },
+    {
+      "text": " and we have to handle it. So here is my",
+      "start": 860.16,
+      "duration": 4.787
+    },
+    {
+      "text": " model architecture. I have taken four",
+      "start": 864.065,
+      "duration": 4.801
+    },
+    {
+      "text": " hidden layers. There are 10 neurons",
+      "start": 867.946,
+      "duration": 3.02
+    },
+    {
+      "text": " each. The activation function is tan h.",
+      "start": 870.006,
+      "duration": 2.94
+    },
+    {
+      "text": " Okay? And I extracted all weights using",
+      "start": 872.099,
+      "duration": 3.466
+    },
+    {
+      "text": " get weights first. And then what will I",
+      "start": 874.609,
+      "duration": 2.769
+    },
+    {
+      "text": " do? I am changing them. You can see",
+      "start": 876.421,
+      "duration": 3.478
+    },
+    {
+      "text": " np.random.randn. And this time, look, I",
+      "start": 878.999,
+      "duration": 3.992
+    },
+    {
+      "text": " am doing np.sqrt. 1/2 because the",
+      "start": 882.047,
+      "duration": 3.392
+    },
+    {
+      "text": " inputs coming into the first layer are",
+      "start": 884.519,
+      "duration": 4.04
+    },
+    {
+      "text": " two, and for the subsequent ones, they",
+      "start": 887.639,
+      "duration": 4.04
+    },
+    {
+      "text": " are 10 inputs each. Right? So you can",
+      "start": 890.759,
+      "duration": 4.04
+    },
+    {
+      "text": " see I have initialized my biases to",
+      "start": 893.859,
+      "duration": 3.1
+    },
+    {
+      "text": " zero. There’s no problem with that.",
+      "start": 896.019,
+      "duration": 2.78
+    },
+    {
+      "text": " And I set these weights using set",
+      "start": 898.039,
+      "duration": 3.193
+    },
+    {
+      "text": " weights, and here are my new weights.",
+      "start": 900.299,
+      "duration": 3.46
+    },
+    {
+      "text": " Right? And you can see, you might also",
+      "start": 903.139,
+      "duration": 3.439
+    },
+    {
+      "text": " be getting an idea of what the range is",
+      "start": 905.627,
+      "duration": 2.9
+    },
+    {
+      "text": " like. And then what did I do? I trained",
+      "start": 907.576,
+      "duration": 3.296
+    },
+    {
+      "text": " my model with the same settings.",
+      "start": 909.945,
+      "duration": 3.341
+    },
+    {
+      "text": " Nothing is different here. And as soon",
+      "start": 912.386,
+      "duration": 3.061
+    },
+    {
+      "text": " as I trained the model, upon getting",
+      "start": 914.495,
+      "duration": 2.728
+    },
+    {
+      "text": " the weights, you can see the weights",
+      "start": 916.271,
+      "duration": 2.728
+    },
+    {
+      "text": " etc., have changed. Meaning, the",
+      "start": 918.047,
+      "duration": 2.595
+    },
+    {
+      "text": " training happened correctly. And",
+      "start": 919.684,
+      "duration": 3.517
+    },
+    {
+      "text": " finally, when I plotted my graph, you",
+      "start": 922.255,
+      "duration": 3.001
+    },
+    {
+      "text": " can see a pretty good result. It",
+      "start": 924.31,
+      "duration": 3.915
+    },
+    {
+      "text": " doesn’t look like overfitting. And it",
+      "start": 927.269,
+      "duration": 2.724
+    },
+    {
+      "text": " doesn’t look like underfitting either",
+      "start": 929.033,
+      "duration": 2.526
+    },
+    {
+      "text": ". Honestly speaking, the pattern in the",
+      "start": 930.559,
+      "duration": 3.756
+    },
+    {
+      "text": " data is being roughly captured. Maybe",
+      "start": 933.386,
+      "duration": 3.889
+    },
+    {
+      "text": " if I had run the model for a few more",
+      "start": 936.334,
+      "duration": 3.195
+    },
+    {
+      "text": " epochs, I would have gotten better",
+      "start": 938.588,
+      "duration": 3.017
+    },
+    {
+      "text": " results. Right? But you get the idea of",
+      "start": 940.664,
+      "duration": 4.298
+    },
+    {
+      "text": " how Xavier initialization is being done",
+      "start": 944.039,
+      "duration": 3.973
+    },
+    {
+      "text": ". Right? One thing you need to remember",
+      "start": 947.012,
+      "duration": 2.877
+    },
+    {
+      "text": ". You will only use Xavier",
+      "start": 948.889,
+      "duration": 2.929
+    },
+    {
+      "text": " initialization with Tanh. You will not",
+      "start": 950.893,
+      "duration": 3.593
+    },
+    {
+      "text": " use it with ReLU. Right? So that’s",
+      "start": 953.538,
+      "duration": 3.103
+    },
+    {
+      "text": " why I have used Tanh here. So now that",
+      "start": 955.689,
+      "duration": 3.309
+    },
+    {
+      "text": " you have seen and understood Xavier or",
+      "start": 958.085,
+      "duration": 4.297
+    },
+    {
+      "text": " Glorot Normal. I will quickly tell you.",
+      "start": 961.469,
+      "duration": 4.035
+    },
+    {
+      "text": " The formula for He Normal. Right? So",
+      "start": 964.759,
+      "duration": 7.024
+    },
+    {
+      "text": " you already know that Xavier works",
+      "start": 970.855,
+      "duration": 3.44
+    },
+    {
+      "text": " better for Tanh, and in the case of",
+      "start": 973.367,
+      "duration": 3.511
+    },
+    {
+      "text": " ReLU, He Normal will work better. The",
+      "start": 975.95,
+      "duration": 4.051
+    },
+    {
+      "text": " formula is nothing much. In this",
+      "start": 979.048,
+      "duration": 2.817
+    },
+    {
+      "text": " formula of yours, there will just be a",
+      "start": 980.932,
+      "duration": 3.533
+    },
+    {
+      "text": " small change: a 2 will replace the 1,",
+      "start": 983.532,
+      "duration": 3.467
+    },
+    {
+      "text": " and here we will have fan_in. Right? So",
+      "start": 986.065,
+      "duration": 4.644
+    },
+    {
+      "text": " this is your formula. Basically, what",
+      "start": 989.774,
+      "duration": 3.694
+    },
+    {
+      "text": " you will do here is...You will make it",
+      "start": 992.509,
+      "duration": 2.543
+    },
+    {
+      "text": " 2/fan_in. Right? So that becomes He",
+      "start": 994.093,
+      "duration": 3.548
+    },
+    {
+      "text": " Normal, and it is used in the case of",
+      "start": 996.71,
+      "duration": 3.554
+    },
+    {
+      "text": " ReLU. If you are working with ReLU, you",
+      "start": 999.333,
+      "duration": 3.674
+    },
+    {
+      "text": " should be using this one. Right? And",
+      "start": 1002.074,
+      "duration": 3.58
+    },
+    {
+      "text": " there is nothing else to it. Now, how",
+      "start": 1004.686,
+      "duration": 2.445
+    },
+    {
+      "text": " did these people reach these",
+      "start": 1006.187,
+      "duration": 2.57
+    },
+    {
+      "text": " conclusions? These are heuristics. It",
+      "start": 1007.813,
+      "duration": 3.212
+    },
+    {
+      "text": " happened through experimentation. You",
+      "start": 1010.076,
+      "duration": 2.996
+    },
+    {
+      "text": " can read their papers. They have",
+      "start": 1012.137,
+      "duration": 2.966
+    },
+    {
+      "text": " explained the math behind it. It’s",
+      "start": 1014.15,
+      "duration": 2.736
+    },
+    {
+      "text": " just that it is a bit complex. If you",
+      "start": 1015.923,
+      "duration": 2.71
+    },
+    {
+      "text": " want to understand it at the",
+      "start": 1017.675,
+      "duration": 2.188
+    },
+    {
+      "text": " application level, remembering this",
+      "start": 1018.906,
+      "duration": 2.485
+    },
+    {
+      "text": " formula will be sufficient. Right? So",
+      "start": 1020.433,
+      "duration": 3.109
+    },
+    {
+      "text": " these are the normal versions of both.",
+      "start": 1022.594,
+      "duration": 2.964
+    },
+    {
+      "text": " Now, there are uniform versions as well",
+      "start": 1024.859,
+      "duration": 3.223
+    },
+    {
+      "text": ". The uniform version means the formula",
+      "start": 1027.082,
+      "duration": 4.191
+    },
+    {
+      "text": " is based on a uniform distribution. So,",
+      "start": 1030.34,
+      "duration": 4.04
+    },
+    {
+      "text": " I will tell you about both of them. If",
+      "start": 1033.427,
+      "duration": 4.351
+    },
+    {
+      "text": " you talk about Xavier or Glorot, the",
+      "start": 1036.906,
+      "duration": 5.598
+    },
+    {
+      "text": " formula for Xavier Uniform is that you",
+      "start": 1041.631,
+      "duration": 5.854
+    },
+    {
+      "text": " initialize or generate your weights",
+      "start": 1046.613,
+      "duration": 5.47
+    },
+    {
+      "text": " between minus limit and limit, and you",
+      "start": 1051.211,
+      "duration": 7.786
+    },
+    {
+      "text": " define the limit by square root of 6",
+      "start": 1058.12,
+      "duration": 5.433
+    },
+    {
+      "text": " divided by fan-in plus fan-out. This is",
+      "start": 1062.677,
+      "duration": 7.044
+    },
+    {
+      "text": " your formula for Xavier Uniform. So,",
+      "start": 1068.847,
+      "duration": 5.494
+    },
+    {
+      "text": " you will generate your numbers within",
+      "start": 1073.421,
+      "duration": 3.985
+    },
+    {
+      "text": " this given range. It should be a",
+      "start": 1076.487,
+      "duration": 3.308
+    },
+    {
+      "text": " uniform distribution. Okay? And if you",
+      "start": 1078.846,
+      "duration": 4.897
+    },
+    {
+      "text": " talk about He Normal, I'm sorry. He",
+      "start": 1082.832,
+      "duration": 4.978
+    },
+    {
+      "text": " Uniform; we have already seen Normal.",
+      "start": 1086.885,
+      "duration": 3.775
+    },
+    {
+      "text": " If you talk about He Uniform, in that",
+      "start": 1090.029,
+      "duration": 5.6
+    },
+    {
+      "text": " case, the formula is that you will",
+      "start": 1094.754,
+      "duration": 5.228
+    },
+    {
+      "text": " generate numbers or weights from minus",
+      "start": 1099.106,
+      "duration": 5.725
+    },
+    {
+      "text": " limit to limit, and the limit is",
+      "start": 1103.955,
+      "duration": 4.98
+    },
+    {
+      "text": " defined by root of 6 divided by fan-in.",
+      "start": 1108.059,
+      "duration": 5.85
+    },
+    {
+      "text": " That's it. Okay? These are your",
+      "start": 1113.151,
+      "duration": 4.401
+    },
+    {
+      "text": " formulas. You have to remember this.",
+      "start": 1116.609,
+      "duration": 3.16
+    },
+    {
+      "text": " Actually, you don't even have to",
+      "start": 1118.869,
+      "duration": 2.109
+    },
+    {
+      "text": " remember it. In fact, I will quickly",
+      "start": 1120.013,
+      "duration": 3.555
+    },
+    {
+      "text": " show you how you can set these values",
+      "start": 1122.634,
+      "duration": 3.46
+    },
+    {
+      "text": " in Keras. So, it's very easy to set",
+      "start": 1125.16,
+      "duration": 3.977
+    },
+    {
+      "text": " this weight initialization technique in",
+      "start": 1128.208,
+      "duration": 3.774
+    },
+    {
+      "text": " Keras. What you have to do is perform",
+      "start": 1131.053,
+      "duration": 3.096
+    },
+    {
+      "text": " this on a layer-by-layer basis. Like, I",
+      "start": 1133.2,
+      "duration": 3.275
+    },
+    {
+      "text": " am taking the same example. Now, you",
+      "start": 1135.54,
+      "duration": 3.219
+    },
+    {
+      "text": " just have to do nothing here. You just",
+      "start": 1137.799,
+      "duration": 2.63
+    },
+    {
+      "text": " need to set the value of this kernel",
+      "start": 1139.468,
+      "duration": 2.398
+    },
+    {
+      "text": " initializer parameter. Like I am",
+      "start": 1140.904,
+      "duration": 2.489
+    },
+    {
+      "text": " showing you how to work with the value",
+      "start": 1142.437,
+      "duration": 2.663
+    },
+    {
+      "text": " now. So, I have set He Normal here. If",
+      "start": 1144.143,
+      "duration": 4.625
+    },
+    {
+      "text": " you want, you can also set He Uniform.",
+      "start": 1147.862,
+      "duration": 4.597
+    },
+    {
+      "text": " And if you want, you can also set",
+      "start": 1152.299,
+      "duration": 4.62
+    },
+    {
+      "text": " Glorot Normal or Glorot Uniform.",
+      "start": 1156.028,
+      "duration": 4.511
+    },
+    {
+      "text": " Obviously, you will do that when you",
+      "start": 1160.1,
+      "duration": 2.879
+    },
+    {
+      "text": " are working with Tanh. For now, I have",
+      "start": 1162.031,
+      "duration": 3.793
+    },
+    {
+      "text": " set He Normal here. If it is coming to",
+      "start": 1164.91,
+      "duration": 4.538
+    },
+    {
+      "text": " your mind, what is it by default? If",
+      "start": 1168.492,
+      "duration": 3.573
+    },
+    {
+      "text": " you don't specify this, how does the",
+      "start": 1171.127,
+      "duration": 3.253
+    },
+    {
+      "text": " initialization happen? So, when I",
+      "start": 1173.442,
+      "duration": 3.731
+    },
+    {
+      "text": " looked at the Keras source code, Glorot",
+      "start": 1176.223,
+      "duration": 2.926
+    },
+    {
+      "text": " Uniform was the default there. Okay? So",
+      "start": 1178.198,
+      "duration": 3.884
+    },
+    {
+      "text": ", if someone asks you, you can tell",
+      "start": 1181.082,
+      "duration": 3.024
+    },
+    {
+      "text": " them this. So, now there's nothing else",
+      "start": 1183.163,
+      "duration": 2.911
+    },
+    {
+      "text": " to do. Run this. I will run it once.",
+      "start": 1185.118,
+      "duration": 4.381
+    },
+    {
+      "text": " Let's see the get weights. It will come",
+      "start": 1188.839,
+      "duration": 3.938
+    },
+    {
+      "text": " out exactly in the same way. See, it is",
+      "start": 1191.822,
+      "duration": 2.841
+    },
+    {
+      "text": " the same kind of weight initialization.",
+      "start": 1193.709,
+      "duration": 2.81
+    },
+    {
+      "text": " Okay? Otherwise, we are not running all",
+      "start": 1195.652,
+      "duration": 2.971
+    },
+    {
+      "text": " this code now. We will not make these",
+      "start": 1197.663,
+      "duration": 2.508
+    },
+    {
+      "text": " changes. We will directly execute, we",
+      "start": 1199.21,
+      "duration": 4.332
+    },
+    {
+      "text": " will train our model, and our model is",
+      "start": 1202.627,
+      "duration": 4.26
+    },
+    {
+      "text": " trained. Let's take a look at its",
+      "start": 1205.973,
+      "duration": 3.358
+    },
+    {
+      "text": " result once. You can see, it's okay.",
+      "start": 1208.384,
+      "duration": 3.755
+    },
+    {
+      "text": " Meaning, it's a bit worse than the last",
+      "start": 1211.279,
+      "duration": 2.941
+    },
+    {
+      "text": " time. But again, this happens because",
+      "start": 1213.27,
+      "duration": 2.836
+    },
+    {
+      "text": " of multiple reasons. Once you make the",
+      "start": 1215.152,
+      "duration": 2.938
+    },
+    {
+      "text": " changes, you will understand. So this",
+      "start": 1217.137,
+      "duration": 4.094
+    },
+    {
+      "text": " was a He normal. Try out He uniform as",
+      "start": 1220.313,
+      "duration": 4.787
+    },
+    {
+      "text": " well. You guys should try Glorot",
+      "start": 1224.166,
+      "duration": 3.291
+    },
+    {
+      "text": " uniform and Glorot normal by keeping an",
+      "start": 1226.521,
+      "duration": 3.488
+    },
+    {
+      "text": " eye on them. Okay? So I have shown you",
+      "start": 1229.073,
+      "duration": 4.028
+    },
+    {
+      "text": " how it is done in Keras. So that was",
+      "start": 1232.16,
+      "duration": 3.351
+    },
+    {
+      "text": " the video, guys. If you combine both",
+      "start": 1234.577,
+      "duration": 3.186
+    },
+    {
+      "text": " videos, I know there was a lot of",
+      "start": 1236.818,
+      "duration": 2.806
+    },
+    {
+      "text": " information. But you just need to",
+      "start": 1238.679,
+      "duration": 3.672
+    },
+    {
+      "text": " remember the summary and how to run it",
+      "start": 1241.409,
+      "duration": 3.225
+    },
+    {
+      "text": " in Keras. Although, I would recommend",
+      "start": 1243.693,
+      "duration": 4.08
+    },
+    {
+      "text": " that you try running things on some",
+      "start": 1246.83,
+      "duration": 3.013
+    },
+    {
+      "text": " datasets. Run experiments and keep the",
+      "start": 1248.901,
+      "duration": 3.773
+    },
+    {
+      "text": " conclusions in your mind. Then it will",
+      "start": 1251.749,
+      "duration": 3.732
+    },
+    {
+      "text": " be more useful. Okay? If you liked the",
+      "start": 1254.525,
+      "duration": 3.925
+    },
+    {
+      "text": " video, please like it, and if you",
+      "start": 1257.498,
+      "duration": 2.589
+    },
+    {
+      "text": " haven't subscribed to the channel,",
+      "start": 1259.135,
+      "duration": 2.638
+    },
+    {
+      "text": " please subscribe. Okay? That's it from",
+      "start": 1260.821,
+      "duration": 4.022
+    },
+    {
+      "text": " my side. See you in the next video. Bye",
+      "start": 1263.898,
+      "duration": 3.289
+    },
+    {
+      "text": ".",
+      "start": 1266.187,
+      "duration": 1.14
+    }
+  ]
+}

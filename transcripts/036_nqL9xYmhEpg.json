@@ -1,0 +1,2530 @@
+{
+  "id": "nqL9xYmhEpg",
+  "index": 36,
+  "title": "AdaGrad Explained in Detail with Animations | Optimizers in Deep Learning Part 4",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitesh and you are  welcome to my YouTube channel. In this  video too, we will continue our deep  learning playlist. We are studying  optimizers in deep learning, and today  we will study a new optimization  technique named Adagrad. Okay? So,  let's start the video. So, let's start  our discussion guys. First of all,  let's talk about the name. The name of  this algorithm is Adagrad and its full  form is Adaptive. Gradient. Okay? And  the main concept in this entire  algorithm is that you don't keep your  learning rate fixed. You change it, or  you could say you adapt it according to  the situation. Okay? So, this is the  main concept. Now, I'm going to tell  you in advance in which scenarios  Adagrad performs better compared to  other optimization algorithms. First,  if the scale of your input features is  very different. The scale is different.  Meaning, for instance, if we have data  like CGPA, and let's say we have data  of, what can I say, let's say salary,  and we need to predict something from  this, like whether or not a loan was  approved at a bank. I know this data  doesn't make much sense. But the CGPA  will be between zero and 10. Salary  could be anything. From zero, it could  range into lakhs. So, if you have this  kind of data, then the Adaptive  Gradient algorithm will work better on  this type of data. Although, generally,  when people have this kind of data,  they normalize it beforehand. So, this  condition is not that useful. The  second one is a more useful criterion,  which is if your features are sparse.  Sparse means that most of your values  are zero. Most of the values are zero.  If you have this kind of data, then you  can use the Adagrad algorithm. I will  give you an example. Let's assume we  have data where we have input columns  for IQ and CGPA, and another input  column for \"from IIT,\" and then we are  looking at the package in the output  column. So here, there will be normal  IQ values. Here, there will be CGPA.  Here, there will be zero or one.  Depending on whether the student is  from an IIT or not. Okay? Now, as you  already know, very few people in India  are able to get into an IIT. So,  obviously, the values in this column  will mostly be zero. Right? But this is  a variant column because if you are  from an IIT, your package will be  higher. Right? So if there is data like  this, then you will use Adagrad here  and it will give you better results.  Now the question is, what is the  problem with having sparse features? I  will tell you that. Having sparse  features causes a problem which we call  an elongated bowl problem. I will show  you that through diagrams. Look here, I  have plotted these graphs on a dataset.  So this graph is of loss with respect  to W and B. Right? On one side, this  graph—in fact, first this graph here  is a simple xy graph where x is the  input column, y is the output column,  and x is a normal input column where  there are normal values. So here you  can see that on the M axis and B axis,  there is a circular kind of contour  plot. Right? Meaning there are circles,  they are ellipses, but somewhat  circular. But here, this data is also x  and y. But here, the x contains a lot  of zeros. Meaning this is a sparse  feature. Now, due to the feature being  sparse, notice that one side of your  bowl has become very elongated. Right?  This is your M side and this is your B  side. You can see it is a bit elongated . It is stretched out. Right? So my  only point is that if your data is  sparse, then your graph of loss with  respect to the parameters will be a bit  elongated. And if your feature is not  sparse, then it will be somewhat  circular. Right? This is what you have  to understand first. You can see the  same thing in 3D. This is a 3D plot of  this same contour plot. Here you can  see this is the normal graph. Actually,  it is this graph here. Right? You can  see here you are moving in both  directions. Right? Whereas look at this  graph. This is its corresponding graph.  You can see you are not moving much in  this direction. In this direction there  is movement, but in this place you are  constant. Right? So what happens is  that in an elongated graph, your slope  changes on one axis and remains kind of  constant on the second axis. Like this,  you can see this axis here, you are  changing here. But on this axis, there  is no change. Now, what happens is that  when you have a valley like this, where  changes are happening on one axis, and  there are no slope changes on the other  axis. Basically, an elongated bowl is  being formed. In this situation, your  normal optimization algorithms, like  Batch Gradient Descent, Momentum, or  NAG, which we have studied so far, are  unable to work correctly. Okay? So,  Adagrad solves this very problem. So,  what will I do now? I will show you  once what Batch Gradient Descent and  Momentum are doing wrong in such a  valley, why they are failing, and then  we will solve that mess using Adagrad.  So let's first focus on Batch Gradient  Descent. This is the same data that I  told you about. Here, x has a lot of  sparse values. There are zero values.  And you can see how our Batch Gradient  Descent is descending in this valley.  Note that we are moving rapidly towards  the B side first, and we are making no  progress on the M side. But when we  reach the bottom of the valley, then we  move towards the M side. Okay? Meaning,  you can clearly see that time is being  wasted here. If you had come down  directly, you would have reached faster . But here, what's happening is that  you are going down towards the B side  first, and then you are eventually  moving towards the M side. Okay? You  can see the contour plot of the same  thing, that you came here first and  then you went straight. Okay? What  should have happened is that you would  have come down directly like this. But  that is not happening. Because this is  an elongated bowl problem. Okay? Now,  if this question is coming to your mind , why are we descending on the B side  first? The reason for that is the M  side, what is M? M is the coefficient  which is corresponding to x, and x is  sparse. That is why, initially, there  are no changes in x. There are no  changes in M. Corresponding to b, all  values are one. So it is not sparse.  That is why, initially, changes are  happening in b and you are descending.  Okay? Now I will show you Momentum. So,  in the case of Momentum, this is the  output. Since this is Momentum. In the  case of B, you went very fast and in  fact you slightly overshot, and then  you are coming back in the direction of  M and moving towards your minima. You  can see the contour plot. You first  went a bit further in this direction.  Then you came back because momentum  involves overshooting, and then you are  heading back towards the minima. Okay?  But again, you can clearly see this is  not a very optimized way of reaching  the minima. Okay? You can clearly see  logically and tell that a faster way is  possible if you take a shortcut. You  come down directly in this way. Okay?  But both of these algorithms are unable  to do so. And this is the main problem  where Adagrad will come in handy for us . So in short, both your Batch SGD and  momentum algorithms will not perform  well. If you have data that is sparse.  Okay? I have put both these cutouts  here. You can see that in the initial  many epochs, what is happening is that  this is the B side and this is the M  side. You can see that in the initial  many epochs, you are moving more in  this direction. You are moving very  little in this direction. Okay? Same  here, you can see that in the initial  many epochs, you are moving more in  this direction, in the direction of B,  and moving very little in the direction  of M. Now, if you have this doubt again  in your mind as to why we are moving in  the direction of B? We are not moving  in the direction of M. It's because our  data is something like this. We have x.  There are many zeros in this way. y is  normal. And along with that, you can  assume that we have a column of ones  here. So this is correlated with M and  this is correlated with B. So since the  feature related to M has many sparse  values. That is why you are seeing less  movement in the direction of M. Whereas  the column corresponding to B, since it  has no sparse values. It is behaving  normally and there is normal movement  in it. Okay? I will explain this entire  point further. But you have to remember  that our data is like this. You can  assume that our data has two columns.  One x and another this column where all  the values are ones. Okay? Now I will  explain to you why it happens that  there is less movement against a sparse  column and normal movement in a normal  one. We will try to understand this now . So, to understand this entire concept , we are first creating a neural  network. So, based on our data, let's  assume this is our neural network.  There is only one neuron receiving  input X from this side. From this side,  it is receiving an input of one. This  is my W. This is my B, and from here I  am getting Y-hat. Okay? Now, let me  explain to you using a batch gradient  descent example what the problem is if  there are sparse values. Okay? So look,  what happens is that in batch gradient  descent, your pseudo-code is something  like 'for i in epochs'. What you do  each time is update the weight and bias  using this formula. Right? You take  some initial value for W and B and then  constantly update it using gradient  descent. So what are you subtracting?  You are...well, this will be B here, by  the way. Uh, in fact, let's write it  properly. Okay? So, basically you are  subtracting the gradient of both. Now,  let me calculate the gradient for you  once here. Like, if you calculate del L /del W in this one, it will basically  be del L/del Y-hat and del Y-hat/del W,  okay? Let's assume for a moment that a  linear activation function is being  used here. Because this is a linear...I  mean, this is a regression problem.  Okay? So your (y-y-hat) squared, mean  squared error, is your loss function.  So, corresponding to this, your  differentiation will be this, and  corresponding to this one, your  differentiation will be x. Similarly,  if you talk about del L/del B, it will  be 2*(y-y-hat), and here instead of x,  it will be one because the input is one . Okay? So, basically what are you  doing? What are you subtracting from W  here? This term. Okay? So what do you  have to do? For every epoch, what you  have to do is, if you have 100 rows.  Then for each row, you will calculate  y-hat and multiply it by its  corresponding x input, and you will do  this for 100 rows and add them all up.  You will get a big term for this. And  similarly, you will do this same work  for this. Now think carefully that when  you do this whole thing for 100 rows,  the value of x will be zero many times  because x is sparse. Now, if x is  sparse, then this entire derivative  will also be zero many times. So when  you add them for 100 rows, because of  many zeros, this will be a small number . Right? If this is a very small number , then your update will also be very  small. In every epoch. Whereas, if you  talk about B, since you are multiplying  by one here, for 100 rows it will never  be zero. And as it keeps adding up, it  will be a big number. This means when  you subtract from B, you will have a  big update. In every epoch. So try to  understand what happens is that as you  descend from this valley, you want to  move in this direction, so you have  velocity in two directions. One in this  direction, which is the m direction,  and one in this direction, which is the  b direction. And you descend in the  resultant of these. Right? Now think,  if your update is not happening at all  in the m direction and a big update is  happening in the b direction, then  obviously your movement will be  something like this. Right? I think you  are understanding what is happening:  that there is no movement in one  direction and too much in another, so  you start moving in that direction.  Okay? So the same thing happens here,  that if you have a sparse column, the  corresponding weight update is small,  and for a non-sparse column, the  corresponding weight update is normal  or large, which is why this movement  doesn't happen. You start moving in  just one direction, either this  direction or this direction, and  because of that you will notice that  initially what is happening is that you  are moving in the downward direction  first, and then eventually you are  moving in this direction. Now, a small  question for you: answer in the  comments why, after reaching this point , did the update start happening in  this direction? What happened that  caused it to finally start updating in  this direction? This is your question.  You have to answer this in the comments . But regardless, I have just explained  to you why small movements happen due  to sparse columns in this entire  scenario of yours. So the problem is  understood that if you have a sparse  column, its corresponding parameter's  derivative will be zero many times,  causing its update to be small compared  to a normal parameter. Right? Now, what  happens is that your resultant movement  is, in a way, the vector sum of these  two updates. So if this one is  completely zero, you will obviously  move in this direction very quickly.  But we want this movement. Meaning we  need to give comparable updates to one  direction and the other. Meaning I have  to make sure that both these updates  are at a similar level. So look  carefully. So the solution is that  obviously this gradient is causing the  problem. Now, the only thing left in  the update is the learning rate. Now,  all the optimization algorithms you  have studied so far—Batch Gradient  Descent, Stochastic Gradient Descent,  Momentum, Nesterov Accelerated Gradient —in all of these, no matter how many  parameters there are, the learning rate  is the same for all. In AdaGrad, what  you do is you for different parameters  w and b, you set different learning  rates. Right? This is the biggest point  in AdaGrad, that you keep different  learning rates for different parameters . Now, I will tell you how you set the  learning rate. If your parameter's  update is big, you make its learning  rate small. So that when this gradient  is multiplied by this small learning  rate, the update becomes small. I hope  you are understanding. So somehow you  have to ensure that you make the  learning rate small for the parameter  whose gradient is large. Right? So this  is the intuition of AdaGrad: that you  keep a different learning rate for  every parameter, and how you manipulate  the learning rate is: If someone's  derivative is small, the learning rate  should be large. So that its update is  large. And if someone's gradient is  large, you make its learning rate small . So that its update is small. Right?  So that these two always remain  comparable. Now let me show you the  mathematical formula for AdaGrad. So  this is the mathematical formula of  AdaGrad. So w t + 1 = wt-learning rate  uh, basically you could have written it  this way too, but this is the more  compact form, divided by the square  root of vt + where vt is equal to vt-1  plus the square of the gradient of the  weight. Right? Now I will explain all  the terms to you one by one. So  basically, if you notice this entire  thing then the formula for normal  gradient descent is this. Here, just  this term right here is extra. Okay?  Now, there are two things in this term  as well. One is vt and the other is eps . So eps is basically a very small  number. It is kept here only so that if  vt is zero, this entire term shouldn't  become infinite. Okay? So it doesn't  have much significance. Let's talk  about vt. So vt is that thing. So what  is vt? vt is past vt plus your gradient  squared. Basically its square or its  square. So in a way, what are you  storing in vt? The sum of past  gradients, or you could say squared sum . Why are we squaring? Because the  gradient can be negative or positive.  But you want to add it by treating it  as positive. Okay? You want to consider  the magnitude, not the direction. That  is why you squared it. Why not mod?  Because during backpropagation, you  have to differentiate. That is why we  squared it. Okay? So in a way, what are  you doing in vt? First the gradient  came, after that the second gradient  came. In every epoch, you are squaring  the gradient you calculate and adding  it. Okay? And eventually, you are  dividing the learning rate by that  number. Think about it, if someone's  gradient is large, then when you divide  the learning rate by a large number,  the learning rate will become small,  and if someone's gradient is small,  then when you divide by a small number,  there won't be much impact on the  learning rate. So I hope you are  understanding the entire intuition. You  have done nothing else. In this entire  formula, this gradient descent formula,  you have just divided the learning rate  by the square root of vt. What is vt?  The sum of the squares of past  gradients. That's it. And this is your  AdaGrad. Now I will show you through an  animation what the benefit is if you  apply AdaGrad on sparse data. Look here  guys, this is AdaGrad on the same data,  and I think you can already see that  AdaGrad is performing better. Okay? If  you focus on this contour plot, you can  see that it has taken a slightly more  optimized path. You can compare it with  batch gradient descent. This is batch  gradient descent and this is Adagrad.  All right? And this is Momentum. You  can see side by side that there is a  clear improvement. And that is why you  are able to reach your global minima  faster. Now let's talk about the  disadvantage. Does Adagrad have any  disadvantage? The answer is yes. There  is a huge disadvantage. In fact, the  disadvantage is so big that you don't  use Adagrad in neural networks. Mostly,  you can use Adagrad in problems like  linear regression. But not for a  complex neural network. Generally, you  won't get good results. Why? I will  give you the reason. So, what happens  is that Adagrad is able to reach near  the solution. But it can never converge  to the solution. No matter how many  epochs you give it. What is the reason  for that? The reason is very simple,  that you are decreasing the learning  rate. You are dividing it by your past  updates or past gradients. So as epochs  increase, this Vt starts to become very  large, and as Vt becomes very large,  this learning rate becomes very small.  Because of which, the update becomes  very small and basically no update  happens at all. So it stops at one  place and does not converge to your  minima. So this is the biggest problem  with Adagrad, that you will not be able  to reach the global minima. Then why  did we study it? The reason is that we  will study two more optimizers ahead:  RMSprop and Adam. And in both of those,  we will reuse the theory that we  studied in Adagrad. All right? I hope  you are understanding this point. So  that's it for the video, guys. I hope  you understood the video and liked it  too. If you liked the video, please  like it, and if you haven't subscribed  to my channel yet, please do subscribe.  See you in the next video. Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitesh and you are",
+      "start": 0.1,
+      "duration": 3.076
+    },
+    {
+      "text": " welcome to my YouTube channel. In this",
+      "start": 2.23,
+      "duration": 3.129
+    },
+    {
+      "text": " video too, we will continue our deep",
+      "start": 4.415,
+      "duration": 3.003
+    },
+    {
+      "text": " learning playlist. We are studying",
+      "start": 6.474,
+      "duration": 3.176
+    },
+    {
+      "text": " optimizers in deep learning, and today",
+      "start": 8.708,
+      "duration": 3.175
+    },
+    {
+      "text": " we will study a new optimization",
+      "start": 10.941,
+      "duration": 2.832
+    },
+    {
+      "text": " technique named Adagrad. Okay? So,",
+      "start": 12.83,
+      "duration": 3.594
+    },
+    {
+      "text": " let's start the video. So, let's start",
+      "start": 15.485,
+      "duration": 3.575
+    },
+    {
+      "text": " our discussion guys. First of all,",
+      "start": 18.119,
+      "duration": 4.123
+    },
+    {
+      "text": " let's talk about the name. The name of",
+      "start": 21.293,
+      "duration": 4.55
+    },
+    {
+      "text": " this algorithm is Adagrad and its full",
+      "start": 24.897,
+      "duration": 3.041
+    },
+    {
+      "text": " form is Adaptive. Gradient. Okay? And",
+      "start": 26.992,
+      "duration": 10.065
+    },
+    {
+      "text": " the main concept in this entire",
+      "start": 36.104,
+      "duration": 2.455
+    },
+    {
+      "text": " algorithm is that you don't keep your",
+      "start": 37.606,
+      "duration": 2.737
+    },
+    {
+      "text": " learning rate fixed. You change it, or",
+      "start": 39.39,
+      "duration": 11.916
+    },
+    {
+      "text": " you could say you adapt it according to",
+      "start": 50.358,
+      "duration": 2.997
+    },
+    {
+      "text": " the situation. Okay? So, this is the",
+      "start": 52.406,
+      "duration": 5.045
+    },
+    {
+      "text": " main concept. Now, I'm going to tell",
+      "start": 56.518,
+      "duration": 4.245
+    },
+    {
+      "text": " you in advance in which scenarios",
+      "start": 59.818,
+      "duration": 2.835
+    },
+    {
+      "text": " Adagrad performs better compared to",
+      "start": 61.708,
+      "duration": 2.946
+    },
+    {
+      "text": " other optimization algorithms. First,",
+      "start": 63.71,
+      "duration": 5.679
+    },
+    {
+      "text": " if the scale of your input features is",
+      "start": 68.449,
+      "duration": 9.249
+    },
+    {
+      "text": " very different. The scale is different.",
+      "start": 76.753,
+      "duration": 4.101
+    },
+    {
+      "text": " Meaning, for instance, if we have data",
+      "start": 85.227,
+      "duration": 3.273
+    },
+    {
+      "text": " like CGPA, and let's say we have data",
+      "start": 87.56,
+      "duration": 3.213
+    },
+    {
+      "text": " of, what can I say, let's say salary,",
+      "start": 89.833,
+      "duration": 3.214
+    },
+    {
+      "text": " and we need to predict something from",
+      "start": 92.107,
+      "duration": 3.213
+    },
+    {
+      "text": " this, like whether or not a loan was",
+      "start": 94.38,
+      "duration": 3.154
+    },
+    {
+      "text": " approved at a bank. I know this data",
+      "start": 96.594,
+      "duration": 6.769
+    },
+    {
+      "text": " doesn't make much sense. But the CGPA",
+      "start": 102.415,
+      "duration": 3.975
+    },
+    {
+      "text": " will be between zero and 10. Salary",
+      "start": 105.457,
+      "duration": 4.267
+    },
+    {
+      "text": " could be anything. From zero, it could",
+      "start": 108.779,
+      "duration": 3.491
+    },
+    {
+      "text": " range into lakhs. So, if you have this",
+      "start": 111.332,
+      "duration": 4.908
+    },
+    {
+      "text": " kind of data, then the Adaptive",
+      "start": 115.294,
+      "duration": 2.663
+    },
+    {
+      "text": " Gradient algorithm will work better on",
+      "start": 117.011,
+      "duration": 3.04
+    },
+    {
+      "text": " this type of data. Although, generally,",
+      "start": 119.104,
+      "duration": 5.862
+    },
+    {
+      "text": " when people have this kind of data,",
+      "start": 124.025,
+      "duration": 3.06
+    },
+    {
+      "text": " they normalize it beforehand. So, this",
+      "start": 126.144,
+      "duration": 5.133
+    },
+    {
+      "text": " condition is not that useful. The",
+      "start": 130.339,
+      "duration": 4.513
+    },
+    {
+      "text": " second one is a more useful criterion,",
+      "start": 133.907,
+      "duration": 3.092
+    },
+    {
+      "text": " which is if your features are sparse.",
+      "start": 136.054,
+      "duration": 6.918
+    },
+    {
+      "text": " Sparse means that most of your values",
+      "start": 145.584,
+      "duration": 3.102
+    },
+    {
+      "text": " are zero. Most of the values are zero.",
+      "start": 147.743,
+      "duration": 6.23
+    },
+    {
+      "text": " If you have this kind of data, then you",
+      "start": 154.592,
+      "duration": 3.058
+    },
+    {
+      "text": " can use the Adagrad algorithm. I will",
+      "start": 156.702,
+      "duration": 4.345
+    },
+    {
+      "text": " give you an example. Let's assume we",
+      "start": 160.094,
+      "duration": 6.623
+    },
+    {
+      "text": " have data where we have input columns",
+      "start": 165.775,
+      "duration": 3.148
+    },
+    {
+      "text": " for IQ and CGPA, and another input",
+      "start": 167.981,
+      "duration": 2.974
+    },
+    {
+      "text": " column for \"from IIT,\" and then we are",
+      "start": 170.013,
+      "duration": 3.205
+    },
+    {
+      "text": " looking at the package in the output",
+      "start": 172.276,
+      "duration": 3.09
+    },
+    {
+      "text": " column. So here, there will be normal",
+      "start": 174.424,
+      "duration": 7.292
+    },
+    {
+      "text": " IQ values. Here, there will be CGPA.",
+      "start": 180.784,
+      "duration": 3.605
+    },
+    {
+      "text": " Here, there will be zero or one.",
+      "start": 183.489,
+      "duration": 2.725
+    },
+    {
+      "text": " Depending on whether the student is",
+      "start": 185.314,
+      "duration": 2.685
+    },
+    {
+      "text": " from an IIT or not. Okay? Now, as you",
+      "start": 187.047,
+      "duration": 3.119
+    },
+    {
+      "text": " already know, very few people in India",
+      "start": 189.22,
+      "duration": 3.044
+    },
+    {
+      "text": " are able to get into an IIT. So,",
+      "start": 191.318,
+      "duration": 2.794
+    },
+    {
+      "text": " obviously, the values in this column",
+      "start": 193.174,
+      "duration": 3.25
+    },
+    {
+      "text": " will mostly be zero. Right? But this is",
+      "start": 195.487,
+      "duration": 3.427
+    },
+    {
+      "text": " a variant column because if you are",
+      "start": 197.968,
+      "duration": 2.885
+    },
+    {
+      "text": " from an IIT, your package will be",
+      "start": 199.907,
+      "duration": 2.778
+    },
+    {
+      "text": " higher. Right? So if there is data like",
+      "start": 201.738,
+      "duration": 5.156
+    },
+    {
+      "text": " this, then you will use Adagrad here",
+      "start": 205.945,
+      "duration": 2.821
+    },
+    {
+      "text": " and it will give you better results.",
+      "start": 207.817,
+      "duration": 2.821
+    },
+    {
+      "text": " Now the question is, what is the",
+      "start": 212.836,
+      "duration": 2.709
+    },
+    {
+      "text": " problem with having sparse features? I",
+      "start": 214.599,
+      "duration": 4.79
+    },
+    {
+      "text": " will tell you that. Having sparse",
+      "start": 218.432,
+      "duration": 3.832
+    },
+    {
+      "text": " features causes a problem which we call",
+      "start": 221.321,
+      "duration": 3.212
+    },
+    {
+      "text": " an elongated bowl problem. I will show",
+      "start": 223.59,
+      "duration": 9.258
+    },
+    {
+      "text": " you that through diagrams. Look here, I",
+      "start": 231.897,
+      "duration": 4.928
+    },
+    {
+      "text": " have plotted these graphs on a dataset.",
+      "start": 235.881,
+      "duration": 3.154
+    },
+    {
+      "text": " So this graph is of loss with respect",
+      "start": 239.911,
+      "duration": 7.207
+    },
+    {
+      "text": " to W and B. Right? On one side, this",
+      "start": 246.175,
+      "duration": 6.5
+    },
+    {
+      "text": " graph—in fact, first this graph here",
+      "start": 251.739,
+      "duration": 3.406
+    },
+    {
+      "text": " is a simple xy graph where x is the",
+      "start": 254.209,
+      "duration": 3.216
+    },
+    {
+      "text": " input column, y is the output column,",
+      "start": 256.489,
+      "duration": 3.343
+    },
+    {
+      "text": " and x is a normal input column where",
+      "start": 258.895,
+      "duration": 3.28
+    },
+    {
+      "text": " there are normal values. So here you",
+      "start": 261.239,
+      "duration": 7.468
+    },
+    {
+      "text": " can see that on the M axis and B axis,",
+      "start": 267.766,
+      "duration": 3.227
+    },
+    {
+      "text": " there is a circular kind of contour",
+      "start": 270.052,
+      "duration": 3.051
+    },
+    {
+      "text": " plot. Right? Meaning there are circles,",
+      "start": 272.161,
+      "duration": 6.82
+    },
+    {
+      "text": " they are ellipses, but somewhat",
+      "start": 278.038,
+      "duration": 2.771
+    },
+    {
+      "text": " circular. But here, this data is also x",
+      "start": 279.866,
+      "duration": 4.198
+    },
+    {
+      "text": " and y. But here, the x contains a lot",
+      "start": 283.132,
+      "duration": 3.967
+    },
+    {
+      "text": " of zeros. Meaning this is a sparse",
+      "start": 286.165,
+      "duration": 3.245
+    },
+    {
+      "text": " feature. Now, due to the feature being",
+      "start": 288.464,
+      "duration": 4.318
+    },
+    {
+      "text": " sparse, notice that one side of your",
+      "start": 291.843,
+      "duration": 3.191
+    },
+    {
+      "text": " bowl has become very elongated. Right?",
+      "start": 294.095,
+      "duration": 4.049
+    },
+    {
+      "text": " This is your M side and this is your B",
+      "start": 298.692,
+      "duration": 3.12
+    },
+    {
+      "text": " side. You can see it is a bit elongated",
+      "start": 300.868,
+      "duration": 5.227
+    },
+    {
+      "text": ". It is stretched out. Right? So my",
+      "start": 305.095,
+      "duration": 10.726
+    },
+    {
+      "text": " only point is that if your data is",
+      "start": 314.873,
+      "duration": 2.763
+    },
+    {
+      "text": " sparse, then your graph of loss with",
+      "start": 316.688,
+      "duration": 2.867
+    },
+    {
+      "text": " respect to the parameters will be a bit",
+      "start": 318.607,
+      "duration": 3.022
+    },
+    {
+      "text": " elongated. And if your feature is not",
+      "start": 320.681,
+      "duration": 5.641
+    },
+    {
+      "text": " sparse, then it will be somewhat",
+      "start": 325.374,
+      "duration": 2.644
+    },
+    {
+      "text": " circular. Right? This is what you have",
+      "start": 327.069,
+      "duration": 3.255
+    },
+    {
+      "text": " to understand first. You can see the",
+      "start": 329.37,
+      "duration": 2.941
+    },
+    {
+      "text": " same thing in 3D. This is a 3D plot of",
+      "start": 331.371,
+      "duration": 3.393
+    },
+    {
+      "text": " this same contour plot. Here you can",
+      "start": 333.828,
+      "duration": 3.527
+    },
+    {
+      "text": " see this is the normal graph. Actually,",
+      "start": 336.404,
+      "duration": 3.968
+    },
+    {
+      "text": " it is this graph here. Right? You can",
+      "start": 339.433,
+      "duration": 5.214
+    },
+    {
+      "text": " see here you are moving in both",
+      "start": 343.697,
+      "duration": 2.527
+    },
+    {
+      "text": " directions. Right? Whereas look at this",
+      "start": 345.273,
+      "duration": 5.432
+    },
+    {
+      "text": " graph. This is its corresponding graph.",
+      "start": 349.759,
+      "duration": 3.543
+    },
+    {
+      "text": " You can see you are not moving much in",
+      "start": 353.28,
+      "duration": 2.743
+    },
+    {
+      "text": " this direction. In this direction there",
+      "start": 355.069,
+      "duration": 4.074
+    },
+    {
+      "text": " is movement, but in this place you are",
+      "start": 358.194,
+      "duration": 2.915
+    },
+    {
+      "text": " constant. Right? So what happens is",
+      "start": 360.16,
+      "duration": 4.2
+    },
+    {
+      "text": " that in an elongated graph, your slope",
+      "start": 363.415,
+      "duration": 9.63
+    },
+    {
+      "text": " changes on one axis and remains kind of",
+      "start": 372.102,
+      "duration": 3.211
+    },
+    {
+      "text": " constant on the second axis. Like this,",
+      "start": 374.37,
+      "duration": 8.475
+    },
+    {
+      "text": " you can see this axis here, you are",
+      "start": 381.904,
+      "duration": 3.037
+    },
+    {
+      "text": " changing here. But on this axis, there",
+      "start": 383.999,
+      "duration": 4.721
+    },
+    {
+      "text": " is no change. Now, what happens is that",
+      "start": 387.782,
+      "duration": 6.1
+    },
+    {
+      "text": " when you have a valley like this, where",
+      "start": 392.935,
+      "duration": 5.749
+    },
+    {
+      "text": " changes are happening on one axis, and",
+      "start": 397.736,
+      "duration": 2.963
+    },
+    {
+      "text": " there are no slope changes on the other",
+      "start": 399.751,
+      "duration": 3.015
+    },
+    {
+      "text": " axis. Basically, an elongated bowl is",
+      "start": 401.817,
+      "duration": 3.221
+    },
+    {
+      "text": " being formed. In this situation, your",
+      "start": 404.098,
+      "duration": 5.116
+    },
+    {
+      "text": " normal optimization algorithms, like",
+      "start": 408.278,
+      "duration": 3.274
+    },
+    {
+      "text": " Batch Gradient Descent, Momentum, or",
+      "start": 410.615,
+      "duration": 3.274
+    },
+    {
+      "text": " NAG, which we have studied so far, are",
+      "start": 412.952,
+      "duration": 3.401
+    },
+    {
+      "text": " unable to work correctly. Okay? So,",
+      "start": 415.416,
+      "duration": 6.649
+    },
+    {
+      "text": " Adagrad solves this very problem. So,",
+      "start": 421.138,
+      "duration": 4.98
+    },
+    {
+      "text": " what will I do now? I will show you",
+      "start": 425.184,
+      "duration": 7.048
+    },
+    {
+      "text": " once what Batch Gradient Descent and",
+      "start": 431.285,
+      "duration": 2.924
+    },
+    {
+      "text": " Momentum are doing wrong in such a",
+      "start": 433.262,
+      "duration": 2.817
+    },
+    {
+      "text": " valley, why they are failing, and then",
+      "start": 435.132,
+      "duration": 3.031
+    },
+    {
+      "text": " we will solve that mess using Adagrad.",
+      "start": 437.216,
+      "duration": 3.031
+    },
+    {
+      "text": " So let's first focus on Batch Gradient",
+      "start": 443.169,
+      "duration": 3.189
+    },
+    {
+      "text": " Descent. This is the same data that I",
+      "start": 445.416,
+      "duration": 2.924
+    },
+    {
+      "text": " told you about. Here, x has a lot of",
+      "start": 447.389,
+      "duration": 3.268
+    },
+    {
+      "text": " sparse values. There are zero values.",
+      "start": 449.729,
+      "duration": 3.454
+    },
+    {
+      "text": " And you can see how our Batch Gradient",
+      "start": 453.221,
+      "duration": 2.897
+    },
+    {
+      "text": " Descent is descending in this valley.",
+      "start": 455.168,
+      "duration": 2.848
+    },
+    {
+      "text": " Note that we are moving rapidly towards",
+      "start": 460.181,
+      "duration": 3.124
+    },
+    {
+      "text": " the B side first, and we are making no",
+      "start": 462.359,
+      "duration": 3.07
+    },
+    {
+      "text": " progress on the M side. But when we",
+      "start": 464.484,
+      "duration": 5.321
+    },
+    {
+      "text": " reach the bottom of the valley, then we",
+      "start": 468.854,
+      "duration": 2.897
+    },
+    {
+      "text": " move towards the M side. Okay? Meaning,",
+      "start": 470.799,
+      "duration": 3.884
+    },
+    {
+      "text": " you can clearly see that time is being",
+      "start": 473.74,
+      "duration": 3.132
+    },
+    {
+      "text": " wasted here. If you had come down",
+      "start": 475.928,
+      "duration": 2.911
+    },
+    {
+      "text": " directly, you would have reached faster",
+      "start": 477.888,
+      "duration": 2.93
+    },
+    {
+      "text": ". But here, what's happening is that",
+      "start": 479.818,
+      "duration": 2.928
+    },
+    {
+      "text": " you are going down towards the B side",
+      "start": 481.795,
+      "duration": 2.823
+    },
+    {
+      "text": " first, and then you are eventually",
+      "start": 483.667,
+      "duration": 2.675
+    },
+    {
+      "text": " moving towards the M side. Okay? You",
+      "start": 485.391,
+      "duration": 3.466
+    },
+    {
+      "text": " can see the contour plot of the same",
+      "start": 487.907,
+      "duration": 2.794
+    },
+    {
+      "text": " thing, that you came here first and",
+      "start": 489.751,
+      "duration": 2.744
+    },
+    {
+      "text": " then you went straight. Okay? What",
+      "start": 491.544,
+      "duration": 4.257
+    },
+    {
+      "text": " should have happened is that you would",
+      "start": 494.844,
+      "duration": 2.604
+    },
+    {
+      "text": " have come down directly like this. But",
+      "start": 496.49,
+      "duration": 2.799
+    },
+    {
+      "text": " that is not happening. Because this is",
+      "start": 498.336,
+      "duration": 3.06
+    },
+    {
+      "text": " an elongated bowl problem. Okay? Now,",
+      "start": 500.45,
+      "duration": 3.409
+    },
+    {
+      "text": " if this question is coming to your mind",
+      "start": 502.914,
+      "duration": 3.159
+    },
+    {
+      "text": ", why are we descending on the B side",
+      "start": 505.073,
+      "duration": 3.048
+    },
+    {
+      "text": " first? The reason for that is the M",
+      "start": 507.176,
+      "duration": 3.067
+    },
+    {
+      "text": " side, what is M? M is the coefficient",
+      "start": 509.301,
+      "duration": 4.406
+    },
+    {
+      "text": " which is corresponding to x, and x is",
+      "start": 512.769,
+      "duration": 3.308
+    },
+    {
+      "text": " sparse. That is why, initially, there",
+      "start": 515.14,
+      "duration": 4.007
+    },
+    {
+      "text": " are no changes in x. There are no",
+      "start": 518.208,
+      "duration": 3.016
+    },
+    {
+      "text": " changes in M. Corresponding to b, all",
+      "start": 520.281,
+      "duration": 3.121
+    },
+    {
+      "text": " values are one. So it is not sparse.",
+      "start": 522.46,
+      "duration": 3.266
+    },
+    {
+      "text": " That is why, initially, changes are",
+      "start": 524.826,
+      "duration": 2.8
+    },
+    {
+      "text": " happening in b and you are descending.",
+      "start": 526.678,
+      "duration": 2.955
+    },
+    {
+      "text": " Okay? Now I will show you Momentum. So,",
+      "start": 528.733,
+      "duration": 4.738
+    },
+    {
+      "text": " in the case of Momentum, this is the",
+      "start": 532.533,
+      "duration": 3.206
+    },
+    {
+      "text": " output. Since this is Momentum. In the",
+      "start": 534.8,
+      "duration": 4.745
+    },
+    {
+      "text": " case of B, you went very fast and in",
+      "start": 538.597,
+      "duration": 2.873
+    },
+    {
+      "text": " fact you slightly overshot, and then",
+      "start": 540.522,
+      "duration": 2.873
+    },
+    {
+      "text": " you are coming back in the direction of",
+      "start": 542.447,
+      "duration": 3.029
+    },
+    {
+      "text": " M and moving towards your minima. You",
+      "start": 544.528,
+      "duration": 3.536
+    },
+    {
+      "text": " can see the contour plot. You first",
+      "start": 547.115,
+      "duration": 2.815
+    },
+    {
+      "text": " went a bit further in this direction.",
+      "start": 548.978,
+      "duration": 2.77
+    },
+    {
+      "text": " Then you came back because momentum",
+      "start": 551.329,
+      "duration": 2.627
+    },
+    {
+      "text": " involves overshooting, and then you are",
+      "start": 553.003,
+      "duration": 2.813
+    },
+    {
+      "text": " heading back towards the minima. Okay?",
+      "start": 554.863,
+      "duration": 3.433
+    },
+    {
+      "text": " But again, you can clearly see this is",
+      "start": 558.711,
+      "duration": 3.069
+    },
+    {
+      "text": " not a very optimized way of reaching",
+      "start": 560.834,
+      "duration": 2.96
+    },
+    {
+      "text": " the minima. Okay? You can clearly see",
+      "start": 562.849,
+      "duration": 5.648
+    },
+    {
+      "text": " logically and tell that a faster way is",
+      "start": 567.55,
+      "duration": 3.054
+    },
+    {
+      "text": " possible if you take a shortcut. You",
+      "start": 569.656,
+      "duration": 4.31
+    },
+    {
+      "text": " come down directly in this way. Okay?",
+      "start": 573.018,
+      "duration": 3.732
+    },
+    {
+      "text": " But both of these algorithms are unable",
+      "start": 575.85,
+      "duration": 2.999
+    },
+    {
+      "text": " to do so. And this is the main problem",
+      "start": 577.9,
+      "duration": 3.408
+    },
+    {
+      "text": " where Adagrad will come in handy for us",
+      "start": 580.359,
+      "duration": 2.988
+    },
+    {
+      "text": ". So in short, both your Batch SGD and",
+      "start": 582.347,
+      "duration": 4.636
+    },
+    {
+      "text": " momentum algorithms will not perform",
+      "start": 586.045,
+      "duration": 3.217
+    },
+    {
+      "text": " well. If you have data that is sparse.",
+      "start": 588.324,
+      "duration": 4.33
+    },
+    {
+      "text": " Okay? I have put both these cutouts",
+      "start": 592.542,
+      "duration": 3.262
+    },
+    {
+      "text": " here. You can see that in the initial",
+      "start": 594.853,
+      "duration": 3.567
+    },
+    {
+      "text": " many epochs, what is happening is that",
+      "start": 597.473,
+      "duration": 2.995
+    },
+    {
+      "text": " this is the B side and this is the M",
+      "start": 599.521,
+      "duration": 2.89
+    },
+    {
+      "text": " side. You can see that in the initial",
+      "start": 601.464,
+      "duration": 4.809
+    },
+    {
+      "text": " many epochs, you are moving more in",
+      "start": 605.323,
+      "duration": 2.753
+    },
+    {
+      "text": " this direction. You are moving very",
+      "start": 607.126,
+      "duration": 4.198
+    },
+    {
+      "text": " little in this direction. Okay? Same",
+      "start": 610.373,
+      "duration": 3.189
+    },
+    {
+      "text": " here, you can see that in the initial",
+      "start": 612.615,
+      "duration": 2.961
+    },
+    {
+      "text": " many epochs, you are moving more in",
+      "start": 614.629,
+      "duration": 2.854
+    },
+    {
+      "text": " this direction, in the direction of B,",
+      "start": 616.536,
+      "duration": 3.013
+    },
+    {
+      "text": " and moving very little in the direction",
+      "start": 618.602,
+      "duration": 3.066
+    },
+    {
+      "text": " of M. Now, if you have this doubt again",
+      "start": 620.721,
+      "duration": 3.067
+    },
+    {
+      "text": " in your mind as to why we are moving in",
+      "start": 622.841,
+      "duration": 3.066
+    },
+    {
+      "text": " the direction of B? We are not moving",
+      "start": 624.96,
+      "duration": 3.723
+    },
+    {
+      "text": " in the direction of M. It's because our",
+      "start": 627.729,
+      "duration": 2.794
+    },
+    {
+      "text": " data is something like this. We have x.",
+      "start": 629.569,
+      "duration": 4.713
+    },
+    {
+      "text": " There are many zeros in this way. y is",
+      "start": 636.236,
+      "duration": 6.084
+    },
+    {
+      "text": " normal. And along with that, you can",
+      "start": 641.399,
+      "duration": 4.6
+    },
+    {
+      "text": " assume that we have a column of ones",
+      "start": 645.047,
+      "duration": 2.728
+    },
+    {
+      "text": " here. So this is correlated with M and",
+      "start": 646.823,
+      "duration": 6.711
+    },
+    {
+      "text": " this is correlated with B. So since the",
+      "start": 652.591,
+      "duration": 3.214
+    },
+    {
+      "text": " feature related to M has many sparse",
+      "start": 654.862,
+      "duration": 3.043
+    },
+    {
+      "text": " values. That is why you are seeing less",
+      "start": 656.962,
+      "duration": 5.656
+    },
+    {
+      "text": " movement in the direction of M. Whereas",
+      "start": 661.673,
+      "duration": 3.132
+    },
+    {
+      "text": " the column corresponding to B, since it",
+      "start": 663.86,
+      "duration": 3.132
+    },
+    {
+      "text": " has no sparse values. It is behaving",
+      "start": 666.046,
+      "duration": 4.566
+    },
+    {
+      "text": " normally and there is normal movement",
+      "start": 669.661,
+      "duration": 2.783
+    },
+    {
+      "text": " in it. Okay? I will explain this entire",
+      "start": 671.492,
+      "duration": 5.215
+    },
+    {
+      "text": " point further. But you have to remember",
+      "start": 675.763,
+      "duration": 3.104
+    },
+    {
+      "text": " that our data is like this. You can",
+      "start": 677.913,
+      "duration": 2.929
+    },
+    {
+      "text": " assume that our data has two columns.",
+      "start": 679.896,
+      "duration": 2.998
+    },
+    {
+      "text": " One x and another this column where all",
+      "start": 682.827,
+      "duration": 3.095
+    },
+    {
+      "text": " the values are ones. Okay? Now I will",
+      "start": 684.976,
+      "duration": 6.375
+    },
+    {
+      "text": " explain to you why it happens that",
+      "start": 690.402,
+      "duration": 2.727
+    },
+    {
+      "text": " there is less movement against a sparse",
+      "start": 692.18,
+      "duration": 2.98
+    },
+    {
+      "text": " column and normal movement in a normal",
+      "start": 694.211,
+      "duration": 2.93
+    },
+    {
+      "text": " one. We will try to understand this now",
+      "start": 696.191,
+      "duration": 5.031
+    },
+    {
+      "text": ". So, to understand this entire concept",
+      "start": 700.222,
+      "duration": 3.378
+    },
+    {
+      "text": ", we are first creating a neural",
+      "start": 702.6,
+      "duration": 2.889
+    },
+    {
+      "text": " network. So, based on our data, let's",
+      "start": 704.548,
+      "duration": 3.242
+    },
+    {
+      "text": " assume this is our neural network.",
+      "start": 706.85,
+      "duration": 3.028
+    },
+    {
+      "text": " There is only one neuron receiving",
+      "start": 709.919,
+      "duration": 2.828
+    },
+    {
+      "text": " input X from this side. From this side,",
+      "start": 711.801,
+      "duration": 3.479
+    },
+    {
+      "text": " it is receiving an input of one. This",
+      "start": 714.333,
+      "duration": 3.175
+    },
+    {
+      "text": " is my W. This is my B, and from here I",
+      "start": 716.575,
+      "duration": 3.539
+    },
+    {
+      "text": " am getting Y-hat. Okay? Now, let me",
+      "start": 719.181,
+      "duration": 5.816
+    },
+    {
+      "text": " explain to you using a batch gradient",
+      "start": 724.054,
+      "duration": 3.116
+    },
+    {
+      "text": " descent example what the problem is if",
+      "start": 726.228,
+      "duration": 3.173
+    },
+    {
+      "text": " there are sparse values. Okay? So look,",
+      "start": 728.459,
+      "duration": 6.421
+    },
+    {
+      "text": " what happens is that in batch gradient",
+      "start": 733.939,
+      "duration": 3.23
+    },
+    {
+      "text": " descent, your pseudo-code is something",
+      "start": 736.228,
+      "duration": 3.23
+    },
+    {
+      "text": " like 'for i in epochs'. What you do",
+      "start": 738.517,
+      "duration": 7.781
+    },
+    {
+      "text": " each time is update the weight and bias",
+      "start": 745.35,
+      "duration": 3.006
+    },
+    {
+      "text": " using this formula. Right? You take",
+      "start": 747.408,
+      "duration": 14.074
+    },
+    {
+      "text": " some initial value for W and B and then",
+      "start": 760.539,
+      "duration": 3.226
+    },
+    {
+      "text": " constantly update it using gradient",
+      "start": 762.822,
+      "duration": 2.997
+    },
+    {
+      "text": " descent. So what are you subtracting?",
+      "start": 764.876,
+      "duration": 4.223
+    },
+    {
+      "text": " You are...well, this will be B here, by",
+      "start": 768.869,
+      "duration": 3.486
+    },
+    {
+      "text": " the way. Uh, in fact, let's write it",
+      "start": 771.419,
+      "duration": 4.275
+    },
+    {
+      "text": " properly. Okay? So, basically you are",
+      "start": 774.757,
+      "duration": 5.06
+    },
+    {
+      "text": " subtracting the gradient of both. Now,",
+      "start": 778.876,
+      "duration": 3.846
+    },
+    {
+      "text": " let me calculate the gradient for you",
+      "start": 781.78,
+      "duration": 3.165
+    },
+    {
+      "text": " once here. Like, if you calculate del L",
+      "start": 784.003,
+      "duration": 6.101
+    },
+    {
+      "text": "/del W in this one, it will basically",
+      "start": 789.104,
+      "duration": 3.872
+    },
+    {
+      "text": " be del L/del Y-hat and del Y-hat/del W,",
+      "start": 792.054,
+      "duration": 4.027
+    },
+    {
+      "text": " okay? Let's assume for a moment that a",
+      "start": 795.158,
+      "duration": 4.602
+    },
+    {
+      "text": " linear activation function is being",
+      "start": 798.809,
+      "duration": 2.701
+    },
+    {
+      "text": " used here. Because this is a linear...I",
+      "start": 800.558,
+      "duration": 3.065
+    },
+    {
+      "text": " mean, this is a regression problem.",
+      "start": 802.676,
+      "duration": 2.849
+    },
+    {
+      "text": " Okay? So your (y-y-hat) squared, mean",
+      "start": 804.625,
+      "duration": 3.84
+    },
+    {
+      "text": " squared error, is your loss function.",
+      "start": 807.537,
+      "duration": 3.683
+    },
+    {
+      "text": " So, corresponding to this, your",
+      "start": 810.751,
+      "duration": 2.904
+    },
+    {
+      "text": " differentiation will be this, and",
+      "start": 812.716,
+      "duration": 3.027
+    },
+    {
+      "text": " corresponding to this one, your",
+      "start": 814.805,
+      "duration": 2.904
+    },
+    {
+      "text": " differentiation will be x. Similarly,",
+      "start": 816.77,
+      "duration": 5.161
+    },
+    {
+      "text": " if you talk about del L/del B, it will",
+      "start": 821.001,
+      "duration": 3.669
+    },
+    {
+      "text": " be 2*(y-y-hat), and here instead of x,",
+      "start": 823.741,
+      "duration": 3.669
+    },
+    {
+      "text": " it will be one because the input is one",
+      "start": 826.48,
+      "duration": 3.739
+    },
+    {
+      "text": ". Okay? So, basically what are you",
+      "start": 829.219,
+      "duration": 4.474
+    },
+    {
+      "text": " doing? What are you subtracting from W",
+      "start": 832.749,
+      "duration": 3.07
+    },
+    {
+      "text": " here? This term. Okay? So what do you",
+      "start": 834.871,
+      "duration": 4.734
+    },
+    {
+      "text": " have to do? For every epoch, what you",
+      "start": 838.651,
+      "duration": 4.47
+    },
+    {
+      "text": " have to do is, if you have 100 rows.",
+      "start": 842.188,
+      "duration": 3.383
+    },
+    {
+      "text": " Then for each row, you will calculate",
+      "start": 848.402,
+      "duration": 3.115
+    },
+    {
+      "text": " y-hat and multiply it by its",
+      "start": 850.574,
+      "duration": 2.601
+    },
+    {
+      "text": " corresponding x input, and you will do",
+      "start": 852.233,
+      "duration": 3.172
+    },
+    {
+      "text": " this for 100 rows and add them all up.",
+      "start": 854.463,
+      "duration": 3.173
+    },
+    {
+      "text": " You will get a big term for this. And",
+      "start": 859.865,
+      "duration": 4.876
+    },
+    {
+      "text": " similarly, you will do this same work",
+      "start": 863.797,
+      "duration": 3.068
+    },
+    {
+      "text": " for this. Now think carefully that when",
+      "start": 865.921,
+      "duration": 7.549
+    },
+    {
+      "text": " you do this whole thing for 100 rows,",
+      "start": 872.53,
+      "duration": 3.196
+    },
+    {
+      "text": " the value of x will be zero many times",
+      "start": 874.786,
+      "duration": 3.256
+    },
+    {
+      "text": " because x is sparse. Now, if x is",
+      "start": 877.101,
+      "duration": 6.729
+    },
+    {
+      "text": " sparse, then this entire derivative",
+      "start": 882.899,
+      "duration": 3.396
+    },
+    {
+      "text": " will also be zero many times. So when",
+      "start": 885.363,
+      "duration": 5.37
+    },
+    {
+      "text": " you add them for 100 rows, because of",
+      "start": 889.792,
+      "duration": 3.206
+    },
+    {
+      "text": " many zeros, this will be a small number",
+      "start": 892.058,
+      "duration": 3.325
+    },
+    {
+      "text": ". Right? If this is a very small number",
+      "start": 894.383,
+      "duration": 7.85
+    },
+    {
+      "text": ", then your update will also be very",
+      "start": 901.233,
+      "duration": 3.025
+    },
+    {
+      "text": " small. In every epoch. Whereas, if you",
+      "start": 903.314,
+      "duration": 7.346
+    },
+    {
+      "text": " talk about B, since you are multiplying",
+      "start": 909.724,
+      "duration": 3.464
+    },
+    {
+      "text": " by one here, for 100 rows it will never",
+      "start": 912.251,
+      "duration": 3.465
+    },
+    {
+      "text": " be zero. And as it keeps adding up, it",
+      "start": 914.779,
+      "duration": 3.805
+    },
+    {
+      "text": " will be a big number. This means when",
+      "start": 917.636,
+      "duration": 3.495
+    },
+    {
+      "text": " you subtract from B, you will have a",
+      "start": 920.184,
+      "duration": 2.925
+    },
+    {
+      "text": " big update. In every epoch. So try to",
+      "start": 922.162,
+      "duration": 9.209
+    },
+    {
+      "text": " understand what happens is that as you",
+      "start": 930.424,
+      "duration": 2.996
+    },
+    {
+      "text": " descend from this valley, you want to",
+      "start": 932.473,
+      "duration": 2.944
+    },
+    {
+      "text": " move in this direction, so you have",
+      "start": 934.469,
+      "duration": 2.839
+    },
+    {
+      "text": " velocity in two directions. One in this",
+      "start": 936.361,
+      "duration": 4.835
+    },
+    {
+      "text": " direction, which is the m direction,",
+      "start": 940.25,
+      "duration": 2.935
+    },
+    {
+      "text": " and one in this direction, which is the",
+      "start": 942.239,
+      "duration": 3.097
+    },
+    {
+      "text": " b direction. And you descend in the",
+      "start": 944.389,
+      "duration": 3.46
+    },
+    {
+      "text": " resultant of these. Right? Now think,",
+      "start": 946.9,
+      "duration": 5.115
+    },
+    {
+      "text": " if your update is not happening at all",
+      "start": 951.066,
+      "duration": 2.961
+    },
+    {
+      "text": " in the m direction and a big update is",
+      "start": 953.079,
+      "duration": 2.961
+    },
+    {
+      "text": " happening in the b direction, then",
+      "start": 955.091,
+      "duration": 2.755
+    },
+    {
+      "text": " obviously your movement will be",
+      "start": 956.897,
+      "duration": 2.6
+    },
+    {
+      "text": " something like this. Right? I think you",
+      "start": 958.548,
+      "duration": 5.249
+    },
+    {
+      "text": " are understanding what is happening:",
+      "start": 962.847,
+      "duration": 2.82
+    },
+    {
+      "text": " that there is no movement in one",
+      "start": 964.718,
+      "duration": 2.617
+    },
+    {
+      "text": " direction and too much in another, so",
+      "start": 966.386,
+      "duration": 2.871
+    },
+    {
+      "text": " you start moving in that direction.",
+      "start": 968.307,
+      "duration": 2.77
+    },
+    {
+      "text": " Okay? So the same thing happens here,",
+      "start": 970.262,
+      "duration": 9.822
+    },
+    {
+      "text": " that if you have a sparse column, the",
+      "start": 979.139,
+      "duration": 3.047
+    },
+    {
+      "text": " corresponding weight update is small,",
+      "start": 981.241,
+      "duration": 3.047
+    },
+    {
+      "text": " and for a non-sparse column, the",
+      "start": 983.344,
+      "duration": 2.77
+    },
+    {
+      "text": " corresponding weight update is normal",
+      "start": 985.169,
+      "duration": 3.047
+    },
+    {
+      "text": " or large, which is why this movement",
+      "start": 987.272,
+      "duration": 2.991
+    },
+    {
+      "text": " doesn't happen. You start moving in",
+      "start": 989.319,
+      "duration": 9.951
+    },
+    {
+      "text": " just one direction, either this",
+      "start": 998.32,
+      "duration": 2.54
+    },
+    {
+      "text": " direction or this direction, and",
+      "start": 999.909,
+      "duration": 2.59
+    },
+    {
+      "text": " because of that you will notice that",
+      "start": 1001.548,
+      "duration": 2.788
+    },
+    {
+      "text": " initially what is happening is that you",
+      "start": 1003.386,
+      "duration": 2.937
+    },
+    {
+      "text": " are moving in the downward direction",
+      "start": 1005.373,
+      "duration": 2.788
+    },
+    {
+      "text": " first, and then eventually you are",
+      "start": 1007.21,
+      "duration": 2.689
+    },
+    {
+      "text": " moving in this direction. Now, a small",
+      "start": 1008.949,
+      "duration": 4.628
+    },
+    {
+      "text": " question for you: answer in the",
+      "start": 1012.633,
+      "duration": 2.755
+    },
+    {
+      "text": " comments why, after reaching this point",
+      "start": 1014.445,
+      "duration": 3.208
+    },
+    {
+      "text": ", did the update start happening in",
+      "start": 1016.653,
+      "duration": 2.981
+    },
+    {
+      "text": " this direction? What happened that",
+      "start": 1018.69,
+      "duration": 4.03
+    },
+    {
+      "text": " caused it to finally start updating in",
+      "start": 1021.768,
+      "duration": 2.804
+    },
+    {
+      "text": " this direction? This is your question.",
+      "start": 1023.619,
+      "duration": 3.223
+    },
+    {
+      "text": " You have to answer this in the comments",
+      "start": 1025.961,
+      "duration": 2.79
+    },
+    {
+      "text": ". But regardless, I have just explained",
+      "start": 1027.751,
+      "duration": 6.553
+    },
+    {
+      "text": " to you why small movements happen due",
+      "start": 1033.36,
+      "duration": 3.088
+    },
+    {
+      "text": " to sparse columns in this entire",
+      "start": 1035.504,
+      "duration": 2.806
+    },
+    {
+      "text": " scenario of yours. So the problem is",
+      "start": 1037.366,
+      "duration": 11.088
+    },
+    {
+      "text": " understood that if you have a sparse",
+      "start": 1047.51,
+      "duration": 2.992
+    },
+    {
+      "text": " column, its corresponding parameter's",
+      "start": 1049.557,
+      "duration": 3.048
+    },
+    {
+      "text": " derivative will be zero many times,",
+      "start": 1051.66,
+      "duration": 2.937
+    },
+    {
+      "text": " causing its update to be small compared",
+      "start": 1053.652,
+      "duration": 3.159
+    },
+    {
+      "text": " to a normal parameter. Right? Now, what",
+      "start": 1055.866,
+      "duration": 8.354
+    },
+    {
+      "text": " happens is that your resultant movement",
+      "start": 1063.282,
+      "duration": 6.284
+    },
+    {
+      "text": " is, in a way, the vector sum of these",
+      "start": 1068.625,
+      "duration": 3.203
+    },
+    {
+      "text": " two updates. So if this one is",
+      "start": 1070.887,
+      "duration": 5.038
+    },
+    {
+      "text": " completely zero, you will obviously",
+      "start": 1074.982,
+      "duration": 2.992
+    },
+    {
+      "text": " move in this direction very quickly.",
+      "start": 1077.031,
+      "duration": 3.05
+    },
+    {
+      "text": " But we want this movement. Meaning we",
+      "start": 1080.876,
+      "duration": 4.134
+    },
+    {
+      "text": " need to give comparable updates to one",
+      "start": 1084.059,
+      "duration": 2.841
+    },
+    {
+      "text": " direction and the other. Meaning I have",
+      "start": 1085.948,
+      "duration": 4.911
+    },
+    {
+      "text": " to make sure that both these updates",
+      "start": 1089.906,
+      "duration": 2.685
+    },
+    {
+      "text": " are at a similar level. So look",
+      "start": 1091.638,
+      "duration": 4.638
+    },
+    {
+      "text": " carefully. So the solution is that",
+      "start": 1095.337,
+      "duration": 3.941
+    },
+    {
+      "text": " obviously this gradient is causing the",
+      "start": 1098.329,
+      "duration": 2.95
+    },
+    {
+      "text": " problem. Now, the only thing left in",
+      "start": 1100.33,
+      "duration": 3.996
+    },
+    {
+      "text": " the update is the learning rate. Now,",
+      "start": 1103.377,
+      "duration": 3.959
+    },
+    {
+      "text": " all the optimization algorithms you",
+      "start": 1106.399,
+      "duration": 3.191
+    },
+    {
+      "text": " have studied so far—Batch Gradient",
+      "start": 1108.653,
+      "duration": 3.254
+    },
+    {
+      "text": " Descent, Stochastic Gradient Descent,",
+      "start": 1110.97,
+      "duration": 3.317
+    },
+    {
+      "text": " Momentum, Nesterov Accelerated Gradient",
+      "start": 1113.35,
+      "duration": 3.442
+    },
+    {
+      "text": "—in all of these, no matter how many",
+      "start": 1115.792,
+      "duration": 3.38
+    },
+    {
+      "text": " parameters there are, the learning rate",
+      "start": 1118.234,
+      "duration": 3.442
+    },
+    {
+      "text": " is the same for all. In AdaGrad, what",
+      "start": 1120.739,
+      "duration": 5.249
+    },
+    {
+      "text": " you do is you for different parameters",
+      "start": 1125.058,
+      "duration": 7.454
+    },
+    {
+      "text": " w and b, you set different learning",
+      "start": 1131.568,
+      "duration": 2.942
+    },
+    {
+      "text": " rates. Right? This is the biggest point",
+      "start": 1133.566,
+      "duration": 9.984
+    },
+    {
+      "text": " in AdaGrad, that you keep different",
+      "start": 1142.599,
+      "duration": 2.735
+    },
+    {
+      "text": " learning rates for different parameters",
+      "start": 1144.384,
+      "duration": 2.933
+    },
+    {
+      "text": ". Now, I will tell you how you set the",
+      "start": 1146.317,
+      "duration": 4.526
+    },
+    {
+      "text": " learning rate. If your parameter's",
+      "start": 1149.893,
+      "duration": 7.038
+    },
+    {
+      "text": " update is big, you make its learning",
+      "start": 1155.984,
+      "duration": 2.892
+    },
+    {
+      "text": " rate small. So that when this gradient",
+      "start": 1157.928,
+      "duration": 8.579
+    },
+    {
+      "text": " is multiplied by this small learning",
+      "start": 1165.56,
+      "duration": 2.894
+    },
+    {
+      "text": " rate, the update becomes small. I hope",
+      "start": 1167.507,
+      "duration": 7.157
+    },
+    {
+      "text": " you are understanding. So somehow you",
+      "start": 1173.713,
+      "duration": 6.498
+    },
+    {
+      "text": " have to ensure that you make the",
+      "start": 1179.261,
+      "duration": 2.614
+    },
+    {
+      "text": " learning rate small for the parameter",
+      "start": 1180.925,
+      "duration": 2.867
+    },
+    {
+      "text": " whose gradient is large. Right? So this",
+      "start": 1182.842,
+      "duration": 9.074
+    },
+    {
+      "text": " is the intuition of AdaGrad: that you",
+      "start": 1190.97,
+      "duration": 3.015
+    },
+    {
+      "text": " keep a different learning rate for",
+      "start": 1193.039,
+      "duration": 2.851
+    },
+    {
+      "text": " every parameter, and how you manipulate",
+      "start": 1194.945,
+      "duration": 3.123
+    },
+    {
+      "text": " the learning rate is: If someone's",
+      "start": 1197.122,
+      "duration": 2.852
+    },
+    {
+      "text": " derivative is small, the learning rate",
+      "start": 1199.028,
+      "duration": 3.069
+    },
+    {
+      "text": " should be large. So that its update is",
+      "start": 1201.151,
+      "duration": 4.399
+    },
+    {
+      "text": " large. And if someone's gradient is",
+      "start": 1204.606,
+      "duration": 3.605
+    },
+    {
+      "text": " large, you make its learning rate small",
+      "start": 1207.264,
+      "duration": 3.086
+    },
+    {
+      "text": ". So that its update is small. Right?",
+      "start": 1209.35,
+      "duration": 4.713
+    },
+    {
+      "text": " So that these two always remain",
+      "start": 1213.506,
+      "duration": 2.575
+    },
+    {
+      "text": " comparable. Now let me show you the",
+      "start": 1215.132,
+      "duration": 3.723
+    },
+    {
+      "text": " mathematical formula for AdaGrad. So",
+      "start": 1217.91,
+      "duration": 4.603
+    },
+    {
+      "text": " this is the mathematical formula of",
+      "start": 1221.573,
+      "duration": 3.094
+    },
+    {
+      "text": " AdaGrad. So w t + 1 = wt-learning rate",
+      "start": 1223.727,
+      "duration": 11.122
+    },
+    {
+      "text": " uh, basically you could have written it",
+      "start": 1239.282,
+      "duration": 3.331
+    },
+    {
+      "text": " this way too, but this is the more",
+      "start": 1241.673,
+      "duration": 3.033
+    },
+    {
+      "text": " compact form, divided by the square",
+      "start": 1243.766,
+      "duration": 3.092
+    },
+    {
+      "text": " root of vt + where vt is equal to vt-1",
+      "start": 1245.918,
+      "duration": 12.135
+    },
+    {
+      "text": " plus the square of the gradient of the",
+      "start": 1257.11,
+      "duration": 3.163
+    },
+    {
+      "text": " weight. Right? Now I will explain all",
+      "start": 1259.33,
+      "duration": 8.366
+    },
+    {
+      "text": " the terms to you one by one. So",
+      "start": 1266.748,
+      "duration": 3.314
+    },
+    {
+      "text": " basically, if you notice this entire",
+      "start": 1269.125,
+      "duration": 3.279
+    },
+    {
+      "text": " thing then the formula for normal",
+      "start": 1271.467,
+      "duration": 5.839
+    },
+    {
+      "text": " gradient descent is this. Here, just",
+      "start": 1276.361,
+      "duration": 8.585
+    },
+    {
+      "text": " this term right here is extra. Okay?",
+      "start": 1284.004,
+      "duration": 4.636
+    },
+    {
+      "text": " Now, there are two things in this term",
+      "start": 1287.74,
+      "duration": 2.856
+    },
+    {
+      "text": " as well. One is vt and the other is eps",
+      "start": 1289.645,
+      "duration": 3.245
+    },
+    {
+      "text": ". So eps is basically a very small",
+      "start": 1291.89,
+      "duration": 3.188
+    },
+    {
+      "text": " number. It is kept here only so that if",
+      "start": 1294.138,
+      "duration": 4.911
+    },
+    {
+      "text": " vt is zero, this entire term shouldn't",
+      "start": 1298.106,
+      "duration": 3.157
+    },
+    {
+      "text": " become infinite. Okay? So it doesn't",
+      "start": 1300.32,
+      "duration": 3.73
+    },
+    {
+      "text": " have much significance. Let's talk",
+      "start": 1303.101,
+      "duration": 2.898
+    },
+    {
+      "text": " about vt. So vt is that thing. So what",
+      "start": 1305.056,
+      "duration": 6.143
+    },
+    {
+      "text": " is vt? vt is past vt plus your gradient",
+      "start": 1310.273,
+      "duration": 5.897
+    },
+    {
+      "text": " squared. Basically its square or its",
+      "start": 1315.238,
+      "duration": 7.078
+    },
+    {
+      "text": " square. So in a way, what are you",
+      "start": 1321.37,
+      "duration": 5.896
+    },
+    {
+      "text": " storing in vt? The sum of past",
+      "start": 1326.327,
+      "duration": 6.149
+    },
+    {
+      "text": " gradients, or you could say squared sum",
+      "start": 1331.534,
+      "duration": 3.289
+    },
+    {
+      "text": ". Why are we squaring? Because the",
+      "start": 1333.823,
+      "duration": 7.225
+    },
+    {
+      "text": " gradient can be negative or positive.",
+      "start": 1340.098,
+      "duration": 2.839
+    },
+    {
+      "text": " But you want to add it by treating it",
+      "start": 1343.25,
+      "duration": 2.7
+    },
+    {
+      "text": " as positive. Okay? You want to consider",
+      "start": 1344.996,
+      "duration": 4.208
+    },
+    {
+      "text": " the magnitude, not the direction. That",
+      "start": 1348.255,
+      "duration": 3.625
+    },
+    {
+      "text": " is why you squared it. Why not mod?",
+      "start": 1350.926,
+      "duration": 3.244
+    },
+    {
+      "text": " Because during backpropagation, you",
+      "start": 1353.27,
+      "duration": 2.875
+    },
+    {
+      "text": " have to differentiate. That is why we",
+      "start": 1355.199,
+      "duration": 2.944
+    },
+    {
+      "text": " squared it. Okay? So in a way, what are",
+      "start": 1357.19,
+      "duration": 3.372
+    },
+    {
+      "text": " you doing in vt? First the gradient",
+      "start": 1359.621,
+      "duration": 2.98
+    },
+    {
+      "text": " came, after that the second gradient",
+      "start": 1361.654,
+      "duration": 2.898
+    },
+    {
+      "text": " came. In every epoch, you are squaring",
+      "start": 1363.605,
+      "duration": 3.406
+    },
+    {
+      "text": " the gradient you calculate and adding",
+      "start": 1366.065,
+      "duration": 2.977
+    },
+    {
+      "text": " it. Okay? And eventually, you are",
+      "start": 1368.095,
+      "duration": 4.111
+    },
+    {
+      "text": " dividing the learning rate by that",
+      "start": 1371.257,
+      "duration": 2.747
+    },
+    {
+      "text": " number. Think about it, if someone's",
+      "start": 1373.056,
+      "duration": 6.115
+    },
+    {
+      "text": " gradient is large, then when you divide",
+      "start": 1378.224,
+      "duration": 3.081
+    },
+    {
+      "text": " the learning rate by a large number,",
+      "start": 1380.358,
+      "duration": 2.921
+    },
+    {
+      "text": " the learning rate will become small,",
+      "start": 1382.332,
+      "duration": 2.92
+    },
+    {
+      "text": " and if someone's gradient is small,",
+      "start": 1384.306,
+      "duration": 2.867
+    },
+    {
+      "text": " then when you divide by a small number,",
+      "start": 1386.226,
+      "duration": 3.081
+    },
+    {
+      "text": " there won't be much impact on the",
+      "start": 1388.36,
+      "duration": 2.76
+    },
+    {
+      "text": " learning rate. So I hope you are",
+      "start": 1390.174,
+      "duration": 4.872
+    },
+    {
+      "text": " understanding the entire intuition. You",
+      "start": 1394.099,
+      "duration": 3.111
+    },
+    {
+      "text": " have done nothing else. In this entire",
+      "start": 1396.259,
+      "duration": 3.566
+    },
+    {
+      "text": " formula, this gradient descent formula,",
+      "start": 1398.883,
+      "duration": 3.285
+    },
+    {
+      "text": " you have just divided the learning rate",
+      "start": 1401.226,
+      "duration": 3.285
+    },
+    {
+      "text": " by the square root of vt. What is vt?",
+      "start": 1403.569,
+      "duration": 3.97
+    },
+    {
+      "text": " The sum of the squares of past",
+      "start": 1407.385,
+      "duration": 2.659
+    },
+    {
+      "text": " gradients. That's it. And this is your",
+      "start": 1409.099,
+      "duration": 5.248
+    },
+    {
+      "text": " AdaGrad. Now I will show you through an",
+      "start": 1413.4,
+      "duration": 6.57
+    },
+    {
+      "text": " animation what the benefit is if you",
+      "start": 1419.024,
+      "duration": 2.926
+    },
+    {
+      "text": " apply AdaGrad on sparse data. Look here",
+      "start": 1421.003,
+      "duration": 6.535
+    },
+    {
+      "text": " guys, this is AdaGrad on the same data,",
+      "start": 1426.594,
+      "duration": 3.182
+    },
+    {
+      "text": " and I think you can already see that",
+      "start": 1428.831,
+      "duration": 3.014
+    },
+    {
+      "text": " AdaGrad is performing better. Okay? If",
+      "start": 1430.901,
+      "duration": 6.452
+    },
+    {
+      "text": " you focus on this contour plot, you can",
+      "start": 1436.408,
+      "duration": 3.141
+    },
+    {
+      "text": " see that it has taken a slightly more",
+      "start": 1438.604,
+      "duration": 3.031
+    },
+    {
+      "text": " optimized path. You can compare it with",
+      "start": 1440.69,
+      "duration": 5.483
+    },
+    {
+      "text": " batch gradient descent. This is batch",
+      "start": 1445.224,
+      "duration": 3.797
+    },
+    {
+      "text": " gradient descent and this is Adagrad.",
+      "start": 1448.077,
+      "duration": 3.067
+    },
+    {
+      "text": " All right? And this is Momentum. You",
+      "start": 1450.537,
+      "duration": 3.652
+    },
+    {
+      "text": " can see side by side that there is a",
+      "start": 1453.239,
+      "duration": 2.807
+    },
+    {
+      "text": " clear improvement. And that is why you",
+      "start": 1455.096,
+      "duration": 3.728
+    },
+    {
+      "text": " are able to reach your global minima",
+      "start": 1457.871,
+      "duration": 2.703
+    },
+    {
+      "text": " faster. Now let's talk about the",
+      "start": 1459.621,
+      "duration": 3.341
+    },
+    {
+      "text": " disadvantage. Does Adagrad have any",
+      "start": 1462.011,
+      "duration": 3.582
+    },
+    {
+      "text": " disadvantage? The answer is yes. There",
+      "start": 1464.648,
+      "duration": 3.858
+    },
+    {
+      "text": " is a huge disadvantage. In fact, the",
+      "start": 1467.563,
+      "duration": 5.035
+    },
+    {
+      "text": " disadvantage is so big that you don't",
+      "start": 1471.657,
+      "duration": 3.195
+    },
+    {
+      "text": " use Adagrad in neural networks. Mostly,",
+      "start": 1473.911,
+      "duration": 7.176
+    },
+    {
+      "text": " you can use Adagrad in problems like",
+      "start": 1480.147,
+      "duration": 3.164
+    },
+    {
+      "text": " linear regression. But not for a",
+      "start": 1482.371,
+      "duration": 4.051
+    },
+    {
+      "text": " complex neural network. Generally, you",
+      "start": 1485.476,
+      "duration": 3.279
+    },
+    {
+      "text": " won't get good results. Why? I will",
+      "start": 1487.812,
+      "duration": 3.262
+    },
+    {
+      "text": " give you the reason. So, what happens",
+      "start": 1490.117,
+      "duration": 4.299
+    },
+    {
+      "text": " is that Adagrad is able to reach near",
+      "start": 1493.473,
+      "duration": 3.101
+    },
+    {
+      "text": " the solution. But it can never converge",
+      "start": 1495.631,
+      "duration": 4.12
+    },
+    {
+      "text": " to the solution. No matter how many",
+      "start": 1498.799,
+      "duration": 3.155
+    },
+    {
+      "text": " epochs you give it. What is the reason",
+      "start": 1500.999,
+      "duration": 3.169
+    },
+    {
+      "text": " for that? The reason is very simple,",
+      "start": 1503.211,
+      "duration": 3.397
+    },
+    {
+      "text": " that you are decreasing the learning",
+      "start": 1505.658,
+      "duration": 2.825
+    },
+    {
+      "text": " rate. You are dividing it by your past",
+      "start": 1507.534,
+      "duration": 7.321
+    },
+    {
+      "text": " updates or past gradients. So as epochs",
+      "start": 1513.91,
+      "duration": 8.543
+    },
+    {
+      "text": " increase, this Vt starts to become very",
+      "start": 1521.52,
+      "duration": 3.599
+    },
+    {
+      "text": " large, and as Vt becomes very large,",
+      "start": 1524.186,
+      "duration": 3.399
+    },
+    {
+      "text": " this learning rate becomes very small.",
+      "start": 1526.652,
+      "duration": 3.533
+    },
+    {
+      "text": " Because of which, the update becomes",
+      "start": 1532.529,
+      "duration": 3.044
+    },
+    {
+      "text": " very small and basically no update",
+      "start": 1534.629,
+      "duration": 2.931
+    },
+    {
+      "text": " happens at all. So it stops at one",
+      "start": 1536.617,
+      "duration": 5.92
+    },
+    {
+      "text": " place and does not converge to your",
+      "start": 1541.588,
+      "duration": 2.781
+    },
+    {
+      "text": " minima. So this is the biggest problem",
+      "start": 1543.42,
+      "duration": 5.871
+    },
+    {
+      "text": " with Adagrad, that you will not be able",
+      "start": 1548.341,
+      "duration": 2.945
+    },
+    {
+      "text": " to reach the global minima. Then why",
+      "start": 1550.336,
+      "duration": 6.36
+    },
+    {
+      "text": " did we study it? The reason is that we",
+      "start": 1555.746,
+      "duration": 5.915
+    },
+    {
+      "text": " will study two more optimizers ahead:",
+      "start": 1560.724,
+      "duration": 3.32
+    },
+    {
+      "text": " RMSprop and Adam. And in both of those,",
+      "start": 1563.107,
+      "duration": 7.467
+    },
+    {
+      "text": " we will reuse the theory that we",
+      "start": 1569.628,
+      "duration": 2.729
+    },
+    {
+      "text": " studied in Adagrad. All right? I hope",
+      "start": 1571.411,
+      "duration": 4.61
+    },
+    {
+      "text": " you are understanding this point. So",
+      "start": 1575.067,
+      "duration": 2.714
+    },
+    {
+      "text": " that's it for the video, guys. I hope",
+      "start": 1576.834,
+      "duration": 2.98
+    },
+    {
+      "text": " you understood the video and liked it",
+      "start": 1578.864,
+      "duration": 2.835
+    },
+    {
+      "text": " too. If you liked the video, please",
+      "start": 1580.749,
+      "duration": 2.895
+    },
+    {
+      "text": " like it, and if you haven't subscribed",
+      "start": 1582.697,
+      "duration": 3.023
+    },
+    {
+      "text": " to my channel yet, please do subscribe.",
+      "start": 1584.773,
+      "duration": 3.076
+    },
+    {
+      "text": " See you in the next video. Bye.",
+      "start": 1586.949,
+      "duration": 2.76
+    }
+  ]
+}

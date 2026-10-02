@@ -1,0 +1,3040 @@
+{
+  "id": "gyTlcHVeBjM",
+  "index": 24,
+  "title": "Dropout Layer in Deep Learning | Dropouts in ANN | End to End Deep Learning",
+  "language": "en-US",
+  "is_generated": true,
+  "full_text": "Hi guys, my name is Nitesh, and welcome  to my YouTube channel. In this video,  we're continuing our Deep Learning  playlist. Today, we'll cover a topic  called dropouts. Okay? This concept was  recently discovered in deep learning a  few years ago, and trust me, drops are  now widely used in the process of  training neural networks. Okay? So, in  today's video, we'll discuss what a  drop is, how it works, and then we'll  implement it practically in code.  Finally, I'll give you some practical  tips on when and how to use drops.  You'll notice that if you learn things  correctly, you'll be able to train your  neural network a little better. Okay?  Right now, on the screen, we have the  same document I've been following for  the last two or three videos. These are  kind of the steps you'll need to follow  if you want to improve your neural  network. We need to improve its  performance. So far, we've covered two  things: the concept of early stopping  and normalizing inputs. Okay? Today,  we're going to focus on dropout layers.  Okay? As you can see, dropout layers  are used when your model, your neural  network, overfits. Okay? So, let's do  one thing. We'll start our discussion  from the very basics and gradually  progress. So, first, I guess I don't  need to explain what overfitting is?  Overfitting is a problem that plagues  machine learning. Okay? You've worked  hard to train a machine learning model  on a set of data. But now the problem  is that your machine learning model has  overfitted. Overfitting means it has  memorized the training data and its  performance is excellent on the  training data, but when you show it new , unseen data, its performance is poor.  If you look at this diagram, you'll  understand what I'm talking about. Here , you can see that you're solving a  classification problem, creating a  decision boundary between the blue and  red points. Your machine learning  model's job is to differentiate between  the green (I'm sorry, blue) and red  points. Now, if you look at this green  model here, if you focus on it, it's  overfitting because it's trying to  memorize too much of the training data  and trying not to make a single mistake  on it. Okay? Now, imagine for yourself,  if this data were removed and replaced  with some new, unseen data, this  complex decision boundary we've created  wouldn't give us good results. It would  be great if we could somehow achieve  this black surface, this black decision  boundary, because it's not memorizing  it; it's understanding the concept  within your data and correctly creating  a classification boundary between your  two points. Right? So this is what  happens. The neural networks you've  studied so far are prone to overfitting . You'll hear this repeatedly about  neural networks: they're prone to  overfitting. The reason for this is  that they're very complex. Just think  about it: there are multiple layers.  There are multiple layers, and each  layer has multiple nodes. So, when you  feed data to this complex architecture  and run it on multiple epochs, you'll  see overfitting a lot. Right? This is a  huge problem. Now the question is, how  can you solve the problem of  overfitting? So, if you talk about  possible solutions, there are two or  three possible solutions. The first  possible solution, which is widely  followed in neural networks, is to add  more data. The more data you provide,  the greater the chance of avoiding  overfitting. Right? The more diverse  types of data you expose your neural  network to, the better it generalizes.  That's the first point. The second is  to reduce the complexity of your  network. Where you were using 10 hidden  layers, try applying seven. Where you  were adding 128 nodes per layer, try  adding 64. When you reduce the  complexity of your model, overfitting  also reduces. Right? Third, early  stopping. Early stopping. We've studied  this. The basic principle of early  stopping is that you identify when  overfitting is starting. You stop  training at that point. I showed you  this two or three videos ago. This is  also a technique. You must have studied  technique number four in machine  learning. You can use regularization,  especially in linear models. You may  have studied regularization, both L1  and L2. You may have studied Rich  Regression and Lasso Regression. I  taught you this technique in 100 Days  of Machine Learning. You can use this  technique here as well. In fact, I will  teach you this technique in the next  video. But the technique we are going  to study in today's video is called  dropout. Dropout. This is a very  strange, different technique discovered  a few years ago by Geoffrey Hilton and  there is this guy called Nitish  Srivastava. These two developed this  technique together, and since its  introduction, it has become very famous . This technique has become very  popular in deep learning circuits to  train neural networks and reduce  overfitting. Right? So today's video is  about overfit dropouts. Okay? So now  we're going to understand exactly what  drops are. What exactly do you change  in your neural network to reduce your  overfitting problem? Let's see that.  Come on guys, let's understand the  concept of dropouts. Let's take an  example. Let's say we're working on a  classification problem, and in that  classification problem, we have five  columns as inputs. And then we have our  output column. Okay? And we've created  a neural network that will solve this  classification problem. This is my  input layer here. You can see five  inputs going here. The input for each  column goes from here. Then we have two  hidden layers. Both have five nodes.  And finally, this is your output layer,  which has a single node. Let's say this  is a binary classification problem. So,  your fully connected neural network  will look like this, like this first  diagram. Okay? Now, what happens is  that when you create such a complex  architecture, there's a chance of  overfitting, as I mentioned. So, to  solve this, we use drops. And the main  concept of drops is simply that you  randomly drop nodes from your input  layer and your hidden layer. Now, what  does drop mean? I'll explain. Focus on  this diagram. What will we do? In each  epoch, let's say we're training our  model for a total of 10 epochs. So,  what will we do? For each epoch, we'll  randomly switch off some of the nodes  in your input layer and in your hidden  layer. For example, look here, let's  say Epoch 1 is currently running. This  is Epoch 1. So, what did I do? Now, out  of these five, I randomly turned off  this one and that one. What turning off  means is that this node will no longer  be connected to any other node.  Basically, these weights and biases  will be removed from this node. It will  be disconnected from the network. So,  what did I do? I randomly removed these  three nodes in my hidden layer. And  then I randomly removed these two nodes  in the next hidden layer. So, what's  left is my neural network, and it will  be trained on it for this particular  epoch. Now, when epoch two comes, what  will I do again before epoch two? I  will randomly remove two nodes in this  layer. Let's say this time I removed  this one and this one. Then this one  will come back. This one will also come  back. This one and this one will be  disconnected. Similarly, what will I do  in the next one? I will randomly remove  three nodes again. For example, I  removed this one, this one, and this  one. So basically, now this one will  remain, this one will remain. Okay? And  in the next one, I'll randomly remove  two and put this one back. So, what are  you doing? Before each epoch, you're  randomly deciding which nodes will  remain and which will not. So, in a way , you could say that when you run 10  epochs, you're actually training on 10  different neural networks. The most  important point here is that what  happens with dropout is that the  architecture of your neural network  essentially changes slightly. So, you  could say that in the first epoch,  there was a different neural network.  In the second, it was slightly  different, and in the third, it was  slightly different. So, in a way, in  every epoch, you're training the same  data but on a different neural network.  Right? This is the concept of dropout.  Now, when someone reads this for the  first time, this doubt comes to their  mind. It came to my mind too. I'm sure  you're wondering, how can breaking  things like this improve performance?  What are we doing? We're breaking down  our neural network. We're breaking it.  So how can breaking it make something  better? This should be your question.  Next, I'll explain how this technique  intelligently solves the problem of  overfitting. In fact, it's proven that  using drop improves your accuracy by  around 2%. Now, you might ask, \"Which 2 %is too much?\" It's too much. If you're  at 95 and you want to go to 97, that's  not a small jump. It's a huge jump, and  a drop can give you such a benefit.  Okay? So, what do we need to understand  now? We need to understand how removing  neurons improves performance. We'll  explore this intuition. So, guys, let's  first try to understand why overfitting  happens in neural networks. Okay? Now,  let's say we have this data and this  neural network. What happens in a  neural network is that you have a lot  of hidden layers, and those hidden  layers have a lot of nodes. And when  you create a fully connected neural  network, there are a lot of  possibilities because of these  arrangements. Okay? So, what happens is  that these small arrangements have a  lot of possibilities. In a neural  network, it tries to capture every  little thing. It tries to capture even  the smallest pattern, and that's what  causes overfitting. So, if someone asks  you what can be done to reduce  overfitting? The simple answer is to  reduce the number of nodes. Just reduce  the number of nodes. Reducing the  number of nodes will reduce those  possibilities. Picking up these small  possibilities will be reduced. Another  way is to make changes to your notes so  that they don't focus on any single  type of pattern, but rather focus  equally on all types of things. If you  can do these two things, you can avoid  the problem of overfitting. First,  reduce the number of nodes. This will  automatically reduce the number of  connections in your neural network.  Therefore, it won't have the resources  to automatically focus on very subtle  details. Second, you'll need to trick  your notes into not focusing too much  on any one single thing. Somehow, you  need to distract them and make them  focus on everything rather than  focusing on a single thing. Dropout  layers do both of these very  effectively. See how? Look here, this  is the same neural network. And what  have I done? I decided to use a dropout  ratio of 0.5. You can use a different  dropout ratio for each layer, denoted p . This means that I'll randomly drop,  or remove, 50%of the neurons from this  input layer in each epoch. Okay? I did  the same for this hidden layer, point  five. Meaning, I'll randomly drop 50%of  the neurons from this hidden layer in  each epoch. Okay? Now, look, I ran my  first epoch. When I ran the first epoch , this and this automatically turned  off in the first layer, and this and  this in the second layer. And here's my  neural network, which is actually a  subset of this neural network. If you  look carefully, it's just a subset of  the main neural network. It's smaller.  We have fewer nodes. Then, when I ran  the next epoch, this time these two  neurons turned off, and these two  turned off. Once again, a new neural  network is created, which is again a  subset of this neural network. You're  reducing the number of neurons.  Similarly, in the third epoch, this one  and this one are turned off, and these  two are turned off. So, every time  we're reducing the number of neurons.  Let's talk about the second point. How  to achieve the second point is very  simple. Now, look, I'll try to explain  it to you in a very simple way. We grab  this neuron. We grab this node. Now,  this node is taking input from all four  of these. Okay? But depending on the  data, it may start to have a higher  value. Meaning, this weight, this  weight, may have a higher value  compared to these other weights. Or you  could say that your neuron is starting  to focus more on a particular pattern.  Okay? So, using dropout can solve the  problem of one weight receiving too  much value while the others receive too  little. How? It's very simple. In this  epoch, when this neuron is training,  notice that this one is there. Okay?  But in the next iteration, this one  isn't there. It's not there either. So  now this neuron isn't receiving as much  information from it. It can't rely  solely on it, because it doesn't know  whether it will receive input from this  node in the next epoch. So, in a way,  whenever this neuron receives input  from the previous layer, it will be  more balanced. Now it won't just rely  on the first one to send and value it.  It's possible that the first one  doesn't come at all, so you start  focusing on the second, third, and  fourth ones as well. In a way, your  attention is no longer focused on just  one node; it's divided across all of  them. Your weight, which was the  thickest and the highest before, is now  equal. You're taking the same value  from this one. You're taking the same  amount from this one, and the same  amount from this one. And as soon as  you start doing this, your neural  network will automatically overfit less  and start ignoring things like this. It  will start ignoring patterns like this.  And this is the main reason behind the  success of Drop. You can understand it  this way. I read a great example  somewhere: Imagine a company. Now there  will be many people in that company,  each doing different jobs. Meaning,  there will be a peon. There will be a  coffee maker. There will be coders.  There will be a marketing person. There  will be a lot of people. Right? Now, a  new policy has been introduced in that  company: every morning, they will  randomly decide who will come to the  office and who will not. This means  that 50%of people will come randomly,  50%will not, and this will be decided  randomly. So, if I'm an employee, I get  an email in the morning asking if I can  come or not, and that email will be  random. Anyone could receive it. Right?  Now you might think, \"That's really  wrong. If 50%or even 30%of employees  are randomly turned away daily, your  company's productivity will plummet.\"  But that's not the case. It's also  possible that since many people won't  come, as an employee (if I'm a coder),  I won't depend on others and will start  controlling many things myself. Where I  used to depend only on the testing team , now I'll start depending on others as  well, because the others can do the  testing team's work. Right? So, that's  what's happening here: this node, this  node, was only dependent on the first  one. Now, since the first one isn't  there, it has to interact with the  second one, the third one, and even the  fourth one. Because of this, your  overall architecture becomes more  resilient. Right? It becomes  insensitive to small changes. It says  ignore these small changes and focus on  the big things. And what is the big  thing? This overall pattern in this  data. Right? So, that company example  can't be proven to actually increase  the company's productivity, but this  theory works in neural networks. Right?  So, that's one way to understand this  whole thing. Now, I'll give you another  explanation that will help you  understand this even better. We'll  compare dropouts to random forests.  Random forests, if you know them, are  one of the most powerful machine  learning algorithms. And in some ways,  dropouts work like random forests. Let  me explain. So guys, let's understand  how dropouts are connected to random  forests. So, if you remember when we  studied random forests, I explained  what a random forest consists of. Let's  say you have a data set with 10 input  columns and one output column. What you  do is train multiple decision trees to  create a random forest. Let's say we're  training 100 decision trees. You give  them data in two ways: you can either  use column sampling, row sampling, or a  combination of both. For a moment,  let's assume we're only using column  sampling. This means that in the first  decision tree we create, let's say  we'll only randomly select 50%of the  columns. So, x1 will be selected, x2  will not be selected, x3 will be  selected, x4 will not be selected.  We'll send five random columns out of  10 here and train our first decision  tree. Then we'll pick another decision  tree and again randomly pick five  columns and feed them to that decision  tree. So what happens? By doing this,  you'll have 100 decision trees that are  different from each other. Not  completely different, because some  columns will be the same. But you get  the idea: you have an ensemble of 100  decision trees. What do you do when  making a prediction? You'll send a  single row to all 100 decision trees  and ask each one to indicate whether  it's one or zero. Now, 60 trees might  say one, and 40 trees might say zero.  So, based on the majority count, you'll  say that this row must be one. That's  how a random forest works. Okay? Now,  look, you actually do this same thing  when you drop out. Let's say this is  our neural network. Okay? This is our  hidden input layer and this is our  hidden layer. And we said P = 5,  meaning we'll drop 50%of the nodes from  both the input layer and the hidden  layer. Now, let's first understand how  many neural networks you can create  from this neural network. There are  nine nodes in total, and each node can  be present or absent. Meaning, there  are two possibilities for each node. So , in total, we have this many  combinations available. You can create  this many different types of neural  networks. Actually, we'll add 8 here  because we won't consider the output  ones. So, 2 to the power 8 combinations  are available. What can you do? It's  very simple. What are you doing? You're  training the lettuce for 10 epochs. So,  because of the random switching, each  epoch will create a different neural  network. So, what are you basically  doing? For every epoch, you're training  a unique neural network. The first time  it's a different architecture, the  second time it's a different  architecture, and the third time it's a  different architecture. So, what are  you doing here? You're creating a  sample of 10 neural networks, just like  you created a sample of decision trees  here. If you train for 100 epochs,  since these combinations are too many,  the probability that any architecture  will ever repeat itself in 100 epochs  is very low. This basically means that  you have 100 unique neural network  architectures that you're feeding the  same data to. Since the architecture of  neural networks is different, and not  very different, the answers will vary,  and you decide on the answer by asking  everyone. In a way, you're doing  something similar to singular learning.  So, this is often asked in interviews,  \"Explain how dropouts are similar to  random forests.\" I hope you understand.  In a way, just as you train different  decision trees, you're training  different neural networks and then,  based on their combined intelligence,  you're making decisions. That's why,  you can say that the neural network  behaves somewhat like a random forest.  And that's why using dropouts improves  the performance of your neural network.  It also solves your overfitting problem . Just as random forests can overcome  the problem of overfitting, dropouts  can also reduce overfitting in neural  networks. Okay? I hope you understand  this connection a little. Now, guys,  one thing you need to remember is that  dropouts are applied only during  training time. They are not applied  during testing. Let me explain this. So , let's say this is your neural network . Four inputs will go into it. This is  your input layer. This is your hidden  layer. So, let's say you've applied a  drop of 0.25 here. This means that in  every epoch, one of your four nodes  will be turned off randomly. Okay?  Let's say you applied 25 here too. Okay ? Then the same thing will happen again . So, whatever happens, it happens  during training time. It doesn't happen  during testing. All these nodes will be  available during testing. This means  all these connections will be active.  But the question arises: what will this  weight be? Because it wasn't guaranteed  during training whether this weight  would exist or not. But it will  definitely exist during testing. So,  let me explain how this is decided.  Let's say this is a weight, and its  weight from training is w. So, in  testing, its weight will be w times 1-p . Okay? What is p? 25. So, what will  the weight be? W*75. That's what it  means. Now think about it, this is very  logical. How? It's very simple. What is  the probability of each node  disappearing here? 0.225. And what is  the probability of it remaining?  Suppose you're training for 100 epochs.  If you set your dropout ratio to 25,  then out of 100 epochs, there is a  probability that the last node will  disappear in 25 epochs and remain in  75. This means that the probability of  this weight remaining in this  architecture is 75. That's why we're  keeping the weights 75 times the actual  weight. Because if you don't keep them  75 times, they will increase. It wasn't  that much during training. It was only  75 times during training. That's why  what will you do? You can choose any of  your weights. You can choose any of  these weights. You can multiply them  all by 1-p times and use these same  weights during testing when you make  predictions. I hope you understand this . Okay? Let me summarize. It's very  simple. Your node is dropped only  during training. During testing, all  nodes are available. All weights are  available. But we can't assign the full  weight because that node wasn't  available during training. So, we'll  multiply that by the probability of the  available time. So, if your dropout  ratio is 25, it means the probability  of it staying is 75%, so we multiply it  by 75%. That's it. This is the concept.  Okay? The good thing is that you don't  have to do all this manually. Keras  handles it all behind the scenes. You  just need to understand what's  happening. So, I guess you're getting  the hang of dropouts. Now, next, I was  going to show you some coding,  practically, by working with a data set . But I guess the video is a bit long.  So, what I'll do is convert this video  into two parts. In the next part, I'll  show you examples of code for both  regression and classification. I'll  also give you some practical tips on  when to use drops. Okay? So I hope you  like the video. If so please do like  the video and consider subscribing to  my channel. OK? Thanks for watching.  Bye.",
+  "snippets": [
+    {
+      "text": "Hi guys, my name is Nitesh, and welcome",
+      "start": 0.495,
+      "duration": 3.441
+    },
+    {
+      "text": " to my YouTube channel. In this video,",
+      "start": 2.998,
+      "duration": 3.517
+    },
+    {
+      "text": " we're continuing our Deep Learning",
+      "start": 5.573,
+      "duration": 2.982
+    },
+    {
+      "text": " playlist. Today, we'll cover a topic",
+      "start": 7.614,
+      "duration": 4.237
+    },
+    {
+      "text": " called dropouts. Okay? This concept was",
+      "start": 10.93,
+      "duration": 4.492
+    },
+    {
+      "text": " recently discovered in deep learning a",
+      "start": 14.487,
+      "duration": 3.477
+    },
+    {
+      "text": " few years ago, and trust me, drops are",
+      "start": 17.029,
+      "duration": 3.478
+    },
+    {
+      "text": " now widely used in the process of",
+      "start": 19.572,
+      "duration": 3.151
+    },
+    {
+      "text": " training neural networks. Okay? So, in",
+      "start": 21.789,
+      "duration": 3.987
+    },
+    {
+      "text": " today's video, we'll discuss what a",
+      "start": 24.829,
+      "duration": 2.855
+    },
+    {
+      "text": " drop is, how it works, and then we'll",
+      "start": 26.737,
+      "duration": 2.96
+    },
+    {
+      "text": " implement it practically in code.",
+      "start": 28.75,
+      "duration": 2.749
+    },
+    {
+      "text": " Finally, I'll give you some practical",
+      "start": 33.199,
+      "duration": 3.733
+    },
+    {
+      "text": " tips on when and how to use drops.",
+      "start": 36.006,
+      "duration": 3.513
+    },
+    {
+      "text": " You'll notice that if you learn things",
+      "start": 39.139,
+      "duration": 3.128
+    },
+    {
+      "text": " correctly, you'll be able to train your",
+      "start": 41.323,
+      "duration": 3.184
+    },
+    {
+      "text": " neural network a little better. Okay?",
+      "start": 43.563,
+      "duration": 3.256
+    },
+    {
+      "text": " Right now, on the screen, we have the",
+      "start": 46.019,
+      "duration": 3.34
+    },
+    {
+      "text": " same document I've been following for",
+      "start": 48.422,
+      "duration": 3.34
+    },
+    {
+      "text": " the last two or three videos. These are",
+      "start": 50.825,
+      "duration": 4.474
+    },
+    {
+      "text": " kind of the steps you'll need to follow",
+      "start": 54.368,
+      "duration": 3.699
+    },
+    {
+      "text": " if you want to improve your neural",
+      "start": 57.136,
+      "duration": 3.353
+    },
+    {
+      "text": " network. We need to improve its",
+      "start": 59.558,
+      "duration": 2.941
+    },
+    {
+      "text": " performance. So far, we've covered two",
+      "start": 61.544,
+      "duration": 3.599
+    },
+    {
+      "text": " things: the concept of early stopping",
+      "start": 64.215,
+      "duration": 3.671
+    },
+    {
+      "text": " and normalizing inputs. Okay? Today,",
+      "start": 66.958,
+      "duration": 4.365
+    },
+    {
+      "text": " we're going to focus on dropout layers.",
+      "start": 70.395,
+      "duration": 3.781
+    },
+    {
+      "text": " Okay? As you can see, dropout layers",
+      "start": 73.619,
+      "duration": 4.036
+    },
+    {
+      "text": " are used when your model, your neural",
+      "start": 76.738,
+      "duration": 4.079
+    },
+    {
+      "text": " network, overfits. Okay? So, let's do",
+      "start": 79.901,
+      "duration": 3.938
+    },
+    {
+      "text": " one thing. We'll start our discussion",
+      "start": 82.879,
+      "duration": 3.516
+    },
+    {
+      "text": " from the very basics and gradually",
+      "start": 85.465,
+      "duration": 3.375
+    },
+    {
+      "text": " progress. So, first, I guess I don't",
+      "start": 87.91,
+      "duration": 4.258
+    },
+    {
+      "text": " need to explain what overfitting is?",
+      "start": 91.253,
+      "duration": 4.086
+    },
+    {
+      "text": " Overfitting is a problem that plagues",
+      "start": 94.919,
+      "duration": 2.965
+    },
+    {
+      "text": " machine learning. Okay? You've worked",
+      "start": 96.937,
+      "duration": 3.506
+    },
+    {
+      "text": " hard to train a machine learning model",
+      "start": 99.487,
+      "duration": 2.65
+    },
+    {
+      "text": " on a set of data. But now the problem",
+      "start": 101.18,
+      "duration": 3.201
+    },
+    {
+      "text": " is that your machine learning model has",
+      "start": 103.439,
+      "duration": 3.263
+    },
+    {
+      "text": " overfitted. Overfitting means it has",
+      "start": 105.76,
+      "duration": 3.589
+    },
+    {
+      "text": " memorized the training data and its",
+      "start": 108.416,
+      "duration": 3.341
+    },
+    {
+      "text": " performance is excellent on the",
+      "start": 110.824,
+      "duration": 3.074
+    },
+    {
+      "text": " training data, but when you show it new",
+      "start": 112.965,
+      "duration": 3.609
+    },
+    {
+      "text": ", unseen data, its performance is poor.",
+      "start": 115.574,
+      "duration": 3.609
+    },
+    {
+      "text": " If you look at this diagram, you'll",
+      "start": 118.419,
+      "duration": 2.48
+    },
+    {
+      "text": " understand what I'm talking about. Here",
+      "start": 119.941,
+      "duration": 3.105
+    },
+    {
+      "text": ", you can see that you're solving a",
+      "start": 122.046,
+      "duration": 3.161
+    },
+    {
+      "text": " classification problem, creating a",
+      "start": 124.269,
+      "duration": 3.1
+    },
+    {
+      "text": " decision boundary between the blue and",
+      "start": 126.431,
+      "duration": 3.346
+    },
+    {
+      "text": " red points. Your machine learning",
+      "start": 128.839,
+      "duration": 3.0
+    },
+    {
+      "text": " model's job is to differentiate between",
+      "start": 130.891,
+      "duration": 3.005
+    },
+    {
+      "text": " the green (I'm sorry, blue) and red",
+      "start": 132.947,
+      "duration": 2.8
+    },
+    {
+      "text": " points. Now, if you look at this green",
+      "start": 134.799,
+      "duration": 4.675
+    },
+    {
+      "text": " model here, if you focus on it, it's",
+      "start": 138.555,
+      "duration": 3.942
+    },
+    {
+      "text": " overfitting because it's trying to",
+      "start": 141.579,
+      "duration": 3.778
+    },
+    {
+      "text": " memorize too much of the training data",
+      "start": 144.438,
+      "duration": 4.105
+    },
+    {
+      "text": " and trying not to make a single mistake",
+      "start": 147.625,
+      "duration": 4.187
+    },
+    {
+      "text": " on it. Okay? Now, imagine for yourself,",
+      "start": 150.893,
+      "duration": 4.199
+    },
+    {
+      "text": " if this data were removed and replaced",
+      "start": 154.151,
+      "duration": 3.239
+    },
+    {
+      "text": " with some new, unseen data, this",
+      "start": 156.449,
+      "duration": 2.886
+    },
+    {
+      "text": " complex decision boundary we've created",
+      "start": 158.393,
+      "duration": 3.299
+    },
+    {
+      "text": " wouldn't give us good results. It would",
+      "start": 160.751,
+      "duration": 3.954
+    },
+    {
+      "text": " be great if we could somehow achieve",
+      "start": 163.778,
+      "duration": 3.632
+    },
+    {
+      "text": " this black surface, this black decision",
+      "start": 166.483,
+      "duration": 3.851
+    },
+    {
+      "text": " boundary, because it's not memorizing",
+      "start": 169.407,
+      "duration": 3.704
+    },
+    {
+      "text": " it; it's understanding the concept",
+      "start": 172.184,
+      "duration": 3.486
+    },
+    {
+      "text": " within your data and correctly creating",
+      "start": 174.743,
+      "duration": 3.851
+    },
+    {
+      "text": " a classification boundary between your",
+      "start": 177.667,
+      "duration": 3.777
+    },
+    {
+      "text": " two points. Right? So this is what",
+      "start": 180.517,
+      "duration": 3.201
+    },
+    {
+      "text": " happens. The neural networks you've",
+      "start": 182.758,
+      "duration": 4.049
+    },
+    {
+      "text": " studied so far are prone to overfitting",
+      "start": 185.897,
+      "duration": 4.515
+    },
+    {
+      "text": ". You'll hear this repeatedly about",
+      "start": 189.412,
+      "duration": 3.861
+    },
+    {
+      "text": " neural networks: they're prone to",
+      "start": 192.328,
+      "duration": 2.799
+    },
+    {
+      "text": " overfitting. The reason for this is",
+      "start": 194.181,
+      "duration": 3.344
+    },
+    {
+      "text": " that they're very complex. Just think",
+      "start": 196.589,
+      "duration": 3.577
+    },
+    {
+      "text": " about it: there are multiple layers.",
+      "start": 199.226,
+      "duration": 3.145
+    },
+    {
+      "text": " There are multiple layers, and each",
+      "start": 201.659,
+      "duration": 4.121
+    },
+    {
+      "text": " layer has multiple nodes. So, when you",
+      "start": 204.869,
+      "duration": 5.955
+    },
+    {
+      "text": " feed data to this complex architecture",
+      "start": 209.941,
+      "duration": 5.452
+    },
+    {
+      "text": " and run it on multiple epochs, you'll",
+      "start": 214.51,
+      "duration": 5.334
+    },
+    {
+      "text": " see overfitting a lot. Right? This is a",
+      "start": 218.961,
+      "duration": 5.288
+    },
+    {
+      "text": " huge problem. Now the question is, how",
+      "start": 223.317,
+      "duration": 4.527
+    },
+    {
+      "text": " can you solve the problem of",
+      "start": 226.937,
+      "duration": 3.596
+    },
+    {
+      "text": " overfitting? So, if you talk about",
+      "start": 229.626,
+      "duration": 3.433
+    },
+    {
+      "text": " possible solutions, there are two or",
+      "start": 232.103,
+      "duration": 2.594
+    },
+    {
+      "text": " three possible solutions. The first",
+      "start": 233.741,
+      "duration": 3.139
+    },
+    {
+      "text": " possible solution, which is widely",
+      "start": 235.967,
+      "duration": 3.951
+    },
+    {
+      "text": " followed in neural networks, is to add",
+      "start": 239.005,
+      "duration": 4.299
+    },
+    {
+      "text": " more data. The more data you provide,",
+      "start": 242.39,
+      "duration": 3.938
+    },
+    {
+      "text": " the greater the chance of avoiding",
+      "start": 245.4,
+      "duration": 3.444
+    },
+    {
+      "text": " overfitting. Right? The more diverse",
+      "start": 247.916,
+      "duration": 3.689
+    },
+    {
+      "text": " types of data you expose your neural",
+      "start": 250.674,
+      "duration": 3.488
+    },
+    {
+      "text": " network to, the better it generalizes.",
+      "start": 253.232,
+      "duration": 3.627
+    },
+    {
+      "text": " That's the first point. The second is",
+      "start": 256.105,
+      "duration": 4.019
+    },
+    {
+      "text": " to reduce the complexity of your",
+      "start": 259.238,
+      "duration": 4.653
+    },
+    {
+      "text": " network. Where you were using 10 hidden",
+      "start": 263.005,
+      "duration": 5.038
+    },
+    {
+      "text": " layers, try applying seven. Where you",
+      "start": 267.115,
+      "duration": 3.827
+    },
+    {
+      "text": " were adding 128 nodes per layer, try",
+      "start": 270.018,
+      "duration": 3.735
+    },
+    {
+      "text": " adding 64. When you reduce the",
+      "start": 272.829,
+      "duration": 3.279
+    },
+    {
+      "text": " complexity of your model, overfitting",
+      "start": 275.184,
+      "duration": 3.811
+    },
+    {
+      "text": " also reduces. Right? Third, early",
+      "start": 278.071,
+      "duration": 5.138
+    },
+    {
+      "text": " stopping. Early stopping. We've studied",
+      "start": 282.32,
+      "duration": 4.397
+    },
+    {
+      "text": " this. The basic principle of early",
+      "start": 285.753,
+      "duration": 3.361
+    },
+    {
+      "text": " stopping is that you identify when",
+      "start": 288.178,
+      "duration": 3.179
+    },
+    {
+      "text": " overfitting is starting. You stop",
+      "start": 290.421,
+      "duration": 3.318
+    },
+    {
+      "text": " training at that point. I showed you",
+      "start": 292.794,
+      "duration": 3.207
+    },
+    {
+      "text": " this two or three videos ago. This is",
+      "start": 295.043,
+      "duration": 2.613
+    },
+    {
+      "text": " also a technique. You must have studied",
+      "start": 296.693,
+      "duration": 2.92
+    },
+    {
+      "text": " technique number four in machine",
+      "start": 298.65,
+      "duration": 2.18
+    },
+    {
+      "text": " learning. You can use regularization,",
+      "start": 299.867,
+      "duration": 3.175
+    },
+    {
+      "text": " especially in linear models. You may",
+      "start": 302.101,
+      "duration": 6.127
+    },
+    {
+      "text": " have studied regularization, both L1",
+      "start": 307.286,
+      "duration": 3.105
+    },
+    {
+      "text": " and L2. You may have studied Rich",
+      "start": 309.449,
+      "duration": 3.145
+    },
+    {
+      "text": " Regression and Lasso Regression. I",
+      "start": 311.645,
+      "duration": 3.337
+    },
+    {
+      "text": " taught you this technique in 100 Days",
+      "start": 314.025,
+      "duration": 2.604
+    },
+    {
+      "text": " of Machine Learning. You can use this",
+      "start": 315.673,
+      "duration": 3.099
+    },
+    {
+      "text": " technique here as well. In fact, I will",
+      "start": 317.807,
+      "duration": 2.898
+    },
+    {
+      "text": " teach you this technique in the next",
+      "start": 319.768,
+      "duration": 3.27
+    },
+    {
+      "text": " video. But the technique we are going",
+      "start": 322.101,
+      "duration": 3.438
+    },
+    {
+      "text": " to study in today's video is called",
+      "start": 324.592,
+      "duration": 2.867
+    },
+    {
+      "text": " dropout. Dropout. This is a very",
+      "start": 326.513,
+      "duration": 5.337
+    },
+    {
+      "text": " strange, different technique discovered",
+      "start": 330.926,
+      "duration": 3.949
+    },
+    {
+      "text": " a few years ago by Geoffrey Hilton and",
+      "start": 333.95,
+      "duration": 3.874
+    },
+    {
+      "text": " there is this guy called Nitish",
+      "start": 336.899,
+      "duration": 3.344
+    },
+    {
+      "text": " Srivastava. These two developed this",
+      "start": 339.319,
+      "duration": 3.393
+    },
+    {
+      "text": " technique together, and since its",
+      "start": 341.772,
+      "duration": 2.987
+    },
+    {
+      "text": " introduction, it has become very famous",
+      "start": 343.819,
+      "duration": 3.347
+    },
+    {
+      "text": ". This technique has become very",
+      "start": 346.166,
+      "duration": 3.022
+    },
+    {
+      "text": " popular in deep learning circuits to",
+      "start": 348.244,
+      "duration": 3.001
+    },
+    {
+      "text": " train neural networks and reduce",
+      "start": 350.3,
+      "duration": 2.779
+    },
+    {
+      "text": " overfitting. Right? So today's video is",
+      "start": 352.134,
+      "duration": 3.761
+    },
+    {
+      "text": " about overfit dropouts. Okay? So now",
+      "start": 354.98,
+      "duration": 3.983
+    },
+    {
+      "text": " we're going to understand exactly what",
+      "start": 358.025,
+      "duration": 3.334
+    },
+    {
+      "text": " drops are. What exactly do you change",
+      "start": 360.42,
+      "duration": 3.499
+    },
+    {
+      "text": " in your neural network to reduce your",
+      "start": 362.985,
+      "duration": 3.42
+    },
+    {
+      "text": " overfitting problem? Let's see that.",
+      "start": 365.47,
+      "duration": 3.614
+    },
+    {
+      "text": " Come on guys, let's understand the",
+      "start": 368.299,
+      "duration": 3.101
+    },
+    {
+      "text": " concept of dropouts. Let's take an",
+      "start": 370.462,
+      "duration": 4.46
+    },
+    {
+      "text": " example. Let's say we're working on a",
+      "start": 373.945,
+      "duration": 4.751
+    },
+    {
+      "text": " classification problem, and in that",
+      "start": 377.778,
+      "duration": 3.881
+    },
+    {
+      "text": " classification problem, we have five",
+      "start": 380.742,
+      "duration": 3.963
+    },
+    {
+      "text": " columns as inputs. And then we have our",
+      "start": 383.788,
+      "duration": 5.265
+    },
+    {
+      "text": " output column. Okay? And we've created",
+      "start": 388.115,
+      "duration": 4.512
+    },
+    {
+      "text": " a neural network that will solve this",
+      "start": 391.708,
+      "duration": 3.978
+    },
+    {
+      "text": " classification problem. This is my",
+      "start": 394.767,
+      "duration": 4.329
+    },
+    {
+      "text": " input layer here. You can see five",
+      "start": 398.181,
+      "duration": 3.704
+    },
+    {
+      "text": " inputs going here. The input for each",
+      "start": 400.948,
+      "duration": 3.762
+    },
+    {
+      "text": " column goes from here. Then we have two",
+      "start": 403.761,
+      "duration": 4.281
+    },
+    {
+      "text": " hidden layers. Both have five nodes.",
+      "start": 407.139,
+      "duration": 4.54
+    },
+    {
+      "text": " And finally, this is your output layer,",
+      "start": 410.959,
+      "duration": 3.193
+    },
+    {
+      "text": " which has a single node. Let's say this",
+      "start": 413.209,
+      "duration": 3.126
+    },
+    {
+      "text": " is a binary classification problem. So,",
+      "start": 415.379,
+      "duration": 3.232
+    },
+    {
+      "text": " your fully connected neural network",
+      "start": 417.708,
+      "duration": 4.41
+    },
+    {
+      "text": " will look like this, like this first",
+      "start": 421.215,
+      "duration": 4.507
+    },
+    {
+      "text": " diagram. Okay? Now, what happens is",
+      "start": 424.819,
+      "duration": 4.083
+    },
+    {
+      "text": " that when you create such a complex",
+      "start": 427.962,
+      "duration": 3.118
+    },
+    {
+      "text": " architecture, there's a chance of",
+      "start": 430.141,
+      "duration": 2.997
+    },
+    {
+      "text": " overfitting, as I mentioned. So, to",
+      "start": 432.198,
+      "duration": 3.499
+    },
+    {
+      "text": " solve this, we use drops. And the main",
+      "start": 434.773,
+      "duration": 5.202
+    },
+    {
+      "text": " concept of drops is simply that you",
+      "start": 439.113,
+      "duration": 5.832
+    },
+    {
+      "text": " randomly drop nodes from your input",
+      "start": 444.083,
+      "duration": 5.832
+    },
+    {
+      "text": " layer and your hidden layer. Now, what",
+      "start": 449.053,
+      "duration": 6.686
+    },
+    {
+      "text": " does drop mean? I'll explain. Focus on",
+      "start": 454.791,
+      "duration": 3.595
+    },
+    {
+      "text": " this diagram. What will we do? In each",
+      "start": 457.457,
+      "duration": 4.127
+    },
+    {
+      "text": " epoch, let's say we're training our",
+      "start": 460.677,
+      "duration": 4.229
+    },
+    {
+      "text": " model for a total of 10 epochs. So,",
+      "start": 463.998,
+      "duration": 4.423
+    },
+    {
+      "text": " what will we do? For each epoch, we'll",
+      "start": 467.475,
+      "duration": 3.833
+    },
+    {
+      "text": " randomly switch off some of the nodes",
+      "start": 470.396,
+      "duration": 4.271
+    },
+    {
+      "text": " in your input layer and in your hidden",
+      "start": 473.755,
+      "duration": 4.359
+    },
+    {
+      "text": " layer. For example, look here, let's",
+      "start": 477.202,
+      "duration": 3.17
+    },
+    {
+      "text": " say Epoch 1 is currently running. This",
+      "start": 479.422,
+      "duration": 3.712
+    },
+    {
+      "text": " is Epoch 1. So, what did I do? Now, out",
+      "start": 482.205,
+      "duration": 3.863
+    },
+    {
+      "text": " of these five, I randomly turned off",
+      "start": 485.147,
+      "duration": 3.868
+    },
+    {
+      "text": " this one and that one. What turning off",
+      "start": 488.095,
+      "duration": 4.095
+    },
+    {
+      "text": " means is that this node will no longer",
+      "start": 491.26,
+      "duration": 3.637
+    },
+    {
+      "text": " be connected to any other node.",
+      "start": 493.967,
+      "duration": 3.152
+    },
+    {
+      "text": " Basically, these weights and biases",
+      "start": 496.559,
+      "duration": 2.755
+    },
+    {
+      "text": " will be removed from this node. It will",
+      "start": 498.364,
+      "duration": 3.108
+    },
+    {
+      "text": " be disconnected from the network. So,",
+      "start": 500.508,
+      "duration": 2.824
+    },
+    {
+      "text": " what did I do? I randomly removed these",
+      "start": 502.396,
+      "duration": 4.507
+    },
+    {
+      "text": " three nodes in my hidden layer. And",
+      "start": 506.006,
+      "duration": 4.577
+    },
+    {
+      "text": " then I randomly removed these two nodes",
+      "start": 509.644,
+      "duration": 3.351
+    },
+    {
+      "text": " in the next hidden layer. So, what's",
+      "start": 512.055,
+      "duration": 3.915
+    },
+    {
+      "text": " left is my neural network, and it will",
+      "start": 515.049,
+      "duration": 4.007
+    },
+    {
+      "text": " be trained on it for this particular",
+      "start": 518.135,
+      "duration": 3.85
+    },
+    {
+      "text": " epoch. Now, when epoch two comes, what",
+      "start": 521.064,
+      "duration": 4.77
+    },
+    {
+      "text": " will I do again before epoch two? I",
+      "start": 524.93,
+      "duration": 4.371
+    },
+    {
+      "text": " will randomly remove two nodes in this",
+      "start": 528.384,
+      "duration": 4.137
+    },
+    {
+      "text": " layer. Let's say this time I removed",
+      "start": 531.603,
+      "duration": 3.477
+    },
+    {
+      "text": " this one and this one. Then this one",
+      "start": 534.136,
+      "duration": 2.94
+    },
+    {
+      "text": " will come back. This one will also come",
+      "start": 536.118,
+      "duration": 3.159
+    },
+    {
+      "text": " back. This one and this one will be",
+      "start": 538.324,
+      "duration": 3.596
+    },
+    {
+      "text": " disconnected. Similarly, what will I do",
+      "start": 540.984,
+      "duration": 3.58
+    },
+    {
+      "text": " in the next one? I will randomly remove",
+      "start": 543.616,
+      "duration": 3.079
+    },
+    {
+      "text": " three nodes again. For example, I",
+      "start": 545.745,
+      "duration": 3.224
+    },
+    {
+      "text": " removed this one, this one, and this",
+      "start": 548.039,
+      "duration": 3.546
+    },
+    {
+      "text": " one. So basically, now this one will",
+      "start": 550.656,
+      "duration": 2.703
+    },
+    {
+      "text": " remain, this one will remain. Okay? And",
+      "start": 552.401,
+      "duration": 3.131
+    },
+    {
+      "text": " in the next one, I'll randomly remove",
+      "start": 554.63,
+      "duration": 4.612
+    },
+    {
+      "text": " two and put this one back. So, what are",
+      "start": 558.34,
+      "duration": 4.68
+    },
+    {
+      "text": " you doing? Before each epoch, you're",
+      "start": 562.062,
+      "duration": 4.131
+    },
+    {
+      "text": " randomly deciding which nodes will",
+      "start": 565.293,
+      "duration": 4.392
+    },
+    {
+      "text": " remain and which will not. So, in a way",
+      "start": 568.785,
+      "duration": 5.671
+    },
+    {
+      "text": ", you could say that when you run 10",
+      "start": 573.456,
+      "duration": 4.65
+    },
+    {
+      "text": " epochs, you're actually training on 10",
+      "start": 577.208,
+      "duration": 4.853
+    },
+    {
+      "text": " different neural networks. The most",
+      "start": 581.162,
+      "duration": 5.078
+    },
+    {
+      "text": " important point here is that what",
+      "start": 585.3,
+      "duration": 2.984
+    },
+    {
+      "text": " happens with dropout is that the",
+      "start": 587.345,
+      "duration": 2.924
+    },
+    {
+      "text": " architecture of your neural network",
+      "start": 589.329,
+      "duration": 3.105
+    },
+    {
+      "text": " essentially changes slightly. So, you",
+      "start": 591.494,
+      "duration": 3.481
+    },
+    {
+      "text": " could say that in the first epoch,",
+      "start": 594.031,
+      "duration": 2.921
+    },
+    {
+      "text": " there was a different neural network.",
+      "start": 596.008,
+      "duration": 3.091
+    },
+    {
+      "text": " In the second, it was slightly",
+      "start": 598.38,
+      "duration": 1.836
+    },
+    {
+      "text": " different, and in the third, it was",
+      "start": 599.244,
+      "duration": 1.977
+    },
+    {
+      "text": " slightly different. So, in a way, in",
+      "start": 600.248,
+      "duration": 2.792
+    },
+    {
+      "text": " every epoch, you're training the same",
+      "start": 602.105,
+      "duration": 3.409
+    },
+    {
+      "text": " data but on a different neural network.",
+      "start": 604.579,
+      "duration": 3.54
+    },
+    {
+      "text": " Right? This is the concept of dropout.",
+      "start": 607.439,
+      "duration": 3.783
+    },
+    {
+      "text": " Now, when someone reads this for the",
+      "start": 610.496,
+      "duration": 2.71
+    },
+    {
+      "text": " first time, this doubt comes to their",
+      "start": 612.253,
+      "duration": 2.758
+    },
+    {
+      "text": " mind. It came to my mind too. I'm sure",
+      "start": 614.058,
+      "duration": 3.023
+    },
+    {
+      "text": " you're wondering, how can breaking",
+      "start": 616.165,
+      "duration": 3.846
+    },
+    {
+      "text": " things like this improve performance?",
+      "start": 619.095,
+      "duration": 4.098
+    },
+    {
+      "text": " What are we doing? We're breaking down",
+      "start": 622.579,
+      "duration": 2.777
+    },
+    {
+      "text": " our neural network. We're breaking it.",
+      "start": 624.402,
+      "duration": 3.057
+    },
+    {
+      "text": " So how can breaking it make something",
+      "start": 626.799,
+      "duration": 3.433
+    },
+    {
+      "text": " better? This should be your question.",
+      "start": 629.298,
+      "duration": 3.789
+    },
+    {
+      "text": " Next, I'll explain how this technique",
+      "start": 633.219,
+      "duration": 4.046
+    },
+    {
+      "text": " intelligently solves the problem of",
+      "start": 636.347,
+      "duration": 3.881
+    },
+    {
+      "text": " overfitting. In fact, it's proven that",
+      "start": 639.311,
+      "duration": 4.947
+    },
+    {
+      "text": " using drop improves your accuracy by",
+      "start": 643.357,
+      "duration": 4.571
+    },
+    {
+      "text": " around 2%. Now, you might ask, \"Which 2",
+      "start": 647.027,
+      "duration": 4.068
+    },
+    {
+      "text": "%is too much?\" It's too much. If you're",
+      "start": 650.095,
+      "duration": 3.336
+    },
+    {
+      "text": " at 95 and you want to go to 97, that's",
+      "start": 652.495,
+      "duration": 3.418
+    },
+    {
+      "text": " not a small jump. It's a huge jump, and",
+      "start": 654.977,
+      "duration": 3.651
+    },
+    {
+      "text": " a drop can give you such a benefit.",
+      "start": 657.696,
+      "duration": 3.383
+    },
+    {
+      "text": " Okay? So, what do we need to understand",
+      "start": 660.479,
+      "duration": 2.197
+    },
+    {
+      "text": " now? We need to understand how removing",
+      "start": 661.705,
+      "duration": 4.3
+    },
+    {
+      "text": " neurons improves performance. We'll",
+      "start": 665.088,
+      "duration": 4.052
+    },
+    {
+      "text": " explore this intuition. So, guys, let's",
+      "start": 668.206,
+      "duration": 3.583
+    },
+    {
+      "text": " first try to understand why overfitting",
+      "start": 670.85,
+      "duration": 3.368
+    },
+    {
+      "text": " happens in neural networks. Okay? Now,",
+      "start": 673.279,
+      "duration": 4.115
+    },
+    {
+      "text": " let's say we have this data and this",
+      "start": 676.477,
+      "duration": 5.642
+    },
+    {
+      "text": " neural network. What happens in a",
+      "start": 681.194,
+      "duration": 3.915
+    },
+    {
+      "text": " neural network is that you have a lot",
+      "start": 684.165,
+      "duration": 3.07
+    },
+    {
+      "text": " of hidden layers, and those hidden",
+      "start": 686.291,
+      "duration": 2.901
+    },
+    {
+      "text": " layers have a lot of nodes. And when",
+      "start": 688.248,
+      "duration": 3.533
+    },
+    {
+      "text": " you create a fully connected neural",
+      "start": 690.839,
+      "duration": 3.022
+    },
+    {
+      "text": " network, there are a lot of",
+      "start": 692.919,
+      "duration": 2.56
+    },
+    {
+      "text": " possibilities because of these",
+      "start": 694.536,
+      "duration": 2.734
+    },
+    {
+      "text": " arrangements. Okay? So, what happens is",
+      "start": 696.327,
+      "duration": 4.126
+    },
+    {
+      "text": " that these small arrangements have a",
+      "start": 699.524,
+      "duration": 3.566
+    },
+    {
+      "text": " lot of possibilities. In a neural",
+      "start": 702.162,
+      "duration": 3.258
+    },
+    {
+      "text": " network, it tries to capture every",
+      "start": 704.472,
+      "duration": 2.768
+    },
+    {
+      "text": " little thing. It tries to capture even",
+      "start": 706.292,
+      "duration": 4.609
+    },
+    {
+      "text": " the smallest pattern, and that's what",
+      "start": 709.983,
+      "duration": 4.051
+    },
+    {
+      "text": " causes overfitting. So, if someone asks",
+      "start": 713.116,
+      "duration": 4.417
+    },
+    {
+      "text": " you what can be done to reduce",
+      "start": 716.596,
+      "duration": 2.885
+    },
+    {
+      "text": " overfitting? The simple answer is to",
+      "start": 718.544,
+      "duration": 4.548
+    },
+    {
+      "text": " reduce the number of nodes. Just reduce",
+      "start": 722.198,
+      "duration": 6.262
+    },
+    {
+      "text": " the number of nodes. Reducing the",
+      "start": 727.489,
+      "duration": 2.358
+    },
+    {
+      "text": " number of nodes will reduce those",
+      "start": 728.903,
+      "duration": 2.839
+    },
+    {
+      "text": " possibilities. Picking up these small",
+      "start": 730.798,
+      "duration": 3.509
+    },
+    {
+      "text": " possibilities will be reduced. Another",
+      "start": 733.367,
+      "duration": 4.368
+    },
+    {
+      "text": " way is to make changes to your notes so",
+      "start": 736.849,
+      "duration": 5.439
+    },
+    {
+      "text": " that they don't focus on any single",
+      "start": 741.402,
+      "duration": 4.984
+    },
+    {
+      "text": " type of pattern, but rather focus",
+      "start": 745.5,
+      "duration": 4.756
+    },
+    {
+      "text": " equally on all types of things. If you",
+      "start": 749.37,
+      "duration": 5.271
+    },
+    {
+      "text": " can do these two things, you can avoid",
+      "start": 753.694,
+      "duration": 3.041
+    },
+    {
+      "text": " the problem of overfitting. First,",
+      "start": 755.789,
+      "duration": 3.111
+    },
+    {
+      "text": " reduce the number of nodes. This will",
+      "start": 757.962,
+      "duration": 3.884
+    },
+    {
+      "text": " automatically reduce the number of",
+      "start": 760.894,
+      "duration": 2.615
+    },
+    {
+      "text": " connections in your neural network.",
+      "start": 762.556,
+      "duration": 2.663
+    },
+    {
+      "text": " Therefore, it won't have the resources",
+      "start": 766.128,
+      "duration": 3.038
+    },
+    {
+      "text": " to automatically focus on very subtle",
+      "start": 768.219,
+      "duration": 2.985
+    },
+    {
+      "text": " details. Second, you'll need to trick",
+      "start": 770.257,
+      "duration": 5.087
+    },
+    {
+      "text": " your notes into not focusing too much",
+      "start": 774.454,
+      "duration": 5.049
+    },
+    {
+      "text": " on any one single thing. Somehow, you",
+      "start": 778.613,
+      "duration": 4.969
+    },
+    {
+      "text": " need to distract them and make them",
+      "start": 782.648,
+      "duration": 3.294
+    },
+    {
+      "text": " focus on everything rather than",
+      "start": 785.007,
+      "duration": 3.032
+    },
+    {
+      "text": " focusing on a single thing. Dropout",
+      "start": 787.105,
+      "duration": 3.911
+    },
+    {
+      "text": " layers do both of these very",
+      "start": 790.075,
+      "duration": 2.67
+    },
+    {
+      "text": " effectively. See how? Look here, this",
+      "start": 791.804,
+      "duration": 4.424
+    },
+    {
+      "text": " is the same neural network. And what",
+      "start": 795.282,
+      "duration": 3.524
+    },
+    {
+      "text": " have I done? I decided to use a dropout",
+      "start": 797.867,
+      "duration": 4.746
+    },
+    {
+      "text": " ratio of 0.5. You can use a different",
+      "start": 801.722,
+      "duration": 4.875
+    },
+    {
+      "text": " dropout ratio for each layer, denoted p",
+      "start": 805.669,
+      "duration": 3.778
+    },
+    {
+      "text": ". This means that I'll randomly drop,",
+      "start": 808.447,
+      "duration": 4.298
+    },
+    {
+      "text": " or remove, 50%of the neurons from this",
+      "start": 811.825,
+      "duration": 4.025
+    },
+    {
+      "text": " input layer in each epoch. Okay? I did",
+      "start": 814.93,
+      "duration": 4.703
+    },
+    {
+      "text": " the same for this hidden layer, point",
+      "start": 818.703,
+      "duration": 3.567
+    },
+    {
+      "text": " five. Meaning, I'll randomly drop 50%of",
+      "start": 821.34,
+      "duration": 3.829
+    },
+    {
+      "text": " the neurons from this hidden layer in",
+      "start": 824.238,
+      "duration": 3.568
+    },
+    {
+      "text": " each epoch. Okay? Now, look, I ran my",
+      "start": 826.875,
+      "duration": 4.527
+    },
+    {
+      "text": " first epoch. When I ran the first epoch",
+      "start": 830.482,
+      "duration": 3.541
+    },
+    {
+      "text": ", this and this automatically turned",
+      "start": 833.023,
+      "duration": 2.889
+    },
+    {
+      "text": " off in the first layer, and this and",
+      "start": 834.965,
+      "duration": 2.889
+    },
+    {
+      "text": " this in the second layer. And here's my",
+      "start": 836.907,
+      "duration": 3.359
+    },
+    {
+      "text": " neural network, which is actually a",
+      "start": 839.326,
+      "duration": 3.1
+    },
+    {
+      "text": " subset of this neural network. If you",
+      "start": 841.486,
+      "duration": 3.332
+    },
+    {
+      "text": " look carefully, it's just a subset of",
+      "start": 843.89,
+      "duration": 3.659
+    },
+    {
+      "text": " the main neural network. It's smaller.",
+      "start": 846.621,
+      "duration": 3.478
+    },
+    {
+      "text": " We have fewer nodes. Then, when I ran",
+      "start": 849.339,
+      "duration": 3.413
+    },
+    {
+      "text": " the next epoch, this time these two",
+      "start": 851.812,
+      "duration": 3.085
+    },
+    {
+      "text": " neurons turned off, and these two",
+      "start": 853.957,
+      "duration": 2.966
+    },
+    {
+      "text": " turned off. Once again, a new neural",
+      "start": 855.983,
+      "duration": 3.48
+    },
+    {
+      "text": " network is created, which is again a",
+      "start": 858.521,
+      "duration": 3.066
+    },
+    {
+      "text": " subset of this neural network. You're",
+      "start": 860.644,
+      "duration": 3.159
+    },
+    {
+      "text": " reducing the number of neurons.",
+      "start": 862.85,
+      "duration": 2.469
+    },
+    {
+      "text": " Similarly, in the third epoch, this one",
+      "start": 864.819,
+      "duration": 2.798
+    },
+    {
+      "text": " and this one are turned off, and these",
+      "start": 866.663,
+      "duration": 2.753
+    },
+    {
+      "text": " two are turned off. So, every time",
+      "start": 868.462,
+      "duration": 3.173
+    },
+    {
+      "text": " we're reducing the number of neurons.",
+      "start": 870.712,
+      "duration": 3.847
+    },
+    {
+      "text": " Let's talk about the second point. How",
+      "start": 873.942,
+      "duration": 3.078
+    },
+    {
+      "text": " to achieve the second point is very",
+      "start": 876.08,
+      "duration": 3.085
+    },
+    {
+      "text": " simple. Now, look, I'll try to explain",
+      "start": 878.224,
+      "duration": 3.344
+    },
+    {
+      "text": " it to you in a very simple way. We grab",
+      "start": 880.619,
+      "duration": 3.89
+    },
+    {
+      "text": " this neuron. We grab this node. Now,",
+      "start": 883.599,
+      "duration": 4.596
+    },
+    {
+      "text": " this node is taking input from all four",
+      "start": 887.249,
+      "duration": 3.11
+    },
+    {
+      "text": " of these. Okay? But depending on the",
+      "start": 889.413,
+      "duration": 4.958
+    },
+    {
+      "text": " data, it may start to have a higher",
+      "start": 893.466,
+      "duration": 4.311
+    },
+    {
+      "text": " value. Meaning, this weight, this",
+      "start": 896.872,
+      "duration": 5.167
+    },
+    {
+      "text": " weight, may have a higher value",
+      "start": 901.125,
+      "duration": 3.671
+    },
+    {
+      "text": " compared to these other weights. Or you",
+      "start": 903.882,
+      "duration": 5.462
+    },
+    {
+      "text": " could say that your neuron is starting",
+      "start": 908.419,
+      "duration": 3.822
+    },
+    {
+      "text": " to focus more on a particular pattern.",
+      "start": 911.316,
+      "duration": 3.823
+    },
+    {
+      "text": " Okay? So, using dropout can solve the",
+      "start": 915.139,
+      "duration": 4.066
+    },
+    {
+      "text": " problem of one weight receiving too",
+      "start": 918.274,
+      "duration": 3.423
+    },
+    {
+      "text": " much value while the others receive too",
+      "start": 920.766,
+      "duration": 3.7
+    },
+    {
+      "text": " little. How? It's very simple. In this",
+      "start": 923.535,
+      "duration": 4.112
+    },
+    {
+      "text": " epoch, when this neuron is training,",
+      "start": 926.727,
+      "duration": 3.88
+    },
+    {
+      "text": " notice that this one is there. Okay?",
+      "start": 929.687,
+      "duration": 4.152
+    },
+    {
+      "text": " But in the next iteration, this one",
+      "start": 933.007,
+      "duration": 2.225
+    },
+    {
+      "text": " isn't there. It's not there either. So",
+      "start": 934.267,
+      "duration": 4.112
+    },
+    {
+      "text": " now this neuron isn't receiving as much",
+      "start": 937.455,
+      "duration": 3.972
+    },
+    {
+      "text": " information from it. It can't rely",
+      "start": 940.503,
+      "duration": 3.538
+    },
+    {
+      "text": " solely on it, because it doesn't know",
+      "start": 943.105,
+      "duration": 3.342
+    },
+    {
+      "text": " whether it will receive input from this",
+      "start": 945.51,
+      "duration": 3.469
+    },
+    {
+      "text": " node in the next epoch. So, in a way,",
+      "start": 948.043,
+      "duration": 4.69
+    },
+    {
+      "text": " whenever this neuron receives input",
+      "start": 951.813,
+      "duration": 3.786
+    },
+    {
+      "text": " from the previous layer, it will be",
+      "start": 954.679,
+      "duration": 3.786
+    },
+    {
+      "text": " more balanced. Now it won't just rely",
+      "start": 957.544,
+      "duration": 4.025
+    },
+    {
+      "text": " on the first one to send and value it.",
+      "start": 960.642,
+      "duration": 3.741
+    },
+    {
+      "text": " It's possible that the first one",
+      "start": 963.979,
+      "duration": 2.363
+    },
+    {
+      "text": " doesn't come at all, so you start",
+      "start": 965.385,
+      "duration": 2.407
+    },
+    {
+      "text": " focusing on the second, third, and",
+      "start": 966.834,
+      "duration": 2.449
+    },
+    {
+      "text": " fourth ones as well. In a way, your",
+      "start": 968.326,
+      "duration": 3.033
+    },
+    {
+      "text": " attention is no longer focused on just",
+      "start": 970.409,
+      "duration": 2.9
+    },
+    {
+      "text": " one node; it's divided across all of",
+      "start": 972.359,
+      "duration": 2.8
+    },
+    {
+      "text": " them. Your weight, which was the",
+      "start": 974.209,
+      "duration": 3.37
+    },
+    {
+      "text": " thickest and the highest before, is now",
+      "start": 976.655,
+      "duration": 3.97
+    },
+    {
+      "text": " equal. You're taking the same value",
+      "start": 979.702,
+      "duration": 2.963
+    },
+    {
+      "text": " from this one. You're taking the same",
+      "start": 981.688,
+      "duration": 2.354
+    },
+    {
+      "text": " amount from this one, and the same",
+      "start": 983.082,
+      "duration": 2.36
+    },
+    {
+      "text": " amount from this one. And as soon as",
+      "start": 984.482,
+      "duration": 2.952
+    },
+    {
+      "text": " you start doing this, your neural",
+      "start": 986.495,
+      "duration": 3.028
+    },
+    {
+      "text": " network will automatically overfit less",
+      "start": 988.584,
+      "duration": 3.396
+    },
+    {
+      "text": " and start ignoring things like this. It",
+      "start": 991.042,
+      "duration": 4.006
+    },
+    {
+      "text": " will start ignoring patterns like this.",
+      "start": 994.097,
+      "duration": 2.933
+    },
+    {
+      "text": " And this is the main reason behind the",
+      "start": 996.23,
+      "duration": 3.514
+    },
+    {
+      "text": " success of Drop. You can understand it",
+      "start": 998.81,
+      "duration": 2.954
+    },
+    {
+      "text": " this way. I read a great example",
+      "start": 1000.797,
+      "duration": 2.98
+    },
+    {
+      "text": " somewhere: Imagine a company. Now there",
+      "start": 1002.842,
+      "duration": 3.502
+    },
+    {
+      "text": " will be many people in that company,",
+      "start": 1005.382,
+      "duration": 2.381
+    },
+    {
+      "text": " each doing different jobs. Meaning,",
+      "start": 1006.801,
+      "duration": 2.628
+    },
+    {
+      "text": " there will be a peon. There will be a",
+      "start": 1008.471,
+      "duration": 2.853
+    },
+    {
+      "text": " coffee maker. There will be coders.",
+      "start": 1010.375,
+      "duration": 3.704
+    },
+    {
+      "text": " There will be a marketing person. There",
+      "start": 1013.372,
+      "duration": 2.813
+    },
+    {
+      "text": " will be a lot of people. Right? Now, a",
+      "start": 1015.215,
+      "duration": 2.993
+    },
+    {
+      "text": " new policy has been introduced in that",
+      "start": 1017.277,
+      "duration": 3.63
+    },
+    {
+      "text": " company: every morning, they will",
+      "start": 1019.977,
+      "duration": 3.284
+    },
+    {
+      "text": " randomly decide who will come to the",
+      "start": 1022.33,
+      "duration": 3.492
+    },
+    {
+      "text": " office and who will not. This means",
+      "start": 1024.891,
+      "duration": 3.698
+    },
+    {
+      "text": " that 50%of people will come randomly,",
+      "start": 1027.644,
+      "duration": 3.035
+    },
+    {
+      "text": " 50%will not, and this will be decided",
+      "start": 1029.734,
+      "duration": 3.035
+    },
+    {
+      "text": " randomly. So, if I'm an employee, I get",
+      "start": 1031.824,
+      "duration": 3.205
+    },
+    {
+      "text": " an email in the morning asking if I can",
+      "start": 1034.082,
+      "duration": 3.085
+    },
+    {
+      "text": " come or not, and that email will be",
+      "start": 1036.22,
+      "duration": 2.871
+    },
+    {
+      "text": " random. Anyone could receive it. Right?",
+      "start": 1038.144,
+      "duration": 3.155
+    },
+    {
+      "text": " Now you might think, \"That's really",
+      "start": 1040.499,
+      "duration": 2.7
+    },
+    {
+      "text": " wrong. If 50%or even 30%of employees",
+      "start": 1042.247,
+      "duration": 3.4
+    },
+    {
+      "text": " are randomly turned away daily, your",
+      "start": 1044.715,
+      "duration": 3.451
+    },
+    {
+      "text": " company's productivity will plummet.\"",
+      "start": 1047.234,
+      "duration": 3.519
+    },
+    {
+      "text": " But that's not the case. It's also",
+      "start": 1050.045,
+      "duration": 3.25
+    },
+    {
+      "text": " possible that since many people won't",
+      "start": 1052.353,
+      "duration": 3.164
+    },
+    {
+      "text": " come, as an employee (if I'm a coder),",
+      "start": 1054.576,
+      "duration": 3.222
+    },
+    {
+      "text": " I won't depend on others and will start",
+      "start": 1056.856,
+      "duration": 3.281
+    },
+    {
+      "text": " controlling many things myself. Where I",
+      "start": 1059.196,
+      "duration": 3.823
+    },
+    {
+      "text": " used to depend only on the testing team",
+      "start": 1062.068,
+      "duration": 2.898
+    },
+    {
+      "text": ", now I'll start depending on others as",
+      "start": 1063.966,
+      "duration": 2.898
+    },
+    {
+      "text": " well, because the others can do the",
+      "start": 1065.913,
+      "duration": 2.703
+    },
+    {
+      "text": " testing team's work. Right? So, that's",
+      "start": 1067.665,
+      "duration": 3.629
+    },
+    {
+      "text": " what's happening here: this node, this",
+      "start": 1070.364,
+      "duration": 3.643
+    },
+    {
+      "text": " node, was only dependent on the first",
+      "start": 1073.077,
+      "duration": 3.574
+    },
+    {
+      "text": " one. Now, since the first one isn't",
+      "start": 1075.72,
+      "duration": 3.145
+    },
+    {
+      "text": " there, it has to interact with the",
+      "start": 1077.923,
+      "duration": 2.964
+    },
+    {
+      "text": " second one, the third one, and even the",
+      "start": 1079.945,
+      "duration": 3.253
+    },
+    {
+      "text": " fourth one. Because of this, your",
+      "start": 1082.256,
+      "duration": 3.966
+    },
+    {
+      "text": " overall architecture becomes more",
+      "start": 1085.292,
+      "duration": 3.3
+    },
+    {
+      "text": " resilient. Right? It becomes",
+      "start": 1087.662,
+      "duration": 2.901
+    },
+    {
+      "text": " insensitive to small changes. It says",
+      "start": 1089.611,
+      "duration": 3.033
+    },
+    {
+      "text": " ignore these small changes and focus on",
+      "start": 1091.684,
+      "duration": 2.585
+    },
+    {
+      "text": " the big things. And what is the big",
+      "start": 1093.309,
+      "duration": 2.699
+    },
+    {
+      "text": " thing? This overall pattern in this",
+      "start": 1095.049,
+      "duration": 3.458
+    },
+    {
+      "text": " data. Right? So, that company example",
+      "start": 1097.582,
+      "duration": 3.585
+    },
+    {
+      "text": " can't be proven to actually increase",
+      "start": 1100.229,
+      "duration": 3.203
+    },
+    {
+      "text": " the company's productivity, but this",
+      "start": 1102.493,
+      "duration": 3.204
+    },
+    {
+      "text": " theory works in neural networks. Right?",
+      "start": 1104.758,
+      "duration": 3.954
+    },
+    {
+      "text": " So, that's one way to understand this",
+      "start": 1107.855,
+      "duration": 2.539
+    },
+    {
+      "text": " whole thing. Now, I'll give you another",
+      "start": 1109.435,
+      "duration": 3.133
+    },
+    {
+      "text": " explanation that will help you",
+      "start": 1111.614,
+      "duration": 2.396
+    },
+    {
+      "text": " understand this even better. We'll",
+      "start": 1113.056,
+      "duration": 3.316
+    },
+    {
+      "text": " compare dropouts to random forests.",
+      "start": 1115.471,
+      "duration": 4.448
+    },
+    {
+      "text": " Random forests, if you know them, are",
+      "start": 1119.202,
+      "duration": 2.935
+    },
+    {
+      "text": " one of the most powerful machine",
+      "start": 1121.19,
+      "duration": 2.674
+    },
+    {
+      "text": " learning algorithms. And in some ways,",
+      "start": 1122.916,
+      "duration": 3.888
+    },
+    {
+      "text": " dropouts work like random forests. Let",
+      "start": 1125.894,
+      "duration": 4.908
+    },
+    {
+      "text": " me explain. So guys, let's understand",
+      "start": 1129.879,
+      "duration": 4.4
+    },
+    {
+      "text": " how dropouts are connected to random",
+      "start": 1133.354,
+      "duration": 3.697
+    },
+    {
+      "text": " forests. So, if you remember when we",
+      "start": 1136.126,
+      "duration": 3.266
+    },
+    {
+      "text": " studied random forests, I explained",
+      "start": 1138.446,
+      "duration": 2.876
+    },
+    {
+      "text": " what a random forest consists of. Let's",
+      "start": 1140.375,
+      "duration": 3.355
+    },
+    {
+      "text": " say you have a data set with 10 input",
+      "start": 1142.8,
+      "duration": 5.854
+    },
+    {
+      "text": " columns and one output column. What you",
+      "start": 1147.745,
+      "duration": 5.235
+    },
+    {
+      "text": " do is train multiple decision trees to",
+      "start": 1152.071,
+      "duration": 4.447
+    },
+    {
+      "text": " create a random forest. Let's say we're",
+      "start": 1155.609,
+      "duration": 6.136
+    },
+    {
+      "text": " training 100 decision trees. You give",
+      "start": 1160.805,
+      "duration": 4.133
+    },
+    {
+      "text": " them data in two ways: you can either",
+      "start": 1164.026,
+      "duration": 4.236
+    },
+    {
+      "text": " use column sampling, row sampling, or a",
+      "start": 1167.35,
+      "duration": 4.411
+    },
+    {
+      "text": " combination of both. For a moment,",
+      "start": 1170.849,
+      "duration": 3.627
+    },
+    {
+      "text": " let's assume we're only using column",
+      "start": 1173.517,
+      "duration": 2.489
+    },
+    {
+      "text": " sampling. This means that in the first",
+      "start": 1175.047,
+      "duration": 3.812
+    },
+    {
+      "text": " decision tree we create, let's say",
+      "start": 1177.93,
+      "duration": 3.395
+    },
+    {
+      "text": " we'll only randomly select 50%of the",
+      "start": 1180.395,
+      "duration": 3.536
+    },
+    {
+      "text": " columns. So, x1 will be selected, x2",
+      "start": 1183.002,
+      "duration": 2.702
+    },
+    {
+      "text": " will not be selected, x3 will be",
+      "start": 1184.74,
+      "duration": 2.132
+    },
+    {
+      "text": " selected, x4 will not be selected.",
+      "start": 1185.907,
+      "duration": 2.203
+    },
+    {
+      "text": " We'll send five random columns out of",
+      "start": 1187.559,
+      "duration": 3.756
+    },
+    {
+      "text": " 10 here and train our first decision",
+      "start": 1190.39,
+      "duration": 3.682
+    },
+    {
+      "text": " tree. Then we'll pick another decision",
+      "start": 1193.147,
+      "duration": 4.128
+    },
+    {
+      "text": " tree and again randomly pick five",
+      "start": 1196.342,
+      "duration": 3.224
+    },
+    {
+      "text": " columns and feed them to that decision",
+      "start": 1198.633,
+      "duration": 3.561
+    },
+    {
+      "text": " tree. So what happens? By doing this,",
+      "start": 1201.262,
+      "duration": 3.595
+    },
+    {
+      "text": " you'll have 100 decision trees that are",
+      "start": 1203.928,
+      "duration": 3.754
+    },
+    {
+      "text": " different from each other. Not",
+      "start": 1206.752,
+      "duration": 3.347
+    },
+    {
+      "text": " completely different, because some",
+      "start": 1209.146,
+      "duration": 2.594
+    },
+    {
+      "text": " columns will be the same. But you get",
+      "start": 1210.787,
+      "duration": 3.504
+    },
+    {
+      "text": " the idea: you have an ensemble of 100",
+      "start": 1213.365,
+      "duration": 3.732
+    },
+    {
+      "text": " decision trees. What do you do when",
+      "start": 1216.171,
+      "duration": 3.616
+    },
+    {
+      "text": " making a prediction? You'll send a",
+      "start": 1218.839,
+      "duration": 3.159
+    },
+    {
+      "text": " single row to all 100 decision trees",
+      "start": 1221.068,
+      "duration": 3.524
+    },
+    {
+      "text": " and ask each one to indicate whether",
+      "start": 1223.662,
+      "duration": 3.524
+    },
+    {
+      "text": " it's one or zero. Now, 60 trees might",
+      "start": 1226.256,
+      "duration": 3.813
+    },
+    {
+      "text": " say one, and 40 trees might say zero.",
+      "start": 1229.146,
+      "duration": 3.857
+    },
+    {
+      "text": " So, based on the majority count, you'll",
+      "start": 1232.112,
+      "duration": 3.741
+    },
+    {
+      "text": " say that this row must be one. That's",
+      "start": 1234.923,
+      "duration": 3.816
+    },
+    {
+      "text": " how a random forest works. Okay? Now,",
+      "start": 1237.819,
+      "duration": 4.442
+    },
+    {
+      "text": " look, you actually do this same thing",
+      "start": 1241.336,
+      "duration": 3.79
+    },
+    {
+      "text": " when you drop out. Let's say this is",
+      "start": 1244.201,
+      "duration": 5.739
+    },
+    {
+      "text": " our neural network. Okay? This is our",
+      "start": 1249.019,
+      "duration": 4.288
+    },
+    {
+      "text": " hidden input layer and this is our",
+      "start": 1252.383,
+      "duration": 3.561
+    },
+    {
+      "text": " hidden layer. And we said P = 5,",
+      "start": 1255.019,
+      "duration": 3.89
+    },
+    {
+      "text": " meaning we'll drop 50%of the nodes from",
+      "start": 1258.002,
+      "duration": 4.636
+    },
+    {
+      "text": " both the input layer and the hidden",
+      "start": 1261.731,
+      "duration": 4.263
+    },
+    {
+      "text": " layer. Now, let's first understand how",
+      "start": 1265.087,
+      "duration": 3.749
+    },
+    {
+      "text": " many neural networks you can create",
+      "start": 1267.894,
+      "duration": 3.032
+    },
+    {
+      "text": " from this neural network. There are",
+      "start": 1269.984,
+      "duration": 4.397
+    },
+    {
+      "text": " nine nodes in total, and each node can",
+      "start": 1273.495,
+      "duration": 5.32
+    },
+    {
+      "text": " be present or absent. Meaning, there",
+      "start": 1277.929,
+      "duration": 4.392
+    },
+    {
+      "text": " are two possibilities for each node. So",
+      "start": 1281.362,
+      "duration": 2.953
+    },
+    {
+      "text": ", in total, we have this many",
+      "start": 1283.315,
+      "duration": 2.687
+    },
+    {
+      "text": " combinations available. You can create",
+      "start": 1285.06,
+      "duration": 3.765
+    },
+    {
+      "text": " this many different types of neural",
+      "start": 1287.859,
+      "duration": 2.213
+    },
+    {
+      "text": " networks. Actually, we'll add 8 here",
+      "start": 1289.107,
+      "duration": 3.079
+    },
+    {
+      "text": " because we won't consider the output",
+      "start": 1291.246,
+      "duration": 3.171
+    },
+    {
+      "text": " ones. So, 2 to the power 8 combinations",
+      "start": 1293.477,
+      "duration": 3.827
+    },
+    {
+      "text": " are available. What can you do? It's",
+      "start": 1296.37,
+      "duration": 4.598
+    },
+    {
+      "text": " very simple. What are you doing? You're",
+      "start": 1300.015,
+      "duration": 3.218
+    },
+    {
+      "text": " training the lettuce for 10 epochs. So,",
+      "start": 1302.339,
+      "duration": 5.268
+    },
+    {
+      "text": " because of the random switching, each",
+      "start": 1306.69,
+      "duration": 4.062
+    },
+    {
+      "text": " epoch will create a different neural",
+      "start": 1309.834,
+      "duration": 3.98
+    },
+    {
+      "text": " network. So, what are you basically",
+      "start": 1312.896,
+      "duration": 3.31
+    },
+    {
+      "text": " doing? For every epoch, you're training",
+      "start": 1315.264,
+      "duration": 6.428
+    },
+    {
+      "text": " a unique neural network. The first time",
+      "start": 1320.848,
+      "duration": 5.77
+    },
+    {
+      "text": " it's a different architecture, the",
+      "start": 1325.651,
+      "duration": 2.09
+    },
+    {
+      "text": " second time it's a different",
+      "start": 1326.773,
+      "duration": 1.898
+    },
+    {
+      "text": " architecture, and the third time it's a",
+      "start": 1327.703,
+      "duration": 2.251
+    },
+    {
+      "text": " different architecture. So, what are",
+      "start": 1328.986,
+      "duration": 2.925
+    },
+    {
+      "text": " you doing here? You're creating a",
+      "start": 1330.996,
+      "duration": 3.816
+    },
+    {
+      "text": " sample of 10 neural networks, just like",
+      "start": 1333.897,
+      "duration": 5.651
+    },
+    {
+      "text": " you created a sample of decision trees",
+      "start": 1338.595,
+      "duration": 2.799
+    },
+    {
+      "text": " here. If you train for 100 epochs,",
+      "start": 1340.442,
+      "duration": 3.29
+    },
+    {
+      "text": " since these combinations are too many,",
+      "start": 1342.802,
+      "duration": 3.634
+    },
+    {
+      "text": " the probability that any architecture",
+      "start": 1345.505,
+      "duration": 3.565
+    },
+    {
+      "text": " will ever repeat itself in 100 epochs",
+      "start": 1348.139,
+      "duration": 3.565
+    },
+    {
+      "text": " is very low. This basically means that",
+      "start": 1350.774,
+      "duration": 3.778
+    },
+    {
+      "text": " you have 100 unique neural network",
+      "start": 1353.614,
+      "duration": 3.113
+    },
+    {
+      "text": " architectures that you're feeding the",
+      "start": 1355.789,
+      "duration": 3.3
+    },
+    {
+      "text": " same data to. Since the architecture of",
+      "start": 1358.151,
+      "duration": 3.329
+    },
+    {
+      "text": " neural networks is different, and not",
+      "start": 1360.533,
+      "duration": 2.96
+    },
+    {
+      "text": " very different, the answers will vary,",
+      "start": 1362.546,
+      "duration": 3.013
+    },
+    {
+      "text": " and you decide on the answer by asking",
+      "start": 1364.612,
+      "duration": 3.013
+    },
+    {
+      "text": " everyone. In a way, you're doing",
+      "start": 1366.678,
+      "duration": 3.942
+    },
+    {
+      "text": " something similar to singular learning.",
+      "start": 1369.665,
+      "duration": 2.788
+    },
+    {
+      "text": " So, this is often asked in interviews,",
+      "start": 1374.115,
+      "duration": 3.891
+    },
+    {
+      "text": " \"Explain how dropouts are similar to",
+      "start": 1377.082,
+      "duration": 3.739
+    },
+    {
+      "text": " random forests.\" I hope you understand.",
+      "start": 1379.897,
+      "duration": 3.368
+    },
+    {
+      "text": " In a way, just as you train different",
+      "start": 1383.26,
+      "duration": 4.096
+    },
+    {
+      "text": " decision trees, you're training",
+      "start": 1386.44,
+      "duration": 3.595
+    },
+    {
+      "text": " different neural networks and then,",
+      "start": 1389.119,
+      "duration": 3.929
+    },
+    {
+      "text": " based on their combined intelligence,",
+      "start": 1392.132,
+      "duration": 4.097
+    },
+    {
+      "text": " you're making decisions. That's why,",
+      "start": 1395.313,
+      "duration": 4.17
+    },
+    {
+      "text": " you can say that the neural network",
+      "start": 1398.559,
+      "duration": 3.686
+    },
+    {
+      "text": " behaves somewhat like a random forest.",
+      "start": 1401.322,
+      "duration": 3.917
+    },
+    {
+      "text": " And that's why using dropouts improves",
+      "start": 1404.507,
+      "duration": 3.591
+    },
+    {
+      "text": " the performance of your neural network.",
+      "start": 1407.167,
+      "duration": 3.66
+    },
+    {
+      "text": " It also solves your overfitting problem",
+      "start": 1411.692,
+      "duration": 4.51
+    },
+    {
+      "text": ". Just as random forests can overcome",
+      "start": 1415.202,
+      "duration": 3.582
+    },
+    {
+      "text": " the problem of overfitting, dropouts",
+      "start": 1417.843,
+      "duration": 3.124
+    },
+    {
+      "text": " can also reduce overfitting in neural",
+      "start": 1420.026,
+      "duration": 3.183
+    },
+    {
+      "text": " networks. Okay? I hope you understand",
+      "start": 1422.268,
+      "duration": 3.035
+    },
+    {
+      "text": " this connection a little. Now, guys,",
+      "start": 1424.341,
+      "duration": 3.325
+    },
+    {
+      "text": " one thing you need to remember is that",
+      "start": 1426.729,
+      "duration": 3.381
+    },
+    {
+      "text": " dropouts are applied only during",
+      "start": 1429.173,
+      "duration": 3.005
+    },
+    {
+      "text": " training time. They are not applied",
+      "start": 1431.241,
+      "duration": 3.851
+    },
+    {
+      "text": " during testing. Let me explain this. So",
+      "start": 1434.139,
+      "duration": 3.832
+    },
+    {
+      "text": ", let's say this is your neural network",
+      "start": 1436.971,
+      "duration": 3.191
+    },
+    {
+      "text": ". Four inputs will go into it. This is",
+      "start": 1439.162,
+      "duration": 3.046
+    },
+    {
+      "text": " your input layer. This is your hidden",
+      "start": 1441.245,
+      "duration": 2.72
+    },
+    {
+      "text": " layer. So, let's say you've applied a",
+      "start": 1443.013,
+      "duration": 4.211
+    },
+    {
+      "text": " drop of 0.25 here. This means that in",
+      "start": 1446.306,
+      "duration": 5.398
+    },
+    {
+      "text": " every epoch, one of your four nodes",
+      "start": 1450.795,
+      "duration": 4.206
+    },
+    {
+      "text": " will be turned off randomly. Okay?",
+      "start": 1454.092,
+      "duration": 4.167
+    },
+    {
+      "text": " Let's say you applied 25 here too. Okay",
+      "start": 1457.571,
+      "duration": 4.396
+    },
+    {
+      "text": "? Then the same thing will happen again",
+      "start": 1460.967,
+      "duration": 2.324
+    },
+    {
+      "text": ". So, whatever happens, it happens",
+      "start": 1462.291,
+      "duration": 2.671
+    },
+    {
+      "text": " during training time. It doesn't happen",
+      "start": 1464.003,
+      "duration": 3.489
+    },
+    {
+      "text": " during testing. All these nodes will be",
+      "start": 1466.525,
+      "duration": 3.425
+    },
+    {
+      "text": " available during testing. This means",
+      "start": 1469.022,
+      "duration": 3.765
+    },
+    {
+      "text": " all these connections will be active.",
+      "start": 1471.848,
+      "duration": 3.251
+    },
+    {
+      "text": " But the question arises: what will this",
+      "start": 1474.759,
+      "duration": 4.432
+    },
+    {
+      "text": " weight be? Because it wasn't guaranteed",
+      "start": 1478.279,
+      "duration": 5.053
+    },
+    {
+      "text": " during training whether this weight",
+      "start": 1482.394,
+      "duration": 3.166
+    },
+    {
+      "text": " would exist or not. But it will",
+      "start": 1484.622,
+      "duration": 3.097
+    },
+    {
+      "text": " definitely exist during testing. So,",
+      "start": 1486.773,
+      "duration": 3.326
+    },
+    {
+      "text": " let me explain how this is decided.",
+      "start": 1489.153,
+      "duration": 2.866
+    },
+    {
+      "text": " Let's say this is a weight, and its",
+      "start": 1491.239,
+      "duration": 3.867
+    },
+    {
+      "text": " weight from training is w. So, in",
+      "start": 1494.188,
+      "duration": 4.93
+    },
+    {
+      "text": " testing, its weight will be w times 1-p",
+      "start": 1498.234,
+      "duration": 5.502
+    },
+    {
+      "text": ". Okay? What is p? 25. So, what will",
+      "start": 1502.736,
+      "duration": 4.822
+    },
+    {
+      "text": " the weight be? W*75. That's what it",
+      "start": 1506.608,
+      "duration": 5.308
+    },
+    {
+      "text": " means. Now think about it, this is very",
+      "start": 1511.082,
+      "duration": 3.657
+    },
+    {
+      "text": " logical. How? It's very simple. What is",
+      "start": 1513.779,
+      "duration": 4.465
+    },
+    {
+      "text": " the probability of each node",
+      "start": 1517.371,
+      "duration": 4.543
+    },
+    {
+      "text": " disappearing here? 0.225. And what is",
+      "start": 1521.041,
+      "duration": 7.068
+    },
+    {
+      "text": " the probability of it remaining?",
+      "start": 1527.154,
+      "duration": 2.425
+    },
+    {
+      "text": " Suppose you're training for 100 epochs.",
+      "start": 1528.759,
+      "duration": 3.76
+    },
+    {
+      "text": " If you set your dropout ratio to 25,",
+      "start": 1532.396,
+      "duration": 3.953
+    },
+    {
+      "text": " then out of 100 epochs, there is a",
+      "start": 1535.431,
+      "duration": 3.789
+    },
+    {
+      "text": " probability that the last node will",
+      "start": 1538.302,
+      "duration": 3.871
+    },
+    {
+      "text": " disappear in 25 epochs and remain in",
+      "start": 1541.255,
+      "duration": 3.954
+    },
+    {
+      "text": " 75. This means that the probability of",
+      "start": 1544.291,
+      "duration": 4.117
+    },
+    {
+      "text": " this weight remaining in this",
+      "start": 1547.49,
+      "duration": 3.379
+    },
+    {
+      "text": " architecture is 75. That's why we're",
+      "start": 1549.951,
+      "duration": 3.954
+    },
+    {
+      "text": " keeping the weights 75 times the actual",
+      "start": 1552.987,
+      "duration": 4.199
+    },
+    {
+      "text": " weight. Because if you don't keep them",
+      "start": 1556.268,
+      "duration": 3.526
+    },
+    {
+      "text": " 75 times, they will increase. It wasn't",
+      "start": 1558.837,
+      "duration": 3.695
+    },
+    {
+      "text": " that much during training. It was only",
+      "start": 1561.573,
+      "duration": 3.71
+    },
+    {
+      "text": " 75 times during training. That's why",
+      "start": 1564.355,
+      "duration": 3.701
+    },
+    {
+      "text": " what will you do? You can choose any of",
+      "start": 1567.111,
+      "duration": 4.044
+    },
+    {
+      "text": " your weights. You can choose any of",
+      "start": 1570.228,
+      "duration": 3.211
+    },
+    {
+      "text": " these weights. You can multiply them",
+      "start": 1572.479,
+      "duration": 4.293
+    },
+    {
+      "text": " all by 1-p times and use these same",
+      "start": 1575.869,
+      "duration": 4.388
+    },
+    {
+      "text": " weights during testing when you make",
+      "start": 1579.354,
+      "duration": 4.486
+    },
+    {
+      "text": " predictions. I hope you understand this",
+      "start": 1582.937,
+      "duration": 5.268
+    },
+    {
+      "text": ". Okay? Let me summarize. It's very",
+      "start": 1587.205,
+      "duration": 4.262
+    },
+    {
+      "text": " simple. Your node is dropped only",
+      "start": 1590.523,
+      "duration": 4.652
+    },
+    {
+      "text": " during training. During testing, all",
+      "start": 1594.291,
+      "duration": 4.639
+    },
+    {
+      "text": " nodes are available. All weights are",
+      "start": 1597.984,
+      "duration": 2.864
+    },
+    {
+      "text": " available. But we can't assign the full",
+      "start": 1599.892,
+      "duration": 3.802
+    },
+    {
+      "text": " weight because that node wasn't",
+      "start": 1602.766,
+      "duration": 3.223
+    },
+    {
+      "text": " available during training. So, we'll",
+      "start": 1605.061,
+      "duration": 3.767
+    },
+    {
+      "text": " multiply that by the probability of the",
+      "start": 1607.885,
+      "duration": 3.208
+    },
+    {
+      "text": " available time. So, if your dropout",
+      "start": 1610.149,
+      "duration": 3.856
+    },
+    {
+      "text": " ratio is 25, it means the probability",
+      "start": 1613.09,
+      "duration": 4.129
+    },
+    {
+      "text": " of it staying is 75%, so we multiply it",
+      "start": 1616.304,
+      "duration": 4.298
+    },
+    {
+      "text": " by 75%. That's it. This is the concept.",
+      "start": 1619.687,
+      "duration": 3.499
+    },
+    {
+      "text": " Okay? The good thing is that you don't",
+      "start": 1622.419,
+      "duration": 2.538
+    },
+    {
+      "text": " have to do all this manually. Keras",
+      "start": 1623.995,
+      "duration": 3.285
+    },
+    {
+      "text": " handles it all behind the scenes. You",
+      "start": 1626.328,
+      "duration": 3.293
+    },
+    {
+      "text": " just need to understand what's",
+      "start": 1628.679,
+      "duration": 2.734
+    },
+    {
+      "text": " happening. So, I guess you're getting",
+      "start": 1630.471,
+      "duration": 3.761
+    },
+    {
+      "text": " the hang of dropouts. Now, next, I was",
+      "start": 1633.299,
+      "duration": 4.72
+    },
+    {
+      "text": " going to show you some coding,",
+      "start": 1637.089,
+      "duration": 3.1
+    },
+    {
+      "text": " practically, by working with a data set",
+      "start": 1639.259,
+      "duration": 3.73
+    },
+    {
+      "text": ". But I guess the video is a bit long.",
+      "start": 1641.989,
+      "duration": 2.65
+    },
+    {
+      "text": " So, what I'll do is convert this video",
+      "start": 1643.974,
+      "duration": 2.999
+    },
+    {
+      "text": " into two parts. In the next part, I'll",
+      "start": 1646.025,
+      "duration": 4.874
+    },
+    {
+      "text": " show you examples of code for both",
+      "start": 1649.975,
+      "duration": 3.612
+    },
+    {
+      "text": " regression and classification. I'll",
+      "start": 1652.664,
+      "duration": 4.231
+    },
+    {
+      "text": " also give you some practical tips on",
+      "start": 1655.979,
+      "duration": 4.024
+    },
+    {
+      "text": " when to use drops. Okay? So I hope you",
+      "start": 1659.087,
+      "duration": 4.485
+    },
+    {
+      "text": " like the video. If so please do like",
+      "start": 1662.635,
+      "duration": 3.378
+    },
+    {
+      "text": " the video and consider subscribing to",
+      "start": 1665.075,
+      "duration": 3.283
+    },
+    {
+      "text": " my channel. OK? Thanks for watching.",
+      "start": 1667.42,
+      "duration": 3.344
+    },
+    {
+      "text": " Bye.",
+      "start": 1669.879,
+      "duration": 1.56
+    }
+  ]
+}
